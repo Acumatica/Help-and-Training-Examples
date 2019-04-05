@@ -1,0 +1,999 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:Entity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Entity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="RowNumber" type="tns:LongValue" />
+          <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Delete" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomFields" type="tns:ArrayOfCustomField" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReturnBehavior" type="tns:ReturnBehavior" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LongValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Value" nillable="true" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCustomField">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CustomField" nillable="true" type="tns:CustomField" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CustomField" abstract="true">
+        <s:sequence />
+        <s:attribute name="viewName" type="s:string" />
+        <s:attribute name="fieldName" type="s:string" />
+      </s:complexType>
+      <s:simpleType name="ReturnBehavior">
+        <s:restriction base="s:string">
+          <s:enumeration value="Default" />
+          <s:enumeration value="All" />
+          <s:enumeration value="None" />
+          <s:enumeration value="OnlySystem" />
+          <s:enumeration value="OnlySpecified" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListResult" type="tns:ArrayOfEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Entity" nillable="true" type="tns:Entity" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Get">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:Entity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetResult" type="tns:Entity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Put">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:Entity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PutResult" type="tns:Entity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomFieldSchema">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:Entity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomFieldSchemaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomFieldSchemaResult" type="tns:Entity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SanityCheck">
+        <s:complexType />
+      </s:element>
+      <s:element name="SanityCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SanityCheckResult" type="tns:Entity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="company" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="branch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="locale" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Logout">
+        <s:complexType />
+      </s:element>
+      <s:element name="LogoutResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetBusinessDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="businessDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetBusinessDateResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetProcessStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="invokeResult" type="tns:InvokeResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InvokeResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TicketId" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetProcessStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProcessStatusResult" type="tns:ProcessResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ProcessResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EntityId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:ProcessStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="Seconds" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ProcessStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="NotExists" />
+          <s:enumeration value="InProcess" />
+          <s:enumeration value="Completed" />
+          <s:enumeration value="Aborted" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:Entity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Invoke">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:Entity" />
+            <s:element minOccurs="0" maxOccurs="1" name="action" type="tns:Action" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Action" />
+      <s:element name="InvokeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InvokeResult" type="tns:InvokeResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFiles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:Entity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFilesResult" type="tns:ArrayOfFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="File" nillable="true" type="tns:File" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="File">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PutFiles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:Entity" />
+            <s:element minOccurs="0" maxOccurs="1" name="files" type="tns:ArrayOfFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PutFilesResponse">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="StringSearch">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q1="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q1:StringValue">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Condition" type="q1:StringCondition" />
+              <s:element minOccurs="0" maxOccurs="1" name="Value2" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DecimalSearch">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q2="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q2:DecimalValue">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Condition" type="q2:DecimalCondition" />
+              <s:element minOccurs="1" maxOccurs="1" name="Value2" nillable="true" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DateTimeSearch">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q3="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q3:DateTimeValue">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Condition" type="q3:DateTimeCondition" />
+              <s:element minOccurs="1" maxOccurs="1" name="Value2" nillable="true" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BooleanSearch">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q4="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q4:BooleanValue">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Condition" type="q4:BooleanCondition" />
+              <s:element minOccurs="1" maxOccurs="1" name="Value2" nillable="true" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="IntSearch">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q5="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q5:IntValue">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Condition" type="q5:IntCondition" />
+              <s:element minOccurs="1" maxOccurs="1" name="Value2" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LongSearch">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q6="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q6:LongValue">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Condition" type="q6:LongCondition" />
+              <s:element minOccurs="1" maxOccurs="1" name="Value2" nillable="true" type="s:long" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ShortSearch">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q7="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q7:ShortValue">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Condition" type="q7:ShortCondition" />
+              <s:element minOccurs="1" maxOccurs="1" name="Value2" type="s:short" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ByteSearch">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q8="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q8:ByteValue">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Condition" type="q8:ByteCondition" />
+              <s:element minOccurs="1" maxOccurs="1" name="Value2" nillable="true" type="s:unsignedByte" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DoubleSearch">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q9="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q9:DoubleValue">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Condition" type="q9:DoubleCondition" />
+              <s:element minOccurs="1" maxOccurs="1" name="Value2" nillable="true" type="s:double" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GuidSearch">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q10="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q10:GuidValue">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Condition" type="q10:GuidCondition" />
+              <s:element minOccurs="1" maxOccurs="1" name="Value2" type="s1:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StringValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DecimalValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Value" nillable="true" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DateTimeValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Value" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BooleanValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Value" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IntValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Value" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ShortValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Value" nillable="true" type="s:short" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ByteValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Value" nillable="true" type="s:unsignedByte" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DoubleValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Value" nillable="true" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GuidValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Value" nillable="true" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CustomStringField">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q11="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q11:CustomField">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="q11:StringValue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="StringCondition">
+        <s:restriction base="s:string">
+          <s:enumeration value="Equal" />
+          <s:enumeration value="NotEqual" />
+          <s:enumeration value="IsBetween" />
+          <s:enumeration value="IsGreaterThan" />
+          <s:enumeration value="IsLessThan" />
+          <s:enumeration value="IsGreaterThanOrEqualsTo" />
+          <s:enumeration value="IsLessThanOrEqualsTo" />
+          <s:enumeration value="Contains" />
+          <s:enumeration value="DoesNotContain" />
+          <s:enumeration value="StartsWith" />
+          <s:enumeration value="EndsWith" />
+          <s:enumeration value="IsNull" />
+          <s:enumeration value="IsNotNull" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="StringSkip">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q12="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q12:StringValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StringReturn">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q13="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q13:StringValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustomDecimalField">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q14="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q14:CustomField">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="q14:DecimalValue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="DecimalCondition">
+        <s:restriction base="s:string">
+          <s:enumeration value="Equal" />
+          <s:enumeration value="NotEqual" />
+          <s:enumeration value="IsBetween" />
+          <s:enumeration value="IsGreaterThan" />
+          <s:enumeration value="IsLessThan" />
+          <s:enumeration value="IsGreaterThanOrEqualsTo" />
+          <s:enumeration value="IsLessThanOrEqualsTo" />
+          <s:enumeration value="IsNull" />
+          <s:enumeration value="IsNotNull" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="DecimalSkip">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q15="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q15:DecimalValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DecimalReturn">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q16="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q16:DecimalValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustomDateTimeField">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q17="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q17:CustomField">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="q17:DateTimeValue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="DateTimeCondition">
+        <s:restriction base="s:string">
+          <s:enumeration value="Equal" />
+          <s:enumeration value="NotEqual" />
+          <s:enumeration value="IsBetween" />
+          <s:enumeration value="IsGreaterThan" />
+          <s:enumeration value="IsLessThan" />
+          <s:enumeration value="IsGreaterThanOrEqualsTo" />
+          <s:enumeration value="IsLessThanOrEqualsTo" />
+          <s:enumeration value="Today" />
+          <s:enumeration value="Overdue" />
+          <s:enumeration value="Tomorrow" />
+          <s:enumeration value="ThisWeek" />
+          <s:enumeration value="ThisMonth" />
+          <s:enumeration value="IsNull" />
+          <s:enumeration value="IsNotNull" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="DateTimeSkip">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q18="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q18:DateTimeValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DateTimeReturn">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q19="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q19:DateTimeValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustomBooleanField">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q20="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q20:CustomField">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="q20:BooleanValue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="BooleanCondition">
+        <s:restriction base="s:string">
+          <s:enumeration value="Equal" />
+          <s:enumeration value="NotEqual" />
+          <s:enumeration value="IsNull" />
+          <s:enumeration value="IsNotNull" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="BooleanSkip">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q21="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q21:BooleanValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BooleanReturn">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q22="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q22:BooleanValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustomIntField">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q23="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q23:CustomField">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="q23:IntValue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="IntCondition">
+        <s:restriction base="s:string">
+          <s:enumeration value="Equal" />
+          <s:enumeration value="NotEqual" />
+          <s:enumeration value="IsBetween" />
+          <s:enumeration value="IsGreaterThan" />
+          <s:enumeration value="IsLessThan" />
+          <s:enumeration value="IsGreaterThanOrEqualsTo" />
+          <s:enumeration value="IsLessThanOrEqualsTo" />
+          <s:enumeration value="IsNull" />
+          <s:enumeration value="IsNotNull" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="IntSkip">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q24="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q24:IntValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="IntReturn">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q25="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q25:IntValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustomLongField">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q26="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q26:CustomField">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="q26:LongValue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="LongCondition">
+        <s:restriction base="s:string">
+          <s:enumeration value="Equal" />
+          <s:enumeration value="NotEqual" />
+          <s:enumeration value="IsBetween" />
+          <s:enumeration value="IsGreaterThan" />
+          <s:enumeration value="IsLessThan" />
+          <s:enumeration value="IsGreaterThanOrEqualsTo" />
+          <s:enumeration value="IsLessThanOrEqualsTo" />
+          <s:enumeration value="IsNull" />
+          <s:enumeration value="IsNotNull" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="LongSkip">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q27="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q27:LongValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LongReturn">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q28="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q28:LongValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustomShortField">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q29="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q29:CustomField">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="q29:ShortValue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="ShortCondition">
+        <s:restriction base="s:string">
+          <s:enumeration value="Equal" />
+          <s:enumeration value="NotEqual" />
+          <s:enumeration value="IsBetween" />
+          <s:enumeration value="IsGreaterThan" />
+          <s:enumeration value="IsLessThan" />
+          <s:enumeration value="IsGreaterThanOrEqualsTo" />
+          <s:enumeration value="IsLessThanOrEqualsTo" />
+          <s:enumeration value="IsNull" />
+          <s:enumeration value="IsNotNull" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ShortSkip">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q30="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q30:ShortValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ShortReturn">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q31="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q31:ShortValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustomByteField">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q32="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q32:CustomField">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="q32:ByteValue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="ByteCondition">
+        <s:restriction base="s:string">
+          <s:enumeration value="Equal" />
+          <s:enumeration value="NotEqual" />
+          <s:enumeration value="IsBetween" />
+          <s:enumeration value="IsGreaterThan" />
+          <s:enumeration value="IsLessThan" />
+          <s:enumeration value="IsGreaterThanOrEqualsTo" />
+          <s:enumeration value="IsLessThanOrEqualsTo" />
+          <s:enumeration value="IsNull" />
+          <s:enumeration value="IsNotNull" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ByteSkip">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q33="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q33:ByteValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ByteReturn">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q34="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q34:ByteValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustomDoubleField">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q35="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q35:CustomField">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="q35:DoubleValue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="DoubleCondition">
+        <s:restriction base="s:string">
+          <s:enumeration value="Equal" />
+          <s:enumeration value="NotEqual" />
+          <s:enumeration value="IsBetween" />
+          <s:enumeration value="IsGreaterThan" />
+          <s:enumeration value="IsLessThan" />
+          <s:enumeration value="IsGreaterThanOrEqualsTo" />
+          <s:enumeration value="IsLessThanOrEqualsTo" />
+          <s:enumeration value="IsNull" />
+          <s:enumeration value="IsNotNull" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="DoubleSkip">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q36="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q36:DoubleValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DoubleReturn">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q37="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q37:DoubleValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustomGuidField">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q38="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q38:CustomField">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="q38:GuidValue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="GuidCondition">
+        <s:restriction base="s:string">
+          <s:enumeration value="Equal" />
+          <s:enumeration value="NotEqual" />
+          <s:enumeration value="IsNull" />
+          <s:enumeration value="IsNotNull" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="GuidSkip">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q39="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q39:GuidValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GuidReturn">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q40="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q40:GuidValue" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Result">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q41="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q41:Entity">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Description" nillable="true" type="q41:StringValue" />
+              <s:element minOccurs="0" maxOccurs="1" name="InventoryID" nillable="true" type="q41:StringValue" />
+              <s:element minOccurs="0" maxOccurs="1" name="QtyAvailable" nillable="true" type="q41:DecimalValue" />
+              <s:element minOccurs="0" maxOccurs="1" name="QtyOnHand" nillable="true" type="q41:DecimalValue" />
+              <s:element minOccurs="0" maxOccurs="1" name="Selected" nillable="true" type="q41:BooleanValue" />
+              <s:element minOccurs="0" maxOccurs="1" name="Subitem" nillable="true" type="q41:StringValue" />
+              <s:element minOccurs="0" maxOccurs="1" name="Warehouse" nillable="true" type="q41:StringValue" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ItemAvailabilityDataInquiry">
+        <s:complexContent mixed="false">
+          <s:extension xmlns:q42="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/" base="q42:Entity">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="InventoryID" nillable="true" type="q42:StringValue" />
+              <s:element minOccurs="0" maxOccurs="1" name="Results" nillable="true">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="Result" nillable="true" type="q42:Result" />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetList" />
+  </wsdl:message>
+  <wsdl:message name="GetListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSoapIn">
+    <wsdl:part name="parameters" element="tns:Get" />
+  </wsdl:message>
+  <wsdl:message name="GetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetResponse" />
+  </wsdl:message>
+  <wsdl:message name="PutSoapIn">
+    <wsdl:part name="parameters" element="tns:Put" />
+  </wsdl:message>
+  <wsdl:message name="PutSoapOut">
+    <wsdl:part name="parameters" element="tns:PutResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomFieldSchemaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomFieldSchema" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomFieldSchemaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomFieldSchemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="SanityCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:SanityCheck" />
+  </wsdl:message>
+  <wsdl:message name="SanityCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:SanityCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapIn">
+    <wsdl:part name="parameters" element="tns:Logout" />
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapOut">
+    <wsdl:part name="parameters" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetBusinessDateSoapIn">
+    <wsdl:part name="parameters" element="tns:SetBusinessDate" />
+  </wsdl:message>
+  <wsdl:message name="SetBusinessDateSoapOut">
+    <wsdl:part name="parameters" element="tns:SetBusinessDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProcessStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProcessStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetProcessStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProcessStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="InvokeSoapIn">
+    <wsdl:part name="parameters" element="tns:Invoke" />
+  </wsdl:message>
+  <wsdl:message name="InvokeSoapOut">
+    <wsdl:part name="parameters" element="tns:InvokeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFilesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFiles" />
+  </wsdl:message>
+  <wsdl:message name="GetFilesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="PutFilesSoapIn">
+    <wsdl:part name="parameters" element="tns:PutFiles" />
+  </wsdl:message>
+  <wsdl:message name="PutFilesSoapOut">
+    <wsdl:part name="parameters" element="tns:PutFilesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DefaultSoap">
+    <wsdl:operation name="GetList">
+      <wsdl:input message="tns:GetListSoapIn" />
+      <wsdl:output message="tns:GetListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get">
+      <wsdl:input message="tns:GetSoapIn" />
+      <wsdl:output message="tns:GetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Put">
+      <wsdl:input message="tns:PutSoapIn" />
+      <wsdl:output message="tns:PutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomFieldSchema">
+      <wsdl:input message="tns:GetCustomFieldSchemaSoapIn" />
+      <wsdl:output message="tns:GetCustomFieldSchemaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SanityCheck">
+      <wsdl:input message="tns:SanityCheckSoapIn" />
+      <wsdl:output message="tns:SanityCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input message="tns:LogoutSoapIn" />
+      <wsdl:output message="tns:LogoutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetBusinessDate">
+      <wsdl:input message="tns:SetBusinessDateSoapIn" />
+      <wsdl:output message="tns:SetBusinessDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProcessStatus">
+      <wsdl:input message="tns:GetProcessStatusSoapIn" />
+      <wsdl:output message="tns:GetProcessStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input message="tns:DeleteSoapIn" />
+      <wsdl:output message="tns:DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Invoke">
+      <wsdl:input message="tns:InvokeSoapIn" />
+      <wsdl:output message="tns:InvokeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFiles">
+      <wsdl:input message="tns:GetFilesSoapIn" />
+      <wsdl:output message="tns:GetFilesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PutFiles">
+      <wsdl:input message="tns:PutFilesSoapIn" />
+      <wsdl:output message="tns:PutFilesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DefaultSoap" type="tns:DefaultSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetList">
+      <soap:operation soapAction="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/GetList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get">
+      <soap:operation soapAction="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/Get" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Put">
+      <soap:operation soapAction="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/Put" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomFieldSchema">
+      <soap:operation soapAction="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/GetCustomFieldSchema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SanityCheck">
+      <soap:operation soapAction="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/SanityCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBusinessDate">
+      <soap:operation soapAction="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/SetBusinessDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProcessStatus">
+      <soap:operation soapAction="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/GetProcessStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Invoke">
+      <soap:operation soapAction="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/Invoke" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFiles">
+      <soap:operation soapAction="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/GetFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutFiles">
+      <soap:operation soapAction="http://www.acumatica.com/entity/3/ItemAvailabilityData/0001/PutFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ItemAvailabilityDataEndpoint">
+    <wsdl:port name="DefaultSoap" binding="tns:DefaultSoap">
+      <soap:address location="http://localhost/MyStoreInstance/entity/ItemAvailabilityData/0001" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
