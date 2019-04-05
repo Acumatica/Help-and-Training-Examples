@@ -2,8 +2,6 @@
 
 This repository contains examples that are included in the Acumatica ERP developer guides and training courses.
 
-You can find examples in the following folders:
-
 Integration development
 
   * _IntegrationDevelopment\I300_: Examples from the [I300 Web Services: Basic | Data Retrieval](https://openuni.acumatica.com/courses/integration/i300-web-services-basic-data-retrieval/) training course
