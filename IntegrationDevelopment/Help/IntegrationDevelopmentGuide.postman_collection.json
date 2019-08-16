@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "3effc791-0dd2-44d4-9485-773bbbd6a262",
 		"name": "Integration Development Guide",
-		"description": "This collection contains examples from the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n - Deploy a new Acumatica ERP instance with the I100 dataset. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n - Specify the URL of the instance in the BaseURL variable of the collection. The EndpointURL variable uses the value from the BaseURL variable and specifies the URL of the Default/18.200.001 endpoint. You do not need to change this variable until you want to use another endpoint.\n - To sign in to the instance in the client application, use the tenant name (which you specified when you created the instance) and the MyStore branch.",
+		"description": "This collection contains examples from the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n - Deploy a new Acumatica ERP instance with the U100 dataset. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n - Specify the URL of the instance in the BaseURL variable of the collection. The EndpointURL variable uses the value from the BaseURL variable and specifies the URL of the Default/18.200.001 endpoint. You do not need to change this variable until you want to use another endpoint.\n - To sign in to the instance in the client application, use the tenant name (which you specified when you created the instance) and the HEADOFFICE branch.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -27,7 +27,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"name\" : \"admin\",\r\n\"password\" : \"123\",\r\n\"company\" : \"MyCompany\",\r\n\"branch\" : \"MYSTORE\"\r\n}"
+							"raw": "{\r\n\"name\" : \"admin\",\r\n\"password\" : \"123\",\r\n\"company\" : \"MyTenant\",\r\n\"branch\" : \"HEADOFFICE\"\r\n}"
 						},
 						"url": {
 							"raw": "{{BaseURL}}entity/auth/login",
@@ -60,7 +60,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n\"name\" : \"admin\",\r\n\"password\" : \"123\",\r\n\"company\" : \"MyCompany\",\r\n\"branch\" : \"MYSTORE\"\r\n}"
+									"raw": "{\r\n\"name\" : \"admin\",\r\n\"password\" : \"123\",\r\n\"company\" : \"MyTenant\",\r\n\"branch\" : \"HEADOFFICE\"\r\n}"
 								},
 								"url": {
 									"raw": "{{BaseURL}}entity/auth/login",
@@ -78,10 +78,6 @@
 							"_postman_previewlanguage": "plain",
 							"header": [
 								{
-									"key": "Cache-Control",
-									"value": "private"
-								},
-								{
 									"key": "Server",
 									"value": "Microsoft-IIS/10.0"
 								},
@@ -91,31 +87,31 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=82; path=/"
+									"value": "UserBranch=2; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Mon, 12-Aug-2019 07:05:52 GMT; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Sun, 18-Aug-2019 11:39:05 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": ".ASPXAUTH=3442FC16A250AC701DF168F1D24242EF11BFE249BE4C0267EA7BC46CD182C11B9343240ABE4E80FF3B56C61AE7D0E5ECC66851A44D0029937B7A9B8717AC9FBEF55B043149DB15535503F8A17078E6A1595C0CDDED4A4F50964EDADF21B6B96A1C85AAC038028EE822ACA4561F1724AC425E30F7; path=/; HttpOnly"
+									"value": ".ASPXAUTH=0F5029578C2E9496C418288F7DC35F538C1AACA076259BEAC1CFC07AA9DCBF3A5119206902BBFF2578136B93A2A70EEA00350409CA717DDEAEC18F0EB30C5F3F5ADB617552436C1BD1F8B42D8ED15D13A01182B567D3A2DB73B9786ECCAB6519A45078C8883F64C57BD706747B970DC09861993E; path=/; HttpOnly"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=82; path=/"
+									"value": "UserBranch=2; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Mon, 12-Aug-2019 07:05:52 GMT; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Sun, 18-Aug-2019 11:39:05 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": ".ASPXAUTH=3442FC16A250AC701DF168F1D24242EF11BFE249BE4C0267EA7BC46CD182C11B9343240ABE4E80FF3B56C61AE7D0E5ECC66851A44D0029937B7A9B8717AC9FBEF55B043149DB15535503F8A17078E6A1595C0CDDED4A4F50964EDADF21B6B96A1C85AAC038028EE822ACA4561F1724AC425E30F7; path=/; HttpOnly"
+									"value": ".ASPXAUTH=0F5029578C2E9496C418288F7DC35F538C1AACA076259BEAC1CFC07AA9DCBF3A5119206902BBFF2578136B93A2A70EEA00350409CA717DDEAEC18F0EB30C5F3F5ADB617552436C1BD1F8B42D8ED15D13A01182B567D3A2DB73B9786ECCAB6519A45078C8883F64C57BD706747B970DC09861993E; path=/; HttpOnly"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requestid=80; path=/"
+									"value": "requestid=77; path=/"
 								},
 								{
 									"key": "X-Powered-By",
@@ -123,7 +119,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Fri, 09 Aug 2019 07:05:52 GMT"
+									"value": "Thu, 15 Aug 2019 11:39:05 GMT"
 								}
 							],
 							"cookie": [],
@@ -138,28 +134,28 @@
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"url": {
-							"raw": "{{EndpointURL}}SalesOrder/SO/000006?$custom=Document.AttributeOPERATSYST&$select=OrderType,OrderNbr",
+							"raw": "{{EndpointURL}}SalesOrder/SO/000029?$custom=Document.AttributeORGSIZE&$select=OrderType,OrderNbr",
 							"host": [
 								"{{EndpointURL}}SalesOrder"
 							],
 							"path": [
 								"SO",
-								"000006"
+								"000029"
 							],
 							"query": [
 								{
 									"key": "$custom",
-									"value": "Document.AttributeOPERATSYST"
+									"value": "Document.AttributeORGSIZE"
 								},
 								{
 									"key": "$select",
@@ -167,7 +163,7 @@
 								}
 							]
 						},
-						"description": "This example illustrates the use of the $custom parameter, which is described in [Parameters for Retrieving Data](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=c5e2f36a-0971-4b33-b127-3c3fe14106ff).\n\nTo test this example, you need to add a user-defined field for the OPERATSYST attribute on the Sales Orders (SO301000) form and specify its value for the 000006 sales order.\n\nFor details about how to add a user-defined field, see [To Add User-Defined Fields to a Form](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=810b4857-2ffe-4764-aebf-4d657334f0be)."
+						"description": "This example illustrates the use of the $custom parameter, which is described in [Parameters for Retrieving Data](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=c5e2f36a-0971-4b33-b127-3c3fe14106ff).\n\nTo test this example, you need to add a user-defined field for the ORGSIZE attribute on the Sales Orders (SO301000) form and specify its value for the 000029 sales order.\n\nFor details about how to add a user-defined field, see [To Add User-Defined Fields to a Form](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=810b4857-2ffe-4764-aebf-4d657334f0be)."
 					},
 					"response": [
 						{
@@ -177,28 +173,28 @@
 								"header": [
 									{
 										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"value": "application/json"
 									},
 									{
 										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"value": "application/json"
 									}
 								],
 								"url": {
-									"raw": "{{EndpointURL}}SalesOrder/SO/000006?$custom=Document.AttributeOPERATSYST&$select=OrderType,OrderNbr",
+									"raw": "{{EndpointURL}}SalesOrder/SO/000029?$custom=Document.AttributeORGSIZE&$select=OrderType,OrderNbr",
 									"host": [
 										"{{EndpointURL}}SalesOrder"
 									],
 									"path": [
 										"SO",
-										"000006"
+										"000029"
 									],
 									"query": [
 										{
 											"key": "$custom",
-											"value": "Document.AttributeOPERATSYST"
+											"value": "Document.AttributeORGSIZE"
 										},
 										{
 											"key": "$select",
@@ -229,7 +225,7 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=82; path=/"
+									"value": "UserBranch=; path=/"
 								},
 								{
 									"key": "X-Powered-By",
@@ -237,15 +233,15 @@
 								},
 								{
 									"key": "Date",
-									"value": "Fri, 09 Aug 2019 07:15:20 GMT"
+									"value": "Thu, 15 Aug 2019 11:08:59 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "233"
+									"value": "235"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"330470e7-7381-e511-80c0-00155d012302\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"OrderNbr\": {\n        \"value\": \"000006\"\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"custom\": {\n        \"Document\": {\n            \"AttributeOPERATSYST\": {\n                \"type\": \"CustomStringField\",\n                \"value\": \"Windows 10\"\n            }\n        }\n    },\n    \"files\": []\n}"
+							"body": "{\n    \"id\": \"42bb9a17-a402-e911-b818-00155d408001\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"OrderNbr\": {\n        \"value\": \"000029\"\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"custom\": {\n        \"Document\": {\n            \"AttributeORGSIZE\": {\n                \"type\": \"CustomStringField\",\n                \"value\": \"1-100 employees\"\n            }\n        }\n    },\n    \"files\": []\n}"
 						}
 					]
 				},
@@ -352,7 +348,7 @@
 					]
 				}
 			],
-			"description": "This folder contains examples from the [Working with the Contract-Based REST API](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=1c767ad9-da6d-4047-bc93-6970ad469504) part of the Integration Development Guide.",
+			"description": "This folder contains examples from the [Working with the Contract-Based REST API](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=1c767ad9-da6d-4047-bc93-6970ad469504) chapter of the Integration Development Guide.",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -375,6 +371,2314 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Contract-Based API Examples",
+			"item": [
+				{
+					"name": "Integration of Acumatica ERP Projects with External Systems",
+					"item": [
+						{
+							"name": "Creation of a Pro Forma Invoice 1: Create a Project",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"ProjectTemplateID\" : {\"value\" : \"PROGRESS\"},\r\n  \"Customer\" : {\"value\" : \"COFFEESHOP\"},\r\n  \"BillingAndAllocationSettings\" : \r\n  \t{\r\n      \"BillingRule\" : {\"value\" : \"PROGRESS\"},\r\n      \"BillingPeriod\" : {\"value\" : \"Month\"},\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Project",
+									"host": [
+										"{{EndpointURL}}Project"
+									]
+								},
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Pro Forma Invoice: Create a Project",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"ProjectTemplateID\" : {\"value\" : \"PROGRESS\"},\r\n  \"Customer\" : {\"value\" : \"COFFEESHOP\"},\r\n  \"BillingAndAllocationSettings\" : \r\n  \t{\r\n      \"BillingRule\" : {\"value\" : \"PROGRESS\"},\r\n      \"BillingPeriod\" : {\"value\" : \"Month\"},\r\n    }\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Project",
+											"host": [
+												"{{EndpointURL}}Project"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=19; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Aug 2019 11:05:29 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1023"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"c88f0a92-4cbf-e911-9fe5-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Assets\": {},\n    \"BillingAndAllocationSettings\": {\n        \"id\": \"b50c7fbe-c35a-4cf1-967f-d541910067c9\",\n        \"rowNumber\": 1,\n        \"note\": null,\n        \"AllocationRule\": {},\n        \"AutomaticallyReleaseARDocuments\": {\n            \"value\": false\n        },\n        \"BillingPeriod\": {\n            \"value\": \"Month\"\n        },\n        \"BillingRule\": {\n            \"value\": \"PROGRESS\"\n        },\n        \"Branch\": {\n            \"value\": \"SWEETEQUIP\"\n        },\n        \"CreateProFormaOnBilling\": {\n            \"value\": true\n        },\n        \"LastBillingDate\": {},\n        \"NextBillingDate\": {\n            \"value\": \"2019-09-15T00:00:00+00:00\"\n        },\n        \"RateTable\": {},\n        \"RunAllocationOnReleaseOfProjectTransactions\": {\n            \"value\": false\n        },\n        \"Terms\": {\n            \"value\": \"30D\"\n        },\n        \"UseTMRevenueBudgetLimits\": {\n            \"value\": false\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"Expenses\": {},\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": true\n    },\n    \"Income\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-08-15T07:05:29.017+03:00\"\n    },\n    \"Liabilities\": {},\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"In Planning\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Creation of a Pro Forma Invoice 2: Make a Project Active",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Hold\" : {\"value\" : false}\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Project",
+									"host": [
+										"{{EndpointURL}}Project"
+									]
+								},
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Pro Forma Invoice: Make a Project Active",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Hold\" : {\"value\" : false}\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Project",
+											"host": [
+												"{{EndpointURL}}Project"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=40; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Aug 2019 11:10:01 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "460"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"c88f0a92-4cbf-e911-9fe5-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Assets\": {},\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"Expenses\": {},\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"Income\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-08-15T07:10:01.657+03:00\"\n    },\n    \"Liabilities\": {},\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Creation of a Pro Forma Invoice 3: Specify NextBillingDate",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"BillingAndAllocationSettings\" : \r\n    {\r\n      \"NextBillingDate\" : {\"value\" : \"2019-08-15\"},\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Project",
+									"host": [
+										"{{EndpointURL}}Project"
+									]
+								},
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Pro Forma Invoice: Specify NextBillingDate",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"BillingAndAllocationSettings\" : \r\n    {\r\n      \"NextBillingDate\" : {\"value\" : \"2019-08-15\"},\r\n    }\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Project",
+											"host": [
+												"{{EndpointURL}}Project"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=92; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Aug 2019 11:49:19 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1118"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"c88f0a92-4cbf-e911-9fe5-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Assets\": {\n        \"value\": 0\n    },\n    \"BillingAndAllocationSettings\": {\n        \"id\": \"c782913f-6057-475d-9813-54b38a6de8a8\",\n        \"rowNumber\": 1,\n        \"note\": null,\n        \"AllocationRule\": {},\n        \"AutomaticallyReleaseARDocuments\": {\n            \"value\": false\n        },\n        \"BillingPeriod\": {\n            \"value\": \"Month\"\n        },\n        \"BillingRule\": {\n            \"value\": \"PROGRESS\"\n        },\n        \"Branch\": {\n            \"value\": \"SWEETEQUIP\"\n        },\n        \"CreateProFormaOnBilling\": {\n            \"value\": true\n        },\n        \"LastBillingDate\": {\n            \"value\": \"2019-08-15T00:00:00+03:00\"\n        },\n        \"NextBillingDate\": {\n            \"value\": \"2019-08-15T00:00:00+03:00\"\n        },\n        \"RateTable\": {},\n        \"RunAllocationOnReleaseOfProjectTransactions\": {\n            \"value\": false\n        },\n        \"Terms\": {\n            \"value\": \"30D\"\n        },\n        \"UseTMRevenueBudgetLimits\": {\n            \"value\": false\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"Expenses\": {\n        \"value\": 10\n    },\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"Income\": {\n        \"value\": 0\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-08-15T07:49:19.34+03:00\"\n    },\n    \"Liabilities\": {\n        \"value\": 0\n    },\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Creation of a Pro Forma Invoice 4: Activate a Project Task",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Status\" : {\"value\" : \"Active\"},\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}ProjectTask",
+									"host": [
+										"{{EndpointURL}}ProjectTask"
+									]
+								},
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Pro Forma Invoice: Activate a Project Task",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Status\" : {\"value\" : \"Active\"},\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}ProjectTask",
+											"host": [
+												"{{EndpointURL}}ProjectTask"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=47; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Aug 2019 11:13:34 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "356"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"cd8f0a92-4cbf-e911-9fe5-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Default\": {\n        \"value\": false\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation\"\n    },\n    \"ExternalRefNbr\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-08-15T07:13:34.77+03:00\"\n    },\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTaskID\": {\n        \"value\": \"PHASE1\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Creation of a Pro Forma Invoice 5: Create a Project Transaction and Release the Transaction",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"entity\" : {\r\n    \"Details\" : \r\n    [\r\n      {\r\n        \"Project\" : {\"value\" : \"TESTPR3\"},\r\n        \"ProjectTask\" : {\"value\" : \"PHASE1\"},\r\n        \"AccountGroup\" : {\"value\" : \"LABOR\"}, \r\n        \"Qty\" : {\"value\" : 10}, \r\n        \"Amount\" : {\"value\" : 10}, \r\n    },\r\n  ]\r\n}\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}ProjectTransaction/ReleaseTransactions",
+									"host": [
+										"{{EndpointURL}}ProjectTransaction"
+									],
+									"path": [
+										"ReleaseTransactions"
+									]
+								},
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Pro Forma Invoice: Activate a Project Task",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Status\" : {\"value\" : \"Active\"},\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}ProjectTask",
+											"host": [
+												"{{EndpointURL}}ProjectTask"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=47; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Aug 2019 11:13:34 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "356"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"cd8f0a92-4cbf-e911-9fe5-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Default\": {\n        \"value\": false\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation\"\n    },\n    \"ExternalRefNbr\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-08-15T07:13:34.77+03:00\"\n    },\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTaskID\": {\n        \"value\": \"PHASE1\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Creation of a Pro Forma Invoice 6: Obtain the Status of the Long-Running Operation",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Status\" : {\"value\" : \"Active\"},\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}ProjectTransaction/ReleaseTransactions/status/543f3cdf-eed5-49e5-be9d-571fda28b996",
+									"host": [
+										"{{EndpointURL}}ProjectTransaction"
+									],
+									"path": [
+										"ReleaseTransactions",
+										"status",
+										"543f3cdf-eed5-49e5-be9d-571fda28b996"
+									]
+								},
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Pro Forma Invoice: Obtain the Status of the Long-Running Operation",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Status\" : {\"value\" : \"Active\"},\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}ProjectTransaction/ReleaseTransactions/status/543f3cdf-eed5-49e5-be9d-571fda28b996",
+											"host": [
+												"{{EndpointURL}}ProjectTransaction"
+											],
+											"path": [
+												"ReleaseTransactions",
+												"status",
+												"543f3cdf-eed5-49e5-be9d-571fda28b996"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Location",
+											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/ProjectTransaction/9e78b552-51bf-e911-9fe5-4ccc6a8eefea"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Aug 2019 11:40:42 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Creation of a Pro Forma Invoice 7: Invoke Project Billing",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"entity\" : {\r\n    \"ProjectID\": {\r\n        \"value\": \"TESTPR3\"\r\n    },\r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Project/RunProjectBilling",
+									"host": [
+										"{{EndpointURL}}Project"
+									],
+									"path": [
+										"RunProjectBilling"
+									]
+								},
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Pro Forma Invoice: Invoke Project Billing",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"entity\" : {\r\n    \"ProjectID\": {\r\n        \"value\": \"TESTPR3\"\r\n    },\r\n  }\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Project/RunProjectBilling",
+											"host": [
+												"{{EndpointURL}}Project"
+											],
+											"path": [
+												"RunProjectBilling"
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Location",
+											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/Project/RunProjectBilling/status/a1de8d90-1902-4598-abac-5b64f45648bf"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=79; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Aug 2019 11:41:53 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Creation of a Pro Forma Invoice 8: Obtain the Status of the Long-Running Operation Copy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Status\" : {\"value\" : \"Active\"},\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Project/RunProjectBilling/status/a1de8d90-1902-4598-abac-5b64f45648bf",
+									"host": [
+										"{{EndpointURL}}Project"
+									],
+									"path": [
+										"RunProjectBilling",
+										"status",
+										"a1de8d90-1902-4598-abac-5b64f45648bf"
+									]
+								},
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Pro Forma Invoice: Obtain the Status of the Long-Running Operation Copy",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Status\" : {\"value\" : \"Active\"},\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Project/RunProjectBilling/status/a1de8d90-1902-4598-abac-5b64f45648bf",
+											"host": [
+												"{{EndpointURL}}Project"
+											],
+											"path": [
+												"RunProjectBilling",
+												"status",
+												"a1de8d90-1902-4598-abac-5b64f45648bf"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Location",
+											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/Project/c88f0a92-4cbf-e911-9fe5-4ccc6a8eefea"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Aug 2019 11:42:46 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Creation of a Pro Forma Invoice 9: Obtain the List of Pro Forma Invoices",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Status\" : {\"value\" : \"Active\"},\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Project/TESTPR3?$expand=Invoices",
+									"host": [
+										"{{EndpointURL}}Project"
+									],
+									"path": [
+										"TESTPR3"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Invoices"
+										}
+									]
+								},
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Pro Forma Invoice: Obtain the Status of the Long-Running Operation Copy",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Status\" : {\"value\" : \"Active\"},\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Project/RunProjectBilling/status/a1de8d90-1902-4598-abac-5b64f45648bf",
+											"host": [
+												"{{EndpointURL}}Project"
+											],
+											"path": [
+												"RunProjectBilling",
+												"status",
+												"a1de8d90-1902-4598-abac-5b64f45648bf"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Location",
+											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/Project/c88f0a92-4cbf-e911-9fe5-4ccc6a8eefea"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Aug 2019 11:42:46 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Creation of a Pro Forma Invoice 10: Invoke Project Billing Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"entity\" : {\r\n    \"RefNbr\": {\r\n        \"value\": \"000004\"\r\n    },\r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}ProFormaInvoice/EmailProFormaInvoice",
+									"host": [
+										"{{EndpointURL}}ProFormaInvoice"
+									],
+									"path": [
+										"EmailProFormaInvoice"
+									]
+								},
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Pro Forma Invoice: Invoke Project Billing Copy",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"entity\" : {\r\n    \"RefNbr\": {\r\n        \"value\": \"000004\"\r\n    },\r\n  }\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}ProFormaInvoice/EmailProFormaInvoice",
+											"host": [
+												"{{EndpointURL}}ProFormaInvoice"
+											],
+											"path": [
+												"EmailProFormaInvoice"
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Location",
+											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/ProFormaInvoice/EmailProFormaInvoice/status/30ffcfb2-7268-4959-9335-ae854cbf0fd7"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=3; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=332; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Aug 2019 12:35:18 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Creation of a Pro Forma Invoice 11: Obtain the Status of the Long-Running Operation Copy Copy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Status\" : {\"value\" : \"Active\"},\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}ProFormaInvoice/EmailProFormaInvoice/status/30ffcfb2-7268-4959-9335-ae854cbf0fd7",
+									"host": [
+										"{{EndpointURL}}ProFormaInvoice"
+									],
+									"path": [
+										"EmailProFormaInvoice",
+										"status",
+										"30ffcfb2-7268-4959-9335-ae854cbf0fd7"
+									]
+								},
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+							},
+							"response": []
+						},
+						{
+							"name": "Management of Account Groups 1: Create an Account Group",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"AccountGroupID\" : {\"value\" : \"ACCG02\"},\r\n  \"Description\" : {value: \"Test Account Group\"}\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}AccountGroup",
+									"host": [
+										"{{EndpointURL}}AccountGroup"
+									]
+								},
+								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+							},
+							"response": [
+								{
+									"name": "Management of Account Groups: Create an Account Group",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"AccountGroupID\" : {\"value\" : \"ACCG02\"},\r\n  \"Description\" : {value: \"Test Account Group\"}\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}AccountGroup",
+											"host": [
+												"{{EndpointURL}}AccountGroup"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=3; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=335; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Aug 2019 12:38:07 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "297"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"3a053d87-59bf-e911-9fe5-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"AccountGroupID\": {\n        \"value\": \"ACCG02\"\n    },\n    \"Active\": {\n        \"value\": true\n    },\n    \"DefaultAccountID\": {},\n    \"Description\": {\n        \"value\": \"Test Account Group\"\n    },\n    \"Expense\": {\n        \"value\": true\n    },\n    \"SortOrder\": {\n        \"value\": 4\n    },\n    \"Type\": {\n        \"value\": \"Expense\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Management of Account Groups 2: Add Account 1 to the Group",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"AccountCD\" : {\"value\" : \"40000\"},\r\n  \"AccountGroup\" : {value: \"ACCG02\"}\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Account",
+									"host": [
+										"{{EndpointURL}}Account"
+									]
+								},
+								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+							},
+							"response": [
+								{
+									"name": "Management of Account Groups: Add Account 1 to the Group",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"AccountCD\" : {\"value\" : \"40000\"},\r\n  \"AccountGroup\" : {value: \"ACCG02\"}\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Account",
+											"host": [
+												"{{EndpointURL}}Account"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=3; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=336; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Aug 2019 12:40:23 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "626"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"89fd773c-5adb-e811-b816-00155d408001\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"AccountCD\": {\n        \"value\": \"40000\"\n    },\n    \"AccountClass\": {\n        \"value\": \"SALES\"\n    },\n    \"AccountGroup\": {\n        \"value\": \"ACCG02\"\n    },\n    \"AccountID\": {\n        \"value\": 26\n    },\n    \"Active\": {\n        \"value\": true\n    },\n    \"CashAccount\": {\n        \"value\": false\n    },\n    \"ChartOfAccountsOrder\": {\n        \"value\": 3\n    },\n    \"CreatedDateTime\": {\n        \"value\": \"2018-10-29T08:10:27.07+03:00\"\n    },\n    \"CurrencyID\": {},\n    \"Description\": {\n        \"value\": \"Sales Revenue\"\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-08-15T08:40:23.123+03:00\"\n    },\n    \"PostOption\": {\n        \"value\": \"Summary\"\n    },\n    \"RequireUnits\": {\n        \"value\": false\n    },\n    \"RevaluationRateType\": {},\n    \"Secured\": {\n        \"value\": false\n    },\n    \"Type\": {\n        \"value\": \"Income\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Management of Account Groups 3: Add Account 2 to the Group",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"AccountCD\" : {\"value\" : \"40010\"},\r\n  \"AccountGroup\" : {value: \"ACCG02\"}\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Account",
+									"host": [
+										"{{EndpointURL}}Account"
+									]
+								},
+								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+							},
+							"response": [
+								{
+									"name": "Management of Account Groups: Add Account 2 to the Group",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"AccountCD\" : {\"value\" : \"40010\"},\r\n  \"AccountGroup\" : {value: \"ACCG02\"}\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Account",
+											"host": [
+												"{{EndpointURL}}Account"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=3; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=337; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Aug 2019 12:41:16 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "628"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"8bfd773c-5adb-e811-b816-00155d408001\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"AccountCD\": {\n        \"value\": \"40010\"\n    },\n    \"AccountClass\": {\n        \"value\": \"SALES\"\n    },\n    \"AccountGroup\": {\n        \"value\": \"ACCG02\"\n    },\n    \"AccountID\": {\n        \"value\": 27\n    },\n    \"Active\": {\n        \"value\": true\n    },\n    \"CashAccount\": {\n        \"value\": false\n    },\n    \"ChartOfAccountsOrder\": {\n        \"value\": 3\n    },\n    \"CreatedDateTime\": {\n        \"value\": \"2018-10-29T08:10:27.087+03:00\"\n    },\n    \"CurrencyID\": {},\n    \"Description\": {\n        \"value\": \"Sales - Freight\"\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-08-15T08:41:16.37+03:00\"\n    },\n    \"PostOption\": {\n        \"value\": \"Summary\"\n    },\n    \"RequireUnits\": {\n        \"value\": false\n    },\n    \"RevaluationRateType\": {},\n    \"Secured\": {\n        \"value\": false\n    },\n    \"Type\": {\n        \"value\": \"Income\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Management of Account Groups 4: Specify the Default Account",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"DefaultAccountID\" : {\"value\" : \"40000\"},\r\n  \"AccountGroupID\" : {value: \"ACCG02\"}\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}AccountGroup",
+									"host": [
+										"{{EndpointURL}}AccountGroup"
+									]
+								},
+								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+							},
+							"response": [
+								{
+									"name": "Management of Account Groups: Specify the Default Account",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"DefaultAccountID\" : {\"value\" : \"40000\"},\r\n  \"AccountGroupID\" : {value: \"ACCG02\"}\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}AccountGroup",
+											"host": [
+												"{{EndpointURL}}AccountGroup"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=3; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=338; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Aug 2019 12:42:25 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "312"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"3a053d87-59bf-e911-9fe5-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"AccountGroupID\": {\n        \"value\": \"ACCG02\"\n    },\n    \"Active\": {\n        \"value\": true\n    },\n    \"DefaultAccountID\": {\n        \"value\": \"40000\"\n    },\n    \"Description\": {\n        \"value\": \"Test Account Group\"\n    },\n    \"Expense\": {\n        \"value\": true\n    },\n    \"SortOrder\": {\n        \"value\": 4\n    },\n    \"Type\": {\n        \"value\": \"Expense\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Management of Account Groups 5: Obtain the List of Accounts",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Account?$filter=AccountGroup%20eq%20'ACCG02'&$select=AccountCD",
+									"host": [
+										"{{EndpointURL}}Account"
+									],
+									"query": [
+										{
+											"key": "$filter",
+											"value": "AccountGroup%20eq%20'ACCG02'"
+										},
+										{
+											"key": "$select",
+											"value": "AccountCD"
+										}
+									]
+								},
+								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+							},
+							"response": [
+								{
+									"name": "Management of Account Groups: Obtain the List of Accounts",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Account?$filter=AccountGroup%20eq%20'ACCG02'&$select=AccountCD",
+											"host": [
+												"{{EndpointURL}}Account"
+											],
+											"query": [
+												{
+													"key": "$filter",
+													"value": "AccountGroup%20eq%20'ACCG02'"
+												},
+												{
+													"key": "$select",
+													"value": "AccountCD"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=3; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Aug 2019 12:43:33 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "315"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": \"89fd773c-5adb-e811-b816-00155d408001\",\n        \"rowNumber\": 1,\n        \"note\": \"\",\n        \"AccountCD\": {\n            \"value\": \"40000\"\n        },\n        \"AccountGroup\": {\n            \"value\": \"ACCG02\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"8bfd773c-5adb-e811-b816-00155d408001\",\n        \"rowNumber\": 2,\n        \"note\": \"\",\n        \"AccountCD\": {\n            \"value\": \"40010\"\n        },\n        \"AccountGroup\": {\n            \"value\": \"ACCG02\"\n        },\n        \"custom\": {},\n        \"files\": []\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Management of Account Groups 6: Remove an Account from the Group",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"AccountCD\" : {\"value\" : \"40010\"},\r\n  \"AccountGroup\" : {value: null}\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Account",
+									"host": [
+										"{{EndpointURL}}Account"
+									]
+								},
+								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+							},
+							"response": [
+								{
+									"name": "Management of Account Groups: Remove an Account from the Group",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"AccountCD\" : {\"value\" : \"40010\"},\r\n  \"AccountGroup\" : {value: null}\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Account",
+											"host": [
+												"{{EndpointURL}}Account"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=3; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=339; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Aug 2019 12:45:26 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "612"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"8bfd773c-5adb-e811-b816-00155d408001\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"AccountCD\": {\n        \"value\": \"40010\"\n    },\n    \"AccountClass\": {\n        \"value\": \"SALES\"\n    },\n    \"AccountGroup\": {},\n    \"AccountID\": {\n        \"value\": 27\n    },\n    \"Active\": {\n        \"value\": true\n    },\n    \"CashAccount\": {\n        \"value\": false\n    },\n    \"ChartOfAccountsOrder\": {\n        \"value\": 3\n    },\n    \"CreatedDateTime\": {\n        \"value\": \"2018-10-29T08:10:27.087+03:00\"\n    },\n    \"CurrencyID\": {},\n    \"Description\": {\n        \"value\": \"Sales - Freight\"\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-08-15T08:45:26.48+03:00\"\n    },\n    \"PostOption\": {\n        \"value\": \"Summary\"\n    },\n    \"RequireUnits\": {\n        \"value\": false\n    },\n    \"RevaluationRateType\": {},\n    \"Secured\": {\n        \"value\": false\n    },\n    \"Type\": {\n        \"value\": \"Income\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Running of Project Billing 1: Retrieve the List of Projects",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"InvoiceDate\" : {\"value\" : \"2019-08-15T00:00:00.000\"}\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}ProjectBilling?$expand=Details",
+									"host": [
+										"{{EndpointURL}}ProjectBilling"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Details"
+										}
+									]
+								},
+								"description": "This example shows how to run project billing. This process is described in [Running of Project Billing](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=5e9d5d74-2b0b-4b7e-809e-88d7d4a9dd10)."
+							},
+							"response": [
+								{
+									"name": "Running of Project Billing 1: Retrieve the List of Projects",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"InvoiceDate\" : {\"value\" : \"2019-08-15T00:00:00.000\"}\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}ProjectBilling?$expand=Details",
+											"host": [
+												"{{EndpointURL}}ProjectBilling"
+											],
+											"query": [
+												{
+													"key": "$expand",
+													"value": "Details"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=387; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 16 Aug 2019 08:04:49 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "622"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"46f65edb-bdd1-473b-95c1-357aa37559f6\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Customer\": {},\n    \"CustomerClass\": {},\n    \"Details\": [\n        {\n            \"id\": \"d6821308-4c58-48c2-9e1f-3e2daa40960b\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"CustomerID\": {\n                \"value\": \"HMBAKERY\"\n            },\n            \"CustomerName\": {\n                \"value\": \"HM's Bakery & Cafe\"\n            },\n            \"Description\": {\n                \"value\": \"Juicers with the installation and training for employees\"\n            },\n            \"From\": {},\n            \"LastBillingDate\": {},\n            \"ProjectID\": {\n                \"value\": \"HMBAKERY5\"\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"To\": {},\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"InvoiceDate\": {\n        \"value\": \"2019-08-15T00:00:00+03:00\"\n    },\n    \"PostPeriod\": {\n        \"value\": \"082019\"\n    },\n    \"ProjectTemplate\": {},\n    \"StatementCycle\": {},\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Running of Project Billing 2: Invoke Billing for Selected Projects",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"entity\" : \r\n  {\r\n    \"id\": \"46f65edb-bdd1-473b-95c1-357aa37559f6\",\r\n    \"Details\": [\r\n        {\r\n            \"id\": \"d6821308-4c58-48c2-9e1f-3e2daa40960b\",\r\n            \"Selected\": {\r\n                \"value\": true\r\n            }\r\n        }\r\n    ]\r\n}\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}ProjectBilling/ProjectBillingProcess",
+									"host": [
+										"{{EndpointURL}}ProjectBilling"
+									],
+									"path": [
+										"ProjectBillingProcess"
+									]
+								},
+								"description": "This example shows how to run project billing for multiple projects. This process is described in [Running of Project Billing](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=5e9d5d74-2b0b-4b7e-809e-88d7d4a9dd10)."
+							},
+							"response": [
+								{
+									"name": "Running of Project Billing 2: Invoke Billing for Selected Projects",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"entity\" : \r\n  {\r\n    \"id\": \"46f65edb-bdd1-473b-95c1-357aa37559f6\",\r\n    \"Details\": [\r\n        {\r\n            \"id\": \"d6821308-4c58-48c2-9e1f-3e2daa40960b\",\r\n            \"Selected\": {\r\n                \"value\": true\r\n            }\r\n        }\r\n    ]\r\n}\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}ProjectBilling/ProjectBillingProcess",
+											"host": [
+												"{{EndpointURL}}ProjectBilling"
+											],
+											"path": [
+												"ProjectBillingProcess"
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Location",
+											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/ProjectBilling/ProjectBillingProcess/status/8a9e7785-e8ca-4af6-8bd7-012d2ee7920b"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=389; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 16 Aug 2019 08:08:01 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Running of Project Billing 3: Invoke Billing for All Projects",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"entity\" : \r\n  {\r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}ProjectBilling/ProjectBillingProcessAll",
+									"host": [
+										"{{EndpointURL}}ProjectBilling"
+									],
+									"path": [
+										"ProjectBillingProcessAll"
+									]
+								},
+								"description": "This example shows how to run project billing for multiple projects. This process is described in [Running of Project Billing](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=5e9d5d74-2b0b-4b7e-809e-88d7d4a9dd10)."
+							},
+							"response": [
+								{
+									"name": "Running of Project Billing 3: Invoke Billing for All Projects",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"entity\" : \r\n  {\r\n  }\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}ProjectBilling/ProjectBillingProcessAll",
+											"host": [
+												"{{EndpointURL}}ProjectBilling"
+											],
+											"path": [
+												"ProjectBillingProcessAll"
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Location",
+											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/ProjectBilling/ProjectBillingProcessAll/status/983daf34-e07c-47d2-b198-79c944e3df7d"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=343; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 16 Aug 2019 07:14:47 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Running of Project Billing 4: Obtain the Status of the Long-Running Operation",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{EndpointURL}}ProjectBilling/ProjectBillingProcessAll/status/983daf34-e07c-47d2-b198-79c944e3df7d",
+									"host": [
+										"{{EndpointURL}}ProjectBilling"
+									],
+									"path": [
+										"ProjectBillingProcessAll",
+										"status",
+										"983daf34-e07c-47d2-b198-79c944e3df7d"
+									]
+								},
+								"description": "This example shows how to run project billing for multiple projects. This process is described in [Running of Project Billing](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=5e9d5d74-2b0b-4b7e-809e-88d7d4a9dd10)."
+							},
+							"response": []
+						},
+						{
+							"name": "Creation of a General Ledger Transaction with a Project Code That Does Not Produce a Project Transaction",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"Module\" : {\"value\" : \"GL\"},\r\n  \"TransactionDate\" : {\"value\" : \"2019-08-15T00:00:00\"},\r\n  \"Description\" : {\"value\" : \"Transaction description\"},\r\n  \"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \"Details\" : [\r\n  \t{\r\n  \t\t\"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \t\t\"Account\" : {\"value\" : \"10200\"}, \r\n  \t\t\"Subaccount\" : {\"value\" : \"000-000\"}, \r\n  \t\t\"CostCode\" : {\"value\" : \"0000\"}, \r\n  \t\t\"IsNonPM\" : {\"value\" : true}, \r\n  \t}\r\n  ]\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}JournalTransaction",
+									"host": [
+										"{{EndpointURL}}JournalTransaction"
+									]
+								},
+								"description": "This example shows how to create GL transactions with project codes that do not produce project transactions. This process is described in [Creation of a General Ledger Transaction with a Project Code That Does Not Produce a Project Transaction](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=682496e3-6498-4855-b33d-a40dbf501b82)."
+							},
+							"response": [
+								{
+									"name": "Creation of a General Ledger Transaction with a Project Code That Does Not Produce a Project Transaction",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"Module\" : {\"value\" : \"GL\"},\r\n  \"TransactionDate\" : {\"value\" : \"2019-08-15T00:00:00\"},\r\n  \"Description\" : {\"value\" : \"Transaction description\"},\r\n  \"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \"Details\" : [\r\n  \t{\r\n  \t\t\"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \t\t\"Account\" : {\"value\" : \"10200\"}, \r\n  \t\t\"Subaccount\" : {\"value\" : \"000-000\"}, \r\n  \t\t\"CostCode\" : {\"value\" : \"0000\"}, \r\n  \t\t\"IsNonPM\" : {\"value\" : true}, \r\n  \t}\r\n  ]\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}JournalTransaction",
+											"host": [
+												"{{EndpointURL}}JournalTransaction"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=374; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 16 Aug 2019 07:22:17 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1116"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"7250dd91-f6bf-e911-9fe5-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"BatchNbr\": {\n        \"value\": \"GL000015\"\n    },\n    \"BranchID\": {\n        \"value\": \"HEADOFFICE\"\n    },\n    \"CreatedDateTime\": {\n        \"value\": \"2019-08-16T03:22:16.84+03:00\"\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"Description\": {\n        \"value\": \"Transaction description\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"7450dd91-f6bf-e911-9fe5-4ccc6a8eefea\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Account\": {\n                \"value\": \"10200\"\n            },\n            \"BranchID\": {\n                \"value\": \"HEADOFFICE\"\n            },\n            \"CreditAmount\": {\n                \"value\": 0\n            },\n            \"DebitAmount\": {\n                \"value\": 0\n            },\n            \"Description\": {\n                \"value\": \"Company Checking Account\"\n            },\n            \"IsNonPM\": {\n                \"value\": true\n            },\n            \"LineNbr\": {\n                \"value\": 1\n            },\n            \"NonBillable\": {\n                \"value\": false\n            },\n            \"Project\": {\n                \"value\": \"X\"\n            },\n            \"ProjectTask\": {},\n            \"ProjectTransactionID\": {},\n            \"Qty\": {\n                \"value\": 0\n            },\n            \"ReferenceNbr\": {\n                \"value\": \"\"\n            },\n            \"TransactionDescription\": {\n                \"value\": \"Transaction description\"\n            },\n            \"UOM\": {},\n            \"VendorOrCustomer\": {},\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"Hold\": {\n        \"value\": true\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-08-16T03:22:16.84+03:00\"\n    },\n    \"LedgerID\": {\n        \"value\": \"ACTUAL\"\n    },\n    \"Module\": {\n        \"value\": \"GL\"\n    },\n    \"PostPeriod\": {\n        \"value\": \"082019\"\n    },\n    \"Status\": {\n        \"value\": \"On Hold\"\n    },\n    \"TransactionDate\": {\n        \"value\": \"2019-08-15T00:00:00+03:00\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Time Entry",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"Summary\" : {\"value\" : \"Time entry summary\"},\r\n  \"Date\" : {\"value\" : \"2019-08-17T05:50:43.233\" },\r\n  \"Time\" : {\"value\" : \"2019-08-17T05:50:43.233\" },\r\n  \"Employee\" : {\"value\" : \"EP00000002\" },\r\n  \"ProjectID\" : {\"value\" : \"TOMYUM1\" },\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\" },\r\n  \"CostCode\" : {\"value\" : \"0000\" },\r\n  \"EarningType\" : {\"value\" : \"RG\" },\r\n  \"TimeSpent\" : {\"value\" : \"01:30\" },\r\n  \"BillableTime\" : {\"value\" : \"00:30\" },\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}TimeEntry",
+									"host": [
+										"{{EndpointURL}}TimeEntry"
+									]
+								},
+								"description": "This example shows how to specify the time spent on the tasks of projects. This process is described in [Time Entry](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=847b54c3-116e-47b1-89af-14a19cc5855a)."
+							},
+							"response": [
+								{
+									"name": "Time Entry",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"Summary\" : {\"value\" : \"Time entry summary\"},\r\n  \"Date\" : {\"value\" : \"2019-08-17T05:50:43.233\" },\r\n  \"Time\" : {\"value\" : \"2019-08-17T05:50:43.233\" },\r\n  \"Employee\" : {\"value\" : \"EP00000002\" },\r\n  \"ProjectID\" : {\"value\" : \"TOMYUM1\" },\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\" },\r\n  \"CostCode\" : {\"value\" : \"0000\" },\r\n  \"EarningType\" : {\"value\" : \"RG\" },\r\n  \"TimeSpent\" : {\"value\" : \"01:30\" },\r\n  \"BillableTime\" : {\"value\" : \"00:30\" },\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}TimeEntry",
+											"host": [
+												"{{EndpointURL}}TimeEntry"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=384; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 16 Aug 2019 07:27:18 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "754"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"09f89145-f7bf-e911-9fe5-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"ApprovalStatus\": {\n        \"value\": \"Open\"\n    },\n    \"Approver\": {},\n    \"Billable\": {\n        \"value\": true\n    },\n    \"BillableOvertime\": {\n        \"value\": \"00:00\"\n    },\n    \"BillableTime\": {\n        \"value\": \"00:30\"\n    },\n    \"CostRate\": {},\n    \"Date\": {\n        \"value\": \"2019-08-17T00:00:00+03:00\"\n    },\n    \"EarningType\": {\n        \"value\": \"RG\"\n    },\n    \"Employee\": {\n        \"value\": \"EP00000002\"\n    },\n    \"ExternalRefNbr\": {},\n    \"LaborItem\": {\n        \"value\": \"CONSULTSR\"\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-08-16T03:27:18.163+03:00\"\n    },\n    \"Overtime\": {\n        \"value\": \"00:00\"\n    },\n    \"ProjectID\": {\n        \"value\": \"TOMYUM1\"\n    },\n    \"ProjectTaskID\": {\n        \"value\": \"PHASE1\"\n    },\n    \"Summary\": {\n        \"value\": \"Time entry summary\"\n    },\n    \"Time\": {\n        \"value\": \"1900-01-01T05:50:00+03:00\"\n    },\n    \"TimeEntryID\": {\n        \"value\": \"09f89145-f7bf-e911-9fe5-4ccc6a8eefea\"\n    },\n    \"TimeSpent\": {\n        \"value\": \"01:30\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						}
+					],
+					"description": "This folder contains examples from the [Integration of Acumatica ERP Projects with External Systems](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=78967236-3bc1-48c6-8dc2-d01812ed2326) chapter of the Integration Development Guide.",
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "This folder contains examples from the [Contract-Based API Examples](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide."
 		}
 	],
 	"event": [
@@ -401,13 +2705,13 @@
 	],
 	"variable": [
 		{
-			"id": "adb51b0b-46fa-48b4-a4af-f8e9e632f934",
+			"id": "b8b7414d-1541-4ec2-897f-1f8c218b02ba",
 			"key": "BaseURL",
 			"value": "https://localhost/AcumaticaERP/",
 			"type": "string"
 		},
 		{
-			"id": "ddcee165-6da9-4344-83bb-259fb9bfef41",
+			"id": "f67a136e-24bb-45db-9005-d180ee5793b1",
 			"key": "EndpointURL",
 			"value": "{{BaseURL}}entity/Default/18.200.001/",
 			"type": "string"
