@@ -73,250 +73,6 @@
 			"name": "Part 1: Creation of Records",
 			"item": [
 				{
-					"name": "Lesson 1.1: Retrieving the First Sales Order to Be Shipped",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder/SO/000004?$expand=Details&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"18.200.001",
-								"SalesOrder",
-								"SO",
-								"000004"
-							],
-							"query": [
-								{
-									"key": "$expand",
-									"value": "Details"
-								},
-								{
-									"key": "$select",
-									"value": "OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Example",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder/SO/000004?$expand=Details&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
-									"protocol": "https",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"18.200.001",
-										"SalesOrder",
-										"SO",
-										"000004"
-									],
-									"query": [
-										{
-											"key": "$expand",
-											"value": "Details"
-										},
-										{
-											"key": "$select",
-											"value": "OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Server",
-									"value": "Microsoft-IIS/10.0"
-								},
-								{
-									"key": "X-Handled-By",
-									"value": "Acumatica-PX.Export/AuthenticationManagerModule"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Fri, 14-Dec-2018 14:28:24 GMT; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "UserBranch=73; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "LegacyUI=0; path=/"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "ASP.NET"
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 11 Dec 2018 14:28:29 GMT"
-								},
-								{
-									"key": "Content-Length",
-									"value": "480"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"f651484f-f327-4f66-be90-e9abfe5013b7\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Details\": [\n        {\n            \"id\": \"4dde196e-ca05-4e20-b6dd-1c3ab778ebf1\",\n            \"rowNumber\": 1,\n            \"note\": \"\",\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"WarehouseID\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"84e0b26b-4cf0-4e45-ace7-53240d99c585\",\n            \"rowNumber\": 2,\n            \"note\": \"\",\n            \"InventoryID\": {\n                \"value\": \"CONGRILL\"\n            },\n            \"WarehouseID\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"OrderNbr\": {\n        \"value\": \"000004\"\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
-						}
-					]
-				},
-				{
-					"name": "Lesson 1.1: Retrieving the Second Sales Order to Be Shipped",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder/SO/000006?$expand=Details&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"18.200.001",
-								"SalesOrder",
-								"SO",
-								"000006"
-							],
-							"query": [
-								{
-									"key": "$expand",
-									"value": "Details"
-								},
-								{
-									"key": "$select",
-									"value": "OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Example",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder/SO/000006?$expand=Details&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
-									"protocol": "https",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"18.200.001",
-										"SalesOrder",
-										"SO",
-										"000006"
-									],
-									"query": [
-										{
-											"key": "$expand",
-											"value": "Details"
-										},
-										{
-											"key": "$select",
-											"value": "OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Server",
-									"value": "Microsoft-IIS/10.0"
-								},
-								{
-									"key": "X-Handled-By",
-									"value": "Acumatica-PX.Export/AuthenticationManagerModule"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Fri, 14-Dec-2018 14:29:19 GMT; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "UserBranch=73; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "LegacyUI=0; path=/"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "ASP.NET"
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 11 Dec 2018 14:29:19 GMT"
-								},
-								{
-									"key": "Content-Length",
-									"value": "322"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"6d0c0e9b-63f7-4aad-9263-27f17e8cb6c0\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Details\": [\n        {\n            \"id\": \"6c6b46fa-6536-456f-aa74-ef820fa4f795\",\n            \"rowNumber\": 1,\n            \"note\": \"\",\n            \"InventoryID\": {\n                \"value\": \"AAMACHINE1\"\n            },\n            \"WarehouseID\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"OrderNbr\": {\n        \"value\": \"000006\"\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
-						}
-					]
-				},
-				{
 					"name": "Lesson 1.1: Creating a Shipment",
 					"request": {
 						"method": "PUT",
@@ -334,7 +90,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"},\n\t\t\t\"InventoryID\":{\"value\":\"AALEGO500\"},\n\t\t\t\"WarehouseID\":{\"value\":\"MAIN\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"},\n\t\t\t\"InventoryID\":{\"value\":\"CONGRILL\"},\n\t\t\t\"WarehouseID\":{\"value\":\"MAIN\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"},\n\t\t\t\"InventoryID\":{\"value\":\"AAMACHINE1\"},\n\t\t\t\"WarehouseID\":{\"value\":\"MAIN\"}\n\t\t}\n\t]\n}"
+							"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\n\t\t}\n\t]\n}"
 						},
 						"url": {
 							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/Shipment?$select=Type,ShipmentNbr,Status,Details/InventoryID&$expand=Details",
@@ -380,7 +136,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"},\n\t\t\t\"InventoryID\":{\"value\":\"AALEGO500\"},\n\t\t\t\"WarehouseID\":{\"value\":\"MAIN\"},\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"},\n\t\t\t\"InventoryID\":{\"value\":\"CONGRILL\"},\n\t\t\t\"WarehouseID\":{\"value\":\"MAIN\"},\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"},\n\t\t\t\"InventoryID\":{\"value\":\"AAMACHINE1\"},\n\t\t\t\"WarehouseID\":{\"value\":\"MAIN\"},\n\t\t},\n\t]\n}"
+									"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\n\t\t}\n\t]\n}"
 								},
 								"url": {
 									"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/Shipment?$select=Type,ShipmentNbr,Status,Details/InventoryID&$expand=Details",
@@ -425,15 +181,23 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Fri, 14-Dec-2018 14:30:11 GMT; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Mon, 11-Nov-2019 13:10:24 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=73; path=/"
+									"value": "UserBranch=82; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "LegacyUI=0; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Mon, 11-Nov-2019 13:10:24 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=113; path=/"
 								},
 								{
 									"key": "X-Powered-By",
@@ -441,15 +205,15 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 11 Dec 2018 14:30:19 GMT"
+									"value": "Fri, 08 Nov 2019 13:10:27 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "912"
+									"value": "825"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"11d53c05-a725-454a-97a5-109fb9b1cfec\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"CustomerID\": {\n        \"value\": \"C000000003\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"3e8d3da3-a3e8-434f-8503-f509be12e1f5\",\n            \"rowNumber\": 1,\n            \"note\": \"\",\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000004\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"WarehouseID\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"a5ace119-b50e-4dc2-9e74-5fc57102e71a\",\n            \"rowNumber\": 2,\n            \"note\": \"\",\n            \"InventoryID\": {\n                \"value\": \"CONGRILL\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000004\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"WarehouseID\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"5da3d518-99b2-4735-bc45-e796bebec3d3\",\n            \"rowNumber\": 3,\n            \"note\": \"\",\n            \"InventoryID\": {\n                \"value\": \"AAMACHINE1\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000006\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"WarehouseID\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"ShipmentNbr\": {\n        \"value\": \"000008\"\n    },\n    \"Status\": {\n        \"value\": \"On Hold\"\n    },\n    \"Type\": {\n        \"value\": \"Shipment\"\n    },\n    \"WarehouseID\": {\n        \"value\": \"MAIN\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+							"body": "{\n    \"id\": \"e0e0341d-2902-ea11-9fee-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"CustomerID\": {\n        \"value\": \"C000000003\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"e6e0341d-2902-ea11-9fee-4ccc6a8eefea\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000004\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"e7e0341d-2902-ea11-9fee-4ccc6a8eefea\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"CONGRILL\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000004\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"e9e0341d-2902-ea11-9fee-4ccc6a8eefea\",\n            \"rowNumber\": 3,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"AAMACHINE1\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000006\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"ShipmentNbr\": {\n        \"value\": \"000010\"\n    },\n    \"Status\": {\n        \"value\": \"On Hold\"\n    },\n    \"Type\": {\n        \"value\": \"Shipment\"\n    },\n    \"WarehouseID\": {\n        \"value\": \"MAIN\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
 						}
 					]
 				},
@@ -1644,7 +1408,7 @@
 		"oauth2": [
 			{
 				"key": "accessToken",
-				"value": "f7b040888202d72a1c299cd74a27b050",
+				"value": "6c947968425b31b3f563212408b9805b",
 				"type": "string"
 			},
 			{

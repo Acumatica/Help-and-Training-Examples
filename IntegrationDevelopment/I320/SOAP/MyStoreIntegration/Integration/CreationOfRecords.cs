@@ -25,65 +25,6 @@ namespace MyStoreIntegration.Integration
             string secondOrderNbr = "000006";
             string secondOrderType = "SO";
 
-            //Find the first sales order to be shipped
-            SalesOrder orderToBeFound1 = new SalesOrder
-            {
-                ReturnBehavior = ReturnBehavior.OnlySpecified,
-                OrderType = new StringSearch { Value = firstOrderType },
-                OrderNbr = new StringSearch { Value = firstOrderNbr },
-                Details = new SalesOrderDetail[]
-                {
-                    new SalesOrderDetail
-                    {
-                        ReturnBehavior = ReturnBehavior.OnlySpecified,
-                        InventoryID = new StringReturn(),
-                        WarehouseID = new StringReturn()
-                    }
-                }
-            };
-            SalesOrder orderForShipment1 = (SalesOrder)soapClient.Get(orderToBeFound1);
-
-            //Find the second sales order to be shipped
-            SalesOrder orderToBeFound2 = new SalesOrder
-            {
-                ReturnBehavior = ReturnBehavior.OnlySpecified,
-                OrderType = new StringSearch { Value = secondOrderType },
-                OrderNbr = new StringSearch { Value = secondOrderNbr },
-                Details = new SalesOrderDetail[]
-                {
-                    new SalesOrderDetail
-                    {
-                        ReturnBehavior = ReturnBehavior.OnlySpecified,
-                        InventoryID = new StringReturn(),
-                        WarehouseID = new StringReturn()
-                    }
-                }
-            };
-            SalesOrder orderForShipment2 = (SalesOrder)soapClient.Get(orderToBeFound2);
-
-            //Select all stock items from the sales orders for shipment
-            List<ShipmentDetail> shipmentDetails = new List<ShipmentDetail>();
-            foreach (SalesOrderDetail item in orderForShipment1.Details)
-            {
-                shipmentDetails.Add(new ShipmentDetail
-                {
-                    OrderType = orderForShipment1.OrderType,
-                    OrderNbr = orderForShipment1.OrderNbr,
-                    InventoryID = item.InventoryID,
-                    WarehouseID = item.WarehouseID
-                });
-            }
-            foreach (SalesOrderDetail item in orderForShipment2.Details)
-            {
-                shipmentDetails.Add(new ShipmentDetail
-                {
-                    OrderType = orderForShipment2.OrderType,
-                    OrderNbr = orderForShipment2.OrderNbr,
-                    InventoryID = item.InventoryID,
-                    WarehouseID = item.WarehouseID
-                });
-            }
-
             //Specify the values of a new shipment
             Shipment shipment = new Shipment
             {
@@ -93,7 +34,19 @@ namespace MyStoreIntegration.Integration
                 Status = new StringReturn(),
                 CustomerID = new StringValue { Value = customerID },
                 WarehouseID = new StringValue { Value = warehouse },
-                Details = shipmentDetails.ToArray()
+                Details = new[]
+                {
+                    new ShipmentDetail
+                    {
+                        OrderType = new StringValue {Value = firstOrderType },
+                        OrderNbr = new StringValue {Value = firstOrderNbr},
+                    },
+                    new ShipmentDetail
+                    {
+                        OrderType = new StringValue {Value = secondOrderType },
+                        OrderNbr = new StringValue {Value = secondOrderNbr},
+                    }
+                }
             };
 
             //Create a shipment with the specified values

@@ -49,7 +49,7 @@ namespace MyStoreIntegration
                         //Uncomment the method you want to execute
 
                         //Creating a shipment
-                        //CreationOfRecords.CreateShipment(soapClient);
+                        CreationOfRecords.CreateShipment(soapClient);
 
                         //Creating a stock item
                         //CreationOfRecords.CreateStockItem(soapClient);
@@ -64,7 +64,7 @@ namespace MyStoreIntegration
                         //Actions.ReleaseSOInvoice(soapClient);
 
                         //Creating a credit card payment method
-                        CreditCardPayments.CreateCustomerPaymentMethod(soapClient);
+                        //CreditCardPayments.CreateCustomerPaymentMethod(soapClient);
 
                         //Adding a note to a stock item
                         //Attachments.AddNoteToStockItem(soapClient);
