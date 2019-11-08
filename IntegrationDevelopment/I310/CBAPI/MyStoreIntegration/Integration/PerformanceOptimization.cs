@@ -28,7 +28,7 @@ namespace MyStoreIntegration.Integration
                 //Specify the customer whose sales order should be returned
                 CustomerID = new StringSearch { Value = customerID },
 
-                //Specify the fields in Summary and Details to be returned
+                //Specify the fields in Summary, Details, and Shipments to be returned
                 OrderType = new StringReturn(),
                 OrderNbr = new StringReturn(),
                 CustomerOrder = new StringReturn(),
@@ -43,6 +43,14 @@ namespace MyStoreIntegration.Integration
                         OrderQty = new DecimalReturn(),
                         UnitPrice = new DecimalReturn()
                     }
+                },
+                Shipments = new SalesOrderShipment[]
+                {
+                    new SalesOrderShipment
+                    {
+                        ShipmentNbr = new StringReturn(),
+                        InvoiceNbr = new StringReturn()
+                    }
                 }
             };
 
@@ -50,10 +58,10 @@ namespace MyStoreIntegration.Integration
             Entity[] soList = soapClient.GetList(ordersToBeFound);
 
             //Save results to a CSV file
-            using (StreamWriter file = new StreamWriter(string.Format(@"SalesOrderDetails_Customer_{0}.csv", customerID)))
+            using (StreamWriter file = new StreamWriter(string.Format(@"SalesOrder_Customer_{0}.csv", customerID)))
             {
                 //Add headers to the file
-                file.WriteLine("OrderType;OrderNbr;CustomerID;CustomerOrder;Date;OrderedQty;OrderTotal;InventoryID;OrderQty;UnitPrice;");
+                file.WriteLine("OrderType;OrderNbr;CustomerID;CustomerOrder;Date;OrderedQty;OrderTotal;InventoryID;OrderQty;UnitPrice;ShipmentNbr;InvoiceNbr;");
 
                 //Write the values for each sales order
                 foreach (SalesOrder salesOrder in soList)
@@ -73,46 +81,20 @@ namespace MyStoreIntegration.Integration
                             detail.OpenQty.Value,
                             detail.UnitCost.Value));
                     }
-                }
-            }
-
-            //Specify the fields in Shipments to be returned 
-            ordersToBeFound = new SalesOrder
-            {
-                ReturnBehavior = ReturnBehavior.OnlySpecified,
-
-                CustomerID = new StringSearch { Value = customerID },
-
-                OrderType = new StringReturn(),
-                OrderNbr = new StringReturn(),
-                Shipments = new SalesOrderShipment[]
-                {
-                    new SalesOrderShipment
-                    {
-                        ShipmentNbr = new StringReturn(),
-                        InvoiceNbr = new StringReturn()
-                    }
-                }
-            };
-
-            //Get the list of sales orders of the customer
-            soList = soapClient.GetList(ordersToBeFound);
-
-            //Save results to a CSV file
-            using (StreamWriter file = new StreamWriter(string.Format(@"SalesOrderShipments_Customer_{0}.csv", customerID)))
-            {
-                //Add headers to the file
-                file.WriteLine("OrderType;OrderNbr;ShipmentNbr;InvoiceNbr;");
-
-                //Write the values for each sales order
-                foreach (SalesOrder salesOrder in soList)
-                {
                     foreach (SalesOrderShipment shipment in salesOrder.Shipments)
                     {
-                        file.WriteLine(string.Format("{0};{1};{2};{3};",
+                        file.WriteLine(string.Format("{0};{1};{2};{3};{4};{5};{6};{7};{8};{9};{10};{11};",
                             //Document summary
                             salesOrder.OrderType.Value,
                             salesOrder.OrderNbr.Value,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
                             shipment.ShipmentNbr.Value,
                             shipment.InvoiceNbr.Value));
                     }

@@ -12,7 +12,7 @@ namespace MyStoreIntegration.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.8.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.3.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,7 +25,7 @@ namespace MyStoreIntegration.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D0ADE325-8BC6-5DEF-4C6B-146E1A80ADE3@MyStore")]
+        [global::System.Configuration.DefaultSettingValueAttribute("D9020968-BEA5-2BE8-31EF-5ABA25D08125@MyStore")]
         public string ClientID {
             get {
                 return ((string)(this["ClientID"]));
@@ -34,7 +34,7 @@ namespace MyStoreIntegration.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ldcCowRjd662UtlAHkJ3gw")]
+        [global::System.Configuration.DefaultSettingValueAttribute("vBLTIvQaW4rMAOwZwZpp4Q")]
         public string ClientSecret {
             get {
                 return ((string)(this["ClientSecret"]));

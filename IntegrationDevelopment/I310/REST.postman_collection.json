@@ -139,7 +139,7 @@
 			"name": "Part 2: Performance Optimization",
 			"item": [
 				{
-					"name": "Lesson 2.1: Retrieving the List of Sales Orders with Document Details",
+					"name": "Lesson 2.1: Retrieving the List of Sales Orders with Document and Shipment Details",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -155,7 +155,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder?$select=OrderNbr,OrderType,CustomerID,CustomerOrder,Date,OrderedQty,OrderTotal,Details/InventoryID,Details/OrderQty,Details/UnitPrice&$filter=CustomerID eq 'C000000003'&$expand=Details",
+							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder?$select=OrderNbr,OrderType,CustomerID,CustomerOrder,Date,OrderedQty,OrderTotal,Details/InventoryID,Details/OrderQty,Details/UnitPrice,Shipments/InvoiceNbr,Shipments/ShipmentNbr&$filter=CustomerID eq 'C000000003'&$expand=Details,Shipments",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -170,7 +170,7 @@
 							"query": [
 								{
 									"key": "$select",
-									"value": "OrderNbr,OrderType,CustomerID,CustomerOrder,Date,OrderedQty,OrderTotal,Details/InventoryID,Details/OrderQty,Details/UnitPrice"
+									"value": "OrderNbr,OrderType,CustomerID,CustomerOrder,Date,OrderedQty,OrderTotal,Details/InventoryID,Details/OrderQty,Details/UnitPrice,Shipments/InvoiceNbr,Shipments/ShipmentNbr"
 								},
 								{
 									"key": "$filter",
@@ -178,14 +178,14 @@
 								},
 								{
 									"key": "$expand",
-									"value": "Details"
+									"value": "Details,Shipments"
 								}
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Example",
+							"name": "Lesson 2.1: Retrieving the List of Sales Orders with Document and Shipment Details",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -201,7 +201,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder?$select=OrderNbr,OrderType,CustomerID,CustomerOrder,Date,OrderedQty,OrderTotal,Details/InventoryID,Details/OrderQty,Details/UnitPrice&$filter=CustomerID eq 'C000000003'&$expand=Details",
+									"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder?$select=OrderNbr,OrderType,CustomerID,CustomerOrder,Date,OrderedQty,OrderTotal,Details/InventoryID,Details/OrderQty,Details/UnitPrice,Shipments/InvoiceNbr,Shipments/ShipmentNbr&$filter=CustomerID eq 'C000000003'&$expand=Details,Shipments",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -216,7 +216,7 @@
 									"query": [
 										{
 											"key": "$select",
-											"value": "OrderNbr,OrderType,CustomerID,CustomerOrder,Date,OrderedQty,OrderTotal,Details/InventoryID,Details/OrderQty,Details/UnitPrice"
+											"value": "OrderNbr,OrderType,CustomerID,CustomerOrder,Date,OrderedQty,OrderTotal,Details/InventoryID,Details/OrderQty,Details/UnitPrice,Shipments/InvoiceNbr,Shipments/ShipmentNbr"
 										},
 										{
 											"key": "$filter",
@@ -224,7 +224,7 @@
 										},
 										{
 											"key": "$expand",
-											"value": "Details"
+											"value": "Details,Shipments"
 										}
 									]
 								}
@@ -247,15 +247,11 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Sun, 25-Nov-2018 12:56:14 GMT; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Mon, 11-Nov-2019 08:07:25 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=73; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "LegacyUI=0; path=/"
+									"value": "UserBranch=82; path=/"
 								},
 								{
 									"key": "X-Powered-By",
@@ -263,152 +259,15 @@
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 22 Nov 2018 12:56:30 GMT"
+									"value": "Fri, 08 Nov 2019 08:07:38 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "5819"
+									"value": "7050"
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"id\": \"44289e6c-4dce-4720-8cfd-9b107b9003ca\",\n        \"rowNumber\": 1,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO180-009-01\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-28T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"9cf69ab1-e74e-40f6-97cc-964f46f3484e\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AAMACHINE1\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 2200\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 1\n        },\n        \"OrderNbr\": {\n            \"value\": \"000001\"\n        },\n        \"OrderTotal\": {\n            \"value\": 2200\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"4c47c7d4-d2ce-445d-a059-c4adcb1b2dc9\",\n        \"rowNumber\": 2,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO185-009-26\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-28T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"f4826ef6-abc9-4bcb-8c01-dffbdcb84fcf\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AALEGO500\"\n                },\n                \"OrderQty\": {\n                    \"value\": 10\n                },\n                \"UnitPrice\": {\n                    \"value\": 25\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            {\n                \"id\": \"9738b1ef-249a-4db1-a44b-276673724224\",\n                \"rowNumber\": 2,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"CONGRILL\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 170\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 11\n        },\n        \"OrderNbr\": {\n            \"value\": \"000004\"\n        },\n        \"OrderTotal\": {\n            \"value\": 420\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"5d362e9c-0f14-4aac-b327-db52a6264b95\",\n        \"rowNumber\": 3,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO245-567-45\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-29T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"1ef961e8-fba2-4b2b-9ca8-2f2c54be4e06\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AALEGO500\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 25\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 1\n        },\n        \"OrderNbr\": {\n            \"value\": \"000005\"\n        },\n        \"OrderTotal\": {\n            \"value\": 25\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"3536e7a8-bb65-481d-bb69-a82c67d21b95\",\n        \"rowNumber\": 4,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO123-455-67\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-29T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"5deb782d-e661-4369-8bd4-3eed561e5efc\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AAMACHINE1\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 2200\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 1\n        },\n        \"OrderNbr\": {\n            \"value\": \"000006\"\n        },\n        \"OrderTotal\": {\n            \"value\": 2200\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"f0fc26b9-9220-4b31-9fe6-ecc2b39f59e2\",\n        \"rowNumber\": 5,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO256-783-14\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-21T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"9b93dc3e-0dd0-4239-833d-a613b954726a\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"CONTABLE1\"\n                },\n                \"OrderQty\": {\n                    \"value\": 2\n                },\n                \"UnitPrice\": {\n                    \"value\": 85\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 2\n        },\n        \"OrderNbr\": {\n            \"value\": \"000007\"\n        },\n        \"OrderTotal\": {\n            \"value\": 170\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"dfc2b546-a03e-4bcf-ae67-85db0e3e22e7\",\n        \"rowNumber\": 6,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO145-689-90\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-19T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"403db671-7141-4c1d-b50b-001955339046\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"CONGRILL\"\n                },\n                \"OrderQty\": {\n                    \"value\": 3\n                },\n                \"UnitPrice\": {\n                    \"value\": 170\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            {\n                \"id\": \"d4338440-24b6-4bf8-908a-acab63fbe25f\",\n                \"rowNumber\": 2,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AALEGO500\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 25\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 4\n        },\n        \"OrderNbr\": {\n            \"value\": \"000008\"\n        },\n        \"OrderTotal\": {\n            \"value\": 535\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"6cb33549-d9ca-4142-83c5-08a652dc0e32\",\n        \"rowNumber\": 7,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO459-123-45\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-29T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"b7a13d68-84ee-432f-9e09-8a0d5ee9bc4b\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AALEGO500\"\n                },\n                \"OrderQty\": {\n                    \"value\": 2\n                },\n                \"UnitPrice\": {\n                    \"value\": 25\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 2\n        },\n        \"OrderNbr\": {\n            \"value\": \"000009\"\n        },\n        \"OrderTotal\": {\n            \"value\": 50\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"780b2148-78ed-4fe8-93f5-9b19553917c0\",\n        \"rowNumber\": 8,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO111-222-33\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-14T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"0115d5a3-1c9d-472c-b7c4-8bcde1777333\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"CONTABLE1\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 85\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            {\n                \"id\": \"16fbc783-783e-4190-a560-daf78cd99a1c\",\n                \"rowNumber\": 2,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AALEGO500\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 25\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            {\n                \"id\": \"17b07859-21bc-4520-9973-7e4febaa0fec\",\n                \"rowNumber\": 3,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AAMACHINE1\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 2200\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            {\n                \"id\": \"ab5068aa-8cdf-444f-b77f-c06c7a46fcbc\",\n                \"rowNumber\": 4,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"CONGRILL\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 170\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 4\n        },\n        \"OrderNbr\": {\n            \"value\": \"000010\"\n        },\n        \"OrderTotal\": {\n            \"value\": 2480\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"d555a25e-84b6-4288-b8c1-cfead80ce051\",\n        \"rowNumber\": 9,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO098-876-65\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-29T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"81bb80ac-acf8-48e9-9033-858af736a342\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"CONGRILL\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 170\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 1\n        },\n        \"OrderNbr\": {\n            \"value\": \"000011\"\n        },\n        \"OrderTotal\": {\n            \"value\": 170\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "Lesson 2.1: Retrieving the List of Sales Orders with Shipment Details",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder?$select=OrderNbr,OrderType,Shipments/InvoiceNbr,Shipments/ShipmentNbr&$filter=CustomerID eq 'C000000003'&$expand=Shipments",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"18.200.001",
-								"SalesOrder"
-							],
-							"query": [
-								{
-									"key": "$select",
-									"value": "OrderNbr,OrderType,Shipments/InvoiceNbr,Shipments/ShipmentNbr"
-								},
-								{
-									"key": "$filter",
-									"value": "CustomerID eq 'C000000003'"
-								},
-								{
-									"key": "$expand",
-									"value": "Shipments"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Example",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder?$select=OrderNbr,OrderType,Shipments/InvoiceNbr,Shipments/ShipmentNbr&$filter=CustomerID eq 'C000000003'&$expand=Shipments",
-									"protocol": "https",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"18.200.001",
-										"SalesOrder"
-									],
-									"query": [
-										{
-											"key": "$select",
-											"value": "OrderNbr,OrderType,Shipments/InvoiceNbr,Shipments/ShipmentNbr"
-										},
-										{
-											"key": "$filter",
-											"value": "CustomerID eq 'C000000003'"
-										},
-										{
-											"key": "$expand",
-											"value": "Shipments"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Server",
-									"value": "Microsoft-IIS/10.0"
-								},
-								{
-									"key": "X-Handled-By",
-									"value": "Acumatica-PX.Export/AuthenticationManagerModule"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Sun, 25-Nov-2018 12:57:37 GMT; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "UserBranch=73; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "LegacyUI=0; path=/"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "ASP.NET"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 22 Nov 2018 12:57:37 GMT"
-								},
-								{
-									"key": "Content-Length",
-									"value": "2797"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"id\": \"44289e6c-4dce-4720-8cfd-9b107b9003ca\",\n        \"rowNumber\": 1,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000001\"\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [\n            {\n                \"id\": \"3621136a-458e-45ab-a810-970669f3fd58\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InvoiceNbr\": {},\n                \"ShipmentNbr\": {\n                    \"value\": \"000001\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"4c47c7d4-d2ce-445d-a059-c4adcb1b2dc9\",\n        \"rowNumber\": 2,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000004\"\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [],\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"5d362e9c-0f14-4aac-b327-db52a6264b95\",\n        \"rowNumber\": 3,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000005\"\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [\n            {\n                \"id\": \"db4db64e-b90c-4ad0-886c-2c3272a06be7\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InvoiceNbr\": {},\n                \"ShipmentNbr\": {\n                    \"value\": \"000002\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"3536e7a8-bb65-481d-bb69-a82c67d21b95\",\n        \"rowNumber\": 4,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000006\"\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [],\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"f0fc26b9-9220-4b31-9fe6-ecc2b39f59e2\",\n        \"rowNumber\": 5,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000007\"\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [\n            {\n                \"id\": \"e51615bd-2613-4384-96f7-8f0c29a931b0\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InvoiceNbr\": {},\n                \"ShipmentNbr\": {\n                    \"value\": \"000003\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"dfc2b546-a03e-4bcf-ae67-85db0e3e22e7\",\n        \"rowNumber\": 6,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000008\"\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [\n            {\n                \"id\": \"5fbc3800-b3a1-41a6-b3cd-4fbfe9fe40b1\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InvoiceNbr\": {},\n                \"ShipmentNbr\": {\n                    \"value\": \"000004\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"6cb33549-d9ca-4142-83c5-08a652dc0e32\",\n        \"rowNumber\": 7,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000009\"\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [\n            {\n                \"id\": \"12a4f149-860c-4765-a9b9-b4c1643cf953\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InvoiceNbr\": {},\n                \"ShipmentNbr\": {\n                    \"value\": \"000005\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"780b2148-78ed-4fe8-93f5-9b19553917c0\",\n        \"rowNumber\": 8,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000010\"\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [\n            {\n                \"id\": \"c0cc21c0-02a5-4bbd-861b-184aa18986fe\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InvoiceNbr\": {},\n                \"ShipmentNbr\": {\n                    \"value\": \"000006\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"d555a25e-84b6-4288-b8c1-cfead80ce051\",\n        \"rowNumber\": 9,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000011\"\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [\n            {\n                \"id\": \"86464f86-0c2a-44bc-856e-58db61e70eec\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InvoiceNbr\": {},\n                \"ShipmentNbr\": {\n                    \"value\": \"000007\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    }\n]"
+							"body": "[\n    {\n        \"id\": \"c01087ca-7281-e511-80c0-00155d012302\",\n        \"rowNumber\": 1,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO180-009-01\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-28T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"a7d978fb-7281-e511-80c0-00155d012302\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AAMACHINE1\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 2200\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 1\n        },\n        \"OrderNbr\": {\n            \"value\": \"000001\"\n        },\n        \"OrderTotal\": {\n            \"value\": 2200\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [\n            {\n                \"id\": \"a726a651-978a-4e38-a6ab-79af69a29007\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"InvoiceNbr\": {},\n                \"ShipmentNbr\": {\n                    \"value\": \"000001\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"35268d8b-7381-e511-80c0-00155d012302\",\n        \"rowNumber\": 2,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO185-009-26\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-28T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"efdbe4a2-7381-e511-80c0-00155d012302\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AALEGO500\"\n                },\n                \"OrderQty\": {\n                    \"value\": 10\n                },\n                \"UnitPrice\": {\n                    \"value\": 25\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            {\n                \"id\": \"f1dbe4a2-7381-e511-80c0-00155d012302\",\n                \"rowNumber\": 2,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"CONGRILL\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 170\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 11\n        },\n        \"OrderNbr\": {\n            \"value\": \"000004\"\n        },\n        \"OrderTotal\": {\n            \"value\": 420\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [],\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"fabe46be-7381-e511-80c0-00155d012302\",\n        \"rowNumber\": 3,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO245-567-45\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-29T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"c6c800ca-7381-e511-80c0-00155d012302\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AALEGO500\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 25\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 1\n        },\n        \"OrderNbr\": {\n            \"value\": \"000005\"\n        },\n        \"OrderTotal\": {\n            \"value\": 25\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [\n            {\n                \"id\": \"ac9757d7-03cd-4d98-95c1-4a67a4909387\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"InvoiceNbr\": {\n                    \"value\": \"INV000045\"\n                },\n                \"ShipmentNbr\": {\n                    \"value\": \"000002\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"330470e7-7381-e511-80c0-00155d012302\",\n        \"rowNumber\": 4,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO123-455-67\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-29T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"aff82efe-7381-e511-80c0-00155d012302\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AAMACHINE1\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 2200\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 1\n        },\n        \"OrderNbr\": {\n            \"value\": \"000006\"\n        },\n        \"OrderTotal\": {\n            \"value\": 2200\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [],\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"1a37a70e-7481-e511-80c0-00155d012302\",\n        \"rowNumber\": 5,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO256-783-14\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-21T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"34d94420-7481-e511-80c0-00155d012302\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"CONTABLE1\"\n                },\n                \"OrderQty\": {\n                    \"value\": 2\n                },\n                \"UnitPrice\": {\n                    \"value\": 85\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 2\n        },\n        \"OrderNbr\": {\n            \"value\": \"000007\"\n        },\n        \"OrderTotal\": {\n            \"value\": 170\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [\n            {\n                \"id\": \"fca19661-e3b5-40d9-820b-27aaeb7495dd\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"InvoiceNbr\": {},\n                \"ShipmentNbr\": {\n                    \"value\": \"000003\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"c68dfa2f-7481-e511-80c0-00155d012302\",\n        \"rowNumber\": 6,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO145-689-90\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-19T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"cca6ab40-7481-e511-80c0-00155d012302\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"CONGRILL\"\n                },\n                \"OrderQty\": {\n                    \"value\": 3\n                },\n                \"UnitPrice\": {\n                    \"value\": 170\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            {\n                \"id\": \"f54a444a-7481-e511-80c0-00155d012302\",\n                \"rowNumber\": 2,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AALEGO500\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 25\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 4\n        },\n        \"OrderNbr\": {\n            \"value\": \"000008\"\n        },\n        \"OrderTotal\": {\n            \"value\": 535\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [\n            {\n                \"id\": \"aa55863c-7040-4705-b497-b11624cecfa4\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"InvoiceNbr\": {\n                    \"value\": \"INV000046\"\n                },\n                \"ShipmentNbr\": {\n                    \"value\": \"000004\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"e91dcf53-7481-e511-80c0-00155d012302\",\n        \"rowNumber\": 7,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO459-123-45\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-29T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"3229256a-7481-e511-80c0-00155d012302\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AALEGO500\"\n                },\n                \"OrderQty\": {\n                    \"value\": 2\n                },\n                \"UnitPrice\": {\n                    \"value\": 25\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 2\n        },\n        \"OrderNbr\": {\n            \"value\": \"000009\"\n        },\n        \"OrderTotal\": {\n            \"value\": 50\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [\n            {\n                \"id\": \"3106493c-aeb3-4474-b570-79156de6e424\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"InvoiceNbr\": {\n                    \"value\": \"INV000046\"\n                },\n                \"ShipmentNbr\": {\n                    \"value\": \"000005\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"fa29da74-7481-e511-80c0-00155d012302\",\n        \"rowNumber\": 8,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO111-222-33\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-14T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"3773e487-7481-e511-80c0-00155d012302\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"CONTABLE1\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 85\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            {\n                \"id\": \"ba2ed28f-7481-e511-80c0-00155d012302\",\n                \"rowNumber\": 2,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AALEGO500\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 25\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            {\n                \"id\": \"bc2ed28f-7481-e511-80c0-00155d012302\",\n                \"rowNumber\": 3,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AAMACHINE1\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 2200\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            {\n                \"id\": \"3689749a-7481-e511-80c0-00155d012302\",\n                \"rowNumber\": 4,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"CONGRILL\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 170\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 4\n        },\n        \"OrderNbr\": {\n            \"value\": \"000010\"\n        },\n        \"OrderTotal\": {\n            \"value\": 2480\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [\n            {\n                \"id\": \"dc243bc6-20dc-41ea-b6a6-2e1e6712f845\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"InvoiceNbr\": {\n                    \"value\": \"INV000047\"\n                },\n                \"ShipmentNbr\": {\n                    \"value\": \"000006\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"33f41ca8-7481-e511-80c0-00155d012302\",\n        \"rowNumber\": 9,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO098-876-65\"\n        },\n        \"Date\": {\n            \"value\": \"2015-10-29T00:00:00+03:00\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"48f7f6b9-7481-e511-80c0-00155d012302\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"CONGRILL\"\n                },\n                \"OrderQty\": {\n                    \"value\": 1\n                },\n                \"UnitPrice\": {\n                    \"value\": 170\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderedQty\": {\n            \"value\": 1\n        },\n        \"OrderNbr\": {\n            \"value\": \"000011\"\n        },\n        \"OrderTotal\": {\n            \"value\": 170\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"Shipments\": [\n            {\n                \"id\": \"73f8b899-b618-4309-b12d-6fcd73ae0e49\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"InvoiceNbr\": {\n                    \"value\": \"INV000047\"\n                },\n                \"ShipmentNbr\": {\n                    \"value\": \"000007\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    }\n]"
 						}
 					]
 				},
