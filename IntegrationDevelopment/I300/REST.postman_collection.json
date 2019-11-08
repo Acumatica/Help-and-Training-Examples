@@ -1,0 +1,546 @@
+{
+	"info": {
+		"_postman_id": "b58df869-a67a-4fd5-9504-7bf1da4590fa",
+		"name": "MyBIIntegrationREST",
+		"description": "The set of examples for the Data Retrieval Basics training course.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Part 1: Client Application Configuration",
+			"item": [
+				{
+					"name": "Lesson 1.2: Signing in to Acumatica ERP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\" : \"admin\",\r\n  \"password\" : \"123\",\r\n  \"company\" : \"MyStore\",\r\n  \"branch\" : \"MYSTORE\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost/MyStoreInstance/entity/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lesson 1.2: Signing out from Acumatica ERP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/MyStoreInstance/entity/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Part 2: Initial Data Retrieval",
+			"item": [
+				{
+					"name": "Lesson 2.1: Retrieving the List of Customers with Contacts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/MyStoreInstance/entity/Default/18.200.001/Customer?$expand=MainContact,MainContact/Address&$select=CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"Default",
+								"18.200.001",
+								"Customer"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "MainContact,MainContact/Address"
+								},
+								{
+									"key": "$select",
+									"value": "CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost/MyStoreInstance/entity/Default/18.200.001/Customer?$expand=MainContact,MainContact/Address&$select=CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"18.200.001",
+										"Customer"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "MainContact,MainContact/Address"
+										},
+										{
+											"key": "$select",
+											"value": "CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0"
+								},
+								{
+									"key": "X-Handled-By",
+									"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "LegacyUI=0; path=/"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 24 Oct 2018 10:18:58 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35968"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"f475b40c-8f59-4750-b361-84a9fd34000d\",\n        \"rowNumber\": 1,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000001\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Jersey Central Office Equip\"\n        },\n        \"MainContact\": {\n            \"id\": \"d85c888a-d1c9-448a-a297-d3be2d6c9df9\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"6da0645e-63f1-4abc-85f3-a91f5308d817\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"1 De Villiers & Harrison St, 11-th Flr.\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Johannesburg\"\n                },\n                \"PostalCode\": {},\n                \"State\": {},\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"jersey-equip@mail.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 283-0414\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"abd36603-9d14-4406-b578-1277355e86d1\",\n        \"rowNumber\": 2,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000002\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Microchip Restaurant\"\n        },\n        \"MainContact\": {\n            \"id\": \"49c70a07-224c-40e0-b0dc-075e26b51b02\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"6610c180-4254-44ec-8642-fc3379291642\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"1 Kalisa Way\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Paramus\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NJ\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {},\n            \"Phone1\": {\n                \"value\": \"+1 (777) 459-4255\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"9063e08a-34c4-45a0-bea3-47258d22e554\",\n        \"rowNumber\": 3,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Jevy Computers\"\n        },\n        \"MainContact\": {\n            \"id\": \"000b0446-5386-4663-bc91-bcae854987e5\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"4126985b-095e-44d1-af12-97605c3056ca\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"1000 Pennsylvania Ave\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"San Francisco\"\n                },\n                \"PostalCode\": {\n                    \"value\": \"94107-3479\"\n                },\n                \"State\": {\n                    \"value\": \"CA\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"info@jevy-comp.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 380-0089\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"79097bc2-eb77-4a79-b988-865658c3f29c\",\n        \"rowNumber\": 4,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000004\"\n        },\n        \"CustomerName\": {\n            \"value\": \"KRK Consulting Service\"\n        },\n        \"MainContact\": {\n            \"id\": \"55d219f1-bc53-426d-9c09-0428320c5bd3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"497cf062-3fbc-4132-adc6-901762dbdbfd\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"1 Penn Plz\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {\n                    \"value\": \"10119\"\n                },\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"consulting@krk.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 829-6988\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"a0cdb500-1aaa-4d45-88ef-c01e19a3a545\",\n        \"rowNumber\": 5,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000005\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Wright Corner\"\n        },\n        \"MainContact\": {\n            \"id\": \"13a1f1b5-0130-459c-86b0-4741e628c830\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"986870a4-c234-498f-a3ee-091a0d4361dc\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"1 W 89TH St\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {\n                    \"value\": \"10024\"\n                },\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"mail@wright-corner.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 513-9166\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"e20bf753-40f0-489b-9cc3-cbeb4b500da4\",\n        \"rowNumber\": 6,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000006\"\n        },\n        \"CustomerName\": {\n            \"value\": \"NETCAFE NY\"\n        },\n        \"MainContact\": {\n            \"id\": \"b323b649-8ae4-4fd9-97a1-30f6fe843110\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"771dbf27-88da-44cf-adf7-fd2394ced42e\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"1011 High Ridge Rd\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Stamford\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"CT\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"ny@netvafe.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 673-7392\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"1743f308-187e-46c9-90b8-ecf5a5e0c448\",\n        \"rowNumber\": 7,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000007\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Bestype Image\"\n        },\n        \"MainContact\": {\n            \"id\": \"586ca1b9-bb18-41de-80a7-afd7c6482ad8\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"ccbbdc94-0043-48ff-8c89-7201a694c979\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"105 Cecil St\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Singapore\"\n                },\n                \"PostalCode\": {},\n                \"State\": {},\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {},\n            \"Phone1\": {\n                \"value\": \"+1 (777) 966-6886\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"f37b54df-4fab-4933-909c-fad426e7344f\",\n        \"rowNumber\": 8,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000008\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Digitech Printers\"\n        },\n        \"MainContact\": {\n            \"id\": \"3ad8666e-b005-4535-8d12-6f4f3146c693\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"7df9b931-69cd-4cc0-8a22-7c7a4ae5de82\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"11 Chiswick Park\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Cape town\"\n                },\n                \"PostalCode\": {},\n                \"State\": {},\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"Printers@Digitech.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 623-6150\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"d0903c4d-d679-4f01-b953-62b905fccdf8\",\n        \"rowNumber\": 9,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000009\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Precision Photos\"\n        },\n        \"MainContact\": {\n            \"id\": \"8e6ebd9c-2173-4c6f-8ba2-bee2c50b797f\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"9d1a6bda-b61a-4b7a-8dea-566ea35c8f12\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"11 US Air Terminal Ste 1413\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Flushing\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {},\n            \"Phone1\": {\n                \"value\": \"+1 (777) 302-2756\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"95356d48-1bd6-4dce-aa96-0d6ab24499d7\",\n        \"rowNumber\": 10,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000013\"\n        },\n        \"CustomerName\": {\n            \"value\": \"WFAN Radio\"\n        },\n        \"MainContact\": {\n            \"id\": \"fbc801fd-4fee-4c4f-b044-138bba87644c\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"d69ce395-b310-4a42-b6cb-82fb1cd10da5\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"1188-1210, Wellstock Street\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"London\"\n                },\n                \"PostalCode\": {},\n                \"State\": {},\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"info@wfan.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 754-7690\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"f3829f41-cb63-4dac-857b-996102f441dc\",\n        \"rowNumber\": 11,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000017\"\n        },\n        \"CustomerName\": {\n            \"value\": \"New York Cares\"\n        },\n        \"MainContact\": {\n            \"id\": \"cc161d54-b426-4bec-baac-a2771d60a514\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"6badf6a4-0b4a-4424-888d-55e4aa816793\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"1201 Airport Fwy Ste 170\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Euless\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"TX\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"help@ny-cares.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 243-5004\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"4921a759-988e-4b09-8f3f-fef0597b5213\",\n        \"rowNumber\": 12,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000020\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Institute of Culinary Education, The\"\n        },\n        \"MainContact\": {\n            \"id\": \"d4660ad3-6c48-4daf-9e0c-f88f8a4ceef4\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"1a857a60-60cc-4b76-846a-201c3168f604\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"123 any street\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Any City\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"DC\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"dean@culinary-education.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 961-2433\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"56ae8530-62ba-4fb6-b965-6f6e6844ef02\",\n        \"rowNumber\": 13,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000023\"\n        },\n        \"CustomerName\": {\n            \"value\": \"New York International Beauty School Ltd\"\n        },\n        \"MainContact\": {\n            \"id\": \"673114a0-db21-4ed0-a89c-88507cbe1aad\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"c71550a1-f911-4962-bc30-8aa66c00a176\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"12447, The Green\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Richmond\"\n                },\n                \"PostalCode\": {},\n                \"State\": {},\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"Bart@megamail.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 868-7171\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"4b6c3410-6b7f-4488-a2de-9f604147152a\",\n        \"rowNumber\": 14,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000024\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Alphabetland School Center\"\n        },\n        \"MainContact\": {\n            \"id\": \"6665ee60-606b-40ed-8c85-7ce7666787a9\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"adac45d2-d5ec-470d-829a-9ccb4ffb023c\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"1255 Bay St\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Staten Island\"\n                },\n                \"PostalCode\": {\n                    \"value\": \"10305-3111\"\n                },\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"alph@sch.com\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 826-9338\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"91a4d1cc-8878-4987-9004-e16b535c4bd2\",\n        \"rowNumber\": 15,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000025\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Winston Personnel\"\n        },\n        \"MainContact\": {\n            \"id\": \"db69a5a5-29c4-404e-b946-81bab98a1403\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"eaf952e4-af33-4745-a9e7-506b1ce83db2\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"12603 Kitsap Way\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Bremerton\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"WA\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"info@winston.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 554-5530\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"68a7a90d-8161-44f6-9e42-ec01f66308d0\",\n        \"rowNumber\": 16,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000026\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Active Staffing Service\"\n        },\n        \"MainContact\": {\n            \"id\": \"ceb435cb-f91f-4f19-bfeb-618bbbbeacb7\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"3310aa7e-42db-4727-9f4d-dc64d25e30b3\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"1300 Flushing Ave\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Brooklyn\"\n                },\n                \"PostalCode\": {\n                    \"value\": \"11237-2303\"\n                },\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"info@active-staffing.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 244-6544\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"1b94d118-8bc2-44ff-a13a-47fd49293840\",\n        \"rowNumber\": 17,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000027\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Personnel Express\"\n        },\n        \"MainContact\": {\n            \"id\": \"44aa18a5-9510-4016-ba23-848799bc998f\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"bbbdae52-dc75-408f-a9d8-440cd8c57f7b\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"1317 3RD Ave Ste 100\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {\n                    \"value\": \"10021\"\n                },\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"Pers-exp@mail.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 818-9030\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"90a392ba-46db-4be4-bcba-c8b49b6e2bcd\",\n        \"rowNumber\": 18,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000028\"\n        },\n        \"CustomerName\": {\n            \"value\": \"N R Westport LLC\"\n        },\n        \"MainContact\": {\n            \"id\": \"8b8f25dd-1eb0-4beb-a742-f312465d2709\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"9b4e277a-cd56-4363-90db-d19d9daa3d97\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"132 Tibbits Ave\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"White Plains\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"westport@usamail.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 345-1352\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"3ba3b30a-4be1-445f-9806-a93d60a1147a\",\n        \"rowNumber\": 19,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000032\"\n        },\n        \"CustomerName\": {\n            \"value\": \"NEP Personnel Unit\"\n        },\n        \"MainContact\": {\n            \"id\": \"7758b5bb-3f98-4df9-a69e-7d9b73d712c1\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"60ef06bd-aa71-43ee-b28f-f5d2feafdfdc\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"1441 Broadway\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {\n                    \"value\": \"10018\"\n                },\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"nep@mail.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 446-3073\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"4e378157-5a88-412a-b0f4-75baf420e30f\",\n        \"rowNumber\": 20,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000035\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Cocciatari Pizza\"\n        },\n        \"MainContact\": {\n            \"id\": \"cde8576a-d33e-46d7-a3a1-7b931c5944ac\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"1ee2ff42-b067-4cb2-8c09-3a0fbe59d47c\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"15213 SW Durham Road\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Tigerd\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"OR\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"pizza@Cocciatari.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 623-5001\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"e666ef6d-0093-4d03-bae2-1f57ca6dee21\",\n        \"rowNumber\": 21,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000036\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Chocolate By Design Incorporated\"\n        },\n        \"MainContact\": {\n            \"id\": \"017ff784-48b1-48ec-8022-6d8be0cdb336\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"c26b99ef-36e2-4b45-8cd9-ebdb626c2d65\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"1542 55TH Ave\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {\n                    \"value\": \"11219\"\n                },\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"CBDI@mail.com\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 737-0034\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"54232150-3994-4a24-bbd8-cf26b3e56ddf\",\n        \"rowNumber\": 22,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000037\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Marlin Office Beverage Service\"\n        },\n        \"MainContact\": {\n            \"id\": \"f983db8e-94ff-4068-804d-f9793d09488b\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"12c0cc0d-40e8-422c-8ab8-bcdfc010d4c3\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"1551 Kittle Rd\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Chappaqua\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"Marlin@googmail.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (212) 673-3166\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"df72f899-de52-4008-ae8b-5e3a2d467040\",\n        \"rowNumber\": 23,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000038\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Antun's of Westchester\"\n        },\n        \"MainContact\": {\n            \"id\": \"2f787150-d9c0-4cfa-8735-85a30c29d661\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"058a154b-d404-46ab-97f9-d1ff51689cae\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"156-534 Broadway\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Fair Lawn\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NJ\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"Antun@megamail.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 592-5260\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"56b7f7b0-253d-49ca-9d6b-8e296ee8ef86\",\n        \"rowNumber\": 24,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000039\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Crabtree Kittle House Inn\"\n        },\n        \"MainContact\": {\n            \"id\": \"0fde5d60-248c-457b-be83-441e4fca7289\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"77c98ff8-c469-49f4-8955-d2fd8f2a5d4e\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"1604 Broadway\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {\n                    \"value\": \"10019\"\n                },\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"Kittle@Crabtree.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 666-8044\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"b5c61cae-490e-4a93-8649-f7f766891616\",\n        \"rowNumber\": 25,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000043\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Premiere Dermatology and Surgery\"\n        },\n        \"MainContact\": {\n            \"id\": \"b827793f-ee96-4bef-ba63-e084a0697d11\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"bc419541-131a-48c3-b086-83c920e64889\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"17575 Newbridge Rd\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"North Bellmore\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {},\n            \"Phone1\": {\n                \"value\": \"+1 (777) 344-2450\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"e6e649b1-0e70-45bf-af1d-1c6accb36e30\",\n        \"rowNumber\": 26,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000044\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Rich Vision\"\n        },\n        \"MainContact\": {\n            \"id\": \"317b8aa7-1fb8-4d0d-af8e-2cf600ae10ea\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"007cfbe6-b4f5-41ff-91f3-12b871784032\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"178-01 Hillside Ave Jamaica Estates\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Boston\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"consulting@richvision.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 325-3400\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"e2a65bf5-5e29-4a70-a0ce-4e03ae8e1465\",\n        \"rowNumber\": 27,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000048\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Safe Credit Union\"\n        },\n        \"MainContact\": {\n            \"id\": \"8d38692c-ec4c-4941-971a-5c83cad85c49\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"4dc976f8-6a34-42fb-a0d5-8605ccae069f\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"19 W 45th St\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New york\"\n                },\n                \"PostalCode\": {\n                    \"value\": \"10036\"\n                },\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"info@safe-credit.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 934-7533\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"dbe0db59-7a12-4733-be5c-6ecc9fd4f0e3\",\n        \"rowNumber\": 28,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000051\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Brass Key Bar\"\n        },\n        \"MainContact\": {\n            \"id\": \"d44366e1-8d8e-4069-ba92-123b8a037d68\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"5b250147-72d1-438e-bb0e-210b8f83a0bb\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"2030 Ave Of The Americas\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"Livernois@brass-key.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1  (777) 898-0326\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"0f3a3c5b-0787-4b50-9d78-1e4dbe4ae97b\",\n        \"rowNumber\": 29,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000052\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Streamray Incorporated\"\n        },\n        \"MainContact\": {\n            \"id\": \"faed1893-282f-446a-90c6-15a675a152c2\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"5d938d1b-1633-4874-9a34-c582463e8f7e\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"210 Canal St Ste 312\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"mail@Streamray.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 307-5243\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"8a1b8aca-5604-466e-aa23-5763ae2c7aad\",\n        \"rowNumber\": 30,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000053\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Silver Springs Water\"\n        },\n        \"MainContact\": {\n            \"id\": \"9cbe1967-5a58-457f-898d-9764d50371fa\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"aec69cfe-5139-45d4-b927-3982b2e12c50\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"212W 23rd St\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"silver-water@mail.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (702) 897-4854\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"4fc59aa2-1387-4f2d-bf27-88da20195463\",\n        \"rowNumber\": 31,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000054\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Logical Information Solutions\"\n        },\n        \"MainContact\": {\n            \"id\": \"ca8fe7a7-a9b6-49bf-9b76-9908342d81dc\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"d9394a44-843d-4575-9204-2fc47b0e8ff7\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"21831 Queens Blvd Ste 610\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Flushing\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"lis@usa-mail.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 837-2455\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"f2a96e16-f67f-4f54-bfa9-3173fc69d57b\",\n        \"rowNumber\": 32,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000058\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Westin Galleria Houston\"\n        },\n        \"MainContact\": {\n            \"id\": \"b050c04b-aa50-4d08-9daf-db686a84da1d\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"a331926f-ef17-4909-8273-774fa7a60145\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"2234 East 14th Street\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"Westin@texasmail.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 839-5636\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"c165b44e-a5aa-41b4-b9f4-19ef9cc01a5c\",\n        \"rowNumber\": 33,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000059\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Boulder Couriers Denver\"\n        },\n        \"MainContact\": {\n            \"id\": \"c49da588-c12d-4dce-a6a9-0bfdb3dc5351\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"cf7ba36d-d51a-4b4e-9028-d88ade1a5ace\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"2256 Avenue Of The Americas\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"denver@b-couriers.com\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 571-5719\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"73c40b92-1714-451d-aefc-cc34205e3150\",\n        \"rowNumber\": 34,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000063\"\n        },\n        \"CustomerName\": {\n            \"value\": \"LaserWorks, The\"\n        },\n        \"MainContact\": {\n            \"id\": \"19e9cd75-3294-4218-b980-123b9f389308\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"ab6fa2b9-5126-44a3-81a9-6e122001c0e6\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"2335 Allgood Rd Ste 53\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Marietta\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"GA\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"laserwork@canadamail.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 421-1574\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"aa6f1725-cd9d-4706-aaac-a24b5810595c\",\n        \"rowNumber\": 35,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000064\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Etelligent Solutions\"\n        },\n        \"MainContact\": {\n            \"id\": \"5122d0d7-d40b-4f9f-b2ee-c9e9337fa733\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"4bc9eef0-3f5e-42aa-a471-478544e155d4\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"234 W 429th St\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"info@etelligent.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+1 (777) 985-3853\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"47e3bec1-d3b5-4f3b-a847-cabf47fa1e11\",\n        \"rowNumber\": 36,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000065\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Data Recovery Services\"\n        },\n        \"MainContact\": {\n            \"id\": \"151c926a-c9b5-484a-8d70-33b4ba4addd2\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"6cdd4ec6-72ac-4bfe-b510-b2c93ba1fd79\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"23410 Ramp Way\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Sacramento\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"CA\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"service@data-recovery.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+44 (2211) 2470074\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"e1c0183b-85cf-4f74-b147-6220d2c07f4f\",\n        \"rowNumber\": 37,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000066\"\n        },\n        \"CustomerName\": {\n            \"value\": \"HD Technical Services Limited\"\n        },\n        \"MainContact\": {\n            \"id\": \"150e9482-a517-4e8b-87d1-a4fbdb2d2b75\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"efb9d435-7577-446a-9a12-908c0dd79f2e\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"2342 S Macarthur Blvd\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Coppell\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"TX\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"tech@hd-services.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+44 (2211) 8620299\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"586750ad-e30c-4e67-85f9-6d336f3483f7\",\n        \"rowNumber\": 38,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000067\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Portmeirion Hotel Int.\"\n        },\n        \"MainContact\": {\n            \"id\": \"7e85d704-1aae-4b0a-9c5c-1b038b258442\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"a0044b3c-afc0-478d-88d8-13e8ab9e3c47\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"23441 Hampshire Gate,\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Oakville\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"ON\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"inn@portmeirion.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+44 (2211) 0272115\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"e9576856-7080-44e7-a5e4-cfe94dfaf228\",\n        \"rowNumber\": 39,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000068\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Mak System France\"\n        },\n        \"MainContact\": {\n            \"id\": \"aa085f79-aba8-4ce3-95c5-722c6b3e5121\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"4a5e6fd4-a752-4be6-98c9-590abd2bb34c\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"23455 Pattullo\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Woodstock\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"ON\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"mail@mak.system.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+33 (777) 863-3454\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"b73a1739-8491-4cf5-9e25-1179f0bab41e\",\n        \"rowNumber\": 40,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000069\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Caribbean Secretary Online\"\n        },\n        \"MainContact\": {\n            \"id\": \"511b525c-db72-475a-baff-eae9b2c43b05\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"4ab53e62-3708-4dbc-8e51-493bba5f2a67\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"23940 Hillside Ave\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Jamaica\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"secretary@email.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+33 (777) 05 76 87 7\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"5d1b825c-1b8c-42ee-9c80-31b4d783dc44\",\n        \"rowNumber\": 41,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000070\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Nautilus Bar SABL\"\n        },\n        \"MainContact\": {\n            \"id\": \"2aca6ca6-172f-4c7c-b567-6d8b11be247e\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"3b1c2002-ce38-48b6-88b9-3c92eab54393\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"247 W 37th St\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"bar@Nautilus.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+33 (777) 672-2505\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"1cec884d-2cbd-4ccd-a256-4e4fce7fe957\",\n        \"rowNumber\": 42,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000071\"\n        },\n        \"CustomerName\": {\n            \"value\": \"ROTON IT-Service\"\n        },\n        \"MainContact\": {\n            \"id\": \"86fb2cd8-891b-40d0-9de4-41b533dcd632\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"d4aff925-1777-4387-96f8-c62525c5210b\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"25 W 35th St\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"roton@email.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+ 49 (99111) 1450787\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"2a421dfa-7323-43a5-9cdc-371fd936cb16\",\n        \"rowNumber\": 43,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000074\"\n        },\n        \"CustomerName\": {\n            \"value\": \"THE LEARNING CENTER OF TUSCANY\"\n        },\n        \"MainContact\": {\n            \"id\": \"315310d7-a0dc-4613-9fdf-328486201a3e\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"2ef08d08-904d-43b2-a793-8e7feafdddc4\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"26 West 44th St\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"Tuscany@italymail.com\"\n            },\n            \"Phone1\": {\n                \"value\": \"+39 (777) 0515035\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"942e8d7a-b889-40c9-89c4-9cfc33619167\",\n        \"rowNumber\": 44,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000075\"\n        },\n        \"CustomerName\": {\n            \"value\": \"MUSIC AREA\"\n        },\n        \"MainContact\": {\n            \"id\": \"bd13332b-3b71-408d-ad4f-f3a96489935f\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"a4a4ca86-8498-49e8-8980-f794e580bf20\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"265 Callan Ave Ste 142\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"San Leandro\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"CA\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"info@music-area.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+39 (777) 0456756\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"e3a80a9f-e439-4401-854a-a033a9ec80b1\",\n        \"rowNumber\": 45,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000076\"\n        },\n        \"CustomerName\": {\n            \"value\": \"CHENGDU RONGYI WATER PROCESSING\"\n        },\n        \"MainContact\": {\n            \"id\": \"a20bc50f-39cb-484b-a8ef-d7f757724ac2\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"9ebce704-685c-4899-8c5e-28b5f093ee5f\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"266 W 47th St\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"water-proc@chinamail.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+86 (7777) 6546776\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"b3b1dc51-9a97-43e2-93f1-3efc21eacb02\",\n        \"rowNumber\": 46,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000077\"\n        },\n        \"CustomerName\": {\n            \"value\": \"DA CITY CONSTRUCT SUPERVISE TEAM\"\n        },\n        \"MainContact\": {\n            \"id\": \"755f0dac-45c2-44bd-8261-a2234f87247c\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"d5a89437-d38f-466e-bdaa-97398126a628\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"267 W. 77th Street 45th Floor\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"New York\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"mail@supervise-team.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+86 (7777) 7677376\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"50433c0c-d70b-4579-abab-50a65d4f0601\",\n        \"rowNumber\": 47,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000078\"\n        },\n        \"CustomerName\": {\n            \"value\": \"AMRO Bank N.V.\"\n        },\n        \"MainContact\": {\n            \"id\": \"f07a2348-6507-452c-9ed0-3356e8d7a564\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"270da91d-b2cf-4480-8d50-97846cc80f68\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"2734 Spring St.\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Elizabeth\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NJ\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"bank@amro.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+81 (777) 443-4657\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"ea506f5b-e134-48a7-81cc-74da7916e0a3\",\n        \"rowNumber\": 48,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000079\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Asahi Sun Tours\"\n        },\n        \"MainContact\": {\n            \"id\": \"fa6855fc-c0af-4a30-912a-470eac2c9a2c\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"3785c40f-bc60-4ab0-8af3-dc52f6b00e30\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"293 Brighton 99th St\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Brooklyn\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"Asahi@japan-mail.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+81 (777) 434-4679\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"e1f4da2d-ebf6-4049-b2ae-94c6bc33c367\",\n        \"rowNumber\": 49,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000080\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Ajigasawa Prince Hotel\"\n        },\n        \"MainContact\": {\n            \"id\": \"893ae112-e047-447c-a8f1-267c05548525\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"d32228a3-3fcc-4794-b35b-f24590265464\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"29300 W Alabama St.\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Houston\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"TX\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {\n                \"value\": \"mail@Ajigasawa.con\"\n            },\n            \"Phone1\": {\n                \"value\": \"+81 (777) 434-4234\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"7606a6a6-32e6-4abf-ae30-ef2b4bb7ef5d\",\n        \"rowNumber\": 50,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000081\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Artcages Co.\"\n        },\n        \"MainContact\": {\n            \"id\": \"0d7b9c06-e13d-498e-b16b-87c8d3649086\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"db3e2371-3201-41fe-8efe-b39ddd150dc8\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"299 Nathaniel Place\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Englewood\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NJ\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {},\n            \"Phone1\": {\n                \"value\": \"+1 (777) 252-6488\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"c35ef701-55c9-4bba-bdae-f037d4cce32b\",\n        \"rowNumber\": 51,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000083\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Kamm System France\"\n        },\n        \"MainContact\": {\n            \"id\": \"c0e1cf39-0d6d-4e3d-8c6a-65ce5c51e4a5\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"dbf89d8b-95c4-42a2-874c-1c60c81656a5\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"300 Madison Avenue\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {},\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NY\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {},\n            \"Phone1\": {\n                \"value\": \"+33 (203) 863-3454\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"b0e37b2e-b26f-4bb9-be92-e76c67ee67ce\",\n        \"rowNumber\": 52,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000086\"\n        },\n        \"CustomerName\": {\n            \"value\": \"YY Studio\"\n        },\n        \"MainContact\": {\n            \"id\": \"03f2f610-81dd-47e1-94c5-c9e523c36d99\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"e9847d77-10cc-430c-9f6c-0015f3bb9e81\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"3245 Watchogue Rd\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"San Francisco\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"CA\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {},\n            \"Phone1\": {},\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"a5778fe8-b302-4ccf-a877-75eda1dc5990\",\n        \"rowNumber\": 53,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000087\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Westfield Co., Ltd\"\n        },\n        \"MainContact\": {\n            \"id\": \"809654da-2397-4328-ac08-4909b43fed97\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"8863fcc7-f7b2-449b-a27d-acd126a4acf6\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"325, Camden St,\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"North Shields\"\n                },\n                \"PostalCode\": {},\n                \"State\": {},\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {},\n            \"Phone1\": {},\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"16dba179-5e91-4c1e-bed1-ff86e8af8f4c\",\n        \"rowNumber\": 54,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000088\"\n        },\n        \"CustomerName\": {\n            \"value\": \"BronzeKey Workshop\"\n        },\n        \"MainContact\": {\n            \"id\": \"a61bb6dc-541d-4d14-8658-5d2dd14cabb6\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"ec31e4e0-643c-4f3c-85ec-cce2cc3bed98\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"3265 Cité Floréal De Briant\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Fort de France\"\n                },\n                \"PostalCode\": {},\n                \"State\": {},\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {},\n            \"Phone1\": {},\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"8ed4a4be-c1e0-4e6d-b33f-e849462c9884\",\n        \"rowNumber\": 55,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000089\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Glog Consulting\"\n        },\n        \"MainContact\": {\n            \"id\": \"ad7514f4-1b50-43ee-a844-cc1763a77571\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"61b03398-db0c-4804-9c55-129af1a4f5ef\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"329 W 49th St\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"San Francisco\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"CA\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {},\n            \"Phone1\": {},\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"85b2830c-9bbf-496f-9aa7-69f1ab3815b3\",\n        \"rowNumber\": 56,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000090\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Digipter Svc\"\n        },\n        \"MainContact\": {\n            \"id\": \"de3eb80a-8de8-4f40-8713-24cd1acd1e3c\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"ffe7b393-d29d-4bb1-af1d-2bb69ff11917\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {\n                    \"value\": \"33457 Clark Dr\"\n                },\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"Henderson\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"NV\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {},\n            \"Phone1\": {},\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"4deb2de7-1159-4642-9dcf-45c62ff015ab\",\n        \"rowNumber\": 57,\n        \"note\": \"\",\n        \"CustomerClass\": {\n            \"value\": \"DEFAULT\"\n        },\n        \"CustomerID\": {\n            \"value\": \"C000000091\"\n        },\n        \"CustomerName\": {\n            \"value\": \"Cognitive Solutions Co\"\n        },\n        \"MainContact\": {\n            \"id\": \"b33f06f4-c6a8-44db-b1d9-2ff66ee0667a\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Address\": {\n                \"id\": \"0e99d833-79c7-4c8d-9ea6-7768f0606a50\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AddressLine1\": {},\n                \"AddressLine2\": {},\n                \"City\": {\n                    \"value\": \"San Francisco\"\n                },\n                \"PostalCode\": {},\n                \"State\": {\n                    \"value\": \"CA\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            \"Email\": {},\n            \"Phone1\": {},\n            \"custom\": {},\n            \"files\": []\n        },\n        \"custom\": {},\n        \"files\": []\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Lesson 2.2: Retrieving the Quantities of Stock Items",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost/MyStoreInstance/entity/ItemAvailabilityData/0001/ItemAvailabilityDataInquiry?$expand=Results",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"ItemAvailabilityData",
+								"0001",
+								"ItemAvailabilityDataInquiry"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Results"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\n}"
+								},
+								"url": {
+									"raw": "http://localhost/MyStoreInstance/entity/ItemAvailabilityData/0001/ItemAvailabilityDataInquiry?$expand=Results",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"ItemAvailabilityData",
+										"0001",
+										"ItemAvailabilityDataInquiry"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Results"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0"
+								},
+								{
+									"key": "X-Handled-By",
+									"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "LegacyUI=0; path=/"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 09 Nov 2018 11:47:11 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4024"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"55474a8f-b8e5-4c77-80e0-a85f0d1502c6\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"InventoryID\": {},\n    \"Results\": [\n        {\n            \"id\": \"57ba3bfb-0bd3-415f-9ad5-a5e4c21bb287\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"SIM card & contract\"\n            },\n            \"InventoryID\": {\n                \"value\": \"SIMCARD\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 1000\n            },\n            \"QtyOnHand\": {\n                \"value\": 1000\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"YOGI\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"b21dbcd6-9c33-40fa-a9e5-12088af2b80b\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Acer Laptop Computer\"\n            },\n            \"InventoryID\": {\n                \"value\": \"AACOMPUT01\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 150\n            },\n            \"QtyOnHand\": {\n                \"value\": 150\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"cfa5a1c1-5e3f-41af-a36a-c11c58568913\",\n            \"rowNumber\": 3,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Lego, 500 piece set\"\n            },\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 1974\n            },\n            \"QtyOnHand\": {\n                \"value\": 2000\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"c00f93ef-34ad-4ac8-a30d-436da748fbec\",\n            \"rowNumber\": 4,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Injection molding machine\"\n            },\n            \"InventoryID\": {\n                \"value\": \"AAMACHINE1\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 127\n            },\n            \"QtyOnHand\": {\n                \"value\": 130\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"ca67bc78-db51-4220-9e98-c48455d7fe9f\",\n            \"rowNumber\": 5,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Char-Broil Classic 480\"\n            },\n            \"InventoryID\": {\n                \"value\": \"CONGRILL\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 193\n            },\n            \"QtyOnHand\": {\n                \"value\": 200\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"4f3dcabe-67c1-466b-b0e8-3307a36218d7\",\n            \"rowNumber\": 6,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Folding Picnic Table 6 Foot\"\n            },\n            \"InventoryID\": {\n                \"value\": \"CONTABLE1\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 195\n            },\n            \"QtyOnHand\": {\n                \"value\": 200\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"7634789b-0c7a-4a5c-80cd-84984722dd0a\",\n            \"rowNumber\": 7,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Laptop 12''\"\n            },\n            \"InventoryID\": {\n                \"value\": \"LAPTOP12\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 20\n            },\n            \"QtyOnHand\": {\n                \"value\": 20\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"6918b7f3-357b-4350-beda-5fad902f4f48\",\n            \"rowNumber\": 8,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Laptop 14''\"\n            },\n            \"InventoryID\": {\n                \"value\": \"LAPTOP14\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 20\n            },\n            \"QtyOnHand\": {\n                \"value\": 20\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"3bb992fa-6a48-4026-9d46-2d03fd4ceb31\",\n            \"rowNumber\": 9,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Computer mouse\"\n            },\n            \"InventoryID\": {\n                \"value\": \"MOUSE\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 40\n            },\n            \"QtyOnHand\": {\n                \"value\": 40\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"b28e8eda-d2ba-46f4-8880-d10bf600bb2f\",\n            \"rowNumber\": 10,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Headset\"\n            },\n            \"InventoryID\": {\n                \"value\": \"HEADSET\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 40\n            },\n            \"QtyOnHand\": {\n                \"value\": 40\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"da58d3d0-1b6a-4105-ae20-fb295fd7aab2\",\n            \"rowNumber\": 11,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Computer keyboard\"\n            },\n            \"InventoryID\": {\n                \"value\": \"KEYBOARD\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 40\n            },\n            \"QtyOnHand\": {\n                \"value\": 40\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"457c1267-a527-440e-8c6d-3c4a228182bf\",\n            \"rowNumber\": 12,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Monitor 26''\"\n            },\n            \"InventoryID\": {\n                \"value\": \"MONITOR26\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 40\n            },\n            \"QtyOnHand\": {\n                \"value\": 40\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"ba686fbd-3439-4419-bdf0-2d9cec407bcf\",\n            \"rowNumber\": 13,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Leather case for laptops 12\\\"-15\\\"\"\n            },\n            \"InventoryID\": {\n                \"value\": \"LEATHCASE\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 40\n            },\n            \"QtyOnHand\": {\n                \"value\": 40\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"custom\": {},\n    \"files\": []\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Part 3: Retrieval of the Delta of Records",
+			"item": [
+				{
+					"name": "Lesson 3.1: Retrieving the List of Modified Stock Items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/MyStoreInstance/entity/Default/18.200.001/StockItem?$select=InventoryID,Description,ItemClass,BaseUOM,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand&$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2018-11-07T00:00:00.000'&$expand=WarehouseDetails",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"Default",
+								"18.200.001",
+								"StockItem"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "InventoryID,Description,ItemClass,BaseUOM,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand"
+								},
+								{
+									"key": "$filter",
+									"value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2018-11-07T00:00:00.000'"
+								},
+								{
+									"key": "$expand",
+									"value": "WarehouseDetails"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost/MyStoreInstance/entity/Default/18.200.001/StockItem?$select=InventoryID,Description,ItemClass,BaseUOM,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand&$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2018-11-07T00:00:00.000'&$expand=WarehouseDetails",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"18.200.001",
+										"StockItem"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "InventoryID,Description,ItemClass,BaseUOM,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand"
+										},
+										{
+											"key": "$filter",
+											"value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2018-11-07T00:00:00.000'"
+										},
+										{
+											"key": "$expand",
+											"value": "WarehouseDetails"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0"
+								},
+								{
+									"key": "X-Handled-By",
+									"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": ".ASPXAUTH=9F726AC5B0762877B0F06D2D6E3346AFA2E94E56F7F205F2877183A1BD024AB4960FDE5716316956AF18406F53CBD60BEC3FD1B27A8203E90B5AE52EC4089B9739D0E89F3304FF479CCF28887473C1EE1E29450DBF03115498D89A9290B8C46D5DD9A4B7D72A076B26B25FF693352457233B0AC9; path=/; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "LegacyUI=0; path=/"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Nov 2018 11:33:13 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "506"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"b9be8b17-64fe-4400-b91d-b7966f8030da\",\n        \"rowNumber\": 1,\n        \"note\": \"\",\n        \"BaseUOM\": {\n            \"value\": \"PIECE\"\n        },\n        \"Description\": {\n            \"value\": \"Lego, 500 piece set\"\n        },\n        \"InventoryID\": {\n            \"value\": \"AALEGO500\"\n        },\n        \"ItemClass\": {\n            \"value\": \"STOCKITEM\"\n        },\n        \"ItemStatus\": {\n            \"value\": \"Active\"\n        },\n        \"LastModified\": {\n            \"value\": \"2018-11-07T13:55:48.097+03:00\"\n        },\n        \"WarehouseDetails\": [\n            {\n                \"id\": \"ba44dff3-8486-4b33-88a3-55096acb9988\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"QtyOnHand\": {\n                    \"value\": 2000\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "63b4dde4-c6de-479e-9d86-88e9aba3e995",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "84e6ae57-1c45-4d11-b93d-21c5b517396e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
