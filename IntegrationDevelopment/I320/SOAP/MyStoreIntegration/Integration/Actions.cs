@@ -17,7 +17,7 @@ namespace MyStoreIntegration.Integration
 
             //Invoice data
             string invoiceType = "Invoice";
-            string referenceNbr = "INV000049";
+            string referenceNbr = "INV000047";
 
             //Specify the values of a new invoice
             SalesInvoice soInvoice = new SalesInvoice

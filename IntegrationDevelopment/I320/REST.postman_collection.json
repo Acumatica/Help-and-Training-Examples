@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "278513d2-3f65-49c0-afe4-364b86d7e5b8",
+		"_postman_id": "bf5a2c73-1fec-4ccc-80dc-0570aecbb4c5",
 		"name": "MyStoreIntegration_DataManipulation",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -66,7 +66,8 @@
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Part 1: Creation of Records",
@@ -87,10 +88,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder/SO/000004?$expand=Details&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
 							"protocol": "https",
@@ -135,10 +132,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder/SO/000004?$expand=Details&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
 									"protocol": "https",
@@ -217,10 +210,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder/SO/000006?$expand=Details&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
 							"protocol": "https",
@@ -254,10 +243,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder/SO/000006?$expand=Details&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
 									"protocol": "https",
@@ -349,7 +334,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"},\n\t\t\t\"InventoryID\":{\"value\":\"AALEGO500\"},\n\t\t\t\"WarehouseID\":{\"value\":\"MAIN\"},\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"},\n\t\t\t\"InventoryID\":{\"value\":\"CONGRILL\"},\n\t\t\t\"WarehouseID\":{\"value\":\"MAIN\"},\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"},\n\t\t\t\"InventoryID\":{\"value\":\"AAMACHINE1\"},\n\t\t\t\"WarehouseID\":{\"value\":\"MAIN\"},\n\t\t},\n\t]\n}"
+							"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"},\n\t\t\t\"InventoryID\":{\"value\":\"AALEGO500\"},\n\t\t\t\"WarehouseID\":{\"value\":\"MAIN\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"},\n\t\t\t\"InventoryID\":{\"value\":\"CONGRILL\"},\n\t\t\t\"WarehouseID\":{\"value\":\"MAIN\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"},\n\t\t\t\"InventoryID\":{\"value\":\"AAMACHINE1\"},\n\t\t\t\"WarehouseID\":{\"value\":\"MAIN\"}\n\t\t}\n\t]\n}"
 						},
 						"url": {
 							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/Shipment?$select=Type,ShipmentNbr,Status,Details/InventoryID&$expand=Details",
@@ -605,7 +590,8 @@
 						}
 					]
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Part 2: Update of Records",
@@ -771,10 +757,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder?$expand=Details&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
 							"protocol": "https",
@@ -821,10 +803,6 @@
 										"value": "application/json"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder?$expand=Details&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
 									"protocol": "https",
@@ -1037,7 +1015,8 @@
 						}
 					]
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Part 3: Execution of Actions",
@@ -1157,7 +1136,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				},
@@ -1177,10 +1156,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesInvoice/ReleaseSalesInvoice/status/f901931d-8b3b-420d-8fb2-2e0293cdd38b",
 							"protocol": "https",
@@ -1217,10 +1192,6 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesInvoice/Invoice/INV000046?$select=ReferenceNbr,Type,Status",
 							"protocol": "https",
@@ -1261,10 +1232,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesInvoice/Invoice/INV000046?$select=ReferenceNbr,Type,Status",
 									"protocol": "https",
@@ -1334,7 +1301,8 @@
 						}
 					]
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Part 4: Processing of Payments by Credit Cards",
@@ -1468,7 +1436,8 @@
 						}
 					]
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Part 5: Attachment of Files and Notes",
@@ -1666,7 +1635,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"auth": {
@@ -1674,7 +1644,7 @@
 		"oauth2": [
 			{
 				"key": "accessToken",
-				"value": "c7017b7370a30a375877f99551396733",
+				"value": "f7b040888202d72a1c299cd74a27b050",
 				"type": "string"
 			},
 			{
@@ -1710,5 +1680,6 @@
 				]
 			}
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }

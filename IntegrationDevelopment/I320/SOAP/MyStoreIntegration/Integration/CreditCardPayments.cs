@@ -18,7 +18,7 @@ namespace MyStoreIntegration.Integration
             //Customer payment method data
             string customerID = "C000000003";
             string paymentMethod = "VISA";
-            string paymentProfileID = "35596199"; //Payment Profile ID value, which was obtained from Authorize.Net
+            string paymentProfileID = "1806729186"; //Payment Profile ID value, which was obtained from Authorize.Net
             string cashAccount = "102050MYST";
             string customerProfileID = "37100472";
 
