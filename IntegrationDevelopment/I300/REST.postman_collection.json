@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b58df869-a67a-4fd5-9504-7bf1da4590fa",
+		"_postman_id": "437fecc4-1470-45c0-b478-a32980a4b99c",
 		"name": "MyBIIntegrationREST",
 		"description": "The set of examples for the Data Retrieval Basics training course.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -27,7 +27,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\" : \"admin\",\r\n  \"password\" : \"123\",\r\n  \"company\" : \"MyStore\",\r\n  \"branch\" : \"MYSTORE\"\r\n}"
+							"raw": "{\r\n  \"name\": \"admin\",\r\n  \"password\": \"123\",\r\n  \"company\": \"MyStore\",\r\n  \"branch\": \"MYSTORE\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost/MyStoreInstance/entity/auth/login",
@@ -102,10 +102,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost/MyStoreInstance/entity/Default/18.200.001/Customer?$expand=MainContact,MainContact/Address&$select=CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode",
 							"protocol": "http",
@@ -148,10 +144,6 @@
 										"value": "application/json"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "http://localhost/MyStoreInstance/entity/Default/18.200.001/Customer?$expand=MainContact,MainContact/Address&$select=CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode",
 									"protocol": "http",
@@ -381,10 +373,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost/MyStoreInstance/entity/Default/18.200.001/StockItem?$select=InventoryID,Description,ItemClass,BaseUOM,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand&$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2018-11-07T00:00:00.000'&$expand=WarehouseDetails",
 							"protocol": "http",
@@ -431,10 +419,6 @@
 										"value": "application/json"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "http://localhost/MyStoreInstance/entity/Default/18.200.001/StockItem?$select=InventoryID,Description,ItemClass,BaseUOM,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand&$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2018-11-07T00:00:00.000'&$expand=WarehouseDetails",
 									"protocol": "http",
