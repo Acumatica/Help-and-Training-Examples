@@ -40,7 +40,7 @@ namespace MyStoreIntegration.Integration
             Console.WriteLine("Invoice number: " + soInvoice.ReferenceNbr.Value);
             Console.WriteLine("Invoice status: " + soInvoice.Status.Value);
             Console.WriteLine();
-            Console.WriteLine("Press any key to continue");
+            Console.WriteLine("Press Enter to continue");
             Console.ReadLine();
         }
     }

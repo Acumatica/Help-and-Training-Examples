@@ -57,7 +57,7 @@ namespace MyStoreIntegration.Integration
             Console.WriteLine("Shipment type: " + newShipment.Type.Value);
             Console.WriteLine("Shipment status: " + newShipment.Status.Value);
             Console.WriteLine();
-            Console.WriteLine("Press any key to continue");
+            Console.WriteLine("Press Enter to continue");
             Console.ReadLine();
         }
 
@@ -109,7 +109,7 @@ namespace MyStoreIntegration.Integration
                 Console.WriteLine("Attribute value: " + attr.Value.Value);
             }
             Console.WriteLine();
-            Console.WriteLine("Press any key to continue");
+            Console.WriteLine("Press Enter to continue");
             Console.ReadLine();
         }
     }

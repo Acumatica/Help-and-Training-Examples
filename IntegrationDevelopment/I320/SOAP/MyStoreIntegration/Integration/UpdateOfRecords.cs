@@ -52,7 +52,7 @@ namespace MyStoreIntegration.Integration
             Console.WriteLine("Billing contact name: " + updCustomer.BillingContact.Attention.Value);
             Console.WriteLine("Billing contact email: " + updCustomer.BillingContact.Email.Value);
             Console.WriteLine();
-            Console.WriteLine("Press any key to continue");
+            Console.WriteLine("Press Enter to continue");
             Console.ReadLine();
         }
 
@@ -118,7 +118,7 @@ namespace MyStoreIntegration.Integration
             Console.WriteLine("Ordered quantity: " + order.OrderedQty.Value);
             Console.WriteLine("Order total: " + order.OrderTotal.Value);
             Console.WriteLine();
-            Console.WriteLine("Press any key to continue");
+            Console.WriteLine("Press Enter to continue");
             Console.ReadLine();
         }
     }

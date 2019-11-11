@@ -46,7 +46,7 @@ namespace MyStoreIntegration.Integration
             //Display the card number of the created payment method
             Console.WriteLine("Card number: " + createdMethod.CardAccountNbr.Value);
             Console.WriteLine();
-            Console.WriteLine("Press any key to continue");
+            Console.WriteLine("Press Enter to continue");
             Console.ReadLine();
         }
     }

@@ -31,7 +31,7 @@ namespace MyStoreIntegration.Integration
             Console.WriteLine("Inventory ID: " + stockItem.InventoryID.Value);
             Console.WriteLine("Note text: " + stockItem.Note);
             Console.WriteLine();
-            Console.WriteLine("Press any key to continue");
+            Console.WriteLine("Press Enter to continue");
             Console.ReadLine();
         }
 

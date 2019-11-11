@@ -39,7 +39,7 @@ namespace MyBIIntegrationSBAPI
                 {
                     Console.WriteLine(e);
                     Console.WriteLine();
-                    Console.WriteLine("Press any key to continue");
+                    Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
                 }
                 finally
