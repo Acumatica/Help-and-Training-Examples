@@ -9,6 +9,7 @@ using System.Net;
 using MyStoreIntegration.Integration;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Net.Http;
 
 namespace MyStoreIntegration
 {
@@ -24,24 +25,28 @@ namespace MyStoreIntegration
             RemoteCertificateValidationCallback(ValidateRemoteCertificate);
 
             //Discover the token endpoint
-            DiscoveryClient discoveryClient = new DiscoveryClient(Properties.Settings.Default.IdentityEndpoint);
-            DiscoveryResponse discoveryResponse = discoveryClient.GetAsync().Result;
+            HttpClient httpClient = new HttpClient();
+            var discoveryResponse = httpClient.GetDiscoveryDocumentAsync(Properties.Settings.Default.IdentityEndpoint);
 
             //Obtain and use the access token
-            using (TokenClient tokenClient =
-                new TokenClient(discoveryResponse.TokenEndpoint,
-                Properties.Settings.Default.ClientID,
-                Properties.Settings.Default.ClientSecret))
-            {
-                tokenClient.BasicAuthenticationHeaderStyle = BasicAuthenticationHeaderStyle.Rfc2617;
-                var result = tokenClient
-                .RequestResourceOwnerPasswordAsync(Properties.Settings.Default.Username, Properties.Settings.Default.Password, Properties.Settings.Default.Scope).Result;
+            var response =
+                httpClient.RequestPasswordTokenAsync(
+                    new PasswordTokenRequest
+                    {
+                        Address = discoveryResponse.Result.TokenEndpoint,
+                        ClientId = Properties.Settings.Default.ClientID,
+                        ClientSecret = Properties.Settings.Default.ClientSecret,
+                        Scope = Properties.Settings.Default.Scope,
 
-                string accessToken = result.AccessToken;
+                        UserName = Properties.Settings.Default.Username,
+                        Password = Properties.Settings.Default.Password
+                    });
+
+            string accessToken = response.Result.AccessToken;
 
 
-                //Using the Default/18.200.001 endpoint
-                using (DefaultSoapClient soapClient = new DefaultSoapClient())
+            //Using the Default/18.200.001 endpoint
+            using (DefaultSoapClient soapClient = new DefaultSoapClient())
                     try
                     {
                         soapClient.Endpoint.Behaviors.Add(new AccessTokenAdderBehavior(accessToken));
@@ -49,10 +54,10 @@ namespace MyStoreIntegration
                         //Uncomment the method you want to execute
 
                         //Creating a shipment
-                        CreationOfRecords.CreateShipment(soapClient);
+                        //CreationOfRecords.CreateShipment(soapClient);
 
                         //Creating a stock item
-                        //CreationOfRecords.CreateStockItem(soapClient);
+                        CreationOfRecords.CreateStockItem(soapClient);
 
                         //Updating a customer record
                         //UpdateOfRecords.UpdateCustomer(soapClient);
@@ -83,9 +88,7 @@ namespace MyStoreIntegration
                     {
                         //Sign out from Acumatica ERP
                         soapClient.Logout();
-                    }
-            }
-            
+                    }                      
         }
 
         //A supplementary class that adds the access token to each request to the service
