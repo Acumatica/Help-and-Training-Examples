@@ -102,6 +102,78 @@ namespace MyStoreIntegration.Integration
             }
         }
 
+        //Retrieving the list of sales orders of a customer in batches
+        public static void ExportSalesOrdersInBatches(DefaultSoapClient soapClient)
+        {
+            Console.WriteLine("Getting the list of sales orders of a customer in batches...");
+
+            //Customer data
+            string customerID = "C000000003";
+
+            //Row counters
+            int count1 = 0;
+            int count2 = 4;
+
+            //Empty list indentifier
+            bool empty = false;
+
+            while (!empty)
+            {
+                //Specify the customer ID of a customer whose sales orders should be exported
+                //and the fields to be returned
+                SalesOrder ordersToBeFound = new SalesOrder
+                {
+                    //Return only the specified values
+                    ReturnBehavior = ReturnBehavior.OnlySpecified,
+
+                    //Specify the customer whose sales order should be returned
+                    CustomerID = new StringSearch { Value = customerID },
+
+                    //Specify the fields in Summary to be returned
+                    OrderType = new StringReturn(),
+                    OrderNbr = new StringReturn(),
+                    OrderTotal = new DecimalReturn(),
+
+                    //Specify the row numbers to be returned
+                    RowNumber = new LongSearch { Value = count1, Value2 = count2, Condition = LongCondition.IsBetween }
+                };
+
+                //Get the list of sales orders with details
+                Entity[] soList = soapClient.GetList(ordersToBeFound);
+
+                if (soList.Count() > 0)
+                {
+                    //Save results to a CSV file
+                    using (StreamWriter file = new StreamWriter(string.Format(@"SalesOrder_Customer_{0}_{1}.csv", customerID, count2 + 1)))
+                    {
+
+                        //Add headers to the file
+                        file.WriteLine("OrderType;OrderNbr;CustomerID;OrderTotal;");
+
+                        //Write the values for each sales order
+                        foreach (SalesOrder salesOrder in soList)
+                        {
+                            file.WriteLine(string.Format("{0};{1};{2};{3};",
+                                //Document summary
+                                salesOrder.OrderType.Value,
+                                salesOrder.OrderNbr.Value,
+                                salesOrder.CustomerID.Value,
+                                salesOrder.OrderTotal.Value
+                                ));
+                        }
+                    }
+                    count1 += 5;
+                    count2 += 5;
+                }
+                else
+                {
+                    empty = true;
+                }
+            }
+            
+        }
+
+
         //Retrieving the list of payments of a customer
         public static void ExportPayments(DefaultSoapClient soapClient)
         {

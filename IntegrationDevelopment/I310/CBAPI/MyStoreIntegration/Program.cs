@@ -55,8 +55,11 @@ namespace MyStoreIntegration
                         //Retrieving the list of sales orders of a customer
                         //PerformanceOptimization.ExportSalesOrders(soapClient);
 
+                        //Retrieving the list of sales orders of a customer in batches
+                        PerformanceOptimization.ExportSalesOrdersInBatches(soapClient);
+
                         //Retrieving the attached files
-                        Attachments.ExportStockItemFiles(soapClient);
+                        //Attachments.ExportStockItemFiles(soapClient);
                     }
                     catch (Exception e)
                     {

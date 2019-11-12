@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "def4ae35-3705-46eb-bfa4-a63de4cd0eb1",
+		"_postman_id": "fb6e3c48-8565-40d9-9c84-56034215aa1a",
 		"name": "MyStoreIntegration_DataRetrieval",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -272,7 +272,291 @@
 					]
 				},
 				{
-					"name": "Lesson 2.2: Retrieving the List of Payments (Failed Request)",
+					"name": "Lesson 2.2: Retrieving the List of Sales Orders in Batches (First Five Records)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder?$select=OrderNbr,OrderType,CustomerID,OrderTotal&$filter=CustomerID eq 'C000000003'&$top=5",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"Default",
+								"18.200.001",
+								"SalesOrder"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "OrderNbr,OrderType,CustomerID,OrderTotal"
+								},
+								{
+									"key": "$filter",
+									"value": "CustomerID eq 'C000000003'"
+								},
+								{
+									"key": "$top",
+									"value": "5"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder?$select=OrderNbr,OrderType,CustomerID,OrderTotal&$filter=CustomerID eq 'C000000003'&$top=5",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"18.200.001",
+										"SalesOrder"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "OrderNbr,OrderType,CustomerID,OrderTotal"
+										},
+										{
+											"key": "$filter",
+											"value": "CustomerID eq 'C000000003'"
+										},
+										{
+											"key": "$top",
+											"value": "5"
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0"
+								},
+								{
+									"key": "X-Handled-By",
+									"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Fri, 15-Nov-2019 09:44:09 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Nov 2019 09:44:09 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1092"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"c01087ca-7281-e511-80c0-00155d012302\",\n        \"rowNumber\": 1,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000001\"\n        },\n        \"OrderTotal\": {\n            \"value\": 2200\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"35268d8b-7381-e511-80c0-00155d012302\",\n        \"rowNumber\": 2,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000004\"\n        },\n        \"OrderTotal\": {\n            \"value\": 420\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"fabe46be-7381-e511-80c0-00155d012302\",\n        \"rowNumber\": 3,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000005\"\n        },\n        \"OrderTotal\": {\n            \"value\": 25\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"330470e7-7381-e511-80c0-00155d012302\",\n        \"rowNumber\": 4,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000006\"\n        },\n        \"OrderTotal\": {\n            \"value\": 2200\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"1a37a70e-7481-e511-80c0-00155d012302\",\n        \"rowNumber\": 5,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000007\"\n        },\n        \"OrderTotal\": {\n            \"value\": 170\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Lesson 2.2: Retrieving the List of Sales Orders in Batches (Next Five Records)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder?$select=OrderNbr,OrderType,CustomerID,OrderTotal&$filter=CustomerID eq 'C000000003'&$top=5&$skip=5",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"Default",
+								"18.200.001",
+								"SalesOrder"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "OrderNbr,OrderType,CustomerID,OrderTotal"
+								},
+								{
+									"key": "$filter",
+									"value": "CustomerID eq 'C000000003'"
+								},
+								{
+									"key": "$top",
+									"value": "5"
+								},
+								{
+									"key": "$skip",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder?$select=OrderNbr,OrderType,CustomerID,OrderTotal&$filter=CustomerID eq 'C000000003'&$top=5&$skip=5",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"18.200.001",
+										"SalesOrder"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "OrderNbr,OrderType,CustomerID,OrderTotal"
+										},
+										{
+											"key": "$filter",
+											"value": "CustomerID eq 'C000000003'"
+										},
+										{
+											"key": "$top",
+											"value": "5"
+										},
+										{
+											"key": "$skip",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0"
+								},
+								{
+									"key": "X-Handled-By",
+									"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Fri, 15-Nov-2019 09:44:36 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Nov 2019 09:44:36 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "873"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"c68dfa2f-7481-e511-80c0-00155d012302\",\n        \"rowNumber\": 1,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000008\"\n        },\n        \"OrderTotal\": {\n            \"value\": 535\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"e91dcf53-7481-e511-80c0-00155d012302\",\n        \"rowNumber\": 2,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000009\"\n        },\n        \"OrderTotal\": {\n            \"value\": 50\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"fa29da74-7481-e511-80c0-00155d012302\",\n        \"rowNumber\": 3,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000010\"\n        },\n        \"OrderTotal\": {\n            \"value\": 2480\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"33f41ca8-7481-e511-80c0-00155d012302\",\n        \"rowNumber\": 4,\n        \"note\": \"\",\n        \"CustomerID\": {\n            \"value\": \"C000000003\"\n        },\n        \"OrderNbr\": {\n            \"value\": \"000011\"\n        },\n        \"OrderTotal\": {\n            \"value\": 170\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Lesson 2.3: Retrieving the List of Payments (Failed Request)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -409,7 +693,7 @@
 					]
 				},
 				{
-					"name": "Lesson 2.2: Retrieving the List of Key Fields of Payments",
+					"name": "Lesson 2.3: Retrieving the List of Key Fields of Payments",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -538,7 +822,7 @@
 					]
 				},
 				{
-					"name": "Lesson 2.2: Retrieving Payments by Key Fields",
+					"name": "Lesson 2.3: Retrieving Payments by Key Fields",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -864,7 +1148,7 @@
 		"oauth2": [
 			{
 				"key": "accessToken",
-				"value": "b9e5e34a4cd81addae96a644c6916d0b",
+				"value": "63ccc21da5514d5b1cd51d054f41c6e5",
 				"type": "string"
 			},
 			{
