@@ -28,10 +28,8 @@ namespace MyBIIntegrationSBAPI
                 {
                     //Retrieving the list of customers with contacts
                     //InitialDataRetrieval.ExportCustomers(screen);
-
                     //Retrieving the quantities of stock items
                     //InitialDataRetrievalGI.ExportItemQuantities(screen);
-
                     //Retrieving the list of stock items modified within the past day
                     RetrievalOfDelta.ExportStockItems(screen);
                 }

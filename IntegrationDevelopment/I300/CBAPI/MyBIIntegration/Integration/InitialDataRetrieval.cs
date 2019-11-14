@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 using MyBIIntegration.Default;
 using System.IO;
 
+
 namespace MyBIIntegration.Integration
 {
     class InitialDataRetrieval
     {
         //Retrieving the list of customers with contacts
-        public static void RetrieveListOfCustomers(DefaultSoapClient soapClient)
+        public static void RetrieveListOfCustomers(
+        DefaultSoapClient soapClient)
         {
             Console.WriteLine("Retrieving the list of customers with contacts...");
-
-            //Specify the parameters of stock items to be returned
+            //Specify the parameters of the stock items to be returned
             Customer customersToBeRetrieved = new Customer
             {
                 //Return the values of only the specified fields
                 ReturnBehavior = ReturnBehavior.OnlySpecified,
-
-                //Specify other fields to be returned
+                //Specify the other fields to be returned
                 CustomerID = new StringReturn(),
                 CustomerName = new StringReturn(),
                 CustomerClass = new StringReturn(),
@@ -41,35 +41,32 @@ namespace MyBIIntegration.Integration
                     }
                 }
             };
-
             //Get the list of customers
             Entity[] customers = soapClient.GetList(customersToBeRetrieved);
-
-            //Save results to a CSV file
+            //Save the results to a CSV file
             using (StreamWriter file = new StreamWriter("Customers.csv"))
             {
                 //Add headers to the file
                 file.WriteLine(
-                 "CustomerID;CustomerName;CustomerClass;Email;Phone1;AddressLine1;AddressLine2;City;State;PostalCode;");
-
+                "CustomerID;CustomerName;CustomerClass;Email;Phone1;" +
+                "AddressLine1;AddressLine2;City;State;PostalCode;");
                 //Write the values for each item
                 foreach (Customer customer in customers)
                 {
-                    file.WriteLine(string.Format("{0};{1};{2};{3};{4};{5};{6};{7};{8};{9};",
-                        customer.CustomerID.Value,
-                        customer.CustomerName.Value,
-                        customer.CustomerClass.Value,
-                        customer.MainContact.Email.Value,
-                        customer.MainContact.Phone1.Value,
-                        customer.MainContact.Address.AddressLine1.Value,
-                        customer.MainContact.Address.AddressLine2.Value,
-                        customer.MainContact.Address.City.Value,
-                        customer.MainContact.Address.State.Value,
-                        customer.MainContact.Address.PostalCode.Value));
-                }
+                    file.WriteLine(
+                    string.Format("{0};{1};{2};{3};{4};{5};{6};{7};{8};{9};",
+                    customer.CustomerID.Value,
+                    customer.CustomerName.Value,
+                    customer.CustomerClass.Value,
+                    customer.MainContact.Email.Value,
+                    customer.MainContact.Phone1.Value,
+                    customer.MainContact.Address.AddressLine1.Value,
+                    customer.MainContact.Address.AddressLine2.Value,
+                    customer.MainContact.Address.City.Value,
+                    customer.MainContact.Address.State.Value,
+                    customer.MainContact.Address.PostalCode.Value));
+                }                
             }
         }
-
-
     }
 }

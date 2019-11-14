@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4a7529cf-0187-4c3c-9675-3c28980b1dbf" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bda35119-74ed-4d21-a5f2-928026c6ee9b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,10 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/MyStoreInstance/entity/ItemAvailabilityData/0001?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost/MyStoreInstance/(W(2))/entity/ItemAvailabilityData/0001?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="0001.wsdl" MetadataType="Wsdl" ID="4e1da9cf-84f0-4410-b207-6678e5c221bd" SourceId="1" SourceUrl="http://localhost/MyStoreInstance/entity/ItemAvailabilityData/0001?wsdl" />
+    <MetadataFile FileName="0001.wsdl" MetadataType="Wsdl" ID="bc077a71-bafe-46db-8210-f322a343b87d" SourceId="1" SourceUrl="http://localhost/MyStoreInstance/(W(2))/entity/ItemAvailabilityData/0001?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

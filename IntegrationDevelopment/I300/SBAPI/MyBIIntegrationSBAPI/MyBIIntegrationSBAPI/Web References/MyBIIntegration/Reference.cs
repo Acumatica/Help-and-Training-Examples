@@ -23,7 +23,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="ScreenSoap", Namespace="http://www.acumatica.com/generic/")]
@@ -1070,7 +1070,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Action))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Key))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EveryValue))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1170,7 +1170,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1286,7 +1286,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
     public enum ElementTypes {
@@ -1320,7 +1320,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1353,7 +1353,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1410,7 +1410,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1419,7 +1419,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1428,7 +1428,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1437,7 +1437,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1446,7 +1446,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1529,7 +1529,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Attachment))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Value))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1538,7 +1538,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1547,7 +1547,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1585,7 +1585,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1642,7 +1642,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1711,7 +1711,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1792,7 +1792,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1801,7 +1801,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1918,7 +1918,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1975,7 +1975,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1984,7 +1984,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2029,7 +2029,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2098,7 +2098,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2107,7 +2107,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2176,7 +2176,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2221,7 +2221,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2242,7 +2242,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2299,7 +2299,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2488,12 +2488,12 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
-    public partial class IN202500SpecifyNewIDServiceCommands {
+    public partial class IN202500PriceCostInfoCostStatisticsRulesServiceCommands {
         
         private DeleteRow deleteRowField;
         
@@ -2533,18 +2533,20 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
-    public partial class IN202500SpecifyNewID {
+    public partial class IN202500PriceCostInfoCostStatisticsRules {
         
         private string displayNameField;
         
-        private Field inventoryIDField;
+        private Field addPopUpNoteField;
         
-        private IN202500SpecifyNewIDServiceCommands serviceCommandsField;
+        private Field popUpNoteTextField;
+        
+        private IN202500PriceCostInfoCostStatisticsRulesServiceCommands serviceCommandsField;
         
         /// <remarks/>
         public string DisplayName {
@@ -2557,17 +2559,27 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         }
         
         /// <remarks/>
-        public Field InventoryID {
+        public Field AddPopUpNote {
             get {
-                return this.inventoryIDField;
+                return this.addPopUpNoteField;
             }
             set {
-                this.inventoryIDField = value;
+                this.addPopUpNoteField = value;
             }
         }
         
         /// <remarks/>
-        public IN202500SpecifyNewIDServiceCommands ServiceCommands {
+        public Field PopUpNoteText {
+            get {
+                return this.popUpNoteTextField;
+            }
+            set {
+                this.popUpNoteTextField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public IN202500PriceCostInfoCostStatisticsRulesServiceCommands ServiceCommands {
             get {
                 return this.serviceCommandsField;
             }
@@ -2578,7 +2590,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2623,7 +2635,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2692,7 +2704,97 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
+    public partial class IN202500SpecifyNewIDServiceCommands {
+        
+        private DeleteRow deleteRowField;
+        
+        private Answer dialogAnswerField;
+        
+        private Attachment attachmentField;
+        
+        /// <remarks/>
+        public DeleteRow DeleteRow {
+            get {
+                return this.deleteRowField;
+            }
+            set {
+                this.deleteRowField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Answer DialogAnswer {
+            get {
+                return this.dialogAnswerField;
+            }
+            set {
+                this.dialogAnswerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Attachment Attachment {
+            get {
+                return this.attachmentField;
+            }
+            set {
+                this.attachmentField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
+    public partial class IN202500SpecifyNewID {
+        
+        private string displayNameField;
+        
+        private Field inventoryIDField;
+        
+        private IN202500SpecifyNewIDServiceCommands serviceCommandsField;
+        
+        /// <remarks/>
+        public string DisplayName {
+            get {
+                return this.displayNameField;
+            }
+            set {
+                this.displayNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field InventoryID {
+            get {
+                return this.inventoryIDField;
+            }
+            set {
+                this.inventoryIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public IN202500SpecifyNewIDServiceCommands ServiceCommands {
+            get {
+                return this.serviceCommandsField;
+            }
+            set {
+                this.serviceCommandsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2749,7 +2851,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2890,7 +2992,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2947,7 +3049,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2956,11 +3058,9 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         
         private string displayNameField;
         
-        private Field includedField;
+        private Field groupNameField;
         
         private Field specificTypeField;
-        
-        private Field descriptionField;
         
         private Field activeField;
         
@@ -2979,12 +3079,12 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         }
         
         /// <remarks/>
-        public Field Included {
+        public Field GroupName {
             get {
-                return this.includedField;
+                return this.groupNameField;
             }
             set {
-                this.includedField = value;
+                this.groupNameField = value;
             }
         }
         
@@ -2995,16 +3095,6 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
             }
             set {
                 this.specificTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field Description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                this.descriptionField = value;
             }
         }
         
@@ -3040,259 +3130,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
-    public partial class IN202500AttributesSalesCategoriesServiceCommands {
-        
-        private Key keyCategoryIDField;
-        
-        private NewRow newRowField;
-        
-        private RowNumber rowNumberField;
-        
-        private DeleteRow deleteRowField;
-        
-        private Answer dialogAnswerField;
-        
-        /// <remarks/>
-        public Key KeyCategoryID {
-            get {
-                return this.keyCategoryIDField;
-            }
-            set {
-                this.keyCategoryIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public NewRow NewRow {
-            get {
-                return this.newRowField;
-            }
-            set {
-                this.newRowField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public RowNumber RowNumber {
-            get {
-                return this.rowNumberField;
-            }
-            set {
-                this.rowNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public DeleteRow DeleteRow {
-            get {
-                return this.deleteRowField;
-            }
-            set {
-                this.deleteRowField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Answer DialogAnswer {
-            get {
-                return this.dialogAnswerField;
-            }
-            set {
-                this.dialogAnswerField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
-    public partial class IN202500AttributesSalesCategories {
-        
-        private string displayNameField;
-        
-        private Field categoryIDField;
-        
-        private IN202500AttributesSalesCategoriesServiceCommands serviceCommandsField;
-        
-        /// <remarks/>
-        public string DisplayName {
-            get {
-                return this.displayNameField;
-            }
-            set {
-                this.displayNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field CategoryID {
-            get {
-                return this.categoryIDField;
-            }
-            set {
-                this.categoryIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public IN202500AttributesSalesCategoriesServiceCommands ServiceCommands {
-            get {
-                return this.serviceCommandsField;
-            }
-            set {
-                this.serviceCommandsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
-    public partial class IN202500AttributesAttributesServiceCommands {
-        
-        private Key keyAttributeField;
-        
-        private NewRow newRowField;
-        
-        private RowNumber rowNumberField;
-        
-        private DeleteRow deleteRowField;
-        
-        private Answer dialogAnswerField;
-        
-        /// <remarks/>
-        public Key KeyAttribute {
-            get {
-                return this.keyAttributeField;
-            }
-            set {
-                this.keyAttributeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public NewRow NewRow {
-            get {
-                return this.newRowField;
-            }
-            set {
-                this.newRowField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public RowNumber RowNumber {
-            get {
-                return this.rowNumberField;
-            }
-            set {
-                this.rowNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public DeleteRow DeleteRow {
-            get {
-                return this.deleteRowField;
-            }
-            set {
-                this.deleteRowField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Answer DialogAnswer {
-            get {
-                return this.dialogAnswerField;
-            }
-            set {
-                this.dialogAnswerField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
-    public partial class IN202500AttributesAttributes {
-        
-        private string displayNameField;
-        
-        private Field attributeField;
-        
-        private Field requiredField;
-        
-        private Field valueField;
-        
-        private IN202500AttributesAttributesServiceCommands serviceCommandsField;
-        
-        /// <remarks/>
-        public string DisplayName {
-            get {
-                return this.displayNameField;
-            }
-            set {
-                this.displayNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field Attribute {
-            get {
-                return this.attributeField;
-            }
-            set {
-                this.attributeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field Required {
-            get {
-                return this.requiredField;
-            }
-            set {
-                this.requiredField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public IN202500AttributesAttributesServiceCommands ServiceCommands {
-            get {
-                return this.serviceCommandsField;
-            }
-            set {
-                this.serviceCommandsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3361,7 +3199,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3478,325 +3316,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
-    public partial class IN202500VendorDetailsServiceCommands {
-        
-        private NewRow newRowField;
-        
-        private RowNumber rowNumberField;
-        
-        private DeleteRow deleteRowField;
-        
-        private Answer dialogAnswerField;
-        
-        /// <remarks/>
-        public NewRow NewRow {
-            get {
-                return this.newRowField;
-            }
-            set {
-                this.newRowField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public RowNumber RowNumber {
-            get {
-                return this.rowNumberField;
-            }
-            set {
-                this.rowNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public DeleteRow DeleteRow {
-            get {
-                return this.deleteRowField;
-            }
-            set {
-                this.deleteRowField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Answer DialogAnswer {
-            get {
-                return this.dialogAnswerField;
-            }
-            set {
-                this.dialogAnswerField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
-    public partial class IN202500VendorDetails {
-        
-        private string displayNameField;
-        
-        private Field activeField;
-        
-        private Field defaultField;
-        
-        private Field vendorIDField;
-        
-        private Field vendorNameField;
-        
-        private Field locationField;
-        
-        private Field warehouseField;
-        
-        private Field subitemField;
-        
-        private Field purchaseUnitField;
-        
-        private Field vendorInventoryIDField;
-        
-        private Field leadTimeDaysField;
-        
-        private Field overrideField;
-        
-        private Field addLeadTimeDaysField;
-        
-        private Field minOrderFreqDaysField;
-        
-        private Field minOrderQtyField;
-        
-        private Field maxOrderQtyField;
-        
-        private Field lotSizeField;
-        
-        private Field eOQField;
-        
-        private Field currencyIDField;
-        
-        private Field lastVendorPriceField;
-        
-        private IN202500VendorDetailsServiceCommands serviceCommandsField;
-        
-        /// <remarks/>
-        public string DisplayName {
-            get {
-                return this.displayNameField;
-            }
-            set {
-                this.displayNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field Active {
-            get {
-                return this.activeField;
-            }
-            set {
-                this.activeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field Default {
-            get {
-                return this.defaultField;
-            }
-            set {
-                this.defaultField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field VendorID {
-            get {
-                return this.vendorIDField;
-            }
-            set {
-                this.vendorIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field VendorName {
-            get {
-                return this.vendorNameField;
-            }
-            set {
-                this.vendorNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field Location {
-            get {
-                return this.locationField;
-            }
-            set {
-                this.locationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field Warehouse {
-            get {
-                return this.warehouseField;
-            }
-            set {
-                this.warehouseField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field Subitem {
-            get {
-                return this.subitemField;
-            }
-            set {
-                this.subitemField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field PurchaseUnit {
-            get {
-                return this.purchaseUnitField;
-            }
-            set {
-                this.purchaseUnitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field VendorInventoryID {
-            get {
-                return this.vendorInventoryIDField;
-            }
-            set {
-                this.vendorInventoryIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field LeadTimeDays {
-            get {
-                return this.leadTimeDaysField;
-            }
-            set {
-                this.leadTimeDaysField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field Override {
-            get {
-                return this.overrideField;
-            }
-            set {
-                this.overrideField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field AddLeadTimeDays {
-            get {
-                return this.addLeadTimeDaysField;
-            }
-            set {
-                this.addLeadTimeDaysField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field MinOrderFreqDays {
-            get {
-                return this.minOrderFreqDaysField;
-            }
-            set {
-                this.minOrderFreqDaysField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field MinOrderQty {
-            get {
-                return this.minOrderQtyField;
-            }
-            set {
-                this.minOrderQtyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field MaxOrderQty {
-            get {
-                return this.maxOrderQtyField;
-            }
-            set {
-                this.maxOrderQtyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field LotSize {
-            get {
-                return this.lotSizeField;
-            }
-            set {
-                this.lotSizeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field EOQ {
-            get {
-                return this.eOQField;
-            }
-            set {
-                this.eOQField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field CurrencyID {
-            get {
-                return this.currencyIDField;
-            }
-            set {
-                this.currencyIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field LastVendorPrice {
-            get {
-                return this.lastVendorPriceField;
-            }
-            set {
-                this.lastVendorPriceField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public IN202500VendorDetailsServiceCommands ServiceCommands {
-            get {
-                return this.serviceCommandsField;
-            }
-            set {
-                this.serviceCommandsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3853,7 +3373,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3982,7 +3502,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4039,7 +3559,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4264,427 +3784,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
-    public partial class IN202500DeferralSettingsRevenueComponentsServiceCommands {
-        
-        private NewRow newRowField;
-        
-        private RowNumber rowNumberField;
-        
-        private DeleteRow deleteRowField;
-        
-        private Answer dialogAnswerField;
-        
-        /// <remarks/>
-        public NewRow NewRow {
-            get {
-                return this.newRowField;
-            }
-            set {
-                this.newRowField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public RowNumber RowNumber {
-            get {
-                return this.rowNumberField;
-            }
-            set {
-                this.rowNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public DeleteRow DeleteRow {
-            get {
-                return this.deleteRowField;
-            }
-            set {
-                this.deleteRowField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Answer DialogAnswer {
-            get {
-                return this.dialogAnswerField;
-            }
-            set {
-                this.dialogAnswerField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
-    public partial class IN202500DeferralSettingsRevenueComponents {
-        
-        private string displayNameField;
-        
-        private Field inventoryIDField;
-        
-        private Field salesAccountField;
-        
-        private Field salesSubField;
-        
-        private Field uOMField;
-        
-        private Field quantityField;
-        
-        private Field deferralCodeField;
-        
-        private Field defaultTermField;
-        
-        private Field defaultTermUOMField;
-        
-        private Field allocationMethodField;
-        
-        private Field fixedAmountField;
-        
-        private Field percentageField;
-        
-        private IN202500DeferralSettingsRevenueComponentsServiceCommands serviceCommandsField;
-        
-        /// <remarks/>
-        public string DisplayName {
-            get {
-                return this.displayNameField;
-            }
-            set {
-                this.displayNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field InventoryID {
-            get {
-                return this.inventoryIDField;
-            }
-            set {
-                this.inventoryIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field SalesAccount {
-            get {
-                return this.salesAccountField;
-            }
-            set {
-                this.salesAccountField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field SalesSub {
-            get {
-                return this.salesSubField;
-            }
-            set {
-                this.salesSubField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field UOM {
-            get {
-                return this.uOMField;
-            }
-            set {
-                this.uOMField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field Quantity {
-            get {
-                return this.quantityField;
-            }
-            set {
-                this.quantityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field DeferralCode {
-            get {
-                return this.deferralCodeField;
-            }
-            set {
-                this.deferralCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field DefaultTerm {
-            get {
-                return this.defaultTermField;
-            }
-            set {
-                this.defaultTermField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field DefaultTermUOM {
-            get {
-                return this.defaultTermUOMField;
-            }
-            set {
-                this.defaultTermUOMField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field AllocationMethod {
-            get {
-                return this.allocationMethodField;
-            }
-            set {
-                this.allocationMethodField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field FixedAmount {
-            get {
-                return this.fixedAmountField;
-            }
-            set {
-                this.fixedAmountField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field Percentage {
-            get {
-                return this.percentageField;
-            }
-            set {
-                this.percentageField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public IN202500DeferralSettingsRevenueComponentsServiceCommands ServiceCommands {
-            get {
-                return this.serviceCommandsField;
-            }
-            set {
-                this.serviceCommandsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
-    public partial class IN202500CrossReferenceServiceCommands {
-        
-        private Key keyAlternateTypeField;
-        
-        private Key keyVendorCustomerField;
-        
-        private Key keyAlternateIDField;
-        
-        private NewRow newRowField;
-        
-        private RowNumber rowNumberField;
-        
-        private DeleteRow deleteRowField;
-        
-        private Answer dialogAnswerField;
-        
-        /// <remarks/>
-        public Key KeyAlternateType {
-            get {
-                return this.keyAlternateTypeField;
-            }
-            set {
-                this.keyAlternateTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Key KeyVendorCustomer {
-            get {
-                return this.keyVendorCustomerField;
-            }
-            set {
-                this.keyVendorCustomerField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Key KeyAlternateID {
-            get {
-                return this.keyAlternateIDField;
-            }
-            set {
-                this.keyAlternateIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public NewRow NewRow {
-            get {
-                return this.newRowField;
-            }
-            set {
-                this.newRowField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public RowNumber RowNumber {
-            get {
-                return this.rowNumberField;
-            }
-            set {
-                this.rowNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public DeleteRow DeleteRow {
-            get {
-                return this.deleteRowField;
-            }
-            set {
-                this.deleteRowField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Answer DialogAnswer {
-            get {
-                return this.dialogAnswerField;
-            }
-            set {
-                this.dialogAnswerField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
-    public partial class IN202500CrossReference {
-        
-        private string displayNameField;
-        
-        private Field subitemField;
-        
-        private Field alternateTypeField;
-        
-        private Field vendorCustomerField;
-        
-        private Field alternateIDField;
-        
-        private Field uOMField;
-        
-        private Field descriptionField;
-        
-        private IN202500CrossReferenceServiceCommands serviceCommandsField;
-        
-        /// <remarks/>
-        public string DisplayName {
-            get {
-                return this.displayNameField;
-            }
-            set {
-                this.displayNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field Subitem {
-            get {
-                return this.subitemField;
-            }
-            set {
-                this.subitemField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field AlternateType {
-            get {
-                return this.alternateTypeField;
-            }
-            set {
-                this.alternateTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field VendorCustomer {
-            get {
-                return this.vendorCustomerField;
-            }
-            set {
-                this.vendorCustomerField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field AlternateID {
-            get {
-                return this.alternateIDField;
-            }
-            set {
-                this.alternateIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field UOM {
-            get {
-                return this.uOMField;
-            }
-            set {
-                this.uOMField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field Description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                this.descriptionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public IN202500CrossReferenceServiceCommands ServiceCommands {
-            get {
-                return this.serviceCommandsField;
-            }
-            set {
-                this.serviceCommandsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4765,7 +3865,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4789,6 +3889,8 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         private Field inventoryAccountField;
         
         private Field inventorySubField;
+        
+        private Field overrideProductManagerField;
         
         private Field productWorkgroupField;
         
@@ -4913,6 +4015,16 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
             }
             set {
                 this.inventorySubField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field OverrideProductManager {
+            get {
+                return this.overrideProductManagerField;
+            }
+            set {
+                this.overrideProductManagerField = value;
             }
         }
         
@@ -5098,169 +4210,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
-    public partial class IN202500GeneralSettingsUnitOfMeasureServiceCommands {
-        
-        private Key keyFromUnitField;
-        
-        private NewRow newRowField;
-        
-        private RowNumber rowNumberField;
-        
-        private DeleteRow deleteRowField;
-        
-        private Answer dialogAnswerField;
-        
-        /// <remarks/>
-        public Key KeyFromUnit {
-            get {
-                return this.keyFromUnitField;
-            }
-            set {
-                this.keyFromUnitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public NewRow NewRow {
-            get {
-                return this.newRowField;
-            }
-            set {
-                this.newRowField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public RowNumber RowNumber {
-            get {
-                return this.rowNumberField;
-            }
-            set {
-                this.rowNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public DeleteRow DeleteRow {
-            get {
-                return this.deleteRowField;
-            }
-            set {
-                this.deleteRowField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Answer DialogAnswer {
-            get {
-                return this.dialogAnswerField;
-            }
-            set {
-                this.dialogAnswerField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
-    public partial class IN202500GeneralSettingsUnitOfMeasure {
-        
-        private string displayNameField;
-        
-        private Field fromUnitField;
-        
-        private Field multiplyDivideField;
-        
-        private Field conversionFactorField;
-        
-        private Field toUnitSampleToUnitField;
-        
-        private Field priceAdjustmentMultiplierField;
-        
-        private IN202500GeneralSettingsUnitOfMeasureServiceCommands serviceCommandsField;
-        
-        /// <remarks/>
-        public string DisplayName {
-            get {
-                return this.displayNameField;
-            }
-            set {
-                this.displayNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field FromUnit {
-            get {
-                return this.fromUnitField;
-            }
-            set {
-                this.fromUnitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field MultiplyDivide {
-            get {
-                return this.multiplyDivideField;
-            }
-            set {
-                this.multiplyDivideField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field ConversionFactor {
-            get {
-                return this.conversionFactorField;
-            }
-            set {
-                this.conversionFactorField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field ToUnitSampleToUnit {
-            get {
-                return this.toUnitSampleToUnitField;
-            }
-            set {
-                this.toUnitSampleToUnitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field PriceAdjustmentMultiplier {
-            get {
-                return this.priceAdjustmentMultiplierField;
-            }
-            set {
-                this.priceAdjustmentMultiplierField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public IN202500GeneralSettingsUnitOfMeasureServiceCommands ServiceCommands {
-            get {
-                return this.serviceCommandsField;
-            }
-            set {
-                this.serviceCommandsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5305,7 +4255,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5386,7 +4336,1171 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
+    public partial class IN202500AttributesSalesCategoriesServiceCommands {
+        
+        private Key keyCategoryIDField;
+        
+        private NewRow newRowField;
+        
+        private RowNumber rowNumberField;
+        
+        private DeleteRow deleteRowField;
+        
+        private Answer dialogAnswerField;
+        
+        /// <remarks/>
+        public Key KeyCategoryID {
+            get {
+                return this.keyCategoryIDField;
+            }
+            set {
+                this.keyCategoryIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public NewRow NewRow {
+            get {
+                return this.newRowField;
+            }
+            set {
+                this.newRowField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public RowNumber RowNumber {
+            get {
+                return this.rowNumberField;
+            }
+            set {
+                this.rowNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public DeleteRow DeleteRow {
+            get {
+                return this.deleteRowField;
+            }
+            set {
+                this.deleteRowField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Answer DialogAnswer {
+            get {
+                return this.dialogAnswerField;
+            }
+            set {
+                this.dialogAnswerField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
+    public partial class IN202500AttributesSalesCategories {
+        
+        private string displayNameField;
+        
+        private Field categoryIDField;
+        
+        private IN202500AttributesSalesCategoriesServiceCommands serviceCommandsField;
+        
+        /// <remarks/>
+        public string DisplayName {
+            get {
+                return this.displayNameField;
+            }
+            set {
+                this.displayNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field CategoryID {
+            get {
+                return this.categoryIDField;
+            }
+            set {
+                this.categoryIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public IN202500AttributesSalesCategoriesServiceCommands ServiceCommands {
+            get {
+                return this.serviceCommandsField;
+            }
+            set {
+                this.serviceCommandsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
+    public partial class IN202500AttributesAttributesServiceCommands {
+        
+        private Key keyAttributeField;
+        
+        private NewRow newRowField;
+        
+        private RowNumber rowNumberField;
+        
+        private DeleteRow deleteRowField;
+        
+        private Answer dialogAnswerField;
+        
+        /// <remarks/>
+        public Key KeyAttribute {
+            get {
+                return this.keyAttributeField;
+            }
+            set {
+                this.keyAttributeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public NewRow NewRow {
+            get {
+                return this.newRowField;
+            }
+            set {
+                this.newRowField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public RowNumber RowNumber {
+            get {
+                return this.rowNumberField;
+            }
+            set {
+                this.rowNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public DeleteRow DeleteRow {
+            get {
+                return this.deleteRowField;
+            }
+            set {
+                this.deleteRowField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Answer DialogAnswer {
+            get {
+                return this.dialogAnswerField;
+            }
+            set {
+                this.dialogAnswerField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
+    public partial class IN202500AttributesAttributes {
+        
+        private string displayNameField;
+        
+        private Field attributeField;
+        
+        private Field requiredField;
+        
+        private Field valueField;
+        
+        private IN202500AttributesAttributesServiceCommands serviceCommandsField;
+        
+        /// <remarks/>
+        public string DisplayName {
+            get {
+                return this.displayNameField;
+            }
+            set {
+                this.displayNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field Attribute {
+            get {
+                return this.attributeField;
+            }
+            set {
+                this.attributeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field Required {
+            get {
+                return this.requiredField;
+            }
+            set {
+                this.requiredField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public IN202500AttributesAttributesServiceCommands ServiceCommands {
+            get {
+                return this.serviceCommandsField;
+            }
+            set {
+                this.serviceCommandsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
+    public partial class IN202500VendorDetailsServiceCommands {
+        
+        private NewRow newRowField;
+        
+        private RowNumber rowNumberField;
+        
+        private DeleteRow deleteRowField;
+        
+        private Answer dialogAnswerField;
+        
+        /// <remarks/>
+        public NewRow NewRow {
+            get {
+                return this.newRowField;
+            }
+            set {
+                this.newRowField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public RowNumber RowNumber {
+            get {
+                return this.rowNumberField;
+            }
+            set {
+                this.rowNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public DeleteRow DeleteRow {
+            get {
+                return this.deleteRowField;
+            }
+            set {
+                this.deleteRowField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Answer DialogAnswer {
+            get {
+                return this.dialogAnswerField;
+            }
+            set {
+                this.dialogAnswerField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
+    public partial class IN202500VendorDetails {
+        
+        private string displayNameField;
+        
+        private Field activeField;
+        
+        private Field defaultField;
+        
+        private Field vendorIDField;
+        
+        private Field vendorNameField;
+        
+        private Field locationField;
+        
+        private Field warehouseField;
+        
+        private Field subitemField;
+        
+        private Field purchaseUnitField;
+        
+        private Field vendorInventoryIDField;
+        
+        private Field leadTimeDaysField;
+        
+        private Field overrideField;
+        
+        private Field addLeadTimeDaysField;
+        
+        private Field minOrderFreqDaysField;
+        
+        private Field minOrderQtyField;
+        
+        private Field maxOrderQtyField;
+        
+        private Field lotSizeField;
+        
+        private Field eOQField;
+        
+        private Field currencyIDField;
+        
+        private Field lastVendorPriceField;
+        
+        private Field prepaymentPercentField;
+        
+        private IN202500VendorDetailsServiceCommands serviceCommandsField;
+        
+        /// <remarks/>
+        public string DisplayName {
+            get {
+                return this.displayNameField;
+            }
+            set {
+                this.displayNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field Active {
+            get {
+                return this.activeField;
+            }
+            set {
+                this.activeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field Default {
+            get {
+                return this.defaultField;
+            }
+            set {
+                this.defaultField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field VendorID {
+            get {
+                return this.vendorIDField;
+            }
+            set {
+                this.vendorIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field VendorName {
+            get {
+                return this.vendorNameField;
+            }
+            set {
+                this.vendorNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field Location {
+            get {
+                return this.locationField;
+            }
+            set {
+                this.locationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field Warehouse {
+            get {
+                return this.warehouseField;
+            }
+            set {
+                this.warehouseField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field Subitem {
+            get {
+                return this.subitemField;
+            }
+            set {
+                this.subitemField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field PurchaseUnit {
+            get {
+                return this.purchaseUnitField;
+            }
+            set {
+                this.purchaseUnitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field VendorInventoryID {
+            get {
+                return this.vendorInventoryIDField;
+            }
+            set {
+                this.vendorInventoryIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field LeadTimeDays {
+            get {
+                return this.leadTimeDaysField;
+            }
+            set {
+                this.leadTimeDaysField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field Override {
+            get {
+                return this.overrideField;
+            }
+            set {
+                this.overrideField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field AddLeadTimeDays {
+            get {
+                return this.addLeadTimeDaysField;
+            }
+            set {
+                this.addLeadTimeDaysField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field MinOrderFreqDays {
+            get {
+                return this.minOrderFreqDaysField;
+            }
+            set {
+                this.minOrderFreqDaysField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field MinOrderQty {
+            get {
+                return this.minOrderQtyField;
+            }
+            set {
+                this.minOrderQtyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field MaxOrderQty {
+            get {
+                return this.maxOrderQtyField;
+            }
+            set {
+                this.maxOrderQtyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field LotSize {
+            get {
+                return this.lotSizeField;
+            }
+            set {
+                this.lotSizeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field EOQ {
+            get {
+                return this.eOQField;
+            }
+            set {
+                this.eOQField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field CurrencyID {
+            get {
+                return this.currencyIDField;
+            }
+            set {
+                this.currencyIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field LastVendorPrice {
+            get {
+                return this.lastVendorPriceField;
+            }
+            set {
+                this.lastVendorPriceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field PrepaymentPercent {
+            get {
+                return this.prepaymentPercentField;
+            }
+            set {
+                this.prepaymentPercentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public IN202500VendorDetailsServiceCommands ServiceCommands {
+            get {
+                return this.serviceCommandsField;
+            }
+            set {
+                this.serviceCommandsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
+    public partial class IN202500CrossReferenceServiceCommands {
+        
+        private Key keyAlternateTypeField;
+        
+        private Key keyVendorCustomerField;
+        
+        private Key keyAlternateIDField;
+        
+        private NewRow newRowField;
+        
+        private RowNumber rowNumberField;
+        
+        private DeleteRow deleteRowField;
+        
+        private Answer dialogAnswerField;
+        
+        /// <remarks/>
+        public Key KeyAlternateType {
+            get {
+                return this.keyAlternateTypeField;
+            }
+            set {
+                this.keyAlternateTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Key KeyVendorCustomer {
+            get {
+                return this.keyVendorCustomerField;
+            }
+            set {
+                this.keyVendorCustomerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Key KeyAlternateID {
+            get {
+                return this.keyAlternateIDField;
+            }
+            set {
+                this.keyAlternateIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public NewRow NewRow {
+            get {
+                return this.newRowField;
+            }
+            set {
+                this.newRowField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public RowNumber RowNumber {
+            get {
+                return this.rowNumberField;
+            }
+            set {
+                this.rowNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public DeleteRow DeleteRow {
+            get {
+                return this.deleteRowField;
+            }
+            set {
+                this.deleteRowField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Answer DialogAnswer {
+            get {
+                return this.dialogAnswerField;
+            }
+            set {
+                this.dialogAnswerField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
+    public partial class IN202500CrossReference {
+        
+        private string displayNameField;
+        
+        private Field subitemField;
+        
+        private Field alternateTypeField;
+        
+        private Field vendorCustomerField;
+        
+        private Field alternateIDField;
+        
+        private Field uOMField;
+        
+        private Field descriptionField;
+        
+        private IN202500CrossReferenceServiceCommands serviceCommandsField;
+        
+        /// <remarks/>
+        public string DisplayName {
+            get {
+                return this.displayNameField;
+            }
+            set {
+                this.displayNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field Subitem {
+            get {
+                return this.subitemField;
+            }
+            set {
+                this.subitemField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field AlternateType {
+            get {
+                return this.alternateTypeField;
+            }
+            set {
+                this.alternateTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field VendorCustomer {
+            get {
+                return this.vendorCustomerField;
+            }
+            set {
+                this.vendorCustomerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field AlternateID {
+            get {
+                return this.alternateIDField;
+            }
+            set {
+                this.alternateIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field UOM {
+            get {
+                return this.uOMField;
+            }
+            set {
+                this.uOMField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public IN202500CrossReferenceServiceCommands ServiceCommands {
+            get {
+                return this.serviceCommandsField;
+            }
+            set {
+                this.serviceCommandsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
+    public partial class IN202500DeferralSettingsRevenueComponentsServiceCommands {
+        
+        private NewRow newRowField;
+        
+        private RowNumber rowNumberField;
+        
+        private DeleteRow deleteRowField;
+        
+        private Answer dialogAnswerField;
+        
+        /// <remarks/>
+        public NewRow NewRow {
+            get {
+                return this.newRowField;
+            }
+            set {
+                this.newRowField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public RowNumber RowNumber {
+            get {
+                return this.rowNumberField;
+            }
+            set {
+                this.rowNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public DeleteRow DeleteRow {
+            get {
+                return this.deleteRowField;
+            }
+            set {
+                this.deleteRowField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Answer DialogAnswer {
+            get {
+                return this.dialogAnswerField;
+            }
+            set {
+                this.dialogAnswerField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
+    public partial class IN202500DeferralSettingsRevenueComponents {
+        
+        private string displayNameField;
+        
+        private Field inventoryIDField;
+        
+        private Field salesAccountField;
+        
+        private Field salesSubField;
+        
+        private Field uOMField;
+        
+        private Field quantityField;
+        
+        private Field deferralCodeField;
+        
+        private Field defaultTermField;
+        
+        private Field defaultTermUOMField;
+        
+        private Field allocationMethodField;
+        
+        private Field fixedAmountField;
+        
+        private Field percentageField;
+        
+        private IN202500DeferralSettingsRevenueComponentsServiceCommands serviceCommandsField;
+        
+        /// <remarks/>
+        public string DisplayName {
+            get {
+                return this.displayNameField;
+            }
+            set {
+                this.displayNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field InventoryID {
+            get {
+                return this.inventoryIDField;
+            }
+            set {
+                this.inventoryIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field SalesAccount {
+            get {
+                return this.salesAccountField;
+            }
+            set {
+                this.salesAccountField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field SalesSub {
+            get {
+                return this.salesSubField;
+            }
+            set {
+                this.salesSubField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field UOM {
+            get {
+                return this.uOMField;
+            }
+            set {
+                this.uOMField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field Quantity {
+            get {
+                return this.quantityField;
+            }
+            set {
+                this.quantityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field DeferralCode {
+            get {
+                return this.deferralCodeField;
+            }
+            set {
+                this.deferralCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field DefaultTerm {
+            get {
+                return this.defaultTermField;
+            }
+            set {
+                this.defaultTermField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field DefaultTermUOM {
+            get {
+                return this.defaultTermUOMField;
+            }
+            set {
+                this.defaultTermUOMField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field AllocationMethod {
+            get {
+                return this.allocationMethodField;
+            }
+            set {
+                this.allocationMethodField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field FixedAmount {
+            get {
+                return this.fixedAmountField;
+            }
+            set {
+                this.fixedAmountField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field Percentage {
+            get {
+                return this.percentageField;
+            }
+            set {
+                this.percentageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public IN202500DeferralSettingsRevenueComponentsServiceCommands ServiceCommands {
+            get {
+                return this.serviceCommandsField;
+            }
+            set {
+                this.serviceCommandsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
+    public partial class IN202500GeneralSettingsUnitOfMeasureConversionsServiceCommands {
+        
+        private Key keyFromUnitField;
+        
+        private NewRow newRowField;
+        
+        private RowNumber rowNumberField;
+        
+        private DeleteRow deleteRowField;
+        
+        private Answer dialogAnswerField;
+        
+        /// <remarks/>
+        public Key KeyFromUnit {
+            get {
+                return this.keyFromUnitField;
+            }
+            set {
+                this.keyFromUnitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public NewRow NewRow {
+            get {
+                return this.newRowField;
+            }
+            set {
+                this.newRowField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public RowNumber RowNumber {
+            get {
+                return this.rowNumberField;
+            }
+            set {
+                this.rowNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public DeleteRow DeleteRow {
+            get {
+                return this.deleteRowField;
+            }
+            set {
+                this.deleteRowField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Answer DialogAnswer {
+            get {
+                return this.dialogAnswerField;
+            }
+            set {
+                this.dialogAnswerField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
+    public partial class IN202500GeneralSettingsUnitOfMeasureConversions {
+        
+        private string displayNameField;
+        
+        private Field fromUnitField;
+        
+        private Field multiplyDivideField;
+        
+        private Field conversionFactorField;
+        
+        private Field toUnitSampleToUnitField;
+        
+        private Field priceAdjustmentMultiplierField;
+        
+        private IN202500GeneralSettingsUnitOfMeasureConversionsServiceCommands serviceCommandsField;
+        
+        /// <remarks/>
+        public string DisplayName {
+            get {
+                return this.displayNameField;
+            }
+            set {
+                this.displayNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field FromUnit {
+            get {
+                return this.fromUnitField;
+            }
+            set {
+                this.fromUnitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field MultiplyDivide {
+            get {
+                return this.multiplyDivideField;
+            }
+            set {
+                this.multiplyDivideField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field ConversionFactor {
+            get {
+                return this.conversionFactorField;
+            }
+            set {
+                this.conversionFactorField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field ToUnitSampleToUnit {
+            get {
+                return this.toUnitSampleToUnitField;
+            }
+            set {
+                this.toUnitSampleToUnitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field PriceAdjustmentMultiplier {
+            get {
+                return this.priceAdjustmentMultiplierField;
+            }
+            set {
+                this.priceAdjustmentMultiplierField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public IN202500GeneralSettingsUnitOfMeasureConversionsServiceCommands ServiceCommands {
+            get {
+                return this.serviceCommandsField;
+            }
+            set {
+                this.serviceCommandsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5467,7 +5581,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5524,7 +5638,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5569,7 +5683,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5650,7 +5764,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5695,7 +5809,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5788,7 +5902,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5833,7 +5947,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5926,7 +6040,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5971,7 +6085,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6016,7 +6130,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6061,7 +6175,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6346,7 +6460,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6391,7 +6505,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6448,7 +6562,109 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
+    public partial class IN202500PackagingShippingThresholdsServiceCommands {
+        
+        private DeleteRow deleteRowField;
+        
+        private Answer dialogAnswerField;
+        
+        private Attachment attachmentField;
+        
+        /// <remarks/>
+        public DeleteRow DeleteRow {
+            get {
+                return this.deleteRowField;
+            }
+            set {
+                this.deleteRowField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Answer DialogAnswer {
+            get {
+                return this.dialogAnswerField;
+            }
+            set {
+                this.dialogAnswerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Attachment Attachment {
+            get {
+                return this.attachmentField;
+            }
+            set {
+                this.attachmentField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
+    public partial class IN202500PackagingShippingThresholds {
+        
+        private string displayNameField;
+        
+        private Field undershipThresholdField;
+        
+        private Field overshipThresholdField;
+        
+        private IN202500PackagingShippingThresholdsServiceCommands serviceCommandsField;
+        
+        /// <remarks/>
+        public string DisplayName {
+            get {
+                return this.displayNameField;
+            }
+            set {
+                this.displayNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field UndershipThreshold {
+            get {
+                return this.undershipThresholdField;
+            }
+            set {
+                this.undershipThresholdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field OvershipThreshold {
+            get {
+                return this.overshipThresholdField;
+            }
+            set {
+                this.overshipThresholdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public IN202500PackagingShippingThresholdsServiceCommands ServiceCommands {
+            get {
+                return this.serviceCommandsField;
+            }
+            set {
+                this.serviceCommandsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6493,7 +6709,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6538,7 +6754,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6583,7 +6799,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6664,7 +6880,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6709,7 +6925,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6754,7 +6970,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6799,7 +7015,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6892,7 +7108,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -6937,7 +7153,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -7066,7 +7282,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -7111,7 +7327,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -7204,12 +7420,12 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
-    public partial class IN202500GeneralSettingsUnitOfMeasureBaseUnitServiceCommands {
+    public partial class IN202500GeneralSettingsUnitOfMeasureServiceCommands {
         
         private DeleteRow deleteRowField;
         
@@ -7249,22 +7465,28 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
-    public partial class IN202500GeneralSettingsUnitOfMeasureBaseUnit {
+    public partial class IN202500GeneralSettingsUnitOfMeasure {
         
         private string displayNameField;
         
         private Field baseUnitField;
         
+        private Field divisibleUnitDecimalBaseUnitField;
+        
         private Field salesUnitField;
+        
+        private Field divisibleUnitDecimalSalesUnitField;
         
         private Field purchaseUnitField;
         
-        private IN202500GeneralSettingsUnitOfMeasureBaseUnitServiceCommands serviceCommandsField;
+        private Field divisibleUnitDecimalPurchaseUnitField;
+        
+        private IN202500GeneralSettingsUnitOfMeasureServiceCommands serviceCommandsField;
         
         /// <remarks/>
         public string DisplayName {
@@ -7287,12 +7509,32 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         }
         
         /// <remarks/>
+        public Field DivisibleUnitDecimalBaseUnit {
+            get {
+                return this.divisibleUnitDecimalBaseUnitField;
+            }
+            set {
+                this.divisibleUnitDecimalBaseUnitField = value;
+            }
+        }
+        
+        /// <remarks/>
         public Field SalesUnit {
             get {
                 return this.salesUnitField;
             }
             set {
                 this.salesUnitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field DivisibleUnitDecimalSalesUnit {
+            get {
+                return this.divisibleUnitDecimalSalesUnitField;
+            }
+            set {
+                this.divisibleUnitDecimalSalesUnitField = value;
             }
         }
         
@@ -7307,7 +7549,17 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         }
         
         /// <remarks/>
-        public IN202500GeneralSettingsUnitOfMeasureBaseUnitServiceCommands ServiceCommands {
+        public Field DivisibleUnitDecimalPurchaseUnit {
+            get {
+                return this.divisibleUnitDecimalPurchaseUnitField;
+            }
+            set {
+                this.divisibleUnitDecimalPurchaseUnitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public IN202500GeneralSettingsUnitOfMeasureServiceCommands ServiceCommands {
             get {
                 return this.serviceCommandsField;
             }
@@ -7318,7 +7570,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -7363,7 +7615,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -7456,7 +7708,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -7501,7 +7753,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -7642,7 +7894,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -7711,7 +7963,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -7733,6 +7985,10 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         private Field chkEquipmentManagementField;
         
         private Field noteTextField;
+        
+        private Field addPopUpNoteField;
+        
+        private Field popUpNoteTextField;
         
         private IN202500StockItemSummaryServiceCommands serviceCommandsField;
         
@@ -7817,6 +8073,26 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         }
         
         /// <remarks/>
+        public Field AddPopUpNote {
+            get {
+                return this.addPopUpNoteField;
+            }
+            set {
+                this.addPopUpNoteField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field PopUpNoteText {
+            get {
+                return this.popUpNoteTextField;
+            }
+            set {
+                this.popUpNoteTextField = value;
+            }
+        }
+        
+        /// <remarks/>
         public IN202500StockItemSummaryServiceCommands ServiceCommands {
             get {
                 return this.serviceCommandsField;
@@ -7828,16 +8104,12 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
     public partial class IN202500Actions {
-        
-        private Action cancelCloseToListField;
-        
-        private Action saveCloseToListField;
         
         private Action saveField;
         
@@ -7866,6 +8138,8 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         private Action updateCostActionField;
         
         private Action viewRestrictionGroupsActionField;
+        
+        private Action changeIDActionField;
         
         private Action summaryInquiryField;
         
@@ -7896,26 +8170,6 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         private Action syncSalesforceField;
         
         private Action saveLocField;
-        
-        /// <remarks/>
-        public Action CancelCloseToList {
-            get {
-                return this.cancelCloseToListField;
-            }
-            set {
-                this.cancelCloseToListField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Action SaveCloseToList {
-            get {
-                return this.saveCloseToListField;
-            }
-            set {
-                this.saveCloseToListField = value;
-            }
-        }
         
         /// <remarks/>
         public Action Save {
@@ -8054,6 +8308,16 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
             }
             set {
                 this.viewRestrictionGroupsActionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Action ChangeIDAction {
+            get {
+                return this.changeIDActionField;
+            }
+            set {
+                this.changeIDActionField = value;
             }
         }
         
@@ -8209,7 +8473,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8224,7 +8488,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         
         private IN202500GeneralSettingsWarehouseDefaults generalSettingsWarehouseDefaultsField;
         
-        private IN202500GeneralSettingsUnitOfMeasureBaseUnit generalSettingsUnitOfMeasureBaseUnitField;
+        private IN202500GeneralSettingsUnitOfMeasure generalSettingsUnitOfMeasureField;
         
         private IN202500GeneralSettingsPhysicalInventory generalSettingsPhysicalInventoryField;
         
@@ -8237,6 +8501,8 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         private IN202500PackagingDimensions packagingDimensionsField;
         
         private IN202500PackagingInternationalShipping packagingInternationalShippingField;
+        
+        private IN202500PackagingShippingThresholds packagingShippingThresholdsField;
         
         private IN202500PackagingAutomaticPackaging packagingAutomaticPackagingField;
         
@@ -8252,35 +8518,37 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         
         private IN202500Subitems subitemsField;
         
-        private IN202500PriceCostInfoCostStatistics priceCostInfoCostStatisticsField;
-        
-        private IN202500GeneralSettingsUnitOfMeasure generalSettingsUnitOfMeasureField;
-        
-        private IN202500WarehouseDetails warehouseDetailsField;
-        
-        private IN202500CrossReference crossReferenceField;
+        private IN202500GeneralSettingsUnitOfMeasureConversions generalSettingsUnitOfMeasureConversionsField;
         
         private IN202500DeferralSettingsRevenueComponents deferralSettingsRevenueComponentsField;
         
-        private IN202500ReplenishmentInfoReplenishmentParameters replenishmentInfoReplenishmentParametersField;
-        
-        private IN202500ReplenishmentInfoSubitemReplenishmentParameters replenishmentInfoSubitemReplenishmentParametersField;
+        private IN202500CrossReference crossReferenceField;
         
         private IN202500VendorDetails vendorDetailsField;
-        
-        private IN202500PackagingAutomaticPackagingBoxes packagingAutomaticPackagingBoxesField;
         
         private IN202500AttributesAttributes attributesAttributesField;
         
         private IN202500AttributesSalesCategories attributesSalesCategoriesField;
         
+        private IN202500PriceCostInfoCostStatistics priceCostInfoCostStatisticsField;
+        
+        private IN202500WarehouseDetails warehouseDetailsField;
+        
+        private IN202500ReplenishmentInfoReplenishmentParameters replenishmentInfoReplenishmentParametersField;
+        
+        private IN202500ReplenishmentInfoSubitemReplenishmentParameters replenishmentInfoSubitemReplenishmentParametersField;
+        
+        private IN202500PackagingAutomaticPackagingBoxes packagingAutomaticPackagingBoxesField;
+        
         private IN202500RestrictionGroups restrictionGroupsField;
         
         private IN202500SyncStatus syncStatusField;
         
+        private IN202500SpecifyNewID specifyNewIDField;
+        
         private IN202500PriceCostInfoCostStatisticsRulesRUTAndRUTSettings priceCostInfoCostStatisticsRulesRUTAndRUTSettingsField;
         
-        private IN202500SpecifyNewID specifyNewIDField;
+        private IN202500PriceCostInfoCostStatisticsRules priceCostInfoCostStatisticsRulesField;
         
         private IN202500ServiceManagement serviceManagementField;
         
@@ -8325,12 +8593,12 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         }
         
         /// <remarks/>
-        public IN202500GeneralSettingsUnitOfMeasureBaseUnit GeneralSettingsUnitOfMeasureBaseUnit {
+        public IN202500GeneralSettingsUnitOfMeasure GeneralSettingsUnitOfMeasure {
             get {
-                return this.generalSettingsUnitOfMeasureBaseUnitField;
+                return this.generalSettingsUnitOfMeasureField;
             }
             set {
-                this.generalSettingsUnitOfMeasureBaseUnitField = value;
+                this.generalSettingsUnitOfMeasureField = value;
             }
         }
         
@@ -8391,6 +8659,16 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
             }
             set {
                 this.packagingInternationalShippingField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public IN202500PackagingShippingThresholds PackagingShippingThresholds {
+            get {
+                return this.packagingShippingThresholdsField;
+            }
+            set {
+                this.packagingShippingThresholdsField = value;
             }
         }
         
@@ -8465,42 +8743,12 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         }
         
         /// <remarks/>
-        public IN202500PriceCostInfoCostStatistics PriceCostInfoCostStatistics {
+        public IN202500GeneralSettingsUnitOfMeasureConversions GeneralSettingsUnitOfMeasureConversions {
             get {
-                return this.priceCostInfoCostStatisticsField;
+                return this.generalSettingsUnitOfMeasureConversionsField;
             }
             set {
-                this.priceCostInfoCostStatisticsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public IN202500GeneralSettingsUnitOfMeasure GeneralSettingsUnitOfMeasure {
-            get {
-                return this.generalSettingsUnitOfMeasureField;
-            }
-            set {
-                this.generalSettingsUnitOfMeasureField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public IN202500WarehouseDetails WarehouseDetails {
-            get {
-                return this.warehouseDetailsField;
-            }
-            set {
-                this.warehouseDetailsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public IN202500CrossReference CrossReference {
-            get {
-                return this.crossReferenceField;
-            }
-            set {
-                this.crossReferenceField = value;
+                this.generalSettingsUnitOfMeasureConversionsField = value;
             }
         }
         
@@ -8515,22 +8763,12 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         }
         
         /// <remarks/>
-        public IN202500ReplenishmentInfoReplenishmentParameters ReplenishmentInfoReplenishmentParameters {
+        public IN202500CrossReference CrossReference {
             get {
-                return this.replenishmentInfoReplenishmentParametersField;
+                return this.crossReferenceField;
             }
             set {
-                this.replenishmentInfoReplenishmentParametersField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public IN202500ReplenishmentInfoSubitemReplenishmentParameters ReplenishmentInfoSubitemReplenishmentParameters {
-            get {
-                return this.replenishmentInfoSubitemReplenishmentParametersField;
-            }
-            set {
-                this.replenishmentInfoSubitemReplenishmentParametersField = value;
+                this.crossReferenceField = value;
             }
         }
         
@@ -8541,16 +8779,6 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
             }
             set {
                 this.vendorDetailsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public IN202500PackagingAutomaticPackagingBoxes PackagingAutomaticPackagingBoxes {
-            get {
-                return this.packagingAutomaticPackagingBoxesField;
-            }
-            set {
-                this.packagingAutomaticPackagingBoxesField = value;
             }
         }
         
@@ -8575,6 +8803,56 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         }
         
         /// <remarks/>
+        public IN202500PriceCostInfoCostStatistics PriceCostInfoCostStatistics {
+            get {
+                return this.priceCostInfoCostStatisticsField;
+            }
+            set {
+                this.priceCostInfoCostStatisticsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public IN202500WarehouseDetails WarehouseDetails {
+            get {
+                return this.warehouseDetailsField;
+            }
+            set {
+                this.warehouseDetailsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public IN202500ReplenishmentInfoReplenishmentParameters ReplenishmentInfoReplenishmentParameters {
+            get {
+                return this.replenishmentInfoReplenishmentParametersField;
+            }
+            set {
+                this.replenishmentInfoReplenishmentParametersField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public IN202500ReplenishmentInfoSubitemReplenishmentParameters ReplenishmentInfoSubitemReplenishmentParameters {
+            get {
+                return this.replenishmentInfoSubitemReplenishmentParametersField;
+            }
+            set {
+                this.replenishmentInfoSubitemReplenishmentParametersField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public IN202500PackagingAutomaticPackagingBoxes PackagingAutomaticPackagingBoxes {
+            get {
+                return this.packagingAutomaticPackagingBoxesField;
+            }
+            set {
+                this.packagingAutomaticPackagingBoxesField = value;
+            }
+        }
+        
+        /// <remarks/>
         public IN202500RestrictionGroups RestrictionGroups {
             get {
                 return this.restrictionGroupsField;
@@ -8595,6 +8873,16 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         }
         
         /// <remarks/>
+        public IN202500SpecifyNewID SpecifyNewID {
+            get {
+                return this.specifyNewIDField;
+            }
+            set {
+                this.specifyNewIDField = value;
+            }
+        }
+        
+        /// <remarks/>
         public IN202500PriceCostInfoCostStatisticsRulesRUTAndRUTSettings PriceCostInfoCostStatisticsRulesRUTAndRUTSettings {
             get {
                 return this.priceCostInfoCostStatisticsRulesRUTAndRUTSettingsField;
@@ -8605,12 +8893,12 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         }
         
         /// <remarks/>
-        public IN202500SpecifyNewID SpecifyNewID {
+        public IN202500PriceCostInfoCostStatisticsRules PriceCostInfoCostStatisticsRules {
             get {
-                return this.specifyNewIDField;
+                return this.priceCostInfoCostStatisticsRulesField;
             }
             set {
-                this.specifyNewIDField = value;
+                this.priceCostInfoCostStatisticsRulesField = value;
             }
         }
         
@@ -8626,7 +8914,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8671,7 +8959,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8692,7 +8980,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8785,7 +9073,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
     public enum FilterCondition {
@@ -8831,7 +9119,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
     public enum FilterOperator {
@@ -8844,7 +9132,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8877,7 +9165,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8934,7 +9222,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8991,7 +9279,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9108,7 +9396,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9153,7 +9441,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9198,7 +9486,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9267,7 +9555,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9432,7 +9720,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9477,7 +9765,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9522,7 +9810,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9579,7 +9867,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9684,7 +9972,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9753,7 +10041,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9763,6 +10051,8 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         private string displayNameField;
         
         private Field mailingIDField;
+        
+        private Field mailingIDMailingIDField;
         
         private Field branchField;
         
@@ -9799,6 +10089,16 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
             }
             set {
                 this.mailingIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field MailingIDMailingID {
+            get {
+                return this.mailingIDMailingIDField;
+            }
+            set {
+                this.mailingIDMailingIDField = value;
             }
         }
         
@@ -9894,7 +10194,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9951,7 +10251,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -10008,7 +10308,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -10077,7 +10377,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -10326,7 +10626,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -10395,7 +10695,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -10464,7 +10764,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -10521,7 +10821,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -10626,7 +10926,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -10671,7 +10971,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -10752,7 +11052,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -10809,7 +11109,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -10878,7 +11178,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -10923,7 +11223,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -11004,7 +11304,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -11049,7 +11349,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -11130,7 +11430,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -11199,7 +11499,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -11304,7 +11604,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -11373,7 +11673,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -11490,7 +11790,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -11535,7 +11835,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -11592,7 +11892,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -11637,7 +11937,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -11766,7 +12066,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -11811,7 +12111,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -11976,7 +12276,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -12021,7 +12321,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -12126,7 +12426,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -12171,7 +12471,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -12300,7 +12600,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -12345,7 +12645,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -12390,7 +12690,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -12471,7 +12771,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -12501,6 +12801,10 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         private Field salesAccountField;
         
         private Field salesSubField;
+        
+        private Field aRAccountField;
+        
+        private Field aRSubField;
         
         private Field noteTextField;
         
@@ -12627,6 +12931,26 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         }
         
         /// <remarks/>
+        public Field ARAccount {
+            get {
+                return this.aRAccountField;
+            }
+            set {
+                this.aRAccountField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field ARSub {
+            get {
+                return this.aRSubField;
+            }
+            set {
+                this.aRSubField = value;
+            }
+        }
+        
+        /// <remarks/>
         public Field NoteText {
             get {
                 return this.noteTextField;
@@ -12648,7 +12972,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -12693,7 +13017,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -12810,7 +13134,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -12855,7 +13179,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -12972,7 +13296,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -13017,7 +13341,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -13086,7 +13410,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -13131,7 +13455,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -13248,7 +13572,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -13293,7 +13617,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -13410,7 +13734,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -13455,7 +13779,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -13572,7 +13896,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -13617,7 +13941,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -13722,7 +14046,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -13767,7 +14091,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -13812,7 +14136,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -13857,7 +14181,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -13986,7 +14310,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14031,7 +14355,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14112,7 +14436,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14157,7 +14481,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14165,8 +14489,6 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     public partial class AR303000BillingSettingsServiceManagement {
         
         private string displayNameField;
-        
-        private Field allowAppointmentNotificationsField;
         
         private Field requireCustomerSignatureOnMobileAppField;
         
@@ -14191,16 +14513,6 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
             }
             set {
                 this.displayNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Field AllowAppointmentNotifications {
-            get {
-                return this.allowAppointmentNotificationsField;
-            }
-            set {
-                this.allowAppointmentNotificationsField = value;
             }
         }
         
@@ -14286,7 +14598,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14331,7 +14643,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14376,7 +14688,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14421,7 +14733,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14466,7 +14778,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14511,7 +14823,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14580,7 +14892,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14625,7 +14937,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14682,7 +14994,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14727,7 +15039,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14757,6 +15069,8 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         private Field currRateTypeField;
         
         private Field enableRateOverrideField;
+        
+        private Field payByLineField;
         
         private AR303000GeneralInfoFinancialSettingsServiceCommands serviceCommandsField;
         
@@ -14881,6 +15195,16 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         }
         
         /// <remarks/>
+        public Field PayByLine {
+            get {
+                return this.payByLineField;
+            }
+            set {
+                this.payByLineField = value;
+            }
+        }
+        
+        /// <remarks/>
         public AR303000GeneralInfoFinancialSettingsServiceCommands ServiceCommands {
             get {
                 return this.serviceCommandsField;
@@ -14892,7 +15216,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14937,7 +15261,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -14982,7 +15306,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -15099,7 +15423,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -15117,6 +15441,10 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         private Field chkServiceManagementField;
         
         private Field noteTextField;
+        
+        private Field addPopUpNoteField;
+        
+        private Field popUpNoteTextField;
         
         private AR303000CustomerSummaryServiceCommands serviceCommandsField;
         
@@ -15181,6 +15509,26 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         }
         
         /// <remarks/>
+        public Field AddPopUpNote {
+            get {
+                return this.addPopUpNoteField;
+            }
+            set {
+                this.addPopUpNoteField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Field PopUpNoteText {
+            get {
+                return this.popUpNoteTextField;
+            }
+            set {
+                this.popUpNoteTextField = value;
+            }
+        }
+        
+        /// <remarks/>
         public AR303000CustomerSummaryServiceCommands ServiceCommands {
             get {
                 return this.serviceCommandsField;
@@ -15192,7 +15540,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -15314,6 +15662,8 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         private Action regenerateLastStatementActionField;
         
         private Action validateAddressesActionField;
+        
+        private Action changeIDActionField;
         
         private Action customerDocumentsInquiryField;
         
@@ -15938,6 +16288,16 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
         }
         
         /// <remarks/>
+        public Action ChangeIDAction {
+            get {
+                return this.changeIDActionField;
+            }
+            set {
+                this.changeIDActionField = value;
+            }
+        }
+        
+        /// <remarks/>
         public Action CustomerDocumentsInquiry {
             get {
                 return this.customerDocumentsInquiryField;
@@ -16149,7 +16509,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -16674,7 +17034,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -16719,7 +17079,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
     public enum ProcessStatus {
@@ -16738,7 +17098,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -16783,7 +17143,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
     public enum ErrorCode {
@@ -16802,7 +17162,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -16811,7 +17171,7 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.acumatica.com/generic/")]
     public enum SchemaMode {
@@ -16824,11 +17184,11 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void GetScenarioCompletedEventHandler(object sender, GetScenarioCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetScenarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -16850,11 +17210,11 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void LoginCompletedEventHandler(object sender, LoginCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class LoginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -16876,31 +17236,31 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void LogoutCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void SetBusinessDateCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void SetLocaleNameCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void SetSchemaModeCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void AR303000ClearCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void AR303000GetProcessStatusCompletedEventHandler(object sender, AR303000GetProcessStatusCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class AR303000GetProcessStatusCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -16922,11 +17282,11 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void AR303000GetSchemaCompletedEventHandler(object sender, AR303000GetSchemaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class AR303000GetSchemaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -16948,15 +17308,15 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void AR303000SetSchemaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void AR303000ImportCompletedEventHandler(object sender, AR303000ImportCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class AR303000ImportCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -16978,11 +17338,11 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void AR303000ExportCompletedEventHandler(object sender, AR303000ExportCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class AR303000ExportCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -17004,11 +17364,11 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void AR303000SubmitCompletedEventHandler(object sender, AR303000SubmitCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class AR303000SubmitCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -17030,15 +17390,15 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void IN202500ClearCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void IN202500GetProcessStatusCompletedEventHandler(object sender, IN202500GetProcessStatusCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class IN202500GetProcessStatusCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -17060,11 +17420,11 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void IN202500GetSchemaCompletedEventHandler(object sender, IN202500GetSchemaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class IN202500GetSchemaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -17086,15 +17446,15 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void IN202500SetSchemaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void IN202500ImportCompletedEventHandler(object sender, IN202500ImportCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class IN202500ImportCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -17116,11 +17476,11 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void IN202500ExportCompletedEventHandler(object sender, IN202500ExportCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class IN202500ExportCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -17142,11 +17502,11 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void IN202500SubmitCompletedEventHandler(object sender, IN202500SubmitCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class IN202500SubmitCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -17168,15 +17528,15 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void INGI0002ClearCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void INGI0002GetProcessStatusCompletedEventHandler(object sender, INGI0002GetProcessStatusCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class INGI0002GetProcessStatusCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -17198,11 +17558,11 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void INGI0002GetSchemaCompletedEventHandler(object sender, INGI0002GetSchemaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class INGI0002GetSchemaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -17224,15 +17584,15 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void INGI0002SetSchemaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void INGI0002ImportCompletedEventHandler(object sender, INGI0002ImportCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class INGI0002ImportCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -17254,11 +17614,11 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void INGI0002ExportCompletedEventHandler(object sender, INGI0002ExportCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class INGI0002ExportCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -17280,11 +17640,11 @@ namespace MyBIIntegrationSBAPI.MyBIIntegration {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void INGI0002SubmitCompletedEventHandler(object sender, INGI0002SubmitCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class INGI0002SubmitCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {

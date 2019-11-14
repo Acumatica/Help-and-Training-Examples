@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2041
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBIIntegration", "MyBIIntegration\MyBIIntegration.csproj", "{E44DDC0C-9E4F-4033-8634-1860ABDC1501}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBIIntegration", "MyBIIntegration\MyBIIntegration.csproj", "{05CBA21A-0627-4F10-9CD4-854046534B90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E44DDC0C-9E4F-4033-8634-1860ABDC1501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E44DDC0C-9E4F-4033-8634-1860ABDC1501}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E44DDC0C-9E4F-4033-8634-1860ABDC1501}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E44DDC0C-9E4F-4033-8634-1860ABDC1501}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05CBA21A-0627-4F10-9CD4-854046534B90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05CBA21A-0627-4F10-9CD4-854046534B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05CBA21A-0627-4F10-9CD4-854046534B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05CBA21A-0627-4F10-9CD4-854046534B90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {58E99152-FCCA-4721-A617-326DF70BC4B4}
+		SolutionGuid = {6BBD771E-85E2-47F4-87E8-C85BEEF48D28}
 	EndGlobalSection
 EndGlobal

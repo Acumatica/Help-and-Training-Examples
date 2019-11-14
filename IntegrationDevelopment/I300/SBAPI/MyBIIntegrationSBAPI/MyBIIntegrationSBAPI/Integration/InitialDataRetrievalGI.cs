@@ -17,7 +17,7 @@ namespace MyBIIntegrationSBAPI.Integration
             //Get the schema of the Item Availability Data generic inquiry
             //by using the screen-based API wrapper
             INGI0002Content schema =
-            PX.Soap.Helper.GetSchema<INGI0002Content>(screen);
+                PX.Soap.Helper.GetSchema<INGI0002Content>(screen);
             //Configure the sequence of commands
             var commands = new Command[]
             {
@@ -44,4 +44,5 @@ namespace MyBIIntegrationSBAPI.Integration
             file.Close();
         }
     }
+
 }

@@ -10,14 +10,13 @@ namespace MyBIIntegrationSBAPI.Integration
 {
     class InitialDataRetrieval
     {
-        //Retrieving the list of customers
         public static void ExportCustomers(Screen screen)
         {
             Console.WriteLine("Retrieving the list of customers with contacts...");
             //Get the schema of the Customers (AR303000) form and
             //configure the sequence of commands
             AR303000Content custSchema =
-            PX.Soap.Helper.GetSchema<AR303000Content>(screen);
+                PX.Soap.Helper.GetSchema<AR303000Content>(screen);
             var commands = new Command[]
             {
                 //Get the values of the needed elements
@@ -39,7 +38,7 @@ namespace MyBIIntegrationSBAPI.Integration
             };
             //Export the customer data
             string[][] customerData =
-            screen.AR303000Export(commands, null, 0, true, false);
+                screen.AR303000Export(commands, null, 0, true, false);
             //Save the data to a CSV file
             StreamWriter file = new StreamWriter("Customers.csv");
             {

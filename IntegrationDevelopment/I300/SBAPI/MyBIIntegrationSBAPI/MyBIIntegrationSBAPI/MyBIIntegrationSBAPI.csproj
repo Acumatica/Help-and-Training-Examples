@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5A13A5D2-7DBE-440C-A83A-836B27FC146E}</ProjectGuid>
+    <ProjectGuid>{6CC5779E-6747-4BF9-8AA9-BB5310BF3DF0}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>MyBIIntegrationSBAPI</RootNamespace>
     <AssemblyName>MyBIIntegrationSBAPI</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PX.Soap">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files\Acumatica ERP\ScreenBasedAPIWrapper\PX.Soap.dll</HintPath>
+      <HintPath>..\..\..\Program Files\Acumatica ERP\ScreenBasedAPIWrapper\PX.Soap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

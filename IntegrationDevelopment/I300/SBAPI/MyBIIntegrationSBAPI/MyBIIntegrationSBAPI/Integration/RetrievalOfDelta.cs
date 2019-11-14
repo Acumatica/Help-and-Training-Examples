@@ -20,7 +20,7 @@ namespace MyBIIntegrationSBAPI.Integration
             //Get the schema of the Stock Items (IN202500) form and
             //configure the sequence of commands
             IN202500Content stockItemsSchema =
-            PX.Soap.Helper.GetSchema<IN202500Content>(screen);
+                PX.Soap.Helper.GetSchema<IN202500Content>(screen);
             var commands = new Command[]
             {
                 //Specify the elements whose values should be exported
@@ -29,7 +29,7 @@ namespace MyBIIntegrationSBAPI.Integration
                 stockItemsSchema.StockItemSummary.Description,
                 stockItemsSchema.StockItemSummary.ItemStatus,
                 stockItemsSchema.GeneralSettingsItemDefaults.ItemClass,
-                stockItemsSchema.GeneralSettingsUnitOfMeasureBaseUnit.BaseUnit,
+                stockItemsSchema.GeneralSettingsUnitOfMeasure.BaseUnit,
                 new Field
                 {
                     ObjectName =
@@ -56,7 +56,7 @@ namespace MyBIIntegrationSBAPI.Integration
                     Field = new Field
                     {
                         ObjectName =
-                        stockItemsSchema.StockItemSummary.InventoryID.ObjectName,
+                            stockItemsSchema.StockItemSummary.InventoryID.ObjectName,
                         FieldName = "LastModifiedDateTime"
                     },
                     Condition = FilterCondition.Greater,
@@ -65,7 +65,7 @@ namespace MyBIIntegrationSBAPI.Integration
             };
             //Export stock item records
             String[][] items =
-            screen.IN202500Export(commands, filters, 0, true, false);
+                screen.IN202500Export(commands, filters, 0, true, false);
             //Save the data to a CSV file
             StreamWriter file = new StreamWriter("StockItems.csv");
             {

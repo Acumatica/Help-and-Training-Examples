@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "437fecc4-1470-45c0-b478-a32980a4b99c",
+		"_postman_id": "996fdbcb-f24f-48a2-a2c3-67b0ce7e7b67",
 		"name": "MyBIIntegrationREST",
 		"description": "The set of examples for the Data Retrieval Basics training course.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -43,7 +43,98 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"admin\",\r\n  \"password\": \"123\",\r\n  \"company\": \"MyStore\",\r\n  \"branch\": \"MYSTORE\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost/MyStoreInstance/entity/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0"
+								},
+								{
+									"key": "X-Handled-By",
+									"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Sun, 17-Nov-2019 08:04:22 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": ".ASPXAUTH=C0AD087A4DADC9C4D8BBA49C0A272891FD3D0BD90DFB59EC18DD82589D6668C4DEEF6A86C972DE7509A40E6F6E8D6522868329C25C4B0CDD90C84F6BF2C0C5C348D6698203640038E63544CBC5E1CF6E414794BACAFD8AB6F704086488A2CB4D3731ECB1C56A7E6043600ED012027552FB72B1B5; path=/; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Sun, 17-Nov-2019 08:04:22 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": ".ASPXAUTH=C0AD087A4DADC9C4D8BBA49C0A272891FD3D0BD90DFB59EC18DD82589D6668C4DEEF6A86C972DE7509A40E6F6E8D6522868329C25C4B0CDD90C84F6BF2C0C5C348D6698203640038E63544CBC5E1CF6E414794BACAFD8AB6F704086488A2CB4D3731ECB1C56A7E6043600ED012027552FB72B1B5; path=/; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=31; path=/"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 14 Nov 2019 08:04:22 GMT"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
 				},
 				{
 					"name": "Lesson 1.2: Signing out from Acumatica ERP",
@@ -79,9 +170,101 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost/MyStoreInstance/entity/auth/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0"
+								},
+								{
+									"key": "X-Handled-By",
+									"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": ".ASPXAUTH=; expires=Mon, 11-Oct-1999 20:00:00 GMT; path=/; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "ASP.NET_SessionId=; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": ".ASPXAUTH=; expires=Mon, 11-Oct-1999 20:00:00 GMT; path=/; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "ASP.NET_SessionId=; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=34; path=/"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 14 Nov 2019 08:09:25 GMT"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Part 2: Initial Data Retrieval",
@@ -332,7 +515,7 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "LegacyUI=0; path=/"
+									"value": "requestid=71; path=/"
 								},
 								{
 									"key": "X-Powered-By",
@@ -340,19 +523,20 @@
 								},
 								{
 									"key": "Date",
-									"value": "Fri, 09 Nov 2018 11:47:11 GMT"
+									"value": "Thu, 14 Nov 2019 10:46:07 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "4024"
+									"value": "4023"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"55474a8f-b8e5-4c77-80e0-a85f0d1502c6\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"InventoryID\": {},\n    \"Results\": [\n        {\n            \"id\": \"57ba3bfb-0bd3-415f-9ad5-a5e4c21bb287\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"SIM card & contract\"\n            },\n            \"InventoryID\": {\n                \"value\": \"SIMCARD\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 1000\n            },\n            \"QtyOnHand\": {\n                \"value\": 1000\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"YOGI\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"b21dbcd6-9c33-40fa-a9e5-12088af2b80b\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Acer Laptop Computer\"\n            },\n            \"InventoryID\": {\n                \"value\": \"AACOMPUT01\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 150\n            },\n            \"QtyOnHand\": {\n                \"value\": 150\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"cfa5a1c1-5e3f-41af-a36a-c11c58568913\",\n            \"rowNumber\": 3,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Lego, 500 piece set\"\n            },\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 1974\n            },\n            \"QtyOnHand\": {\n                \"value\": 2000\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"c00f93ef-34ad-4ac8-a30d-436da748fbec\",\n            \"rowNumber\": 4,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Injection molding machine\"\n            },\n            \"InventoryID\": {\n                \"value\": \"AAMACHINE1\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 127\n            },\n            \"QtyOnHand\": {\n                \"value\": 130\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"ca67bc78-db51-4220-9e98-c48455d7fe9f\",\n            \"rowNumber\": 5,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Char-Broil Classic 480\"\n            },\n            \"InventoryID\": {\n                \"value\": \"CONGRILL\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 193\n            },\n            \"QtyOnHand\": {\n                \"value\": 200\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"4f3dcabe-67c1-466b-b0e8-3307a36218d7\",\n            \"rowNumber\": 6,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Folding Picnic Table 6 Foot\"\n            },\n            \"InventoryID\": {\n                \"value\": \"CONTABLE1\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 195\n            },\n            \"QtyOnHand\": {\n                \"value\": 200\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"7634789b-0c7a-4a5c-80cd-84984722dd0a\",\n            \"rowNumber\": 7,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Laptop 12''\"\n            },\n            \"InventoryID\": {\n                \"value\": \"LAPTOP12\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 20\n            },\n            \"QtyOnHand\": {\n                \"value\": 20\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"6918b7f3-357b-4350-beda-5fad902f4f48\",\n            \"rowNumber\": 8,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Laptop 14''\"\n            },\n            \"InventoryID\": {\n                \"value\": \"LAPTOP14\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 20\n            },\n            \"QtyOnHand\": {\n                \"value\": 20\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"3bb992fa-6a48-4026-9d46-2d03fd4ceb31\",\n            \"rowNumber\": 9,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Computer mouse\"\n            },\n            \"InventoryID\": {\n                \"value\": \"MOUSE\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 40\n            },\n            \"QtyOnHand\": {\n                \"value\": 40\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"b28e8eda-d2ba-46f4-8880-d10bf600bb2f\",\n            \"rowNumber\": 10,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Headset\"\n            },\n            \"InventoryID\": {\n                \"value\": \"HEADSET\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 40\n            },\n            \"QtyOnHand\": {\n                \"value\": 40\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"da58d3d0-1b6a-4105-ae20-fb295fd7aab2\",\n            \"rowNumber\": 11,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Computer keyboard\"\n            },\n            \"InventoryID\": {\n                \"value\": \"KEYBOARD\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 40\n            },\n            \"QtyOnHand\": {\n                \"value\": 40\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"457c1267-a527-440e-8c6d-3c4a228182bf\",\n            \"rowNumber\": 12,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Monitor 26''\"\n            },\n            \"InventoryID\": {\n                \"value\": \"MONITOR26\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 40\n            },\n            \"QtyOnHand\": {\n                \"value\": 40\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"ba686fbd-3439-4419-bdf0-2d9cec407bcf\",\n            \"rowNumber\": 13,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Leather case for laptops 12\\\"-15\\\"\"\n            },\n            \"InventoryID\": {\n                \"value\": \"LEATHCASE\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 40\n            },\n            \"QtyOnHand\": {\n                \"value\": 40\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"custom\": {},\n    \"files\": []\n}"
+							"body": "{\n    \"id\": \"a0b1cc0a-ea09-42e9-98a9-5f6362910b55\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"InventoryID\": {},\n    \"Results\": [\n        {\n            \"id\": \"78bbcaa5-bf79-498d-892f-847303904da2\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"SIM card & contract\"\n            },\n            \"InventoryID\": {\n                \"value\": \"SIMCARD\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 1000\n            },\n            \"QtyOnHand\": {\n                \"value\": 1000\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"YOGI\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"537c48ef-a43b-4497-aeb0-b4351bd84a71\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Acer Laptop Computer\"\n            },\n            \"InventoryID\": {\n                \"value\": \"AACOMPUT01\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 150\n            },\n            \"QtyOnHand\": {\n                \"value\": 150\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"c766ca2b-3160-43cb-9e82-41a3a6cad42e\",\n            \"rowNumber\": 3,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Lego 500 piece set\"\n            },\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 1977\n            },\n            \"QtyOnHand\": {\n                \"value\": 1999\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"5e28e263-1a14-4d4f-8dc1-dc78dd8946e7\",\n            \"rowNumber\": 4,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Injection molding machine\"\n            },\n            \"InventoryID\": {\n                \"value\": \"AAMACHINE1\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 127\n            },\n            \"QtyOnHand\": {\n                \"value\": 130\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"73b0f117-f15c-4671-bb6b-93e17a3b9f3c\",\n            \"rowNumber\": 5,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Char-Broil Classic 480\"\n            },\n            \"InventoryID\": {\n                \"value\": \"CONGRILL\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 193\n            },\n            \"QtyOnHand\": {\n                \"value\": 200\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"96d04c99-552d-4f92-beff-ba5cd3dd3053\",\n            \"rowNumber\": 6,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Folding Picnic Table 6 Foot\"\n            },\n            \"InventoryID\": {\n                \"value\": \"CONTABLE1\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 195\n            },\n            \"QtyOnHand\": {\n                \"value\": 200\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"ad56a6d1-1502-4ebf-8e5f-e266d1d655fe\",\n            \"rowNumber\": 7,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Laptop 12''\"\n            },\n            \"InventoryID\": {\n                \"value\": \"LAPTOP12\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 20\n            },\n            \"QtyOnHand\": {\n                \"value\": 20\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"4f468f7d-be28-4045-9872-d0ed40677f1c\",\n            \"rowNumber\": 8,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Laptop 14''\"\n            },\n            \"InventoryID\": {\n                \"value\": \"LAPTOP14\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 20\n            },\n            \"QtyOnHand\": {\n                \"value\": 20\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"a7349abf-00ce-446c-af7c-3ed0ccdea3c6\",\n            \"rowNumber\": 9,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Computer mouse\"\n            },\n            \"InventoryID\": {\n                \"value\": \"MOUSE\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 40\n            },\n            \"QtyOnHand\": {\n                \"value\": 40\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"8bb33d33-bcbb-4061-97ea-08ad2df64124\",\n            \"rowNumber\": 10,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Headset\"\n            },\n            \"InventoryID\": {\n                \"value\": \"HEADSET\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 40\n            },\n            \"QtyOnHand\": {\n                \"value\": 40\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"778e4ad1-185d-4232-83bd-03f4bec24fa9\",\n            \"rowNumber\": 11,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Computer keyboard\"\n            },\n            \"InventoryID\": {\n                \"value\": \"KEYBOARD\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 40\n            },\n            \"QtyOnHand\": {\n                \"value\": 40\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"80bc6160-5539-4391-a14b-769884b1bde8\",\n            \"rowNumber\": 12,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Monitor 26''\"\n            },\n            \"InventoryID\": {\n                \"value\": \"MONITOR26\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 40\n            },\n            \"QtyOnHand\": {\n                \"value\": 40\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"9ffb0547-1702-48fa-8b0d-1251ae5f83f3\",\n            \"rowNumber\": 13,\n            \"note\": null,\n            \"Description\": {\n                \"value\": \"Leather case for laptops 12\\\"-15\\\"\"\n            },\n            \"InventoryID\": {\n                \"value\": \"LEATHCASE\"\n            },\n            \"QtyAvailable\": {\n                \"value\": 40\n            },\n            \"QtyOnHand\": {\n                \"value\": 40\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"Warehouse\": {\n                \"value\": \"MAIN\"\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"custom\": {},\n    \"files\": []\n}"
 						}
 					]
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Part 3: Retrieval of the Delta of Records",
@@ -374,7 +558,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost/MyStoreInstance/entity/Default/18.200.001/StockItem?$select=InventoryID,Description,ItemClass,BaseUOM,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand&$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2018-11-07T00:00:00.000'&$expand=WarehouseDetails",
+							"raw": "http://localhost/MyStoreInstance/entity/Default/18.200.001/StockItem?$select=InventoryID,Description,ItemClass,BaseUOM,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand&$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2019-11-14T00:00:00.000'&$expand=WarehouseDetails",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -393,7 +577,7 @@
 								},
 								{
 									"key": "$filter",
-									"value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2018-11-07T00:00:00.000'"
+									"value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2019-11-14T00:00:00.000'"
 								},
 								{
 									"key": "$expand",
@@ -420,7 +604,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost/MyStoreInstance/entity/Default/18.200.001/StockItem?$select=InventoryID,Description,ItemClass,BaseUOM,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand&$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2018-11-07T00:00:00.000'&$expand=WarehouseDetails",
+									"raw": "http://localhost/MyStoreInstance/entity/Default/18.200.001/StockItem?$select=InventoryID,Description,ItemClass,BaseUOM,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand&$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2019-11-14T00:00:00.000'&$expand=WarehouseDetails",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -439,7 +623,7 @@
 										},
 										{
 											"key": "$filter",
-											"value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2018-11-07T00:00:00.000'"
+											"value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2019-11-14T00:00:00.000'"
 										},
 										{
 											"key": "$expand",
@@ -470,7 +654,7 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": ".ASPXAUTH=9F726AC5B0762877B0F06D2D6E3346AFA2E94E56F7F205F2877183A1BD024AB4960FDE5716316956AF18406F53CBD60BEC3FD1B27A8203E90B5AE52EC4089B9739D0E89F3304FF479CCF28887473C1EE1E29450DBF03115498D89A9290B8C46D5DD9A4B7D72A076B26B25FF693352457233B0AC9; path=/; HttpOnly"
+									"value": ".ASPXAUTH=64670F7518DBB4902DA46161244E25178816F0FBF40D937C663AA29206B3E5E104639D29D85DD03136D2D53B1442388E953FB7207B96801347F3ABE1A15438D0234388D6DF995E091CEFDE4BA1F4DB1DCB1E43023C44C75E1B8863CD66F9FEC3767C2D9B549D3990A589A0E573BE1E3E2C2CB0DC; path=/; HttpOnly"
 								},
 								{
 									"key": "Set-Cookie",
@@ -481,28 +665,25 @@
 									"value": "UserBranch=82; path=/"
 								},
 								{
-									"key": "Set-Cookie",
-									"value": "LegacyUI=0; path=/"
-								},
-								{
 									"key": "X-Powered-By",
 									"value": "ASP.NET"
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 07 Nov 2018 11:33:13 GMT"
+									"value": "Thu, 14 Nov 2019 11:30:14 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "506"
+									"value": "505"
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"id\": \"b9be8b17-64fe-4400-b91d-b7966f8030da\",\n        \"rowNumber\": 1,\n        \"note\": \"\",\n        \"BaseUOM\": {\n            \"value\": \"PIECE\"\n        },\n        \"Description\": {\n            \"value\": \"Lego, 500 piece set\"\n        },\n        \"InventoryID\": {\n            \"value\": \"AALEGO500\"\n        },\n        \"ItemClass\": {\n            \"value\": \"STOCKITEM\"\n        },\n        \"ItemStatus\": {\n            \"value\": \"Active\"\n        },\n        \"LastModified\": {\n            \"value\": \"2018-11-07T13:55:48.097+03:00\"\n        },\n        \"WarehouseDetails\": [\n            {\n                \"id\": \"ba44dff3-8486-4b33-88a3-55096acb9988\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"QtyOnHand\": {\n                    \"value\": 2000\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    }\n]"
+							"body": "[\n    {\n        \"id\": \"cae53ce0-1614-e511-9b82-c86000dddf0b\",\n        \"rowNumber\": 1,\n        \"note\": \"\",\n        \"BaseUOM\": {\n            \"value\": \"PIECE\"\n        },\n        \"Description\": {\n            \"value\": \"Lego, 500 piece set\"\n        },\n        \"InventoryID\": {\n            \"value\": \"AALEGO500\"\n        },\n        \"ItemClass\": {\n            \"value\": \"STOCKITEM\"\n        },\n        \"ItemStatus\": {\n            \"value\": \"Active\"\n        },\n        \"LastModified\": {\n            \"value\": \"2019-11-14T06:13:09.57+03:00\"\n        },\n        \"WarehouseDetails\": [\n            {\n                \"id\": \"80f56719-6e81-e511-80c0-00155d012302\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"QtyOnHand\": {\n                    \"value\": 1999\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"custom\": {},\n        \"files\": []\n    }\n]"
 						}
 					]
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"event": [
@@ -526,5 +707,6 @@
 				]
 			}
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }

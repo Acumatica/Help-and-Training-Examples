@@ -12,44 +12,40 @@ namespace MyBIIntegration.Integration
     {
         //Retrieving the quantities of stock items
         public static void RetrieveItemQuantities(
-            DefaultSoapClient soapClient)
+        DefaultSoapClient soapClient)
         {
             Console.WriteLine("Retrieving the quantities of stock items...");
-
             //Return all columns of the generic inquiry
-            ItemAvailabilityDataInquiry inqParameters = new ItemAvailabilityDataInquiry
-            {
-                //InventoryID = new StringValue { Value = "AALEGO500" },
-                Results = new Result[]
+            ItemAvailabilityDataInquiry inqParameters =
+                new ItemAvailabilityDataInquiry
                 {
-                    new Result
+                    Results = new Result[]
                     {
-                        ReturnBehavior = ReturnBehavior.All
+                        new Result
+                        {
+                            ReturnBehavior = ReturnBehavior.All
+                        }
                     }
-                }
-            };
-
+                };
             //Retrieve the quantities of items
-            ItemAvailabilityDataInquiry results = 
-                (ItemAvailabilityDataInquiry)soapClient.Put(inqParameters);
-
-            //Save results to a CSV file
+            ItemAvailabilityDataInquiry results =
+            (ItemAvailabilityDataInquiry)soapClient.Put(inqParameters);
+            //Save the results to a CSV file
             using (StreamWriter file = new StreamWriter("ItemAvailabilityData.csv"))
             {
                 //Add headers to the file
                 file.WriteLine(
-                    "InventoryID;Description;Warehouse;QtyAvailable;QtyOnHand;");
-
+                "InventoryID;Description;Warehouse;QtyAvailable;QtyOnHand;");
                 //Write the values for each item
-                foreach ( Result result in results.Results)
+                foreach (Result result in results.Results)
                 {
                     file.WriteLine(
-                        string.Format("{0};{1};{2};{3};{4};",
-                        result.InventoryID.Value,
-                        result.Description.Value,
-                        result.Warehouse.Value,
-                        result.QtyAvailable.Value,
-                        result.QtyOnHand.Value));
+                    string.Format("{0};{1};{2};{3};{4};",
+                    result.InventoryID.Value,
+                    result.Description.Value,
+                    result.Warehouse.Value,
+                    result.QtyAvailable.Value,
+                    result.QtyOnHand.Value));
                 }
             }
         }
