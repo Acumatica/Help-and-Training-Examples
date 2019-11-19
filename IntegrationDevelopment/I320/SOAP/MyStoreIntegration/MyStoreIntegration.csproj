@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C64039C8-A77B-47AB-ADC0-E7D1812808AC}</ProjectGuid>
+    <ProjectGuid>{D56CB427-9C85-4EA4-8D38-F80C99653F6A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>MyStoreIntegration</RootNamespace>
     <AssemblyName>MyStoreIntegration</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="IdentityModel, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e7877f4675df049f, processorArchitecture=MSIL">
-      <HintPath>..\packages\IdentityModel.4.1.0\lib\net461\IdentityModel.dll</HintPath>
+      <HintPath>..\packages\IdentityModel.4.1.0\lib\net472\IdentityModel.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -62,7 +61,7 @@
     </Compile>
     <Compile Include="Helper\LongRunProcessor.cs" />
     <Compile Include="Integration\Actions.cs" />
-    <Compile Include="Integration\Attachments.cs" />
+    <Compile Include="Integration\Attachment.cs" />
     <Compile Include="Integration\CreationOfRecords.cs" />
     <Compile Include="Integration\CreditCardPayments.cs" />
     <Compile Include="Integration\UpdateOfRecords.cs" />
@@ -75,10 +74,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\Default\181.wsdl" />
+    <None Include="App.config" />
+    <None Include="Connected Services\Default\18.wsdl" />
     <None Include="Connected Services\Default\MyStoreIntegration.Default.Entity.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

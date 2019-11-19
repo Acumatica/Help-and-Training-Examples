@@ -9,11 +9,10 @@ namespace MyStoreIntegration.Integration
 {
     class CreationOfRecords
     {
-        //Creating a shipment 
+        //Creating a shipment
         public static void CreateShipment(DefaultSoapClient soapClient)
         {
             Console.WriteLine("Creating a shipment...");
-
             //Shipment data
             string shipmentType = "Shipment";
             string customerID = "C000000003";
@@ -24,7 +23,6 @@ namespace MyStoreIntegration.Integration
             //Sales order with the Open status for the specified customer
             string secondOrderNbr = "000006";
             string secondOrderType = "SO";
-
             //Specify the values of a new shipment
             Shipment shipment = new Shipment
             {
@@ -48,10 +46,8 @@ namespace MyStoreIntegration.Integration
                     }
                 }
             };
-
             //Create a shipment with the specified values
             Shipment newShipment = (Shipment)soapClient.Put(shipment);
-
             //Display the summary of the created record
             Console.WriteLine("Shipment number: " + newShipment.ShipmentNbr.Value);
             Console.WriteLine("Shipment type: " + newShipment.Type.Value);
@@ -65,16 +61,17 @@ namespace MyStoreIntegration.Integration
         public static void CreateStockItem(DefaultSoapClient soapClient)
         {
             Console.WriteLine("Creating a stock item with attributes...");
-
             //Stock item data
             string inventoryID = "BASESERV2";
             string itemDescription = "Baseline level of performance";
-            string itemClass = "STOCKITEM"; //Item class that has attributes defined
-            string attributeName1 = "Operation System"; //An attribute of the item class (STOCKITEM)
+            //Item class that has attributes defined
+            string itemClass = "STOCKITEM";
+            //An attribute of the item class (STOCKITEM)
+            string attributeName1 = "Operation System";
             string attributeValue1 = "Windows";
-            string attributeName2 = "Version Of Software"; //An attribute of the item class (STOCKITEM)
+            //An attribute of the item class (STOCKITEM)
+            string attributeName2 = "Version Of Software";
             string attributeValue2 = "Server 2012 R2";
-
             //Specify the values of the new stock item
             StockItem stockItemToBeCreated = new StockItem
             {
@@ -95,12 +92,9 @@ namespace MyStoreIntegration.Integration
                         Value = new StringValue { Value = attributeValue2 }
                     }
                 }
-
             };
-
             //Create a stock item with the specified values
             StockItem newStockItem = (StockItem)soapClient.Put(stockItemToBeCreated);
-
             //Display the summary of the created stock item
             Console.WriteLine("Inventory ID: " + newStockItem.InventoryID.Value);
             foreach (AttributeValue attr in newStockItem.Attributes)

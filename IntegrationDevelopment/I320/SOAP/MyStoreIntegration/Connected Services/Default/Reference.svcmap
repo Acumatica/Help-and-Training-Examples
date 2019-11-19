@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8c662492-71ac-4ba6-b178-c34727a14f44" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5a7e4cde-40e8-4716-91f4-adf2139fe518" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,10 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://localhost/MyStoreInstance/(W(7))/entity/Default/18.200.001?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://localhost/MyStoreInstance/(W(4))/entity/Default/18.200.001?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="181.wsdl" MetadataType="Wsdl" ID="06d01008-a9fe-4011-b35b-50bb9eedf5a3" SourceId="1" SourceUrl="https://localhost/MyStoreInstance/(W(7))/entity/Default/18.200.001?wsdl" />
+    <MetadataFile FileName="18.wsdl" MetadataType="Wsdl" ID="4f17196b-a7ac-4810-8501-71cd58a73447" SourceId="1" SourceUrl="https://localhost/MyStoreInstance/(W(4))/entity/Default/18.200.001?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

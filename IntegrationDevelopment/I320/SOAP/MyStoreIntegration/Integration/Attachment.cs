@@ -8,7 +8,7 @@ using System.IO;
 
 namespace MyStoreIntegration.Integration
 {
-    class Attachments
+    class Attachment
     {
         //Adding a note to a stock item record
         public static void AddNoteToStockItem(DefaultSoapClient soapClient)
@@ -19,7 +19,7 @@ namespace MyStoreIntegration.Integration
             string inventoryID = "CONGRILL";
             string noteText = "My note";
 
-            //Find the stock item in the system and specify the note text
+            //Find the stock item in the system, and specify the note text
             StockItem stockItemToBeUpdated = new StockItem
             {
                 InventoryID = new StringSearch { Value = inventoryID },
@@ -39,14 +39,12 @@ namespace MyStoreIntegration.Integration
         public static void AddFileToStockItem(DefaultSoapClient soapClient)
         {
             Console.WriteLine("Adding a file to a stock item record...");
-
             //Input data
             string inventoryID = "CONGRILL";
             //The path to the file that you need to attach to the stock item
-            string filePath = "D:\\MyStoreIntegration\\SourceFiles\\";
+            string filePath = "C:\\Help-and-Training-Examples\\IntegrationDevelopment\\I320\\SourseFiles";
             //The name of the file
-            string fileName = "T2MCRO.jpg"; 
-
+            string fileName = "T2MCRO.jpg";
             //Read the file data
             byte[] filedata;
             using (FileStream file =
@@ -55,21 +53,19 @@ namespace MyStoreIntegration.Integration
                 filedata = new byte[file.Length];
                 file.Read(filedata, 0, filedata.Length);
             }
-
             //Add the file to the stock item record
             StockItem stockItem = new StockItem
             {
                 InventoryID = new StringSearch { Value = inventoryID },
             };
-            
             Default.File[] stockItemFiles = new[]
-                    {
-                        new MyStoreIntegration.Default.File
-                        {
-                            Name = fileName,
-                            Content = filedata
-                        }
-                    };
+            {
+                new MyStoreIntegration.Default.File
+                {
+                    Name = fileName,
+                    Content = filedata
+                }
+            };
             soapClient.PutFiles(stockItem, stockItemFiles);
         }
     }

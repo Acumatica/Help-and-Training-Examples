@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bf5a2c73-1fec-4ccc-80dc-0570aecbb4c5",
+		"_postman_id": "891591ef-1c60-4646-9fce-12a7844f5e78",
 		"name": "MyStoreIntegration_DataManipulation",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,7 +9,183 @@
 			"name": "Prerequisites",
 			"item": [
 				{
-					"name": "Lesson 1.3: Signing out from Acumatica ERP",
+					"name": "Requesting token manually",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "api",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "D7ADC2DA-29B5-FEE4-6829-3027FCB86421@MyStore",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "Y1DDqHiln-xFhjZfVEdImg",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost/MyStoreInstance/identity/connect/token",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"identity",
+								"connect",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "api",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "D7ADC2DA-29B5-FEE4-6829-3027FCB86421@MyStore",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "Y1DDqHiln-xFhjZfVEdImg",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/identity/connect/token",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"identity",
+										"connect",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-store, no-cache, max-age=0, private"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Content-Length",
+									"value": "91"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0"
+								},
+								{
+									"key": "X-AspNet-Version",
+									"value": "4.0.30319"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=14; path=/"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Nov 2019 13:41:14 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"98183790cea1b86cd6e91cf1754bf9b9\",\n    \"expires_in\": 3600,\n    \"token_type\": \"Bearer\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Signing out from Acumatica ERP",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -614,15 +790,11 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Sun, 16-Dec-2018 12:58:25 GMT; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Fri, 22-Nov-2019 12:26:19 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=73; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "LegacyUI=0; path=/"
+									"value": "UserBranch=82; path=/"
 								},
 								{
 									"key": "X-Powered-By",
@@ -630,7 +802,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 13 Dec 2018 12:58:26 GMT"
+									"value": "Tue, 19 Nov 2019 12:26:23 GMT"
 								},
 								{
 									"key": "Content-Length",
@@ -638,7 +810,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"id\": \"c52bd7ac-c715-4ce3-8565-50463570b7d9\",\n        \"rowNumber\": 1,\n        \"note\": \"\",\n        \"CustomerOrder\": {\n            \"value\": \"SO248-563-06\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"988988a5-3bc0-4645-a884-8a9ba6a400b4\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AALEGO500\"\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            {\n                \"id\": \"983f9831-b139-489c-8ad0-86d50f6e535d\",\n                \"rowNumber\": 2,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"CONTABLE1\"\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            {\n                \"id\": \"19193380-63b2-445c-a50b-fd6d57f176a0\",\n                \"rowNumber\": 3,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"CONGRILL\"\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderNbr\": {\n            \"value\": \"000003\"\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    }\n]"
+							"body": "[\n    {\n        \"id\": \"7313e950-7381-e511-80c0-00155d012302\",\n        \"rowNumber\": 1,\n        \"note\": \"\",\n        \"CustomerOrder\": {\n            \"value\": \"SO248-563-06\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"08731a64-7381-e511-80c0-00155d012302\",\n                \"rowNumber\": 1,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"CONGRILL\"\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            {\n                \"id\": \"f4a7e172-7381-e511-80c0-00155d012302\",\n                \"rowNumber\": 2,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"AALEGO500\"\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {},\n                \"files\": []\n            },\n            {\n                \"id\": \"091b0d7f-7381-e511-80c0-00155d012302\",\n                \"rowNumber\": 3,\n                \"note\": \"\",\n                \"InventoryID\": {\n                    \"value\": \"CONTABLE1\"\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"OrderNbr\": {\n            \"value\": \"000003\"\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"files\": []\n    }\n]"
 						}
 					]
 				},
@@ -660,7 +832,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"OrderType\":{\"value\":\"SO\"},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"19193380-63b2-445c-a50b-fd6d57f176a0\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"988988a5-3bc0-4645-a884-8a9ba6a400b4\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
+							"raw": "{\n\t\"OrderType\":{\"value\":\"SO\"},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"08731a64-7381-e511-80c0-00155d012302\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"f4a7e172-7381-e511-80c0-00155d012302\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
 						},
 						"url": {
 							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID&$expand=Details",
@@ -706,7 +878,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"OrderType\":{\"value\":\"SO\"},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"19193380-63b2-445c-a50b-fd6d57f176a0\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"988988a5-3bc0-4645-a884-8a9ba6a400b4\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
+									"raw": "{\n\t\"OrderType\":{\"value\":\"SO\"},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"08731a64-7381-e511-80c0-00155d012302\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"f4a7e172-7381-e511-80c0-00155d012302\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
 								},
 								"url": {
 									"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID&$expand=Details",
@@ -751,15 +923,23 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Sun, 16-Dec-2018 13:00:05 GMT; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Fri, 22-Nov-2019 12:28:19 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=73; path=/"
+									"value": "UserBranch=82; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "LegacyUI=0; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Fri, 22-Nov-2019 12:28:19 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=149; path=/"
 								},
 								{
 									"key": "X-Powered-By",
@@ -767,15 +947,15 @@
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 13 Dec 2018 13:00:05 GMT"
+									"value": "Tue, 19 Nov 2019 12:28:23 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "557"
+									"value": "559"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"28fd1be7-7b78-45d1-a7ba-7ae3ea6b8a0a\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Details\": [\n        {\n            \"id\": \"23c24e55-e92e-47e4-aec2-9213da02f823\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"OrderQty\": {\n                \"value\": 5\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"f86410ce-9807-4fce-90a8-7af8872572fc\",\n            \"rowNumber\": 2,\n            \"note\": \"\",\n            \"InventoryID\": {\n                \"value\": \"CONTABLE1\"\n            },\n            \"OrderQty\": {\n                \"value\": 2\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"Hold\": {\n        \"value\": false\n    },\n    \"OrderedQty\": {\n        \"value\": 7\n    },\n    \"OrderNbr\": {\n        \"value\": \"000003\"\n    },\n    \"OrderTotal\": {\n        \"value\": 295\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+							"body": "{\n    \"id\": \"7313e950-7381-e511-80c0-00155d012302\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Details\": [\n        {\n            \"id\": \"f4a7e172-7381-e511-80c0-00155d012302\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"OrderQty\": {\n                \"value\": 5\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"091b0d7f-7381-e511-80c0-00155d012302\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"CONTABLE1\"\n            },\n            \"OrderQty\": {\n                \"value\": 2\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"Hold\": {\n        \"value\": false\n    },\n    \"OrderedQty\": {\n        \"value\": 7\n    },\n    \"OrderNbr\": {\n        \"value\": \"000003\"\n    },\n    \"OrderTotal\": {\n        \"value\": 295\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
 						}
 					]
 				}
@@ -864,7 +1044,7 @@
 							"header": [
 								{
 									"key": "Location",
-									"value": "/MyStoreInstance/entity/Default/18.200.001/SalesInvoice/ReleaseSalesInvoice/status/f901931d-8b3b-420d-8fb2-2e0293cdd38b"
+									"value": "/MyStoreInstance/entity/Default/18.200.001/SalesInvoice/ReleaseSalesInvoice/status/c550f667-4a30-48a3-ac8d-6a6026a8a760"
 								},
 								{
 									"key": "Server",
@@ -876,7 +1056,7 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Sat, 22-Dec-2018 12:57:48 GMT; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Fri, 22-Nov-2019 12:45:54 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
@@ -884,7 +1064,15 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "LegacyUI=0; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Fri, 22-Nov-2019 12:45:54 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=166; path=/"
 								},
 								{
 									"key": "X-Powered-By",
@@ -892,7 +1080,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 19 Dec 2018 12:57:53 GMT"
+									"value": "Tue, 19 Nov 2019 12:46:04 GMT"
 								},
 								{
 									"key": "Content-Length",
@@ -900,7 +1088,7 @@
 								}
 							],
 							"cookie": [],
-							"body": ""
+							"body": null
 						}
 					]
 				},
@@ -921,7 +1109,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesInvoice/ReleaseSalesInvoice/status/f901931d-8b3b-420d-8fb2-2e0293cdd38b",
+							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesInvoice/ReleaseSalesInvoice/status/c550f667-4a30-48a3-ac8d-6a6026a8a760",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -934,11 +1122,82 @@
 								"SalesInvoice",
 								"ReleaseSalesInvoice",
 								"status",
-								"f901931d-8b3b-420d-8fb2-2e0293cdd38b"
+								"c550f667-4a30-48a3-ac8d-6a6026a8a760"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/SalesInvoice/ReleaseSalesInvoice/status/c550f667-4a30-48a3-ac8d-6a6026a8a760",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"18.200.001",
+										"SalesInvoice",
+										"ReleaseSalesInvoice",
+										"status",
+										"c550f667-4a30-48a3-ac8d-6a6026a8a760"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Location",
+									"value": "/MyStoreInstance/entity/Default/18.200.001/SalesInvoice/5157ccca-3204-e911-b818-00155d408001"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0"
+								},
+								{
+									"key": "X-Handled-By",
+									"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Fri, 22-Nov-2019 12:47:03 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Nov 2019 12:47:03 GMT"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
 				},
 				{
 					"name": "Lesson 3.1: Retrieving the Released Invoice",
@@ -1377,7 +1636,9 @@
 						],
 						"body": {
 							"mode": "file",
-							"file": {}
+							"file": {
+								"src": "/C:/Work/Help-and-Training-Examples/IntegrationDevelopment/I320/SourseFiles/T2MCRO.jpg"
+							}
 						},
 						"url": {
 							"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/StockItem/AALEGO500/files/T2MCRO.jpg",
@@ -1397,7 +1658,96 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "file",
+									"file": {
+										"src": "/C:/Work/Help-and-Training-Examples/IntegrationDevelopment/I320/SourseFiles/T2MCRO.jpg"
+									}
+								},
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/18.200.001/StockItem/AALEGO500/files/T2MCRO.jpg",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"18.200.001",
+										"StockItem",
+										"AALEGO500",
+										"files",
+										"T2MCRO.jpg"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Location",
+									"value": "/MyStoreInstance/entity/Default/18.200.001/files/28719e69-0e7f-47f0-8455-2ca1755b00a8"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0"
+								},
+								{
+									"key": "X-Handled-By",
+									"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Fri, 22-Nov-2019 14:29:19 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Fri, 22-Nov-2019 14:29:19 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=209; path=/"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Nov 2019 14:29:19 GMT"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -1408,7 +1758,7 @@
 		"oauth2": [
 			{
 				"key": "accessToken",
-				"value": "6c947968425b31b3f563212408b9805b",
+				"value": "38330a4878b7030b138c32cfa3baa6f6",
 				"type": "string"
 			},
 			{
