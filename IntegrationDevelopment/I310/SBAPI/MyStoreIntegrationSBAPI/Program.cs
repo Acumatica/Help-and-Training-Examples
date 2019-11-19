@@ -1,7 +1,6 @@
 ﻿using System;
 using MyStoreIntegrationSBAPI.SO643000;
 using MyStoreIntegrationSBAPI.Integration;
-
 namespace MyStoreIntegrationSBAPI
 {
     class Program
@@ -17,12 +16,12 @@ namespace MyStoreIntegrationSBAPI
                 //Sign in to Acumatica ERP
                 screen.Login
                 (
-                "admin",
-                "123"
+                    "admin",
+                    "123"
                 );
                 try
                 {
-                    Reports.GetPrintableInvoice(screen);
+                    Report.GetPrintableInvoice(screen);
                 }
                 catch (Exception e)
                 {

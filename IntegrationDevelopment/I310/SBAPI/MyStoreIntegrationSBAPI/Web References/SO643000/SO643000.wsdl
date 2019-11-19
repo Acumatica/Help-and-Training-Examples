@@ -150,6 +150,7 @@
           <s:enumeration value="SaveNotClose" />
           <s:enumeration value="Cancel" />
           <s:enumeration value="Refresh" />
+          <s:enumeration value="CopyPaste" />
           <s:enumeration value="Report" />
           <s:enumeration value="First" />
           <s:enumeration value="Next" />
@@ -161,7 +162,12 @@
           <s:enumeration value="ApproveAll" />
           <s:enumeration value="Process" />
           <s:enumeration value="ProcessAll" />
+          <s:enumeration value="Schedule" />
           <s:enumeration value="EditDetail" />
+          <s:enumeration value="ActionsFolder" />
+          <s:enumeration value="InquiriesFolder" />
+          <s:enumeration value="ReportsFolder" />
+          <s:enumeration value="ToolbarFolder" />
         </s:restriction>
       </s:simpleType>
       <s:complexType name="EveryValue">
@@ -169,12 +175,12 @@
           <s:extension base="tns:Command" />
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="RowNumber">
+      <s:complexType name="DeleteRow">
         <s:complexContent mixed="false">
           <s:extension base="tns:Command" />
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="DeleteRow">
+      <s:complexType name="Answer">
         <s:complexContent mixed="false">
           <s:extension base="tns:Command" />
         </s:complexContent>
@@ -194,7 +200,7 @@
           <s:extension base="tns:Command" />
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="Answer">
+      <s:complexType name="RowNumber">
         <s:complexContent mixed="false">
           <s:extension base="tns:Command" />
         </s:complexContent>
@@ -470,6 +476,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="ViewPdf" type="tns:Field" />
           <s:element minOccurs="0" maxOccurs="1" name="PdfCompressed" type="tns:Field" />
           <s:element minOccurs="0" maxOccurs="1" name="PdfFontEmbedded" type="tns:Field" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlternativeEngine" type="tns:Field" />
           <s:element minOccurs="0" maxOccurs="1" name="PrintAllPages" type="tns:Field" />
           <s:element minOccurs="0" maxOccurs="1" name="DeletedRecords" type="tns:Field" />
           <s:element minOccurs="0" maxOccurs="1" name="ServiceCommands" type="tns:CommonSettingsServiceCommands" />

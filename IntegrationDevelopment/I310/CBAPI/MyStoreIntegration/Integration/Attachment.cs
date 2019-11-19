@@ -8,13 +8,13 @@ using System.IO;
 
 namespace MyStoreIntegration.Integration
 {
-    class Attachments
+    class Attachment
     {
         //Retrieving the files that are attached to a stock item
         public static void ExportStockItemFiles(DefaultSoapClient soapClient)
         {
             Console.WriteLine(
-             "Retrieving the files that are attached to a stock item...");
+                "Retrieving the files that are attached to a stock item...");
 
             //Parameters of filtering
             string inventoryID = "AAMACHINE1";

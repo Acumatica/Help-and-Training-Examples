@@ -25,7 +25,16 @@ namespace MyStoreIntegration.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D9020968-BEA5-2BE8-31EF-5ABA25D08125@MyStore")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost/MyStoreInstance/identity")]
+        public string IdentityEndpoint {
+            get {
+                return ((string)(this["IdentityEndpoint"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D7ADC2DA-29B5-FEE4-6829-3027FCB86421@MyStore")]
         public string ClientID {
             get {
                 return ((string)(this["ClientID"]));
@@ -34,7 +43,7 @@ namespace MyStoreIntegration.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("vBLTIvQaW4rMAOwZwZpp4Q")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Y1DDqHiln-xFhjZfVEdImg")]
         public string ClientSecret {
             get {
                 return ((string)(this["ClientSecret"]));
@@ -65,15 +74,6 @@ namespace MyStoreIntegration.Properties {
         public string Scope {
             get {
                 return ((string)(this["Scope"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost/MyStoreInstance/identity")]
-        public string IdentityEndpoint {
-            get {
-                return ((string)(this["IdentityEndpoint"]));
             }
         }
     }
