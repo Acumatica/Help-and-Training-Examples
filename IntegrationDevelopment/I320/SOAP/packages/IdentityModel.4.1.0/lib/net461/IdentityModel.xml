@@ -1,0 +1,2406 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IdentityModel</name>
+    </assembly>
+    <members>
+        <member name="T:IdentityModel.Base64Url">
+            <summary>
+            Base64Url encoder/decoder
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Base64Url.Encode(System.Byte[])">
+            <summary>
+            Encodes the specified byte array.
+            </summary>
+            <param name="arg">The argument.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Base64Url.Decode(System.String)">
+            <summary>
+            Decodes the specified string.
+            </summary>
+            <param name="arg">The argument.</param>
+            <returns></returns>
+            <exception cref="T:System.Exception">Illegal base64url string!</exception>
+        </member>
+        <member name="T:IdentityModel.ClaimComparer">
+            <summary>
+            Compares two instances of Claim
+            </summary>
+        </member>
+        <member name="T:IdentityModel.ClaimComparer.Options">
+            <summary>
+            Claim comparison options
+            </summary>
+        </member>
+        <member name="P:IdentityModel.ClaimComparer.Options.IgnoreIssuer">
+            <summary>
+            Specifies if the issuer value is being taken into account
+            </summary>
+        </member>
+        <member name="P:IdentityModel.ClaimComparer.Options.IgnoreValueCase">
+            <summary>
+            Specifies if claim and issuer value comparison should be case-sensitive
+            </summary>
+        </member>
+        <member name="M:IdentityModel.ClaimComparer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdentityModel.ClaimComparer"/> class with default options.
+            </summary>
+        </member>
+        <member name="M:IdentityModel.ClaimComparer.#ctor(IdentityModel.ClaimComparer.Options)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdentityModel.ClaimComparer"/> class with given comparison options.
+            </summary>
+            <param name="options">Comparison options.</param>
+        </member>
+        <member name="M:IdentityModel.ClaimComparer.Equals(System.Security.Claims.Claim,System.Security.Claims.Claim)">
+            <inheritdoc/>
+        </member>
+        <member name="M:IdentityModel.ClaimComparer.GetHashCode(System.Security.Claims.Claim)">
+            <inheritdoc/>
+        </member>
+        <member name="T:IdentityModel.Client.AuthorityUrlValidationStrategy">
+            <summary>
+            <para>Implementation of <see cref="T:IdentityModel.Client.IAuthorityValidationStrategy"/> based on <see cref="T:System.Uri"/> equality.
+            Trailing slash is also ignored.</para>
+            </summary>
+            <seealso cref="T:IdentityModel.Client.StringComparisonAuthorityValidationStrategy"/>
+        </member>
+        <member name="M:IdentityModel.Client.AuthorityUrlValidationStrategy.IsIssuerNameValid(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:IdentityModel.Client.AuthorityUrlValidationStrategy.IsEndpointValid(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <inheritdoc/>
+        </member>
+        <member name="T:IdentityModel.Client.BasicAuthenticationHeaderStyle">
+            <summary>
+            Enum for specifying then encoding style of the basic authentication header
+            </summary>
+        </member>
+        <member name="F:IdentityModel.Client.BasicAuthenticationHeaderStyle.Rfc6749">
+            <summary>
+            Recommended. Uses the encoding as described in the OAuth 2.0 spec (https://tools.ietf.org/html/rfc6749#section-2.3.1). Base64(urlformencode(client_id) + ":" + urlformencode(client_secret))
+            </summary>
+        </member>
+        <member name="F:IdentityModel.Client.BasicAuthenticationHeaderStyle.Rfc2617">
+            <summary>
+            Uses the encoding as described in the original basic authentication spec (https://tools.ietf.org/html/rfc2617#section-2 - used by some non-OAuth 2.0 compliant authorization servers). Base64(client_id + ":" + client_secret). 
+            </summary>
+        </member>
+        <member name="T:IdentityModel.Client.ClientCredentialStyle">
+            <summary>
+            Specifies how the client will transmit client ID and secret
+            </summary>
+        </member>
+        <member name="F:IdentityModel.Client.ClientCredentialStyle.AuthorizationHeader">
+            <summary>
+            HTTP basic authentication
+            </summary>
+        </member>
+        <member name="F:IdentityModel.Client.ClientCredentialStyle.PostBody">
+            <summary>
+            Post values in body
+            </summary>
+        </member>
+        <member name="T:IdentityModel.Client.TokenClientOptions">
+            <summary>
+            Options for TokenClient
+            </summary>
+        </member>
+        <member name="T:IdentityModel.Client.IntrospectionClientOptions">
+            <summary>
+            Options for IntrospectionClient
+            </summary>
+        </member>
+        <member name="T:IdentityModel.Client.ClientOptions">
+            <summary>
+            Base-class protocol client options
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.ClientOptions.Address">
+            <summary>
+            Gets or sets the address.
+            </summary>
+            <value>
+            The address.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ClientOptions.ClientId">
+            <summary>
+            Gets or sets the client identifier.
+            </summary>
+            <value>
+            The client identifier.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ClientOptions.ClientSecret">
+            <summary>
+            Gets or sets the client secret.
+            </summary>
+            <value>
+            The client secret.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ClientOptions.ClientAssertion">
+            <summary>
+            Gets or sets the client assertion.
+            </summary>
+            <value>
+            The assertion.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ClientOptions.ClientCredentialStyle">
+            <summary>
+            Gets or sets the client credential style.
+            </summary>
+            <value>
+            The client credential style.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ClientOptions.AuthorizationHeaderStyle">
+            <summary>
+            Gets or sets the basic authentication header style.
+            </summary>
+            <value>
+            The basic authentication header style.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ClientOptions.Parameters">
+            <summary>
+            Gets or sets additional request parameters (must not conflict with locally set parameters)
+            </summary>
+            <value>
+            The parameters.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.DiscoveryCache">
+            <summary>
+            Helper for caching discovery documents.
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.DiscoveryCache.#ctor(System.String,IdentityModel.Client.DiscoveryPolicy)">
+            <summary>
+            Initialize instance of DiscoveryCache with passed authority.
+            </summary>
+            <param name="authority">Base address or discovery document endpoint.</param>
+            <param name="policy">The policy.</param>
+        </member>
+        <member name="M:IdentityModel.Client.DiscoveryCache.#ctor(System.String,System.Func{System.Net.Http.HttpMessageInvoker},IdentityModel.Client.DiscoveryPolicy)">
+            <summary>
+            Initialize instance of DiscoveryCache with passed authority.
+            </summary>
+            <param name="authority">Base address or discovery document endpoint.</param>
+            <param name="httpClientFunc">The HTTP client function.</param>
+            <param name="policy">The policy.</param>
+        </member>
+        <member name="P:IdentityModel.Client.DiscoveryCache.CacheDuration">
+            <summary>
+            Frequency to refresh discovery document. Defaults to 24 hours.
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.DiscoveryCache.GetAsync">
+            <summary>
+            Get the DiscoveryResponse either from cache or from discovery endpoint.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.DiscoveryCache.Refresh">
+            <summary>
+            Marks the discovery document as stale and will trigger a request to the discovery endpoint on the next request to get the DiscoveryResponse.
+            </summary>
+        </member>
+        <member name="T:IdentityModel.Client.DiscoveryEndpoint">
+            <summary>
+            Represents a URL to a discovery endpoint - parsed to separate the URL and authority
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.DiscoveryEndpoint.ParseUrl(System.String)">
+            <summary>
+            Parses a URL and turns it into authority and discovery endpoint URL.
+            </summary>
+            <param name="input">The input.</param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException">
+            Malformed URL
+            </exception>
+        </member>
+        <member name="M:IdentityModel.Client.DiscoveryEndpoint.IsValidScheme(System.Uri)">
+            <summary>
+            Determines whether the URL uses http or https.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns>
+              <c>true</c> if [is valid scheme] [the specified URL]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:IdentityModel.Client.DiscoveryEndpoint.IsSecureScheme(System.Uri,IdentityModel.Client.DiscoveryPolicy)">
+            <summary>
+            Determines whether uses a secure scheme accoding to the policy.
+            </summary>
+            <param name="url">The URL.</param>
+            <param name="policy">The policy.</param>
+            <returns>
+              <c>true</c> if [is secure scheme] [the specified URL]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:IdentityModel.Client.DiscoveryEndpoint.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdentityModel.Client.DiscoveryEndpoint"/> class.
+            </summary>
+            <param name="authority">The authority.</param>
+            <param name="url">The discovery endpoint URL.</param>
+        </member>
+        <member name="P:IdentityModel.Client.DiscoveryEndpoint.Authority">
+            <summary>
+            Gets or sets the authority.
+            </summary>
+            <value>
+            The authority.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.DiscoveryEndpoint.Url">
+            <summary>
+            Gets or sets the discovery endpoint.
+            </summary>
+            <value>
+            The discovery endpoint.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.DiscoveryPolicy">
+            <summary>
+            Security policy for retrieving a discovery document
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.DiscoveryPolicy.Authority">
+            <summary>
+            Gets or sets the Authority on which the policy checks will be based on
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.DiscoveryPolicy.AuthorityValidationStrategy">
+            <summary>
+            Strategy used to validate issuer name and endpoints based on expected authority.
+            Defaults to <see cref="T:IdentityModel.Client.AuthorityUrlValidationStrategy"/>.
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.DiscoveryPolicy.RequireHttps">
+            <summary>
+            Specifies if HTTPS is enforced on all endpoints. Defaults to true.
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.DiscoveryPolicy.AllowHttpOnLoopback">
+            <summary>
+            Specifies if HTTP is allowed on loopback addresses. Defaults to true.
+            </summary>
+        </member>
+        <member name="F:IdentityModel.Client.DiscoveryPolicy.LoopbackAddresses">
+            <summary>
+            Specifies valid loopback addresses, defaults to localhost and 127.0.0.1
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.DiscoveryPolicy.ValidateIssuerName">
+            <summary>
+            Specifies if the issuer name is checked to be identical to the authority. Defaults to true.
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.DiscoveryPolicy.ValidateEndpoints">
+            <summary>
+            Specifies if all endpoints are checked to belong to the authority. Defaults to true.
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.DiscoveryPolicy.EndpointValidationExcludeList">
+            <summary>
+            Specifies a list of endpoints that should be excluded from validation
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.DiscoveryPolicy.AdditionalEndpointBaseAddresses">
+            <summary>
+            Specifies a list of additional base addresses that should be allowed for endpoints
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.DiscoveryPolicy.RequireKeySet">
+            <summary>
+            Specifies if a key set is required. Defaults to true.
+            </summary>
+        </member>
+        <member name="T:IdentityModel.Client.AuthorizationHeaderExtensions">
+            <summary>
+            Extensions for HttpRequestMessage
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.AuthorizationHeaderExtensions.SetBasicAuthentication(System.Net.Http.HttpClient,System.String,System.String)">
+            <summary>
+            Sets a basic authentication header.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="userName">Name of the user.</param>
+            <param name="password">The password.</param>
+        </member>
+        <member name="M:IdentityModel.Client.AuthorizationHeaderExtensions.SetBasicAuthenticationOAuth(System.Net.Http.HttpClient,System.String,System.String)">
+            <summary>
+            Sets a basic authentication header for RFC6749 client authentication.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="userName">Name of the user.</param>
+            <param name="password">The password.</param>
+        </member>
+        <member name="M:IdentityModel.Client.AuthorizationHeaderExtensions.SetToken(System.Net.Http.HttpClient,System.String,System.String)">
+            <summary>
+            Sets an authorization header with a given scheme and value.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="scheme">The scheme.</param>
+            <param name="token">The token.</param>
+        </member>
+        <member name="M:IdentityModel.Client.AuthorizationHeaderExtensions.SetBearerToken(System.Net.Http.HttpClient,System.String)">
+            <summary>
+            Sets an authorization header with a bearer token.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="token">The token.</param>
+        </member>
+        <member name="M:IdentityModel.Client.AuthorizationHeaderExtensions.SetBasicAuthentication(System.Net.Http.HttpRequestMessage,System.String,System.String)">
+            <summary>
+            Sets a basic authentication header.
+            </summary>
+            <param name="request">The HTTP request message.</param>
+            <param name="userName">Name of the user.</param>
+            <param name="password">The password.</param>
+        </member>
+        <member name="M:IdentityModel.Client.AuthorizationHeaderExtensions.SetBasicAuthenticationOAuth(System.Net.Http.HttpRequestMessage,System.String,System.String)">
+            <summary>
+            Sets a basic authentication header for RFC6749 client authentication.
+            </summary>
+            <param name="request">The HTTP request message.</param>
+            <param name="userName">Name of the user.</param>
+            <param name="password">The password.</param>
+        </member>
+        <member name="M:IdentityModel.Client.AuthorizationHeaderExtensions.SetToken(System.Net.Http.HttpRequestMessage,System.String,System.String)">
+            <summary>
+            Sets an authorization header with a given scheme and value.
+            </summary>
+            <param name="request">The HTTP request message.</param>
+            <param name="scheme">The scheme.</param>
+            <param name="token">The token.</param>
+        </member>
+        <member name="M:IdentityModel.Client.AuthorizationHeaderExtensions.SetBearerToken(System.Net.Http.HttpRequestMessage,System.String)">
+            <summary>
+            Sets an authorization header with a bearer token.
+            </summary>
+            <param name="request">The HTTP request message.</param>
+            <param name="token">The token.</param>
+        </member>
+        <member name="T:IdentityModel.Client.HttpClientDeviceFlowExtensions">
+            <summary>
+            HttpClient extensions for OIDC userinfo
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.HttpClientDeviceFlowExtensions.RequestDeviceAuthorizationAsync(System.Net.Http.HttpMessageInvoker,IdentityModel.Client.DeviceAuthorizationRequest,System.Threading.CancellationToken)">
+            <summary>
+            Sends a userinfo request.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Client.HttpClientDiscoveryExtensions">
+            <summary>
+            HttpClient extentions for OIDC discovery
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(System.Net.Http.HttpClient,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Sends a discovery document request
+            </summary>
+            <param name="client">The client.</param>
+            <param name="address">The address.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(System.Net.Http.HttpMessageInvoker,IdentityModel.Client.DiscoveryDocumentRequest,System.Threading.CancellationToken)">
+            <summary>
+            Sends a discovery document request
+            </summary>
+            <param name="client">The client.</param>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Client.HttpClientDynamicRegistrationExtensions">
+            <summary>
+            HttpClient extensions for dynamic registration
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.HttpClientDynamicRegistrationExtensions.RegisterClientAsync(System.Net.Http.HttpMessageInvoker,IdentityModel.Client.DynamicClientRegistrationRequest,System.Threading.CancellationToken)">
+            <summary>
+            Send a dynamic registration request.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Client.HttpClientJsonWebKeySetExtensions">
+            <summary>
+            HttpClient extentions for OIDC discovery
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.HttpClientJsonWebKeySetExtensions.GetJsonWebKeySetAsync(System.Net.Http.HttpMessageInvoker,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Sends a JSON web key set document request
+            </summary>
+            <param name="client">The client.</param>
+            <param name="address"></param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.HttpClientJsonWebKeySetExtensions.GetJsonWebKeySetAsync(System.Net.Http.HttpMessageInvoker,IdentityModel.Client.JsonWebKeySetRequest,System.Threading.CancellationToken)">
+            <summary>
+            Sends a JSON web key set document request
+            </summary>
+            <param name="client">The client.</param>
+            <param name="request">The request</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Client.HttpClientTokenIntrospectionExtensions">
+            <summary>
+            HttpClient extensions for OAuth token introspection
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.HttpClientTokenIntrospectionExtensions.IntrospectTokenAsync(System.Net.Http.HttpMessageInvoker,IdentityModel.Client.TokenIntrospectionRequest,System.Threading.CancellationToken)">
+            <summary>
+            Sends an OAuth token introspection request.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Client.HttpClientTokenRequestExtensions">
+            <summary>
+            HttpClient extensions for OAuth token requests
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.HttpClientTokenRequestExtensions.RequestClientCredentialsTokenAsync(System.Net.Http.HttpMessageInvoker,IdentityModel.Client.ClientCredentialsTokenRequest,System.Threading.CancellationToken)">
+            <summary>
+            Sends a token request using the client_credentials grant type.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.HttpClientTokenRequestExtensions.RequestDeviceTokenAsync(System.Net.Http.HttpMessageInvoker,IdentityModel.Client.DeviceTokenRequest,System.Threading.CancellationToken)">
+            <summary>
+            Sends a token request using the urn:ietf:params:oauth:grant-type:device_code grant type.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.HttpClientTokenRequestExtensions.RequestPasswordTokenAsync(System.Net.Http.HttpMessageInvoker,IdentityModel.Client.PasswordTokenRequest,System.Threading.CancellationToken)">
+            <summary>
+            Sends a token request using the password grant type.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.HttpClientTokenRequestExtensions.RequestAuthorizationCodeTokenAsync(System.Net.Http.HttpMessageInvoker,IdentityModel.Client.AuthorizationCodeTokenRequest,System.Threading.CancellationToken)">
+            <summary>
+            Sends a token request using the authorization_code grant type.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.HttpClientTokenRequestExtensions.RequestRefreshTokenAsync(System.Net.Http.HttpMessageInvoker,IdentityModel.Client.RefreshTokenRequest,System.Threading.CancellationToken)">
+            <summary>
+            Sends a token request using the refresh_token grant type.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.HttpClientTokenRequestExtensions.RequestTokenAsync(System.Net.Http.HttpMessageInvoker,IdentityModel.Client.TokenRequest,System.Threading.CancellationToken)">
+            <summary>
+            Sends a token request.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.HttpClientTokenRequestExtensions.RequestTokenRawAsync(System.Net.Http.HttpMessageInvoker,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Threading.CancellationToken)">
+            <summary>
+            Sends a token request.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="address">The address.</param>
+            <param name="parameters">The parameters.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">parameters</exception>
+        </member>
+        <member name="T:IdentityModel.Client.HttpClientTokenRevocationExtensions">
+            <summary>
+            HttpClient extensions for OAuth token revocation
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.HttpClientTokenRevocationExtensions.RevokeTokenAsync(System.Net.Http.HttpMessageInvoker,IdentityModel.Client.TokenRevocationRequest,System.Threading.CancellationToken)">
+            <summary>
+            Sends an OAuth token revocation request.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Client.HttpClientUserInfoExtensions">
+            <summary>
+            HttpClient extensions for OIDC userinfo
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.HttpClientUserInfoExtensions.GetUserInfoAsync(System.Net.Http.HttpMessageInvoker,IdentityModel.Client.UserInfoRequest,System.Threading.CancellationToken)">
+            <summary>
+            Sends a userinfo request.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Client.JObjectExtensions">
+            <summary>
+            Extensions for JObject
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.JObjectExtensions.ToClaims(Newtonsoft.Json.Linq.JObject,System.String[])">
+            <summary>
+            Converts a JSON claims object to a list of Claim
+            </summary>
+            <param name="json">The json.</param>
+            <param name="excludeKeys">Claims that should be excluded.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.JObjectExtensions.TryGetValue(Newtonsoft.Json.Linq.JObject,System.String)">
+            <summary>
+            Tries to get a value from a JObject
+            </summary>
+            <param name="json">The json.</param>
+            <param name="name">The name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.JObjectExtensions.TryGetInt(Newtonsoft.Json.Linq.JObject,System.String)">
+            <summary>
+            Tries to get an int from a JObject
+            </summary>
+            <param name="json">The json.</param>
+            <param name="name">The name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.JObjectExtensions.TryGetString(Newtonsoft.Json.Linq.JObject,System.String)">
+            <summary>
+            Tries to get a string from a JObject
+            </summary>
+            <param name="json">The json.</param>
+            <param name="name">The name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.JObjectExtensions.TryGetBoolean(Newtonsoft.Json.Linq.JObject,System.String)">
+            <summary>
+            Tries to get a boolean from a JObject
+            </summary>
+            <param name="json">The json.</param>
+            <param name="name">The name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.JObjectExtensions.TryGetStringArray(Newtonsoft.Json.Linq.JObject,System.String)">
+            <summary>
+            Tries to get a string array from a JObject
+            </summary>
+            <param name="json">The json.</param>
+            <param name="name">The name.</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Client.RequestUrlExtensions">
+            <summary>
+            Extensions for RequestUrl
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.RequestUrlExtensions.Create(IdentityModel.Client.RequestUrl,System.Object)">
+            <summary>
+            Creates an authorize URL.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="values">The values (either using a string Dictionary or an object's properties).</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.RequestUrlExtensions.CreateAuthorizeUrl(IdentityModel.Client.RequestUrl,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.String,System.String,System.Object)">
+            <summary>
+            Creates an authorize URL.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="clientId">The client identifier.</param>
+            <param name="responseType">The response type.</param>
+            <param name="scope">The scope.</param>
+            <param name="redirectUri">The redirect URI.</param>
+            <param name="state">The state.</param>
+            <param name="nonce">The nonce.</param>
+            <param name="loginHint">The login hint.</param>
+            <param name="acrValues">The acr values.</param>
+            <param name="prompt">The prompt.</param>
+            <param name="responseMode">The response mode.</param>
+            <param name="codeChallenge">The code challenge.</param>
+            <param name="codeChallengeMethod">The code challenge method.</param>
+            <param name="display">The display option.</param>
+            <param name="maxAge">The max age.</param>
+            <param name="uiLocales">The ui locales.</param>
+            <param name="idTokenHint">The id_token hint.</param>
+            <param name="extra">Extra parameters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.RequestUrlExtensions.CreateEndSessionUrl(IdentityModel.Client.RequestUrl,System.String,System.String,System.String,System.Object)">
+            <summary>
+            Creates a end_session URL.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="idTokenHint">The id_token hint.</param>
+            <param name="postLogoutRedirectUri">The post logout redirect URI.</param>
+            <param name="state">The state.</param>
+            <param name="extra">The extra parameters.</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Client.IAuthorityValidationStrategy">
+            <summary>
+            Authority validation strategy.
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.IAuthorityValidationStrategy.IsIssuerNameValid(System.String,System.String)">
+            <summary>
+            Validate issuer name found in Discovery Document.
+            </summary>
+            <param name="expectedAuthority">Authority expected.</param>
+            <param name="issuerName">Authority declared in Discovery Document.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.IAuthorityValidationStrategy.IsEndpointValid(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Validate end point found in Discovery Document.
+            </summary>
+            <param name="expectedAuthority">Authority expected.</param>
+            <param name="endpoint">Endpoint declared in Discovery Document.</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Client.IDiscoveryCache">
+            <summary>
+            Interface for discovery cache
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.IDiscoveryCache.CacheDuration">
+            <summary>
+            Gets or sets the duration of the cache.
+            </summary>
+            <value>
+            The duration of the cache.
+            </value>
+        </member>
+        <member name="M:IdentityModel.Client.IDiscoveryCache.GetAsync">
+            <summary>
+            Retrieves the discovery document
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.IDiscoveryCache.Refresh">
+            <summary>
+            Forces a refresh on the next get.
+            </summary>
+        </member>
+        <member name="T:IdentityModel.Client.IntrospectionClient">
+            <summary>
+            Client library for the OAuth 2 introspection endpoint
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.IntrospectionClient.#ctor(System.Net.Http.HttpMessageInvoker,IdentityModel.Client.IntrospectionClientOptions)">
+            <summary>
+            ctor
+            </summary>
+            <param name="client"></param>
+            <param name="options"></param>
+        </member>
+        <member name="M:IdentityModel.Client.IntrospectionClient.#ctor(System.Func{System.Net.Http.HttpMessageInvoker},IdentityModel.Client.IntrospectionClientOptions)">
+            <summary>
+            ctor
+            </summary>
+            <param name="client funcfunc"></param>
+            <param name="options"></param>
+        </member>
+        <member name="M:IdentityModel.Client.IntrospectionClient.ApplyRequestParameters(IdentityModel.Client.TokenIntrospectionRequest,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Sets request parameters from the options.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="M:IdentityModel.Client.IntrospectionClient.Introspect(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Threading.CancellationToken)">
+            <summary>
+            Introspects a token
+            </summary>
+            <param name="token"></param>
+            <param name="tokenTypeHint"></param>
+            <param name="parameters"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Client.AuthorizeResponse">
+            <summary>
+            Models the response of an authorize request
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.AuthorizeResponse.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdentityModel.Client.AuthorizeResponse"/> class.
+            </summary>
+            <param name="raw">The raw response URL.</param>
+        </member>
+        <member name="P:IdentityModel.Client.AuthorizeResponse.Raw">
+            <summary>
+            Gets the raw response URL.
+            </summary>
+            <value>
+            The raw.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.AuthorizeResponse.Values">
+            <summary>
+            Gets the key/value pairs of the response.
+            </summary>
+            <value>
+            The values.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.AuthorizeResponse.Code">
+            <summary>
+            Gets the authorization code.
+            </summary>
+            <value>
+            The authorization code.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.AuthorizeResponse.AccessToken">
+            <summary>
+            Gets the access token.
+            </summary>
+            <value>
+            The access token.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.AuthorizeResponse.IdentityToken">
+            <summary>
+            Gets the identity token.
+            </summary>
+            <value>
+            The identity token.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.AuthorizeResponse.Error">
+            <summary>
+            Gets the error.
+            </summary>
+            <value>
+            The error.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.AuthorizeResponse.Scope">
+            <summary>
+            Gets the scope.
+            </summary>
+            <value>
+            The scope.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.AuthorizeResponse.TokenType">
+            <summary>
+            Gets the type of the token.
+            </summary>
+            <value>
+            The type of the token.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.AuthorizeResponse.State">
+            <summary>
+            Gets the state.
+            </summary>
+            <value>
+            The state.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.AuthorizeResponse.ErrorDescription">
+            <summary>
+            Gets the error description.
+            </summary>
+            <value>
+            The error description.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.AuthorizeResponse.IsError">
+            <summary>
+            Gets a value indicating whether the response is an error.
+            </summary>
+            <value>
+              <c>true</c> if the response is an error; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.AuthorizeResponse.ExpiresIn">
+            <summary>
+            Gets the expires in.
+            </summary>
+            <value>
+            The expires in.
+            </value>
+        </member>
+        <member name="M:IdentityModel.Client.AuthorizeResponse.TryGet(System.String)">
+            <summary>
+            Tries the get a value.
+            </summary>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Client.DeviceAuthorizationRequest">
+            <summary>
+            Request for device authorization
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.DeviceAuthorizationRequest.Scope">
+            <summary>
+            Gets or sets the scope (optional).
+            </summary>
+            <value>
+            The scope.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.DeviceAuthorizationResponse">
+            <summary>
+            Models an OAuth device authorization response
+            </summary>
+            <seealso cref="T:IdentityModel.Client.ProtocolResponse" />
+        </member>
+        <member name="P:IdentityModel.Client.DeviceAuthorizationResponse.DeviceCode">
+            <summary>
+            Gets the device verification code.
+            </summary>
+            <value>
+            The device code.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.DeviceAuthorizationResponse.UserCode">
+            <summary>
+            Gets the end-user verification code.
+            </summary>
+            <value>
+            The user code.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.DeviceAuthorizationResponse.VerificationUri">
+            <summary>
+            Gets the end-user verification URI on the authorization server.The URI should be short and easy to remember as end users will be asked to manually type it into their user-agent.
+            </summary>
+            <value>
+            The verification URI.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.DeviceAuthorizationResponse.VerificationUriComplete">
+            <summary>
+            Gets the verification URI that includes the "user_code" (or other information with the same function as the "user_code"), designed for non-textual transmission.
+            </summary>
+            <value>
+            The complete verification URI.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.DeviceAuthorizationResponse.ExpiresIn">
+            <summary>
+            Gets the lifetime in seconds of the "device_code" and "user_code".
+            </summary>
+            <value>
+            The expires in.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.DeviceAuthorizationResponse.Interval">
+            <summary>
+            Gets the minimum amount of time in seconds that the client SHOULD wait between polling requests to the token endpoint. If no value is provided, clients MUST use 5 as the default.
+            </summary>
+            <value>
+            The interval.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.DeviceAuthorizationResponse.ErrorDescription">
+            <summary>
+            Gets the error description.
+            </summary>
+            <value>
+            The error description.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.DiscoveryDocumentRequest">
+            <summary>
+            Request for OpenID Connect discovery document
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.DiscoveryDocumentRequest.Policy">
+            <summary>
+            Gets or sets the policy.
+            </summary>
+            <value>
+            The policy.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.DiscoveryDocumentResponse">
+            <summary>
+            Models the response from an OpenID Connect discovery endpoint
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.DiscoveryDocumentResponse.KeySet">
+            <summary>
+            Gets or sets the JSON web key set.
+            </summary>
+            <value>
+            The key set.
+            </value>
+        </member>
+        <member name="M:IdentityModel.Client.DiscoveryDocumentResponse.ValidateIssuerName(System.String,System.String)">
+            <summary>
+            Checks if the issuer matches the authority.
+            </summary>
+            <param name="issuer">The issuer.</param>
+            <param name="authority">The authority.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.DiscoveryDocumentResponse.ValidateIssuerName(System.String,System.String,System.StringComparison)">
+            <summary>
+            Checks if the issuer matches the authority.
+            </summary>
+            <param name="issuer">The issuer.</param>
+            <param name="authority">The authority.</param>
+            <param name="nameComparison">The comparison mechanism that should be used when performing the match.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.DiscoveryDocumentResponse.ValidateIssuerName(System.String,System.String,IdentityModel.Client.IAuthorityValidationStrategy)">
+            <summary>
+            Checks if the issuer matches the authority.
+            </summary>
+            <param name="issuer">The issuer.</param>
+            <param name="authority">The authority.</param>
+            <param name="validationStrategy">The strategy to use.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.DiscoveryDocumentResponse.ValidateEndpoints(Newtonsoft.Json.Linq.JObject,IdentityModel.Client.DiscoveryPolicy)">
+            <summary>
+            Validates the endoints and jwks_uri according to the security policy.
+            </summary>
+            <param name="json">The json.</param>
+            <param name="policy">The policy.</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Client.DynamicClientRegistrationDocument">
+            <summary>
+            Models an OpenID Connect dynamic client registration request
+            </summary>
+        </member>
+        <member name="T:IdentityModel.Client.DynamicClientRegistrationRequest">
+            <summary>
+            Request for dynamic client registration
+            </summary>
+            <seealso cref="T:IdentityModel.Client.ProtocolRequest" />
+        </member>
+        <member name="P:IdentityModel.Client.DynamicClientRegistrationRequest.Token">
+            <summary>
+            Gets or sets the token.
+            </summary>
+            <value>
+            The token.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.DynamicClientRegistrationRequest.Document">
+            <summary>
+            Gets or sets the registration request.
+            </summary>
+            <value>
+            The registration request.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.DynamicClientRegistrationResponse">
+            <summary>
+            Models an OpenID Connect dynamic client registration response
+            </summary>
+            <seealso cref="T:IdentityModel.Client.ProtocolResponse" />
+        </member>
+        <member name="T:IdentityModel.Client.JsonWebKeySetRequest">
+            <summary>
+            Request for JSON web key set document
+            </summary>
+        </member>
+        <member name="T:IdentityModel.Client.JsonWebKeySetResponse">
+            <summary>
+            Models a response from a JWK endpoint
+            </summary>
+            <seealso cref="T:IdentityModel.Client.ProtocolResponse" />
+        </member>
+        <member name="M:IdentityModel.Client.JsonWebKeySetResponse.InitializeAsync(System.Object)">
+            <summary>
+            Intializes the key set
+            </summary>
+            <param name="initializationData"></param>
+            <returns></returns>
+        </member>
+        <member name="P:IdentityModel.Client.JsonWebKeySetResponse.KeySet">
+            <summary>
+            The key set
+            </summary>
+        </member>
+        <member name="T:IdentityModel.Client.ProtocolRequest">
+            <summary>
+            Models a base OAuth/OIDC request with client credentials
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.ProtocolRequest.#ctor">
+            <summary>
+            Initializes an the HTTP protocol request and sets the accept header to application/json
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolRequest.Address">
+            <summary>
+            Gets or sets the endpoint address (you can also set the RequestUri instead or leave blank to use the HttpClient base address).
+            </summary>
+            <value>
+            The address.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolRequest.ClientId">
+            <summary>
+            Gets or sets the client identifier.
+            </summary>
+            <value>
+            The client identifier.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolRequest.ClientSecret">
+            <summary>
+            Gets or sets the client secret.
+            </summary>
+            <value>
+            The client secret.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolRequest.ClientAssertion">
+            <summary>
+            Gets or sets the client assertion.
+            </summary>
+            <value>
+            The assertion.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolRequest.ClientCredentialStyle">
+            <summary>
+            Gets or sets the client credential style (post body vs authorization header).
+            </summary>
+            <value>
+            The client credential style.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolRequest.AuthorizationHeaderStyle">
+            <summary>
+            Gets or sets the basic authentication header style (classic HTTP vs OAuth 2).
+            </summary>
+            <value>
+            The basic authentication header style.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolRequest.Parameters">
+            <summary>
+            Gets or sets additional protocol parameters.
+            </summary>
+            <value>
+            The parameters.
+            </value>
+        </member>
+        <member name="M:IdentityModel.Client.ProtocolRequest.Clone">
+            <summary>
+            Clones this instance.
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.ProtocolRequest.Clone``1">
+            <summary>
+            Clones this instance.
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.ProtocolRequest.Prepare">
+            <summary>
+            Applies protocol parameters to HTTP request
+            </summary>
+        </member>
+        <member name="T:IdentityModel.Client.ClientAssertion">
+            <summary>
+            Models a client assertion
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.ClientAssertion.Type">
+            <summary>
+            Gets or sets the assertion type.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ClientAssertion.Value">
+            <summary>
+            Gets or sets the assertion value.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.ProtocolResponse">
+            <summary>
+            A protocol response
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.ProtocolResponse.FromHttpResponseAsync``1(System.Net.Http.HttpResponseMessage,System.Object)">
+            <summary>
+            Initializes a protocol response from an HTTP response
+            </summary>
+            <typeparam name="T">Specific protocol response type</typeparam>
+            <param name="httpResponse">The HTTP response.</param>
+            <param name="initializationData">The initialization data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.ProtocolResponse.FromException``1(System.Exception,System.String)">
+            <summary>
+            Initializes a protocol response from an exception
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ex">The ex.</param>
+            <param name="errorMessage">The error message.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.ProtocolResponse.InitializeAsync(System.Object)">
+            <summary>
+            Allows to initialize instance specific data.
+            </summary>
+            <param name="initializationData">The initialization data.</param>
+            <returns></returns>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolResponse.HttpResponse">
+            <summary>
+            Gets the HTTP response.
+            </summary>
+            <value>
+            The HTTP response.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolResponse.Raw">
+            <summary>
+            Gets the raw protocol response (if present).
+            </summary>
+            <value>
+            The raw.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolResponse.Json">
+            <summary>
+            Gets the protocol response as JSON (if present).
+            </summary>
+            <value>
+            The json.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolResponse.Exception">
+            <summary>
+            Gets the exception (if present).
+            </summary>
+            <value>
+            The exception.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolResponse.IsError">
+            <summary>
+            Gets a value indicating whether an error occurred.
+            </summary>
+            <value>
+              <c>true</c> if an error occurred; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolResponse.ErrorType">
+            <summary>
+            Gets the type of the error.
+            </summary>
+            <value>
+            The type of the error.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolResponse.ErrorMessage">
+            <summary>
+            Gets or sets an explicit error message.
+            </summary>
+            <value>
+            The type of the error.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolResponse.HttpStatusCode">
+            <summary>
+            Gets the HTTP status code.
+            </summary>
+            <value>
+            The HTTP status code.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolResponse.HttpErrorReason">
+            <summary>
+            Gets the HTTP error reason.
+            </summary>
+            <value>
+            The HTTP error reason.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.ProtocolResponse.Error">
+            <summary>
+            Gets the error.
+            </summary>
+            <value>
+            The error.
+            </value>
+        </member>
+        <member name="M:IdentityModel.Client.ProtocolResponse.TryGet(System.String)">
+            <summary>
+            Tries to get a specific value from the JSON response.
+            </summary>
+            <param name="name">The name.</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Client.ResponseErrorType">
+            <summary>
+            Various reasons for a protocol endpoint error
+            </summary>
+        </member>
+        <member name="F:IdentityModel.Client.ResponseErrorType.None">
+            <summary>
+            none
+            </summary>
+        </member>
+        <member name="F:IdentityModel.Client.ResponseErrorType.Protocol">
+            <summary>
+            protocol related - valid response, but some protocol level error.
+            </summary>
+        </member>
+        <member name="F:IdentityModel.Client.ResponseErrorType.Http">
+            <summary>
+            HTTP error - e.g. 404.
+            </summary>
+        </member>
+        <member name="F:IdentityModel.Client.ResponseErrorType.Exception">
+            <summary>
+            An exception occurred - exception while connecting to the endpoint, e.g. TLS problems.
+            </summary>
+        </member>
+        <member name="F:IdentityModel.Client.ResponseErrorType.PolicyViolation">
+            <summary>
+            A policy violation - a configured policy was violated.
+            </summary>
+        </member>
+        <member name="T:IdentityModel.Client.TokenIntrospectionRequest">
+            <summary>
+            Request for OAuth token introspection
+            </summary>
+            <seealso cref="T:IdentityModel.Client.ProtocolRequest" />
+        </member>
+        <member name="P:IdentityModel.Client.TokenIntrospectionRequest.Token">
+            <summary>
+            Gets or sets the token.
+            </summary>
+            <value>
+            The token.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.TokenIntrospectionRequest.TokenTypeHint">
+            <summary>
+            Gets or sets the token type hint.
+            </summary>
+            <value>
+            The token type hint.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.TokenIntrospectionResponse">
+            <summary>
+            Models an OAuth 2.0 introspection response
+            </summary>
+            <seealso cref="T:IdentityModel.Client.ProtocolResponse" />
+        </member>
+        <member name="M:IdentityModel.Client.TokenIntrospectionResponse.InitializeAsync(System.Object)">
+            <summary>
+            Allows to initialize instance specific data.
+            </summary>
+            <param name="initializationData">The initialization data.</param>
+            <returns></returns>
+        </member>
+        <member name="P:IdentityModel.Client.TokenIntrospectionResponse.IsActive">
+            <summary>
+            Gets a value indicating whether the token is active.
+            </summary>
+            <value>
+              <c>true</c> if the token is active; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.TokenIntrospectionResponse.Claims">
+            <summary>
+            Gets the claims.
+            </summary>
+            <value>
+            The claims.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.TokenRequest">
+            <summary>
+            Request for token
+            </summary>
+            <seealso cref="T:IdentityModel.Client.ProtocolRequest" />
+        </member>
+        <member name="P:IdentityModel.Client.TokenRequest.GrantType">
+            <summary>
+            Gets or sets the type of the grant.
+            </summary>
+            <value>
+            The type of the grant.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.ClientCredentialsTokenRequest">
+            <summary>
+            Request for token using client_credentials
+            </summary>
+            <seealso cref="T:IdentityModel.Client.TokenRequest" />
+        </member>
+        <member name="P:IdentityModel.Client.ClientCredentialsTokenRequest.Scope">
+            <summary>
+            Gets or sets the scope.
+            </summary>
+            <value>
+            The scope.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.DeviceTokenRequest">
+            <summary>
+            Request for token using urn:ietf:params:oauth:grant-type:device_code
+            </summary>
+            <seealso cref="T:IdentityModel.Client.TokenRequest" />
+        </member>
+        <member name="P:IdentityModel.Client.DeviceTokenRequest.DeviceCode">
+            <summary>
+            Gets or sets the device code.
+            </summary>
+            <value>
+            The scope.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.PasswordTokenRequest">
+            <summary>
+            Request for token using password
+            </summary>
+            <seealso cref="T:IdentityModel.Client.TokenRequest" />
+        </member>
+        <member name="P:IdentityModel.Client.PasswordTokenRequest.UserName">
+            <summary>
+            Gets or sets the name of the user.
+            </summary>
+            <value>
+            The name of the user.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.PasswordTokenRequest.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>
+            The password.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.PasswordTokenRequest.Scope">
+            <summary>
+            Gets or sets the scope.
+            </summary>
+            <value>
+            The scope.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.AuthorizationCodeTokenRequest">
+            <summary>
+            Request for token using authorization_code
+            </summary>
+            <seealso cref="T:IdentityModel.Client.TokenRequest" />
+        </member>
+        <member name="P:IdentityModel.Client.AuthorizationCodeTokenRequest.Code">
+            <summary>
+            Gets or sets the code.
+            </summary>
+            <value>
+            The code.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.AuthorizationCodeTokenRequest.RedirectUri">
+            <summary>
+            Gets or sets the redirect URI.
+            </summary>
+            <value>
+            The redirect URI.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.AuthorizationCodeTokenRequest.CodeVerifier">
+            <summary>
+            Gets or sets the code verifier.
+            </summary>
+            <value>
+            The code verifier.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.RefreshTokenRequest">
+            <summary>
+            Request for token using refresh_token
+            </summary>
+            <seealso cref="T:IdentityModel.Client.TokenRequest" />
+        </member>
+        <member name="P:IdentityModel.Client.RefreshTokenRequest.RefreshToken">
+            <summary>
+            Gets or sets the refresh token.
+            </summary>
+            <value>
+            The refresh token.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.RefreshTokenRequest.Scope">
+            <summary>
+            Gets or sets the scope.
+            </summary>
+            <value>
+            The scope.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.TokenResponse">
+            <summary>
+            Models a response from an OpenID Connect/OAuth 2 token endpoint
+            </summary>
+            <seealso cref="T:IdentityModel.Client.ProtocolResponse" />
+        </member>
+        <member name="P:IdentityModel.Client.TokenResponse.AccessToken">
+            <summary>
+            Gets the access token.
+            </summary>
+            <value>
+            The access token.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.TokenResponse.IdentityToken">
+            <summary>
+            Gets the identity token.
+            </summary>
+            <value>
+            The identity token.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.TokenResponse.TokenType">
+            <summary>
+            Gets the type of the token.
+            </summary>
+            <value>
+            The type of the token.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.TokenResponse.RefreshToken">
+            <summary>
+            Gets the refresh token.
+            </summary>
+            <value>
+            The refresh token.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.TokenResponse.ErrorDescription">
+            <summary>
+            Gets the error description.
+            </summary>
+            <value>
+            The error description.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.TokenResponse.ExpiresIn">
+            <summary>
+            Gets the expires in.
+            </summary>
+            <value>
+            The expires in.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.TokenRevocationRequest">
+            <summary>
+            Request for OAuth token revocation
+            </summary>
+            <seealso cref="T:IdentityModel.Client.ProtocolRequest" />
+        </member>
+        <member name="P:IdentityModel.Client.TokenRevocationRequest.Token">
+            <summary>
+            Gets or sets the token.
+            </summary>
+            <value>
+            The token.
+            </value>
+        </member>
+        <member name="P:IdentityModel.Client.TokenRevocationRequest.TokenTypeHint">
+            <summary>
+            Gets or sets the token type hint.
+            </summary>
+            <value>
+            The token type hint.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.TokenRevocationResponse">
+            <summary>
+            Models an OAuth 2.0 token revocation response
+            </summary>
+            <seealso cref="T:IdentityModel.Client.ProtocolResponse" />
+        </member>
+        <member name="T:IdentityModel.Client.UserInfoRequest">
+            <summary>
+            Request for OIDC userinfo
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Client.UserInfoRequest.Token">
+            <summary>
+            Gets or sets the token.
+            </summary>
+            <value>
+            The token.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.UserInfoResponse">
+            <summary>
+            Models an OpenID Connect userinfo response
+            </summary>
+            <seealso cref="T:IdentityModel.Client.ProtocolResponse" />
+        </member>
+        <member name="M:IdentityModel.Client.UserInfoResponse.InitializeAsync(System.Object)">
+            <summary>
+            Allows to initialize instance specific data.
+            </summary>
+            <param name="initializationData">The initialization data.</param>
+            <returns></returns>
+        </member>
+        <member name="P:IdentityModel.Client.UserInfoResponse.Claims">
+            <summary>
+            Gets the claims.
+            </summary>
+            <value>
+            The claims.
+            </value>
+        </member>
+        <member name="T:IdentityModel.Client.RequestUrl">
+            <summary>
+            Helper class for creating request URLs
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.RequestUrl.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdentityModel.Client.RequestUrl"/> class.
+            </summary>
+            <param name="baseUrl">The authorize endpoint.</param>
+        </member>
+        <member name="M:IdentityModel.Client.RequestUrl.Create(System.Object)">
+            <summary>
+            Creates URL based on key/value input pairs.
+            </summary>
+            <param name="values">The values (either as a Dictionary of string/string or as a type with properties).</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Client.StringComparisonAuthorityValidationStrategy">
+            <summary>
+            Implementation of <see cref="T:IdentityModel.Client.IAuthorityValidationStrategy"/> based on <see cref="T:System.StringComparison"/>.
+            </summary>
+            <seealso cref="T:IdentityModel.Client.AuthorityUrlValidationStrategy"/>
+        </member>
+        <member name="M:IdentityModel.Client.StringComparisonAuthorityValidationStrategy.#ctor(System.StringComparison)">
+            <summary>
+            Constructor with <see cref="T:System.StringComparison"/> argument.
+            </summary>
+            <param name="stringComparison"></param>
+        </member>
+        <member name="M:IdentityModel.Client.StringComparisonAuthorityValidationStrategy.IsIssuerNameValid(System.String,System.String)">
+            <summary>
+            String comparison between issuer and authority (trailing slash ignored).
+            </summary>
+            <param name="issuerName"></param>
+            <param name="expectedAuthority"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.StringComparisonAuthorityValidationStrategy.IsEndpointValid(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            String "starts with" comparison between endpoint and allowed authorities.
+            </summary>
+            <param name="endpoint"></param>
+            <param name="allowedAuthorities"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Client.TokenClient">
+            <summary>
+            Client library for the OpenID Connect / OAuth 2 token endpoint
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Client.TokenClient.#ctor(System.Net.Http.HttpMessageInvoker,IdentityModel.Client.TokenClientOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdentityModel.Client.TokenClient"/> class.
+            </summary>
+            <param name="client">The client.</param>
+            <param name="options">The options.</param>
+            <exception cref="T:System.ArgumentNullException">client</exception>
+        </member>
+        <member name="M:IdentityModel.Client.TokenClient.#ctor(System.Func{System.Net.Http.HttpMessageInvoker},IdentityModel.Client.TokenClientOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdentityModel.Client.TokenClient"/> class.
+            </summary>
+            <param name="client">The client func.</param>
+            <param name="options">The options.</param>
+            <exception cref="T:System.ArgumentNullException">client</exception>
+        </member>
+        <member name="M:IdentityModel.Client.TokenClient.ApplyRequestParameters(IdentityModel.Client.TokenRequest,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Sets request parameters from the options.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="M:IdentityModel.Client.TokenClient.RequestClientCredentialsTokenAsync(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Threading.CancellationToken)">
+            <summary>
+            Sends a token request using the client_credentials grant type.
+            </summary>
+            <param name="scope">The scope (space separated string).</param>
+            <param name="parameters">Extra parameters.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.TokenClient.RequestDeviceTokenAsync(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Threading.CancellationToken)">
+            <summary>
+            Sends a token request using the urn:ietf:params:oauth:grant-type:device_code grant type.
+            </summary>
+            <param name="deviceCode">The device code.</param>
+            <param name="parameters">Extra parameters.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.TokenClient.RequestPasswordTokenAsync(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Threading.CancellationToken)">
+            <summary>
+            Sends a token request using the password grant type.
+            </summary>
+            <param name="userName">Name of the user.</param>
+            <param name="password">The password.</param>
+            <param name="scope">The scope (space separated string).</param>
+            <param name="parameters">Extra parameters.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.TokenClient.RequestAuthorizationCodeTokenAsync(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Threading.CancellationToken)">
+            <summary>
+            Sends a token request using the authorization_code grant type.
+            </summary>
+            <param name="code">The code.</param>
+            <param name="redirectUri">The redirect URI.</param>
+            <param name="codeVerifier">The code verifier.</param>
+            <param name="parameters">The parameters.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.TokenClient.RequestRefreshTokenAsync(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Threading.CancellationToken)">
+            <summary>
+            Sends a token request using the refresh_token grant type.
+            </summary>
+            <param name="refreshToken">The refresh token.</param>
+            <param name="scope">The scope (space separated string).</param>
+            <param name="parameters">Extra parameters.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Client.TokenClient.RequestTokenAsync(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Threading.CancellationToken)">
+            <summary>
+            Sends a token request.
+            </summary>
+            <param name="grantType">Type of the grant.</param>
+            <param name="parameters">Extra parameters.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.CryptoRandom">
+            <summary>
+            A class that mimics the standard Random class in the .NET Framework - but uses a random number generator internally.
+            </summary>
+        </member>
+        <member name="T:IdentityModel.CryptoRandom.OutputFormat">
+            <summary>
+            Output format for unique IDs
+            </summary>
+        </member>
+        <member name="F:IdentityModel.CryptoRandom.OutputFormat.Base64Url">
+            <summary>
+            URL-safe Base64
+            </summary>
+        </member>
+        <member name="F:IdentityModel.CryptoRandom.OutputFormat.Base64">
+            <summary>
+            Base64
+            </summary>
+        </member>
+        <member name="F:IdentityModel.CryptoRandom.OutputFormat.Hex">
+            <summary>
+            Hex
+            </summary>
+        </member>
+        <member name="M:IdentityModel.CryptoRandom.CreateRandomKey(System.Int32)">
+            <summary>
+            Creates a random key byte array.
+            </summary>
+            <param name="length">The length.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.CryptoRandom.CreateUniqueId(System.Int32,IdentityModel.CryptoRandom.OutputFormat)">
+            <summary>
+            Creates a URL safe unique identifier.
+            </summary>
+            <param name="length">The length.</param>
+            <param name="format">The output format</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.CryptoRandom.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdentityModel.CryptoRandom"/> class.
+            </summary>
+        </member>
+        <member name="M:IdentityModel.CryptoRandom.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdentityModel.CryptoRandom"/> class.
+            </summary>
+            <param name="ignoredSeed">seed (ignored)</param>
+        </member>
+        <member name="M:IdentityModel.CryptoRandom.Next">
+            <summary>
+            Returns a nonnegative random number.
+            </summary>
+            <returns>
+            A 32-bit signed integer greater than or equal to zero and less than <see cref="F:System.Int32.MaxValue"/>.
+            </returns>
+        </member>
+        <member name="M:IdentityModel.CryptoRandom.Next(System.Int32)">
+            <summary>
+            Returns a nonnegative random number less than the specified maximum.
+            </summary>
+            <param name="maxValue">The exclusive upper bound of the random number to be generated. <paramref name="maxValue"/> must be greater than or equal to zero.</param>
+            <returns>
+            A 32-bit signed integer greater than or equal to zero, and less than <paramref name="maxValue"/>; that is, the range of return values ordinarily includes zero but not <paramref name="maxValue"/>. However, if <paramref name="maxValue"/> equals zero, <paramref name="maxValue"/> is returned.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            	<paramref name="maxValue"/> is less than zero.
+            </exception>
+        </member>
+        <member name="M:IdentityModel.CryptoRandom.Next(System.Int32,System.Int32)">
+            <summary>
+            Returns a random number within a specified range.
+            </summary>
+            <param name="minValue">The inclusive lower bound of the random number returned.</param>
+            <param name="maxValue">The exclusive upper bound of the random number returned. <paramref name="maxValue"/> must be greater than or equal to <paramref name="minValue"/>.</param>
+            <returns>
+            A 32-bit signed integer greater than or equal to <paramref name="minValue"/> and less than <paramref name="maxValue"/>; that is, the range of return values includes <paramref name="minValue"/> but not <paramref name="maxValue"/>. If <paramref name="minValue"/> equals <paramref name="maxValue"/>, <paramref name="minValue"/> is returned.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            	<paramref name="minValue"/> is greater than <paramref name="maxValue"/>.
+            </exception>
+        </member>
+        <member name="M:IdentityModel.CryptoRandom.NextDouble">
+            <summary>
+            Returns a random number between 0.0 and 1.0.
+            </summary>
+            <returns>
+            A double-precision floating point number greater than or equal to 0.0, and less than 1.0.
+            </returns>
+        </member>
+        <member name="M:IdentityModel.CryptoRandom.NextBytes(System.Byte[])">
+            <summary>
+            Fills the elements of a specified array of bytes with random numbers.
+            </summary>
+            <param name="buffer">An array of bytes to contain random numbers.</param>
+            <exception cref="T:System.ArgumentNullException">
+            	<paramref name="buffer"/> is null.
+            </exception>
+        </member>
+        <member name="T:IdentityModel.DateTimeExtensions">
+            <summary>
+            Extensions for converting epoch/unix time to DateTime and DateTimeOffset
+            </summary>
+        </member>
+        <member name="M:IdentityModel.DateTimeExtensions.ToEpochTime(System.DateTime)">
+            <summary>
+            Converts the given date value to epoch time.
+            </summary>
+        </member>
+        <member name="M:IdentityModel.DateTimeExtensions.ToDateTimeFromEpoch(System.Int64)">
+            <summary>
+            Converts the given epoch time to a <see cref="T:System.DateTime"/> with <see cref="F:System.DateTimeKind.Utc"/> kind.
+            </summary>
+        </member>
+        <member name="T:IdentityModel.Identity">
+            <summary>
+            Helpers to create ClaimsIdentity
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Identity.Anonymous">
+            <summary>
+            Creates an anonymous claims identity.
+            </summary>
+            <value>
+            The anonymous.
+            </value>
+        </member>
+        <member name="M:IdentityModel.Identity.Create(System.String,System.Security.Claims.Claim[])">
+            <summary>
+            Creates a ClaimsIdentity using the specified authentication type and claims.
+            </summary>
+            <param name="authenticationType">Type of the authentication.</param>
+            <param name="claims">The claims.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Identity.CreateFromCertificate(System.Security.Cryptography.X509Certificates.X509Certificate2,System.String,System.Boolean)">
+            <summary>
+            Creates a ClaimsIdentity based on information found in an X509 certificate.
+            </summary>
+            <param name="certificate">The certificate.</param>
+            <param name="authenticationType">Type of the authentication.</param>
+            <param name="includeAllClaims">if set to <c>true</c> [include all claims].</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Internal.QueryHelpers.AddQueryString(System.String,System.String,System.String)">
+            <summary>
+            Append the given query key and value to the URI.
+            </summary>
+            <param name="uri">The base URI.</param>
+            <param name="name">The name of the query key.</param>
+            <param name="value">The query value.</param>
+            <returns>The combined result.</returns>
+        </member>
+        <member name="M:IdentityModel.Internal.QueryHelpers.AddQueryString(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Append the given query keys and values to the uri.
+            </summary>
+            <param name="uri">The base uri.</param>
+            <param name="queryString">A collection of name value query pairs to append.</param>
+            <returns>The combined result.</returns>
+        </member>
+        <member name="T:IdentityModel.Internal.TaskHelpers">
+            <summary>
+            Helpers to deal with tasks.
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Internal.TaskHelpers.CanConfigureAwaitFalse">
+            <summary>
+            Gets or sets if this library's internal tasks can call ConfigureAwait(false).
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Internal.TaskHelpers.CanFactoryStartNew">
+            <summary>
+            Gets or sets if this library's internal tasks can call <see cref="M:System.Threading.Tasks.TaskFactory.StartNew(System.Action)"/>.
+            </summary>
+        </member>
+        <member name="T:IdentityModel.Internal.ValuesHelper">
+            <summary>
+            Helpers to deal with key/value pairs
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Internal.ValuesHelper.ObjectToDictionary(System.Object)">
+            <summary>
+            Converts an object to a dictionary.
+            </summary>
+            <param name="values">The values.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Internal.ValuesHelper.Merge(System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Merges two dictionaries
+            </summary>
+            <param name="explicitValues">The explicit values.</param>
+            <param name="additionalValues">The additional values.</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.Jwk.JsonWebAlgorithmsKeyTypes">
+            <summary>
+            Constants for JsonWebAlgorithms  "kty" Key Type (sec 6.1)
+            http://tools.ietf.org/html/rfc7518#section-6.1
+            </summary>
+        </member>
+        <member name="T:IdentityModel.Jwk.JsonWebKey">
+            <summary>
+            Represents a Json Web Key as defined in http://tools.ietf.org/html/rfc7517.
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Jwk.JsonWebKey.#ctor">
+            <summary>
+            Initializes an new instance of <see cref="T:IdentityModel.Jwk.JsonWebKey"/>.
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Jwk.JsonWebKey.#ctor(System.String)">
+            <summary>
+            Initializes an new instance of <see cref="T:IdentityModel.Jwk.JsonWebKey"/> from a json string.
+            </summary>
+            <param name="json">a string that contains JSON Web Key parameters in JSON format.</param>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.Alg">
+            <summary>
+            Gets or sets the 'alg' (KeyType)..
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.Crv">
+            <summary>
+            Gets or sets the 'crv' (ECC - Curve)..
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.D">
+            <summary>
+            Gets or sets the 'd' (ECC - Private Key OR RSA - Private Exponent)..
+            </summary>
+            <remarks> value is formated as: Base64urlUInt</remarks>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.DP">
+            <summary>
+            Gets or sets the 'dp' (RSA - First Factor CRT Exponent)..
+            </summary>
+            <remarks> value is formated as: Base64urlUInt</remarks>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.DQ">
+            <summary>
+            Gets or sets the 'dq' (RSA - Second Factor CRT Exponent)..
+            </summary>
+            <remarks> value is formated as: Base64urlUInt</remarks>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.E">
+            <summary>
+            Gets or sets the 'e' (RSA - Exponent)..
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.K">
+            <summary>
+            Gets or sets the 'k' (Symmetric - Key Value)..
+            </summary>
+            Base64urlEncoding
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.KeyOps">
+            <summary>
+            Gets or sets the 'key_ops' (Key Operations)..
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.Kid">
+            <summary>
+            Gets or sets the 'kid' (Key ID)..
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.Kty">
+            <summary>
+            Gets or sets the 'kty' (Key Type)..
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.N">
+            <summary>
+            Gets or sets the 'n' (RSA - Modulus)..
+            </summary>
+            <remarks> value is formated as: Base64urlEncoding</remarks>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.Oth">
+            <summary>
+            Gets or sets the 'oth' (RSA - Other Primes Info)..
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.P">
+            <summary>
+            Gets or sets the 'p' (RSA - First Prime Factor)..
+            </summary>
+            <remarks> value is formated as: Base64urlUInt</remarks>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.Q">
+            <summary>
+            Gets or sets the 'q' (RSA - Second  Prime Factor)..
+            </summary>
+            <remarks> value is formated as: Base64urlUInt</remarks>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.QI">
+            <summary>
+            Gets or sets the 'qi' (RSA - First CRT Coefficient)..
+            </summary>
+            <remarks> value is formated as: Base64urlUInt</remarks>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.Use">
+            <summary>
+            Gets or sets the 'use' (Public Key Use)..
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.X">
+            <summary>
+            Gets or sets the 'x' (ECC - X Coordinate)..
+            </summary>
+            <remarks> value is formated as: Base64urlEncoding</remarks>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.X5c">
+            <summary>
+            Gets the 'x5c' collection (X.509 Certificate Chain)..
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.X5t">
+            <summary>
+            Gets or sets the 'x5t' (X.509 Certificate SHA-1 thumbprint)..
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.X5tS256">
+            <summary>
+            Gets or sets the 'x5t#S256' (X.509 Certificate SHA-1 thumbprint)..
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.X5u">
+            <summary>
+            Gets or sets the 'x5u' (X.509 URL)..
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKey.Y">
+            <summary>
+            Gets or sets the 'y' (ECC - Y Coordinate)..
+            </summary>
+            <remarks> value is formated as: Base64urlEncoding</remarks>
+        </member>
+        <member name="T:IdentityModel.Jwk.JsonWebKeyParameterNames">
+            <summary>
+            Names for Json Web Key Values
+            </summary>
+        </member>
+        <member name="T:IdentityModel.Jwk.JsonWebKeySet">
+            <summary>
+            Contains a collection of <see cref="T:IdentityModel.Jwk.JsonWebKey"/> that can be populated from a json string.
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Jwk.JsonWebKeySet.#ctor">
+            <summary>
+            Initializes an new instance of <see cref="T:IdentityModel.Jwk.JsonWebKeySet"/>.
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Jwk.JsonWebKeySet.#ctor(System.String)">
+            <summary>
+            Initializes an new instance of <see cref="T:IdentityModel.Jwk.JsonWebKeySet"/> from a json string.
+            </summary>
+            <param name="json">a json string containing values.</param>
+            <exception cref="T:System.ArgumentNullException">if 'json' is null or whitespace.</exception>
+        </member>
+        <member name="P:IdentityModel.Jwk.JsonWebKeySet.Keys">
+            <summary>
+            Gets the <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>       
+        </member>
+        <member name="T:IdentityModel.Jwk.JsonWebKeyExtensions">
+            <summary>
+            Extensions for JsonWebKey
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Jwk.JsonWebKeyExtensions.ToJwkString(IdentityModel.Jwk.JsonWebKey)">
+            <summary>
+            Converts a JSON web key to a URL safe string.
+            </summary>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.JwtClaimTypes">
+            <summary>
+            Commonly used claim types
+            </summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Subject">
+            <summary>Unique Identifier for the End-User at the Issuer.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Name">
+            <summary>End-User's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User's locale and preferences.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.GivenName">
+            <summary>Given name(s) or first name(s) of the End-User. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.FamilyName">
+            <summary>Surname(s) or last name(s) of the End-User. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.MiddleName">
+            <summary>Middle name(s) of the End-User. Note that in some cultures, people can have multiple middle names; all can be present, with the names being separated by space characters. Also note that in some cultures, middle names are not used.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.NickName">
+            <summary>Casual name of the End-User that may or may not be the same as the given_name. For instance, a nickname value of Mike might be returned alongside a given_name value of Michael.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.PreferredUserName">
+            <summary>Shorthand name by which the End-User wishes to be referred to at the RP, such as janedoe or j.doe. This value MAY be any valid JSON string including special characters such as @, /, or whitespace. The relying party MUST NOT rely upon this value being unique</summary>
+            <remarks>The RP MUST NOT rely upon this value being unique, as discussed in http://openid.net/specs/openid-connect-basic-1_0-32.html#ClaimStability </remarks>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Profile">
+            <summary>URL of the End-User's profile page. The contents of this Web page SHOULD be about the End-User.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Picture">
+            <summary>URL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG, JPEG, or GIF image file), rather than to a Web page containing an image.</summary>
+            <remarks>Note that this URL SHOULD specifically reference a profile photo of the End-User suitable for displaying when describing the End-User, rather than an arbitrary photo taken by the End-User.</remarks>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.WebSite">
+            <summary>URL of the End-User's Web page or blog. This Web page SHOULD contain information published by the End-User or an organization that the End-User is affiliated with.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Email">
+            <summary>End-User's preferred e-mail address. Its value MUST conform to the RFC 5322 [RFC5322] addr-spec syntax. The relying party MUST NOT rely upon this value being unique</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.EmailVerified">
+            <summary>"true" if the End-User's e-mail address has been verified; otherwise "false".</summary>
+             <remarks>When this Claim Value is "true", this means that the OP took affirmative steps to ensure that this e-mail address was controlled by the End-User at the time the verification was performed. The means by which an e-mail address is verified is context-specific, and dependent upon the trust framework or contractual agreements within which the parties are operating.</remarks>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Gender">
+            <summary>End-User's gender. Values defined by this specification are "female" and "male". Other values MAY be used when neither of the defined values are applicable.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.BirthDate">
+            <summary>End-User's birthday, represented as an ISO 8601:2004 [ISO8601‑2004] YYYY-MM-DD format. The year MAY be 0000, indicating that it is omitted. To represent only the year, YYYY format is allowed. Note that depending on the underlying platform's date related function, providing just year can result in varying month and day, so the implementers need to take this factor into account to correctly process the dates.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.ZoneInfo">
+            <summary>String from the time zone database (http://www.twinsun.com/tz/tz-link.htm) representing the End-User's time zone. For example, Europe/Paris or America/Los_Angeles.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Locale">
+            <summary>End-User's locale, represented as a BCP47 [RFC5646] language tag. This is typically an ISO 639-1 Alpha-2 [ISO639‑1] language code in lowercase and an ISO 3166-1 Alpha-2 [ISO3166‑1] country code in uppercase, separated by a dash. For example, en-US or fr-CA. As a compatibility note, some implementations have used an underscore as the separator rather than a dash, for example, en_US; Relying Parties MAY choose to accept this locale syntax as well.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.PhoneNumber">
+            <summary>End-User's preferred telephone number. E.164 (https://www.itu.int/rec/T-REC-E.164/e) is RECOMMENDED as the format of this Claim, for example, +1 (425) 555-1212 or +56 (2) 687 2400. If the phone number contains an extension, it is RECOMMENDED that the extension be represented using the RFC 3966 [RFC3966] extension syntax, for example, +1 (604) 555-1234;ext=5678.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.PhoneNumberVerified">
+            <summary>True if the End-User's phone number has been verified; otherwise false. When this Claim Value is true, this means that the OP took affirmative steps to ensure that this phone number was controlled by the End-User at the time the verification was performed.</summary>
+            <remarks>The means by which a phone number is verified is context-specific, and dependent upon the trust framework or contractual agreements within which the parties are operating. When true, the phone_number Claim MUST be in E.164 format and any extensions MUST be represented in RFC 3966 format.</remarks>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Address">
+            <summary>End-User's preferred postal address. The value of the address member is a JSON structure containing some or all of the members defined in http://openid.net/specs/openid-connect-basic-1_0-32.html#AddressClaim </summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Audience">
+            <summary>Audience(s) that this ID Token is intended for. It MUST contain the OAuth 2.0 client_id of the Relying Party as an audience value. It MAY also contain identifiers for other audiences. In the general case, the aud value is an array of case sensitive strings. In the common special case when there is one audience, the aud value MAY be a single case sensitive string.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Issuer">
+            <summary>Issuer Identifier for the Issuer of the response. The iss value is a case sensitive URL using the https scheme that contains scheme, host, and optionally, port number and path components and no query or fragment components.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.NotBefore">
+            <summary>The time before which the JWT MUST NOT be accepted for processing, specified as the number of seconds from 1970-01-01T0:0:0Z</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Expiration">
+            <summary>The exp (expiration time) claim identifies the expiration time on or after which the token MUST NOT be accepted for processing, specified as the number of seconds from 1970-01-01T0:0:0Z</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.UpdatedAt">
+            <summary>Time the End-User's information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.IssuedAt">
+            <summary>The iat (issued at) claim identifies the time at which the JWT was issued, , specified as the number of seconds from 1970-01-01T0:0:0Z</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.AuthenticationMethod">
+            <summary>Authentication Methods References. JSON array of strings that are identifiers for authentication methods used in the authentication.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.SessionId">
+            <summary>Session identifier. This represents a Session of an OP at an RP to a User Agent or device for a logged-in End-User. Its contents are unique to the OP and opaque to the RP.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.AuthenticationContextClassReference">
+            <summary>
+            Authentication Context Class Reference. String specifying an Authentication Context Class Reference value that identifies the Authentication Context Class that the authentication performed satisfied. 
+            The value "0" indicates the End-User authentication did not meet the requirements of ISO/IEC 29115 level 1. 
+            Authentication using a long-lived browser cookie, for instance, is one example where the use of "level 0" is appropriate. 
+            Authentications with level 0 SHOULD NOT be used to authorize access to any resource of any monetary value.
+             (This corresponds to the OpenID 2.0 PAPE nist_auth_level 0.) 
+            An absolute URI or an RFC 6711 registered name SHOULD be used as the acr value; registered names MUST NOT be used with a different meaning than that which is registered. 
+            Parties using this claim will need to agree upon the meanings of the values used, which may be context-specific. 
+            The acr value is a case sensitive string.
+            </summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.AuthenticationTime">
+            <summary>Time when the End-User authentication occurred. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time. When a max_age request is made or when auth_time is requested as an Essential Claim, then this Claim is REQUIRED; otherwise, its inclusion is OPTIONAL.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.AuthorizedParty">
+            <summary>The party to which the ID Token was issued. If present, it MUST contain the OAuth 2.0 Client ID of this party. This Claim is only needed when the ID Token has a single audience value and that audience is different than the authorized party. It MAY be included even when the authorized party is the same as the sole audience. The azp value is a case sensitive string containing a StringOrURI value.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.AccessTokenHash">
+            <summary> Access Token hash value. Its value is the base64url encoding of the left-most half of the hash of the octets of the ASCII representation of the access_token value, where the hash algorithm used is the hash algorithm used in the alg Header Parameter of the ID Token's JOSE Header. For instance, if the alg is RS256, hash the access_token value with SHA-256, then take the left-most 128 bits and base64url encode them. The at_hash value is a case sensitive string.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.AuthorizationCodeHash">
+            <summary>Code hash value. Its value is the base64url encoding of the left-most half of the hash of the octets of the ASCII representation of the code value, where the hash algorithm used is the hash algorithm used in the alg Header Parameter of the ID Token's JOSE Header. For instance, if the alg is HS512, hash the code value with SHA-512, then take the left-most 256 bits and base64url encode them. The c_hash value is a case sensitive string.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.StateHash">
+            <summary>State hash value. Its value is the base64url encoding of the left-most half of the hash of the octets of the ASCII representation of the state value, where the hash algorithm used is the hash algorithm used in the alg Header Parameter of the ID Token's JOSE Header. For instance, if the alg is HS512, hash the code value with SHA-512, then take the left-most 256 bits and base64url encode them. The c_hash value is a case sensitive string.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Nonce">
+            <summary>String value used to associate a Client session with an ID Token, and to mitigate replay attacks. The value is passed through unmodified from the Authentication Request to the ID Token. If present in the ID Token, Clients MUST verify that the nonce Claim Value is equal to the value of the nonce parameter sent in the Authentication Request. If present in the Authentication Request, Authorization Servers MUST include a nonce Claim in the ID Token with the Claim Value being the nonce value sent in the Authentication Request. Authorization Servers SHOULD perform no other processing on nonce values used. The nonce value is a case sensitive string.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.JwtId">
+            <summary>JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens MUST only be used once, unless conditions for reuse were negotiated between the parties; any such negotiation is beyond the scope of this specification.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Events">
+            <summary>Defines a set of event statements that each may add additional claims to fully describe a single logical event that has occurred.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.ClientId">
+            <summary>OAuth 2.0 Client Identifier valid at the Authorization Server.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Scope">
+            <summary>OpenID Connect requests MUST contain the "openid" scope value. If the openid scope value is not present, the behavior is entirely unspecified. Other scope values MAY be present. Scope values used that are not understood by an implementation SHOULD be ignored.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Actor">
+            <summary>The "act" (actor) claim provides a means within a JWT to express that delegation has occurred and identify the acting party to whom authority has been delegated.The "act" claim value is a JSON object and members in the JSON object are claims that identify the actor. The claims that make up the "act" claim identify and possibly provide additional information about the actor.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.MayAct">
+            <summary>The "may_act" claim makes a statement that one party is authorized to become the actor and act on behalf of another party. The claim value is a JSON object and members in the JSON object are claims that identify the party that is asserted as being eligible to act for the party identified by the JWT containing the claim.</summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Id">
+            <summary>
+            an identifier
+            </summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.IdentityProvider">
+            <summary>
+            The identity provider
+            </summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Role">
+            <summary>
+            The role
+            </summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.ReferenceTokenId">
+            <summary>
+            The reference token identifier
+            </summary>
+        </member>
+        <member name="F:IdentityModel.JwtClaimTypes.Confirmation">
+            <summary>
+            The confirmation
+            </summary>
+        </member>
+        <member name="F:IdentityModel.OidcConstants.StandardScopes.OpenId">
+            <summary>REQUIRED. Informs the Authorization Server that the Client is making an OpenID Connect request. If the <c>openid</c> scope value is not present, the behavior is entirely unspecified.</summary>
+        </member>
+        <member name="F:IdentityModel.OidcConstants.StandardScopes.Profile">
+            <summary>OPTIONAL. This scope value requests access to the End-User's default profile Claims, which are: <c>name</c>, <c>family_name</c>, <c>given_name</c>, <c>middle_name</c>, <c>nickname</c>, <c>preferred_username</c>, <c>profile</c>, <c>picture</c>, <c>website</c>, <c>gender</c>, <c>birthdate</c>, <c>zoneinfo</c>, <c>locale</c>, and <c>updated_at</c>.</summary>
+        </member>
+        <member name="F:IdentityModel.OidcConstants.StandardScopes.Email">
+            <summary>OPTIONAL. This scope value requests access to the <c>email</c> and <c>email_verified</c> Claims.</summary>
+        </member>
+        <member name="F:IdentityModel.OidcConstants.StandardScopes.Address">
+            <summary>OPTIONAL. This scope value requests access to the <c>address</c> Claim.</summary>
+        </member>
+        <member name="F:IdentityModel.OidcConstants.StandardScopes.Phone">
+            <summary>OPTIONAL. This scope value requests access to the <c>phone_number</c> and <c>phone_number_verified</c> Claims.</summary>
+        </member>
+        <member name="F:IdentityModel.OidcConstants.StandardScopes.OfflineAccess">
+            <summary>This scope value MUST NOT be used with the OpenID Connect Implicit Client Implementer's Guide 1.0. See the OpenID Connect Basic Client Implementer's Guide 1.0 (http://openid.net/specs/openid-connect-implicit-1_0.html#OpenID.Basic) for its usage in that subset of OpenID Connect.</summary>
+        </member>
+        <member name="T:IdentityModel.Principal">
+            <summary>
+            Helper class to create ClaimsPrincipal
+            </summary>
+        </member>
+        <member name="P:IdentityModel.Principal.Anonymous">
+            <summary>
+            Gets an anoymous ClaimsPrincipal.
+            </summary>
+        </member>
+        <member name="M:IdentityModel.Principal.Create(System.String,System.Security.Claims.Claim[])">
+            <summary>
+            Creates a ClaimsPrincipal using the specified authentication type and claims.
+            </summary>
+            <param name="authenticationType">Type of the authentication.</param>
+            <param name="claims">The claims.</param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentityModel.Principal.CreateFromCertificate(System.Security.Cryptography.X509Certificates.X509Certificate2,System.String,System.Boolean)">
+            <summary>
+            Creates a ClaimsPrincipal based on information found in an X509 certificate.
+            </summary>
+            <param name="certificate">The certificate.</param>
+            <param name="authenticationType">Type of the authentication.</param>
+            <param name="includeAllClaims">if set to <c>true</c> [include all claims].</param>
+            <returns></returns>
+        </member>
+        <member name="T:IdentityModel.StringExtensions">
+            <summary>
+            Extensions for strings
+            </summary>
+        </member>
+        <member name="M:IdentityModel.StringExtensions.ToSha256(System.String)">
+            <summary>
+            Creates a SHA256 hash of the specified input.
+            </summary>
+            <param name="input">The input.</param>
+            <returns>A hash</returns>
+        </member>
+        <member name="M:IdentityModel.StringExtensions.ToSha512(System.String)">
+            <summary>
+            Creates a SHA512 hash of the specified input.
+            </summary>
+            <param name="input">The input.</param>
+            <returns>A hash</returns>
+        </member>
+        <member name="T:IdentityModel.TimeConstantComparer">
+            <summary>
+            Helper class to do equality checks without leaking timing information
+            </summary>
+        </member>
+        <member name="M:IdentityModel.TimeConstantComparer.IsEqual(System.String,System.String)">
+            <summary>
+            Checks two strings for equality without leaking timing information.
+            </summary>
+            <param name="s1">string 1.</param>
+            <param name="s2">string 2.</param>
+            <returns>
+            	<c>true</c> if the specified strings are equal; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:System.Net.Http.BasicAuthenticationHeaderValue">
+            <summary>
+            HTTP Basic Authentication authorization header
+            </summary>
+            <seealso cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" />
+        </member>
+        <member name="M:System.Net.Http.BasicAuthenticationHeaderValue.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Net.Http.BasicAuthenticationHeaderValue"/> class.
+            </summary>
+            <param name="userName">Name of the user.</param>
+            <param name="password">The password.</param>
+        </member>
+        <member name="M:System.Net.Http.BasicAuthenticationHeaderValue.EncodeCredential(System.String,System.String)">
+            <summary>
+            Encodes the credential.
+            </summary>
+            <param name="userName">Name of the user.</param>
+            <param name="password">The password.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">userName</exception>
+        </member>
+        <member name="T:System.Net.Http.BasicAuthenticationOAuthHeaderValue">
+            <summary>
+            HTTP Basic Authentication authorization header for RFC6749 client authentication
+            </summary>
+            <seealso cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" />
+        </member>
+        <member name="M:System.Net.Http.BasicAuthenticationOAuthHeaderValue.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Net.Http.BasicAuthenticationOAuthHeaderValue"/> class.
+            </summary>
+            <param name="userName">Name of the user.</param>
+            <param name="password">The password.</param>
+        </member>
+        <member name="M:System.Net.Http.BasicAuthenticationOAuthHeaderValue.EncodeCredential(System.String,System.String)">
+            <summary>
+            Encodes the credential.
+            </summary>
+            <param name="userName">Name of the user.</param>
+            <param name="password">The password.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">userName</exception>
+        </member>
+    </members>
+</doc>
