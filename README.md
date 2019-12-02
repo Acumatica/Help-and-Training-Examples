@@ -2,6 +2,15 @@
 
 This repository contains examples that are included in the Acumatica ERP developer guides and training courses.
 
+Customization
+
+ * [T200](Customization/T200): Examples from the [T200 Development: Maintenance Forms]() training course
+ * [T210](Customization/T210): Examples from the [T210 Development: Customized Forms and Master-Detail Relationship]() training course
+ * [T220](Customization/T220): Examples from the [T220 Development: Data Entry and Setup Forms]() training course
+ * [T230](Customization/T230): Examples from the [T230 Development: Actions]() training course
+ * [T240](Customization/T240): Examples from the [T240 Development: Processing Forms]() training course
+ * [T250](Customization/T250): Examples from the [T250 Development: Inquiry Forms]() training course
+
 Integration development
 
   * [Help](IntegrationDevelopment/Help): Examples from the [Integration Development Guide](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=ff22837c-cd3a-410e-b768-88ca6e53b165)
