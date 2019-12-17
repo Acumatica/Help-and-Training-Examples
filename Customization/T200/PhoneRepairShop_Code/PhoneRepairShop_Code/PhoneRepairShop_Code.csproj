@@ -70,7 +70,6 @@
     <Compile Include="RSSVDeviceMaint.cs" />
     <Compile Include="RSSVRepairServiceMaint.cs" />
     <Compile Include="DAC\RSSVRepairService.cs" />
-    <Compile Include="InventoryItemExtensions.cs" />
 <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
