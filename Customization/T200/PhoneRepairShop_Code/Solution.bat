@@ -1,0 +1,1 @@
+"C:\Trainings\PRS_T200\App_Data\Projects\PhoneRepairShop_Code\PhoneRepairShop_Code.sln"
