@@ -1,0 +1,9 @@
+###############################################################################
+# Vendor paths
+###############################################################################
+Customization/T200/PhoneRepairShop_Code/packages/* linguist-vendored
+Customization/T210/PhoneRepairShop_Code/packages/* linguist-vendored
+Customization/T220/PhoneRepairShop_Code/packages/* linguist-vendored
+Customization/T230/PhoneRepairShop_Code/packages/* linguist-vendored
+Customization/T240/PhoneRepairShop_Code/packages/* linguist-vendored
+Customization/T190/SourceFiles/PhoneRepairShop_Code/packages/* linguist-vendored
