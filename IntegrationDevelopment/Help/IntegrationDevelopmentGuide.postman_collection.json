@@ -377,6 +377,258 @@
 			"name": "Contract-Based API Examples",
 			"item": [
 				{
+					"name": "Inventory and Order Management",
+					"item": [
+						{
+							"name": "Creation of a Bill for Particular Lines of a Purchase Order",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"Vendor\": {\r\n        \"value\": \"PRINTICO\"\r\n    },\r\n    \"VendorRef\": {\r\n        \"value\": \"123\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Bill for particular lines of a purchase order\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"POOrderType\": {\r\n                \"value\": \"Normal\"\r\n            },\r\n            \"POOrderNbr\": {\r\n                \"value\": \"000001\"\r\n            },\r\n             \"POLine\": {\r\n                \"value\": 1\r\n            },\r\n            \"Qty\":\r\n            {\r\n            \t\"value\": 5\r\n            }\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Bill?$select=ReferenceNbr,Details/POOrderNbr,Details/POOrderNbr,Details/InventoryID,Details/Qty&$expand=Details",
+									"host": [
+										"{{EndpointURL}}Bill"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "ReferenceNbr,Details/POOrderNbr,Details/POOrderNbr,Details/InventoryID,Details/Qty"
+										},
+										{
+											"key": "$expand",
+											"value": "Details"
+										}
+									]
+								},
+								"description": "This example shows how to create an AP bill for a particular line of a purchase order in Acumatica ERP. This process is described in [Creation of a Bill for Particular Lines of a Purchase Order or Receipt](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=a1116acb-66aa-4415-8148-5bbab45b0a50)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Bill for Particular Lines of a Purchase Order",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"Vendor\": {\r\n        \"value\": \"PRINTICO\"\r\n    },\r\n    \"VendorRef\": {\r\n        \"value\": \"123\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Bill for particular lines of a purchase order\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"POOrderType\": {\r\n                \"value\": \"Normal\"\r\n            },\r\n            \"POOrderNbr\": {\r\n                \"value\": \"000001\"\r\n            },\r\n             \"POLine\": {\r\n                \"value\": 1\r\n            },\r\n            \"Qty\":\r\n            {\r\n            \t\"value\": 5\r\n            }\r\n        }\r\n    ]\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Bill?$select=ReferenceNbr,Details/POOrderNbr,Details/POOrderNbr,Details/InventoryID,Details/Qty&$expand=Details",
+											"host": [
+												"{{EndpointURL}}Bill"
+											],
+											"query": [
+												{
+													"key": "$select",
+													"value": "ReferenceNbr,Details/POOrderNbr,Details/POOrderNbr,Details/InventoryID,Details/Qty"
+												},
+												{
+													"key": "$expand",
+													"value": "Details"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=66; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 30 Dec 2019 09:25:51 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "502"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"42b2425e-e62a-ea11-9ff4-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Description\": {\n        \"value\": \"Bill for particular lines of a purchase order\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"45b2425e-e62a-ea11-9ff4-4ccc6a8eefea\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"LABELS\"\n            },\n            \"POLine\": {\n                \"value\": 1\n            },\n            \"POOrderNbr\": {\n                \"value\": \"000001\"\n            },\n            \"POOrderType\": {\n                \"value\": \"Normal\"\n            },\n            \"Qty\": {\n                \"value\": 5\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"ReferenceNbr\": {\n        \"value\": \"000038\"\n    },\n    \"Vendor\": {\n        \"value\": \"PRINTICO\"\n    },\n    \"VendorRef\": {\n        \"value\": \"123\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Creation of a Bill for Particular Lines of a Purchase Receipt",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"Vendor\": {\r\n        \"value\": \"OFFICEUP\"\r\n    },\r\n    \"VendorRef\": {\r\n        \"value\": \"123\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Bill for particular lines of a purchase receipt\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"POReceiptNbr\": {\r\n                \"value\": \"000001\"\r\n            },\r\n             \"POReceiptLine\": {\r\n                \"value\": 1\r\n            }\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Bill?$select=ReferenceNbr,Details/POReceiptNbr,Details/InventoryID,Details/Qty&$expand=Details",
+									"host": [
+										"{{EndpointURL}}Bill"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "ReferenceNbr,Details/POReceiptNbr,Details/InventoryID,Details/Qty"
+										},
+										{
+											"key": "$expand",
+											"value": "Details"
+										}
+									]
+								},
+								"description": "This example shows how to create an AP bill for a particular line of a purchase receipt in Acumatica ERP. This process is described in [Creation of a Bill for Particular Lines of a Purchase Order or Receipt](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=a1116acb-66aa-4415-8148-5bbab45b0a50)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Bill for Particular Lines of a Purchase Receipt",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"Vendor\": {\r\n        \"value\": \"OFFICEUP\"\r\n    },\r\n    \"VendorRef\": {\r\n        \"value\": \"123\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Bill for particular lines of a purchase receipt\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"POReceiptNbr\": {\r\n                \"value\": \"000001\"\r\n            },\r\n             \"POReceiptLine\": {\r\n                \"value\": 1\r\n            }\r\n        }\r\n    ]\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Bill?$select=ReferenceNbr,Details/POReceiptNbr,Details/InventoryID,Details/Qty&$expand=Details",
+											"host": [
+												"{{EndpointURL}}Bill"
+											],
+											"query": [
+												{
+													"key": "$select",
+													"value": "ReferenceNbr,Details/POReceiptNbr,Details/InventoryID,Details/Qty"
+												},
+												{
+													"key": "$expand",
+													"value": "Details"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=202; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 30 Dec 2019 10:42:45 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "481"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"96a48a1a-f12a-ea11-9ff4-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Description\": {\n        \"value\": \"Bill for particular lines of a purchase receipt\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"99a48a1a-f12a-ea11-9ff4-4ccc6a8eefea\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"PAPER\"\n            },\n            \"POReceiptLine\": {\n                \"value\": 1\n            },\n            \"POReceiptNbr\": {\n                \"value\": \"000001\"\n            },\n            \"Qty\": {\n                \"value\": 15\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"ReferenceNbr\": {\n        \"value\": \"000039\"\n    },\n    \"Vendor\": {\n        \"value\": \"OFFICEUP\"\n    },\n    \"VendorRef\": {\n        \"value\": \"123\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						}
+					],
+					"description": "This folder contains examples from the [Integration and Order Management)](https://help-2019r2.acumatica.com/(W(40))/Help?ScreenId=ShowWiki&pageid=ce68a4ed-491c-46e6-91ec-bde332c19218) chapter of the Integration Development Guide.",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
 					"name": "Integration of Acumatica ERP Projects with External Systems",
 					"item": [
 						{
@@ -2813,13 +3065,13 @@
 	],
 	"variable": [
 		{
-			"id": "98153769-a353-4a94-a8bb-85a3089f41b9",
+			"id": "a7da4f49-b2c0-49bc-9ae5-7fac2eb778d7",
 			"key": "BaseURL",
 			"value": "https://localhost/AcumaticaERP/",
 			"type": "string"
 		},
 		{
-			"id": "814341db-725e-42ac-b392-415be9bbb8ae",
+			"id": "69de3d49-dbaf-4a15-bad4-b9626d644fe0",
 			"key": "EndpointURL",
 			"value": "{{BaseURL}}entity/Default/18.200.001/",
 			"type": "string"
