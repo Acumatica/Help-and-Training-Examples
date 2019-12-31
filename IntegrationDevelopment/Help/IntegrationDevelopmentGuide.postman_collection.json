@@ -736,6 +736,138 @@
 									"body": "{\n    \"id\": \"8a58235e-062b-ea11-9ff4-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"CustomerID\": {\n        \"value\": \"LAKECAFE\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"9158235e-062b-ea11-9ff4-4ccc6a8eefea\",\n            \"rowNumber\": 1,\n            \"note\": \"\",\n            \"Account\": {\n                \"value\": \"40000\"\n            },\n            \"Allocations\": [\n                {\n                    \"id\": \"550f42e8-d581-42c0-9080-c3e71a51b1e5\",\n                    \"rowNumber\": 1,\n                    \"note\": null,\n                    \"Allocated\": {\n                        \"value\": false\n                    },\n                    \"AllocWarehouseID\": {\n                        \"value\": \"WHOLESALE\"\n                    },\n                    \"Completed\": {\n                        \"value\": false\n                    },\n                    \"InventoryID\": {\n                        \"value\": \"APJAM08\"\n                    },\n                    \"LineNbr\": {\n                        \"value\": 1\n                    },\n                    \"OrderNbr\": {\n                        \"value\": \"000034\"\n                    },\n                    \"OrderType\": {\n                        \"value\": \"SO\"\n                    },\n                    \"Qty\": {\n                        \"value\": 10\n                    },\n                    \"QtyOnShipments\": {\n                        \"value\": 0\n                    },\n                    \"QtyReceived\": {\n                        \"value\": 0\n                    },\n                    \"RelatedDocument\": {\n                        \"value\": \"\"\n                    },\n                    \"ShipOn\": {\n                        \"value\": \"2019-12-30T00:00:00+03:00\"\n                    },\n                    \"SplitLineNbr\": {\n                        \"value\": 2\n                    },\n                    \"UOM\": {\n                        \"value\": \"PIECE\"\n                    },\n                    \"custom\": {}\n                }\n            ],\n            \"AlternateID\": {},\n            \"AutoCreateIssue\": {\n                \"value\": false\n            },\n            \"AverageCost\": {\n                \"value\": 0\n            },\n            \"Branch\": {\n                \"value\": \"HEADOFFICE\"\n            },\n            \"CalculateDiscountsOnImport\": {},\n            \"Completed\": {\n                \"value\": false\n            },\n            \"DiscountAmount\": {\n                \"value\": 0\n            },\n            \"DiscountedUnitPrice\": {\n                \"value\": 5\n            },\n            \"DiscountPercent\": {\n                \"value\": 0\n            },\n            \"ExtendedPrice\": {\n                \"value\": 50\n            },\n            \"FreeItem\": {\n                \"value\": false\n            },\n            \"InventoryID\": {\n                \"value\": \"APJAM08\"\n            },\n            \"LastModifiedDate\": {\n                \"value\": \"12/30/2019 08:14:56\"\n            },\n            \"LineDescription\": {\n                \"value\": \"Apple jam 8 oz.\"\n            },\n            \"LineNbr\": {\n                \"value\": 1\n            },\n            \"LineType\": {\n                \"value\": \"Goods for Inventory\"\n            },\n            \"MarkForPO\": {\n                \"value\": false\n            },\n            \"OpenQty\": {\n                \"value\": 10\n            },\n            \"Operation\": {\n                \"value\": \"Issue\"\n            },\n            \"OrderQty\": {\n                \"value\": 10\n            },\n            \"OvershipThreshold\": {\n                \"value\": 100\n            },\n            \"POSource\": {},\n            \"ProjectTask\": {},\n            \"PurchasingSettings\": {\n                \"id\": \"d2d14f03-5836-4bb7-af77-349907b8cd2f\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"POSiteID\": {\n                    \"value\": \"WHOLESALE\"\n                },\n                \"POSource\": {},\n                \"VendorID\": {},\n                \"custom\": {}\n            },\n            \"QtyOnShipments\": {\n                \"value\": 0\n            },\n            \"ReasonCode\": {},\n            \"RequestedOn\": {\n                \"value\": \"2019-12-30T00:00:00+03:00\"\n            },\n            \"SalespersonID\": {},\n            \"ShipOn\": {\n                \"value\": \"2019-12-30T00:00:00+03:00\"\n            },\n            \"ShippingRule\": {\n                \"value\": \"Ship Complete\"\n            },\n            \"TaxCategory\": {\n                \"value\": \"TAXABLE\"\n            },\n            \"UnbilledAmount\": {\n                \"value\": 50\n            },\n            \"UndershipThreshold\": {\n                \"value\": 100\n            },\n            \"UnitCost\": {\n                \"value\": 0\n            },\n            \"UnitPrice\": {\n                \"value\": 5\n            },\n            \"UOM\": {\n                \"value\": \"PIECE\"\n            },\n            \"WarehouseID\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"OrderNbr\": {\n        \"value\": \"000034\"\n    },\n    \"OrderTotal\": {\n        \"value\": 52.5\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"Payments\": [\n        {\n            \"id\": \"9658235e-062b-ea11-9ff4-4ccc6a8eefea\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"AppliedToOrder\": {\n                \"value\": 30\n            },\n            \"Balance\": {\n                \"value\": 0\n            },\n            \"CashAccount\": {\n                \"value\": \"10100ST\"\n            },\n            \"CurrencyID\": {\n                \"value\": \"USD\"\n            },\n            \"DocType\": {\n                \"value\": \"Payment\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000034\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"PaymentAmount\": {\n                \"value\": 30\n            },\n            \"PaymentMethod\": {\n                \"value\": \"CASH\"\n            },\n            \"PaymentRef\": {\n                \"value\": \"0026\"\n            },\n            \"ReferenceNbr\": {\n                \"value\": \"000070\"\n            },\n            \"Status\": {\n                \"value\": \"On Hold\"\n            },\n            \"TransferredtoInvoice\": {\n                \"value\": 0\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"9b58235e-062b-ea11-9ff4-4ccc6a8eefea\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"AppliedToOrder\": {\n                \"value\": 20\n            },\n            \"Balance\": {\n                \"value\": 0\n            },\n            \"CashAccount\": {\n                \"value\": \"10200WH\"\n            },\n            \"CurrencyID\": {\n                \"value\": \"USD\"\n            },\n            \"DocType\": {\n                \"value\": \"Prepayment\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000034\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"PaymentAmount\": {\n                \"value\": 20\n            },\n            \"PaymentMethod\": {\n                \"value\": \"CHECK\"\n            },\n            \"PaymentRef\": {\n                \"value\": \"0026\"\n            },\n            \"ReferenceNbr\": {\n                \"value\": \"000071\"\n            },\n            \"Status\": {\n                \"value\": \"On Hold\"\n            },\n            \"TransferredtoInvoice\": {\n                \"value\": 0\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"custom\": {},\n    \"files\": []\n}"
 								}
 							]
+						},
+						{
+							"name": "Creation of a Purchase Order",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"VendorID\": {\r\n        \"value\": \"GLORYFRUIT\"\r\n    },\r\n    \"Type\": {\r\n        \"value\": \"Normal\"\r\n    },\r\n    \"Hold\": {\r\n        \"value\": false\r\n    },\r\n    \"Details\": [\r\n\t\t{\r\n\t\t    \"InventoryID\": {\r\n\t\t        \"value\": \"GUAVAS\"\r\n\t\t    },\r\n\t\t    \"Warehouse\": {\r\n\t\t        \"value\": \"WHOLESALE\"\r\n\t\t    },\r\n\t\t    \"OrderQty\": {\r\n\t\t        \"value\": 20\r\n\t\t    },\r\n\t\t    \"UnitCost\": {\r\n\t\t        \"value\": 9.95\r\n\t\t    }\r\n\t\t}\r\n\t]\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}PurchaseOrder",
+									"host": [
+										"{{EndpointURL}}PurchaseOrder"
+									]
+								},
+								"description": "This example shows how to create a purchase order in Acumatica ERP. This process is described in [Creation of a Purchase Receipt with Allocations](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=918995d9-45ce-4cf7-a271-608abf967ae8)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Purchase Order",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"VendorID\": {\r\n        \"value\": \"GLORYFRUIT\"\r\n    },\r\n    \"Type\": {\r\n        \"value\": \"Normal\"\r\n    },\r\n    \"Details\": [\r\n\t\t{\r\n\t\t    \"InventoryID\": {\r\n\t\t        \"value\": \"GUAVAS\"\r\n\t\t    },\r\n\t\t    \"Warehouse\": {\r\n\t\t        \"value\": \"WHOLESALE\"\r\n\t\t    },\r\n\t\t    \"OrderQty\": {\r\n\t\t        \"value\": 20\r\n\t\t    },\r\n\t\t    \"UnitCost\": {\r\n\t\t        \"value\": 9.95\r\n\t\t    }\r\n\t\t}\r\n\t]\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}PurchaseOrder",
+											"host": [
+												"{{EndpointURL}}PurchaseOrder"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=346; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 31 Dec 2019 11:02:43 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1702"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"3985c50b-bd2b-ea11-9ff4-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Branch\": {\n        \"value\": \"HEADOFFICE\"\n    },\n    \"ControlTotal\": {\n        \"value\": 199\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"Date\": {\n        \"value\": \"2019-12-31T00:00:00+00:00\"\n    },\n    \"Description\": {},\n    \"Details\": [\n        {\n            \"id\": \"4085c50b-bd2b-ea11-9ff4-4ccc6a8eefea\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Account\": {},\n            \"AlternateID\": {},\n            \"BranchID\": {\n                \"value\": \"HEADOFFICE\"\n            },\n            \"CalculateDiscountsOnImport\": {},\n            \"Cancelled\": {\n                \"value\": false\n            },\n            \"Completed\": {\n                \"value\": false\n            },\n            \"CompleteOn\": {\n                \"value\": 100\n            },\n            \"Description\": {},\n            \"ExtendedCost\": {\n                \"value\": 199\n            },\n            \"InventoryID\": {\n                \"value\": \"GUAVAS\"\n            },\n            \"LineDescription\": {\n                \"value\": \"Fresh guavas 1 lb\"\n            },\n            \"LineNbr\": {\n                \"value\": 1\n            },\n            \"LineType\": {\n                \"value\": \"Goods for IN\"\n            },\n            \"MaxReceiptPercent\": {\n                \"value\": 100\n            },\n            \"MinReceiptPercent\": {\n                \"value\": 0\n            },\n            \"OrderNbr\": {\n                \"value\": \"000022\"\n            },\n            \"OrderQty\": {\n                \"value\": 20\n            },\n            \"OrderType\": {\n                \"value\": \"RO\"\n            },\n            \"OrigPONbr\": {},\n            \"OrigPOType\": {},\n            \"Project\": {\n                \"value\": \"X\"\n            },\n            \"ProjectTask\": {},\n            \"Promised\": {\n                \"value\": \"2019-12-31T00:00:00+03:00\"\n            },\n            \"QtyOnReceipts\": {\n                \"value\": 0\n            },\n            \"ReceiptAction\": {\n                \"value\": \"Accept but Warn\"\n            },\n            \"ReceivedAmount\": {},\n            \"Requested\": {\n                \"value\": \"2019-12-31T00:00:00+00:00\"\n            },\n            \"TaxCategory\": {\n                \"value\": \"TAXABLE\"\n            },\n            \"UnitCost\": {\n                \"value\": 9.95\n            },\n            \"UOM\": {\n                \"value\": \"LB\"\n            },\n            \"WarehouseID\": {\n                \"value\": \"RETAIL\"\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"Hold\": {\n        \"value\": true\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-12-31T06:02:42.8+03:00\"\n    },\n    \"LineTotal\": {\n        \"value\": 199\n    },\n    \"OrderNbr\": {\n        \"value\": \"000022\"\n    },\n    \"OrderTotal\": {\n        \"value\": 199\n    },\n    \"Owner\": {},\n    \"Project\": {\n        \"value\": \"X\"\n    },\n    \"PromisedOn\": {\n        \"value\": \"2019-12-31T00:00:00+03:00\"\n    },\n    \"Status\": {\n        \"value\": \"On Hold\"\n    },\n    \"TaxTotal\": {\n        \"value\": 0\n    },\n    \"Terms\": {\n        \"value\": \"30D\"\n    },\n    \"Type\": {\n        \"value\": \"Normal\"\n    },\n    \"VendorID\": {\n        \"value\": \"GLORYFRUIT\"\n    },\n    \"VendorRef\": {},\n    \"VendorTaxZone\": {},\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Creation of a Purchase Receipt with Allocations",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"VendorID\": {\r\n        \"value\": \"GLORYFRUIT\"\r\n    },\r\n    \"Details\": [\r\n\t\t{\r\n\t\t    \"InventoryID\": {\r\n\t\t        \"value\": \"GUAVAS\"\r\n\t\t    },\r\n\t\t    \"Warehouse\": {\r\n\t\t        \"value\": \"WHOLESALE\"\r\n\t\t    },\r\n\t\t    \"Allocations\": [\r\n\t\t        {\r\n\t\t            \"Qty\": {\r\n\t\t                \"value\": 10\r\n\t\t            },\r\n\t\t            \"LotSerialNbr\": {\r\n\t\t                \"value\": \"FRT000862\"\r\n\t\t            }\r\n\t\t        },\r\n\t\t        {\r\n\t\t            \"Qty\": {\r\n\t\t                \"value\": 10\r\n\t\t            },\r\n\t\t            \"LotSerialNbr\": {\r\n\t\t                \"value\": \"FRT000877\"\r\n\t\t            }\r\n\t\t        }\r\n\t\t    ]\r\n\t\t}\r\n\t]\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}PurchaseReceipt",
+									"host": [
+										"{{EndpointURL}}PurchaseReceipt"
+									]
+								},
+								"description": "This example shows how to create a purchase receipt with allocations in Acumatica ERP. This process is described in [Creation of a Purchase Receipt with Allocations](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=918995d9-45ce-4cf7-a271-608abf967ae8)."
+							},
+							"response": []
 						}
 					],
 					"description": "This folder contains examples from the [Integration and Order Management)](https://help-2019r2.acumatica.com/(W(40))/Help?ScreenId=ShowWiki&pageid=ce68a4ed-491c-46e6-91ec-bde332c19218) chapter of the Integration Development Guide.",
@@ -3179,13 +3311,13 @@
 	],
 	"variable": [
 		{
-			"id": "0c18c8ca-57ce-4bc0-a47d-be35840a3a09",
+			"id": "0ee2d308-7758-4315-87fc-23a16a6a46e0",
 			"key": "BaseURL",
 			"value": "https://localhost/AcumaticaERP/",
 			"type": "string"
 		},
 		{
-			"id": "04cd1766-5682-40ee-8a59-5516378b6bc5",
+			"id": "95b4470f-ed69-4c48-813b-0794f591e943",
 			"key": "EndpointURL",
 			"value": "{{BaseURL}}entity/Default/18.200.001/",
 			"type": "string"
