@@ -26,12 +26,12 @@
 		<Items>
 			<px:PXTabItem Text="Repair Items">
 				<Template>
-					<px:PXGrid runat="server" ID="CstPXGrid5" SkinID="Details" Width="100%">
+					<px:PXGrid SyncPosition="True" runat="server" ID="CstPXGrid5" SkinID="Details" Width="100%">
 						<Levels>
 							<px:PXGridLevel DataMember="RepairItems" >
 								<Columns>
 									<px:PXGridColumn CommitChanges="True" DataField="RepairItemType" Width="70"></px:PXGridColumn>
-									<px:PXGridColumn Type="CheckBox" DataField="Required" Width="80" ></px:PXGridColumn>
+									<px:PXGridColumn Type="CheckBox" DataField="Required" Width="80" CommitChanges="true"></px:PXGridColumn>
 									<px:PXGridColumn DataField="InventoryID" Width="70" CommitChanges="True"></px:PXGridColumn>
 									<px:PXGridColumn DataField="InventoryID_description" Width="280" ></px:PXGridColumn>
 									<px:PXGridColumn DataField="BasePrice" Width="100" ></px:PXGridColumn>

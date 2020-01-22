@@ -26,7 +26,7 @@
 		<Items>
 			<px:PXTabItem Text="Repair Items">
 				<Template>
-					<px:PXGrid runat="server" ID="CstPXGrid5" SkinID="Details" Width="100%">
+					<px:PXGrid SyncPosition="True" runat="server" ID="CstPXGrid5" SkinID="Details" Width="100%">
 						<Levels>
 							<px:PXGridLevel DataMember="RepairItems" >
 								<Columns>
