@@ -149,9 +149,7 @@
                     </SiteMap>
                     <SiteMap linkname="to1Screen">
                         <row Title="Serviced Devices" Url="~/Pages/RS/RS202000.aspx" NodeID="eccaeaae-dc9c-43a0-8e14-02b5aa102df5" ParentID="00000000-0000-0000-0000-000000000000">
-                            <MUIScreen IsPortal="0" WorkspaceID="38331a83-e40e-439e-bbd0-4f656feffcaf" Order="20" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
-                                <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
-                            </MUIScreen>
+                            <MUIScreen IsPortal="0" WorkspaceID="38331a83-e40e-439e-bbd0-4f656feffcaf" Order="20" SubcategoryID="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa" />
                         </row>
                     </SiteMap>
                 </row>
@@ -168,7 +166,6 @@
             <MUISubcategory>
                 <row IsPortal="1" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
                 <row IsPortal="0" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
-                <row IsPortal="0" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385" Order="96" Name="Configuration" Icon="" IsSystem="0" />
             </MUISubcategory>
         </data>
     </data-set>
