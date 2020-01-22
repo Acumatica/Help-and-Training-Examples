@@ -10,6 +10,7 @@ Customization
  * [T220](Customization/T220): Examples from the T220 Development: Data Entry and Setup Forms training course
  * [T230](Customization/T230): Examples from the T230 Development: Actions training course
  * [T240](Customization/T240): Examples from the T240 Development: Processing Forms training course
+ * [T250](Customization/T250): Examples from the T250 Development: Inquiry Forms training course
 <!--- * [T190](Customization/T190): Source files for the [T190 Development: Quick Start in Customization](https://openuni.acumatica.com/courses/development/t190-quick-start-in-customization/) training course
  * [T200](Customization/T200): Examples from the [T200 Development: Maintenance Forms](https://openuni.acumatica.com/courses/development/t200-maintenance-forms/) training course
  * [T210](Customization/T210): Examples from the [T210 Development: Customized Forms and Master-Detail Relationship](https://openuni.acumatica.com/courses/development/t210-customized-forms-and-master-detail-relationship/) training course
