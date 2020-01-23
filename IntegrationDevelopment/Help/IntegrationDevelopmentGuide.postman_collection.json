@@ -875,7 +875,7 @@
 					"_postman_isSubFolder": true
 				},
 				{
-					"name": "Integration of Acumatica ERP Projects with External Systems",
+					"name": "Project Accounting",
 					"item": [
 						{
 							"name": "Creation of a Pro Forma Invoice 1: Create a Project",
@@ -3278,7 +3278,7 @@
 							]
 						}
 					],
-					"description": "This folder contains examples from the [Integration of Acumatica ERP Projects with External Systems](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=78967236-3bc1-48c6-8dc2-d01812ed2326) chapter of the Integration Development Guide.",
+					"description": "This folder contains examples from the [Project Accounting](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=78967236-3bc1-48c6-8dc2-d01812ed2326) chapter of the Integration Development Guide.",
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
 				}
