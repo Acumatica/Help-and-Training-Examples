@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "af63c24f-3bc5-421f-b77f-e47702be7b75",
+		"_postman_id": "9e22a2de-2852-4b3d-b913-92afc9bd584f",
 		"name": "Integration Development Guide",
 		"description": "This collection contains examples from the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n - Deploy a new Acumatica ERP instance with the U100 dataset. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n - Specify the URL of the instance in the BaseURL variable of the collection. The EndpointURL variable uses the value from the BaseURL variable and specifies the URL of the Default/18.200.001 endpoint. You do not need to change this variable until you want to use another endpoint.\n - To sign in to the instance in the client application, use the tenant name (which you specified when you created the instance) and the HEADOFFICE branch.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -377,7 +377,373 @@
 			"name": "Contract-Based API Examples",
 			"item": [
 				{
-					"name": "Integration of Acumatica ERP Projects with External Systems",
+					"name": "Inventory and Order Management",
+					"item": [
+						{
+							"name": "Creation of a Bill for Particular Lines of a Purchase Order",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"Vendor\": {\r\n        \"value\": \"PRINTICO\"\r\n    },\r\n    \"VendorRef\": {\r\n        \"value\": \"123\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Bill for particular lines of a purchase order\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"POOrderType\": {\r\n                \"value\": \"Normal\"\r\n            },\r\n            \"POOrderNbr\": {\r\n                \"value\": \"000001\"\r\n            },\r\n             \"POLine\": {\r\n                \"value\": 1\r\n            },\r\n            \"Qty\":\r\n            {\r\n            \t\"value\": 5\r\n            }\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Bill?$select=ReferenceNbr,Details/POOrderNbr,Details/POOrderNbr,Details/InventoryID,Details/Qty&$expand=Details",
+									"host": [
+										"{{EndpointURL}}Bill"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "ReferenceNbr,Details/POOrderNbr,Details/POOrderNbr,Details/InventoryID,Details/Qty"
+										},
+										{
+											"key": "$expand",
+											"value": "Details"
+										}
+									]
+								},
+								"description": "This example shows how to create an AP bill for a particular line of a purchase order in Acumatica ERP. This process is described in [Creation of a Bill for Particular Lines of a Purchase Order or Receipt](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=a1116acb-66aa-4415-8148-5bbab45b0a50)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Bill for Particular Lines of a Purchase Order",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"Vendor\": {\r\n        \"value\": \"PRINTICO\"\r\n    },\r\n    \"VendorRef\": {\r\n        \"value\": \"123\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Bill for particular lines of a purchase order\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"POOrderType\": {\r\n                \"value\": \"Normal\"\r\n            },\r\n            \"POOrderNbr\": {\r\n                \"value\": \"000001\"\r\n            },\r\n             \"POLine\": {\r\n                \"value\": 1\r\n            },\r\n            \"Qty\":\r\n            {\r\n            \t\"value\": 5\r\n            }\r\n        }\r\n    ]\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Bill?$select=ReferenceNbr,Details/POOrderNbr,Details/POOrderNbr,Details/InventoryID,Details/Qty&$expand=Details",
+											"host": [
+												"{{EndpointURL}}Bill"
+											],
+											"query": [
+												{
+													"key": "$select",
+													"value": "ReferenceNbr,Details/POOrderNbr,Details/POOrderNbr,Details/InventoryID,Details/Qty"
+												},
+												{
+													"key": "$expand",
+													"value": "Details"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=66; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 30 Dec 2019 09:25:51 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "502"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"42b2425e-e62a-ea11-9ff4-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Description\": {\n        \"value\": \"Bill for particular lines of a purchase order\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"45b2425e-e62a-ea11-9ff4-4ccc6a8eefea\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"LABELS\"\n            },\n            \"POLine\": {\n                \"value\": 1\n            },\n            \"POOrderNbr\": {\n                \"value\": \"000001\"\n            },\n            \"POOrderType\": {\n                \"value\": \"Normal\"\n            },\n            \"Qty\": {\n                \"value\": 5\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"ReferenceNbr\": {\n        \"value\": \"000038\"\n    },\n    \"Vendor\": {\n        \"value\": \"PRINTICO\"\n    },\n    \"VendorRef\": {\n        \"value\": \"123\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Creation of a Bill for Particular Lines of a Purchase Receipt",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"Vendor\": {\r\n        \"value\": \"OFFICEUP\"\r\n    },\r\n    \"VendorRef\": {\r\n        \"value\": \"123\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Bill for particular lines of a purchase receipt\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"POReceiptNbr\": {\r\n                \"value\": \"000001\"\r\n            },\r\n             \"POReceiptLine\": {\r\n                \"value\": 1\r\n            }\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Bill?$select=ReferenceNbr,Details/POReceiptNbr,Details/InventoryID,Details/Qty&$expand=Details",
+									"host": [
+										"{{EndpointURL}}Bill"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "ReferenceNbr,Details/POReceiptNbr,Details/InventoryID,Details/Qty"
+										},
+										{
+											"key": "$expand",
+											"value": "Details"
+										}
+									]
+								},
+								"description": "This example shows how to create an AP bill for a particular line of a purchase receipt in Acumatica ERP. This process is described in [Creation of a Bill for Particular Lines of a Purchase Order or Receipt](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=a1116acb-66aa-4415-8148-5bbab45b0a50)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Bill for Particular Lines of a Purchase Receipt",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"Vendor\": {\r\n        \"value\": \"OFFICEUP\"\r\n    },\r\n    \"VendorRef\": {\r\n        \"value\": \"123\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Bill for particular lines of a purchase receipt\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"POReceiptNbr\": {\r\n                \"value\": \"000001\"\r\n            },\r\n             \"POReceiptLine\": {\r\n                \"value\": 1\r\n            }\r\n        }\r\n    ]\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Bill?$select=ReferenceNbr,Details/POReceiptNbr,Details/InventoryID,Details/Qty&$expand=Details",
+											"host": [
+												"{{EndpointURL}}Bill"
+											],
+											"query": [
+												{
+													"key": "$select",
+													"value": "ReferenceNbr,Details/POReceiptNbr,Details/InventoryID,Details/Qty"
+												},
+												{
+													"key": "$expand",
+													"value": "Details"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=202; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 30 Dec 2019 10:42:45 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "481"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"96a48a1a-f12a-ea11-9ff4-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Description\": {\n        \"value\": \"Bill for particular lines of a purchase receipt\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"99a48a1a-f12a-ea11-9ff4-4ccc6a8eefea\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"PAPER\"\n            },\n            \"POReceiptLine\": {\n                \"value\": 1\n            },\n            \"POReceiptNbr\": {\n                \"value\": \"000001\"\n            },\n            \"Qty\": {\n                \"value\": 15\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"ReferenceNbr\": {\n        \"value\": \"000039\"\n    },\n    \"Vendor\": {\n        \"value\": \"OFFICEUP\"\n    },\n    \"VendorRef\": {\n        \"value\": \"123\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Creation of a Sales Order with Payments",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"CustomerID\": {\r\n        \"value\": \"LAKECAFE\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"InventoryID\": {\r\n                \"value\": \"APJAM08\"\r\n            },\r\n            \"LineNbr\": {\r\n                \"value\": 1\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 10\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 5\r\n            }\r\n        }\r\n    ],\r\n\t\"Payments\": [\r\n        {\r\n            \"AppliedToOrder\": {\r\n                \"value\": 30\r\n            },\r\n            \"CashAccount\": {\r\n                \"value\": \"10100ST\"\r\n            },\r\n            \"CurrencyID\": {\r\n                \"value\": \"USD\"\r\n            },\r\n            \"DocType\": {\r\n                \"value\": \"Payment\"\r\n            },\r\n            \"PaymentMethod\": {\r\n                \"value\": \"CASH\"\r\n            },\r\n            \"PaymentAmount\": {\r\n                \"value\": 30\r\n            }\r\n        },\r\n         {\r\n            \"AppliedToOrder\": {\r\n                \"value\": 20\r\n            },\r\n            \"CashAccount\": {\r\n                \"value\": \"10200WH\"\r\n            },\r\n            \"CurrencyID\": {\r\n                \"value\": \"USD\"\r\n            },\r\n            \"DocType\": {\r\n                \"value\": \"Prepayment\"\r\n            },\r\n            \"PaymentMethod\": {\r\n                \"value\": \"CHECK\"\r\n            },\r\n            \"PaymentAmount\": {\r\n                \"value\": 20\r\n            }\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}SalesOrder?$select=OrderType,OrderNbr,OrderTotal",
+									"host": [
+										"{{EndpointURL}}SalesOrder"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "OrderType,OrderNbr,OrderTotal"
+										}
+									]
+								},
+								"description": "This example shows how to create a sales order with payments in Acumatica ERP. This process is described in [Creation of a Sales Order with Payments](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=51f9a74e-64f5-4c4d-af48-600be817efdd)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Bill for Particular Lines of a Purchase Receipt Copy",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"CustomerID\": {\r\n        \"value\": \"LAKECAFE\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"InventoryID\": {\r\n                \"value\": \"APJAM08\"\r\n            },\r\n            \"LineNbr\": {\r\n                \"value\": 1\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 10\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 5\r\n            }\r\n        }\r\n    ],\r\n\t\"Payments\": [\r\n        {\r\n            \"AppliedToOrder\": {\r\n                \"value\": 30\r\n            },\r\n            \"CashAccount\": {\r\n                \"value\": \"10100ST\"\r\n            },\r\n            \"CurrencyID\": {\r\n                \"value\": \"USD\"\r\n            },\r\n            \"DocType\": {\r\n                \"value\": \"Payment\"\r\n            },\r\n            \"PaymentMethod\": {\r\n                \"value\": \"CASH\"\r\n            },\r\n            \"PaymentAmount\": {\r\n                \"value\": 30\r\n            }\r\n        },\r\n         {\r\n            \"AppliedToOrder\": {\r\n                \"value\": 20\r\n            },\r\n            \"CashAccount\": {\r\n                \"value\": \"10200WH\"\r\n            },\r\n            \"CurrencyID\": {\r\n                \"value\": \"USD\"\r\n            },\r\n            \"DocType\": {\r\n                \"value\": \"Prepayment\"\r\n            },\r\n            \"PaymentMethod\": {\r\n                \"value\": \"CHECK\"\r\n            },\r\n            \"PaymentAmount\": {\r\n                \"value\": 20\r\n            }\r\n        }\r\n    ]\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}SalesOrder?$select=OrderType,OrderNbr,OrderTotal",
+											"host": [
+												"{{EndpointURL}}SalesOrder"
+											],
+											"query": [
+												{
+													"key": "$select",
+													"value": "OrderType,OrderNbr,OrderTotal"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-Handled-By",
+											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=241; path=/"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 30 Dec 2019 13:14:59 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "3250"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"8a58235e-062b-ea11-9ff4-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"CustomerID\": {\n        \"value\": \"LAKECAFE\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"9158235e-062b-ea11-9ff4-4ccc6a8eefea\",\n            \"rowNumber\": 1,\n            \"note\": \"\",\n            \"Account\": {\n                \"value\": \"40000\"\n            },\n            \"Allocations\": [\n                {\n                    \"id\": \"550f42e8-d581-42c0-9080-c3e71a51b1e5\",\n                    \"rowNumber\": 1,\n                    \"note\": null,\n                    \"Allocated\": {\n                        \"value\": false\n                    },\n                    \"AllocWarehouseID\": {\n                        \"value\": \"WHOLESALE\"\n                    },\n                    \"Completed\": {\n                        \"value\": false\n                    },\n                    \"InventoryID\": {\n                        \"value\": \"APJAM08\"\n                    },\n                    \"LineNbr\": {\n                        \"value\": 1\n                    },\n                    \"OrderNbr\": {\n                        \"value\": \"000034\"\n                    },\n                    \"OrderType\": {\n                        \"value\": \"SO\"\n                    },\n                    \"Qty\": {\n                        \"value\": 10\n                    },\n                    \"QtyOnShipments\": {\n                        \"value\": 0\n                    },\n                    \"QtyReceived\": {\n                        \"value\": 0\n                    },\n                    \"RelatedDocument\": {\n                        \"value\": \"\"\n                    },\n                    \"ShipOn\": {\n                        \"value\": \"2019-12-30T00:00:00+03:00\"\n                    },\n                    \"SplitLineNbr\": {\n                        \"value\": 2\n                    },\n                    \"UOM\": {\n                        \"value\": \"PIECE\"\n                    },\n                    \"custom\": {}\n                }\n            ],\n            \"AlternateID\": {},\n            \"AutoCreateIssue\": {\n                \"value\": false\n            },\n            \"AverageCost\": {\n                \"value\": 0\n            },\n            \"Branch\": {\n                \"value\": \"HEADOFFICE\"\n            },\n            \"CalculateDiscountsOnImport\": {},\n            \"Completed\": {\n                \"value\": false\n            },\n            \"DiscountAmount\": {\n                \"value\": 0\n            },\n            \"DiscountedUnitPrice\": {\n                \"value\": 5\n            },\n            \"DiscountPercent\": {\n                \"value\": 0\n            },\n            \"ExtendedPrice\": {\n                \"value\": 50\n            },\n            \"FreeItem\": {\n                \"value\": false\n            },\n            \"InventoryID\": {\n                \"value\": \"APJAM08\"\n            },\n            \"LastModifiedDate\": {\n                \"value\": \"12/30/2019 08:14:56\"\n            },\n            \"LineDescription\": {\n                \"value\": \"Apple jam 8 oz.\"\n            },\n            \"LineNbr\": {\n                \"value\": 1\n            },\n            \"LineType\": {\n                \"value\": \"Goods for Inventory\"\n            },\n            \"MarkForPO\": {\n                \"value\": false\n            },\n            \"OpenQty\": {\n                \"value\": 10\n            },\n            \"Operation\": {\n                \"value\": \"Issue\"\n            },\n            \"OrderQty\": {\n                \"value\": 10\n            },\n            \"OvershipThreshold\": {\n                \"value\": 100\n            },\n            \"POSource\": {},\n            \"ProjectTask\": {},\n            \"PurchasingSettings\": {\n                \"id\": \"d2d14f03-5836-4bb7-af77-349907b8cd2f\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"POSiteID\": {\n                    \"value\": \"WHOLESALE\"\n                },\n                \"POSource\": {},\n                \"VendorID\": {},\n                \"custom\": {}\n            },\n            \"QtyOnShipments\": {\n                \"value\": 0\n            },\n            \"ReasonCode\": {},\n            \"RequestedOn\": {\n                \"value\": \"2019-12-30T00:00:00+03:00\"\n            },\n            \"SalespersonID\": {},\n            \"ShipOn\": {\n                \"value\": \"2019-12-30T00:00:00+03:00\"\n            },\n            \"ShippingRule\": {\n                \"value\": \"Ship Complete\"\n            },\n            \"TaxCategory\": {\n                \"value\": \"TAXABLE\"\n            },\n            \"UnbilledAmount\": {\n                \"value\": 50\n            },\n            \"UndershipThreshold\": {\n                \"value\": 100\n            },\n            \"UnitCost\": {\n                \"value\": 0\n            },\n            \"UnitPrice\": {\n                \"value\": 5\n            },\n            \"UOM\": {\n                \"value\": \"PIECE\"\n            },\n            \"WarehouseID\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"OrderNbr\": {\n        \"value\": \"000034\"\n    },\n    \"OrderTotal\": {\n        \"value\": 52.5\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"Payments\": [\n        {\n            \"id\": \"9658235e-062b-ea11-9ff4-4ccc6a8eefea\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"AppliedToOrder\": {\n                \"value\": 30\n            },\n            \"Balance\": {\n                \"value\": 0\n            },\n            \"CashAccount\": {\n                \"value\": \"10100ST\"\n            },\n            \"CurrencyID\": {\n                \"value\": \"USD\"\n            },\n            \"DocType\": {\n                \"value\": \"Payment\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000034\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"PaymentAmount\": {\n                \"value\": 30\n            },\n            \"PaymentMethod\": {\n                \"value\": \"CASH\"\n            },\n            \"PaymentRef\": {\n                \"value\": \"0026\"\n            },\n            \"ReferenceNbr\": {\n                \"value\": \"000070\"\n            },\n            \"Status\": {\n                \"value\": \"On Hold\"\n            },\n            \"TransferredtoInvoice\": {\n                \"value\": 0\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"9b58235e-062b-ea11-9ff4-4ccc6a8eefea\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"AppliedToOrder\": {\n                \"value\": 20\n            },\n            \"Balance\": {\n                \"value\": 0\n            },\n            \"CashAccount\": {\n                \"value\": \"10200WH\"\n            },\n            \"CurrencyID\": {\n                \"value\": \"USD\"\n            },\n            \"DocType\": {\n                \"value\": \"Prepayment\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000034\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"PaymentAmount\": {\n                \"value\": 20\n            },\n            \"PaymentMethod\": {\n                \"value\": \"CHECK\"\n            },\n            \"PaymentRef\": {\n                \"value\": \"0026\"\n            },\n            \"ReferenceNbr\": {\n                \"value\": \"000071\"\n            },\n            \"Status\": {\n                \"value\": \"On Hold\"\n            },\n            \"TransferredtoInvoice\": {\n                \"value\": 0\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						}
+					],
+					"description": "This folder contains examples from the [Integration and Order Management)](https://help-2019r2.acumatica.com/(W(40))/Help?ScreenId=ShowWiki&pageid=ce68a4ed-491c-46e6-91ec-bde332c19218) chapter of the Integration Development Guide.",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Project Accounting",
 					"item": [
 						{
 							"name": "Creation of a Pro Forma Invoice 1: Create a Project",
@@ -2716,10 +3082,6 @@
 												"value": "application/json"
 											}
 										],
-										"body": {
-											"mode": "raw",
-											"raw": ""
-										},
 										"url": {
 											"raw": "{{EndpointURL}}TimeEntry?$filter=cf.DateTime(f='Items.Date') ge datetimeoffset'2019-08-17' and cf.DateTime(f='Items.Date') le datetimeoffset'2019-08-18T23%3A59%3A59.999%2B04%3A00'&$select=Date,ProjectID,TimeSpent,BillableTime",
 											"host": [
@@ -2780,7 +3142,7 @@
 							]
 						}
 					],
-					"description": "This folder contains examples from the [Integration of Acumatica ERP Projects with External Systems](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=78967236-3bc1-48c6-8dc2-d01812ed2326) chapter of the Integration Development Guide.",
+					"description": "This folder contains examples from the [Project Accounting](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=78967236-3bc1-48c6-8dc2-d01812ed2326) chapter of the Integration Development Guide.",
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
 				}
@@ -2813,13 +3175,13 @@
 	],
 	"variable": [
 		{
-			"id": "98153769-a353-4a94-a8bb-85a3089f41b9",
+			"id": "b7472d6c-3dc5-4dca-be5a-c4d93d9942fe",
 			"key": "BaseURL",
 			"value": "https://localhost/AcumaticaERP/",
 			"type": "string"
 		},
 		{
-			"id": "814341db-725e-42ac-b392-415be9bbb8ae",
+			"id": "e6d8fd7e-6773-4d2d-91ef-bfbeacf9dbba",
 			"key": "EndpointURL",
 			"value": "{{BaseURL}}entity/Default/18.200.001/",
 			"type": "string"
