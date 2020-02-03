@@ -131,7 +131,7 @@
         </layout>
         <data>
             <GIDesign>
-                <row DesignID="134b2979-46f9-452f-ad39-57b3be8e4958" Name="Services and Prices" FilterColCount="3" PageSize="0" ExportTop="0" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0">
+                <row DesignID="134b2979-46f9-452f-ad39-57b3be8e4958" Name="Services and Prices" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS203000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0">
                     <GINavigationScreen ScreenID="RS203000" LineNbr="1" WindowMode="I">
                         <GINavigationParameter LineNbr="2" FieldName="DeviceID" ParameterName="RepairPrice.DeviceID" IsExpression="0" />
                         <GINavigationParameter LineNbr="1" FieldName="ServiceID" ParameterName="RepairPrice.ServiceID" IsExpression="0" />
@@ -147,6 +147,13 @@
                             <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="2050" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" />
                         </row>
                     </SiteMap>
+                    <SiteMap linkname="to1Screen">
+                        <row Position="5958" Title="Services and Prices" Url="~/Pages/RS/RS203000.aspx" NodeID="b92c47a3-95ce-467f-86b0-b25ad0bc258e" ParentID="00000000-0000-0000-0000-000000000000">
+                            <MUIScreen IsPortal="0" WorkspaceID="38331a83-e40e-439e-bbd0-4f656feffcaf" Order="30" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
+                                <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
+                            </MUIScreen>
+                        </row>
+                    </SiteMap>
                 </row>
             </GIDesign>
             <MUIWorkspace>
@@ -156,10 +163,14 @@
                 <row IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="32" Title="Data Views" Icon="poll" IsSystem="1">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
+                <row IsPortal="0" WorkspaceID="38331a83-e40e-439e-bbd0-4f656feffcaf" Order="48" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0">
+                    <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
+                </row>
             </MUIWorkspace>
             <MUISubcategory>
                 <row IsPortal="1" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
                 <row IsPortal="0" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
+                <row IsPortal="0" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385" Order="96" Name="Configuration" Icon="" IsSystem="0" />
             </MUISubcategory>
         </data>
     </data-set>
