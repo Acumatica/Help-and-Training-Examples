@@ -826,7 +826,7 @@
 							]
 						}
 					],
-					"description": "This folder contains examples from the [Integration and Order Management)](https://help-2019r2.acumatica.com/(W(40))/Help?ScreenId=ShowWiki&pageid=ce68a4ed-491c-46e6-91ec-bde332c19218) chapter of the Integration Development Guide.",
+					"description": "This folder contains examples from the [Integration and Order Management](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=ce68a4ed-491c-46e6-91ec-bde332c19218) chapter of the Integration Development Guide.",
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
 				},
@@ -869,13 +869,13 @@
 										"header": [
 											{
 												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
+												"type": "text",
+												"value": "application/json"
 											},
 											{
 												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
+												"type": "text",
+												"value": "application/json"
 											}
 										],
 										"body": {
@@ -898,40 +898,28 @@
 											"value": "application/json; charset=utf-8"
 										},
 										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
-										},
-										{
 											"key": "Set-Cookie",
 											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "UserBranch=; path=/"
+											"value": "UserBranch=2; path=/"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=19; path=/"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
+											"value": "requestid=8; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Thu, 15 Aug 2019 11:05:29 GMT"
+											"value": "Thu, 05 Mar 2020 08:31:58 GMT"
 										},
 										{
 											"key": "Content-Length",
-											"value": "1023"
+											"value": "968"
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"id\": \"c88f0a92-4cbf-e911-9fe5-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Assets\": {},\n    \"BillingAndAllocationSettings\": {\n        \"id\": \"b50c7fbe-c35a-4cf1-967f-d541910067c9\",\n        \"rowNumber\": 1,\n        \"note\": null,\n        \"AllocationRule\": {},\n        \"AutomaticallyReleaseARDocuments\": {\n            \"value\": false\n        },\n        \"BillingPeriod\": {\n            \"value\": \"Month\"\n        },\n        \"BillingRule\": {\n            \"value\": \"PROGRESS\"\n        },\n        \"Branch\": {\n            \"value\": \"SWEETEQUIP\"\n        },\n        \"CreateProFormaOnBilling\": {\n            \"value\": true\n        },\n        \"LastBillingDate\": {},\n        \"NextBillingDate\": {\n            \"value\": \"2019-09-15T00:00:00+00:00\"\n        },\n        \"RateTable\": {},\n        \"RunAllocationOnReleaseOfProjectTransactions\": {\n            \"value\": false\n        },\n        \"Terms\": {\n            \"value\": \"30D\"\n        },\n        \"UseTMRevenueBudgetLimits\": {\n            \"value\": false\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"Expenses\": {},\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": true\n    },\n    \"Income\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-08-15T07:05:29.017+03:00\"\n    },\n    \"Liabilities\": {},\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"In Planning\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+									"body": "{\n    \"id\": \"6adb22c3-bb5e-ea11-9ff9-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"BillingAndAllocationSettings\": {\n        \"id\": \"19ad35ce-cc6d-4b39-9fd3-e7406fe8190d\",\n        \"rowNumber\": 1,\n        \"note\": null,\n        \"AllocationRule\": {},\n        \"AutomaticallyReleaseARDocuments\": {\n            \"value\": false\n        },\n        \"BillingPeriod\": {\n            \"value\": \"Month\"\n        },\n        \"BillingRule\": {\n            \"value\": \"PROGRESS\"\n        },\n        \"Branch\": {\n            \"value\": \"SWEETEQUIP\"\n        },\n        \"CreateProFormaOnBilling\": {\n            \"value\": true\n        },\n        \"LastBillingDate\": {},\n        \"NextBillingDate\": {\n            \"value\": \"2020-04-05T00:00:00+00:00\"\n        },\n        \"RateTable\": {},\n        \"RunAllocationOnReleaseOfProjectTransactions\": {\n            \"value\": false\n        },\n        \"Terms\": {\n            \"value\": \"30D\"\n        },\n        \"UseTMRevenueBudgetLimits\": {\n            \"value\": false\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": true\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2020-03-05T03:31:58.013+03:00\"\n    },\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"In Planning\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
 								}
 							]
 						},
@@ -1000,40 +988,28 @@
 											"value": "application/json; charset=utf-8"
 										},
 										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
-										},
-										{
 											"key": "Set-Cookie",
 											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "UserBranch=; path=/"
+											"value": "UserBranch=2; path=/"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=40; path=/"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
+											"value": "requestid=9; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Thu, 15 Aug 2019 11:10:01 GMT"
+											"value": "Thu, 05 Mar 2020 08:32:47 GMT"
 										},
 										{
 											"key": "Content-Length",
-											"value": "460"
+											"value": "403"
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"id\": \"c88f0a92-4cbf-e911-9fe5-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Assets\": {},\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"Expenses\": {},\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"Income\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-08-15T07:10:01.657+03:00\"\n    },\n    \"Liabilities\": {},\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+									"body": "{\n    \"id\": \"6adb22c3-bb5e-ea11-9ff9-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2020-03-05T03:32:47.7+03:00\"\n    },\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
 								}
 							]
 						},
@@ -1102,14 +1078,6 @@
 											"value": "application/json; charset=utf-8"
 										},
 										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
-										},
-										{
 											"key": "Set-Cookie",
 											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
 										},
@@ -1119,23 +1087,19 @@
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=92; path=/"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
+											"value": "requestid=10; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Thu, 15 Aug 2019 11:49:19 GMT"
+											"value": "Thu, 05 Mar 2020 08:34:25 GMT"
 										},
 										{
 											"key": "Content-Length",
-											"value": "1118"
+											"value": "964"
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"id\": \"c88f0a92-4cbf-e911-9fe5-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Assets\": {\n        \"value\": 0\n    },\n    \"BillingAndAllocationSettings\": {\n        \"id\": \"c782913f-6057-475d-9813-54b38a6de8a8\",\n        \"rowNumber\": 1,\n        \"note\": null,\n        \"AllocationRule\": {},\n        \"AutomaticallyReleaseARDocuments\": {\n            \"value\": false\n        },\n        \"BillingPeriod\": {\n            \"value\": \"Month\"\n        },\n        \"BillingRule\": {\n            \"value\": \"PROGRESS\"\n        },\n        \"Branch\": {\n            \"value\": \"SWEETEQUIP\"\n        },\n        \"CreateProFormaOnBilling\": {\n            \"value\": true\n        },\n        \"LastBillingDate\": {\n            \"value\": \"2019-08-15T00:00:00+03:00\"\n        },\n        \"NextBillingDate\": {\n            \"value\": \"2019-08-15T00:00:00+03:00\"\n        },\n        \"RateTable\": {},\n        \"RunAllocationOnReleaseOfProjectTransactions\": {\n            \"value\": false\n        },\n        \"Terms\": {\n            \"value\": \"30D\"\n        },\n        \"UseTMRevenueBudgetLimits\": {\n            \"value\": false\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"Expenses\": {\n        \"value\": 10\n    },\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"Income\": {\n        \"value\": 0\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-08-15T07:49:19.34+03:00\"\n    },\n    \"Liabilities\": {\n        \"value\": 0\n    },\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+									"body": "{\n    \"id\": \"6adb22c3-bb5e-ea11-9ff9-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"BillingAndAllocationSettings\": {\n        \"id\": \"19ad35ce-cc6d-4b39-9fd3-e7406fe8190d\",\n        \"rowNumber\": 1,\n        \"note\": null,\n        \"AllocationRule\": {},\n        \"AutomaticallyReleaseARDocuments\": {\n            \"value\": false\n        },\n        \"BillingPeriod\": {\n            \"value\": \"Month\"\n        },\n        \"BillingRule\": {\n            \"value\": \"PROGRESS\"\n        },\n        \"Branch\": {\n            \"value\": \"SWEETEQUIP\"\n        },\n        \"CreateProFormaOnBilling\": {\n            \"value\": true\n        },\n        \"LastBillingDate\": {},\n        \"NextBillingDate\": {\n            \"value\": \"2019-08-15T00:00:00+03:00\"\n        },\n        \"RateTable\": {},\n        \"RunAllocationOnReleaseOfProjectTransactions\": {\n            \"value\": false\n        },\n        \"Terms\": {\n            \"value\": \"30D\"\n        },\n        \"UseTMRevenueBudgetLimits\": {\n            \"value\": false\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2020-03-05T03:34:25.553+03:00\"\n    },\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
 								}
 							]
 						},
@@ -1204,47 +1168,35 @@
 											"value": "application/json; charset=utf-8"
 										},
 										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
-										},
-										{
 											"key": "Set-Cookie",
 											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "UserBranch=; path=/"
+											"value": "UserBranch=2; path=/"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=47; path=/"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
+											"value": "requestid=11; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Thu, 15 Aug 2019 11:13:34 GMT"
+											"value": "Thu, 05 Mar 2020 08:35:01 GMT"
 										},
 										{
 											"key": "Content-Length",
-											"value": "356"
+											"value": "357"
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"id\": \"cd8f0a92-4cbf-e911-9fe5-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Default\": {\n        \"value\": false\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation\"\n    },\n    \"ExternalRefNbr\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-08-15T07:13:34.77+03:00\"\n    },\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTaskID\": {\n        \"value\": \"PHASE1\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+									"body": "{\n    \"id\": \"6fdb22c3-bb5e-ea11-9ff9-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Default\": {\n        \"value\": false\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation\"\n    },\n    \"ExternalRefNbr\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2020-03-05T03:35:01.613+03:00\"\n    },\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTaskID\": {\n        \"value\": \"PHASE1\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
 								}
 							]
 						},
 						{
-							"name": "Creation of a Pro Forma Invoice 5: Create a Project Transaction and Release the Transaction",
+							"name": "Creation of a Pro Forma Invoice 5: Specify the Progress of the Project Task",
 							"request": {
-								"method": "POST",
+								"method": "PUT",
 								"header": [
 									{
 										"key": "Accept",
@@ -1259,22 +1211,22 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"entity\" : {\r\n    \"Details\" : \r\n    [\r\n      {\r\n        \"Project\" : {\"value\" : \"TESTPR3\"},\r\n        \"ProjectTask\" : {\"value\" : \"PHASE1\"},\r\n        \"AccountGroup\" : {\"value\" : \"LABOR\"}, \r\n        \"Qty\" : {\"value\" : 10}, \r\n        \"Amount\" : {\"value\" : 10}, \r\n    },\r\n  ]\r\n}\r\n}"
+									"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"InventoryID\" : {\"value\" : \"<N/A>\"},\r\n  \"Completed\" : {\"value\" : 25},\r\n  \"PendingInvoiceAmount\" : {\"value\" : 725}\r\n}",
+									"options": {
+										"raw": {}
+									}
 								},
 								"url": {
-									"raw": "{{EndpointURL}}ProjectTransaction/ReleaseTransactions",
+									"raw": "{{EndpointURL}}ProjectBudget",
 									"host": [
-										"{{EndpointURL}}ProjectTransaction"
-									],
-									"path": [
-										"ReleaseTransactions"
+										"{{EndpointURL}}ProjectBudget"
 									]
 								},
 								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
 							},
 							"response": [
 								{
-									"name": "Creation of a Pro Forma Invoice: Activate a Project Task",
+									"name": "Creation of a Pro Forma Invoice: Specify the Progress of the Project Task",
 									"originalRequest": {
 										"method": "PUT",
 										"header": [
@@ -1291,12 +1243,15 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Status\" : {\"value\" : \"Active\"},\r\n}"
+											"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"InventoryID\" : {\"value\" : \"<N/A>\"},\r\n  \"Completed\" : {\"value\" : 25},\r\n  \"PendingInvoiceAmount\" : {\"value\" : 725}\r\n}",
+											"options": {
+												"raw": {}
+											}
 										},
 										"url": {
-											"raw": "{{EndpointURL}}ProjectTask",
+											"raw": "{{EndpointURL}}ProjectBudget",
 											"host": [
-												"{{EndpointURL}}ProjectTask"
+												"{{EndpointURL}}ProjectBudget"
 											]
 										}
 									},
@@ -1309,125 +1264,6 @@
 											"value": "application/json; charset=utf-8"
 										},
 										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requestid=47; path=/"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
-										},
-										{
-											"key": "Date",
-											"value": "Thu, 15 Aug 2019 11:13:34 GMT"
-										},
-										{
-											"key": "Content-Length",
-											"value": "356"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"id\": \"cd8f0a92-4cbf-e911-9fe5-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Default\": {\n        \"value\": false\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation\"\n    },\n    \"ExternalRefNbr\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-08-15T07:13:34.77+03:00\"\n    },\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTaskID\": {\n        \"value\": \"PHASE1\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
-								}
-							]
-						},
-						{
-							"name": "Creation of a Pro Forma Invoice 6: Obtain the Status of the Long-Running Operation",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Status\" : {\"value\" : \"Active\"},\r\n}"
-								},
-								"url": {
-									"raw": "{{EndpointURL}}ProjectTransaction/ReleaseTransactions/status/543f3cdf-eed5-49e5-be9d-571fda28b996",
-									"host": [
-										"{{EndpointURL}}ProjectTransaction"
-									],
-									"path": [
-										"ReleaseTransactions",
-										"status",
-										"543f3cdf-eed5-49e5-be9d-571fda28b996"
-									]
-								},
-								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
-							},
-							"response": [
-								{
-									"name": "Creation of a Pro Forma Invoice: Obtain the Status of the Long-Running Operation",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"type": "text",
-												"value": "application/json"
-											},
-											{
-												"key": "Content-Type",
-												"type": "text",
-												"value": "application/json"
-											}
-										],
-										"url": {
-											"raw": "{{EndpointURL}}ProjectTransaction/ReleaseTransactions/status/543f3cdf-eed5-49e5-be9d-571fda28b996",
-											"host": [
-												"{{EndpointURL}}ProjectTransaction"
-											],
-											"path": [
-												"ReleaseTransactions",
-												"status",
-												"543f3cdf-eed5-49e5-be9d-571fda28b996"
-											]
-										}
-									},
-									"status": "No Content",
-									"code": 204,
-									"_postman_previewlanguage": "plain",
-									"header": [
-										{
-											"key": "Location",
-											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/ProjectTransaction/9e78b552-51bf-e911-9fe5-4ccc6a8eefea"
-										},
-										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
-										},
-										{
 											"key": "Set-Cookie",
 											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
 										},
@@ -1436,21 +1272,25 @@
 											"value": "UserBranch=2; path=/"
 										},
 										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
+											"key": "Set-Cookie",
+											"value": "requestid=60; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Thu, 15 Aug 2019 11:40:42 GMT"
+											"value": "Thu, 05 Mar 2020 08:48:53 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1701"
 										}
 									],
 									"cookie": [],
-									"body": ""
+									"body": "{\n    \"id\": \"70db22c3-bb5e-ea11-9ff9-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"AccountGroup\": {\n        \"value\": \"REVENUE\"\n    },\n    \"ActualAmount\": {\n        \"value\": 0\n    },\n    \"ActualPlusOpenCommittedAmount\": {\n        \"value\": 0\n    },\n    \"ActualQty\": {\n        \"value\": 0\n    },\n    \"AutoCompleted\": {\n        \"value\": false\n    },\n    \"BudgetedCOAmount\": {\n        \"value\": 0\n    },\n    \"BudgetedCOQty\": {\n        \"value\": 0\n    },\n    \"CommittedCOAmount\": {\n        \"value\": 0\n    },\n    \"CommittedCOQty\": {\n        \"value\": 0\n    },\n    \"CommittedInvoicedAmount\": {\n        \"value\": 0\n    },\n    \"CommittedInvoicedQty\": {\n        \"value\": 0\n    },\n    \"CommittedOpenAmount\": {\n        \"value\": 0\n    },\n    \"CommittedOpenQty\": {\n        \"value\": 0\n    },\n    \"CommittedReceivedQty\": {\n        \"value\": 0\n    },\n    \"Completed\": {\n        \"value\": 25\n    },\n    \"CostAtCompletion\": {\n        \"value\": 0\n    },\n    \"CostToComplete\": {\n        \"value\": 0\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation\"\n    },\n    \"DraftInvoicesAmount\": {\n        \"value\": 0\n    },\n    \"InventoryID\": {\n        \"value\": \"<N/A>\"\n    },\n    \"LastCostAtCompletion\": {\n        \"value\": 0\n    },\n    \"LastCostToComplete\": {\n        \"value\": 0\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2020-03-05T03:48:53.17+03:00\"\n    },\n    \"LastPercentageOfCompletion\": {\n        \"value\": 0\n    },\n    \"OriginalBudgetedAmount\": {\n        \"value\": 2900\n    },\n    \"OriginalBudgetedQty\": {\n        \"value\": 0\n    },\n    \"OriginalCommittedAmount\": {\n        \"value\": 0\n    },\n    \"OriginalCommittedQty\": {\n        \"value\": 0\n    },\n    \"PendingInvoiceAmount\": {\n        \"value\": 725\n    },\n    \"PercentageOfCompletion\": {\n        \"value\": 0\n    },\n    \"Performance\": {\n        \"value\": 0\n    },\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTaskID\": {\n        \"value\": \"PHASE1\"\n    },\n    \"RevenueTask\": {},\n    \"RevisedBudgetedAmount\": {\n        \"value\": 2900\n    },\n    \"RevisedBudgetedQty\": {\n        \"value\": 0\n    },\n    \"RevisedCommittedAmount\": {\n        \"value\": 0\n    },\n    \"RevisedCommittedQty\": {\n        \"value\": 0\n    },\n    \"TaxCategory\": {},\n    \"Type\": {\n        \"value\": \"Income\"\n    },\n    \"UnitRate\": {\n        \"value\": 0\n    },\n    \"UOM\": {\n        \"value\": \"HOUR\"\n    },\n    \"VarianceAmount\": {\n        \"value\": 2900\n    },\n    \"custom\": {},\n    \"files\": []\n}"
 								}
 							]
 						},
 						{
-							"name": "Creation of a Pro Forma Invoice 7: Invoke Project Billing",
+							"name": "Creation of a Pro Forma Invoice 6: Invoke Project Billing",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -1517,15 +1357,7 @@
 									"header": [
 										{
 											"key": "Location",
-											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/Project/RunProjectBilling/status/a1de8d90-1902-4598-abac-5b64f45648bf"
-										},
-										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/Project/RunProjectBilling/status/9b9b5fdd-e31d-45db-a912-13b0120095fa"
 										},
 										{
 											"key": "Set-Cookie",
@@ -1537,15 +1369,11 @@
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=79; path=/"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
+											"value": "requestid=61; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Thu, 15 Aug 2019 11:41:53 GMT"
+											"value": "Thu, 05 Mar 2020 08:49:46 GMT"
 										},
 										{
 											"key": "Content-Length",
@@ -1553,12 +1381,12 @@
 										}
 									],
 									"cookie": [],
-									"body": ""
+									"body": null
 								}
 							]
 						},
 						{
-							"name": "Creation of a Pro Forma Invoice 8: Obtain the Status of the Long-Running Operation Copy",
+							"name": "Creation of a Pro Forma Invoice 7: Obtain the Status of the Long-Running Operation",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1578,24 +1406,24 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Status\" : {\"value\" : \"Active\"},\r\n}"
+									"raw": ""
 								},
 								"url": {
-									"raw": "{{EndpointURL}}Project/RunProjectBilling/status/a1de8d90-1902-4598-abac-5b64f45648bf",
+									"raw": "{{EndpointURL}}Project/RunProjectBilling/status/9b9b5fdd-e31d-45db-a912-13b0120095fa",
 									"host": [
 										"{{EndpointURL}}Project"
 									],
 									"path": [
 										"RunProjectBilling",
 										"status",
-										"a1de8d90-1902-4598-abac-5b64f45648bf"
+										"9b9b5fdd-e31d-45db-a912-13b0120095fa"
 									]
 								},
 								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
 							},
 							"response": [
 								{
-									"name": "Creation of a Pro Forma Invoice: Obtain the Status of the Long-Running Operation Copy",
+									"name": "Creation of a Pro Forma Invoice: Obtain the Status of the Long-Running Operation",
 									"originalRequest": {
 										"method": "GET",
 										"header": [
@@ -1610,15 +1438,19 @@
 												"value": "application/json"
 											}
 										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
 										"url": {
-											"raw": "{{EndpointURL}}Project/RunProjectBilling/status/a1de8d90-1902-4598-abac-5b64f45648bf",
+											"raw": "{{EndpointURL}}Project/RunProjectBilling/status/9b9b5fdd-e31d-45db-a912-13b0120095fa",
 											"host": [
 												"{{EndpointURL}}Project"
 											],
 											"path": [
 												"RunProjectBilling",
 												"status",
-												"a1de8d90-1902-4598-abac-5b64f45648bf"
+												"9b9b5fdd-e31d-45db-a912-13b0120095fa"
 											]
 										}
 									},
@@ -1628,15 +1460,7 @@
 									"header": [
 										{
 											"key": "Location",
-											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/Project/c88f0a92-4cbf-e911-9fe5-4ccc6a8eefea"
-										},
-										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/Project/6adb22c3-bb5e-ea11-9ff9-4ccc6a8eefea"
 										},
 										{
 											"key": "Set-Cookie",
@@ -1647,21 +1471,17 @@
 											"value": "UserBranch=2; path=/"
 										},
 										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
-										},
-										{
 											"key": "Date",
-											"value": "Thu, 15 Aug 2019 11:42:46 GMT"
+											"value": "Thu, 05 Mar 2020 08:50:43 GMT"
 										}
 									],
 									"cookie": [],
-									"body": ""
+									"body": null
 								}
 							]
 						},
 						{
-							"name": "Creation of a Pro Forma Invoice 9: Obtain the List of Pro Forma Invoices",
+							"name": "Creation of a Pro Forma Invoice 8: Obtain the List of Pro Forma Invoices",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1681,7 +1501,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Status\" : {\"value\" : \"Active\"},\r\n}"
+									"raw": ""
 								},
 								"url": {
 									"raw": "{{EndpointURL}}Project/TESTPR3?$expand=Invoices",
@@ -1702,7 +1522,7 @@
 							},
 							"response": [
 								{
-									"name": "Creation of a Pro Forma Invoice: Obtain the Status of the Long-Running Operation Copy",
+									"name": "Creation of a Pro Forma Invoice: Obtain the List of Pro Forma Invoices",
 									"originalRequest": {
 										"method": "GET",
 										"header": [
@@ -1717,33 +1537,33 @@
 												"value": "application/json"
 											}
 										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
 										"url": {
-											"raw": "{{EndpointURL}}Project/RunProjectBilling/status/a1de8d90-1902-4598-abac-5b64f45648bf",
+											"raw": "{{EndpointURL}}Project/TESTPR3?$expand=Invoices",
 											"host": [
 												"{{EndpointURL}}Project"
 											],
 											"path": [
-												"RunProjectBilling",
-												"status",
-												"a1de8d90-1902-4598-abac-5b64f45648bf"
+												"TESTPR3"
+											],
+											"query": [
+												{
+													"key": "$expand",
+													"value": "Invoices"
+												}
 											]
 										}
 									},
-									"status": "No Content",
-									"code": 204,
-									"_postman_previewlanguage": "plain",
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
 									"header": [
 										{
-											"key": "Location",
-											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/Project/c88f0a92-4cbf-e911-9fe5-4ccc6a8eefea"
-										},
-										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
 										},
 										{
 											"key": "Set-Cookie",
@@ -1754,21 +1574,21 @@
 											"value": "UserBranch=2; path=/"
 										},
 										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
+											"key": "Date",
+											"value": "Thu, 05 Mar 2020 08:51:08 GMT"
 										},
 										{
-											"key": "Date",
-											"value": "Thu, 15 Aug 2019 11:42:46 GMT"
+											"key": "Content-Length",
+											"value": "894"
 										}
 									],
 									"cookie": [],
-									"body": ""
+									"body": "{\n    \"id\": \"6adb22c3-bb5e-ea11-9ff9-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"Invoices\": [\n        {\n            \"id\": \"460c5cff-7acf-42d1-9844-612c3a5ecef1\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"ARDocDate\": {},\n            \"ARDocDescription\": {},\n            \"ARDocOriginalAmount\": {},\n            \"ARDocStatus\": {},\n            \"ARDocType\": {},\n            \"ARReferenceNbr\": {},\n            \"BillingNbr\": {\n                \"value\": 1\n            },\n            \"Description\": {\n                \"value\": \"Invoice for TESTPR3\"\n            },\n            \"InvoiceTotal\": {\n                \"value\": 725\n            },\n            \"OpenARBalance\": {},\n            \"OriginalRefNbr\": {},\n            \"ProFormaDate\": {\n                \"value\": \"2019-09-15T00:00:00+03:00\"\n            },\n            \"ProFormaReferenceNbr\": {\n                \"value\": \"000005\"\n            },\n            \"Status\": {\n                \"value\": \"On Hold\"\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"LastModifiedDateTime\": {\n        \"value\": \"2020-03-05T03:49:48.74+03:00\"\n    },\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
 								}
 							]
 						},
 						{
-							"name": "Creation of a Pro Forma Invoice 10: Invoke Project Billing Copy",
+							"name": "Creation of a Pro Forma Invoice 9: Email Pro Forma Invoice",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -1785,7 +1605,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"entity\" : {\r\n    \"RefNbr\": {\r\n        \"value\": \"000004\"\r\n    },\r\n  }\r\n}"
+									"raw": "{\r\n  \"entity\" : {\r\n    \"RefNbr\": {\r\n        \"value\": \"000005\"\r\n    }\r\n  }\r\n}"
 								},
 								"url": {
 									"raw": "{{EndpointURL}}ProFormaInvoice/EmailProFormaInvoice",
@@ -1800,7 +1620,7 @@
 							},
 							"response": [
 								{
-									"name": "Creation of a Pro Forma Invoice: Invoke Project Billing Copy",
+									"name": "Creation of a Pro Forma Invoice: Email Pro Forma Invoice",
 									"originalRequest": {
 										"method": "POST",
 										"header": [
@@ -1817,7 +1637,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"entity\" : {\r\n    \"RefNbr\": {\r\n        \"value\": \"000004\"\r\n    },\r\n  }\r\n}"
+											"raw": "{\r\n  \"entity\" : {\r\n    \"RefNbr\": {\r\n        \"value\": \"000005\"\r\n    }\r\n  }\r\n}"
 										},
 										"url": {
 											"raw": "{{EndpointURL}}ProFormaInvoice/EmailProFormaInvoice",
@@ -1835,15 +1655,7 @@
 									"header": [
 										{
 											"key": "Location",
-											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/ProFormaInvoice/EmailProFormaInvoice/status/30ffcfb2-7268-4959-9335-ae854cbf0fd7"
-										},
-										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/ProFormaInvoice/EmailProFormaInvoice/status/c69a3717-d389-477f-b7bb-6403c68ce8fc"
 										},
 										{
 											"key": "Set-Cookie",
@@ -1851,19 +1663,15 @@
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "UserBranch=3; path=/"
+											"value": "UserBranch=2; path=/"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=332; path=/"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
+											"value": "requestid=62; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Thu, 15 Aug 2019 12:35:18 GMT"
+											"value": "Thu, 05 Mar 2020 08:52:00 GMT"
 										},
 										{
 											"key": "Content-Length",
@@ -1871,12 +1679,12 @@
 										}
 									],
 									"cookie": [],
-									"body": ""
+									"body": null
 								}
 							]
 						},
 						{
-							"name": "Creation of a Pro Forma Invoice 11: Obtain the Status of the Long-Running Operation Copy Copy",
+							"name": "Creation of a Pro Forma Invoice 10: Obtain the Status of the Long-Running Operation",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1896,22 +1704,79 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"Status\" : {\"value\" : \"Active\"},\r\n}"
+									"raw": ""
 								},
 								"url": {
-									"raw": "{{EndpointURL}}ProFormaInvoice/EmailProFormaInvoice/status/30ffcfb2-7268-4959-9335-ae854cbf0fd7",
+									"raw": "{{EndpointURL}}ProFormaInvoice/EmailProFormaInvoice/status/c69a3717-d389-477f-b7bb-6403c68ce8fc",
 									"host": [
 										"{{EndpointURL}}ProFormaInvoice"
 									],
 									"path": [
 										"EmailProFormaInvoice",
 										"status",
-										"30ffcfb2-7268-4959-9335-ae854cbf0fd7"
+										"c69a3717-d389-477f-b7bb-6403c68ce8fc"
 									]
 								},
 								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
 							},
-							"response": []
+							"response": [
+								{
+									"name": "Creation of a Pro Forma Invoice: Obtain the Status of the Long-Running Operation",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{EndpointURL}}ProFormaInvoice/EmailProFormaInvoice/status/c69a3717-d389-477f-b7bb-6403c68ce8fc",
+											"host": [
+												"{{EndpointURL}}ProFormaInvoice"
+											],
+											"path": [
+												"EmailProFormaInvoice",
+												"status",
+												"c69a3717-d389-477f-b7bb-6403c68ce8fc"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Location",
+											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/ProFormaInvoice/25c03d43-be5e-ea11-9ff9-4ccc6a8eefea"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 05 Mar 2020 08:52:38 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
 						},
 						{
 							"name": "Management of Account Groups 1: Create an Account Group",
@@ -2617,14 +2482,6 @@
 											"value": "application/json; charset=utf-8"
 										},
 										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
-										},
-										{
 											"key": "Set-Cookie",
 											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
 										},
@@ -2634,23 +2491,19 @@
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=387; path=/"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
+											"value": "requestid=69; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Fri, 16 Aug 2019 08:04:49 GMT"
+											"value": "Thu, 05 Mar 2020 09:00:27 GMT"
 										},
 										{
 											"key": "Content-Length",
-											"value": "622"
+											"value": "2125"
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"id\": \"46f65edb-bdd1-473b-95c1-357aa37559f6\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Customer\": {},\n    \"CustomerClass\": {},\n    \"Details\": [\n        {\n            \"id\": \"d6821308-4c58-48c2-9e1f-3e2daa40960b\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"CustomerID\": {\n                \"value\": \"HMBAKERY\"\n            },\n            \"CustomerName\": {\n                \"value\": \"HM's Bakery & Cafe\"\n            },\n            \"Description\": {\n                \"value\": \"Juicers with the installation and training for employees\"\n            },\n            \"From\": {},\n            \"LastBillingDate\": {},\n            \"ProjectID\": {\n                \"value\": \"HMBAKERY5\"\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"To\": {},\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"InvoiceDate\": {\n        \"value\": \"2019-08-15T00:00:00+03:00\"\n    },\n    \"PostPeriod\": {\n        \"value\": \"082019\"\n    },\n    \"ProjectTemplate\": {},\n    \"StatementCycle\": {},\n    \"custom\": {},\n    \"files\": []\n}"
+									"body": "{\n    \"id\": \"24c71ef0-f874-43af-8ce7-e885548ecac2\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Customer\": {},\n    \"CustomerClass\": {},\n    \"Details\": [\n        {\n            \"id\": \"714b5ed8-ec87-4c5f-a8d7-a9038b308e63\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"CustomerID\": {\n                \"value\": \"HMBAKERY\"\n            },\n            \"Description\": {\n                \"value\": \"A juicer with the installation and training for employees\"\n            },\n            \"From\": {},\n            \"LastBillingDate\": {},\n            \"ProjectID\": {\n                \"value\": \"HMBAKERY4\"\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"To\": {},\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"99e795e6-3374-4c64-a004-8157ad408aea\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"CustomerID\": {\n                \"value\": \"TOMYUM\"\n            },\n            \"Description\": {\n                \"value\": \"A juicer with the installation and training for employees\"\n            },\n            \"From\": {},\n            \"LastBillingDate\": {},\n            \"ProjectID\": {\n                \"value\": \"TOMYUM3\"\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"To\": {},\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"a3efa6df-97ac-4d35-aa15-518963906ffb\",\n            \"rowNumber\": 3,\n            \"note\": null,\n            \"CustomerID\": {\n                \"value\": \"TOMYUM\"\n            },\n            \"Description\": {\n                \"value\": \"Juicers with the installation and training for employees\"\n            },\n            \"From\": {},\n            \"LastBillingDate\": {},\n            \"ProjectID\": {\n                \"value\": \"TOMYUM7\"\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"To\": {},\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"41574c53-dafe-4d8c-9083-a30eec885b9a\",\n            \"rowNumber\": 4,\n            \"note\": null,\n            \"CustomerID\": {\n                \"value\": \"TOMYUM\"\n            },\n            \"Description\": {\n                \"value\": \"Juicers with the installation and training for employees\"\n            },\n            \"From\": {},\n            \"LastBillingDate\": {},\n            \"ProjectID\": {\n                \"value\": \"TOMYUM9\"\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"To\": {},\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"ad09abe4-111c-4046-875e-fd0e1590b8b8\",\n            \"rowNumber\": 5,\n            \"note\": null,\n            \"CustomerID\": {\n                \"value\": \"TOMYUM\"\n            },\n            \"Description\": {\n                \"value\": \"А juicer with the installation and training for employees\"\n            },\n            \"From\": {},\n            \"LastBillingDate\": {},\n            \"ProjectID\": {\n                \"value\": \"TOMYUM10\"\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"To\": {},\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"ff16650d-2ccf-47b2-a030-e5ab442c4389\",\n            \"rowNumber\": 6,\n            \"note\": null,\n            \"CustomerID\": {\n                \"value\": \"HMBAKERY\"\n            },\n            \"Description\": {\n                \"value\": \"Juicers with the installation and training for employees\"\n            },\n            \"From\": {},\n            \"LastBillingDate\": {},\n            \"ProjectID\": {\n                \"value\": \"HMBAKERY5\"\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"To\": {},\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"InvoiceDate\": {\n        \"value\": \"2019-08-15T00:00:00+03:00\"\n    },\n    \"PostPeriod\": {\n        \"value\": \"082019\"\n    },\n    \"ProjectTemplate\": {},\n    \"StatementCycle\": {},\n    \"custom\": {},\n    \"files\": []\n}"
 								}
 							]
 						},
@@ -2672,7 +2525,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"entity\" : \r\n  {\r\n    \"id\": \"46f65edb-bdd1-473b-95c1-357aa37559f6\",\r\n    \"Details\": [\r\n        {\r\n            \"id\": \"d6821308-4c58-48c2-9e1f-3e2daa40960b\",\r\n            \"Selected\": {\r\n                \"value\": true\r\n            }\r\n        }\r\n    ]\r\n}\r\n}"
+									"raw": "{\r\n  \"entity\" : \r\n  {\r\n    \"id\": \"24c71ef0-f874-43af-8ce7-e885548ecac2\",\r\n    \"Details\": [\r\n        {\r\n            \"id\": \"714b5ed8-ec87-4c5f-a8d7-a9038b308e63\",\r\n            \"Selected\": {\r\n                \"value\": true\r\n            }\r\n        }\r\n    ]\r\n}\r\n}"
 								},
 								"url": {
 									"raw": "{{EndpointURL}}ProjectBilling/ProjectBillingProcess",
@@ -2704,7 +2557,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"entity\" : \r\n  {\r\n    \"id\": \"46f65edb-bdd1-473b-95c1-357aa37559f6\",\r\n    \"Details\": [\r\n        {\r\n            \"id\": \"d6821308-4c58-48c2-9e1f-3e2daa40960b\",\r\n            \"Selected\": {\r\n                \"value\": true\r\n            }\r\n        }\r\n    ]\r\n}\r\n}"
+											"raw": "{\r\n  \"entity\" : \r\n  {\r\n    \"id\": \"24c71ef0-f874-43af-8ce7-e885548ecac2\",\r\n    \"Details\": [\r\n        {\r\n            \"id\": \"714b5ed8-ec87-4c5f-a8d7-a9038b308e63\",\r\n            \"Selected\": {\r\n                \"value\": true\r\n            }\r\n        }\r\n    ]\r\n}\r\n}"
 										},
 										"url": {
 											"raw": "{{EndpointURL}}ProjectBilling/ProjectBillingProcess",
@@ -2722,15 +2575,15 @@
 									"header": [
 										{
 											"key": "Location",
-											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/ProjectBilling/ProjectBillingProcess/status/8a9e7785-e8ca-4af6-8bd7-012d2ee7920b"
+											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/ProjectBilling/ProjectBillingProcess/status/dcb99006-caa4-4dc2-953a-1dc0331f95b1"
 										},
 										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
+											"key": "Set-Cookie",
+											"value": ".ASPXAUTH=08758AEBE6B827749FF292703610E08AEBB4D0AABA9341E15D3964AB325D410CD5EEC6B1BDD844411CEB3D59770376343352F783199D33C22C31832F54CE814A9531636287837C90802989CCC447548E437814C7D493F4956036D7D1E9495E645AF3DBE4B4F7D5662C87C57CDBE244CAAA9606DD; path=/; HttpOnly"
 										},
 										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+											"key": "Set-Cookie",
+											"value": ".ASPXAUTH=08758AEBE6B827749FF292703610E08AEBB4D0AABA9341E15D3964AB325D410CD5EEC6B1BDD844411CEB3D59770376343352F783199D33C22C31832F54CE814A9531636287837C90802989CCC447548E437814C7D493F4956036D7D1E9495E645AF3DBE4B4F7D5662C87C57CDBE244CAAA9606DD; path=/; HttpOnly"
 										},
 										{
 											"key": "Set-Cookie",
@@ -2742,15 +2595,11 @@
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=389; path=/"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
+											"value": "requestid=73; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Fri, 16 Aug 2019 08:08:01 GMT"
+											"value": "Thu, 05 Mar 2020 09:21:31 GMT"
 										},
 										{
 											"key": "Content-Length",
@@ -2758,7 +2607,7 @@
 										}
 									],
 									"cookie": [],
-									"body": ""
+									"body": null
 								}
 							]
 						},
@@ -2830,15 +2679,7 @@
 									"header": [
 										{
 											"key": "Location",
-											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/ProjectBilling/ProjectBillingProcessAll/status/983daf34-e07c-47d2-b198-79c944e3df7d"
-										},
-										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/ProjectBilling/ProjectBillingProcessAll/status/11d2cf29-270d-42d7-bdda-42c7e8f1427d"
 										},
 										{
 											"key": "Set-Cookie",
@@ -2850,15 +2691,11 @@
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=343; path=/"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
+											"value": "requestid=76; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Fri, 16 Aug 2019 07:14:47 GMT"
+											"value": "Thu, 05 Mar 2020 09:24:53 GMT"
 										},
 										{
 											"key": "Content-Length",
@@ -2866,7 +2703,7 @@
 										}
 									],
 									"cookie": [],
-									"body": ""
+									"body": null
 								}
 							]
 						},
@@ -2894,19 +2731,76 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{EndpointURL}}ProjectBilling/ProjectBillingProcessAll/status/983daf34-e07c-47d2-b198-79c944e3df7d",
+									"raw": "{{EndpointURL}}ProjectBilling/ProjectBillingProcess/status/dcb99006-caa4-4dc2-953a-1dc0331f95b1",
 									"host": [
 										"{{EndpointURL}}ProjectBilling"
 									],
 									"path": [
-										"ProjectBillingProcessAll",
+										"ProjectBillingProcess",
 										"status",
-										"983daf34-e07c-47d2-b198-79c944e3df7d"
+										"dcb99006-caa4-4dc2-953a-1dc0331f95b1"
 									]
 								},
 								"description": "This example shows how to run project billing for multiple projects. This process is described in [Running of Project Billing](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=5e9d5d74-2b0b-4b7e-809e-88d7d4a9dd10)."
 							},
-							"response": []
+							"response": [
+								{
+									"name": "Running of Project Billing 4: Obtain the Status of the Long-Running Operation",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{EndpointURL}}ProjectBilling/ProjectBillingProcess/status/dcb99006-caa4-4dc2-953a-1dc0331f95b1",
+											"host": [
+												"{{EndpointURL}}ProjectBilling"
+											],
+											"path": [
+												"ProjectBillingProcess",
+												"status",
+												"dcb99006-caa4-4dc2-953a-1dc0331f95b1"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Location",
+											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/ProjectBilling/24c71ef0-f874-43af-8ce7-e885548ecac2"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 05 Mar 2020 09:22:24 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
 						},
 						{
 							"name": "Creation of a General Ledger Transaction with a Project Code That Does Not Produce a Project Transaction",
@@ -3233,6 +3127,13 @@
 					"description": "This folder contains examples from the [Project Accounting](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=78967236-3bc1-48c6-8dc2-d01812ed2326) chapter of the Integration Development Guide.",
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Customer Relationship Management",
+					"item": [],
+					"description": "This folder contains examples from the [Customer Relationship Management](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b8e946bb-26ba-4286-9764-0dbb56ca13bf) chapter of the Integration Development Guide.",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				}
 			],
 			"description": "This folder contains examples from the [Contract-Based API Examples](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide.",
@@ -3263,13 +3164,13 @@
 	],
 	"variable": [
 		{
-			"id": "d8af856e-3651-49ad-90ad-5a7e14f75d74",
+			"id": "6f603126-8d0b-40c8-9038-d3c616eb8b0a",
 			"key": "BaseURL",
 			"value": "https://localhost/AcumaticaERP/",
 			"type": "string"
 		},
 		{
-			"id": "e87a87bc-081a-4b5c-9669-1cf34a1bf3d2",
+			"id": "41d681f9-3a97-4974-82d0-295e457cfded",
 			"key": "EndpointURL",
 			"value": "{{BaseURL}}entity/Default/18.200.001/",
 			"type": "string"
