@@ -3157,7 +3157,7 @@
 										"{{EndpointURL}}Case"
 									]
 								},
-								"description": "This example shows how to create a case that relates to another case in Acumatica ERP. This process is described in [Linking of a Case to Another Case](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a1116acb-66aa-4415-8148-5bbab45b0a50)."
+								"description": "This example shows how to create a case that relates to another case in Acumatica ERP. This process is described in [Linking of a Case to Another Case](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=adea49ab-d958-4dd2-95aa-70e078564b07)."
 							},
 							"response": [
 								{
@@ -3255,13 +3255,13 @@
 	],
 	"variable": [
 		{
-			"id": "4093bde8-20cf-4a79-8994-81124c59827d",
+			"id": "616a3544-66d4-4063-94a0-26b91130b5c4",
 			"key": "BaseURL",
 			"value": "https://localhost/AcumaticaERP/",
 			"type": "string"
 		},
 		{
-			"id": "cdc4cf55-406e-4ceb-a7fa-d5e7d1786e0c",
+			"id": "44c231ce-814d-45cb-8551-9b96093bc22d",
 			"key": "EndpointURL",
 			"value": "{{BaseURL}}entity/Default/18.200.001/",
 			"type": "string"
