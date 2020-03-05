@@ -3130,7 +3130,98 @@
 				},
 				{
 					"name": "Customer Relationship Management",
-					"item": [],
+					"item": [
+						{
+							"name": "Linking of a Case to Another Case",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"ClassID\": {\r\n        \"value\": \"SERVCONS\"\r\n    },\r\n    \"BusinessAccount\": {\r\n        \"value\": \"GOODFOOD\"\r\n    },\r\n    \"Subject\": {\r\n        \"value\": \"Billing plan\"\r\n    },\r\n    \"RelatedCases\": [\r\n        {\r\n            \"CaseID\": {\r\n                \"value\": \"000004\"\r\n            }\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Case",
+									"host": [
+										"{{EndpointURL}}Case"
+									]
+								},
+								"description": "This example shows how to create a case that relates to another case in Acumatica ERP. This process is described in [Linking of a Case to Another Case](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a1116acb-66aa-4415-8148-5bbab45b0a50)."
+							},
+							"response": [
+								{
+									"name": "Linking of a Case to Another Case",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"ClassID\": {\r\n        \"value\": \"SERVCONS\"\r\n    },\r\n    \"BusinessAccount\": {\r\n        \"value\": \"GOODFOOD\"\r\n    },\r\n    \"Subject\": {\r\n        \"value\": \"Billing plan\"\r\n    },\r\n    \"RelatedCases\": [\r\n        {\r\n            \"CaseID\": {\r\n                \"value\": \"000004\"\r\n            }\r\n        }\r\n    ]\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Case",
+											"host": [
+												"{{EndpointURL}}Case"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=128; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 05 Mar 2020 10:43:53 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1194"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"dbe19034-ce5e-ea11-9ff9-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Billable\": {\n        \"value\": true\n    },\n    \"BillableOvertime\": {\n        \"value\": 0\n    },\n    \"BillableTime\": {\n        \"value\": 0\n    },\n    \"BusinessAccount\": {\n        \"value\": \"GOODFOOD\"\n    },\n    \"BusinessAccountName\": {\n        \"value\": \"GOODFOOD\"\n    },\n    \"CaseID\": {\n        \"value\": \"000008\"\n    },\n    \"ClassID\": {\n        \"value\": \"SERVCONS\"\n    },\n    \"ClosingDate\": {},\n    \"ContactDisplayName\": {},\n    \"ContactID\": {},\n    \"DateReported\": {\n        \"value\": \"2020-03-05T05:43:53.83+03:00\"\n    },\n    \"Description\": {},\n    \"InitialResponse\": {},\n    \"LastActivityDate\": {},\n    \"LastIncomingActivity\": {},\n    \"LastOutgoingActivity\": {},\n    \"ManualOverride\": {\n        \"value\": false\n    },\n    \"OvertimeSpent\": {\n        \"value\": \"000\"\n    },\n    \"Owner\": {},\n    \"OwnerEmployeeName\": {},\n    \"Priority\": {\n        \"value\": \"Medium\"\n    },\n    \"Reason\": {\n        \"value\": \"Unassigned\"\n    },\n    \"RelatedCases\": [\n        {\n            \"id\": \"073d819c-c041-467b-b3e7-2e4a7772932d\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"CaseID\": {\n                \"value\": \"000004\"\n            },\n            \"Owner\": {\n                \"value\": \"EP00000004\"\n            },\n            \"RelationType\": {\n                \"value\": \"Depends On\"\n            },\n            \"Status\": {\n                \"value\": \"New\"\n            },\n            \"Subject\": {\n                \"value\": \"Statement request\"\n            },\n            \"Workgroup\": {},\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"ResolutionTime\": {\n        \"value\": \"000\"\n    },\n    \"Severity\": {\n        \"value\": \"Medium\"\n    },\n    \"SLA\": {},\n    \"Status\": {\n        \"value\": \"New\"\n    },\n    \"Subject\": {\n        \"value\": \"Billing plan\"\n    },\n    \"TimeSpent\": {\n        \"value\": \"000\"\n    },\n    \"Workgroup\": {},\n    \"WorkgroupDescription\": {},\n    \"custom\": {},\n    \"files\": []\n}"
+								}
+							]
+						}
+					],
 					"description": "This folder contains examples from the [Customer Relationship Management](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b8e946bb-26ba-4286-9764-0dbb56ca13bf) chapter of the Integration Development Guide.",
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
@@ -3164,13 +3255,13 @@
 	],
 	"variable": [
 		{
-			"id": "6f603126-8d0b-40c8-9038-d3c616eb8b0a",
+			"id": "4093bde8-20cf-4a79-8994-81124c59827d",
 			"key": "BaseURL",
 			"value": "https://localhost/AcumaticaERP/",
 			"type": "string"
 		},
 		{
-			"id": "41d681f9-3a97-4974-82d0-295e457cfded",
+			"id": "cdc4cf55-406e-4ceb-a7fa-d5e7d1786e0c",
 			"key": "EndpointURL",
 			"value": "{{BaseURL}}entity/Default/18.200.001/",
 			"type": "string"
