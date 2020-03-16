@@ -230,7 +230,7 @@
 					]
 				},
 				{
-					"name": "New journal transaction with changed business date and branch",
+					"name": "Change of the Business Date or Current Branch",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -265,10 +265,11 @@
 								"{{EndpointURL}}JournalTransaction"
 							]
 						}
+						"description": "This example shows how to specify the active branch and business date to be used in a request. This process is described in [Change of the Business Date or Current Branch](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=concept_xfm_1pv_zkb)."
 					},
 					"response": [
 						{
-							"name": "New journal transaction with changed business date and branch",
+							"name": "Change of the Business Date or Current Branch",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [
