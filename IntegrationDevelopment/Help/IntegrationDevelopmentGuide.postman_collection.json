@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "daaca7de-14ae-4086-a617-f17aa9bf1133",
 		"name": "Integration Development Guide",
-		"description": "This collection contains examples from the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n - Deploy a new Acumatica ERP instance with the U100 dataset. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n - Specify the URL of the instance in the BaseURL variable of the collection. The EndpointURL variable uses the value from the BaseURL variable and specifies the URL of the Default/18.200.001 endpoint. You do not need to change this variable until you want to use another endpoint.\n - To sign in to the instance in the client application, use the tenant name (which you specified when you created the instance) and the HEADOFFICE branch.",
+		"description": "This collection contains examples from the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n - Deploy a new Acumatica ERP instance with the U100 dataset. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n - Specify the URL of the instance in the BaseURL variable of the collection. The EndpointURL variable uses the value from the BaseURL variable and specifies the URL of the Default/18.200.001 endpoint. You do not need to change this variable until you want to use another endpoint.\n - To sign in to the instance in the client application, use the tenant name (which you specified when you created the instance) and the HEADOFFICE branch.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -39,7 +39,7 @@
 								"login"
 							]
 						},
-						"description": "This example shows how to sign in to Acumatica ERP. This process is described in [Signing in to the Service](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0322492a-de9b-4443-b256-923c48aff31d)."
+						"description": "This example shows how to sign in to Acumatica ERP. This process is described in [Signing in to the Service](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=0322492a-de9b-4443-b256-923c48aff31d)."
 					},
 					"response": [
 						{
@@ -153,7 +153,7 @@
 								"logout"
 							]
 						},
-						"description": "This example shows how to sign out from Acumatica ERP. This process is described in [Signing out from the Service](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=f6701ec1-2296-4155-8242-03d29006bf6e)."
+						"description": "This example shows how to sign out from Acumatica ERP. This process is described in [Signing out from the Service](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=f6701ec1-2296-4155-8242-03d29006bf6e)."
 					},
 					"response": [
 						{
@@ -265,7 +265,7 @@
 								"{{EndpointURL}}JournalTransaction"
 							]
 						}
-						"description": "This example shows how to specify the active branch and business date to be used in a request. This process is described in [Change of the Business Date or Current Branch](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=concept_xfm_1pv_zkb)."
+						"description": "This example shows how to specify the active branch and business date to be used in a request. This process is described in [Change of the Business Date or Current Branch](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=_9821cff9-4970-4153-a0f8-dbf5758133a7)."
 					},
 					"response": [
 						{
@@ -1014,7 +1014,7 @@
 								}
 							]
 						},
-						"description": "This example illustrates the use of the $custom parameter, which is described in [Parameters for Retrieving Data](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=c5e2f36a-0971-4b33-b127-3c3fe14106ff).\n\nTo test this example, you need to add a user-defined field for the ORGSIZE attribute on the Sales Orders (SO301000) form and specify its value for the 000029 sales order.\n\nFor details about how to add a user-defined field, see [To Add User-Defined Fields to a Form](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=810b4857-2ffe-4764-aebf-4d657334f0be)."
+						"description": "This example illustrates the use of the $custom parameter, which is described in [Parameters for Retrieving Data](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=c5e2f36a-0971-4b33-b127-3c3fe14106ff).\n\nTo test this example, you need to add a user-defined field for the ORGSIZE attribute on the Sales Orders (SO301000) form and specify its value for the 000029 sales order.\n\nFor details about how to add a user-defined field, see [To Add User-Defined Fields to a Form](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=810b4857-2ffe-4764-aebf-4d657334f0be)."
 					},
 					"response": [
 						{
@@ -1860,7 +1860,7 @@
 					]
 				}
 			],
-			"description": "This folder contains examples from the [Working with the Contract-Based REST API](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=1c767ad9-da6d-4047-bc93-6970ad469504) chapter of the Integration Development Guide.",
+			"description": "This folder contains examples from the [Working with the Contract-Based REST API](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=1c767ad9-da6d-4047-bc93-6970ad469504) chapter of the Integration Development Guide.",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -1927,7 +1927,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to create an AP bill for a particular line of a purchase order in Acumatica ERP. This process is described in [Creation of a Bill for Particular Lines of a Purchase Order or Receipt](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=a1116acb-66aa-4415-8148-5bbab45b0a50)."
+								"description": "This example shows how to create an AP bill for a particular line of a purchase order in Acumatica ERP. This process is described in [Creation of a Bill for Particular Lines of a Purchase Order or Receipt](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a1116acb-66aa-4415-8148-5bbab45b0a50)."
 							},
 							"response": [
 								{
@@ -2049,7 +2049,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to create an AP bill for a particular line of a purchase receipt in Acumatica ERP. This process is described in [Creation of a Bill for Particular Lines of a Purchase Order or Receipt](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=a1116acb-66aa-4415-8148-5bbab45b0a50)."
+								"description": "This example shows how to create an AP bill for a particular line of a purchase receipt in Acumatica ERP. This process is described in [Creation of a Bill for Particular Lines of a Purchase Order or Receipt](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a1116acb-66aa-4415-8148-5bbab45b0a50)."
 							},
 							"response": [
 								{
@@ -2167,7 +2167,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to create a sales order with payments in Acumatica ERP. This process is described in [Creation of a Sales Order with Payments](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=51f9a74e-64f5-4c4d-af48-600be817efdd)."
+								"description": "This example shows how to create a sales order with payments in Acumatica ERP. This process is described in [Creation of a Sales Order with Payments](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=51f9a74e-64f5-4c4d-af48-600be817efdd)."
 							},
 							"response": [
 								{
@@ -2250,7 +2250,7 @@
 							]
 						}
 					],
-					"description": "This folder contains examples from the [Integration and Order Management](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=ce68a4ed-491c-46e6-91ec-bde332c19218) chapter of the Integration Development Guide.",
+					"description": "This folder contains examples from the [Integration and Order Management](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ce68a4ed-491c-46e6-91ec-bde332c19218) chapter of the Integration Development Guide.",
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
 				},
@@ -2283,7 +2283,7 @@
 										"{{EndpointURL}}Project"
 									]
 								},
-								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
 							},
 							"response": [
 								{
@@ -2373,7 +2373,7 @@
 										"{{EndpointURL}}Project"
 									]
 								},
-								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
 							},
 							"response": [
 								{
@@ -2463,7 +2463,7 @@
 										"{{EndpointURL}}Project"
 									]
 								},
-								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
 							},
 							"response": [
 								{
@@ -2553,7 +2553,7 @@
 										"{{EndpointURL}}ProjectTask"
 									]
 								},
-								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
 							},
 							"response": [
 								{
@@ -2646,7 +2646,7 @@
 										"{{EndpointURL}}ProjectBudget"
 									]
 								},
-								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
 							},
 							"response": [
 								{
@@ -2742,7 +2742,7 @@
 										"RunProjectBilling"
 									]
 								},
-								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
 							},
 							"response": [
 								{
@@ -2843,7 +2843,7 @@
 										"9b9b5fdd-e31d-45db-a912-13b0120095fa"
 									]
 								},
-								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
 							},
 							"response": [
 								{
@@ -2938,7 +2938,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
 							},
 							"response": [
 								{
@@ -3032,7 +3032,7 @@
 										"EmailProFormaInvoice"
 									]
 								},
-								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
 							},
 							"response": [
 								{
@@ -3133,7 +3133,7 @@
 										"c69a3717-d389-477f-b7bb-6403c68ce8fc"
 									]
 								},
-								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
+								"description": "This example shows how to create a pro forma invoice in Acumatica ERP. This process is described in [Creation of a Pro Forma Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=0dadafe8-c1bc-4a93-a1ec-89cf23692f02)."
 							},
 							"response": [
 								{
@@ -3216,7 +3216,7 @@
 										"{{EndpointURL}}AccountGroup"
 									]
 								},
-								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
 							},
 							"response": [
 								{
@@ -3318,7 +3318,7 @@
 										"{{EndpointURL}}Account"
 									]
 								},
-								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
 							},
 							"response": [
 								{
@@ -3420,7 +3420,7 @@
 										"{{EndpointURL}}Account"
 									]
 								},
-								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
 							},
 							"response": [
 								{
@@ -3522,7 +3522,7 @@
 										"{{EndpointURL}}AccountGroup"
 									]
 								},
-								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
 							},
 							"response": [
 								{
@@ -3637,7 +3637,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
 							},
 							"response": [
 								{
@@ -3741,7 +3741,7 @@
 										"{{EndpointURL}}Account"
 									]
 								},
-								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+								"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
 							},
 							"response": [
 								{
@@ -3849,7 +3849,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to run project billing. This process is described in [Running of Project Billing](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=5e9d5d74-2b0b-4b7e-809e-88d7d4a9dd10)."
+								"description": "This example shows how to run project billing. This process is described in [Running of Project Billing](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=5e9d5d74-2b0b-4b7e-809e-88d7d4a9dd10)."
 							},
 							"response": [
 								{
@@ -3948,7 +3948,7 @@
 										"ProjectBillingProcess"
 									]
 								},
-								"description": "This example shows how to run project billing for multiple projects. This process is described in [Running of Project Billing](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=5e9d5d74-2b0b-4b7e-809e-88d7d4a9dd10)."
+								"description": "This example shows how to run project billing for multiple projects. This process is described in [Running of Project Billing](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=5e9d5d74-2b0b-4b7e-809e-88d7d4a9dd10)."
 							},
 							"response": [
 								{
@@ -4052,7 +4052,7 @@
 										"ProjectBillingProcessAll"
 									]
 								},
-								"description": "This example shows how to run project billing for multiple projects. This process is described in [Running of Project Billing](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=5e9d5d74-2b0b-4b7e-809e-88d7d4a9dd10)."
+								"description": "This example shows how to run project billing for multiple projects. This process is described in [Running of Project Billing](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=5e9d5d74-2b0b-4b7e-809e-88d7d4a9dd10)."
 							},
 							"response": [
 								{
@@ -4153,7 +4153,7 @@
 										"dcb99006-caa4-4dc2-953a-1dc0331f95b1"
 									]
 								},
-								"description": "This example shows how to run project billing for multiple projects. This process is described in [Running of Project Billing](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=5e9d5d74-2b0b-4b7e-809e-88d7d4a9dd10)."
+								"description": "This example shows how to run project billing for multiple projects. This process is described in [Running of Project Billing](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=5e9d5d74-2b0b-4b7e-809e-88d7d4a9dd10)."
 							},
 							"response": [
 								{
@@ -4236,7 +4236,7 @@
 										"{{EndpointURL}}JournalTransaction"
 									]
 								},
-								"description": "This example shows how to create GL transactions with project codes that do not produce project transactions. This process is described in [Creation of a General Ledger Transaction with a Project Code That Does Not Produce a Project Transaction](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=682496e3-6498-4855-b33d-a40dbf501b82)."
+								"description": "This example shows how to create GL transactions with project codes that do not produce project transactions. This process is described in [Creation of a General Ledger Transaction with a Project Code That Does Not Produce a Project Transaction](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=682496e3-6498-4855-b33d-a40dbf501b82)."
 							},
 							"response": [
 								{
@@ -4338,7 +4338,7 @@
 										"{{EndpointURL}}TimeEntry"
 									]
 								},
-								"description": "This example shows how to specify the time spent on the tasks of projects. This process is described in [Time Entry](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=847b54c3-116e-47b1-89af-14a19cc5855a)."
+								"description": "This example shows how to specify the time spent on the tasks of projects. This process is described in [Time Entry](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=847b54c3-116e-47b1-89af-14a19cc5855a)."
 							},
 							"response": [
 								{
@@ -4453,7 +4453,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to search for the time entries entered on particular date. This process is described in [Search for Time Entries by Date](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=c7576634-c730-42fd-9cc7-03aa85164bb9)."
+								"description": "This example shows how to search for the time entries entered on particular date. This process is described in [Search for Time Entries by Date](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=c7576634-c730-42fd-9cc7-03aa85164bb9)."
 							},
 							"response": [
 								{
@@ -4532,7 +4532,7 @@
 							]
 						}
 					],
-					"description": "This folder contains examples from the [Project Accounting](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=78967236-3bc1-48c6-8dc2-d01812ed2326) chapter of the Integration Development Guide.",
+					"description": "This folder contains examples from the [Project Accounting](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=78967236-3bc1-48c6-8dc2-d01812ed2326) chapter of the Integration Development Guide.",
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
 				},
@@ -4635,7 +4635,7 @@
 					"_postman_isSubFolder": true
 				}
 			],
-			"description": "This folder contains examples from the [Contract-Based API Examples](https://help-2019r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide.",
+			"description": "This folder contains examples from the [Contract-Based API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide.",
 			"protocolProfileBehavior": {}
 		}
 	],
