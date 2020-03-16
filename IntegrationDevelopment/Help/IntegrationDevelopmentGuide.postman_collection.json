@@ -230,6 +230,115 @@
 					]
 				},
 				{
+					"name": "New journal transaction with changed business date and branch",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "PX-CbApiBusinessDate",
+								"value": "2018/01/01",
+								"type": "text"
+							},
+							{
+								"key": "PX-CbApiBranch",
+								"value": "SweetLife Store",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Description\": {\"value\": \"Test transaction description\"}}"
+						},
+						"url": {
+							"raw": "{{EndpointURL}}JournalTransaction",
+							"host": [
+								"{{EndpointURL}}JournalTransaction"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New journal transaction with changed business date and branch",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "PX-CbApiBusinessDate",
+										"value": "2018/01/01",
+										"type": "text"
+									},
+									{
+										"key": "PX-CbApiBranch",
+										"value": "SweetLife Store",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"Description\": {\"value\": \"Test transaction description\"}}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}JournalTransaction",
+									"host": [
+										"{{EndpointURL}}JournalTransaction"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=2; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=157; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 16 Mar 2020 12:21:29 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "558"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"9a0fb3a6-8067-ea11-9da8-c0b6f9120a29\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"BatchNbr\": {\n        \"value\": \"GL000023\"\n    },\n    \"BranchID\": {\n        \"value\": \"RETAIL\"\n    },\n    \"CreatedDateTime\": {\n        \"value\": \"2020-03-16T08:21:28.757+03:00\"\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"Description\": {\n        \"value\": \"Test transaction description\"\n    },\n    \"Hold\": {\n        \"value\": true\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2020-03-16T08:21:28.757+03:00\"\n    },\n    \"LedgerID\": {\n        \"value\": \"ACTUAL\"\n    },\n    \"Module\": {\n        \"value\": \"GL\"\n    },\n    \"PostPeriod\": {\n        \"value\": \"012018\"\n    },\n    \"Status\": {\n        \"value\": \"On Hold\"\n    },\n    \"TransactionDate\": {\n        \"value\": \"2018-01-01T00:00:00+03:00\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+						}
+					]
+				},
+				{
 					"name": "Creation of a Record",
 					"request": {
 						"method": "PUT",
