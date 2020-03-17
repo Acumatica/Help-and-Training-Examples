@@ -269,7 +269,7 @@
 					},
 					"response": [
 						{
-							"name": "New journal transaction with changed business date and branch",
+							"name": "Change of the Business Date or Current Branch",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [
