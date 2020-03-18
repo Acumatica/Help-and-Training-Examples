@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "dc66758a-2074-4f53-82a0-fb86dcdf860b",
+		"_postman_id": "26f62381-1bda-4669-979e-dbabd38b35f6",
 		"name": "Integration Development Guide",
 		"description": "This collection contains examples from the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n - Deploy a new Acumatica ERP instance with the U100 dataset. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n - Specify the URL of the instance in the BaseURL variable of the collection. The EndpointURL variable uses the value from the BaseURL variable and specifies the URL of the Default/18.200.001 endpoint. You do not need to change this variable until you want to use another endpoint.\n - To sign in to the instance in the client application, use the tenant name (which you specified when you created the instance) and the HEADOFFICE branch.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -963,6 +963,104 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"d81bf569-0745-4efb-823c-6f13c3ead0c9\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"InventoryID\": {\n        \"value\": \"APJAM08\"\n    },\n    \"Results\": [\n        {\n            \"id\": \"c20bb237-3a43-4b23-82a0-d03a760312cd\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"BaseUOM\": {\n                \"value\": \"PIECE\"\n            },\n            \"EstimatedTotalCost\": {\n                \"value\": 0\n            },\n            \"EstimatedUnitCost\": {\n                \"value\": 0\n            },\n            \"ExpirationDate\": {},\n            \"LocationID\": {\n                \"value\": \"<UNASSIGNED>\"\n            },\n            \"LotSerialNbr\": {},\n            \"QtyAvailable\": {\n                \"value\": 6\n            },\n            \"QtyAvailableForShipment\": {\n                \"value\": 11\n            },\n            \"QtyNotAvailable\": {\n                \"value\": 0\n            },\n            \"QtyOnHand\": {\n                \"value\": 11\n            },\n            \"WarehouseID\": {\n                \"value\": \"RETAIL\"\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"WarehouseID\": {\n        \"value\": \"RETAIL\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieval of Records with Attributes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{EndpointURL}}Lead?$expand=Attributes&$select=FirstName,LastName,JobTitle,Attributes/Attribute,Attributes/Value",
+							"host": [
+								"{{EndpointURL}}Lead"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Attributes"
+								},
+								{
+									"key": "$select",
+									"value": "FirstName,LastName,JobTitle,Attributes/Attribute,Attributes/Value"
+								}
+							]
+						},
+						"description": "This example shows how to get leads together with their attributes. This process is described in [Retrieval of Records with Attributes](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=56831ee7-14b0-45ef-8207-dace30beb2cb)."
+					},
+					"response": [
+						{
+							"name": "Retrieval of Records with Attributes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{EndpointURL}}Lead?$expand=Attributes&$select=FirstName,LastName,JobTitle,Attributes/Attribute,Attributes/Value",
+									"host": [
+										"{{EndpointURL}}Lead"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Attributes"
+										},
+										{
+											"key": "$select",
+											"value": "FirstName,LastName,JobTitle,Attributes/Attribute,Attributes/Value"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=2; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Mar 2020 14:37:29 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "5264"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"2947c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 1,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"David\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Auditor\"\n        },\n        \"LastName\": {\n            \"value\": \"Kelly\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"3647c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 2,\n        \"note\": \"\",\n        \"Attributes\": [\n            {\n                \"id\": \"f3f07fa5-9835-4824-906f-bcafec64ecf5\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Attribute\": {\n                    \"value\": \"Interested in\"\n                },\n                \"Value\": {\n                    \"value\": \"Fruits\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"FirstName\": {\n            \"value\": \"Noel\"\n        },\n        \"JobTitle\": {\n            \"value\": \"System Administrator\"\n        },\n        \"LastName\": {\n            \"value\": \"Negron\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"4347c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 3,\n        \"note\": \"\",\n        \"Attributes\": [\n            {\n                \"id\": \"2cbb7972-fcac-4cd6-b4a5-91f17e191921\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Attribute\": {\n                    \"value\": \"Interested in\"\n                },\n                \"Value\": {\n                    \"value\": \"Jam,Jelly,Juice,Fruits\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"FirstName\": {\n            \"value\": \"Elena\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Global PR&communication coordinator\"\n        },\n        \"LastName\": {\n            \"value\": \"Masnini\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"5047c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 4,\n        \"note\": \"\",\n        \"Attributes\": [\n            {\n                \"id\": \"8b9a78cb-3896-438a-9d74-d5cd304540af\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Attribute\": {\n                    \"value\": \"Interested in\"\n                },\n                \"Value\": {\n                    \"value\": \"Juice,Fruits,Equipment\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"FirstName\": {\n            \"value\": \"Darren\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Managing Director\"\n        },\n        \"LastName\": {\n            \"value\": \"Walker\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"5d47c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 5,\n        \"note\": \"\",\n        \"Attributes\": [\n            {\n                \"id\": \"f869ffcb-a83f-4571-b970-5d9fff362cdf\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Attribute\": {\n                    \"value\": \"Interested in\"\n                },\n                \"Value\": {\n                    \"value\": \"Juice,Fruits\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"FirstName\": {\n            \"value\": \"Jerome\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Information System Analyst\"\n        },\n        \"LastName\": {\n            \"value\": \"Bouat\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"6a47c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 6,\n        \"note\": \"\",\n        \"Attributes\": [\n            {\n                \"id\": \"843ff1c9-39cb-41d2-9b97-1d165c39fab3\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Attribute\": {\n                    \"value\": \"Interested in\"\n                },\n                \"Value\": {\n                    \"value\": \"Fruits\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"FirstName\": {\n            \"value\": \"Stephane\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Customer Service & Network Manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Sans\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"7747c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 7,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Riaan\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Chief Auditor & Credit Manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Nagel\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"8447c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 8,\n        \"note\": \"\",\n        \"Attributes\": [\n            {\n                \"id\": \"0c514710-9bf6-4835-924a-3f98fd9b31ae\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Attribute\": {\n                    \"value\": \"Interested in\"\n                },\n                \"Value\": {\n                    \"value\": \"Jam,Jelly,Juice,Fruits,Maint,Equipment\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"FirstName\": {\n            \"value\": \"James\"\n        },\n        \"JobTitle\": {\n            \"value\": \"IT Supervisor\"\n        },\n        \"LastName\": {\n            \"value\": \"Jackson\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"9147c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 9,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Umesh\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Process Engineer\"\n        },\n        \"LastName\": {\n            \"value\": \"Shewate\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"9e47c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 10,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Yiannis\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Sales and Operations Administrator\"\n        },\n        \"LastName\": {\n            \"value\": \"Chourdakis\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"ab47c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 11,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Abdul\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Network & System Administrator\"\n        },\n        \"LastName\": {\n            \"value\": \"Waheed\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"b847c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 12,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Balaji\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Engineer\"\n        },\n        \"LastName\": {\n            \"value\": \"Rajan\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"c547c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 13,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Angus\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Exploration Director\"\n        },\n        \"LastName\": {\n            \"value\": \"McCoss\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"d247c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 14,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Ken\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Nikl\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"de47c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 15,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Joao\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Graphic Designer\"\n        },\n        \"LastName\": {\n            \"value\": \"Pereira\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"eb47c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 16,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Joseph\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Auditor\"\n        },\n        \"LastName\": {\n            \"value\": \"Clapton\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"f847c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 17,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Mag\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Accountant\"\n        },\n        \"LastName\": {\n            \"value\": \"Darrow\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"9f2e7059-0c10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 18,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Chuck\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Purchase manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Hester\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"234b4546-2110-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 19,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Leslie\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Credit manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Graff\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"7a98eb14-8549-e911-b81a-00155d408001\",\n        \"rowNumber\": 20,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"James\"\n        },\n        \"JobTitle\": {\n            \"value\": \"System Administrator\"\n        },\n        \"LastName\": {\n            \"value\": \"Jackson\"\n        },\n        \"custom\": {},\n        \"files\": []\n    }\n]"
 						}
 					]
 				},
