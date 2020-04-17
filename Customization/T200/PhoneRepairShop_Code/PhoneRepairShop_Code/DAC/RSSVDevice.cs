@@ -17,13 +17,13 @@ namespace PhoneRepairShop
         #endregion
 
         #region DeviceCD
-        [PXDBString(15, IsUnicode = true, IsKey = true)]
+        [PXDBString(15, IsUnicode = true, IsKey = true, InputMask = ">aaaaaaaaaaaaaaa")]
         [PXDefault]
         [PXUIField(DisplayName = "Device Code")]
         [PXSelector(typeof(Search<RSSVDevice.deviceCD>),
-                            typeof(RSSVDevice.deviceCD),
-                            typeof(RSSVDevice.active),
-                            typeof(RSSVDevice.avgComplexityOfRepair))]
+            typeof(RSSVDevice.deviceCD),
+            typeof(RSSVDevice.active),
+            typeof(RSSVDevice.avgComplexityOfRepair))]
         public virtual string DeviceCD { get; set; }
         public abstract class deviceCD : PX.Data.BQL.BqlString.Field<deviceCD> { }
         #endregion
@@ -32,7 +32,9 @@ namespace PhoneRepairShop
         [PXDBString(256, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Description")]
         public virtual string Description { get; set; }
-        public abstract class description : PX.Data.BQL.BqlString.Field<description> { }
+        public abstract class description :
+        PX.Data.BQL.BqlString.Field<description>
+        { }
         #endregion
 
         #region Active
@@ -48,18 +50,20 @@ namespace PhoneRepairShop
         [PXDefault(RepairComplexity.Medium)]
         [PXUIField(DisplayName = "Complexity")]
         [PXStringList(
-          new string[]
-          {
+        new string[]
+        {
             RepairComplexity.Low,
             RepairComplexity.Medium,
             RepairComplexity.High
-          },
-          new string[]
-          {
+        },
+        new string[]
+        {
             Messages.Low, Messages.Medium, Messages.High
-          })]
+        })]
         public virtual string AvgComplexityOfRepair { get; set; }
-        public abstract class avgComplexityOfRepair : PX.Data.BQL.BqlString.Field<avgComplexityOfRepair> { }
+        public abstract class avgComplexityOfRepair :
+        PX.Data.BQL.BqlString.Field<avgComplexityOfRepair>
+        { }
         #endregion
 
         #region CreatedDateTime
@@ -105,12 +109,9 @@ namespace PhoneRepairShop
         #endregion
 
         #region Noteid
-        [PXNote]
+        [PXNote()]
         public virtual Guid? Noteid { get; set; }
         public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
         #endregion
     }
-
-    
 }
-
