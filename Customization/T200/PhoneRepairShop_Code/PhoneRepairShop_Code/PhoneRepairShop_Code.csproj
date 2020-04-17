@@ -53,6 +53,9 @@
       <HintPath>..\..\..\..\Bin\PX.Objects.DLL</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="PX.Web.Customization">
+      <HintPath>..\..\..\..\..\UpdateTCourses\Bin\PX.Web.Customization.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -61,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAC\RSSVDevice.cs" />
+    <Compile Include="Data\InputData.cs" />
     <Compile Include="Helper\Constants.cs" />
     <Compile Include="Helper\Messages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
