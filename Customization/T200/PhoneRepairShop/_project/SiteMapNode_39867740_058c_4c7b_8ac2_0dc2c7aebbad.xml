@@ -25,14 +25,12 @@
         </layout>
         <data>
             <SiteMap>
-                <row Title="Serviced Devices" Url="~/Pages/RS/RS202000.aspx" ScreenID="RS202000" NodeID="eccaeaae-dc9c-43a0-8e14-02b5aa102df5" ParentID="00000000-0000-0000-0000-000000000000">
-                    <MUIScreen IsPortal="0" WorkspaceID="38331a83-e40e-439e-bbd0-4f656feffcaf" Order="20" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
-                        <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
-                    </MUIScreen>
+                <row Position="5957" Title="Repair Services" Url="~/Pages/RS/RS201000.aspx" ScreenID="RS201000" NodeID="39867740-058c-4c7b-8ac2-0dc2c7aebbad" ParentID="00000000-0000-0000-0000-000000000000">
+                    <MUIScreen IsPortal="0" WorkspaceID="c60d7807-01fa-4ad7-ba64-774a3fa8e6f2" Order="10" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385" />
                 </row>
             </SiteMap>
             <MUIWorkspace>
-                <row IsPortal="0" WorkspaceID="38331a83-e40e-439e-bbd0-4f656feffcaf" Order="48" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0">
+                <row IsPortal="0" WorkspaceID="c60d7807-01fa-4ad7-ba64-774a3fa8e6f2" Order="48" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
             </MUIWorkspace>
