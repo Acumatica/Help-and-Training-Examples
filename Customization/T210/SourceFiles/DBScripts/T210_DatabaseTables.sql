@@ -10,9 +10,8 @@ GO
 
 CREATE TABLE [dbo].[RSSVRepairPrice](
 	[CompanyID] [int] NOT NULL,
-	[PriceID] [int] IDENTITY(1,1) NOT NULL,
-	[DeviceID] [int] NOT NULL,
 	[ServiceID] [int] NOT NULL,
+	[DeviceID] [int] NOT NULL,
 	[Price] [decimal](19, 6) NOT NULL,
 	[RepairItemLineCntr] [int] NOT NULL,
 	[CreatedByID] [uniqueidentifier] NOT NULL,
@@ -26,7 +25,8 @@ CREATE TABLE [dbo].[RSSVRepairPrice](
  CONSTRAINT [RSSVRepairPrice_PK] PRIMARY KEY CLUSTERED 
 (
 	[CompanyID] ASC,
-	[PriceID] ASC
+	[ServiceID] ASC,
+	[DeviceID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -46,7 +46,7 @@ CREATE TABLE [dbo].[RSSVRepairItem](
 	[ServiceID] [int] NOT NULL,
 	[DeviceID] [int] NOT NULL,
 	[LineNbr] [int] NOT NULL,
-	[RepairItemType] [nvarchar](2) NULL,
+	[RepairItemType] [char](2) NULL,
 	[InventoryID] [int] NOT NULL,
 	[Required] [bit] NOT NULL,
 	[IsDefault] [bit] NOT NULL,
@@ -81,9 +81,9 @@ GO
 
 CREATE TABLE [dbo].[RSSVLabor](
 	[CompanyID] [int] NOT NULL,
-	[InventoryID] [int] NOT NULL,
-	[DeviceID] [int] NOT NULL,
 	[ServiceID] [int] NOT NULL,
+	[DeviceID] [int] NOT NULL,
+	[InventoryID] [int] NOT NULL,
 	[DefaultPrice] [decimal](19, 6) NOT NULL,
 	[Quantity] [decimal](19, 6) NOT NULL,
 	[ExtPrice] [decimal](19, 6) NOT NULL,
@@ -98,9 +98,9 @@ CREATE TABLE [dbo].[RSSVLabor](
  CONSTRAINT [RSSVLabor_PK] PRIMARY KEY CLUSTERED 
 (
 	[CompanyID] ASC,
-	[InventoryID] ASC,
+	[ServiceID] ASC,
 	[DeviceID] ASC,
-	[ServiceID] ASC
+	[InventoryID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -117,9 +117,9 @@ GO
 
 CREATE TABLE [dbo].[RSSVWarranty](
 	[CompanyID] [int] NOT NULL,
-	[ContractID] [int] NOT NULL,
-	[DeviceID] [int] NOT NULL,
 	[ServiceID] [int] NOT NULL,
+	[DeviceID] [int] NOT NULL,
+	[ContractID] [int] NOT NULL,
 	[DefaultWarranty] [bit] NOT NULL,
 	[CreatedByID] [uniqueidentifier] NOT NULL,
 	[CreatedByScreenID] [char](8) NOT NULL,
@@ -132,9 +132,9 @@ CREATE TABLE [dbo].[RSSVWarranty](
  CONSTRAINT [RSSVWarranty_PK] PRIMARY KEY CLUSTERED 
 (
 	[CompanyID] ASC,
-	[ContractID] ASC,
+	[ServiceID] ASC,
 	[DeviceID] ASC,
-	[ServiceID] ASC
+	[ContractID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -151,8 +151,8 @@ GO
 
 CREATE TABLE [dbo].[RSSVStockItemDevice](
 	[CompanyID] [int] NOT NULL,
-	[DeviceID] [int] NOT NULL,
 	[InventoryID] [int] NOT NULL,
+	[DeviceID] [int] NOT NULL,
 	[CreatedDateTime] [datetime] NOT NULL,
 	[CreatedByID] [uniqueidentifier] NOT NULL,
 	[CreatedByScreenID] [char](8) NOT NULL,
@@ -164,8 +164,8 @@ CREATE TABLE [dbo].[RSSVStockItemDevice](
  CONSTRAINT [RSSVStockItemDevice_PK] PRIMARY KEY CLUSTERED 
 (
 	[CompanyID] ASC,
-	[DeviceID] ASC,
-	[InventoryID] ASC
+	[InventoryID] ASC,
+	[DeviceID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
