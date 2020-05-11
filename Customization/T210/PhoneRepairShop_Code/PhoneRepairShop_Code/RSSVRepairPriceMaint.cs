@@ -1,120 +1,134 @@
 using System;
+using System.Linq;
 using PX.Data;
 using PX.Data.BQL.Fluent;
-using PX.Objects.IN;
-using System.Linq;
 using PX.Objects.CT;
+using PX.Objects.IN;
 
 namespace PhoneRepairShop
 {
     public class RSSVRepairPriceMaint : PXGraph<RSSVRepairPriceMaint, RSSVRepairPrice>
     {
-        #region Data Views
+        #region Views
         public SelectFrom<RSSVRepairPrice>.View RepairPrices;
 
         public SelectFrom<RSSVRepairItem>.
-            LeftJoin<InventoryItem>.
-                On<InventoryItem.inventoryID.IsEqual<
-                    RSSVRepairItem.inventoryID.FromCurrent>>.
-            Where<RSSVRepairItem.deviceID.IsEqual<
-                RSSVRepairPrice.deviceID.FromCurrent>.
-                    And<RSSVRepairItem.serviceID.IsEqual<
-                        RSSVRepairPrice.serviceID.FromCurrent>>>.
-            View RepairItems;
+            Where<RSSVRepairItem.serviceID.IsEqual<RSSVRepairPrice.serviceID.FromCurrent>.
+                And<RSSVRepairItem.deviceID.IsEqual<RSSVRepairPrice.deviceID.FromCurrent>>>.View
+                    RepairItems;
 
         public SelectFrom<RSSVLabor>.
-            LeftJoin<InventoryItem>.
-                On<InventoryItem.inventoryID.IsEqual<RSSVLabor.inventoryID.FromCurrent>>.
             Where<RSSVLabor.deviceID.IsEqual<RSSVRepairPrice.deviceID.FromCurrent>.
-                And<RSSVLabor.serviceID.IsEqual<RSSVRepairPrice.serviceID.FromCurrent>>>.
-            View Labor;
+                And<RSSVLabor.serviceID.IsEqual<RSSVRepairPrice.serviceID.FromCurrent>>>.View
+                    Labor;
 
         public SelectFrom<RSSVWarranty>.
-            LeftJoin<ContractTemplate>.
-                On<ContractTemplate.contractID.IsEqual<
-                    RSSVWarranty.contractID.FromCurrent>>.
-            Where<RSSVWarranty.deviceID.IsEqual<
-                RSSVRepairPrice.deviceID.FromCurrent>.
-                    And<RSSVWarranty.serviceID.IsEqual<
-                        RSSVRepairPrice.serviceID.FromCurrent>>>.
-            OrderBy<RSSVWarranty.defaultWarranty.Desc>.
-            View Warranty;
+            Where<RSSVWarranty.deviceID.IsEqual<RSSVRepairPrice.deviceID.FromCurrent>.
+                And<RSSVWarranty.serviceID.IsEqual<RSSVRepairPrice.serviceID.FromCurrent>>>.
+                OrderBy<RSSVWarranty.defaultWarranty.Desc>.View Warranty;
 
         //The view for the default warranty
-        public SelectFrom<Contract>.
-        Where<Contract.contractCD.IsEqual<defaultWarranty>>.
-        View DefaultWarranty;
+        public SelectFrom<ContractTemplate>.
+            Where<ContractTemplate.contractCD.IsEqual<defaultWarranty>>.
+            View DefaultWarranty;
         #endregion
 
-        #region Event Handlers
+
+        #region Event handlers
         //Update price and repair item type when inventory ID of repair item is updated.
-        protected void _(Events.FieldUpdated<RSSVRepairItem,
-            RSSVRepairItem.inventoryID> e)
+        protected void _(Events.FieldUpdated<RSSVRepairItem, RSSVRepairItem.inventoryID> e)
+        {
+            RSSVRepairItem row = e.Row;
+            if (row.InventoryID != null && row.RepairItemType == null)
+            {
+                //Use the PXSelector attribute to select the stock item.
+                InventoryItem item =
+                    PXSelectorAttribute.Select<RSSVRepairItem.inventoryID>(e.Cache, row)
+                        as InventoryItem;
+                //Copy the repair item type from the stock item to the row.
+                InventoryItemExt itemExt = item.GetExtension<InventoryItemExt>();
+                //row.RepairItemType = itemExt.UsrRepairItemType;
+                e.Cache.SetValueExt<RSSVRepairItem.repairItemType>(row, itemExt.UsrRepairItemType);
+            }
+            e.Cache.SetDefaultExt<RSSVRepairItem.basePrice>(e.Row);
+        }
+
+        // Calculate the default value of the BasePrice field
+        protected void _(Events.FieldDefaulting<RSSVRepairItem, RSSVRepairItem.basePrice> e)
         {
             RSSVRepairItem row = e.Row;
             if (row.InventoryID != null)
             {
                 //Use the PXSelector attribute to select the stock item.
-                InventoryItem item =
-                PXSelectorAttribute.Select<RSSVRepairItem.inventoryID>(
-                e.Cache, row) as InventoryItem;
+                InventoryItem item = PXSelectorAttribute.
+                Select<RSSVRepairItem.inventoryID>(e.Cache, row) as InventoryItem;
                 //Copy the base price from the stock item to the row.
-                row.BasePrice = item.BasePrice;
-                //Retrieve the extension fields.
-                InventoryItemExt itemExt = PXCache<InventoryItem>.
-                GetExtension<InventoryItemExt>(item);
-                if (itemExt != null)
-                {
-                    //Copy the repair item type from the stock item to the row.
-                    row.RepairItemType = itemExt.UsrRepairItemType;
-                }
+                e.NewValue = item.BasePrice;
             }
         }
 
-        //Update the IsDefault field of other records with the same repair item type
+        // Clear the InventoryID, Required, and IsDefault fields 
+        // when repair item type of repair item is updated.
+        protected void _(Events.FieldUpdated<RSSVRepairItem, RSSVRepairItem.repairItemType> e)
+        {
+            RSSVRepairItem row = e.Row;
+            e.Cache.SetDefaultExt<RSSVRepairItem.required>(row);
+            if (e.OldValue != null)
+            {
+                e.Cache.SetValueExt<RSSVRepairItem.inventoryID>(row, null);
+                e.Cache.SetValue<RSSVRepairItem.isDefault>(row, false);
+            }
+        }
+
+        //Update the IsDefault field of other records with the same repair item type 
         //when the IsDefault field is updated.
         protected void _(Events.RowUpdated<RSSVRepairItem> e)
         {
+            if (e.Cache.ObjectsEqual<RSSVRepairItem.isDefault,
+                                     RSSVRepairItem.required>(e.Row, e.OldRow)) return;
+
             RSSVRepairItem row = e.Row;
-            //Use LINQ to select the repair items with the same repair item type
-            //as is selected in the updated row.
-            var repairItems = RepairItems.Select().Where(item =>
-            item.GetItem<RSSVRepairItem>().RepairItemType == row.RepairItemType).
-            AsEnumerable();
+            //Use LINQ to select the repair items 
+            // with the same repair item type as in the updated row.
+            var repairItems = RepairItems.Select()
+                .Where(item => item.GetItem<RSSVRepairItem>().RepairItemType == row.RepairItemType);
             foreach (RSSVRepairItem repairItem in repairItems)
             {
-                if (repairItem.LineNbr != row.LineNbr)
+                if (repairItem.LineNbr == row.LineNbr) continue;
+
+                //Set IsDefault to false for all other items.
+                if (row.IsDefault == true && repairItem.IsDefault == true)
                 {
-                    //Set IsDefault to false for all other items.
-                    if (row.IsDefault == true)
-                    {
-                        repairItem.IsDefault = false;
-                        RepairItems.Update(repairItem);
-                    }
-                    //Make the Required field identical for all items.
-                    if (row.Required != e.OldRow.Required &&
-                    row.Required != repairItem.Required)
-                    {
-                        repairItem.Required = row.Required;
-                        RepairItems.Update(repairItem);
-                    }
+                    repairItem.IsDefault = false;
+                    RepairItems.Update(repairItem);
+                }
+                //Make the Required field identical for all items.
+                if (row.Required != e.OldRow.Required && repairItem.Required != row.Required)
+                {
+                    repairItem.Required = row.Required;
+                    RepairItems.Update(repairItem);
                 }
             }
             //Refresh the UI.
             RepairItems.View.RequestRefresh();
         }
-        //Update the Required check box when a repair item type is selected.
-        protected void _(Events.FieldUpdated<RSSVRepairItem,
-        RSSVRepairItem.repairItemType> e)
+
+        // Check whether there are any repair items with the same repair item type 
+        // and copy the Required value from the previous records
+        protected void _(Events.FieldDefaulting<RSSVRepairItem, RSSVRepairItem.required> e)
         {
             RSSVRepairItem row = e.Row;
-            //Use LINQ to check whether there are any repair items with the same
-            //repair item type.
-            var repairItem = (RSSVRepairItem)RepairItems.Select().Where(item =>
-            item.GetItem<RSSVRepairItem>().RepairItemType == row.RepairItemType).
-            FirstOrDefault();
-            //Copy the Required value from the previous records.
-            if (repairItem != null) row.Required = repairItem.Required;
+            if (row.RepairItemType != null)
+            {
+                // Use LINQ to check whether there are any repair items 
+                // with the same repair item type.
+                var repairItem = (RSSVRepairItem)RepairItems.Select()
+                    .FirstOrDefault(item =>
+                        item.GetItem<RSSVRepairItem>().RepairItemType == row.RepairItemType &&
+                        item.GetItem<RSSVRepairItem>().LineNbr != row.LineNbr);
+                //Copy the Required value from the previous records.
+                e.NewValue = repairItem?.Required;
+            }
         }
 
         //Insert the default detail record.
@@ -129,6 +143,7 @@ namespace PhoneRepairShop
                 {
                     RSSVWarranty line = new RSSVWarranty();
                     line.ContractID = defaultWarranty.ContractID;
+                    line.DefaultWarranty = true;
                     // Insert the data record into
                     // the cache of the Warranty data view.
                     Warranty.Insert(line);
@@ -139,21 +154,14 @@ namespace PhoneRepairShop
             }
         }
 
-        //Set the DefaultWarranty field to true for the inserted default warranty
-        protected virtual void _(Events.FieldDefaulting<
-        RSSVWarranty.defaultWarranty> e)
+        protected virtual void _(Events.RowDeleting<RSSVWarranty> e)
         {
-            RSSVWarranty line = (RSSVWarranty)e.Row;
-            if (line == null) return;
-            Contract defaultWarranty = (Contract)DefaultWarranty.Select();
-            if (defaultWarranty != null && line.ContractID ==
-            defaultWarranty.ContractID)
+            if (e.Row.DefaultWarranty != true) return;
+            if (e.ExternalCall && RepairPrices.Current != null &&
+            RepairPrices.Cache.GetStatus(RepairPrices.Current) !=
+            PXEntryStatus.Deleted)
             {
-                //Setting the default value
-                e.NewValue = true;
-                // Setting a flag to prevent the execution of the FieldDefaulting event
-                // handlers that are defined in attributes
-                e.Cancel = true;
+                throw new PXException(Messages.DefaultWarrantyCanNotBeDeleted);
             }
         }
 
@@ -162,11 +170,11 @@ namespace PhoneRepairShop
         {
             RSSVWarranty line = e.Row;
             if (line == null) return;
-            PXUIFieldAttribute.SetEnabled(e.Cache, line, line.DefaultWarranty != true);
+            PXUIFieldAttribute.SetEnabled<RSSVWarranty.contractID>(e.Cache, line, line.DefaultWarranty != true);
         }
+
         #endregion
 
-        #region Supplementary Classes
         //The FBQL constant for the free warranty that is inserted by default
         public const string DefaultWarrantyConstant = "DFLTWARRNT";
         public class defaultWarranty : PX.Data.BQL.BqlString.Constant<defaultWarranty>
@@ -176,6 +184,5 @@ namespace PhoneRepairShop
             {
             }
         }
-        #endregion
     }
 }

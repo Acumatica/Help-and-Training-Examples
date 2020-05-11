@@ -13,16 +13,16 @@ CREATE TABLE [dbo].[RSSVWorkOrder](
 	[OrderNbr] [nvarchar](15) NOT NULL,
 	[CustomerID] [int] NOT NULL,
 	[DateCreated] [datetime2](0) NOT NULL,
-	[DateCompleted] [datetime2](0),
-	[Status] [nvarchar](2) NOT NULL,
+	[DateCompleted] [datetime2](0) NULL,
+	[Status] [char](2) NOT NULL,
 	[Hold] [bit] NOT NULL,
-	[Description] [nvarchar](60),
-	[DeviceID] [int] NOT NULL,
+	[Description] [nvarchar](60) NULL,
 	[ServiceID] [int] NOT NULL,
+	[DeviceID] [int] NOT NULL,
 	[OrderTotal] [decimal](19, 4) NOT NULL,
 	[RepairItemLineCntr] [int] NOT NULL,
-	[Assignee] [uniqueidentifier],
-	[Priority] [nvarchar](1),
+	[Assignee] [uniqueidentifier] NULL,
+	[Priority] [char](1) NULL,
 	[InvoiceNbr] [nvarchar](15) NULL,
 	[CreatedByID] [uniqueidentifier] NOT NULL,
 	[CreatedByScreenID] [char](8) NOT NULL,
@@ -53,10 +53,10 @@ GO
 CREATE TABLE [dbo].[RSSVWorkOrderItem](
 	[CompanyID] [int] NOT NULL,
 	[OrderNbr] [nvarchar](15) NOT NULL,
-	[ServiceID] [int] NOT NULL,
-	[DeviceID] [int] NOT NULL,
 	[LineNbr] [int] NOT NULL,
-	[RepairItemType] [nvarchar](2) NULL,
+	--[ServiceID] [int] NOT NULL,
+	--[DeviceID] [int] NOT NULL,
+	[RepairItemType] [char](2) NULL,
 	[InventoryID] [int] NOT NULL,
 	[BasePrice] [decimal](19, 6) NOT NULL,
 	[CreatedByID] [uniqueidentifier] NOT NULL,
@@ -88,10 +88,10 @@ GO
 
 CREATE TABLE [dbo].[RSSVWorkOrderLabor](
 	[CompanyID] [int] NOT NULL,
-	[InventoryID] [int] NOT NULL,
-	[DeviceID] [int] NOT NULL,
-	[ServiceID] [int] NOT NULL,
 	[OrderNbr] [nvarchar](15) NOT NULL,
+	[InventoryID] [int] NOT NULL,
+	--[DeviceID] [int] NOT NULL,
+	--[ServiceID] [int] NOT NULL,
 	[DefaultPrice] [decimal](19, 6) NOT NULL,
 	[Quantity] [decimal](19, 6) NOT NULL,
 	[ExtPrice] [decimal](19, 6) NOT NULL,
@@ -106,8 +106,8 @@ CREATE TABLE [dbo].[RSSVWorkOrderLabor](
  CONSTRAINT [RSSVWorkOrderLabor_PK] PRIMARY KEY CLUSTERED 
 (
 	[CompanyID] ASC,
-	[InventoryID] ASC,
-	[OrderNbr] ASC
+	[OrderNbr] ASC,
+	[InventoryID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO

@@ -6,38 +6,30 @@ namespace PhoneRepairShop
     [PXCacheName("Repair Price")]
     public class RSSVRepairPrice : IBqlTable
     {
-        #region PriceID
-        [PXDBIdentity]
-        public virtual int? PriceID { get; set; }
-        public abstract class priceID : PX.Data.BQL.BqlInt.Field<priceID> { }
+        #region ServiceID
+        [PXDBInt(IsKey = true)]
+        [PXDefault]
+        [PXUIField(DisplayName = "Service", Required = true)]
+        [PXSelector(typeof(Search<RSSVRepairService.serviceID>),
+            typeof(RSSVRepairService.serviceCD),
+            typeof(RSSVRepairService.description),
+            SubstituteKey = typeof(RSSVRepairService.serviceCD),
+            DescriptionField = typeof(RSSVRepairService.description))]
+        public virtual int? ServiceID { get; set; }
+        public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
         #endregion
 
         #region DeviceID
         [PXDBInt(IsKey = true)]
         [PXDefault]
         [PXUIField(DisplayName = "Device", Required = true)]
-        [PXSelector(
-            typeof(Search<RSSVDevice.deviceID>),
+        [PXSelector(typeof(Search<RSSVDevice.deviceID>),
             typeof(RSSVDevice.deviceCD),
             typeof(RSSVDevice.description),
-            DescriptionField = typeof(RSSVDevice.description),
-            SelectorMode = PXSelectorMode.DisplayModeText)]
+            SubstituteKey = typeof(RSSVDevice.deviceCD),
+            DescriptionField = typeof(RSSVDevice.description))]
         public virtual int? DeviceID { get; set; }
         public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
-        #endregion
-
-        #region ServiceID
-        [PXDBInt(IsKey = true)]
-        [PXDefault]
-        [PXUIField(DisplayName = "Service", Required = true)]
-        [PXSelector(
-            typeof(Search<RSSVRepairService.serviceID>),
-            typeof(RSSVRepairService.serviceCD),
-            typeof(RSSVRepairService.description),
-            DescriptionField = typeof(RSSVRepairService.description),
-            SelectorMode = PXSelectorMode.DisplayModeText)]
-        public virtual int? ServiceID { get; set; }
-        public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
         #endregion
 
         #region Price
@@ -51,7 +43,7 @@ namespace PhoneRepairShop
         #region RepairItemLineCntr
         [PXDBInt()]
         [PXDefault(0)]
-        public virtual Int32? RepairItemLineCntr { get; set; }
+        public virtual int? RepairItemLineCntr { get; set; }
         public abstract class repairItemLineCntr : PX.Data.BQL.BqlInt.Field<repairItemLineCntr> { }
         #endregion
 
