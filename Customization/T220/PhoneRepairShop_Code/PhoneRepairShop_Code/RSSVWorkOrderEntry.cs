@@ -7,89 +7,71 @@ using System.Linq;
 
 namespace PhoneRepairShop
 {
-  public class RSSVWorkOrderEntry : PXGraph<RSSVWorkOrderEntry, RSSVWorkOrder>
-  {
-        #region Data Views
-        //The primary view
+    public class RSSVWorkOrderEntry : PXGraph<RSSVWorkOrderEntry, RSSVWorkOrder>
+    {
+
+        //The primary view for the Summary area of the form
         public SelectFrom<RSSVWorkOrder>.View WorkOrders;
 
         //The view for the Repair Items tab
         public SelectFrom<RSSVWorkOrderItem>.
-            LeftJoin<InventoryItem>.
-                On<InventoryItem.inventoryID.IsEqual<
-                    RSSVWorkOrderItem.inventoryID.FromCurrent>>.
-            Where<RSSVWorkOrderItem.orderNbr.IsEqual<
-                RSSVWorkOrder.orderNbr.FromCurrent>>.
-            View RepairItems;
-
+            Where<RSSVWorkOrderItem.orderNbr.IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
+            RepairItems;
         //The view for the Labor tab
         public SelectFrom<RSSVWorkOrderLabor>.
-            LeftJoin<InventoryItem>.
-                On<InventoryItem.inventoryID.IsEqual<
-                    RSSVWorkOrderLabor.inventoryID.FromCurrent>>.
-            Where<RSSVWorkOrderLabor.orderNbr.IsEqual<
-                RSSVWorkOrder.orderNbr.FromCurrent>>.
-            View Labor;
+            Where<RSSVWorkOrderLabor.orderNbr.IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
+            Labor;
 
+        
         //The view for the auto-numbering of records
         public PXSetup<RSSVSetup> AutoNumSetup;
-        #endregion
-
-        #region Graph Constructor
+        //The graph constructor
         public RSSVWorkOrderEntry()
         {
             RSSVSetup setup = AutoNumSetup.Current;
         }
-        #endregion
 
-        #region Event Handlers
+
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
         {
-            RSSVWorkOrder order = e.Row;
-            if (order == null) return;
-            if (WorkOrders.Cache.GetStatus(order) == PXEntryStatus.Inserted &&
-            RepairItems.Select().Count == 0 && Labor.Select().Count == 0)
+            if (WorkOrders.Cache.GetStatus(e.Row) == PXEntryStatus.Inserted &&
+                !e.Cache.ObjectsEqual<RSSVWorkOrder.serviceID, RSSVWorkOrder.deviceID>(e.Row, e.OldRow))
             {
-                if (order.DeviceID != null && order.ServiceID != null)
+                if (e.Row.ServiceID != null && e.Row.DeviceID != null &&
+                    !IsCopyPasteContext && RepairItems.Select().Count == 0 &&
+                    Labor.Select().Count == 0)
                 {
                     //Retrieve the default repair items
                     var repairItems = SelectFrom<RSSVRepairItem>.
-                    Where<RSSVRepairItem.deviceID.IsEqual<
-                    RSSVWorkOrder.deviceID.FromCurrent>.
-                    And<RSSVRepairItem.serviceID.IsEqual<
-                    RSSVWorkOrder.serviceID.FromCurrent>>>.View.Select(this);
+                        Where<RSSVRepairItem.serviceID.IsEqual<RSSVWorkOrder.serviceID.FromCurrent>.
+                            And<RSSVRepairItem.deviceID.IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>>
+                        .View.Select(this);
                     //Insert default repair items
-                    if (repairItems != null)
+                    foreach (RSSVRepairItem item in repairItems)
                     {
-                        foreach (RSSVRepairItem item in repairItems)
-                        {
-                            RSSVWorkOrderItem orderItem = RepairItems.Insert(
-                            new RSSVWorkOrderItem());
-                            orderItem.RepairItemType = item.RepairItemType;
-                            orderItem.InventoryID = item.InventoryID;
-                            orderItem.BasePrice = item.BasePrice;
-                            orderItem.LineNbr = item.LineNbr;
-                            RepairItems.Update(orderItem);
-                        }
+                        RSSVWorkOrderItem orderItem = RepairItems.Insert();
+                        orderItem.RepairItemType = item.RepairItemType;
+                        orderItem.InventoryID = item.InventoryID;
+                        orderItem.BasePrice = item.BasePrice;
+                        RepairItems.Update(orderItem);
                     }
+
                     //Retrieve the default labor items
                     var laborItems = SelectFrom<RSSVLabor>.
-                    Where<RSSVLabor.deviceID.IsEqual<RSSVWorkOrder.deviceID.FromCurrent>.
-                    And<RSSVLabor.serviceID.IsEqual<
-                    RSSVWorkOrder.serviceID.FromCurrent>>>.View.Select(this);
+                        Where<RSSVLabor.serviceID.IsEqual<RSSVWorkOrder.serviceID.FromCurrent>.
+                            And<RSSVLabor.deviceID.IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>>
+                        .View.Select(this);
                     //Insert the default labor items
-                    if (laborItems != null)
+                    foreach (RSSVLabor item in laborItems)
                     {
-                        foreach (RSSVLabor item in laborItems)
-                        {
-                            RSSVWorkOrderLabor orderItem = Labor.Insert(new RSSVWorkOrderLabor());
-                            orderItem.InventoryID = item.InventoryID;
-                            orderItem.DefaultPrice = item.DefaultPrice;
-                            orderItem.Quantity = item.Quantity;
-                            orderItem.ExtPrice = item.ExtPrice;
-                            Labor.Update(orderItem);
-                        }
+                        RSSVWorkOrderLabor orderItem = new RSSVWorkOrderLabor();
+                        orderItem.InventoryID = item.InventoryID;
+                        orderItem = Labor.Insert(orderItem);
+                        orderItem.DefaultPrice = item.DefaultPrice;
+                        orderItem.Quantity = item.Quantity;
+                        orderItem.ExtPrice = item.ExtPrice;
+                        Labor.Update(orderItem);
                     }
                 }
             }
@@ -99,83 +81,90 @@ namespace PhoneRepairShop
         protected void _(Events.FieldUpdated<RSSVWorkOrderItem, RSSVWorkOrderItem.inventoryID> e)
         {
             RSSVWorkOrderItem row = e.Row;
+            if (row.InventoryID != null && row.RepairItemType == null)
+            {
+                //Use the PXSelector attribute to select the stock item.
+                InventoryItem item = PXSelectorAttribute.Select<RSSVWorkOrderItem.inventoryID>(e.Cache, row) as InventoryItem;
+                //Copy the repair item type from the stock item to the row.
+                InventoryItemExt itemExt = item.GetExtension<InventoryItemExt>();
+                row.RepairItemType = itemExt.UsrRepairItemType;
+            }
+            e.Cache.SetDefaultExt<RSSVWorkOrderItem.basePrice>(e.Row);
+        }
 
+        protected void _(Events.FieldDefaulting<RSSVWorkOrderItem, RSSVWorkOrderItem.basePrice> e)
+        {
+            RSSVWorkOrderItem row = e.Row;
             if (row.InventoryID != null)
             {
-                //Use the PXSelector attribute to select the stock items
-                InventoryItem item =
-                    PXSelectorAttribute.Select<RSSVWorkOrderItem.inventoryID>(
-                    e.Cache, row) as InventoryItem;
-                //Copy the base price from the stock item
-                row.BasePrice = item.BasePrice;
-                //Retrieve the extension fields
-                InventoryItemExt itemExt = PXCache<InventoryItem>.GetExtension<InventoryItemExt>(item);
-                if (itemExt != null)
-                {
-                    // Copy the repair item type from the stock item
-                    row.RepairItemType = itemExt.UsrRepairItemType;
+                //Use the PXSelector attribute to select the stock item.
+                InventoryItem item = PXSelectorAttribute.Select<RSSVWorkOrderItem.inventoryID>(e.Cache, row) as InventoryItem;
+                //Copy the base price from the stock item to the row.
+                e.NewValue = item.BasePrice;
+            }
+        }
 
+        //Change the status based on whether the Hold check box is selected or cleared.
+        protected virtual void _(Events.FieldUpdated<RSSVWorkOrder, RSSVWorkOrder.hold> e)
+        {
+            //If Hold is selected, change the status to On Hold
+            if (e.Row.Hold == true)
+            {
+                e.Row.Status = WorkOrderStatusConstants.OnHold;
+            }
+            else if (e.Row.ServiceID != null)
+            {
+                RSSVRepairService service = PXSelectorAttribute.Select<RSSVWorkOrder.serviceID>(
+                    e.Cache, e.Row) as RSSVRepairService;
+
+                //If Hold is cleared, specify the status 
+                // depending on the Prepayment field of the service
+                if (service != null)
+                {
+                    string newStatus;
+                    if (service.Prepayment == true)
+                    {
+                        newStatus = WorkOrderStatusConstants.PendingPayment;
+                    }
+                    else
+                    {
+                        newStatus = WorkOrderStatusConstants.ReadyForAssignment;
+                    }
+                    e.Row.Status = newStatus;
                 }
             }
         }
 
-        //Change the status based on whether the Hold check box is selected or
-        //cleared.
-        protected virtual void _(Events.FieldUpdated<RSSVWorkOrder,
-        RSSVWorkOrder.hold> e)
-        {
-            RSSVWorkOrder row = e.Row;
-            //If Hold is cleared, specify the status depending
-            //on the Prepayment field of the service
-            if (row.Hold == false)
-            {
-                RSSVRepairService service =
-                (RSSVRepairService)SelectFrom<RSSVRepairService>.
-                Where<RSSVRepairService.serviceID.IsEqual<
-                RSSVWorkOrder.serviceID.FromCurrent>>.
-                View.Select(this);
-                if (service != null && service.Prepayment == true)
-                    e.Cache.SetValueExt<RSSVWorkOrder.status>(e.Row,
-                    WorkOrderStatusConstants.PendingPayment);
-                if (service != null && service.Prepayment == false)
-                    e.Cache.SetValueExt<RSSVWorkOrder.status>(e.Row,
-                    WorkOrderStatusConstants.ReadyForAssignment);
-            }
-            //If Hold is selected, change the status to On Hold
-            if (row.Hold == true)
-                e.Cache.SetValueExt<RSSVWorkOrder.status>(e.Row,
-                WorkOrderStatusConstants.OnHold);
-        }
-
         //Validate that Quantity is greater than or equal to 0 and
         //correct the value to the default if the value is less than the default.
-        protected virtual void _(Events.FieldVerifying<RSSVWorkOrderLabor,
-        RSSVWorkOrderLabor.quantity> e)
+        protected virtual void _(Events.FieldVerifying<RSSVWorkOrderLabor, RSSVWorkOrderLabor.quantity> e)
         {
-            if (e.NewValue == null) return;
+            if (e.Row == null || e.NewValue == null) return;
+
             if ((decimal)e.NewValue < 0)
             {
-                //Throwing an exception to cancel the assignment of the new
-                //value to the field
+                //Throwing an exception to cancel the assignment of the new value to the field
                 throw new PXSetPropertyException(Messages.QuantityCannotBeNegative);
             }
-            RSSVWorkOrderLabor line = e.Row;
-            //Retrieving the default labor item related to the work order labor
-            RSSVLabor labor = SelectFrom<RSSVLabor>.
-                Where<RSSVLabor.deviceID.IsEqual<@P.AsInt>.
-                    And<RSSVLabor.serviceID.IsEqual<@P.AsInt>>.
-                    And<RSSVLabor.inventoryID.IsEqual<@P.AsInt>>>.View.
-                Select(this, line.DeviceID, line.ServiceID, line.InventoryID);
-            if (labor != null && (decimal)e.NewValue < labor.Quantity)
+
+            var workOrder = WorkOrders.Current;
+            if (workOrder != null)
             {
-                //Correcting the LineQty value
-                e.NewValue = labor.Quantity;
-                //Raising the ExceptionHandling event for the Quantity field
-                //to attach the exception object to the field
-                e.Cache.RaiseExceptionHandling<RSSVWorkOrderLabor.quantity>(
-                    line, e.NewValue,
-                    new PXSetPropertyException(Messages.QuantityToSmall,
-                    PXErrorLevel.Warning));
+                //Retrieving the default labor item related to the work order labor
+                RSSVLabor labor = SelectFrom<RSSVLabor>.
+                    Where<RSSVLabor.serviceID.IsEqual<@P.AsInt>.
+                        And<RSSVLabor.deviceID.IsEqual<@P.AsInt>>.
+                        And<RSSVLabor.inventoryID.IsEqual<@P.AsInt>>>
+                    .View.Select(this, workOrder.ServiceID, workOrder.DeviceID, e.Row.InventoryID);
+                if (labor != null && (decimal)e.NewValue < labor.Quantity)
+                {
+                    //Correcting the LineQty value
+                    e.NewValue = labor.Quantity;
+                    //Raising the ExceptionHandling event for the Quantity field
+                    //to attach the exception object to the field
+                    e.Cache.RaiseExceptionHandling<RSSVWorkOrderLabor.quantity>(e.Row, e.NewValue,
+                        new PXSetPropertyException(Messages.QuantityToSmall, PXErrorLevel.Warning));
+                }
             }
         }
 
@@ -187,62 +176,52 @@ namespace PhoneRepairShop
             RSSVWorkOrder row = e.NewRow;
             // The data record that is stored in the cache
             RSSVWorkOrder originalRow = e.Row;
-            if (!e.Cache.ObjectsEqual<RSSVWorkOrder.hold, RSSVWorkOrder.status>(
-                row, originalRow))
+
+            if (!e.Cache.ObjectsEqual<RSSVWorkOrder.hold, RSSVWorkOrder.status>(row, originalRow))
             {
                 if (row.Status == WorkOrderStatusConstants.PendingPayment ||
                     row.Status == WorkOrderStatusConstants.ReadyForAssignment)
                 {
                     //Select the required repair items for this service and device
-                    PXResultset<RSSVRepairItem> repairItems =
-                        SelectFrom<RSSVRepairItem>.
-                            Where<RSSVRepairItem.deviceID.IsEqual<
-                                    RSSVWorkOrder.deviceID.FromCurrent>.
-                                And<RSSVRepairItem.serviceID.IsEqual<
-                                    RSSVWorkOrder.serviceID.FromCurrent>>.
-                                And<RSSVRepairItem.required.IsEqual<True>>>.
-                            AggregateTo<GroupBy<RSSVRepairItem.repairItemType>,
-                                Count<RSSVRepairItem.inventoryID>>.View.Select(this);
-                    if (repairItems.Any())
+                    PXResultset<RSSVRepairItem> repairItems = SelectFrom<RSSVRepairItem>.
+                        Where<RSSVRepairItem.serviceID.IsEqual<RSSVWorkOrder.serviceID.FromCurrent>.
+                            And<RSSVRepairItem.deviceID.IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>.
+                            And<RSSVRepairItem.required.IsEqual<True>>>.
+                        AggregateTo<GroupBy<RSSVRepairItem.repairItemType>>.View.Select(this);
+
+                    foreach (RSSVRepairItem line in repairItems)
                     {
-                        foreach (PXResult<RSSVRepairItem> line in repairItems)
+                        //Check whether at least one repair item of the required type
+                        // exists in the work order.
+                        var workOrderItemsExist = RepairItems.Select().AsEnumerable()
+                            .Any(item => item.GetItem<RSSVWorkOrderItem>().RepairItemType
+                                == line.RepairItemType);
+
+                        if (!workOrderItemsExist)
                         {
-                            //Check whether the required repair items exist
-                            //in the work order.
-                            var workOrderItems = RepairItems.Select().Where(item =>
-                                item.GetItem<RSSVWorkOrderItem>().RepairItemType ==
-                                line.GetItem<RSSVRepairItem>().RepairItemType)
-                                .ToList();
-                            if (workOrderItems.Count == 0)
-                            {
-                                //Obtain the attribute assigned to
-                                //the RSSVWorkOrderItem.RepairItemType field.
-                                PXStringListAttribute stringListAttribute =
-                                    RepairItems.Cache
-                                        .GetAttributesReadonly<
-                                            RSSVWorkOrderItem.repairItemType>()
-                                        .OfType<PXStringListAttribute>()
-                                        .SingleOrDefault();
-                                //Obtain the label that corresponds to
-                                //the required repair item type.
-                                stringListAttribute.ValueLabelDic.TryGetValue(
-                                    line.GetItem<RSSVRepairItem>().RepairItemType,
-                                    out string label);
-                                //Display the error for the status field.
-                                WorkOrders.Cache.RaiseExceptionHandling<
-                                    RSSVWorkOrder.status>(
-                                        row,
-                                        row.Status,
-                                        new PXSetPropertyException(
-                                            Messages.NoRequiredItem, label));
-                                //Cancel the change of the status.
-                                e.Cancel = true;
-                            }
+                            //Obtain the attribute assigned to 
+                            // the RSSVWorkOrderItem.RepairItemType field.
+                            var stringListAttribute = RepairItems.Cache
+                                .GetAttributesReadonly<RSSVWorkOrderItem.repairItemType>()
+                                .OfType<PXStringListAttribute>()
+                                .SingleOrDefault();
+                            //Obtain the label that corresponds to the required repair item type.
+                            stringListAttribute.ValueLabelDic.TryGetValue(line.RepairItemType,
+                                out string label);
+                            //Display the error for the status field.
+                            WorkOrders.Cache.RaiseExceptionHandling<RSSVWorkOrder.status>(row,
+                                originalRow.Status,
+                                new PXSetPropertyException(Messages.NoRequiredItem, label));
+
+                            //Cancel the change of the status.
+                            e.Cancel = true;
+
+                            break;
                         }
                     }
                 }
             }
         }
-        #endregion
+
     }
 }

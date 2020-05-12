@@ -12,9 +12,17 @@ namespace PhoneRepairShop
     public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
     #endregion
 
+    #region ServiceCD
+    [PXDBString(15, IsUnicode = true, IsKey = true, InputMask = ">aaaaaaaaaaaaaaa")]
+    [PXDefault]
+    [PXUIField(DisplayName = "Service ID")]
+    public virtual string ServiceCD { get; set; }
+    public abstract class serviceCD : PX.Data.BQL.BqlString.Field<serviceCD> { }
+    #endregion
+
     #region Description
     [PXDBString(50, IsUnicode = true, InputMask = "")]
-    [PXDefault("")]  
+    [PXDefault] 
     [PXUIField(DisplayName = "Description")]
     public virtual string Description { get; set; }
     public abstract class description : PX.Data.BQL.BqlString.Field<description> { }
@@ -22,7 +30,7 @@ namespace PhoneRepairShop
 
     #region Active
     [PXDBBool()]
-    [PXDefault(true)]  
+    [PXDefault(true)]
     [PXUIField(DisplayName = "Active")]
     public virtual bool? Active { get; set; }
     public abstract class active : PX.Data.BQL.BqlBool.Field<active> { }
@@ -30,7 +38,7 @@ namespace PhoneRepairShop
 
     #region WalkInService
     [PXDBBool()]
-    [PXDefault(false)]  
+    [PXDefault(false)]
     [PXUIField(DisplayName = "Walk-In Service")]
     public virtual bool? WalkInService { get; set; }
     public abstract class walkInService : PX.Data.BQL.BqlBool.Field<walkInService> { }
@@ -38,7 +46,7 @@ namespace PhoneRepairShop
 
     #region PreliminaryCheck
     [PXDBBool()]
-    [PXDefault(false)]  
+    [PXDefault(false)]
     [PXUIField(DisplayName = "Requires Preliminary Check")]
     public virtual bool? PreliminaryCheck { get; set; }
     public abstract class preliminaryCheck : PX.Data.BQL.BqlBool.Field<preliminaryCheck> { }
@@ -46,18 +54,10 @@ namespace PhoneRepairShop
 
     #region Prepayment
     [PXDBBool()]
-    [PXDefault(false)]  
+    [PXDefault(false)]
     [PXUIField(DisplayName = "Requires Prepayment")]
     public virtual bool? Prepayment { get; set; }
     public abstract class prepayment : PX.Data.BQL.BqlBool.Field<prepayment> { }
-    #endregion
-
-    #region ServiceCD
-    [PXDBString(15, IsUnicode = true, InputMask = "", IsKey = true)]
-    [PXDefault]
-    [PXUIField(DisplayName = "Service ID")]
-    public virtual string ServiceCD { get; set; }
-    public abstract class serviceCD : PX.Data.BQL.BqlString.Field<serviceCD> { }
     #endregion
 
     #region CreatedDateTime
@@ -103,7 +103,7 @@ namespace PhoneRepairShop
     #endregion
 
     #region Noteid
-    [PXNote]
+    [PXNote()]
     public virtual Guid? Noteid { get; set; }
     public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
     #endregion
