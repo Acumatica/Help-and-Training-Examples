@@ -4,7 +4,7 @@
   <col name="ServiceID" type="Int" />
   <col name="DeviceID" type="Int" />
   <col name="LineNbr" type="Int" />
-  <col name="RepairItemType" type="NVarChar(2)" nullable="true" />
+  <col name="RepairItemType" type="Char(2)" nullable="true" />
   <col name="InventoryID" type="Int" />
   <col name="Required" type="Bit" />
   <col name="IsDefault" type="Bit" />

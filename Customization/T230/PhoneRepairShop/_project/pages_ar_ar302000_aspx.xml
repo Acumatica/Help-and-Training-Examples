@@ -8,7 +8,6 @@
                     <Prop Key="DataField" Value="UsrPrepaymentPercent" />
                 </PXNumberEdit>
             </AddItem>
-            <PXCheckBox DataField="IsRUTROTPayment" OriginalIndex="38" />
         </Children>
     </PXFormView>
     <PXLayoutRule ID="PXLayoutRule4" ParentId="phF_form_PXLayoutRule4" TypeFullName="PX.Web.UI.PXLayoutRule">
