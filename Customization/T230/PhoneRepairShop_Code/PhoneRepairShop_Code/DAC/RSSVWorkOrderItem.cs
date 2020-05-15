@@ -1,5 +1,6 @@
 using System;
 using PX.Data;
+using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
 using PX.Objects.IN;
 
@@ -9,28 +10,12 @@ namespace PhoneRepairShop
     public class RSSVWorkOrderItem : IBqlTable
     {
         #region OrderNbr
-        [PXDBString(15, IsKey = true, IsUnicode = true)]
+        [PXDBString(15, IsKey = true, IsUnicode = true, InputMask = "")]
         [PXDBDefault(typeof(RSSVWorkOrder.orderNbr))]
-        [PXParent(
-                typeof(SelectFrom<RSSVWorkOrder>.
-                Where<RSSVWorkOrder.orderNbr.IsEqual<RSSVWorkOrderItem.orderNbr.FromCurrent>>
-                ))]
+        [PXParent(typeof(SelectFrom<RSSVWorkOrder>.
+            Where<RSSVWorkOrder.orderNbr.IsEqual<RSSVWorkOrderItem.orderNbr.FromCurrent>>))]
         public virtual string OrderNbr { get; set; }
         public abstract class orderNbr : PX.Data.BQL.BqlString.Field<orderNbr> { }
-        #endregion
-
-        #region ServiceID
-        [PXDBInt()]
-        [PXDBDefault(typeof(RSSVWorkOrder.serviceID))]
-        public virtual int? ServiceID { get; set; }
-        public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
-        #endregion
-
-        #region DeviceID
-        [PXDBInt()]
-        [PXDBDefault(typeof(RSSVWorkOrder.deviceID))]
-        public virtual int? DeviceID { get; set; }
-        public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
         #endregion
 
         #region LineNbr
@@ -44,37 +29,38 @@ namespace PhoneRepairShop
         #region RepairItemType
         [PXDBString(2, IsFixed = true)]
         [PXStringList(
-                new string[]
-                {
+            new string[]
+            {
                 RepairItemTypeConstants.Battery,
                 RepairItemTypeConstants.Screen,
                 RepairItemTypeConstants.ScreenCover,
                 RepairItemTypeConstants.BackCover,
                 RepairItemTypeConstants.Motherboard
-                },
-                new string[]
-                {
+            },
+            new string[]
+            {
                 Messages.Battery,
                 Messages.Screen,
                 Messages.ScreenCover,
                 Messages.BackCover,
                 Messages.Motherboard
-                })]
+            }
+        )]
         [PXUIField(DisplayName = "Repair Item Type")]
         public virtual string RepairItemType { get; set; }
         public abstract class repairItemType : PX.Data.BQL.BqlString.Field<repairItemType> { }
         #endregion
 
         #region InventoryID
-        [PXRestrictor(
-            typeof(
-            Where<InventoryItemExt.usrRepairItem.IsEqual<True>.
-                And<InventoryItemExt.usrRepairItemType.IsEqual<RSSVWorkOrderItem.repairItemType.FromCurrent>>.
-                And<RSSVWorkOrderItem.repairItemType.FromCurrent.IsNotNull>.
-            Or<InventoryItemExt.usrRepairItem.IsEqual<True>.And<RSSVWorkOrderItem.repairItemType.FromCurrent.IsNull>>>),
-            Messages.StockItemIncorrectRepairItemType,
-            typeof(RSSVWorkOrderItem.repairItemType))]
         [Inventory]
+        [PXRestrictor(typeof(
+            Where<InventoryItemExt.usrRepairItem.IsEqual<True>.
+                And<Brackets<
+                    RSSVWorkOrderItem.repairItemType.FromCurrent.IsNull.
+                        Or<InventoryItemExt.usrRepairItemType.
+                            IsEqual<RSSVWorkOrderItem.repairItemType.FromCurrent>>>>>),
+            Messages.StockItemIncorrectRepairItemType,
+        typeof(RSSVWorkOrderItem.repairItemType))]
         public virtual int? InventoryID { get; set; }
         public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
         #endregion
@@ -83,8 +69,7 @@ namespace PhoneRepairShop
         [PXDBDecimal()]
         [PXDefault(TypeCode.Decimal, "0.0")]
         [PXUIField(DisplayName = "Price")]
-        [PXFormula(null,
-            typeof(SumCalc<RSSVWorkOrder.orderTotal>))]
+        [PXFormula(null, typeof(SumCalc<RSSVWorkOrder.orderTotal>))]
         public virtual Decimal? BasePrice { get; set; }
         public abstract class basePrice : PX.Data.BQL.BqlDecimal.Field<basePrice> { }
         #endregion

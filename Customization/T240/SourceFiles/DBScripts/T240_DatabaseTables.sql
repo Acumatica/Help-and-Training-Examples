@@ -12,14 +12,7 @@ CREATE TABLE [dbo].[RSSVEmployeeWorkOrderQty](
 	[CompanyID] [int] NOT NULL,
 	[UserID] [uniqueidentifier] NOT NULL,
 	[NbrOfAssignedOrders] [int] NOT NULL,
-	[CreatedByID] [uniqueidentifier] NOT NULL,
-	[CreatedByScreenID] [char](8) NOT NULL,
-	[CreatedDateTime] [datetime] NOT NULL,
-	[LastModifiedByID] [uniqueidentifier] NOT NULL,
-	[LastModifiedByScreenID] [char](8) NOT NULL,
-	[LastModifiedDateTime] [datetime] NOT NULL,
-	[tstamp] [timestamp] NOT NULL,
-	[NoteID] [uniqueidentifier] NULL,
+	[LastModifiedDateTime] [datetime] NOT NULL
  CONSTRAINT [RSSVEmployeeWorkOrderQty_PK] PRIMARY KEY CLUSTERED 
 (
 	[CompanyID] ASC,

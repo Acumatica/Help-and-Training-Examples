@@ -1,27 +1,26 @@
 using System;
 using PX.Data;
 using PX.Objects.AR;
-using PX.TM;
 using PX.Objects.CS;
+using PX.TM;
 
 namespace PhoneRepairShop
 {
-    [PXPrimaryGraph(typeof(RSSVSetupMaint))]
     [PXCacheName("Repair Work Order Preferences")]
+    [PXPrimaryGraph(typeof(RSSVSetupMaint))]
     public class RSSVSetup : IBqlTable
     {
         #region NumberingID
         [PXDBString(10, IsUnicode = true)]
         [PXDefault("WORKORDER")]
         [PXUIField(DisplayName = "Numbering Sequence")]
-        [PXSelector(typeof(Numbering.numberingID),
-            DescriptionField = typeof(Numbering.descr))]
+        [PXSelector(typeof(Numbering.numberingID), DescriptionField = typeof(Numbering.descr))]
         public virtual string NumberingID { get; set; }
         public abstract class numberingID : PX.Data.BQL.BqlString.Field<numberingID> { }
-        #endregion
+            #endregion
 
         #region WalkInCustomerID
-        [CustomerActive(DisplayName = "Walk-In Customer", Required = true)]
+        [CustomerActive(DisplayName = "Walk-In Customer", DescriptionField = typeof(Customer.acctName))]
         [PXDefault]
         public virtual int? WalkInCustomerID { get; set; }
         public abstract class walkInCustomerID : PX.Data.BQL.BqlInt.Field<walkInCustomerID> { }
@@ -29,7 +28,8 @@ namespace PhoneRepairShop
 
         #region DefaultEmployee
         [PXDBGuid]
-        [PXUIField(DisplayName = "Default Employee", Required = true)]
+        [PXUIField(DisplayName = "Default Employee")]
+        [PXDefault]
         [PXOwnerSelector]
         public virtual Guid? DefaultEmployee { get; set; }
         public abstract class defaultEmployee : PX.Data.BQL.BqlGuid.Field<defaultEmployee> { }
@@ -90,5 +90,5 @@ namespace PhoneRepairShop
         public virtual Guid? Noteid { get; set; }
         public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
         #endregion
-  }
+    }
 }
