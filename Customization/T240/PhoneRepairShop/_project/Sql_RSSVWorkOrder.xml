@@ -5,15 +5,15 @@
   <col name="CustomerID" type="Int" />
   <col name="DateCreated" type="SmallDateTime" />
   <col name="DateCompleted" type="SmallDateTime" nullable="true" />
-  <col name="Status" type="NVarChar(2)" />
+  <col name="Status" type="Char(2)" />
   <col name="Hold" type="Bit" />
   <col name="Description" type="NVarChar(60)" nullable="true" />
-  <col name="DeviceID" type="Int" />
   <col name="ServiceID" type="Int" />
+  <col name="DeviceID" type="Int" />
   <col name="OrderTotal" type="Decimal(19,4)" />
   <col name="RepairItemLineCntr" type="Int" />
   <col name="Assignee" type="UniqueIdentifier" nullable="true" />
-  <col name="Priority" type="NVarChar(1)" nullable="true" />
+  <col name="Priority" type="Char(1)" nullable="true" />
   <col name="InvoiceNbr" type="NVarChar(15)" nullable="true" />
   <col name="CreatedByID" type="UniqueIdentifier" />
   <col name="CreatedByScreenID" type="Char(8)" />

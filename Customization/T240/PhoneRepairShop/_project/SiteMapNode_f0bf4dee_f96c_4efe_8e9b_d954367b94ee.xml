@@ -25,19 +25,17 @@
         </layout>
         <data>
             <SiteMap>
-                <row Position="5959" Title="Repair Work Orders" Url="~/Pages/RS/RS301000.aspx" ScreenID="RS301000" NodeID="b3e8be02-69e9-4541-b251-a164cc512b2d" ParentID="00000000-0000-0000-0000-000000000000">
-                    <MUIScreen IsPortal="0" WorkspaceID="38331a83-e40e-439e-bbd0-4f656feffcaf" Order="20" SubcategoryID="6d40b0b6-18f4-4139-adac-8ec8cb2a17ea">
-                        <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
-                    </MUIScreen>
+                <row Title="Assigned Work Orders" Url="~/frames/reportlauncher.aspx?id=RS601000.rpx" ScreenID="RS601000" NodeID="f0bf4dee-f96c-4efe-8e9b-d954367b94ee" ParentID="00000000-0000-0000-0000-000000000000">
+                    <MUIScreen IsPortal="0" WorkspaceID="c60d7807-01fa-4ad7-ba64-774a3fa8e6f2" Order="30" SubcategoryID="0b491e12-c58d-4e47-8a0d-96dd3a8ab395" />
                 </row>
             </SiteMap>
             <MUIWorkspace>
-                <row IsPortal="0" WorkspaceID="38331a83-e40e-439e-bbd0-4f656feffcaf" Order="48" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0">
+                <row IsPortal="0" WorkspaceID="c60d7807-01fa-4ad7-ba64-774a3fa8e6f2" Order="48" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
             </MUIWorkspace>
             <MUISubcategory>
-                <row IsPortal="0" SubcategoryID="6d40b0b6-18f4-4139-adac-8ec8cb2a17ea" Order="128" Name="Profiles" Icon="" IsSystem="0" />
+                <row IsPortal="0" SubcategoryID="0b491e12-c58d-4e47-8a0d-96dd3a8ab395" Order="1024" Name="Reports" Icon="" IsSystem="0" />
             </MUISubcategory>
         </data>
     </data-set>
