@@ -8,36 +8,21 @@ namespace PhoneRepairShop
     [PXCacheName("Work Order Labor")]
     public class RSSVWorkOrderLabor : IBqlTable
     {
-        #region InventoryID
-        [PXRestrictor(typeof(Where<InventoryItem.stkItem.IsEqual<False>>), Messages.ItemIsStock)]
-        [Inventory]
-        public virtual int? InventoryID { get; set; }
-        public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
-        #endregion
-
-        #region DeviceID
-        [PXDBInt()]
-        [PXDBDefault(typeof(RSSVWorkOrder.deviceID))]
-        public virtual int? DeviceID { get; set; }
-        public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
-        #endregion
-
-        #region ServiceID
-        [PXDBInt()]
-        [PXDBDefault(typeof(RSSVWorkOrder.serviceID))]
-        public virtual int? ServiceID { get; set; }
-        public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
-        #endregion
-
         #region OrderNbr
-        [PXDBString(15, IsKey = true, IsUnicode = true)]
+        [PXDBString(15, IsKey = true, IsUnicode = true, InputMask = "")]
         [PXDBDefault(typeof(RSSVWorkOrder.orderNbr))]
-        [PXParent(
-                    typeof(SelectFrom<RSSVWorkOrder>.
-                    Where<RSSVWorkOrder.orderNbr.IsEqual<RSSVWorkOrderLabor.orderNbr.FromCurrent>>
-                    ))]
+        [PXParent(typeof(SelectFrom<RSSVWorkOrder>.
+            Where<RSSVWorkOrder.orderNbr.IsEqual<RSSVWorkOrderLabor.orderNbr.FromCurrent>>))]
         public virtual string OrderNbr { get; set; }
         public abstract class orderNbr : PX.Data.BQL.BqlString.Field<orderNbr> { }
+        #endregion
+
+        #region InventoryID
+        [Inventory(IsKey = true)]
+        [PXRestrictor(typeof(Where<InventoryItem.stkItem, Equal<False>>),
+            Messages.CannotAddStockItemToRepairPrice)]
+        public virtual int? InventoryID { get; set; }
+        public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
         #endregion
 
         #region DefaultPrice
@@ -61,8 +46,8 @@ namespace PhoneRepairShop
         [PXDefault(TypeCode.Decimal, "0.0")]
         [PXUIField(DisplayName = "Ext. Price", Enabled = false)]
         [PXFormula(
-                typeof(Mult<RSSVWorkOrderLabor.quantity, RSSVWorkOrderLabor.defaultPrice>),
-                typeof(SumCalc<RSSVWorkOrder.orderTotal>))]
+            typeof(Mult<RSSVWorkOrderLabor.quantity, RSSVWorkOrderLabor.defaultPrice>),
+            typeof(SumCalc<RSSVWorkOrder.orderTotal>))]
         public virtual Decimal? ExtPrice { get; set; }
         public abstract class extPrice : PX.Data.BQL.BqlDecimal.Field<extPrice> { }
         #endregion

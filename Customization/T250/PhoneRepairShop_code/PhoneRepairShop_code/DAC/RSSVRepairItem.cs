@@ -1,7 +1,8 @@
 using System;
 using PX.Data;
-using PX.Objects.IN;
+using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
+using PX.Objects.IN;
 
 namespace PhoneRepairShop
 {
@@ -11,13 +12,9 @@ namespace PhoneRepairShop
         #region ServiceID
         [PXDBInt(IsKey = true)]
         [PXDBDefault(typeof(RSSVRepairPrice.serviceID))]
-        [PXParent(
-            typeof(SelectFrom<RSSVRepairPrice>.
-            Where<RSSVRepairPrice.deviceID.IsEqual<
-            RSSVRepairItem.deviceID.FromCurrent>.
-            And<RSSVRepairPrice.serviceID.IsEqual<
-            RSSVRepairItem.serviceID.FromCurrent>>>
-            ))]
+        [PXParent(typeof(SelectFrom<RSSVRepairPrice>.
+            Where<RSSVRepairPrice.serviceID.IsEqual<RSSVRepairItem.serviceID>.
+            And<RSSVRepairPrice.deviceID.IsEqual<RSSVRepairItem.deviceID>>>))]
         public virtual int? ServiceID { get; set; }
         public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
         #endregion
@@ -62,17 +59,15 @@ namespace PhoneRepairShop
         #endregion
 
         #region InventoryID
-        [PXRestrictor(
-            typeof(
-                Where<InventoryItemExt.usrRepairItem.IsEqual<True>.
-                    And<InventoryItemExt.usrRepairItemType.IsEqual<
-                        RSSVRepairItem.repairItemType.FromCurrent>>.
-                    And<RSSVRepairItem.repairItemType.FromCurrent.IsNotNull>.
-                Or<InventoryItemExt.usrRepairItem.IsEqual<True>.
-                    And<RSSVRepairItem.repairItemType.FromCurrent.IsNull>>>),
-                Messages.StockItemIncorrectRepairItemType,
-            typeof(RSSVRepairItem.repairItemType))]
         [Inventory]
+        [PXDefault]
+        [PXRestrictor(typeof(
+            Where<InventoryItemExt.usrRepairItem.IsEqual<True>.
+                And<Brackets<RSSVRepairItem.repairItemType.FromCurrent.IsNull.
+                    Or<InventoryItemExt.usrRepairItemType.
+            IsEqual<RSSVRepairItem.repairItemType.FromCurrent>>>>>),
+                Messages.StockItemIncorrectRepairItemType,
+                    typeof(RSSVRepairItem.repairItemType))]
         public virtual int? InventoryID { get; set; }
         public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
         #endregion
@@ -97,8 +92,7 @@ namespace PhoneRepairShop
         [PXDBDecimal()]
         [PXDefault(TypeCode.Decimal, "0.0")]
         [PXUIField(DisplayName = "Price")]
-        [PXFormula(null,
-            typeof(SumCalc<RSSVRepairPrice.price>))]
+        [PXFormula(null, typeof(SumCalc<RSSVRepairPrice.price>))]
         public virtual Decimal? BasePrice { get; set; }
         public abstract class basePrice : PX.Data.BQL.BqlDecimal.Field<basePrice> { }
         #endregion

@@ -11,7 +11,8 @@ namespace PhoneRepairShop
     public class RSSVWorkOrderToPay : RSSVWorkOrder
     {
         #region InvoiceNbr
-        public new abstract class invoiceNbr : PX.Data.BQL.BqlString.Field<invoiceNbr> { }
+        public new abstract class invoiceNbr : PX.Data.BQL.BqlString.Field<invoiceNbr>
+        { }
         #endregion
 
         #region Status
@@ -26,32 +27,35 @@ namespace PhoneRepairShop
         [PXDecimal]
         [PXUIField(DisplayName = "Percent Paid")]
         public virtual Decimal? PercentPaid { get; set; }
-        public abstract class percentPaid : PX.Data.BQL.BqlDecimal.Field<percentPaid> { }
+        public abstract class percentPaid : PX.Data.BQL.BqlDecimal.Field<percentPaid>
+        { }
         #endregion
 
+        #region ServiceID
         public new abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
+        #endregion
 
+        #region CustomerID
         public new abstract class customerID : PX.Data.BQL.BqlInt.Field<customerID> { }
+        #endregion
 
         #region OrderType
         [PXString]
         [PXUIField(DisplayName = "Order Type")]
         [PXUnboundDefault(OrderTypeConstants.WorkOrder)]
         [PXStringList(
-          new string[]
-          {
-            OrderTypeConstants.SalesOrder,
-            OrderTypeConstants.WorkOrder
-          },
-          new string[]
-          {
-            Messages.SalesOrder,
-            Messages.WorkOrder
-          })]
+            new string[]
+            {
+                OrderTypeConstants.SalesOrder,
+                OrderTypeConstants.WorkOrder
+            },
+            new string[]
+            {
+                Messages.SalesOrder,
+                Messages.WorkOrder
+            })]
         public virtual String OrderType { get; set; }
         public abstract class orderType : PX.Data.BQL.BqlDecimal.Field<orderType> { }
         #endregion
-
-
     }
 }

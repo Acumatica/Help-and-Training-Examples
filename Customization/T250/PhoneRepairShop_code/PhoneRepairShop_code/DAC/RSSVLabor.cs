@@ -1,40 +1,36 @@
 using System;
 using PX.Data;
-using PX.Objects.IN;
 using PX.Data.BQL.Fluent;
+using PX.Objects.IN;
 
 namespace PhoneRepairShop
 {
     [PXCacheName("Repair Labor")]
     public class RSSVLabor : IBqlTable
     {
-        #region InventoryID
-        [Inventory(IsKey = true)]
-        [PXRestrictor(typeof(Where<InventoryItem.stkItem.IsEqual<False>>), Messages.ItemIsStock)]
-        [PXUIField(DisplayName = "Inventory ID")]
-        public virtual int? InventoryID { get; set; }
-        public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
+        #region ServiceID
+        [PXDBInt(IsKey = true)]
+        [PXDBDefault(typeof(RSSVRepairPrice.serviceID))]
+        [PXParent(typeof(SelectFrom<RSSVRepairPrice>.
+            Where<RSSVRepairPrice.deviceID.IsEqual<RSSVLabor.deviceID>.
+                And<RSSVRepairPrice.serviceID.IsEqual<RSSVLabor.serviceID>>>))]
+        public virtual int? ServiceID { get; set; }
+        public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
         #endregion
 
         #region DeviceID
         [PXDBInt(IsKey = true)]
         [PXDBDefault(typeof(RSSVRepairPrice.deviceID))]
-        [PXParent(
-            typeof(SelectFrom<RSSVRepairPrice>.
-                Where<RSSVRepairPrice.deviceID.IsEqual<
-                    RSSVLabor.deviceID.FromCurrent>.
-                And<RSSVRepairPrice.serviceID.IsEqual<
-                    RSSVLabor.serviceID.FromCurrent>>>
-            ))]
         public virtual int? DeviceID { get; set; }
         public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
         #endregion
 
-        #region ServiceID
-        [PXDBInt(IsKey = true)]
-        [PXDBDefault(typeof(RSSVRepairPrice.serviceID))]
-        public virtual int? ServiceID { get; set; }
-        public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
+        #region InventoryID
+        [Inventory(IsKey = true)]
+        [PXRestrictor(typeof(Where<InventoryItem.stkItem, Equal<False>>),
+            Messages.CannotAddStockItemToRepairPrice)]
+        public virtual int? InventoryID { get; set; }
+        public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
         #endregion
 
         #region DefaultPrice

@@ -7,14 +7,6 @@ namespace PX.Objects.IN
 {
     public class InventoryItemMaint_Extension : PXGraphExtension<InventoryItemMaint>
     {
-        #region Data Views
-        public SelectFrom<RSSVStockItemDevice>.
-            LeftJoin<RSSVDevice>.
-                On<RSSVStockItemDevice.deviceID.IsEqual<RSSVDevice.deviceID>>.
-            Where<RSSVStockItemDevice.inventoryID.IsEqual<
-                InventoryItem.inventoryID.FromCurrent>>.
-            View CompatibleDevices;
-        #endregion
         #region Event Handlers
 
         protected void _(Events.RowSelected<InventoryItem> e)
@@ -23,15 +15,22 @@ namespace PX.Objects.IN
             InventoryItemExt itemExt = PXCache<InventoryItem>.
             GetExtension<InventoryItemExt>(item);
             bool enableFields = itemExt != null &&
-                itemExt.UsrRepairItem == true;
+            itemExt.UsrRepairItem == true;
             //Make the Repair Item Type box available
             //when the Repair Item check box is selected.
             PXUIFieldAttribute.SetEnabled<InventoryItemExt.usrRepairItemType>(
-            e.Cache, e.Row, enableFields);
+                e.Cache, e.Row, enableFields);
+
             //Display the Compatible Devices tab when the Repair Item check box
             //is selected.
             CompatibleDevices.Cache.AllowSelect = enableFields;
         }
+        #endregion
+
+        #region Views
+        public SelectFrom<RSSVStockItemDevice>.
+            Where<RSSVStockItemDevice.inventoryID.IsEqual<InventoryItem.inventoryID.FromCurrent>>.View
+                CompatibleDevices;
         #endregion
     }
 }

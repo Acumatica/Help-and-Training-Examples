@@ -50,7 +50,7 @@ namespace PhoneRepairShop
 
     //The fluent BQL constants for the work order statuses used in PXUIVisible
     public class workOrderStatusOnHold :
-    PX.Data.BQL.BqlString.Constant<workOrderStatusOnHold>
+        PX.Data.BQL.BqlString.Constant<workOrderStatusOnHold>
     {
         public workOrderStatusOnHold()
         : base(WorkOrderStatusConstants.OnHold)
@@ -58,7 +58,7 @@ namespace PhoneRepairShop
         }
     }
     public class workOrderStatusReadyForAssignment :
-    PX.Data.BQL.BqlString.Constant<workOrderStatusReadyForAssignment>
+        PX.Data.BQL.BqlString.Constant<workOrderStatusReadyForAssignment>
     {
         public workOrderStatusReadyForAssignment()
         : base(WorkOrderStatusConstants.ReadyForAssignment)
@@ -66,7 +66,7 @@ namespace PhoneRepairShop
         }
     }
     public class workOrderStatusPendingPayment :
-    PX.Data.BQL.BqlString.Constant<workOrderStatusPendingPayment>
+        PX.Data.BQL.BqlString.Constant<workOrderStatusPendingPayment>
     {
         public workOrderStatusPendingPayment()
         : base(WorkOrderStatusConstants.PendingPayment)
@@ -75,7 +75,7 @@ namespace PhoneRepairShop
     }
 
     public class workOrderStatusPaid :
-    PX.Data.BQL.BqlString.Constant<workOrderStatusPendingPayment>
+        PX.Data.BQL.BqlString.Constant<workOrderStatusPendingPayment>
     {
         public workOrderStatusPaid()
         : base(WorkOrderStatusConstants.Paid)
