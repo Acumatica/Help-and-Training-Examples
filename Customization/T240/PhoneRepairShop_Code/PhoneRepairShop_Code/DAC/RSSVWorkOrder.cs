@@ -1,8 +1,8 @@
 using System;
 using PX.Data;
 using PX.Objects.AR;
-using PX.TM;
 using PX.Objects.CS;
+using PX.TM;
 using PX.Data.BQL.Fluent;
 using PX.Objects.SO;
 using PX.Objects.EP;
@@ -12,11 +12,17 @@ namespace PhoneRepairShop
     [PXCacheName("Repair Work Order")]
     public class RSSVWorkOrder : IBqlTable
     {
+        #region Selected
+        public abstract class selected : PX.Data.BQL.BqlBool.Field<selected> { }
+        [PXBool]
+        [PXUIField(DisplayName = "Selected")]
+        public virtual bool? Selected { get; set; }
+        #endregion
+
         #region OrderNbr
-        [PXDBString(6, IsKey = true, IsUnicode = true, InputMask = ">CCCCCC")]
+        [PXDBString(15, IsKey = true, IsUnicode = true, InputMask = ">CCCCCCCCCCCCCCC")]
         [PXDefault(PersistingCheck = PXPersistingCheck.NullOrBlank)]
-        [PXUIField(DisplayName = "Order Nbr.",
-            Visibility = PXUIVisibility.SelectorVisible, Required = true)]
+        [PXUIField(DisplayName = "Order Nbr.", Visibility = PXUIVisibility.SelectorVisible)]
         [AutoNumber(typeof(RSSVSetup.numberingID), typeof(RSSVWorkOrder.dateCreated))]
         [PXSelector(typeof(Search<RSSVWorkOrder.orderNbr>))]
         public virtual string OrderNbr { get; set; }
@@ -24,14 +30,15 @@ namespace PhoneRepairShop
         #endregion
 
         #region CustomerID
-        [CustomerActive(DisplayName = "Customer ID", Required = true)]
+        [PXDefault]
+        [CustomerActive(DisplayName = "Customer ID", DescriptionField = typeof(Customer.acctName))]
         [PXUIEnabled(typeof(Where<RSSVWorkOrder.hold.IsEqual<True>>))]
         public virtual int? CustomerID { get; set; }
         public abstract class customerID : PX.Data.BQL.BqlInt.Field<customerID> { }
         #endregion
 
         #region DateCreated
-        [PXDBDateAndTime(DisplayMask = "M", InputMask = "d")]
+        [PXDBDate()]
         [PXDefault(typeof(AccessInfo.businessDate))]
         [PXUIField(DisplayName = "Date Created")]
         public virtual DateTime? DateCreated { get; set; }
@@ -39,7 +46,7 @@ namespace PhoneRepairShop
         #endregion
 
         #region DateCompleted
-        [PXDBDateAndTime(DisplayMask = "M", InputMask = "d")]
+        [PXDBDate()]
         [PXUIField(DisplayName = "Date Completed", Enabled = false)]
         public virtual DateTime? DateCompleted { get; set; }
         public abstract class dateCompleted : PX.Data.BQL.BqlDateTime.Field<dateCompleted> { }
@@ -85,42 +92,39 @@ namespace PhoneRepairShop
 
         #region Description
         [PXDBString(60, IsUnicode = true)]
-        [PXUIField(DisplayName = "Description", Visibility =
-            PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Description", Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string Description { get; set; }
         public abstract class description : PX.Data.BQL.BqlString.Field<description> { }
-        #endregion
-
-        #region DeviceID
-        [PXDBInt()]
-        [PXDefault]
-        [PXUIField(DisplayName = "Device", Required = true,
-            Visibility = PXUIVisibility.SelectorVisible)]
-        [PXSelector(
-            typeof(Search<RSSVDevice.deviceID>),
-            typeof(RSSVDevice.deviceCD),
-            typeof(RSSVDevice.description),
-            DescriptionField = typeof(RSSVDevice.description),
-            SelectorMode = PXSelectorMode.DisplayModeText)]
-        [PXUIEnabled(typeof(Where<RSSVWorkOrder.hold.IsEqual<True>>))]
-        public virtual int? DeviceID { get; set; }
-        public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
         #endregion
 
         #region ServiceID
         [PXDBInt()]
         [PXDefault]
-        [PXUIField(DisplayName = "Service", Required = true,
+        [PXUIField(DisplayName = "Service",
             Visibility = PXUIVisibility.SelectorVisible)]
-        [PXSelector(
-            typeof(Search<RSSVRepairService.serviceID>),
+        [PXSelector(typeof(Search<RSSVRepairService.serviceID>),
             typeof(RSSVRepairService.serviceCD),
             typeof(RSSVRepairService.description),
-            DescriptionField = typeof(RSSVRepairService.description),
-            SelectorMode = PXSelectorMode.DisplayModeText)]
+            SubstituteKey = typeof(RSSVRepairService.serviceCD),
+            DescriptionField = typeof(RSSVRepairService.description))]
         [PXUIEnabled(typeof(Where<RSSVWorkOrder.hold.IsEqual<True>>))]
         public virtual int? ServiceID { get; set; }
         public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
+        #endregion
+
+        #region DeviceID
+        [PXDBInt()]
+        [PXDefault]
+        [PXUIField(DisplayName = "Device",
+            Visibility = PXUIVisibility.SelectorVisible)]
+        [PXSelector(typeof(Search<RSSVDevice.deviceID>),
+            typeof(RSSVDevice.deviceCD),
+            typeof(RSSVDevice.description),
+            SubstituteKey = typeof(RSSVDevice.deviceCD),
+            DescriptionField = typeof(RSSVDevice.description))]
+        [PXUIEnabled(typeof(Where<RSSVWorkOrder.hold.IsEqual<True>>))]
+        public virtual int? DeviceID { get; set; }
+        public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
         #endregion
 
         #region OrderTotal
@@ -170,10 +174,43 @@ namespace PhoneRepairShop
         #region InvoiceNbr
         [PXDBString(15, IsUnicode = true)]
         [PXUIField(DisplayName = "Invoice Nbr.", Enabled = false)]
-        [PXSelector(typeof(SearchFor<SOInvoice.refNbr>.
-            Where<SOInvoice.docType.IsEqual<ARDocType.invoice>>))]
-        public virtual String InvoiceNbr { get; set; }
+        [PXSelector(typeof(SearchFor<SOInvoice.refNbr>.Where<SOInvoice.docType.IsEqual<ARDocType.invoice>>))]
+        public virtual string InvoiceNbr { get; set; }
         public abstract class invoiceNbr : PX.Data.BQL.BqlString.Field<invoiceNbr> { }
+        #endregion
+
+        #region TimeWithoutAction
+        [PXInt]
+        [PXDBCalced(typeof(RSSVWorkOrder.dateCreated.Diff<Now>.Days), typeof(int))]
+        [PXUIField(DisplayName = "Number of Days Unassigned")]
+        public virtual int? TimeWithoutAction { get; set; }
+        public abstract class timeWithoutAction :
+        PX.Data.BQL.BqlInt.Field<timeWithoutAction>
+        { }
+        #endregion
+
+        #region DefaultAssignee
+        [PXGuid]
+        [PXUIField(DisplayName = "Default Assignee")]
+        public virtual Guid? DefaultAssignee { get; set; }
+        public abstract class defaultAssignee : PX.Data.BQL.BqlGuid.Field<defaultAssignee>
+        { }
+        #endregion
+
+        #region AssignTo
+        [PXGuid]
+        [PXUIField(DisplayName = "Assign To")]
+        public virtual Guid? AssignTo { get; set; }
+        public abstract class assignTo : PX.Data.BQL.BqlGuid.Field<assignTo> { }
+        #endregion
+
+        #region NbrOfAssignedOrders
+        [PXInt]
+        [PXUIField(DisplayName = "Number of Assigned Work Orders")]
+        public virtual int? NbrOfAssignedOrders { get; set; }
+        public abstract class nbrOfAssignedOrders :
+        PX.Data.BQL.BqlInt.Field<nbrOfAssignedOrders>
+        { }
         #endregion
 
         #region CreatedByID
@@ -225,79 +262,40 @@ namespace PhoneRepairShop
         #endregion
     }
 
+
     [PXHidden]
     public class RSSVWorkOrderToAssign : RSSVWorkOrder
     {
         #region Status
         public new abstract class status : PX.Data.BQL.BqlString.Field<status> { }
         #endregion
+
         #region Priority
         public new abstract class priority : PX.Data.BQL.BqlString.Field<priority> { }
         #endregion
+
         #region ServiceID
         public new abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
         #endregion
+
         #region DateCreated
-        public new abstract class dateCreated :
-        PX.Data.BQL.BqlDateTime.Field<dateCreated>
-        { }
+        public new abstract class dateCreated : PX.Data.BQL.BqlDateTime.Field<dateCreated> { }
         #endregion
+
         #region Assignee
         public new abstract class assignee : PX.Data.BQL.BqlGuid.Field<assignee> { }
         #endregion
+
         #region TimeWithoutAction
         [PXInt]
         [PXDBCalced(
-        typeof(RSSVWorkOrderToAssign.dateCreated.Diff<Now>.Days),
-        typeof(int))]
+            typeof(RSSVWorkOrderToAssign.dateCreated.Diff<Now>.Days),
+            typeof(int))]
         [PXUIField(DisplayName = "Number of Days Unassigned")]
         public virtual int? TimeWithoutAction { get; set; }
         public abstract class timeWithoutAction :
         PX.Data.BQL.BqlInt.Field<timeWithoutAction>
         { }
-        #endregion
-
-        #region Selected
-        public abstract class selected : PX.Data.BQL.BqlBool.Field<selected> { }
-        [PXBool]
-        [PXUIField(DisplayName = "Selected")]
-        public virtual bool? Selected { get; set; }
-        #endregion
-
-        #region DefaultAssignee
-        [PXGuid]
-        [PXUIField(DisplayName = "Default Assignee")]
-        [PXDBScalar(typeof(SelectFrom<EPEmployee>.
-            LeftJoin<RSSVEmployeeWorkOrderQty>.
-                On<EPEmployee.userID.IsEqual<RSSVEmployeeWorkOrderQty.userid>>.
-            Where<EPEmployee.userID.IsNotNull>.
-            OrderBy<RSSVEmployeeWorkOrderQty.nbrOfAssignedOrders.Asc>.
-            SearchFor<EPEmployee.userID>))]
-        [PXOwnerSelector]
-        public virtual Guid? DefaultAssignee { get; set; }
-        public abstract class defaultAssignee :
-            PX.Data.BQL.BqlGuid.Field<defaultAssignee>
-            { }
-        #endregion
-
-        #region AssignTo
-        [PXGuid]
-        [PXUIField(DisplayName = "Assign To")]
-        [PXDBCalced(typeof(RSSVWorkOrderToAssign.assignee.
-            When<RSSVWorkOrderToAssign.assignee.IsNotNull>.
-            Else<RSSVWorkOrderToAssign.defaultAssignee>), typeof(Guid?))]
-        [PXOwnerSelector]
-        public virtual Guid? AssignTo { get; set; }
-        public abstract class assignTo : PX.Data.BQL.BqlGuid.Field<assignTo> { }
-        #endregion
-
-        #region NbrOfAssignedOrders
-        [PXInt]
-        [PXUIField(DisplayName = "Number of Assigned Work Orders")]
-        public virtual int? NbrOfAssignedOrders { get; set; }
-        public abstract class nbrOfAssignedOrders :
-            PX.Data.BQL.BqlInt.Field<nbrOfAssignedOrders>
-            { }
         #endregion
     }
 }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PX.Objects.IN;
 using PX.Data.BQL.Fluent;
-using PX.Data.BQL;
+using PX.Api;
 
 namespace PhoneRepairShop
 {
@@ -16,6 +16,7 @@ namespace PhoneRepairShop
         //This method executed after customization was published and website was restarted.  
         public override void UpdateDatabase()
         {
+
             #region T200Data
 
             RSSVRepairServiceMaint repairServiceGraph = PXGraph.CreateInstance<RSSVRepairServiceMaint>();
@@ -100,6 +101,7 @@ namespace PhoneRepairShop
 
             #endregion
 
+
             #region T210Data
             var iiEntry = PXGraph.CreateInstance<InventoryItemMaint>();
             #region InventoryItem
@@ -124,10 +126,10 @@ namespace PhoneRepairShop
                                 var iItem = new InventoryItem
                                 {
                                     InventoryCD = dic["InventoryCD"],
-                                    ItemClassID = Convert.ToInt32(dic["ItemClassID"])
+                                    Descr = dic["Descr"],
+                                    ItemClassID = Convert.ToInt32(dic["ItemClassID"]),
                                 };
                                 iItem = PXCache<InventoryItem>.CreateCopy(iiEntry.Item.Insert(iItem));
-                                iItem.Descr = dic["Descr"];
                                 iItem.BasePrice = Convert.ToDecimal(dic["BasePrice"]);
                                 iItem = PXCache<InventoryItem>.CreateCopy(iiEntry.Item.Update(iItem));
                                 iItem.DfltSiteID = Convert.ToInt32(dic["DfltSiteID"]);
@@ -135,7 +137,8 @@ namespace PhoneRepairShop
                                 var extItem = PXCache<InventoryItem>.GetExtension<InventoryItemExt>(iItem);
                                 extItem.UsrRepairItem = true;
                                 extItem.UsrRepairItemType = dic["UsrRepairItemType"];
-                                iItem = PXCache<InventoryItem>.CreateCopy(iiEntry.Item.Update(iItem));
+                                iiEntry.Item.Update(iItem);
+                                //iItem = PXCache<InventoryItem>.CreateCopy(iiEntry.Item.Update(iItem));
                                 iiEntry.Actions.PressSave();
                                 iiEntry.Clear();
                             }
@@ -171,7 +174,7 @@ namespace PhoneRepairShop
                                 {
                                     DeviceID = Convert.ToInt32(dic["DeviceID"]),
                                     ServiceID = Convert.ToInt32(dic["ServiceID"]),
-                                    //Price = Convert.ToDecimal(dic["Price"]),
+                                    Price = Convert.ToDecimal(dic["Price"]),
                                     RepairItemLineCntr = Convert.ToInt32(dic["RepairItemLineCntr"])
                                 };
                                 repairPriceGraph.RepairPrices.Insert(price);
@@ -340,7 +343,8 @@ namespace PhoneRepairShop
 
             #endregion
 
-            #region T220Data & T240Data
+
+            #region T220Data
 
             var setupGraph = PXGraph.CreateInstance<RSSVSetupMaint>();
 
@@ -387,21 +391,21 @@ namespace PhoneRepairShop
             #region RSSVWorkOrder
             //Add data to RSSVWorkOrder
             RSSVWorkOrder workOrder = SelectFrom<RSSVWorkOrder>.View.ReadOnly.Select(workOrderGraph);
-			if (workOrder == null)
-			{
-				using (StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "InputData\\RSSVWorkOrder.csv"))
-				{
-					string header = file.ReadLine();
-					if (header != null)
-					{
-						string[] headerParts = header.Split(';');
-						while (true)
-						{
-							string line = file.ReadLine();
-							if (line != null)
-							{
-								string[] lineParts = line.Split(';');
-								IDictionary<string, string> dic = headerParts.Select((k, i) => new { k, v = lineParts[i] }).ToDictionary(x => x.k, x => x.v);
+            if (workOrder == null)
+            {
+                using (StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "InputData\\RSSVWorkOrder.csv"))
+                {
+                    string header = file.ReadLine();
+                    if (header != null)
+                    {
+                        string[] headerParts = header.Split(';');
+                        while (true)
+                        {
+                            string line = file.ReadLine();
+                            if (line != null)
+                            {
+                                string[] lineParts = line.Split(';');
+                                IDictionary<string, string> dic = headerParts.Select((k, i) => new { k, v = lineParts[i] }).ToDictionary(x => x.k, x => x.v);
                                 RSSVWorkOrder order = new RSSVWorkOrder
                                 {
                                     OrderNbr = dic["OrderNbr"],
@@ -414,41 +418,41 @@ namespace PhoneRepairShop
                                     ServiceID = Convert.ToInt32(dic["ServiceID"]),
                                     //OrderTotal = Convert.ToDecimal(dic["OrderTotal"]),
                                     RepairItemLineCntr = Convert.ToInt32(dic["RepairItemLineCntr"]),
-                                    Priority = dic["Priority"]
+                                    Priority = dic["Priority"],
+                                    //Assignee = Guid.Parse(dic["Assignee"])
                                 };
-                                if (dic["DateCompleted"] != "NULL") order.DateCompleted = Convert.ToDateTime(dic["DateCompleted"]);
-                                //if (dic["InvoiceNbr"] != "NULL") order.InvoiceNbr = dic["InvoiceNbr"];
-                                if (dic["Assignee"] != "NULL") order.Assignee = Guid.Parse(dic["Assignee"]);
+                                if (!String.Equals(dic["Assignee"], "NULL"))
+                                    order.Assignee = Guid.Parse(dic["Assignee"]);
                                 workOrderGraph.WorkOrders.Insert(order);
                                 workOrderGraph.Actions.PressSave();
                                 workOrderGraph.Clear();
-        }
-							else break;
-    }
-					}
-					this.WriteLog("RSSVWorkOrder updated");
-				}
-			}
-			#endregion
+                            }
+                            else break;
+                        }
+                    }
+                    this.WriteLog("RSSVWorkOrder updated");
+                }
+            }
+            #endregion
 
-			#region RSSVWorkOrderItem
-			//Add data to RSSVWorkOrderItem
-			RSSVWorkOrderItem workOrderItem = SelectFrom<RSSVWorkOrderItem>.View.ReadOnly.Select(workOrderGraph);
-			if (workOrderItem == null)
-			{
-				using (StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "InputData\\RSSVWorkOrderItem.csv"))
-				{
-					string header = file.ReadLine();
-					if (header != null)
-					{
-						string[] headerParts = header.Split(';');
-						while (true)
-						{
-							string line = file.ReadLine();
-							if (line != null)
-							{
-								string[] lineParts = line.Split(';');
-								IDictionary<string, string> dic = headerParts.Select((k, i) => new { k, v = lineParts[i] }).ToDictionary(x => x.k, x => x.v);                                //workOrderGraph.WorkOrders.Current = workOrderGraph.WorkOrders.Search<RSSVWorkOrder.orderNbr>(dic["OrderNbr"]);
+            #region RSSVWorkOrderItem
+            //Add data to RSSVWorkOrderItem
+            RSSVWorkOrderItem workOrderItem = SelectFrom<RSSVWorkOrderItem>.View.ReadOnly.Select(workOrderGraph);
+            if (workOrderItem == null)
+            {
+                using (StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "InputData\\RSSVWorkOrderItem.csv"))
+                {
+                    string header = file.ReadLine();
+                    if (header != null)
+                    {
+                        string[] headerParts = header.Split(';');
+                        while (true)
+                        {
+                            string line = file.ReadLine();
+                            if (line != null)
+                            {
+                                string[] lineParts = line.Split(';');
+                                IDictionary<string, string> dic = headerParts.Select((k, i) => new { k, v = lineParts[i] }).ToDictionary(x => x.k, x => x.v);                                //workOrderGraph.WorkOrders.Current = workOrderGraph.WorkOrders.Search<RSSVWorkOrder.orderNbr>(dic["OrderNbr"]);
                                 RSSVWorkOrderItem orderItem = new RSSVWorkOrderItem
                                 {
                                     OrderNbr = dic["OrderNbr"],
@@ -457,56 +461,61 @@ namespace PhoneRepairShop
                                     InventoryID = Convert.ToInt32(dic["InventoryID"]),
                                     BasePrice = Convert.ToDecimal(dic["BasePrice"])
                                 };
-                                workOrderGraph.RepairItems.Insert(orderItem);                              
+                                workOrderGraph.RepairItems.Insert(orderItem);
                                 workOrderGraph.Actions.PressSave();
                                 workOrderGraph.Clear();
-							}
-							else break;
-						}
-					}
-					this.WriteLog("RSSVWorkOrderItem updated");
-				}
-			}
-			#endregion
+                            }
+                            else break;
+                        }
+                    }
+                    this.WriteLog("RSSVWorkOrderItem updated");
+                }
+            }
+            #endregion
 
-			#region RSSVWorkOrderLabor
-			//Add data to RSSVWorkOrderLabor
-			RSSVWorkOrderLabor workOrderLabor = SelectFrom<RSSVWorkOrderLabor>.View.ReadOnly.Select(workOrderGraph);
-			if (workOrderLabor == null)
-			{
-				using (StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "InputData\\RSSVWorkOrderLabor.csv"))
-				{
-					string header = file.ReadLine();
-					if (header != null)
-					{
-						string[] headerParts = header.Split(';');
-						while (true)
-						{
-							string line = file.ReadLine();
-							if (line != null)
-							{
-								string[] lineParts = line.Split(';');
-								IDictionary<string, string> dic = headerParts.Select((k, i) => new { k, v = lineParts[i] }).ToDictionary(x => x.k, x => x.v);
+            #region RSSVWorkOrderLabor
+            //Add data to RSSVWorkOrderLabor
+            RSSVWorkOrderLabor workOrderLabor = SelectFrom<RSSVWorkOrderLabor>.View.ReadOnly.Select(workOrderGraph);
+            if (workOrderLabor == null)
+            {
+                using (StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "InputData\\RSSVWorkOrderLabor.csv"))
+                {
+                    string header = file.ReadLine();
+                    if (header != null)
+                    {
+                        string[] headerParts = header.Split(';');
+                        while (true)
+                        {
+                            string line = file.ReadLine();
+                            if (line != null)
+                            {
+                                string[] lineParts = line.Split(';');
+                                IDictionary<string, string> dic = headerParts.Select((k, i) => new { k, v = lineParts[i] }).ToDictionary(x => x.k, x => x.v);
                                 RSSVWorkOrderLabor laborItem = new RSSVWorkOrderLabor
                                 {
-                                    OrderNbr = dic["OrderNbr"],                                    
+                                    OrderNbr = dic["OrderNbr"],
                                     InventoryID = Convert.ToInt32(dic["InventoryID"]),
                                     DefaultPrice = Convert.ToDecimal(dic["DefaultPrice"]),
                                     Quantity = Convert.ToDecimal(dic["Quantity"]),
                                     ExtPrice = Convert.ToDecimal(dic["ExtPrice"])
                                 };
-                                workOrderGraph.Labor.Insert(laborItem);                                
+                                workOrderGraph.Labor.Insert(laborItem);
                                 workOrderGraph.Actions.PressSave();
                                 workOrderGraph.Clear();
-							}
-							else break;
-						}
-					}
-					this.WriteLog("RSSVWorkOrderLabor updated");
-				}
-			}
+                            }
+                            else break;
+                        }
+                    }
+                    this.WriteLog("RSSVWorkOrderLabor updated");
+                }
+            }
             #endregion
 
+
+
+            #endregion
+
+            #region T240Data
             #region RSSVEmployeeWorkOrderQty
             //Add data to RSSVEmployeeWorkOrderQty
             RSSVEmployeeWorkOrderQty qty = SelectFrom<RSSVEmployeeWorkOrderQty>.View.ReadOnly.Select(workOrderGraph);
@@ -529,23 +538,16 @@ namespace PhoneRepairShop
                                 PXDatabase.Insert<RSSVEmployeeWorkOrderQty>(
                                     new PXDataFieldAssign<RSSVEmployeeWorkOrderQty.userid>(Guid.Parse(dic["UserID"])),
                                     new PXDataFieldAssign<RSSVEmployeeWorkOrderQty.nbrOfAssignedOrders>(Convert.ToInt32(dic["NbrOfAssignedOrders"])),
-                                    new PXDataFieldAssign<RSSVWorkOrder.createdByID>(workOrderGraph.Accessinfo.UserID),
-                                    new PXDataFieldAssign<RSSVWorkOrder.createdByScreenID>(dic["CreatedByScreenID"]),
-                                    new PXDataFieldAssign<RSSVWorkOrder.createdDateTime>(workOrderGraph.Accessinfo.BusinessDate),
-                                    new PXDataFieldAssign<RSSVWorkOrder.lastModifiedByID>(workOrderGraph.Accessinfo.UserID),
-                                    new PXDataFieldAssign<RSSVWorkOrder.lastModifiedByScreenID>(dic["LastModifiedByScreenID"]),
-                                    new PXDataFieldAssign<RSSVWorkOrder.lastModifiedDateTime>(workOrderGraph.Accessinfo.BusinessDate),
-                                    new PXDataFieldAssign<RSSVWorkOrder.noteid>(Guid.NewGuid().ToString())
+                                    new PXDataFieldAssign<RSSVWorkOrder.lastModifiedDateTime>(workOrderGraph.Accessinfo.BusinessDate)
                                     );
                             }
                             else break;
                         }
                     }
-                    this.WriteLog("RSSVWorkOrderLabor updated");
+                    this.WriteLog("RSSVEmployeeWorkOrderQty updated");
                 }
             }
             #endregion
-
             #endregion
         }
     }

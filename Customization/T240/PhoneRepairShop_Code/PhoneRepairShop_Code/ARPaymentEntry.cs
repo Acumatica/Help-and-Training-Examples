@@ -11,12 +11,14 @@ namespace PX.Objects.AR
 {
     public class ARPaymentEntry_Extension : PXGraphExtension<ARPaymentEntry>
     {
-        public virtual void _(Events.FieldDefaulting<ARPayment,
-            ARPaymentExt.usrPrepaymentPercent> e)
+        public virtual void _(Events.FieldDefaulting<ARPayment, ARPaymentExt.usrPrepaymentPercent> e)
         {
             ARPayment payment = (ARPayment)e.Row;
             RSSVSetup setupRecord = SelectFrom<RSSVSetup>.View.Select(Base);
-            e.NewValue = setupRecord.PrepaymentPercent;
+            if (setupRecord != null)
+            {
+                e.NewValue = setupRecord.PrepaymentPercent;
+            }
         }
     }
 }
