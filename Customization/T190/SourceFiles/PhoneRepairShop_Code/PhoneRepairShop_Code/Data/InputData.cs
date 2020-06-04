@@ -7,6 +7,7 @@ using System.Linq;
 using PX.Objects.IN;
 using PX.Data.BQL.Fluent;
 using PX.Api;
+using PX.Data.BQL;
 
 namespace PhoneRepairShop
 {
