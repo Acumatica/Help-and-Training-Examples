@@ -7,18 +7,17 @@ namespace PhoneRepairShop
   public class RSSVRepairServiceMaint : PXGraph<RSSVRepairServiceMaint>
   {
 
-    protected void RSSVRepairService_WalkInService_FieldUpdated(PXCache cache, PXFieldUpdatedEventArgs e)
+    protected void _(Events.FieldUpdated<RSSVRepairService, RSSVRepairService.walkInService> e)
     {
-      
-      var row = (RSSVRepairService)e.Row;
-      if (row.WalkInService == true)
-      {
+        var row = e.Row;
+        if (row.WalkInService == true)
+        {
         row.PreliminaryCheck = false;
-      }
-      else
-      {
+        }
+        else
+        {
         row.PreliminaryCheck = true;
-      }
+        }
     }
 
     protected void _(Events.FieldUpdated<RSSVRepairService, RSSVRepairService.preliminaryCheck> e)
@@ -34,12 +33,11 @@ namespace PhoneRepairShop
         }
     }
 
-
-
-        public PXSave<RSSVRepairService> Save;
-    public PXCancel<RSSVRepairService> Cancel;
-    
     public SelectFrom<RSSVRepairService>.View RepairService;
 
-    }
+    public PXSave<RSSVRepairService> Save;
+    public PXCancel<RSSVRepairService> Cancel;
+
+
+  }
 }

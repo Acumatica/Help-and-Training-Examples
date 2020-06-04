@@ -1,34 +1,33 @@
 using System;
 using PX.Data;
-using PX.Objects.IN;
 using PX.Data.BQL.Fluent;
+using PX.Objects.IN;
 
 namespace PhoneRepairShop
 {
     [PXCacheName("Device Compatible with Stock Item")]
     public class RSSVStockItemDevice : IBqlTable
-  {
-    #region DeviceID
-    [PXDBInt(IsKey = true)]
-    [PXUIField(DisplayName = "Device")]
-[PXSelector(
-    typeof(RSSVDevice.deviceID),
-    typeof(RSSVDevice.deviceCD),
-    typeof(RSSVDevice.description),
-    SubstituteKey = typeof(RSSVDevice.deviceCD))]
-        public virtual int? DeviceID { get; set; }
-    public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
-    #endregion
-
-    #region InventoryID
-    [PXDBInt(IsKey = true)]
+    {
+        #region InventoryID
+        [PXDBInt(IsKey = true)]
         [PXDBDefault(typeof(InventoryItem.inventoryID))]
-        [PXParent(
-                typeof(SelectFrom<InventoryItem>.
-                    Where<InventoryItem.inventoryID.IsEqual<RSSVStockItemDevice.inventoryID.FromCurrent>>
-                    ))]
+        [PXParent(typeof(SelectFrom<InventoryItem>.
+            Where<InventoryItem.inventoryID.IsEqual<RSSVStockItemDevice.inventoryID>>))]
         public virtual int? InventoryID { get; set; }
-    public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
+        public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
+        #endregion
+
+        #region DeviceID
+        [PXDBInt(IsKey = true)]
+        [PXUIField(DisplayName = "Device")]
+        [PXSelector(
+            typeof(RSSVDevice.deviceID),
+            typeof(RSSVDevice.deviceCD),
+            typeof(RSSVDevice.description),
+            SubstituteKey = typeof(RSSVDevice.deviceCD),
+            DescriptionField = typeof(RSSVDevice.description))]
+        public virtual int? DeviceID { get; set; }
+        public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
         #endregion
 
         #region CreatedDateTime
@@ -74,7 +73,7 @@ namespace PhoneRepairShop
         #endregion
 
         #region Noteid
-        [PXNote]
+        [PXNote()]
         public virtual Guid? Noteid { get; set; }
         public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
         #endregion

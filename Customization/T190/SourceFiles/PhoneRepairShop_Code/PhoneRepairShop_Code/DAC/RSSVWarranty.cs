@@ -7,51 +7,69 @@ namespace PhoneRepairShop
 {
     [PXCacheName("Warranty")]
     public class RSSVWarranty : IBqlTable
-  {
-    #region ContractID
-    [PXDBInt(IsKey = true)]
-    [PXUIField(DisplayName = "Contract ID")]
-[PXDimensionSelector(ContractTemplateAttribute.DimensionName,
-    typeof(Search<ContractTemplate.contractID,
-    Where<ContractTemplate.baseType.IsEqual<CTPRType.contractTemplate>>>),
-    typeof(ContractTemplate.contractCD),
-    DescriptionField = typeof(ContractTemplate.contractCD))]
-        public virtual int? ContractID { get; set; }
-    public abstract class contractID : PX.Data.BQL.BqlInt.Field<contractID> { }
-    #endregion
-
-    #region DeviceID
-    [PXDBInt(IsKey = true)]
-        [PXDBDefault(typeof(RSSVRepairPrice.deviceID))]
-        [PXParent(
-            typeof(SelectFrom<RSSVRepairPrice>.
-                Where<RSSVRepairPrice.deviceID.IsEqual<
-                    RSSVWarranty.deviceID.FromCurrent>.
-                And<RSSVRepairPrice.serviceID.IsEqual<
-                    RSSVWarranty.serviceID.FromCurrent>>>
-            ))]
-        public virtual int? DeviceID { get; set; }
-    public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
-    #endregion
-
-    #region ServiceID
-    [PXDBInt(IsKey = true)]
+    {
+        #region ServiceID
+        [PXDBInt(IsKey = true)]
         [PXDBDefault(typeof(RSSVRepairPrice.serviceID))]
+        [PXParent(typeof(SelectFrom<RSSVRepairPrice>.
+            Where<RSSVRepairPrice.deviceID.IsEqual<RSSVWarranty.deviceID>.
+                And<RSSVRepairPrice.serviceID.IsEqual<RSSVWarranty.serviceID>>>))]
         public virtual int? ServiceID { get; set; }
-    public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
+        public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
+        #endregion
+
+        #region DeviceID
+        [PXDBInt(IsKey = true)]
+        [PXDBDefault(typeof(RSSVRepairPrice.deviceID))]
+        public virtual int? DeviceID { get; set; }
+        public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
+        #endregion
+
+        #region ContractID
+        [PXDBInt(IsKey = true)]
+        [PXUIField(DisplayName = "Contract ID")]
+        [PXDimensionSelector(ContractTemplateAttribute.DimensionName,
+            typeof(Search<ContractTemplate.contractID,
+                Where<ContractTemplate.baseType.IsEqual<
+                    CTPRType.contractTemplate>>>),
+                typeof(ContractTemplate.contractCD),
+            DescriptionField = typeof(ContractTemplate.description))]
+        public virtual int? ContractID { get; set; }
+        public abstract class contractID : PX.Data.BQL.BqlInt.Field<contractID> { }
         #endregion
 
         #region DefaultWarranty
         [PXDBBool()]
+        [PXUIField(DisplayName = "Default Warranty")]
         [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
         public virtual bool? DefaultWarranty { get; set; }
         public abstract class defaultWarranty : PX.Data.BQL.BqlBool.Field<defaultWarranty> { }
         #endregion
 
-        #region CreatedDateTime
-        [PXDBCreatedDateTime()]
-        public virtual DateTime? CreatedDateTime { get; set; }
-        public abstract class createdDateTime : PX.Data.BQL.BqlDateTime.Field<createdDateTime> { }
+        #region ContractDuration
+        [PXInt(MinValue = 1, MaxValue = 1000)]
+        [PXUIField(DisplayName = "Duration", Enabled = false)]
+        [PXFormula(typeof(Selector<RSSVWarranty.contractID, ContractTemplate.duration>))]
+        public virtual int? ContractDuration { get; set; }
+        public abstract class contractDuration : PX.Data.BQL.BqlInt.Field<contractDuration> { }
+        #endregion
+
+        #region ContractDurationType
+        [PXString(1, IsFixed = true)]
+        [PXUIField(DisplayName = "Duration Unit", Enabled = false)]
+        [Contract.durationType.List]
+        [PXFormula(typeof(Selector<RSSVWarranty.contractID, ContractTemplate.durationType>))]
+        public virtual string ContractDurationType { get; set; }
+        public abstract class contractDurationType : PX.Data.BQL.BqlString.Field<contractDurationType> { }
+        #endregion
+
+        #region ContractType
+        [PXString(1, IsFixed = true)]
+        [PXUIField(DisplayName = "Contract Type", Enabled = false)]
+        [Contract.type.List]
+        [PXFormula(typeof(Selector<RSSVWarranty.contractID, ContractTemplate.type>))]
+        public virtual string ContractType { get; set; }
+        public abstract class contractType : PX.Data.BQL.BqlString.Field<contractType> { }
         #endregion
 
         #region CreatedByID
@@ -66,10 +84,10 @@ namespace PhoneRepairShop
         public abstract class createdByScreenID : PX.Data.BQL.BqlString.Field<createdByScreenID> { }
         #endregion
 
-        #region LastModifiedDateTime
-        [PXDBLastModifiedDateTime()]
-        public virtual DateTime? LastModifiedDateTime { get; set; }
-        public abstract class lastModifiedDateTime : PX.Data.BQL.BqlDateTime.Field<lastModifiedDateTime> { }
+        #region CreatedDateTime
+        [PXDBCreatedDateTime()]
+        public virtual DateTime? CreatedDateTime { get; set; }
+        public abstract class createdDateTime : PX.Data.BQL.BqlDateTime.Field<createdDateTime> { }
         #endregion
 
         #region LastModifiedByID
@@ -84,6 +102,12 @@ namespace PhoneRepairShop
         public abstract class lastModifiedByScreenID : PX.Data.BQL.BqlString.Field<lastModifiedByScreenID> { }
         #endregion
 
+        #region LastModifiedDateTime
+        [PXDBLastModifiedDateTime()]
+        public virtual DateTime? LastModifiedDateTime { get; set; }
+        public abstract class lastModifiedDateTime : PX.Data.BQL.BqlDateTime.Field<lastModifiedDateTime> { }
+        #endregion
+
         #region Tstamp
         [PXDBTimestamp()]
         public virtual byte[] Tstamp { get; set; }
@@ -91,7 +115,7 @@ namespace PhoneRepairShop
         #endregion
 
         #region Noteid
-        [PXNote]
+        [PXNote()]
         public virtual Guid? Noteid { get; set; }
         public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
         #endregion

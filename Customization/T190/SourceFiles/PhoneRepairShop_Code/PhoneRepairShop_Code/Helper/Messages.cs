@@ -7,15 +7,27 @@ using PX.Common;
 
 namespace PhoneRepairShop
 {
-    [PXLocalizable]
+    [PXLocalizable()]
     public static class Messages
     {
+        //Complexity of repair
+        public const string High = "High";
+        public const string Medium = "Medium";
+        public const string Low = "Low";
+
         //Repair item types
         public const string Battery = "Battery";
         public const string Screen = "Screen";
         public const string ScreenCover = "Screen Cover";
         public const string BackCover = "Back Cover";
         public const string Motherboard = "Motherboard";
+
+        public const string StockItemIncorrectRepairItemType =
+            "This stock item has a repair item type that differs from {0}.";
+
+        public const string CannotAddStockItemToRepairPrice =
+            "Cannot add a stock item to a repair price.";
+        public const string DefaultWarrantyCanNotBeDeleted = "This record cannot be deleted.";
 
         //Work order statuses
         public const string OnHold = "On Hold";
@@ -25,23 +37,16 @@ namespace PhoneRepairShop
         public const string Completed = "Completed";
         public const string Paid = "Paid";
 
-        //Work order priorities
-        public const string High = "High";
-        public const string Medium = "Medium";
-        public const string Low = "Low";
 
-        //Messages
-        public const string StockItemIncorrectRepairItemType =
-            "This stock item has a repair item type that differs from {0}.";
-        public const string ItemIsStock = "This item is a stock item.";
-        public const string NoRequiredItem =
-            "The work order does not contain a required repair item of the {0} type.";
-        public const string WorkOrderAssigned =
-            "The {0} work order has been successfully assigned.";
-        public const string ExceedingMaximumNumberOfAssingedWorkOrders =
-            "Updating the number of assigned work orders for the employee " +
-            "will lead to exceeding of the maximum number of assigned work orders," +
-            "which is 10.";
+        public const string NoRequiredItem = "The work order does not contain a required repair item of the {0} type.";
+
+        public const string WorkOrderAssigned = "The {0} work order has been successfully assigned.";
+
+        public const string ExceedingMaximumNumberOfAssingedWorkOrders = 
+            @"Updating the number of assigned work orders for the employee 
+            will lead to exceeding of the maximum number of assigned work orders, 
+            which is 10.";
+
         public const string ReportRS601000Title = "Assigned Work Orders";
     }
 }

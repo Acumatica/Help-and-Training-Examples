@@ -1,39 +1,36 @@
 using System;
 using PX.Data;
-using PX.Objects.IN;
 using PX.Data.BQL.Fluent;
+using PX.Objects.IN;
 
 namespace PhoneRepairShop
 {
     [PXCacheName("Repair Labor")]
     public class RSSVLabor : IBqlTable
-  {
-    #region InventoryID
-    [PXRestrictor(typeof(Where<InventoryItem.stkItem.IsEqual<False>>), Messages.ItemIsStock)]
-    [Inventory(IsKey = true)]
-    public virtual int? InventoryID { get; set; }
-    public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
-    #endregion
-
-    #region DeviceID
-    [PXDBInt(IsKey = true)]
-        [PXDBDefault(typeof(RSSVRepairPrice.deviceID))]
-        [PXParent(
-            typeof(SelectFrom<RSSVRepairPrice>.
-                Where<RSSVRepairPrice.deviceID.IsEqual<
-                    RSSVLabor.deviceID.FromCurrent>.
-                And<RSSVRepairPrice.serviceID.IsEqual<
-                    RSSVLabor.serviceID.FromCurrent>>>
-            ))]
-        public virtual int? DeviceID { get; set; }
-    public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
-    #endregion
-
-    #region ServiceID
-    [PXDBInt(IsKey = true)]
+    {
+        #region ServiceID
+        [PXDBInt(IsKey = true)]
         [PXDBDefault(typeof(RSSVRepairPrice.serviceID))]
+        [PXParent(typeof(SelectFrom<RSSVRepairPrice>.
+            Where<RSSVRepairPrice.deviceID.IsEqual<RSSVLabor.deviceID>.
+                And<RSSVRepairPrice.serviceID.IsEqual<RSSVLabor.serviceID>>>))]
         public virtual int? ServiceID { get; set; }
-    public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
+        public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
+        #endregion
+
+        #region DeviceID
+        [PXDBInt(IsKey = true)]
+        [PXDBDefault(typeof(RSSVRepairPrice.deviceID))]
+        public virtual int? DeviceID { get; set; }
+        public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
+        #endregion
+
+        #region InventoryID
+        [Inventory(IsKey = true)]
+        [PXRestrictor(typeof(Where<InventoryItem.stkItem, Equal<False>>),
+            Messages.CannotAddStockItemToRepairPrice)]
+        public virtual int? InventoryID { get; set; }
+        public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
         #endregion
 
         #region DefaultPrice
@@ -41,7 +38,7 @@ namespace PhoneRepairShop
         [PXDefault(TypeCode.Decimal, "0.0")]
         [PXUIField(DisplayName = "Default Price")]
         public virtual Decimal? DefaultPrice { get; set; }
-    public abstract class defaultPrice : PX.Data.BQL.BqlDecimal.Field<defaultPrice> { }
+        public abstract class defaultPrice : PX.Data.BQL.BqlDecimal.Field<defaultPrice> { }
         #endregion
 
         #region Quantity
@@ -49,7 +46,7 @@ namespace PhoneRepairShop
         [PXDefault(TypeCode.Decimal, "0.0")]
         [PXUIField(DisplayName = "Quantity")]
         public virtual Decimal? Quantity { get; set; }
-    public abstract class quantity : PX.Data.BQL.BqlDecimal.Field<quantity> { }
+        public abstract class quantity : PX.Data.BQL.BqlDecimal.Field<quantity> { }
         #endregion
 
         #region ExtPrice
@@ -60,13 +57,7 @@ namespace PhoneRepairShop
             typeof(Mult<RSSVLabor.quantity, RSSVLabor.defaultPrice>),
             typeof(SumCalc<RSSVRepairPrice.price>))]
         public virtual Decimal? ExtPrice { get; set; }
-    public abstract class extPrice : PX.Data.BQL.BqlDecimal.Field<extPrice> { }
-        #endregion
-
-        #region CreatedDateTime
-        [PXDBCreatedDateTime()]
-        public virtual DateTime? CreatedDateTime { get; set; }
-        public abstract class createdDateTime : PX.Data.BQL.BqlDateTime.Field<createdDateTime> { }
+        public abstract class extPrice : PX.Data.BQL.BqlDecimal.Field<extPrice> { }
         #endregion
 
         #region CreatedByID
@@ -81,10 +72,10 @@ namespace PhoneRepairShop
         public abstract class createdByScreenID : PX.Data.BQL.BqlString.Field<createdByScreenID> { }
         #endregion
 
-        #region LastModifiedDateTime
-        [PXDBLastModifiedDateTime()]
-        public virtual DateTime? LastModifiedDateTime { get; set; }
-        public abstract class lastModifiedDateTime : PX.Data.BQL.BqlDateTime.Field<lastModifiedDateTime> { }
+        #region CreatedDateTime
+        [PXDBCreatedDateTime()]
+        public virtual DateTime? CreatedDateTime { get; set; }
+        public abstract class createdDateTime : PX.Data.BQL.BqlDateTime.Field<createdDateTime> { }
         #endregion
 
         #region LastModifiedByID
@@ -99,6 +90,12 @@ namespace PhoneRepairShop
         public abstract class lastModifiedByScreenID : PX.Data.BQL.BqlString.Field<lastModifiedByScreenID> { }
         #endregion
 
+        #region LastModifiedDateTime
+        [PXDBLastModifiedDateTime()]
+        public virtual DateTime? LastModifiedDateTime { get; set; }
+        public abstract class lastModifiedDateTime : PX.Data.BQL.BqlDateTime.Field<lastModifiedDateTime> { }
+        #endregion
+
         #region Tstamp
         [PXDBTimestamp()]
         public virtual byte[] Tstamp { get; set; }
@@ -106,7 +103,7 @@ namespace PhoneRepairShop
         #endregion
 
         #region Noteid
-        [PXNote]
+        [PXNote()]
         public virtual Guid? Noteid { get; set; }
         public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
         #endregion
