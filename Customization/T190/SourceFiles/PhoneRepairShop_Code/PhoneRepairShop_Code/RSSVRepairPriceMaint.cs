@@ -36,19 +36,6 @@ namespace PhoneRepairShop
 
         #region Event handlers
 
-        // Clear the InventoryID, Required, and IsDefault fields 
-        // when repair item type of repair item is updated.
-        protected void _(Events.FieldUpdated<RSSVRepairItem, RSSVRepairItem.repairItemType> e)
-        {
-            RSSVRepairItem row = e.Row;
-            e.Cache.SetDefaultExt<RSSVRepairItem.required>(row);
-            if (e.OldValue != null)
-            {
-                e.Cache.SetValueExt<RSSVRepairItem.inventoryID>(row, null);
-                e.Cache.SetValue<RSSVRepairItem.isDefault>(row, false);
-            }
-        }
-
         //Update the IsDefault field of other records with the same repair item type 
         //when the IsDefault field is updated.
         protected void _(Events.RowUpdated<RSSVRepairItem> e)
