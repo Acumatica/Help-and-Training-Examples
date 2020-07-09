@@ -130,7 +130,7 @@ namespace PhoneRepairShop
                                     ItemClassID = Convert.ToInt32(dic["ItemClassID"]),
                                 };
                                 iItem = PXCache<InventoryItem>.CreateCopy(iiEntry.Item.Insert(iItem));
-                                iItem.BasePrice = Convert.ToDecimal(dic["BasePrice"]);
+                                iItem.BasePrice = Decimal.Parse(dic["BasePrice"], NumberStyles.Any, CultureInfo.InvariantCulture);
                                 iItem = PXCache<InventoryItem>.CreateCopy(iiEntry.Item.Update(iItem));
                                 iItem.DfltSiteID = Convert.ToInt32(dic["DfltSiteID"]);
                                 iItem = PXCache<InventoryItem>.CreateCopy(iiEntry.Item.Update(iItem));
@@ -174,7 +174,7 @@ namespace PhoneRepairShop
                                 {
                                     DeviceID = Convert.ToInt32(dic["DeviceID"]),
                                     ServiceID = Convert.ToInt32(dic["ServiceID"]),
-                                    Price = Convert.ToDecimal(dic["Price"]),
+                                    Price = Decimal.Parse(dic["Price"], NumberStyles.Any, CultureInfo.InvariantCulture),
                                     RepairItemLineCntr = Convert.ToInt32(dic["RepairItemLineCntr"])
                                 };
                                 repairPriceGraph.RepairPrices.Insert(price);
@@ -216,7 +216,7 @@ namespace PhoneRepairShop
                                     InventoryID = Convert.ToInt32(dic["InventoryID"]),
                                     Required = Convert.ToBoolean(Convert.ToInt32(dic["Required"])),
                                     IsDefault = Convert.ToBoolean(Convert.ToInt32(dic["IsDefault"])),
-                                    BasePrice = Convert.ToDecimal(dic["BasePrice"])
+                                    BasePrice = Decimal.Parse(dic["BasePrice"], NumberStyles.Any, CultureInfo.InvariantCulture)
                                 };
                                 repairPriceGraph.RepairItems.Insert(item);
                                 repairPriceGraph.Actions.PressSave();
@@ -253,9 +253,9 @@ namespace PhoneRepairShop
                                     InventoryID = Convert.ToInt32(dic["InventoryID"]),
                                     DeviceID = Convert.ToInt32(dic["DeviceID"]),
                                     ServiceID = Convert.ToInt32(dic["ServiceID"]),
-                                    DefaultPrice = Convert.ToDecimal(dic["DefaultPrice"]),
-                                    Quantity = Convert.ToDecimal(dic["Quantity"]),
-                                    ExtPrice = Convert.ToDecimal(dic["ExtPrice"])
+                                    DefaultPrice = Decimal.Parse(dic["DefaultPrice"], NumberStyles.Any, CultureInfo.InvariantCulture),
+                                    Quantity = Decimal.Parse(dic["Quantity"], NumberStyles.Any, CultureInfo.InvariantCulture),
+                                    ExtPrice = Decimal.Parse(dic["ExtPrice"], NumberStyles.Any, CultureInfo.InvariantCulture)
                                 };
                                 repairPriceGraph.Labor.Insert(priceLabor);
                                 repairPriceGraph.Actions.PressSave();
@@ -372,7 +372,7 @@ namespace PhoneRepairShop
                                     NumberingID = dic["NumberingID"],
                                     WalkInCustomerID = Convert.ToInt32(dic["WalkInCustomerID"]),
                                     DefaultEmployee = Guid.Parse(dic["DefaultEmployee"]),
-                                    PrepaymentPercent = Convert.ToDecimal(dic["PrepaymentPercent"])
+                                    PrepaymentPercent = Decimal.Parse(dic["PrepaymentPercent"], NumberStyles.Any, CultureInfo.InvariantCulture)
                                 };
                                 setupGraph.Setup.Insert(settings);
                                 setupGraph.Actions.PressSave();
@@ -416,7 +416,7 @@ namespace PhoneRepairShop
                                     Description = dic["Description"],
                                     DeviceID = Convert.ToInt32(dic["DeviceID"]),
                                     ServiceID = Convert.ToInt32(dic["ServiceID"]),
-                                    //OrderTotal = Convert.ToDecimal(dic["OrderTotal"]),
+                                    //OrderTotal = Decimal.Parse(dic["OrderTotal"], NumberStyles.Any, CultureInfo.InvariantCulture),
                                     RepairItemLineCntr = Convert.ToInt32(dic["RepairItemLineCntr"]),
                                     Priority = dic["Priority"],
                                     //Assignee = Guid.Parse(dic["Assignee"])
@@ -459,7 +459,7 @@ namespace PhoneRepairShop
                                     LineNbr = Convert.ToInt32(dic["LineNbr"]),
                                     RepairItemType = dic["RepairItemType"],
                                     InventoryID = Convert.ToInt32(dic["InventoryID"]),
-                                    BasePrice = Convert.ToDecimal(dic["BasePrice"])
+                                    BasePrice = Decimal.Parse(dic["BasePrice"], NumberStyles.Any, CultureInfo.InvariantCulture)
                                 };
                                 workOrderGraph.RepairItems.Insert(orderItem);
                                 workOrderGraph.Actions.PressSave();
@@ -495,9 +495,9 @@ namespace PhoneRepairShop
                                 {
                                     OrderNbr = dic["OrderNbr"],
                                     InventoryID = Convert.ToInt32(dic["InventoryID"]),
-                                    DefaultPrice = Convert.ToDecimal(dic["DefaultPrice"]),
-                                    Quantity = Convert.ToDecimal(dic["Quantity"]),
-                                    ExtPrice = Convert.ToDecimal(dic["ExtPrice"])
+                                    DefaultPrice = Decimal.Parse(dic["DefaultPrice"], NumberStyles.Any, CultureInfo.InvariantCulture),
+                                    Quantity = Decimal.Parse(dic["Quantity"], NumberStyles.Any, CultureInfo.InvariantCulture),
+                                    ExtPrice = Decimal.Parse(dic["ExtPrice"], NumberStyles.Any, CultureInfo.InvariantCulture)
                                 };
                                 workOrderGraph.Labor.Insert(laborItem);
                                 workOrderGraph.Actions.PressSave();
