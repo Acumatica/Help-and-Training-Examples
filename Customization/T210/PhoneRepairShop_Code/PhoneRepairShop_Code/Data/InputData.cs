@@ -253,7 +253,7 @@ namespace PhoneRepairShop
                                     ServiceID = Convert.ToInt32(dic["ServiceID"]),
                                     DefaultPrice = Decimal.Parse(dic["DefaultPrice"], NumberStyles.Any, CultureInfo.InvariantCulture),
                                     Quantity = Decimal.Parse(dic["Quantity"], NumberStyles.Any, CultureInfo.InvariantCulture),
-                                    ExtPrice = Decimal.Parse(dic["ExtPrice"], NumberStyles.Any, CultureInfo.InvariantCulture);
+                                    ExtPrice = Decimal.Parse(dic["ExtPrice"], NumberStyles.Any, CultureInfo.InvariantCulture)
                                 };
                                 repairPriceGraph.Labor.Insert(priceLabor);
                                 repairPriceGraph.Actions.PressSave();
