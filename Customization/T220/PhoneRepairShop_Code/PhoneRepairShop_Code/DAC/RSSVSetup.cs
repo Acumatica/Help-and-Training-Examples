@@ -1,5 +1,6 @@
 using System;
 using PX.Data;
+using PX.Objects.CR;
 using PX.Objects.AR;
 using PX.Objects.CS;
 using PX.TM;

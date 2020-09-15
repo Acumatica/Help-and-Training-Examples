@@ -371,7 +371,7 @@ namespace PhoneRepairShop
                                 {
                                     NumberingID = dic["NumberingID"],
                                     WalkInCustomerID = Convert.ToInt32(dic["WalkInCustomerID"]),
-                                    DefaultEmployee = Guid.Parse(dic["DefaultEmployee"]),
+                                    DefaultEmployee = Convert.ToInt32(dic["DefaultEmployee"]),
                                     PrepaymentPercent = Decimal.Parse(dic["PrepaymentPercent"], NumberStyles.Any, CultureInfo.InvariantCulture)
                                 };
                                 setupGraph.Setup.Insert(settings);

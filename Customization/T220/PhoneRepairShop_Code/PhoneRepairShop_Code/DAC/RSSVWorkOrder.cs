@@ -2,6 +2,7 @@ using System;
 using PX.Data;
 using PX.Objects.AR;
 using PX.Objects.CS;
+using PX.Objects.CR;
 using PX.TM;
 
 namespace PhoneRepairShop

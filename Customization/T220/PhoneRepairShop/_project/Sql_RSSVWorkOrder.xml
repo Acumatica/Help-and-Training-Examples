@@ -12,7 +12,7 @@
   <col name="DeviceID" type="Int" />
   <col name="OrderTotal" type="Decimal(19,4)" />
   <col name="RepairItemLineCntr" type="Int" />
-  <col name="Assignee" type="UniqueIdentifier" nullable="true" />
+  <col name="Assignee" type="Int" nullable="true" />
   <col name="Priority" type="Char(1)" nullable="true" />
   <col name="InvoiceNbr" type="NVarChar(15)" nullable="true" />
   <col name="CreatedByID" type="UniqueIdentifier" />

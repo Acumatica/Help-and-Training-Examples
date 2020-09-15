@@ -3,7 +3,7 @@
   <col name="CompanyID" type="Int" default="Zero" />
   <col name="NumberingID" type="NVarChar(10)" />
   <col name="WalkInCustomerID" type="Int" />
-  <col name="DefaultEmployee" type="UniqueIdentifier" />
+  <col name="DefaultEmployee" type="Int" />
   <col name="PrepaymentPercent" type="Decimal(9,6)" />
   <col name="CreatedByID" type="UniqueIdentifier" />
   <col name="CreatedByScreenID" type="Char(8)" />
