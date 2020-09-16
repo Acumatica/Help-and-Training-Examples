@@ -4,40 +4,40 @@ using PX.Data.BQL.Fluent;
 
 namespace PhoneRepairShop
 {
-  public class RSSVRepairServiceMaint : PXGraph<RSSVRepairServiceMaint>
-  {
-
-    protected void _(Events.FieldUpdated<RSSVRepairService, RSSVRepairService.walkInService> e)
+    public class RSSVRepairServiceMaint : PXGraph<RSSVRepairServiceMaint>
     {
-        var row = e.Row;
-        if (row.WalkInService == true)
+
+        protected void _(Events.FieldUpdated<RSSVRepairService, RSSVRepairService.walkInService> e)
         {
-        row.PreliminaryCheck = false;
+            var row = e.Row;
+            if (row.WalkInService == true)
+            {
+            row.PreliminaryCheck = false;
+            }
+            else
+            {
+            row.PreliminaryCheck = true;
+            }
         }
-        else
+
+        protected void _(Events.FieldUpdated<RSSVRepairService, RSSVRepairService.preliminaryCheck> e)
         {
-        row.PreliminaryCheck = true;
+            var row = e.Row;
+            if (row.PreliminaryCheck == true)
+            {
+                row.WalkInService = false;
+            }
+            else
+            {
+                row.WalkInService = true;
+            }
         }
+
+        public SelectFrom<RSSVRepairService>.View RepairService;
+
+        public PXSave<RSSVRepairService> Save;
+        public PXCancel<RSSVRepairService> Cancel;
+
+
     }
-
-    protected void _(Events.FieldUpdated<RSSVRepairService, RSSVRepairService.preliminaryCheck> e)
-    {
-        var row = e.Row;
-        if (row.PreliminaryCheck == true)
-        {
-            row.WalkInService = false;
-        }
-        else
-        {
-            row.WalkInService = true;
-        }
-    }
-
-    public SelectFrom<RSSVRepairService>.View RepairService;
-
-    public PXSave<RSSVRepairService> Save;
-    public PXCancel<RSSVRepairService> Cancel;
-
-
-  }
 }

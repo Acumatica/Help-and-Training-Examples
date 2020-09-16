@@ -9,7 +9,7 @@ namespace PhoneRepairShop
 {
     public class RSSVWorkOrderEntry : PXGraph<RSSVWorkOrderEntry, RSSVWorkOrder>
     {
-
+        #region Views
         //The primary view for the Summary area of the form
         public SelectFrom<RSSVWorkOrder>.View WorkOrders;
 
@@ -22,16 +22,19 @@ namespace PhoneRepairShop
             Where<RSSVWorkOrderLabor.orderNbr.IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
             Labor;
 
-        
         //The view for the auto-numbering of records
         public PXSetup<RSSVSetup> AutoNumSetup;
+        #endregion
+
+        #region Constructors
         //The graph constructor
         public RSSVWorkOrderEntry()
         {
             RSSVSetup setup = AutoNumSetup.Current;
         }
+        #endregion
 
-
+        #region Events
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
         {
@@ -222,6 +225,7 @@ namespace PhoneRepairShop
                 }
             }
         }
+        #endregion
 
     }
 }
