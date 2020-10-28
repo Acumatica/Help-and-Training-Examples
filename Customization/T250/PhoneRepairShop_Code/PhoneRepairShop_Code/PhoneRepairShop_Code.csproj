@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9BC6D61A-5D4B-4D57-BC6B-5E3F9D04377E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PhoneRepairShop_Code</RootNamespace>
+    <AssemblyName>PhoneRepairShop_Code</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PX.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Bin\PX.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PX.CS.Contracts">
+      <HintPath>..\..\..\..\Bin\PX.CS.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="PX.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Bin\PX.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PX.Data.BQL.Fluent">
+      <HintPath>..\..\..\..\Bin\PX.Data.BQL.Fluent.dll</HintPath>
+    </Reference>
+    <Reference Include="PX.Objects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Bin\PX.Objects.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PX.Web.Customization">
+      <HintPath>..\..\..\..\Bin\PX.Web.Customization.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ARPaymentEntry.cs" />
+    <Compile Include="ARReleaseProcess.cs" />
+    <Compile Include="DAC\ARPaymentExtension.cs" />
+    <Compile Include="DAC\RSSVDevice.cs" />
+    <Compile Include="DAC\RSSVWorkOrderPayment.cs" />
+    <Compile Include="DAC\RSSVWorkOrderToPay.cs" />
+    <Compile Include="Data\InputData.cs" />
+    <Compile Include="Helper\Constants.cs" />
+    <Compile Include="Helper\Messages.cs" />
+    <Compile Include="DAC\InventoryItemExtensions.cs" />
+    <Compile Include="InventoryItemMaint.cs" />
+    <Compile Include="RSSVRepairPriceMaint.cs" />
+    <Compile Include="DAC\RSSVRepairPrice.cs" />
+    <Compile Include="DAC\RSSVRepairItem.cs" />
+    <Compile Include="DAC\RSSVStockItemDevice.cs" />
+    <Compile Include="DAC\RSSVLabor.cs" />
+    <Compile Include="DAC\RSSVWarranty.cs" />
+    <Compile Include="RSSVWorkOrderEntry.cs" />
+    <Compile Include="DAC\RSSVWorkOrder.cs" />
+    <Compile Include="DAC\RSSVWorkOrderItem.cs" />
+    <Compile Include="DAC\RSSVWorkOrderLabor.cs" />
+    <Compile Include="RSSVSetupMaint.cs" />
+    <Compile Include="DAC\RSSVSetup.cs" />
+    <Compile Include="RSSVAssignProcess.cs" />
+    <Compile Include="DAC\RSSVEmployeeWorkOrderQty.cs" />
+    <Compile Include="RSSVPaymentPlanInq.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DAC\RSSVRepairService.cs" />
+    <Compile Include="RSSVDeviceMaint.cs" />
+    <Compile Include="RSSVRepairServiceMaint.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
