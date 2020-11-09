@@ -28,7 +28,7 @@ namespace PhoneRepairShop
         #endregion
 
         #region DefaultEmployee
-        [Owner(typeof(Contact.workgroupID), DisplayName = "Default Employee")]
+        [Owner(DisplayName = "Default Employee")]
         [PXDefault]
         public virtual int? DefaultEmployee { get; set; }
         public abstract class defaultEmployee : PX.Data.BQL.BqlInt.Field<defaultEmployee> { }

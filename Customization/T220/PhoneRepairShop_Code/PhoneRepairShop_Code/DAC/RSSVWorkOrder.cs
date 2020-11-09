@@ -134,7 +134,7 @@ namespace PhoneRepairShop
         #endregion
 
         #region Assignee
-        [Owner(typeof(Contact.workgroupID), DisplayName = "Assignee")]
+        [Owner(DisplayName = "Assignee")]
         public virtual int? Assignee { get; set; }
         public abstract class assignee : PX.Data.BQL.BqlInt.Field<assignee> { }
         #endregion
