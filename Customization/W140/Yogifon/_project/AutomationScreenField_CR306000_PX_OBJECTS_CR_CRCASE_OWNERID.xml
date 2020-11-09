@@ -1,0 +1,3 @@
+﻿<AutomationScreenField ScreenID="CR306000" TableName="PX.OBJECTS.CR.CRCASE" FieldName="OWNERID" IsUserDefinedField="False">
+    <Prop Name="IsRequired" DisplayName="Required" IsCustomized="True" Value="b3bc3226-3fb9-4d2b-bbad-4dbd172b0738" />
+</AutomationScreenField>

@@ -1,0 +1,294 @@
+<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+
+<px:PXMenu runat="server">
+	<Styles>
+		<MenuIsland CssClass="menuIsland" />
+		<MenuItem CssClass="menuItem" />
+		<DisabledItem CssClass="menuDisabled" />
+	</Styles>
+	<Layout SpacerClass="menuSpacer" LeftSpacerWidth="25px" RightSpacerWidth="30px" />
+	<TopSelectedStyle CssClass="menuTopSelected" />
+	<ExpandEffects Delay="300" Type="Inset" ShadowWidth="3" />
+</px:PXMenu>
+
+<px:PXMenu runat="server" SkinID="Transparent">
+	<Styles>
+		<MenuIsland CssClass="menuIsland menuIslandT" />
+		<MenuItem CssClass="menuItem" />
+		<DisabledItem CssClass="menuDisabled" />
+	</Styles>
+	<Layout SpacerClass="menuSpacer" LeftSpacerWidth="25px" RightSpacerWidth="30px" />
+	<TopSelectedStyle CssClass="menuTopSelected" />
+	<ExpandEffects Delay="300" Type="Inset" ShadowWidth="3" />
+</px:PXMenu>
+
+<px:PXMenu runat="server" SkinID="Vertical">
+	<Styles>
+		<MenuIsland CssClass="menuIsland menuIslandV" />
+		<MenuItem CssClass="menuItem" />
+		<DisabledItem CssClass="menuDisabled" />
+	</Styles>
+	<Layout SpacerClass="menuSpacer" LeftSpacerWidth="25px" RightSpacerWidth="30px" />
+	<TopSelectedStyle CssClass="menuTopSelected" />
+	<ExpandEffects Delay="300" Type="Inset" ShadowWidth="3" />
+</px:PXMenu>
+
+<px:PXMenu runat="server" SkinID="ListBox" RenderCheckImage="False">
+	<Styles>
+		<MenuIsland CssClass="menuIsland menuIslandV border-box" />
+		<MenuItem CssClass="menuItem" />
+		<DisabledItem CssClass="menuDisabled" />
+		<CheckedItem CssClass="menuChecked" />
+	</Styles>
+	<Layout SpacerClass="menuSpacerL" LeftSpacerWidth="8px" RightSpacerWidth="30px" />
+</px:PXMenu>
+
+<px:PXTreeView runat="server" CssClass="tree" ToolBarSkin="BorderBottom">
+	<CaptionStyle CssClass="treeCaption" />
+	<Styles>
+		<Node CssClass="treeNode" />
+		<SelectedNode CssClass="treeSelected" />
+		<HoverNode CssClass="treeHover" />
+		<DisabledNode CssClass="treeDisabled" />
+	</Styles>
+	<Levels>
+		<px:PXTreeLevel>
+			<Styles><ParentNode CssClass="treeFolder0" /></Styles>
+		</px:PXTreeLevel>
+	</Levels>
+</px:PXTreeView>
+
+<px:PXTreeView runat="server" CssClass="tree menuTree noShift" ToolBarSkin="BorderBottom" SkinID="Menu"
+	ShowRootNode="false" ShowLines="false">
+	<CaptionStyle CssClass="treeCaption" />
+	<Styles>
+		<Node CssClass="treeNode" />
+		<SelectedNode CssClass="treeSelected" />
+		<HoverNode CssClass="treeHover" />
+		<DisabledNode CssClass="treeDisabled" />
+	</Styles>
+	<Levels>
+		<px:PXTreeLevel>
+			<Styles><ParentNode CssClass="treeFolder0" /></Styles>
+		</px:PXTreeLevel>
+	</Levels>
+</px:PXTreeView>
+
+<px:PXTreeView runat="server" CssClass="tree menuTree" SkinID="Help" ToolBarSkin="BorderBottom">
+	<CaptionStyle CssClass="treeCaption" />
+	<Styles>
+		<Node CssClass="treeNode" />
+		<SelectedNode CssClass="treeSelected" />
+		<HoverNode CssClass="treeHover" />
+		<DisabledNode CssClass="treeDisabled" />
+	</Styles>
+</px:PXTreeView>
+
+<px:PXTreeView runat="server" CssClass="tree selectorTree" SkinID="Selector" ToolBarSkin="BorderBottom">
+	<Styles>
+		<Node CssClass="treeNode" />
+		<SelectedNode CssClass="treeSelected" />
+		<HoverNode CssClass="treeHover" />
+		<DisabledNode CssClass="treeDisabled" />
+	</Styles>
+</px:PXTreeView>
+
+<px:PXTreeView runat="server" CssClass="tree" ToolBarSkin="BorderBottom" SkinID="Editable" 
+	AllowEdit="true" AllowDelete="true" AllowDragDrop="true" >
+	<CaptionStyle  CssClass="treeCaption" />
+	<Styles>
+		<Node CssClass="treeNode" />
+		<SelectedNode CssClass="treeSelected" />
+		<HoverNode CssClass="treeHover" />
+		<DisabledNode CssClass="treeDisabled" />
+	</Styles>
+	<Levels>
+		<px:PXTreeLevel>
+			<Styles><ParentNode CssClass="treeFolder0" /></Styles>
+		</px:PXTreeLevel>
+	</Levels>
+	<ToolBarItems>
+		<px:PXToolBarButton ImageKey="Refresh" CommandName="Refresh" />
+		<px:PXToolBarButton ImageKey="RecordEdit" CommandName="Edit" />
+		<px:PXToolBarButton ImageKey="Remove" CommandName="Delete" />
+	</ToolBarItems>
+</px:PXTreeView>
+
+<px:PXReportViewer runat="server" CssClass="reportViewer" GridSkin="ShortList">
+	<ToolBarStyle CssClass="toolBar toolBarBB"/>
+</px:PXReportViewer>
+
+<%----------------- PXToolBar control skins -----------------%>
+<px:PXToolBar CssClass="toolBar" runat="server">
+	<Styles>
+		<Normal CssClass="toolBtnNormal" />
+		<Pushed CssClass="toolBtnPushed" />
+		<DropDown CssClass="toolBtnDD" />
+		<Disabled CssClass="toolBtnDisabled" />
+		
+		<Separator CssClass="toolBarSep" />
+		<DropNormal CssClass="toolBtnDropN" />
+		<DropPushed CssClass="toolBtnDropP" />
+		<Label CssClass="toolLabel" />
+	</Styles>
+</px:PXToolBar>
+
+<px:PXToolBar runat="server" CssClass="toolBar toolBarS" SkinID="Separate">
+	<Styles>
+		<Normal CssClass="toolBtnNormal" />
+		<Pushed CssClass="toolBtnPushed" />
+		<DropDown CssClass="toolBtnDD" />
+		<Disabled CssClass="toolBtnDisabled" />
+		
+		<Separator CssClass="toolBarSep" />
+		<DropNormal CssClass="toolBtnDropN" />
+		<DropPushed CssClass="toolBtnDropP" />
+		<Label CssClass="toolLabel" />
+	</Styles>
+</px:PXToolBar>
+
+<px:PXToolBar runat="server" CssClass="toolBar toolBarBB" SkinID="BorderBottom">
+	<Styles>
+		<Normal CssClass="toolBtnNormal" />
+		<Pushed CssClass="toolBtnPushed" />
+		<DropDown CssClass="toolBtnDD" />
+		<Disabled CssClass="toolBtnDisabled" />
+		
+		<Separator CssClass="toolBarSep" />
+		<DropNormal CssClass="toolBtnDropN" />
+		<DropPushed CssClass="toolBtnDropP" />
+		<Label CssClass="toolLabel" />
+	</Styles>
+</px:PXToolBar>
+<px:PXToolBar runat="server" CssClass="toolBar toolBarBT" SkinID="BorderTop">
+	<Styles>
+		<Normal CssClass="toolBtnNormal" />
+		<Pushed CssClass="toolBtnPushed" />
+		<DropDown CssClass="toolBtnDD" />
+		<Disabled CssClass="toolBtnDisabled" />
+		
+		<Separator CssClass="toolBarSep" />
+		<DropNormal CssClass="toolBtnDropN" />
+		<DropPushed CssClass="toolBtnDropP" />
+		<Label CssClass="toolLabel" />
+	</Styles>
+</px:PXToolBar>
+
+<px:PXToolBar runat="server" CssClass="toolBar toolBarT" SkinID="Transparent">
+	<Styles>
+		<Normal CssClass="toolBtnNormal" />
+		<Pushed CssClass="toolBtnPushed" />
+		<DropDown CssClass="toolBtnDD" />
+		<Disabled CssClass="toolBtnDisabled" />
+		
+		<Separator CssClass="toolBarSep" />
+		<DropNormal CssClass="toolBtnDropN" />
+		<DropPushed CssClass="toolBtnDropP" />
+		<Label CssClass="toolLabel" />
+	</Styles>
+</px:PXToolBar>
+
+<px:PXToolBar runat="server" CssClass="toolBar toolBarDS" SkinID="Navigation">
+	<Styles>
+		<Normal CssClass="toolBtnNormal" />
+		<Pushed CssClass="toolBtnPushed" />
+		<DropDown CssClass="toolBtnDD" />
+		<Disabled CssClass="toolBtnDisabled" />
+		
+		<Separator CssClass="toolBarSep" />
+		<DropNormal CssClass="toolBtnDropN" />
+		<DropPushed CssClass="toolBtnDropP" />
+		<Label CssClass="toolLabel" />
+	</Styles>
+</px:PXToolBar>
+
+<px:PXToolBar runat="server" CssClass="toolBar toolBarPath" SkinID="Path">
+	<Styles>
+		<Normal CssClass="toolBtnNormal" />
+		<Pushed CssClass="toolBtnPushed" />
+		<DropDown CssClass="toolBtnDD" />
+		<Disabled CssClass="toolBtnDisabled" />
+		
+		<Separator CssClass="toolBarSep" />
+		<DropNormal CssClass="toolBtnDropN" />
+		<DropPushed CssClass="toolBtnDropP" />
+		<Label CssClass="toolLabel" />
+	</Styles>
+</px:PXToolBar>
+
+<px:PXToolBar runat="server" CssClass="toolBarTab" SkinID="Tab">
+	<Styles>
+		<Normal CssClass="toolTabNormal" />
+		<Pushed CssClass="toolTabPushed" />
+		<DropDown CssClass="toolTabDD" />
+		<Disabled CssClass="toolTabDisabled" />
+		<Label CssClass="toolLabel" />
+		<Separator CssClass="toolBarSep" />
+	</Styles>
+</px:PXToolBar>
+
+<px:PXDataViewBar CssClass="toolBar toolBarT" runat="server">
+	<Styles>
+		<Normal CssClass="toolBtnNormal" />
+		<Pushed CssClass="toolBtnPushed" />
+		<DropDown CssClass="toolBtnDD" />
+		<Disabled CssClass="toolBtnDisabled" />
+		
+		<Separator CssClass="toolBarSep" />
+		<DropNormal CssClass="toolBtnDropN" />
+		<DropPushed CssClass="toolBtnDropP" />
+		<Label CssClass="toolLabel" />
+	</Styles>
+	<FilesMenuUrls FileInfoUrl="~/Pages/SM/SM202510.aspx" FilesDisplayUrl="~/Frames/GetFile.ashx" />
+</px:PXDataViewBar>
+
+<%----------------- System ToolBar control skins -----------------%>
+<px:PXToolBar runat="server" CssClass="toolBarSys" SkinID="SystemMenu" RenderMenuButton="false">
+	<Styles>
+		<Normal CssClass="toolSysNormal" />
+		<Pushed CssClass="toolSysPushed" />
+		<Disabled CssClass="toolSysDisabled" />		
+		<Separator CssClass="toolBarSep" />
+	</Styles>
+</px:PXToolBar>
+
+<px:PXToolBar runat="server" CssClass="toolBarSys2" SkinID="ToolsMenu">
+	<Styles>
+		<Normal CssClass="toolSysNormal" />
+		<Pushed CssClass="toolSysPushed" />
+		<Disabled CssClass="toolSysDisabled" />		
+		<Separator CssClass="toolBarSep" />
+	</Styles>
+</px:PXToolBar>
+
+<px:PXToolBar runat="server" CssClass="toolBarMod" SkinID="ModulesMenu" RenderMenuButton="false">
+	<Styles>
+		<Normal CssClass="toolModNormal" />
+		<Pushed CssClass="toolModPushed" />
+		<Disabled CssClass="toolModDisabled" />
+		<Separator CssClass="toolBarSep" />
+	</Styles>
+</px:PXToolBar>
+
+<px:PXToolBar runat="server" CssClass="toolBarSubMod" SkinID="SubModulesMenu" RenderAsTable="true">
+	<Styles>
+		<Normal CssClass="toolSubModNormal" />
+		<Pushed CssClass="toolSubModPushed" />
+		<Disabled CssClass="toolSubModDisabled" />	
+		<Separator CssClass="toolBarSep" />
+	</Styles>
+</px:PXToolBar>
