@@ -1,0 +1,27 @@
+<pxa:Wizard.SimplifiedChartWizard runat="server" CssClass="SmartPanel" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN"
+  AllowResize="False" WindowStyle="Flat">
+</pxa:Wizard.SimplifiedChartWizard>
+
+<pxa:Wizard.GenInqChartWizard runat="server" CssClass="SmartPanel" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN"
+  AllowResize="False" WindowStyle="Flat">
+</pxa:Wizard.GenInqChartWizard>
+
+<pxa:Wizard.ScientistChartWizard runat="server" CssClass="SmartPanel" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN"
+  AllowResize="False" WindowStyle="Flat">
+</pxa:Wizard.ScientistChartWizard>
+
+<pxa:Wizard.WikiWizard runat="server" CssClass="SmartPanel" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN"
+  AllowResize="False" WindowStyle="Flat">
+</pxa:Wizard.WikiWizard>
+
+<pxa:Wizard.AnnouncementsWizard runat="server" CssClass="SmartPanel" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN"
+  AllowResize="False" WindowStyle="Flat">
+</pxa:Wizard.AnnouncementsWizard>
+
+<pxa:Wizard.TableWizard runat="server" CssClass="SmartPanel" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN"
+  AllowResize="False" WindowStyle="Flat">
+</pxa:Wizard.TableWizard>
+
+<pxa:Wizard.GenInqTableWizard runat="server" CssClass="SmartPanel" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN"
+  AllowResize="False" WindowStyle="Flat">
+</pxa:Wizard.GenInqTableWizard>

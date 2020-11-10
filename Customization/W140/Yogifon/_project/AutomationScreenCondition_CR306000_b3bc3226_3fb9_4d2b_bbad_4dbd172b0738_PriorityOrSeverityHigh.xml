@@ -1,0 +1,4 @@
+﻿<AutomationScreenCondition ConditionID="b3bc3226-3fb9-4d2b-bbad-4dbd172b0738" ScreenID="CR306000" ConditionName="PriorityOrSeverityHigh" Order="2">
+    <FilterRow LineNbr="1" CloseBrackets="0" OpenBrackets="0" FieldName="Priority" Condition="1" Operator="1" Value2="" Value="H" IsActive="True" IsFromScheme="True" />
+    <FilterRow LineNbr="2" CloseBrackets="0" OpenBrackets="0" FieldName="Severity" Condition="1" Operator="0" Value2="" Value="H" IsActive="True" IsFromScheme="True" />
+</AutomationScreenCondition>

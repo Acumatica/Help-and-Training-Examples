@@ -1,0 +1,86 @@
+<pxa:PXCurrencyRate runat="server" CssClass="rateEditor" />
+<pxa:PXColoredTextEdit runat="server" CssClass="editor" />
+<pxa:PXColoredTextEdit runat="server" SkinID="Label" CssClass="label textEditLabel" ReadOnly="true" />
+<pxa:PXColoredTextEdit runat="server" SkinID="LabelWithBorder" CssClass="editor" ReadOnly="true" />
+
+<pxa:PXFormulaCombo runat="server" CssClass="dropDown">
+	<Styles>
+		<Editor CssClass="editor" />
+		<DropDown CssClass="ddTable" CellPadding="0" CellSpacing="0" />
+		<Item CssClass="ddItem" />
+		<Selection CssClass="ddSelection" />
+	</Styles>
+</pxa:PXFormulaCombo>
+
+<pxa:PXFormulaCombo SkinID="GI" runat="server" CssClass="dropDown"
+                    ConditionStyles="default; bad; good; neutral; red; red60; red40; red20; red0; orange; orange60; orange40; orange20; orange0; green; green60; green40; green20; green0; blue; blue60; blue40; blue20; blue0; yellow; yellow60; yellow40; yellow20; yellow0; purple; purple60; purple40; purple20; purple0"
+    TextFunctions="InStr( str, findStr ); InStrRev( str, findStr ); Len( str ); Left( str, length ); LCase( str ); LTrim( str ); PadLeft( str, width, paddingChar ); PadRight( str, width, paddingChar ); Replace( str, oldValue, newValue ); Right( str, length ); RTrim( str ); Trim( str ); UCase( str ); Substring( str, start, length ); Concat( str1, str2, ...)">
+    <Styles>
+		<Editor CssClass="editor" />
+		<DropDown CssClass="ddTable" CellPadding="0" CellSpacing="0" />
+		<Item CssClass="ddItem" />
+		<Selection CssClass="ddSelection" />
+	</Styles>
+</pxa:PXFormulaCombo>
+
+<pxa:RMStyleEditor runat="server" CssClass="dropDown">
+	<EditorStyle CssClass="editor" />
+</pxa:RMStyleEditor>
+<pxa:RMDataSetEditor runat="server" CssClass="dropDown">
+	<EditorStyle CssClass="editor" />
+</pxa:RMDataSetEditor>
+<pxa:RMHeaderEditor runat="server" CssClass="dropDown">
+	<EditorStyle CssClass="editor" />
+</pxa:RMHeaderEditor>
+<pxa:RMFormulaEditor runat="server" CssClass="dropDown">
+	<EditorStyle CssClass="editor" />
+</pxa:RMFormulaEditor>
+<pxa:PMFormulaEditor runat="server" CssClass="dropDown">
+	<EditorStyle CssClass="editor" />
+</pxa:PMFormulaEditor>
+<pxa:CTFormulaInvoiceEditor runat="server" CssClass="dropDown">
+	<EditorStyle CssClass="editor" />
+</pxa:CTFormulaInvoiceEditor>
+<pxa:CTFormulaTransactionEditor runat="server" CssClass="dropDown">
+	<EditorStyle CssClass="editor" />
+</pxa:CTFormulaTransactionEditor>
+
+<pxa:EPNotificationTemplateEditor runat="server" CssClass="dropDown">
+	<EditorStyle CssClass="editor" />
+	<ButtonStyles>
+		<Normal CssClass="ButtonE" />
+		<Hover CssClass="ButtonEH" />
+		<Pushed CssClass="ButtonEP" />
+		<Disabled CssClass="ButtonED" />
+	</ButtonStyles>	
+</pxa:EPNotificationTemplateEditor>
+
+<pxa:PXNavigateButtonEdit runat="server" CssClass="dropDown">
+	<EditorStyle CssClass="editor" />
+	<ButtonStyles>
+		<Normal CssClass="ButtonE" />
+		<Hover CssClass="ButtonEH" />
+		<Pushed CssClass="ButtonEP" />
+		<Disabled CssClass="ButtonED" />
+	</ButtonStyles>	
+</pxa:PXNavigateButtonEdit>
+
+<pxa:PXRefNoteSelector runat="server" CssClass="selector">
+	<EditorStyle CssClass="editor" />
+	<ButtonStyles>
+		<Normal CssClass="ButtonE" />
+		<Hover CssClass="ButtonEH" />
+		<Pushed CssClass="ButtonEP" />
+		<Disabled CssClass="ButtonED" />
+	</ButtonStyles>
+</pxa:PXRefNoteSelector>
+
+<pxa:PXColorToolBarMenu runat="server" CssClass="ColorToolBarMenu" CellBorderColor="Grey" HighlightColor="#FABC4E" >
+</pxa:PXColorToolBarMenu>
+
+<pxa:PXRichTextEdit runat="server" CssClass="complexEditor" />
+
+<pxa:PXSchedulePanel runat="server" HighlightColor="#E0E0E0">
+	<ToolsStyle CssClass="ScheduleToolBar" />
+</pxa:PXSchedulePanel>
+

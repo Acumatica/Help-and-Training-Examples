@@ -1,0 +1,367 @@
+<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+
+<asp:Label runat="server" CssClass="labelH" />
+<asp:RadioButton runat="server" CssClass="label" />
+<asp:Button runat="server" CssClass="label" />
+<asp:CheckBox runat="server" CssClass="label" />
+<asp:TextBox runat="server" CssClass="editor" />
+<asp:DropDownList runat="server" CssClass="dropDown" />
+<asp:ListBox runat="server" CssClass="dropDown" />
+<px:PXListBox runat="server" CssClass="dropDown" />
+
+<px:PXLabel runat="server" CssClass="labelH" />
+<px:PXLabel runat="server" CssClass="labelTitle" SkinID="Title" />
+<px:PXSiteMapPath runat="server" CssClass="siteMap labelTitle" />
+
+<px:PXSplitter runat="server" CssClass="splitterVert">
+	<HoverStyle CssClass="splitterH" />
+	<ActiveStyle CssClass="splitterA" />
+</px:PXSplitter>
+<px:PXSplitter runat="server" SkinID="Frame" Size="3" CssClass="splitterFrame" AllowCollapse="false" 
+	Panel1MinSize="100" Panel2MinSize="300">
+	<HoverStyle CssClass="splitterHF" />
+	<ActiveStyle CssClass="splitterA" />
+</px:PXSplitter>
+<px:PXSplitter runat="server" SkinID="Horizontal" Orientation="Horizontal" SaveSizeUnits="true" CssClass="splitterHor">
+	<ActiveStyle CssClass="splitterA" />
+</px:PXSplitter>
+
+<px:PXStatusBar runat="server" CssClass="StatusBar">
+	<LeftTextStyle CssClass="StatusText" />
+	<RightTextStyle CssClass="StatusText" />
+</px:PXStatusBar>
+<px:PXImageUploader runat="server" CssClass="imageUploader" />
+
+<%--------------------- Editor controls styles ---------------------------------%>
+<px:PXCheckBox runat="server" CssClass="checkBox" />
+<px:PXRadioButton runat="server" CssClass="label" />
+<px:PXComboBox runat="server" CssClass="dropDown"/>
+
+<px:PXDropDown runat="server" CssClass="dropDown">
+	<Styles>
+		<Editor CssClass="editor" /> 
+		<DropDown CssClass = "ddTable" CellPadding="0" CellSpacing="0" />
+		<Item CssClass = "ddItem" />
+		<Selection CssClass = "ddSelection" />
+	</Styles>
+</px:PXDropDown>
+<px:PXDropDown runat="server" SkinID="Label" CssClass="label" SelectButton="false">
+	<Styles>
+		<Editor CssClass="editor" /> 
+		<DropDown CssClass = "ddTable" CellPadding="0" CellSpacing="0" />
+		<Item CssClass = "ddItem" />
+		<Selection CssClass = "ddSelection" />
+	</Styles>
+</px:PXDropDown>
+
+<px:PXTextEdit runat="server" CssClass="editor" />
+<px:PXTextEdit runat="server" SkinID="Label" CssClass="label textEditLabel" ReadOnly="true" />
+<px:PXTextEdit runat="server" SkinID="BlueLabel" CssClass="bluelabel textEditLabel" ReadOnly="true" />
+<px:PXMaskEdit runat="server" CssClass="editor" />
+<px:PXNumberEdit runat="server" CssClass="editor" Size="S" />
+<px:PXTimeEdit runat="server" CssClass="editor" Size="S" />
+<px:PXSearchBox runat="server" CssClass="SearchBox" EditorNonFocusedClass="SearchBoxE" 
+	EditorFocusedClass="SearchBoxE2" FirstButtonClass="SearchBoxB" />
+
+<px:PXLinkEdit runat="server" CssClass="dropDown">
+	<EditorStyle CssClass="editor" />
+</px:PXLinkEdit>
+<px:PXMailEdit runat="server" CssClass="dropDown">
+	<EditorStyle CssClass="editor" />
+</px:PXMailEdit>
+<px:PXPanelEdit runat="server" CssClass="dropDown">
+	<EditorStyle CssClass="editor" />
+</px:PXPanelEdit>
+<pxa:CurrencyEditor runat="server" CssClass="dropDown">
+	<EditorStyle CssClass="editor" />
+</pxa:CurrencyEditor>
+
+<px:PXDateTimeEdit runat="server" CssClass="dropDown" Size="S">
+	<EditorStyle CssClass="editor" />
+	<CalendarStyle CssClass="calendar" />
+	<CalendarStyles>
+		<Day CssClass="calendarD" />
+		<OtherMonthDay CssClass="calendarOMD" />
+		<TodayDay CssClass="calendarTD" />
+		<SelectedDay CssClass="calendarSD" />
+		<WeekEndDay CssClass="calendarWE" />
+		<WeekNumber CssClass="calendarWN" />
+		<DayHeader CssClass="calendarDH" />
+		<MonthTitle CssClass="calendarMT" />
+		<NextPrev CssClass="calendarNP" />
+		<Footer CssClass="calendarF" />
+	</CalendarStyles>
+	
+	<CalendarFormat NextPrevFormat="Image" ShowWeekNumber="True">
+	</CalendarFormat>
+	
+	<DropDownStyles>
+		<DropDown CssClass = "ddTable"/>
+		<Item CssClass = "ddItem" />
+		<Selection CssClass = "ddSelection" />
+	</DropDownStyles>
+</px:PXDateTimeEdit>
+
+<px:PXDateTimeEdit runat="server" CssClass="dropDown" Size="SM" SkinID="Large">
+	<EditorStyle CssClass="editor" />
+	<CalendarStyle CssClass="calendar" />
+	<CalendarStyles>
+		<Day CssClass="calendarD" />
+		<OtherMonthDay CssClass="calendarOMD" />
+		<TodayDay CssClass="calendarTD" />
+		<SelectedDay CssClass="calendarSD" />
+		<WeekEndDay CssClass="calendarWE" />
+		<WeekNumber CssClass="calendarWN" />
+		<DayHeader CssClass="calendarDH" />
+		<MonthTitle CssClass="calendarMT" />
+		<NextPrev CssClass="calendarNP" />
+		<Footer CssClass="calendarF" />
+	</CalendarStyles>
+	
+	<CalendarFormat NextPrevFormat="Image" ShowWeekNumber="True">
+	</CalendarFormat>
+	
+	<DropDownStyles>
+		<DropDown CssClass = "ddTable"/>
+		<Item CssClass = "ddItem" />
+		<Selection CssClass = "ddSelection" />
+	</DropDownStyles>
+</px:PXDateTimeEdit>
+
+<px:PXTimeSpan runat="server" CssClass="dropDown">
+	<EditorStyle CssClass="editor" />
+	<DropDownStyles>
+		<DropDown CssClass = "ddTable"/>
+		<Item CssClass = "ddItem" />
+		<Selection CssClass = "ddSelection" />
+	</DropDownStyles>
+</px:PXTimeSpan>
+
+<px:PXTreeSelector runat="server" CssClass="dropDown" TreeSkin="Selector">
+	<EditorStyle CssClass="editor" />
+</px:PXTreeSelector>
+
+<px:PXWikiEdit runat="server" CssClass="wikiEdit">
+	<ContentStyle CssClass="wikiEditC" />
+</px:PXWikiEdit>
+<px:PXWikiEditInplace runat="server" CssClass="wikiEdit">
+	<ContentStyle CssClass="wikiEditC" />
+</px:PXWikiEditInplace>
+
+<px:PXButtonEdit runat="server" CssClass="dropDown">
+	<EditorStyle CssClass="editor" />
+	<ButtonStyles>
+		<Normal CssClass="ButtonE" />
+		<Hover CssClass="ButtonEH" />
+		<Pushed CssClass="ButtonEP" />
+		<Disabled CssClass="ButtonED" />
+	</ButtonStyles>	
+</px:PXButtonEdit>
+
+<px:PXFileUpload runat="server" SizeCheckerHandlerUrl="~/Frames/CheckFileSize.ashx">
+</px:PXFileUpload>
+<px:PXDataFileUpload runat="server" SizeCheckerHandlerUrl="~/Frames/CheckFileSize.ashx">
+</px:PXDataFileUpload>
+<px:PXFileUploader runat="server" CssClass="fileUploader" EditorNonFocusedClass="SearchBoxE" FirstButtonClass="SearchBoxB">
+</px:PXFileUploader>
+
+<px:PXFormulaEditor runat="server" CssClass="dropDown">
+	<EditorStyle CssClass="editor" />
+</px:PXFormulaEditor>
+
+<%--------------------- Button and Calendar styles ---------------------------------%>
+<px:PXButton runat="server" CssClass="Button">
+	<Styles>
+		<Hover CssClass="ButtonH" />
+		<Pushed CssClass="ButtonP" />
+		<DropDown CssClass="ButtonDD" />
+		<Disabled CssClass="ButtonD" />
+		<DropNormal CssClass="ButtonDN" />
+		<DropHover CssClass="ButtonDH" />
+	</Styles>	
+</px:PXButton> 
+
+<px:PXButton runat="server" CssClass="Button image" SkinID="Image">
+	<Styles>
+		<Hover CssClass="ButtonH" />
+		<Pushed CssClass="ButtonP" />
+		<DropDown CssClass="ButtonDD" />
+		<Disabled CssClass="ButtonD" />
+		<DropNormal CssClass="ButtonDN" />
+		<DropHover CssClass="ButtonDH" />
+	</Styles>	
+</px:PXButton> 
+
+<px:PXButton runat="server" CssClass="ButtonT" SkinID="Transparent">
+	<Styles>
+		<Hover CssClass="ButtonH" />
+		<Pushed CssClass="ButtonP" />
+		<DropDown CssClass="ButtonDD" />
+		<Disabled CssClass="ButtonD" />
+		<DropNormal CssClass="ButtonDN" />
+		<DropHover CssClass="ButtonDH" />
+	</Styles>	
+</px:PXButton>
+
+<px:PXButton runat="server" CssClass="ButtonT" SkinID="Transparent2">
+	<Styles>
+		<Hover CssClass="ButtonH" />
+	</Styles>	
+</px:PXButton>
+
+<px:PXButton runat="server" CssClass="ButtonF" SkinID="FormView" RenderAsButton="false">
+	<Styles>
+		<Hover CssClass="ButtonHF" />
+		<Pushed CssClass="ButtonPF" />
+	</Styles>	
+</px:PXButton>
+
+<px:PXCalendar runat="server" CssClass="calendar" CellPadding="2" CellSpacing="0">
+	<Styles>
+		<Day CssClass = "calendarD" />
+		<OtherMonthDay CssClass = "calendarOMD" />
+		<TodayDay CssClass = "calendarTD" />
+		<SelectedDay CssClass ="calendarSD" />
+		<DayHeader CssClass ="calendarDH" />
+		<WeekEndDay cssClass ="calendarWE" />
+		<WeekNumber cssClass ="calendarWN" />
+		<MonthTitle CssClass ="calendarMT" />
+		<NextPrev cssClass ="calendarNP" />
+		<Footer CssClass ="calendarF" />
+	</Styles>
+	<Formats NextPrevFormat="Image" ShowWeekNumber="True" />
+</px:PXCalendar>
+<px:PXRichTextEdit runat="server"  CssClass="RichTextEditor" >
+    <FilesMenuUrls FileInfoUrl="~/Pages/SM/SM202510.aspx" FilesDisplayUrl="~/Frames/GetFile.ashx" FilesListUrl="" />
+</px:PXRichTextEdit>
+
+<px:PXInsertImageDialog runat="server" WindowStyle="Flat" CssClass="SmartPanel RichTextWizard" LabelCss="label" 
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN" Width="800px" Height="500px">
+</px:PXInsertImageDialog>
+
+<px:PXInsertImageDialog2 runat="server" WindowStyle="Flat" CssClass="SmartPanel RichTextWizard" LabelCss="label" 
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN" Width="800px" Height="500px">
+</px:PXInsertImageDialog2>
+
+<px:PXInsertFileDialog runat="server" WindowStyle="Flat" CssClass="SmartPanel RichTextWizard" LabelCss="label" 
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN"  Width="800px" Height="500px">
+</px:PXInsertFileDialog>
+
+<px:PXInsertLinkDialog runat="server" WindowStyle="Flat" CssClass="SmartPanel RichTextWizard" LabelCss="label" 
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN" Width="800px" Height="500px">
+</px:PXInsertLinkDialog>
+
+<px:PXImageProperties runat="server" WindowStyle="Flat" CssClass="SmartPanel RichImageProps" LabelCss="label" 
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXImageProperties>
+
+<px:PXLinkProperties runat="server" WindowStyle="Flat" CssClass="SmartPanel RichLinkProps" LabelCss="label" 
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXLinkProperties>
+
+<px:PXMacroProperties runat="server" WindowStyle="Flat" CssClass="SmartPanel RichLinkProps" LabelCss="label" 
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXmacroProperties>
+
+<px:PXEditableMacroProperties runat="server" WindowStyle="Flat" CssClass="SmartPanel RichLinkProps" LabelCss="label" 
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXEditableMacroProperties>
+
+<px:PXAttachedFiles runat="server" WindowStyle="Flat" CssClass="SmartPanel" LabelCss="label"  SkinId="Frame"
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN" >
+</px:PXAttachedFiles>
+
+<px:PXAllFiles runat="server" WindowStyle="Flat" CssClass="SmartPanel" LabelCss="label"  SkinId="Frame"
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN" >
+</px:PXAllFiles>
+
+<px:PXExternalFile runat="server" WindowStyle="Flat" CssClass="SmartPanel" LabelCss="label"  SkinId="Frame"
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN" AllowResize="False" AllowMove="False" RenderVisible="True" >
+</px:PXExternalFile>
+
+<px:PXExternalImage runat="server" WindowStyle="Flat" CssClass="SmartPanel" LabelCss="label"  SkinId="Frame"
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN" AllowResize="False" AllowMove="False" RenderVisible="True" >
+</px:PXExternalImage>
+
+<px:PXArticles runat="server" WindowStyle="Flat" CssClass="SmartPanel" LabelCss="label"  SkinId="Frame"
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN" >
+</px:PXArticles>
+
+<px:PXScreens runat="server" WindowStyle="Flat" CssClass="SmartPanel" LabelCss="label"  SkinId="Frame"
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN" >
+</px:PXScreens>
+
+
+
+<px:PXTextEdit runat="server" SkinID="RichText" CssClass="editor" Height="24px" >
+</px:PXTextEdit>
+
+<px:PXButtonEdit runat="server"  SkinID="RichText" CssClass="dropDown" Height="26px">
+	<EditorStyle CssClass="editor" />
+	<ButtonStyles>
+		<Normal CssClass="ButtonE" />
+		<Hover CssClass="ButtonEH" />
+		<Pushed CssClass="ButtonEP" />
+		<Disabled CssClass="ButtonED" />
+	</ButtonStyles>
+</px:PXButtonEdit>
+
+<px:PXToolBar runat="server" CssClass="richTextBar" SkinID="RichTextMenu" RenderAsTable="true">
+	<Styles>
+		<Normal CssClass="toolBtnNormal" />
+		<Pushed CssClass="toolBtnPushed" />
+		<Disabled CssClass="toolBtnDisabled" />		
+		<Separator CssClass="toolBarSep" />
+	</Styles>
+</px:PXToolBar>
+<px:PXLoadTemplatePanel1 runat="server" WindowStyle="Flat" CssClass="SmartPanel" LabelCss="label" 
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXLoadTemplatePanel1>
+
+<px:PXDatafieldPanel runat="server" WindowStyle="Flat" CssClass="SmartPanel" LabelCss="label" 
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXDatafieldPanel>
+
+<px:PXIframeProperties runat="server" WindowStyle="Flat" CssClass="SmartPanel iframeProps" LabelCss="label" 
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXIframeProperties>
+
+<px:PXInsertCodeDialog runat="server" WindowStyle="Flat" CssClass="SmartPanel" LabelCss="label" 
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXInsertCodeDialog>
+
+<px:PXTableSize runat="server" WindowStyle="Flat" CssClass="SmartPanel tblSize" LabelCss="label" 
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXTableSize>
+
+<px:PXCreateTable runat="server" WindowStyle="Flat" CssClass="SmartPanel" LabelCss="label" 
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN" Width="244px">
+</px:PXCreateTable>
+
+<px:PXColorToolBarMenu1 runat="server" CssClass="ColorToolBarMenu" CellBorderColor="Grey" HighlightColor="#FABC4E" >
+</px:PXColorToolBarMenu1>
+
+<px:PXImageGallery runat="server" CssClass="SmartPanel ImageGallery"/>
+<px:PXImageGallery runat="server" CssClass="SmartPanel ImageGallery ImageGallery1" SkinID = "gallery1"/>
+
+<px:PXSelector runat="server" CssClass="selector" GridSkin="Selector" SkinID="Lookup">
+	<EditorStyle CssClass="editor richLookup" />
+</px:PXSelector>
+
+<px:PXFileListDialog runat="server" WindowStyle="Flat" CssClass="SmartPanel" LabelCss="label" 
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXFileListDialog>
