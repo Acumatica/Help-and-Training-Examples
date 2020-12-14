@@ -64,7 +64,21 @@ namespace PhoneRepairShop
         public PXFilter<RSSVWorkOrderToAssignFilter> Filter;
 
         public PXCancel<RSSVWorkOrderToAssignFilter> Cancel;
+		
+		//Work Orders view from Step 1.2.3
+        //public PXFilteredProcessing<RSSVWorkOrderToAssign, RSSVWorkOrderToAssignFilter,
+        //    Where<RSSVWorkOrderToAssign.status.IsEqual<workOrderStatusReadyForAssignment>.
+        //        And<RSSVWorkOrderToAssign.timeWithoutAction.IsGreaterEqual<
+        //            RSSVWorkOrderToAssignFilter.timeWithoutAction.FromCurrent>.
+        //        And<RSSVWorkOrderToAssign.priority.IsEqual<
+        //            RSSVWorkOrderToAssignFilter.priority.FromCurrent>.
+        //        Or<RSSVWorkOrderToAssignFilter.priority.FromCurrent.IsNull>>.
+        //        And<RSSVWorkOrderToAssign.serviceID.IsEqual<
+        //            RSSVWorkOrderToAssignFilter.serviceID.FromCurrent>.
+        //        Or<RSSVWorkOrderToAssignFilter.serviceID.FromCurrent.IsNull>>>>,
+        //    OrderBy<Desc<RSSVWorkOrderToAssign.timeWithoutAction, RSSVWorkOrderToAssign.priority.Desc>>> WorkOrders;
 
+        //Work Orders view from Step 2.2.1
         public PXFilteredProcessing<RSSVWorkOrder, RSSVWorkOrderToAssignFilter,
               Where<RSSVWorkOrder.status.IsEqual<workOrderStatusReadyForAssignment>.
                 And<RSSVWorkOrder.timeWithoutAction
