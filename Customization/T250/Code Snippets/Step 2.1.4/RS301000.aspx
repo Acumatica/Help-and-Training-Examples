@@ -1,4 +1,4 @@
-<px:PXTab ID="tab" runat="server" Width="100%" Height="150px" DataSourceID="ds" AllowAutoHide="true">
+<px:PXTab ID="tab" runat="server" Width="100%" Height="150px" DataSourceID="ds" RepaintOnDemand = "false">
   <Items>
     ...
     <px:PXTabItem Text="Payment Info">
