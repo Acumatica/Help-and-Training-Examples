@@ -1,0 +1,50 @@
+<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+
+<px:PXDataSource runat="server" CssClass="dataSource" ButtonsShift="5" ToolBarSkin="Navigation">
+</px:PXDataSource>
+
+<px:PXDataSource runat="server" SkinID="Transparent" ButtonsShift="5" ToolBarSkin="Navigation">
+</px:PXDataSource>
+
+<pxa:DynamicDataSource runat="server" CssClass="dataSource" ButtonsShift="5" ToolBarSkin="Navigation">
+</pxa:DynamicDataSource>
+
+<pxa:DynamicDataSource runat="server" SkinID="Transparent" ButtonsShift="5" ToolBarSkin="Navigation">
+</pxa:DynamicDataSource>
+
+<pxa:AUDataSource runat="server" CssClass="dataSource" ToolBarSkin="Navigation">
+</pxa:AUDataSource>
+
+<px:PXGenericDataSource runat="server" CssClass="dataSource" ToolBarSkin="Navigation">
+</px:PXGenericDataSource>
+
+<px:PXPivotTable runat="server" CssClass="pivotTable" ToolBarSkinBottom="BorderTop">
+	<ExportImages Processing="Images/spinnerSmall.gif" />
+	<ToolBarItemsBottom>
+		<px:PXToolBarButton ImageKey="LevelUp" CommandName="CollapseAll" Tooltip="Collapse All" />
+		<px:PXToolBarButton ImageKey="LevelDown" CommandName="ExpandAll" Tooltip="Expand All" />
+		<px:PXToolBarButton ImageKey="PageFirstR" CommandName="YPageFirst" />
+		<px:PXToolBarButton ImageKey="PagePrevR" CommandName="YPagePrev" />
+		<px:PXToolBarButton ImageKey="PageNextR" CommandName="YPageNext" />
+		<px:PXToolBarButton ImageKey="PageLastR" CommandName="YPageLast" />
+		<px:PXToolBarSeperator Width="100%" />
+		<px:PXToolBarButton ImageKey="PageFirst" CommandName="XPageFirst" />
+		<px:PXToolBarButton ImageKey="PagePrev" CommandName="XPagePrev" />
+		<px:PXToolBarButton ImageKey="PageNext" CommandName="XPageNext" />
+		<px:PXToolBarButton ImageKey="PageLast" CommandName="XPageLast" />
+	</ToolBarItemsBottom>
+</px:PXPivotTable>
