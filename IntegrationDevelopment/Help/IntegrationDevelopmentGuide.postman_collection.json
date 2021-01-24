@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "26f62381-1bda-4669-979e-dbabd38b35f6",
+		"_postman_id": "058fb275-65bc-42ff-a493-0f102c9d4393",
 		"name": "Integration Development Guide",
-		"description": "This collection contains examples from the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n - Deploy a new Acumatica ERP instance with the U100 dataset. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n - Specify the URL of the instance in the BaseURL variable of the collection. The EndpointURL variable uses the value from the BaseURL variable and specifies the URL of the Default/18.200.001 endpoint. You do not need to change this variable until you want to use another endpoint.\n - To sign in to the instance in the client application, use the tenant name (which you specified when you created the instance) and the HEADOFFICE branch.",
+		"description": "This collection contains examples from the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n - Deploy a new Acumatica ERP instance with the U100 dataset. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n - Specify the URL of the instance in the BaseURL variable of the collection. The EndpointURL variable uses the value from the BaseURL variable and specifies the URL of the Default/20.200.001 endpoint. You do not need to change this variable until you want to use another endpoint.\n - To sign in to the instance in the client application, use the tenant name (which you specified when you created the instance) and the HEADOFFICE branch.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -983,9 +983,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{EndpointURL}}Lead?$expand=Attributes&$select=FirstName,LastName,JobTitle,Attributes/Attribute,Attributes/Value",
+							"raw": "{{EndpointURL}}Contact?$expand=Attributes&$select=FirstName,LastName,JobTitle,Attributes/AttributeID,Attributes/Value",
 							"host": [
-								"{{EndpointURL}}Lead"
+								"{{EndpointURL}}Contact"
 							],
 							"query": [
 								{
@@ -994,7 +994,7 @@
 								},
 								{
 									"key": "$select",
-									"value": "FirstName,LastName,JobTitle,Attributes/Attribute,Attributes/Value"
+									"value": "FirstName,LastName,JobTitle,Attributes/AttributeID,Attributes/Value"
 								}
 							]
 						},
@@ -1008,19 +1008,19 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"value": "application/json"
 									},
 									{
 										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"value": "application/json"
 									}
 								],
 								"url": {
-									"raw": "{{EndpointURL}}Lead?$expand=Attributes&$select=FirstName,LastName,JobTitle,Attributes/Attribute,Attributes/Value",
+									"raw": "{{EndpointURL}}Contact?$expand=Attributes&$select=FirstName,LastName,JobTitle,Attributes/AttributeID,Attributes/Value",
 									"host": [
-										"{{EndpointURL}}Lead"
+										"{{EndpointURL}}Contact"
 									],
 									"query": [
 										{
@@ -1029,7 +1029,7 @@
 										},
 										{
 											"key": "$select",
-											"value": "FirstName,LastName,JobTitle,Attributes/Attribute,Attributes/Value"
+											"value": "FirstName,LastName,JobTitle,Attributes/AttributeID,Attributes/Value"
 										}
 									]
 								}
@@ -1044,7 +1044,7 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
 								},
 								{
 									"key": "Set-Cookie",
@@ -1052,15 +1052,15 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 17 Mar 2020 14:37:29 GMT"
+									"value": "Sun, 24 Jan 2021 19:02:53 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "5264"
+									"value": "10620"
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"id\": \"2947c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 1,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"David\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Auditor\"\n        },\n        \"LastName\": {\n            \"value\": \"Kelly\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"3647c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 2,\n        \"note\": \"\",\n        \"Attributes\": [\n            {\n                \"id\": \"f3f07fa5-9835-4824-906f-bcafec64ecf5\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Attribute\": {\n                    \"value\": \"Interested in\"\n                },\n                \"Value\": {\n                    \"value\": \"Fruits\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"FirstName\": {\n            \"value\": \"Noel\"\n        },\n        \"JobTitle\": {\n            \"value\": \"System Administrator\"\n        },\n        \"LastName\": {\n            \"value\": \"Negron\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"4347c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 3,\n        \"note\": \"\",\n        \"Attributes\": [\n            {\n                \"id\": \"2cbb7972-fcac-4cd6-b4a5-91f17e191921\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Attribute\": {\n                    \"value\": \"Interested in\"\n                },\n                \"Value\": {\n                    \"value\": \"Jam,Jelly,Juice,Fruits\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"FirstName\": {\n            \"value\": \"Elena\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Global PR&communication coordinator\"\n        },\n        \"LastName\": {\n            \"value\": \"Masnini\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"5047c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 4,\n        \"note\": \"\",\n        \"Attributes\": [\n            {\n                \"id\": \"8b9a78cb-3896-438a-9d74-d5cd304540af\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Attribute\": {\n                    \"value\": \"Interested in\"\n                },\n                \"Value\": {\n                    \"value\": \"Juice,Fruits,Equipment\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"FirstName\": {\n            \"value\": \"Darren\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Managing Director\"\n        },\n        \"LastName\": {\n            \"value\": \"Walker\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"5d47c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 5,\n        \"note\": \"\",\n        \"Attributes\": [\n            {\n                \"id\": \"f869ffcb-a83f-4571-b970-5d9fff362cdf\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Attribute\": {\n                    \"value\": \"Interested in\"\n                },\n                \"Value\": {\n                    \"value\": \"Juice,Fruits\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"FirstName\": {\n            \"value\": \"Jerome\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Information System Analyst\"\n        },\n        \"LastName\": {\n            \"value\": \"Bouat\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"6a47c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 6,\n        \"note\": \"\",\n        \"Attributes\": [\n            {\n                \"id\": \"843ff1c9-39cb-41d2-9b97-1d165c39fab3\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Attribute\": {\n                    \"value\": \"Interested in\"\n                },\n                \"Value\": {\n                    \"value\": \"Fruits\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"FirstName\": {\n            \"value\": \"Stephane\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Customer Service & Network Manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Sans\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"7747c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 7,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Riaan\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Chief Auditor & Credit Manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Nagel\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"8447c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 8,\n        \"note\": \"\",\n        \"Attributes\": [\n            {\n                \"id\": \"0c514710-9bf6-4835-924a-3f98fd9b31ae\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Attribute\": {\n                    \"value\": \"Interested in\"\n                },\n                \"Value\": {\n                    \"value\": \"Jam,Jelly,Juice,Fruits,Maint,Equipment\"\n                },\n                \"custom\": {},\n                \"files\": []\n            }\n        ],\n        \"FirstName\": {\n            \"value\": \"James\"\n        },\n        \"JobTitle\": {\n            \"value\": \"IT Supervisor\"\n        },\n        \"LastName\": {\n            \"value\": \"Jackson\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"9147c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 9,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Umesh\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Process Engineer\"\n        },\n        \"LastName\": {\n            \"value\": \"Shewate\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"9e47c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 10,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Yiannis\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Sales and Operations Administrator\"\n        },\n        \"LastName\": {\n            \"value\": \"Chourdakis\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"ab47c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 11,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Abdul\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Network & System Administrator\"\n        },\n        \"LastName\": {\n            \"value\": \"Waheed\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"b847c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 12,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Balaji\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Engineer\"\n        },\n        \"LastName\": {\n            \"value\": \"Rajan\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"c547c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 13,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Angus\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Exploration Director\"\n        },\n        \"LastName\": {\n            \"value\": \"McCoss\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"d247c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 14,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Ken\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Nikl\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"de47c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 15,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Joao\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Graphic Designer\"\n        },\n        \"LastName\": {\n            \"value\": \"Pereira\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"eb47c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 16,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Joseph\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Auditor\"\n        },\n        \"LastName\": {\n            \"value\": \"Clapton\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"f847c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 17,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Mag\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Accountant\"\n        },\n        \"LastName\": {\n            \"value\": \"Darrow\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"9f2e7059-0c10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 18,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Chuck\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Purchase manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Hester\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"234b4546-2110-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 19,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Leslie\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Credit manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Graff\"\n        },\n        \"custom\": {},\n        \"files\": []\n    },\n    {\n        \"id\": \"7a98eb14-8549-e911-b81a-00155d408001\",\n        \"rowNumber\": 20,\n        \"note\": \"\",\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"James\"\n        },\n        \"JobTitle\": {\n            \"value\": \"System Administrator\"\n        },\n        \"LastName\": {\n            \"value\": \"Jackson\"\n        },\n        \"custom\": {},\n        \"files\": []\n    }\n]"
+							"body": "[\n    {\n        \"id\": \"f25cac12-94e2-e811-b816-00155d408001\",\n        \"rowNumber\": 1,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Pam\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Brawner\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"9ad88bcd-94e2-e811-b816-00155d408001\",\n        \"rowNumber\": 2,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Todd\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Bloom\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"714fa48f-95e2-e811-b816-00155d408001\",\n        \"rowNumber\": 3,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Jon\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Waite\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"b9442a3c-96e2-e811-b816-00155d408001\",\n        \"rowNumber\": 4,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Alberto\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Jimenez\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"6cf7fb8d-96e2-e811-b816-00155d408001\",\n        \"rowNumber\": 5,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Peter\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Lai\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"caf18c43-c7ec-e811-b816-00155d408001\",\n        \"rowNumber\": 6,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Eric\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Killian\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"2b1a5bd1-c8ec-e811-b816-00155d408001\",\n        \"rowNumber\": 7,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Joshua\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Mueller\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"d8ebeb65-c9ec-e811-b816-00155d408001\",\n        \"rowNumber\": 8,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Ian\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Pick\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"f28b4ac0-caec-e811-b816-00155d408001\",\n        \"rowNumber\": 9,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Regina\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Wiley\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"11bcd1f7-caec-e811-b816-00155d408001\",\n        \"rowNumber\": 10,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Joseph\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Becher\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"addad32a-cbec-e811-b816-00155d408001\",\n        \"rowNumber\": 11,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Grace\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Norman\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"6aff8669-cbec-e811-b816-00155d408001\",\n        \"rowNumber\": 12,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Yona\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Jones\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"10c0a9a2-cbec-e811-b816-00155d408001\",\n        \"rowNumber\": 13,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Anna\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Johnson\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"c13241f3-cbec-e811-b816-00155d408001\",\n        \"rowNumber\": 14,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"David\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Chubb\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"da1a2d30-ccec-e811-b816-00155d408001\",\n        \"rowNumber\": 15,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Bill\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Owen\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"fc70e435-65ff-e811-b818-00155d408001\",\n        \"rowNumber\": 16,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Jack\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Carrey\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"b0b7ef62-65ff-e811-b818-00155d408001\",\n        \"rowNumber\": 17,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Archibald\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Knorr\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"d24f6394-3205-e911-b818-00155d408001\",\n        \"rowNumber\": 18,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Nenad\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Pasic\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"2947c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 19,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"David\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Auditor\"\n        },\n        \"LastName\": {\n            \"value\": \"Kelly\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"6a47c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 20,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [\n            {\n                \"id\": \"dfe79fb3-b6a0-43a9-afa2-6641b943424d\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"AttributeID\": {\n                    \"value\": \"INTEREST\"\n                },\n                \"Value\": {},\n                \"custom\": {}\n            }\n        ],\n        \"FirstName\": {\n            \"value\": \"Stephane\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Customer Service & Network Manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Sans\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"ab47c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 21,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Abdul\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Network & System Administrator\"\n        },\n        \"LastName\": {\n            \"value\": \"Waheed\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"b847c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 22,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Balaji\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Engineer\"\n        },\n        \"LastName\": {\n            \"value\": \"Rajan\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"de47c888-0b10-e911-9fbe-7c5cf8918e20\",\n        \"rowNumber\": 23,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Joao\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Graphic Designer\"\n        },\n        \"LastName\": {\n            \"value\": \"Pereira\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"09c38f00-ba12-ea11-b826-00155d408001\",\n        \"rowNumber\": 24,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Shayna\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Angelo\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"0d31797a-ba12-ea11-b826-00155d408001\",\n        \"rowNumber\": 25,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"William\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Perkins\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"feec1fad-ba12-ea11-b826-00155d408001\",\n        \"rowNumber\": 26,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Dennis\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Rollins\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"bc9b16da-ba12-ea11-b826-00155d408001\",\n        \"rowNumber\": 27,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Steven\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Hardin\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"08257d03-bb12-ea11-b826-00155d408001\",\n        \"rowNumber\": 28,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Andrew\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Barber\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"1a5a4d50-bb12-ea11-b826-00155d408001\",\n        \"rowNumber\": 29,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Harry\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Sauer\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"d1241d81-bb12-ea11-b826-00155d408001\",\n        \"rowNumber\": 30,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Kevin\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Rueb\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"e2eaedf9-4217-ea11-b827-00155d408001\",\n        \"rowNumber\": 31,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Kimberly\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Gibbs\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"987c8e9f-acdc-ea11-b832-00155d408001\",\n        \"rowNumber\": 32,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Carlos\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Cruz\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"9e10ab0a-addc-ea11-b832-00155d408001\",\n        \"rowNumber\": 33,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Casey\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Burrows\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"526c6936-addc-ea11-b832-00155d408001\",\n        \"rowNumber\": 34,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Gladys\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Peters\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"70c7a9ac-fd0d-eb11-b835-00155d408001\",\n        \"rowNumber\": 35,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Michelle\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Rains\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"bf5dc4c4-ff11-eb11-b835-00155d408001\",\n        \"rowNumber\": 36,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Dustin\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Lindquist\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"2a54863a-0012-eb11-b835-00155d408001\",\n        \"rowNumber\": 37,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Jessica\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Drake\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"c6d2c6e6-9612-eb11-b835-00155d408001\",\n        \"rowNumber\": 38,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Joanne\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Marketing manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Simpson\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"c49faf3a-a112-eb11-b835-00155d408001\",\n        \"rowNumber\": 39,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Rob\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Watson\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"16f0d448-a112-eb11-b835-00155d408001\",\n        \"rowNumber\": 40,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Debbie\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Assistant Bakery Manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Euston\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"b0d76956-a112-eb11-b835-00155d408001\",\n        \"rowNumber\": 41,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Patrick\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Roberts\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"a16b2d64-a112-eb11-b835-00155d408001\",\n        \"rowNumber\": 42,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Bruce\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Procurement Manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Ward\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"642ec374-a112-eb11-b835-00155d408001\",\n        \"rowNumber\": 43,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Kevin\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Buyer\"\n        },\n        \"LastName\": {\n            \"value\": \"Grey\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"9a83e6ea-a112-eb11-b835-00155d408001\",\n        \"rowNumber\": 44,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Fiona\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Buyer\"\n        },\n        \"LastName\": {\n            \"value\": \"Peters\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"8fe1a7a8-a212-eb11-b835-00155d408001\",\n        \"rowNumber\": 45,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Fred\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Store Manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Robinson\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"1cbee831-a512-eb11-b835-00155d408001\",\n        \"rowNumber\": 46,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Ally\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Ralts\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"e1c0c0fa-a912-eb11-b835-00155d408001\",\n        \"rowNumber\": 47,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"John\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Smith\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"8052411b-e012-eb11-b835-00155d408001\",\n        \"rowNumber\": 48,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Thomas\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Bakery Manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Jones\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"3dbb8ba2-e012-eb11-b835-00155d408001\",\n        \"rowNumber\": 49,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Michelle\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Accountant\"\n        },\n        \"LastName\": {\n            \"value\": \"Evans\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"b0b392de-e212-eb11-b835-00155d408001\",\n        \"rowNumber\": 50,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Catherine\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Hoff\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"549a6b75-e312-eb11-b835-00155d408001\",\n        \"rowNumber\": 51,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Tonya\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Buyer\"\n        },\n        \"LastName\": {\n            \"value\": \"Lawrence\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"2edd94e4-e312-eb11-b835-00155d408001\",\n        \"rowNumber\": 52,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Diane\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Procurement Manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Doe\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"f8e0bc62-e412-eb11-b835-00155d408001\",\n        \"rowNumber\": 53,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Roland\"\n        },\n        \"JobTitle\": {\n            \"value\": \"Manager\"\n        },\n        \"LastName\": {\n            \"value\": \"Mercier\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"46cabcb0-7d14-eb11-b836-00155d408001\",\n        \"rowNumber\": 54,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Ricky\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Thompson\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"d78a5e0a-0c19-eb11-b837-00155d408001\",\n        \"rowNumber\": 55,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Attributes\": [],\n        \"FirstName\": {\n            \"value\": \"Ellen\"\n        },\n        \"JobTitle\": {},\n        \"LastName\": {\n            \"value\": \"Watson\"\n        },\n        \"custom\": {}\n    }\n]"
 						}
 					]
 				},
@@ -1935,7 +1935,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "00ad99a5-1abe-40a6-b1b0-04a7d826ece6",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1945,15 +1944,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "1d42361f-35bf-4457-b821-597b210bd684",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Contract-Based API Examples",
@@ -2325,7 +2322,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "8e5e1cf0-1edc-4d0e-a914-c6c047750927",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2335,16 +2331,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d352fa67-99a4-4cba-9666-859c4321109b",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Project Accounting",
@@ -2727,10 +2720,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"InventoryID\" : {\"value\" : \"<N/A>\"},\r\n  \"Completed\" : {\"value\" : 25},\r\n  \"PendingInvoiceAmount\" : {\"value\" : 725}\r\n}",
-									"options": {
-										"raw": {}
-									}
+									"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"InventoryID\" : {\"value\" : \"<N/A>\"},\r\n  \"Completed\" : {\"value\" : 25},\r\n  \"PendingInvoiceAmount\" : {\"value\" : 725}\r\n}"
 								},
 								"url": {
 									"raw": "{{EndpointURL}}ProjectBudget",
@@ -2759,10 +2749,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"InventoryID\" : {\"value\" : \"<N/A>\"},\r\n  \"Completed\" : {\"value\" : 25},\r\n  \"PendingInvoiceAmount\" : {\"value\" : 725}\r\n}",
-											"options": {
-												"raw": {}
-											}
+											"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"InventoryID\" : {\"value\" : \"<N/A>\"},\r\n  \"Completed\" : {\"value\" : 25},\r\n  \"PendingInvoiceAmount\" : {\"value\" : 725}\r\n}"
 										},
 										"url": {
 											"raw": "{{EndpointURL}}ProjectBudget",
@@ -4629,7 +4616,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "5454ac42-14d1-4fc0-b520-115fd65d0660",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -4639,16 +4625,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "399ebb71-5bde-47f8-8f16-1b815115986c",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Customer Relationship Management",
@@ -4744,9 +4727,7 @@
 							]
 						}
 					],
-					"description": "This folder contains examples from the [Customer Relationship Management](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b8e946bb-26ba-4286-9764-0dbb56ca13bf) chapter of the Integration Development Guide.",
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					"description": "This folder contains examples from the [Customer Relationship Management](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b8e946bb-26ba-4286-9764-0dbb56ca13bf) chapter of the Integration Development Guide."
 				}
 			],
 			"description": "This folder contains examples from the [Contract-Based API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide.",
@@ -4754,7 +4735,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "a52f33d7-3e6a-4a8a-a08e-63b0e3bef509",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -4764,22 +4744,19 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "33e3954b-932a-4e99-be6f-5a15214bca8a",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "9d8d0b18-091a-4ed8-b42e-b806507bba94",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -4789,7 +4766,6 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "570b2d52-d453-4c4c-b3ac-1c083800364e",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -4799,17 +4775,12 @@
 	],
 	"variable": [
 		{
-			"id": "d4205195-e8a7-4129-bf93-8b6482b95c62",
 			"key": "BaseURL",
-			"value": "https://localhost/AcumaticaERP/",
-			"type": "string"
+			"value": "https://localhost/AcumaticaERP/"
 		},
 		{
-			"id": "6053e6d1-7784-4c37-a7e2-061a9204ec38",
 			"key": "EndpointURL",
-			"value": "{{BaseURL}}entity/Default/18.200.001/",
-			"type": "string"
+			"value": "{{BaseURL}}entity/Default/20.200.001/"
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
