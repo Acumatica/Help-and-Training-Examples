@@ -12,8 +12,8 @@ namespace PhoneRepairShop
         [PXDBInt(IsKey = true)]
         [PXDBDefault(typeof(RSSVRepairPrice.serviceID))]
         [PXParent(typeof(SelectFrom<RSSVRepairPrice>.
-            Where<RSSVRepairPrice.deviceID.IsEqual<RSSVWarranty.deviceID>.
-                And<RSSVRepairPrice.serviceID.IsEqual<RSSVWarranty.serviceID>>>))]
+            Where<RSSVRepairPrice.deviceID.IsEqual<RSSVWarranty.deviceID.FromCurrent>.
+                And<RSSVRepairPrice.serviceID.IsEqual<RSSVWarranty.serviceID.FromCurrent>>>))]
         public virtual int? ServiceID { get; set; }
         public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
         #endregion

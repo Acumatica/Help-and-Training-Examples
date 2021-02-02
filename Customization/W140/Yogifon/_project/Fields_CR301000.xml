@@ -1,6 +1,0 @@
-﻿<Fields ScreenID="CR301000">
-    <Field IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Status" ObjectName="PX.Objects.CR.CRLead" ComboBoxValues="Set|S|Suspended" />
-    <Field IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Source" ObjectName="PX.Objects.CR.CRLead" ComboBoxValues="Set|W|Web;Set|H|Phone Inquiry;Set|L|Purchased List" />
-    <Field IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Resolution" ObjectName="PX.Objects.CR.CRLead" ComboBoxValues="Set|CR|Created;Set|PI|Potential Interest;Set|SB|Subscribed;Set|IQ|Inquiry;Set|QM|Qualified by Marketing;Set|AS|Accepted by Sales;Set|QS|Qualified by Sales;Set|NI|No Interest;Set|DL|Duplicate;Set|CL|Unable To Contact;Set|OT|Other" />
-    <Field IsActive="True" DisplayName="Source Campaign" FieldName="CampaignID" RequiredCondition="dcce7f17-f604-4669-8f93-249ac1ec0ae1" ObjectName="PX.Objects.CR.CRLead" />
-</Fields>

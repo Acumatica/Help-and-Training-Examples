@@ -1,3 +1,0 @@
-﻿<AUScreenAction ScreenID="CR306000" ActionName="ViewInvoice" DataMember="PX.Objects.CR.CRCase" MenuFolder="Inquiry" MenuFolderType="InquiriesFolder" ActionFolderType="" IsTopLevel="False">
-    <Prop Name="IsEnabled" DisplayName="Enabled" IsCustomized="True" Value="31358d1e-be67-447e-921b-44658151a13e" />
-</AUScreenAction>
