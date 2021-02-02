@@ -25,8 +25,19 @@
         </layout>
         <data>
             <SiteMap>
-                <row Position="5962" Title="Open Payment Summary" Url="~/Pages/RS/RS401000.aspx" ScreenID="RS401000" NodeID="039ec0bb-d018-4bf7-a6dd-525d001b5c4a" ParentID="00000000-0000-0000-0000-000000000000" />
+                <row Position="5962" Title="Open Payment Summary" Url="~/Pages/RS/RS401000.aspx" ScreenID="RS401000" NodeID="039ec0bb-d018-4bf7-a6dd-525d001b5c4a" ParentID="00000000-0000-0000-0000-000000000000">
+                    <MUIScreen IsPortal="0" WorkspaceID="c60d7807-01fa-4ad7-ba64-774a3fa8e6f2" Order="10" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" />
+                </row>
             </SiteMap>
+            <MUIWorkspace>
+                <row IsPortal="0" WorkspaceID="c60d7807-01fa-4ad7-ba64-774a3fa8e6f2" Order="48" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0">
+                    <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
+                </row>
+            </MUIWorkspace>
+            <MUISubcategory>
+                <row IsPortal="1" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
+                <row IsPortal="0" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
+            </MUISubcategory>
         </data>
     </data-set>
 </SiteMapNode>

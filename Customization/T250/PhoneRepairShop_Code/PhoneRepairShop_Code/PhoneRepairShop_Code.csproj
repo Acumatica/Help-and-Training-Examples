@@ -37,6 +37,9 @@
       <HintPath>..\..\..\..\Bin\PX.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="PX.Common.Std">
+      <HintPath>..\..\..\..\Bin\PX.Common.Std.dll</HintPath>
+    </Reference>
     <Reference Include="PX.CS.Contracts">
       <HintPath>..\..\..\..\Bin\PX.CS.Contracts.dll</HintPath>
     </Reference>
