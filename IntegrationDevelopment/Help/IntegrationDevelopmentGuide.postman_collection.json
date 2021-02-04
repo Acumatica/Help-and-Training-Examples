@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4e7440d8-22f2-40ff-872e-ba130ac75d3a",
+		"_postman_id": "da4c36f7-8c6b-4a0c-abba-a08106ece294",
 		"name": "Integration Development Guide",
 		"description": "This collection contains examples from the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n - Deploy a new Acumatica ERP instance with the U100 dataset. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n - Specify the URL of the instance in the BaseURL variable of the collection. The EndpointURL variable uses the value from the BaseURL variable and specifies the URL of the Default/20.200.001 endpoint. You do not need to change this variable until you want to use another endpoint.\n - To sign in to the instance in the client application, use the tenant name (which you specified when you created the instance) and the HEADOFFICE branch.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -1270,7 +1270,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				},
@@ -1394,14 +1394,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{EndpointURL}}SalesInvoice/ReleaseSalesInvoice/status/0e6cca46-cd0f-447a-a005-2a429c844a8c",
+							"raw": "{{EndpointURL}}SalesOrder/ReopenSalesOrder/status/a6295b33-c7f6-e811-b817-00155d408001",
 							"host": [
-								"{{EndpointURL}}SalesInvoice"
+								"{{EndpointURL}}SalesOrder"
 							],
 							"path": [
-								"ReleaseSalesInvoice",
+								"ReopenSalesOrder",
 								"status",
-								"0e6cca46-cd0f-447a-a005-2a429c844a8c"
+								"a6295b33-c7f6-e811-b817-00155d408001"
 							]
 						},
 						"description": "This example shows the retrieval of the status of the release of a sales order invoice, which is described in [Execution of an Action](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=91bf9106-062a-47a8-be1f-b48517a54324)."
@@ -1424,14 +1424,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{EndpointURL}}SalesInvoice/ReleaseSalesInvoice/status/0e6cca46-cd0f-447a-a005-2a429c844a8c",
+									"raw": "{{EndpointURL}}SalesOrder/ReopenSalesOrder/status/a6295b33-c7f6-e811-b817-00155d408001",
 									"host": [
-										"{{EndpointURL}}SalesInvoice"
+										"{{EndpointURL}}SalesOrder"
 									],
 									"path": [
-										"ReleaseSalesInvoice",
+										"ReopenSalesOrder",
 										"status",
-										"0e6cca46-cd0f-447a-a005-2a429c844a8c"
+										"a6295b33-c7f6-e811-b817-00155d408001"
 									]
 								}
 							},
@@ -1441,11 +1441,11 @@
 							"header": [
 								{
 									"key": "Location",
-									"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/SalesInvoice/59616b11-d162-ea11-9ffb-4ccc6a8eefea"
+									"value": "/AcumaticaERP/entity/Default/20.200.001/SalesOrder/00000000-0000-0000-0000-000000000000"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
 								},
 								{
 									"key": "Set-Cookie",
@@ -1453,7 +1453,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 10 Mar 2020 13:20:56 GMT"
+									"value": "Tue, 02 Feb 2021 21:20:09 GMT"
 								}
 							],
 							"cookie": [],
@@ -1480,7 +1480,7 @@
 						"body": {
 							"mode": "file",
 							"file": {
-								"src": "/C:/temp/T2MCRO.jpg"
+								"src": "/C:/Temp/T2MCRO.jpg"
 							}
 						},
 						"url": {
@@ -1516,7 +1516,7 @@
 								"body": {
 									"mode": "file",
 									"file": {
-										"src": "/C:/temp/T2MCRO.jpg"
+										"src": "/C:/Temp/T2MCRO.jpg"
 									}
 								},
 								"url": {
@@ -1537,19 +1537,11 @@
 							"header": [
 								{
 									"key": "Location",
-									"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/files/dbcf82e7-660a-4d56-9b64-1cb654660ddb"
+									"value": "/AcumaticaERP/entity/Default/20.200.001/files/0a8ac74e-53d3-4f13-ba02-dbbf419da119"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": ".ASPXAUTH=1BE385728DE15708EF5B63F3705A4887B15D991661384FB26C99B6F58EA832D291DA1605167D4E5FAED4E969DA31CD8ADDD6F024BEE38A2EC7BDFB58D4EC67152BAC759DA7FCE9BA1D6DA3FCED92DE013C1DE1EA48A7B0EDA0E67C217E50FC32EC2A85BE34C33264F9B764CA7F3BD685F1CC2E0B; path=/; HttpOnly"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": ".ASPXAUTH=1BE385728DE15708EF5B63F3705A4887B15D991661384FB26C99B6F58EA832D291DA1605167D4E5FAED4E969DA31CD8ADDD6F024BEE38A2EC7BDFB58D4EC67152BAC759DA7FCE9BA1D6DA3FCED92DE013C1DE1EA48A7B0EDA0E67C217E50FC32EC2A85BE34C33264F9B764CA7F3BD685F1CC2E0B; path=/; HttpOnly"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
 								},
 								{
 									"key": "Set-Cookie",
@@ -1557,15 +1549,19 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requestid=99; path=/"
+									"value": "requestid=C34018A62898CF9D11EB65A19AFB71B5; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requeststat=+st:5910+sc:~/entity/default/20.200.001/stockitem/ejector03/files/t2mcro.jpg+start:637478998339242037+tg:; path=/"
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 10 Mar 2020 13:55:02 GMT"
+									"value": "Tue, 02 Feb 2021 21:57:19 GMT"
 								}
 							],
 							"cookie": [],
-							"body": ""
+							"body": null
 						}
 					]
 				},
@@ -1595,7 +1591,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{EndpointURL}}StockItem/EJECTOR03?$select=InventoryID",
+							"raw": "{{EndpointURL}}StockItem/EJECTOR03?$select=InventoryID,files&$expand=files",
 							"host": [
 								"{{EndpointURL}}StockItem"
 							],
@@ -1605,7 +1601,11 @@
 							"query": [
 								{
 									"key": "$select",
-									"value": "InventoryID"
+									"value": "InventoryID,files"
+								},
+								{
+									"key": "$expand",
+									"value": "files"
 								}
 							]
 						},
@@ -1628,8 +1628,14 @@
 										"value": "application/json"
 									}
 								],
+								"body": {
+									"mode": "file",
+									"file": {
+										"src": ""
+									}
+								},
 								"url": {
-									"raw": "{{EndpointURL}}StockItem/EJECTOR03?$select=InventoryID",
+									"raw": "{{EndpointURL}}StockItem/EJECTOR03?$select=InventoryID,files&$expand=files",
 									"host": [
 										"{{EndpointURL}}StockItem"
 									],
@@ -1639,7 +1645,11 @@
 									"query": [
 										{
 											"key": "$select",
-											"value": "InventoryID"
+											"value": "InventoryID,files"
+										},
+										{
+											"key": "$expand",
+											"value": "files"
 										}
 									]
 								}
@@ -1654,7 +1664,7 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
 								},
 								{
 									"key": "Set-Cookie",
@@ -1662,15 +1672,15 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 10 Mar 2020 14:00:32 GMT"
+									"value": "Wed, 03 Feb 2021 10:26:26 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "332"
+									"value": "327"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"a0f8594a-7de2-e811-b816-00155d408001\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"InventoryID\": {\n        \"value\": \"EJECTOR03\"\n    },\n    \"custom\": {},\n    \"files\": [\n        {\n            \"id\": \"dbcf82e7-660a-4d56-9b64-1cb654660ddb\",\n            \"filename\": \"Stock Items (EJECTOR03   )\\\\T2MCRO.jpg\",\n            \"href\": \"/IntegrationDevelopmentGuide/entity/Default/18.200.001/files/dbcf82e7-660a-4d56-9b64-1cb654660ddb\"\n        }\n    ]\n}"
+							"body": "{\n    \"id\": \"a0f8594a-7de2-e811-b816-00155d408001\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"InventoryID\": {\n        \"value\": \"EJECTOR03\"\n    },\n    \"custom\": {},\n    \"files\": [\n        {\n            \"id\": \"0a8ac74e-53d3-4f13-ba02-dbbf419da119\",\n            \"filename\": \"Stock Items (EJECTOR03   )\\\\T2MCRO.jpg\",\n            \"href\": \"/AcumaticaERP/entity/Default/20.200.001/files/0a8ac74e-53d3-4f13-ba02-dbbf419da119\"\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -1700,12 +1710,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{EndpointURL}}files/dbcf82e7-660a-4d56-9b64-1cb654660ddb",
+							"raw": "{{EndpointURL}}files/0a8ac74e-53d3-4f13-ba02-dbbf419da119",
 							"host": [
 								"{{EndpointURL}}files"
 							],
 							"path": [
-								"dbcf82e7-660a-4d56-9b64-1cb654660ddb"
+								"0a8ac74e-53d3-4f13-ba02-dbbf419da119"
 							]
 						},
 						"description": "This example shows the retrieval of a particular file attached to a record, which is described in [Retrieval of a File Attached to a Record](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b1bc82ee-ae6b-442a-a369-863d98f14630)."
@@ -1727,13 +1737,19 @@
 										"value": "application/json"
 									}
 								],
+								"body": {
+									"mode": "file",
+									"file": {
+										"src": ""
+									}
+								},
 								"url": {
-									"raw": "{{EndpointURL}}files/dbcf82e7-660a-4d56-9b64-1cb654660ddb",
+									"raw": "{{EndpointURL}}files/0a8ac74e-53d3-4f13-ba02-dbbf419da119",
 									"host": [
 										"{{EndpointURL}}files"
 									],
 									"path": [
-										"dbcf82e7-660a-4d56-9b64-1cb654660ddb"
+										"0a8ac74e-53d3-4f13-ba02-dbbf419da119"
 									]
 								}
 							},
@@ -1754,8 +1770,12 @@
 									"value": "application/octet-stream"
 								},
 								{
+									"key": "Set-Cookie",
+									"value": ".ASPXAUTH=BDF1266B1A1503132668265885004D8EC0B1EC467848020CA82E2A24DE00D62A4ED21EF11AD85D7928A0AA4CAA0C2F930EA946468502431E73957BE14CBB9A8E78DBEE5C8B40057242F519A31F2542AEECE24F050C111836C1F31B1F36BCE049A7B2B6042BFD57C9D70B2601D67597872A933649; path=/; HttpOnly"
+								},
+								{
 									"key": "Date",
-									"value": "Tue, 10 Mar 2020 14:10:49 GMT"
+									"value": "Wed, 03 Feb 2021 10:42:16 GMT"
 								}
 							],
 							"cookie": [],
@@ -1905,7 +1925,7 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
 								},
 								{
 									"key": "Set-Cookie",
@@ -1913,15 +1933,15 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 10 Mar 2020 14:23:44 GMT"
+									"value": "Wed, 03 Feb 2021 10:46:16 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "735"
+									"value": "953"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"version\": {\n        \"acumaticaBuildVersion\": \"20.100.0089\",\n        \"databaseVersion\": \"20.100.0089\"\n    },\n    \"endpoints\": [\n        {\n            \"name\": \"Default\",\n            \"version\": \"17.200.001\",\n            \"href\": \"/IntegrationDevelopmentGuide/entity/Default/17.200.001/\"\n        },\n        {\n            \"name\": \"DeviceHub\",\n            \"version\": \"17.200.001\",\n            \"href\": \"/IntegrationDevelopmentGuide/entity/DeviceHub/17.200.001/\"\n        },\n        {\n            \"name\": \"POS\",\n            \"version\": \"17.200.001\",\n            \"href\": \"/IntegrationDevelopmentGuide/entity/POS/17.200.001/\"\n        },\n        {\n            \"name\": \"Default\",\n            \"version\": \"18.200.001\",\n            \"href\": \"/IntegrationDevelopmentGuide/entity/Default/18.200.001/\"\n        },\n        {\n            \"name\": \"DeviceHub\",\n            \"version\": \"19.200.001\",\n            \"href\": \"/IntegrationDevelopmentGuide/entity/DeviceHub/19.200.001/\"\n        },\n        {\n            \"name\": \"Default\",\n            \"version\": \"6.00.001\",\n            \"href\": \"/IntegrationDevelopmentGuide/entity/Default/6.00.001/\"\n        }\n    ]\n}"
+							"body": "{\n    \"version\": {\n        \"acumaticaBuildVersion\": \"20.206.0011\",\n        \"databaseVersion\": \"20.206.0011\"\n    },\n    \"endpoints\": [\n        {\n            \"name\": \"Default\",\n            \"version\": \"17.200.001\",\n            \"href\": \"/AcumaticaERP/entity/Default/17.200.001/\"\n        },\n        {\n            \"name\": \"DeviceHub\",\n            \"version\": \"17.200.001\",\n            \"href\": \"/AcumaticaERP/entity/DeviceHub/17.200.001/\"\n        },\n        {\n            \"name\": \"POS\",\n            \"version\": \"17.200.001\",\n            \"href\": \"/AcumaticaERP/entity/POS/17.200.001/\"\n        },\n        {\n            \"name\": \"MANUFACTURING\",\n            \"version\": \"18.100.001\",\n            \"href\": \"/AcumaticaERP/entity/MANUFACTURING/18.100.001/\"\n        },\n        {\n            \"name\": \"Default\",\n            \"version\": \"18.200.001\",\n            \"href\": \"/AcumaticaERP/entity/Default/18.200.001/\"\n        },\n        {\n            \"name\": \"DeviceHub\",\n            \"version\": \"19.200.001\",\n            \"href\": \"/AcumaticaERP/entity/DeviceHub/19.200.001/\"\n        },\n        {\n            \"name\": \"Default\",\n            \"version\": \"20.200.001\",\n            \"href\": \"/AcumaticaERP/entity/Default/20.200.001/\"\n        },\n        {\n            \"name\": \"eCommerce\",\n            \"version\": \"20.200.001\",\n            \"href\": \"/AcumaticaERP/entity/eCommerce/20.200.001/\"\n        },\n        {\n            \"name\": \"MANUFACTURING\",\n            \"version\": \"20.200.001\",\n            \"href\": \"/AcumaticaERP/entity/MANUFACTURING/20.200.001/\"\n        }\n    ]\n}"
 						}
 					]
 				}
@@ -2039,16 +2059,8 @@
 											"value": "application/json; charset=utf-8"
 										},
 										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
-										},
-										{
 											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
 										},
 										{
 											"key": "Set-Cookie",
@@ -2056,23 +2068,23 @@
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=66; path=/"
+											"value": "requestid=C34018A62898CF9D11EB6627B9CD599F; path=/"
 										},
 										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:3409+sc:~/entity/default/20.200.001/bill+start:637479574455732951+tg:; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Mon, 30 Dec 2019 09:25:51 GMT"
+											"value": "Wed, 03 Feb 2021 13:57:28 GMT"
 										},
 										{
 											"key": "Content-Length",
-											"value": "502"
+											"value": "490"
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"id\": \"42b2425e-e62a-ea11-9ff4-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Description\": {\n        \"value\": \"Bill for particular lines of a purchase order\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"45b2425e-e62a-ea11-9ff4-4ccc6a8eefea\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"LABELS\"\n            },\n            \"POLine\": {\n                \"value\": 1\n            },\n            \"POOrderNbr\": {\n                \"value\": \"000001\"\n            },\n            \"POOrderType\": {\n                \"value\": \"Normal\"\n            },\n            \"Qty\": {\n                \"value\": 5\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"ReferenceNbr\": {\n        \"value\": \"000038\"\n    },\n    \"Vendor\": {\n        \"value\": \"PRINTICO\"\n    },\n    \"VendorRef\": {\n        \"value\": \"123\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+									"body": "{\n    \"id\": \"a359cdb9-2766-eb11-9dcf-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Description\": {\n        \"value\": \"Bill for particular lines of a purchase order\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"a659cdb9-2766-eb11-9dcf-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"LABELS\"\n            },\n            \"POLine\": {\n                \"value\": 1\n            },\n            \"POOrderNbr\": {\n                \"value\": \"000001\"\n            },\n            \"POOrderType\": {\n                \"value\": \"Normal\"\n            },\n            \"Qty\": {\n                \"value\": 5\n            },\n            \"custom\": {}\n        }\n    ],\n    \"ReferenceNbr\": {\n        \"value\": \"000054\"\n    },\n    \"Vendor\": {\n        \"value\": \"PRINTICO\"\n    },\n    \"VendorRef\": {\n        \"value\": \"123\"\n    },\n    \"custom\": {}\n}"
 								}
 							]
 						},
@@ -2161,16 +2173,8 @@
 											"value": "application/json; charset=utf-8"
 										},
 										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
-										},
-										{
 											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
 										},
 										{
 											"key": "Set-Cookie",
@@ -2178,23 +2182,23 @@
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=202; path=/"
+											"value": "requestid=C34018A62898CF9D11EB6628FBFF3BA1; path=/"
 										},
 										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:2136+sc:~/entity/default/20.200.001/bill+start:637479579787465249+tg:; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Mon, 30 Dec 2019 10:42:45 GMT"
+											"value": "Wed, 03 Feb 2021 14:06:20 GMT"
 										},
 										{
 											"key": "Content-Length",
-											"value": "481"
+											"value": "469"
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"id\": \"96a48a1a-f12a-ea11-9ff4-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"Description\": {\n        \"value\": \"Bill for particular lines of a purchase receipt\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"99a48a1a-f12a-ea11-9ff4-4ccc6a8eefea\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"PAPER\"\n            },\n            \"POReceiptLine\": {\n                \"value\": 1\n            },\n            \"POReceiptNbr\": {\n                \"value\": \"000001\"\n            },\n            \"Qty\": {\n                \"value\": 15\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"ReferenceNbr\": {\n        \"value\": \"000039\"\n    },\n    \"Vendor\": {\n        \"value\": \"OFFICEUP\"\n    },\n    \"VendorRef\": {\n        \"value\": \"123\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+									"body": "{\n    \"id\": \"a53bfffb-2866-eb11-9dcf-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Description\": {\n        \"value\": \"Bill for particular lines of a purchase receipt\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"a83bfffb-2866-eb11-9dcf-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"PAPER\"\n            },\n            \"POReceiptLine\": {\n                \"value\": 1\n            },\n            \"POReceiptNbr\": {\n                \"value\": \"000001\"\n            },\n            \"Qty\": {\n                \"value\": 15\n            },\n            \"custom\": {}\n        }\n    ],\n    \"ReferenceNbr\": {\n        \"value\": \"000055\"\n    },\n    \"Vendor\": {\n        \"value\": \"OFFICEUP\"\n    },\n    \"VendorRef\": {\n        \"value\": \"123\"\n    },\n    \"custom\": {}\n}"
 								}
 							]
 						},
@@ -2234,7 +2238,7 @@
 							},
 							"response": [
 								{
-									"name": "Creation of a Bill for Particular Lines of a Purchase Receipt Copy",
+									"name": "Creation of a Sales Order with Payments",
 									"originalRequest": {
 										"method": "PUT",
 										"header": [
@@ -2275,16 +2279,16 @@
 											"value": "application/json; charset=utf-8"
 										},
 										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
+											"key": "Set-Cookie",
+											"value": ".ASPXAUTH=4C596C4BE596DACC026177347B1C6C0DEAF84C155D73E132DACBB98F9A5A59F2EF48459A50B06B210008D75CA50605B3A3826BB443CFA971DD19E2B7E1CEE0542908F58F2D52CC14BAC27D33020971A76A4203C3CA118BBFBC856BC1D35C08797A837D2C04089097176986710E6D33AC631E39BE; path=/; HttpOnly"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+											"value": ".ASPXAUTH=4C596C4BE596DACC026177347B1C6C0DEAF84C155D73E132DACBB98F9A5A59F2EF48459A50B06B210008D75CA50605B3A3826BB443CFA971DD19E2B7E1CEE0542908F58F2D52CC14BAC27D33020971A76A4203C3CA118BBFBC856BC1D35C08797A837D2C04089097176986710E6D33AC631E39BE; path=/; HttpOnly"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
 										},
 										{
 											"key": "Set-Cookie",
@@ -2292,23 +2296,23 @@
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=241; path=/"
+											"value": "requestid=C34018A62898CF9D11EB662A6B4D7C51; path=/"
 										},
 										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:10666+sc:~/entity/default/20.200.001/salesorder+start:637479585949841857+tg:; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Mon, 30 Dec 2019 13:14:59 GMT"
+											"value": "Wed, 03 Feb 2021 14:16:45 GMT"
 										},
 										{
 											"key": "Content-Length",
-											"value": "3250"
+											"value": "238"
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"id\": \"8a58235e-062b-ea11-9ff4-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": \"\",\n    \"CustomerID\": {\n        \"value\": \"LAKECAFE\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"9158235e-062b-ea11-9ff4-4ccc6a8eefea\",\n            \"rowNumber\": 1,\n            \"note\": \"\",\n            \"Account\": {\n                \"value\": \"40000\"\n            },\n            \"Allocations\": [\n                {\n                    \"id\": \"550f42e8-d581-42c0-9080-c3e71a51b1e5\",\n                    \"rowNumber\": 1,\n                    \"note\": null,\n                    \"Allocated\": {\n                        \"value\": false\n                    },\n                    \"AllocWarehouseID\": {\n                        \"value\": \"WHOLESALE\"\n                    },\n                    \"Completed\": {\n                        \"value\": false\n                    },\n                    \"InventoryID\": {\n                        \"value\": \"APJAM08\"\n                    },\n                    \"LineNbr\": {\n                        \"value\": 1\n                    },\n                    \"OrderNbr\": {\n                        \"value\": \"000034\"\n                    },\n                    \"OrderType\": {\n                        \"value\": \"SO\"\n                    },\n                    \"Qty\": {\n                        \"value\": 10\n                    },\n                    \"QtyOnShipments\": {\n                        \"value\": 0\n                    },\n                    \"QtyReceived\": {\n                        \"value\": 0\n                    },\n                    \"RelatedDocument\": {\n                        \"value\": \"\"\n                    },\n                    \"ShipOn\": {\n                        \"value\": \"2019-12-30T00:00:00+03:00\"\n                    },\n                    \"SplitLineNbr\": {\n                        \"value\": 2\n                    },\n                    \"UOM\": {\n                        \"value\": \"PIECE\"\n                    },\n                    \"custom\": {}\n                }\n            ],\n            \"AlternateID\": {},\n            \"AutoCreateIssue\": {\n                \"value\": false\n            },\n            \"AverageCost\": {\n                \"value\": 0\n            },\n            \"Branch\": {\n                \"value\": \"HEADOFFICE\"\n            },\n            \"CalculateDiscountsOnImport\": {},\n            \"Completed\": {\n                \"value\": false\n            },\n            \"DiscountAmount\": {\n                \"value\": 0\n            },\n            \"DiscountedUnitPrice\": {\n                \"value\": 5\n            },\n            \"DiscountPercent\": {\n                \"value\": 0\n            },\n            \"ExtendedPrice\": {\n                \"value\": 50\n            },\n            \"FreeItem\": {\n                \"value\": false\n            },\n            \"InventoryID\": {\n                \"value\": \"APJAM08\"\n            },\n            \"LastModifiedDate\": {\n                \"value\": \"12/30/2019 08:14:56\"\n            },\n            \"LineDescription\": {\n                \"value\": \"Apple jam 8 oz.\"\n            },\n            \"LineNbr\": {\n                \"value\": 1\n            },\n            \"LineType\": {\n                \"value\": \"Goods for Inventory\"\n            },\n            \"MarkForPO\": {\n                \"value\": false\n            },\n            \"OpenQty\": {\n                \"value\": 10\n            },\n            \"Operation\": {\n                \"value\": \"Issue\"\n            },\n            \"OrderQty\": {\n                \"value\": 10\n            },\n            \"OvershipThreshold\": {\n                \"value\": 100\n            },\n            \"POSource\": {},\n            \"ProjectTask\": {},\n            \"PurchasingSettings\": {\n                \"id\": \"d2d14f03-5836-4bb7-af77-349907b8cd2f\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"POSiteID\": {\n                    \"value\": \"WHOLESALE\"\n                },\n                \"POSource\": {},\n                \"VendorID\": {},\n                \"custom\": {}\n            },\n            \"QtyOnShipments\": {\n                \"value\": 0\n            },\n            \"ReasonCode\": {},\n            \"RequestedOn\": {\n                \"value\": \"2019-12-30T00:00:00+03:00\"\n            },\n            \"SalespersonID\": {},\n            \"ShipOn\": {\n                \"value\": \"2019-12-30T00:00:00+03:00\"\n            },\n            \"ShippingRule\": {\n                \"value\": \"Ship Complete\"\n            },\n            \"TaxCategory\": {\n                \"value\": \"TAXABLE\"\n            },\n            \"UnbilledAmount\": {\n                \"value\": 50\n            },\n            \"UndershipThreshold\": {\n                \"value\": 100\n            },\n            \"UnitCost\": {\n                \"value\": 0\n            },\n            \"UnitPrice\": {\n                \"value\": 5\n            },\n            \"UOM\": {\n                \"value\": \"PIECE\"\n            },\n            \"WarehouseID\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"OrderNbr\": {\n        \"value\": \"000034\"\n    },\n    \"OrderTotal\": {\n        \"value\": 52.5\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"Payments\": [\n        {\n            \"id\": \"9658235e-062b-ea11-9ff4-4ccc6a8eefea\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"AppliedToOrder\": {\n                \"value\": 30\n            },\n            \"Balance\": {\n                \"value\": 0\n            },\n            \"CashAccount\": {\n                \"value\": \"10100ST\"\n            },\n            \"CurrencyID\": {\n                \"value\": \"USD\"\n            },\n            \"DocType\": {\n                \"value\": \"Payment\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000034\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"PaymentAmount\": {\n                \"value\": 30\n            },\n            \"PaymentMethod\": {\n                \"value\": \"CASH\"\n            },\n            \"PaymentRef\": {\n                \"value\": \"0026\"\n            },\n            \"ReferenceNbr\": {\n                \"value\": \"000070\"\n            },\n            \"Status\": {\n                \"value\": \"On Hold\"\n            },\n            \"TransferredtoInvoice\": {\n                \"value\": 0\n            },\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"9b58235e-062b-ea11-9ff4-4ccc6a8eefea\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"AppliedToOrder\": {\n                \"value\": 20\n            },\n            \"Balance\": {\n                \"value\": 0\n            },\n            \"CashAccount\": {\n                \"value\": \"10200WH\"\n            },\n            \"CurrencyID\": {\n                \"value\": \"USD\"\n            },\n            \"DocType\": {\n                \"value\": \"Prepayment\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000034\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"PaymentAmount\": {\n                \"value\": 20\n            },\n            \"PaymentMethod\": {\n                \"value\": \"CHECK\"\n            },\n            \"PaymentRef\": {\n                \"value\": \"0026\"\n            },\n            \"ReferenceNbr\": {\n                \"value\": \"000071\"\n            },\n            \"Status\": {\n                \"value\": \"On Hold\"\n            },\n            \"TransferredtoInvoice\": {\n                \"value\": 0\n            },\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"custom\": {},\n    \"files\": []\n}"
+									"body": "{\n    \"id\": \"527c4d6b-2a66-eb11-9dcf-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"CustomerID\": {\n        \"value\": \"LAKECAFE\"\n    },\n    \"Details\": [],\n    \"OrderNbr\": {\n        \"value\": \"000062\"\n    },\n    \"OrderTotal\": {\n        \"value\": 52.5\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"Payments\": [],\n    \"custom\": {}\n}"
 								}
 							]
 						}
@@ -3970,7 +3974,15 @@
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+											"value": ".ASPXAUTH=894ECDA87025C9823AE0D64A014F28A5F31A1F594B0603A9B67BC47AF3863DFA946CF1ABE0479D3F02510B28710C11E6E44ED68E747C31D266B1D4064A1497B6E822EDC68F50256EA07B573A2FC6956D702365D9BD968DBE8609D75D6C7B4779ABD2809EF4639D58EE15D31CEB671FBFB6821709; path=/; HttpOnly"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": ".ASPXAUTH=894ECDA87025C9823AE0D64A014F28A5F31A1F594B0603A9B67BC47AF3863DFA946CF1ABE0479D3F02510B28710C11E6E44ED68E747C31D266B1D4064A1497B6E822EDC68F50256EA07B573A2FC6956D702365D9BD968DBE8609D75D6C7B4779ABD2809EF4639D58EE15D31CEB671FBFB6821709; path=/; HttpOnly"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
 										},
 										{
 											"key": "Set-Cookie",
@@ -3978,19 +3990,23 @@
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=69; path=/"
+											"value": "requestid=C34018A62898CF9D11EB662F770AC8BE; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:41+sc:~/entity/default/20.200.001/projectbilling+start:637479607621623614+tg:; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Thu, 05 Mar 2020 09:00:27 GMT"
+											"value": "Wed, 03 Feb 2021 14:52:42 GMT"
 										},
 										{
 											"key": "Content-Length",
-											"value": "2125"
+											"value": "554"
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"id\": \"24c71ef0-f874-43af-8ce7-e885548ecac2\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Customer\": {},\n    \"CustomerClass\": {},\n    \"Details\": [\n        {\n            \"id\": \"714b5ed8-ec87-4c5f-a8d7-a9038b308e63\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"CustomerID\": {\n                \"value\": \"HMBAKERY\"\n            },\n            \"Description\": {\n                \"value\": \"A juicer with the installation and training for employees\"\n            },\n            \"From\": {},\n            \"LastBillingDate\": {},\n            \"ProjectID\": {\n                \"value\": \"HMBAKERY4\"\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"To\": {},\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"99e795e6-3374-4c64-a004-8157ad408aea\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"CustomerID\": {\n                \"value\": \"TOMYUM\"\n            },\n            \"Description\": {\n                \"value\": \"A juicer with the installation and training for employees\"\n            },\n            \"From\": {},\n            \"LastBillingDate\": {},\n            \"ProjectID\": {\n                \"value\": \"TOMYUM3\"\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"To\": {},\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"a3efa6df-97ac-4d35-aa15-518963906ffb\",\n            \"rowNumber\": 3,\n            \"note\": null,\n            \"CustomerID\": {\n                \"value\": \"TOMYUM\"\n            },\n            \"Description\": {\n                \"value\": \"Juicers with the installation and training for employees\"\n            },\n            \"From\": {},\n            \"LastBillingDate\": {},\n            \"ProjectID\": {\n                \"value\": \"TOMYUM7\"\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"To\": {},\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"41574c53-dafe-4d8c-9083-a30eec885b9a\",\n            \"rowNumber\": 4,\n            \"note\": null,\n            \"CustomerID\": {\n                \"value\": \"TOMYUM\"\n            },\n            \"Description\": {\n                \"value\": \"Juicers with the installation and training for employees\"\n            },\n            \"From\": {},\n            \"LastBillingDate\": {},\n            \"ProjectID\": {\n                \"value\": \"TOMYUM9\"\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"To\": {},\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"ad09abe4-111c-4046-875e-fd0e1590b8b8\",\n            \"rowNumber\": 5,\n            \"note\": null,\n            \"CustomerID\": {\n                \"value\": \"TOMYUM\"\n            },\n            \"Description\": {\n                \"value\": \"А juicer with the installation and training for employees\"\n            },\n            \"From\": {},\n            \"LastBillingDate\": {},\n            \"ProjectID\": {\n                \"value\": \"TOMYUM10\"\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"To\": {},\n            \"custom\": {},\n            \"files\": []\n        },\n        {\n            \"id\": \"ff16650d-2ccf-47b2-a030-e5ab442c4389\",\n            \"rowNumber\": 6,\n            \"note\": null,\n            \"CustomerID\": {\n                \"value\": \"HMBAKERY\"\n            },\n            \"Description\": {\n                \"value\": \"Juicers with the installation and training for employees\"\n            },\n            \"From\": {},\n            \"LastBillingDate\": {},\n            \"ProjectID\": {\n                \"value\": \"HMBAKERY5\"\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"To\": {},\n            \"custom\": {},\n            \"files\": []\n        }\n    ],\n    \"InvoiceDate\": {\n        \"value\": \"2019-08-15T00:00:00+03:00\"\n    },\n    \"PostPeriod\": {\n        \"value\": \"082019\"\n    },\n    \"ProjectTemplate\": {},\n    \"StatementCycle\": {},\n    \"custom\": {},\n    \"files\": []\n}"
+									"body": "{\n    \"id\": \"4fdcb124-a2d5-4ee2-80e4-d94f094aa44b\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Customer\": {},\n    \"CustomerClass\": {},\n    \"Details\": [\n        {\n            \"id\": \"0483cdab-9237-42a3-9134-73732344d3c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"CustomerID\": {\n                \"value\": \"HMBAKERY\"\n            },\n            \"Description\": {\n                \"value\": \"Juicers with the installation and training for employees\"\n            },\n            \"From\": {},\n            \"LastBillingDate\": {},\n            \"ProjectID\": {\n                \"value\": \"HMBAKERY5\"\n            },\n            \"Selected\": {\n                \"value\": false\n            },\n            \"To\": {},\n            \"custom\": {}\n        }\n    ],\n    \"InvoiceDate\": {\n        \"value\": \"2019-08-15T00:00:00+03:00\"\n    },\n    \"PostPeriod\": {\n        \"value\": \"082019\"\n    },\n    \"ProjectTemplate\": {},\n    \"StatementCycle\": {},\n    \"custom\": {}\n}"
 								}
 							]
 						},
@@ -4012,7 +4028,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"entity\" : \r\n  {\r\n    \"id\": \"24c71ef0-f874-43af-8ce7-e885548ecac2\",\r\n    \"Details\": [\r\n        {\r\n            \"id\": \"714b5ed8-ec87-4c5f-a8d7-a9038b308e63\",\r\n            \"Selected\": {\r\n                \"value\": true\r\n            }\r\n        }\r\n    ]\r\n}\r\n}"
+									"raw": "{\r\n  \"entity\" : \r\n  {\r\n    \"id\": \"4fdcb124-a2d5-4ee2-80e4-d94f094aa44b\",\r\n    \"Details\": [\r\n        {\r\n            \"id\": \"0483cdab-9237-42a3-9134-73732344d3c3\",\r\n            \"Selected\": {\r\n                \"value\": true\r\n            }\r\n        }\r\n    ]\r\n}\r\n}"
 								},
 								"url": {
 									"raw": "{{EndpointURL}}ProjectBilling/ProjectBillingProcess",
@@ -4044,7 +4060,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"entity\" : \r\n  {\r\n    \"id\": \"24c71ef0-f874-43af-8ce7-e885548ecac2\",\r\n    \"Details\": [\r\n        {\r\n            \"id\": \"714b5ed8-ec87-4c5f-a8d7-a9038b308e63\",\r\n            \"Selected\": {\r\n                \"value\": true\r\n            }\r\n        }\r\n    ]\r\n}\r\n}"
+											"raw": "{\r\n  \"entity\" : \r\n  {\r\n    \"id\": \"4fdcb124-a2d5-4ee2-80e4-d94f094aa44b\",\r\n    \"Details\": [\r\n        {\r\n            \"id\": \"0483cdab-9237-42a3-9134-73732344d3c3\",\r\n            \"Selected\": {\r\n                \"value\": true\r\n            }\r\n        }\r\n    ]\r\n}\r\n}"
 										},
 										"url": {
 											"raw": "{{EndpointURL}}ProjectBilling/ProjectBillingProcess",
@@ -4062,19 +4078,11 @@
 									"header": [
 										{
 											"key": "Location",
-											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/ProjectBilling/ProjectBillingProcess/status/dcb99006-caa4-4dc2-953a-1dc0331f95b1"
+											"value": "/AcumaticaERP/entity/Default/20.200.001/ProjectBilling/ProjectBillingProcess/status/4b1d6b87-257d-4831-bf86-f33cdfcfbd7a"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": ".ASPXAUTH=08758AEBE6B827749FF292703610E08AEBB4D0AABA9341E15D3964AB325D410CD5EEC6B1BDD844411CEB3D59770376343352F783199D33C22C31832F54CE814A9531636287837C90802989CCC447548E437814C7D493F4956036D7D1E9495E645AF3DBE4B4F7D5662C87C57CDBE244CAAA9606DD; path=/; HttpOnly"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": ".ASPXAUTH=08758AEBE6B827749FF292703610E08AEBB4D0AABA9341E15D3964AB325D410CD5EEC6B1BDD844411CEB3D59770376343352F783199D33C22C31832F54CE814A9531636287837C90802989CCC447548E437814C7D493F4956036D7D1E9495E645AF3DBE4B4F7D5662C87C57CDBE244CAAA9606DD; path=/; HttpOnly"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
 										},
 										{
 											"key": "Set-Cookie",
@@ -4082,11 +4090,15 @@
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=73; path=/"
+											"value": "requestid=C34018A62898CF9D11EB662FA84E535C; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:105+sc:~/entity/default/20.200.001/projectbilling/projectbillingprocess+start:637479608448143564+tg:; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Thu, 05 Mar 2020 09:21:31 GMT"
+											"value": "Wed, 03 Feb 2021 14:54:04 GMT"
 										},
 										{
 											"key": "Content-Length",
@@ -4094,7 +4106,7 @@
 										}
 									],
 									"cookie": [],
-									"body": ""
+									"body": null
 								}
 							]
 						},
@@ -4166,11 +4178,11 @@
 									"header": [
 										{
 											"key": "Location",
-											"value": "/IntegrationDevelopmentGuide/entity/Default/18.200.001/ProjectBilling/ProjectBillingProcessAll/status/11d2cf29-270d-42d7-bdda-42c7e8f1427d"
+											"value": "/AcumaticaERP/entity/Default/20.200.001/ProjectBilling/ProjectBillingProcessAll/status/dfb71bc4-bd87-4e8f-b4fe-10416b313f6c"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
 										},
 										{
 											"key": "Set-Cookie",
@@ -4178,11 +4190,15 @@
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=76; path=/"
+											"value": "requestid=C34018A62898CF9D11EB662FC24E640A; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:186+sc:~/entity/default/20.200.001/projectbilling/projectbillingprocessall+start:637479608884345482+tg:; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Thu, 05 Mar 2020 09:24:53 GMT"
+											"value": "Wed, 03 Feb 2021 14:54:48 GMT"
 										},
 										{
 											"key": "Content-Length",
@@ -4190,7 +4206,7 @@
 										}
 									],
 									"cookie": [],
-									"body": ""
+									"body": null
 								}
 							]
 						},
@@ -4405,7 +4421,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"Summary\" : {\"value\" : \"Time entry summary\"},\r\n  \"Date\" : {\"value\" : \"2019-08-17T05:50:43.233\" },\r\n  \"Time\" : {\"value\" : \"2019-08-17T05:50:43.233\" },\r\n  \"Employee\" : {\"value\" : \"EP00000002\" },\r\n  \"ProjectID\" : {\"value\" : \"TOMYUM1\" },\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\" },\r\n  \"CostCode\" : {\"value\" : \"0000\" },\r\n  \"EarningType\" : {\"value\" : \"RG\" },\r\n  \"TimeSpent\" : {\"value\" : \"01:30\" },\r\n  \"BillableTime\" : {\"value\" : \"00:30\" },\r\n}"
+									"raw": "{\r\n  \"Summary\" : {\"value\" : \"Time entry summary\"},\r\n  \"Date\" : {\"value\" : \"2020-08-17T05:50:43.233\" },\r\n  \"Time\" : {\"value\" : \"2020-08-17T05:50:43.233\" },\r\n  \"Employee\" : {\"value\" : \"EP00000002\" },\r\n  \"ProjectID\" : {\"value\" : \"TOMYUM1\" },\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\" },\r\n  \"CostCode\" : {\"value\" : \"00-000\" },\r\n  \"EarningType\" : {\"value\" : \"RG\" },\r\n  \"TimeSpent\" : {\"value\" : \"01:30\" },\r\n  \"BillableTime\" : {\"value\" : \"00:30\" }\r\n}"
 								},
 								"url": {
 									"raw": "{{EndpointURL}}TimeEntry",
@@ -4434,7 +4450,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"Summary\" : {\"value\" : \"Time entry summary\"},\r\n  \"Date\" : {\"value\" : \"2019-08-17T05:50:43.233\" },\r\n  \"Time\" : {\"value\" : \"2019-08-17T05:50:43.233\" },\r\n  \"Employee\" : {\"value\" : \"EP00000002\" },\r\n  \"ProjectID\" : {\"value\" : \"TOMYUM1\" },\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\" },\r\n  \"CostCode\" : {\"value\" : \"0000\" },\r\n  \"EarningType\" : {\"value\" : \"RG\" },\r\n  \"TimeSpent\" : {\"value\" : \"01:30\" },\r\n  \"BillableTime\" : {\"value\" : \"00:30\" },\r\n}"
+											"raw": "{\r\n  \"Summary\" : {\"value\" : \"Time entry summary\"},\r\n  \"Date\" : {\"value\" : \"2020-08-17T05:50:43.233\" },\r\n  \"Time\" : {\"value\" : \"2020-08-17T05:50:43.233\" },\r\n  \"Employee\" : {\"value\" : \"EP00000002\" },\r\n  \"ProjectID\" : {\"value\" : \"TOMYUM1\" },\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\" },\r\n  \"CostCode\" : {\"value\" : \"00-000\" },\r\n  \"EarningType\" : {\"value\" : \"RG\" },\r\n  \"TimeSpent\" : {\"value\" : \"01:30\" },\r\n  \"BillableTime\" : {\"value\" : \"00:30\" }\r\n}"
 										},
 										"url": {
 											"raw": "{{EndpointURL}}TimeEntry",
@@ -4452,40 +4468,32 @@
 											"value": "application/json; charset=utf-8"
 										},
 										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
-										},
-										{
 											"key": "Set-Cookie",
 											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
+											"value": "UserBranch=3; path=/"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=384; path=/"
+											"value": "requestid=C34018A62898CF9D11EB665E6D21043D; path=/"
 										},
 										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:8230+sc:~/entity/default/20.200.001/timeentry+start:637479809400924682+tg:; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Fri, 16 Aug 2019 07:27:18 GMT"
+											"value": "Wed, 03 Feb 2021 20:29:08 GMT"
 										},
 										{
 											"key": "Content-Length",
-											"value": "754"
+											"value": "831"
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"id\": \"09f89145-f7bf-e911-9fe5-4ccc6a8eefea\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"ApprovalStatus\": {\n        \"value\": \"Open\"\n    },\n    \"Approver\": {},\n    \"Billable\": {\n        \"value\": true\n    },\n    \"BillableOvertime\": {\n        \"value\": \"00:00\"\n    },\n    \"BillableTime\": {\n        \"value\": \"00:30\"\n    },\n    \"CostRate\": {},\n    \"Date\": {\n        \"value\": \"2019-08-17T00:00:00+03:00\"\n    },\n    \"EarningType\": {\n        \"value\": \"RG\"\n    },\n    \"Employee\": {\n        \"value\": \"EP00000002\"\n    },\n    \"ExternalRefNbr\": {},\n    \"LaborItem\": {\n        \"value\": \"CONSULTSR\"\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2019-08-16T03:27:18.163+03:00\"\n    },\n    \"Overtime\": {\n        \"value\": \"00:00\"\n    },\n    \"ProjectID\": {\n        \"value\": \"TOMYUM1\"\n    },\n    \"ProjectTaskID\": {\n        \"value\": \"PHASE1\"\n    },\n    \"Summary\": {\n        \"value\": \"Time entry summary\"\n    },\n    \"Time\": {\n        \"value\": \"1900-01-01T05:50:00+03:00\"\n    },\n    \"TimeEntryID\": {\n        \"value\": \"09f89145-f7bf-e911-9fe5-4ccc6a8eefea\"\n    },\n    \"TimeSpent\": {\n        \"value\": \"01:30\"\n    },\n    \"custom\": {},\n    \"files\": []\n}"
+									"body": "{\n    \"id\": \"9b8c7774-5e66-eb11-9dcf-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"ApprovalStatus\": {\n        \"value\": \"Open\"\n    },\n    \"Approver\": {},\n    \"Billable\": {\n        \"value\": true\n    },\n    \"BillableOvertime\": {\n        \"value\": \"00:00\"\n    },\n    \"BillableTime\": {\n        \"value\": \"00:30\"\n    },\n    \"CertifiedJob\": {\n        \"value\": false\n    },\n    \"CostCode\": {\n        \"value\": \"00000\"\n    },\n    \"CostRate\": {},\n    \"Date\": {\n        \"value\": \"2020-08-17T00:00:00+03:00\"\n    },\n    \"EarningType\": {\n        \"value\": \"RG\"\n    },\n    \"Employee\": {\n        \"value\": \"EP00000002\"\n    },\n    \"ExternalRefNbr\": {},\n    \"LaborItem\": {\n        \"value\": \"CONSULTSR\"\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2021-02-03T15:29:08.02+03:00\"\n    },\n    \"Overtime\": {\n        \"value\": \"00:00\"\n    },\n    \"ProjectID\": {\n        \"value\": \"TOMYUM1\"\n    },\n    \"ProjectTaskID\": {\n        \"value\": \"PHASE1\"\n    },\n    \"Summary\": {\n        \"value\": \"Time entry summary\"\n    },\n    \"Time\": {\n        \"value\": \"1900-01-01T05:50:00+03:00\"\n    },\n    \"TimeEntryID\": {\n        \"value\": \"9b8c7774-5e66-eb11-9dcf-9828a61840c3\"\n    },\n    \"TimeSpent\": {\n        \"value\": \"01:30\"\n    },\n    \"UnionLocal\": {},\n    \"WCCCode\": {},\n    \"custom\": {}\n}"
 								}
 							]
 						},
@@ -4513,14 +4521,14 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{EndpointURL}}TimeEntry?$filter=cf.DateTime(f='Items.Date') ge datetimeoffset'2019-08-17' and cf.DateTime(f='Items.Date') le datetimeoffset'2019-08-18T23%3A59%3A59.999%2B04%3A00'&$select=Date,ProjectID,TimeSpent,BillableTime",
+									"raw": "{{EndpointURL}}TimeEntry?$filter=cf.DateTime(f='Items.Date') ge datetimeoffset'2020-08-17' and cf.DateTime(f='Items.Date') le datetimeoffset'2020-08-18T23%3A59%3A59.999%2B04%3A00'&$select=Date,ProjectID,TimeSpent,BillableTime",
 									"host": [
 										"{{EndpointURL}}TimeEntry"
 									],
 									"query": [
 										{
 											"key": "$filter",
-											"value": "cf.DateTime(f='Items.Date') ge datetimeoffset'2019-08-17' and cf.DateTime(f='Items.Date') le datetimeoffset'2019-08-18T23%3A59%3A59.999%2B04%3A00'"
+											"value": "cf.DateTime(f='Items.Date') ge datetimeoffset'2020-08-17' and cf.DateTime(f='Items.Date') le datetimeoffset'2020-08-18T23%3A59%3A59.999%2B04%3A00'"
 										},
 										{
 											"key": "$select",
@@ -4547,15 +4555,19 @@
 												"value": "application/json"
 											}
 										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
 										"url": {
-											"raw": "{{EndpointURL}}TimeEntry?$filter=cf.DateTime(f='Items.Date') ge datetimeoffset'2019-08-17' and cf.DateTime(f='Items.Date') le datetimeoffset'2019-08-18T23%3A59%3A59.999%2B04%3A00'&$select=Date,ProjectID,TimeSpent,BillableTime",
+											"raw": "{{EndpointURL}}TimeEntry?$filter=cf.DateTime(f='Items.Date') ge datetimeoffset'2020-08-17' and cf.DateTime(f='Items.Date') le datetimeoffset'2020-08-18T23%3A59%3A59.999%2B04%3A00'&$select=Date,ProjectID,TimeSpent,BillableTime",
 											"host": [
 												"{{EndpointURL}}TimeEntry"
 											],
 											"query": [
 												{
 													"key": "$filter",
-													"value": "cf.DateTime(f='Items.Date') ge datetimeoffset'2019-08-17' and cf.DateTime(f='Items.Date') le datetimeoffset'2019-08-18T23%3A59%3A59.999%2B04%3A00'"
+													"value": "cf.DateTime(f='Items.Date') ge datetimeoffset'2020-08-17' and cf.DateTime(f='Items.Date') le datetimeoffset'2020-08-18T23%3A59%3A59.999%2B04%3A00'"
 												},
 												{
 													"key": "$select",
@@ -4573,36 +4585,24 @@
 											"value": "application/json; charset=utf-8"
 										},
 										{
-											"key": "Server",
-											"value": "Microsoft-IIS/10.0"
-										},
-										{
-											"key": "X-Handled-By",
-											"value": "Acumatica-PX.Export/AuthenticationManagerModule"
-										},
-										{
 											"key": "Set-Cookie",
 											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "ASP.NET"
+											"value": "UserBranch=3; path=/"
 										},
 										{
 											"key": "Date",
-											"value": "Fri, 27 Dec 2019 09:33:34 GMT"
+											"value": "Wed, 03 Feb 2021 20:30:40 GMT"
 										},
 										{
 											"key": "Content-Length",
-											"value": "621"
+											"value": "310"
 										}
 									],
 									"cookie": [],
-									"body": "[\n    {\n        \"id\": \"09f89145-f7bf-e911-9fe5-4ccc6a8eefea\",\n        \"rowNumber\": 1,\n        \"note\": \"\",\n        \"BillableTime\": {\n            \"value\": \"00:30\"\n        },\n        \"Date\": {\n            \"value\": \"2019-08-17T00:00:00+03:00\"\n        },\n        \"ProjectID\": {\n            \"value\": \"TOMYUM1\"\n        },\n        \"TimeSpent\": {\n            \"value\": \"01:30\"\n        },\n        \"custom\": {\n            \"Items\": {\n                \"Date\": {\n                    \"type\": \"CustomDateTimeField\",\n                    \"value\": \"2019-08-17T05:50:00\"\n                }\n            }\n        },\n        \"files\": []\n    },\n    {\n        \"id\": \"8780ec9b-8b28-ea11-9ff4-4ccc6a8eefea\",\n        \"rowNumber\": 2,\n        \"note\": \"\",\n        \"BillableTime\": {\n            \"value\": \"00:30\"\n        },\n        \"Date\": {\n            \"value\": \"2019-08-17T00:00:00+03:00\"\n        },\n        \"ProjectID\": {\n            \"value\": \"TOMYUM1\"\n        },\n        \"TimeSpent\": {\n            \"value\": \"01:30\"\n        },\n        \"custom\": {\n            \"Items\": {\n                \"Date\": {\n                    \"type\": \"CustomDateTimeField\",\n                    \"value\": \"2019-08-17T05:50:00\"\n                }\n            }\n        },\n        \"files\": []\n    }\n]"
+									"body": "[\n    {\n        \"id\": \"9b8c7774-5e66-eb11-9dcf-9828a61840c3\",\n        \"rowNumber\": 1,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"BillableTime\": {\n            \"value\": \"00:30\"\n        },\n        \"Date\": {\n            \"value\": \"2020-08-17T00:00:00+03:00\"\n        },\n        \"ProjectID\": {\n            \"value\": \"TOMYUM1\"\n        },\n        \"TimeSpent\": {\n            \"value\": \"01:30\"\n        },\n        \"custom\": {\n            \"Items\": {\n                \"Date\": {\n                    \"type\": \"CustomDateTimeField\",\n                    \"value\": \"2020-08-17T05:50:00\"\n                }\n            }\n        }\n    }\n]"
 								}
 							]
 						}
