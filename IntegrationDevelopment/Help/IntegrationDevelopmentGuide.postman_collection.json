@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "da4c36f7-8c6b-4a0c-abba-a08106ece294",
+		"_postman_id": "d6869b92-2db9-4255-8ec3-ecf038c4c177",
 		"name": "Integration Development Guide",
 		"description": "This collection contains examples from the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n - Deploy a new Acumatica ERP instance with the U100 dataset. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n - Specify the URL of the instance in the BaseURL variable of the collection. The EndpointURL variable uses the value from the BaseURL variable and specifies the URL of the Default/20.200.001 endpoint. You do not need to change this variable until you want to use another endpoint.\n - To sign in to the instance in the client application, use the tenant name (which you specified when you created the instance) and the HEADOFFICE branch.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -1561,7 +1561,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				},
@@ -1628,12 +1628,6 @@
 										"value": "application/json"
 									}
 								],
-								"body": {
-									"mode": "file",
-									"file": {
-										"src": ""
-									}
-								},
 								"url": {
 									"raw": "{{EndpointURL}}StockItem/EJECTOR03?$select=InventoryID,files&$expand=files",
 									"host": [
@@ -1737,12 +1731,6 @@
 										"value": "application/json"
 									}
 								],
-								"body": {
-									"mode": "file",
-									"file": {
-										"src": ""
-									}
-								},
 								"url": {
 									"raw": "{{EndpointURL}}files/0a8ac74e-53d3-4f13-ba02-dbbf419da119",
 									"host": [
@@ -1974,6 +1962,337 @@
 				{
 					"name": "Inventory and Order Management",
 					"item": [
+						{
+							"name": "Creation of a Purchase Order",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"VendorID\": {\r\n        \"value\": \"GOODFRUITS\"\r\n    },\r\n    \"Location\": {\r\n        \"value\": \"MAIN\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"BranchID\": {\r\n                \"value\": \"HEADOFFICE\"\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"APPLES\"\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 1\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"WHOLESALE\"\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"LB\"\r\n            }\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}PurchaseOrder?$expand=Details&$select=Branch,CurrencyID,Details/ExtendedCost,Details/InventoryID,Details/LineDescription,Details/OrderNbr,Details/OrderQty,Details/UnitCost,Details/UOM,Details/WarehouseID,Location,OrderNbr,OrderTotal,Status,Type,VendorID",
+									"host": [
+										"{{EndpointURL}}PurchaseOrder"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Details"
+										},
+										{
+											"key": "$select",
+											"value": "Branch,CurrencyID,Details/ExtendedCost,Details/InventoryID,Details/LineDescription,Details/OrderNbr,Details/OrderQty,Details/UnitCost,Details/UOM,Details/WarehouseID,Location,OrderNbr,OrderTotal,Status,Type,VendorID"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Creation of a Purchase Order",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"VendorID\": {\r\n        \"value\": \"GOODFRUITS\"\r\n    },\r\n    \"Location\": {\r\n        \"value\": \"MAIN\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"BranchID\": {\r\n                \"value\": \"HEADOFFICE\"\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"APPLES\"\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 1\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"WHOLESALE\"\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"LB\"\r\n            }\r\n        }\r\n    ]\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}PurchaseOrder?$expand=Details&$select=Branch,CurrencyID,Details/ExtendedCost,Details/InventoryID,Details/LineDescription,Details/OrderNbr,Details/OrderQty,Details/UnitCost,Details/UOM,Details/WarehouseID,Location,OrderNbr,OrderTotal,Status,Type,VendorID",
+											"host": [
+												"{{EndpointURL}}PurchaseOrder"
+											],
+											"query": [
+												{
+													"key": "$expand",
+													"value": "Details"
+												},
+												{
+													"key": "$select",
+													"value": "Branch,CurrencyID,Details/ExtendedCost,Details/InventoryID,Details/LineDescription,Details/OrderNbr,Details/OrderQty,Details/UnitCost,Details/UOM,Details/WarehouseID,Location,OrderNbr,OrderTotal,Status,Type,VendorID"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=C34018A62898D29D11EB6C5BC3654DDA; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:8582+sc:~/entity/default/20.200.001/purchaseorder+start:637486394950952026+tg:; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 11 Feb 2021 11:25:03 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "708"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"e24d65c3-5b6c-eb11-9dd2-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Branch\": {\n        \"value\": \"HEADOFFICE\"\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"e94d65c3-5b6c-eb11-9dd2-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"BranchID\": {\n                \"value\": \"HEADOFFICE\"\n            },\n            \"ExtendedCost\": {\n                \"value\": 2.29\n            },\n            \"InventoryID\": {\n                \"value\": \"APPLES\"\n            },\n            \"LineDescription\": {\n                \"value\": \"Fresh apples 1 lb\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000037\"\n            },\n            \"OrderQty\": {\n                \"value\": 1\n            },\n            \"UnitCost\": {\n                \"value\": 2.29\n            },\n            \"UOM\": {\n                \"value\": \"LB\"\n            },\n            \"WarehouseID\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {}\n        }\n    ],\n    \"Location\": {\n        \"value\": \"MAIN\"\n    },\n    \"OrderNbr\": {\n        \"value\": \"000037\"\n    },\n    \"OrderTotal\": {\n        \"value\": 2.29\n    },\n    \"Status\": {\n        \"value\": \"On Hold\"\n    },\n    \"Type\": {\n        \"value\": \"Normal\"\n    },\n    \"VendorID\": {\n        \"value\": \"GOODFRUITS\"\n    },\n    \"custom\": {}\n}"
+								}
+							]
+						},
+						{
+							"name": "Update of a Purchase Order",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"OrderNbr\": {\r\n        \"value\": \"000037\"\r\n    },\r\n    \"Hold\": {\r\n        \"value\": false\r\n    },\r\n    \"Type\": {\r\n        \"value\": \"Normal\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}PurchaseOrder?$select=OrderNbr,OrderTotal,Status,Type,VendorID",
+									"host": [
+										"{{EndpointURL}}PurchaseOrder"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "OrderNbr,OrderTotal,Status,Type,VendorID"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update of a Purchase Order",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"OrderNbr\": {\r\n        \"value\": \"000037\"\r\n    },\r\n    \"Hold\": {\r\n        \"value\": false\r\n    },\r\n    \"Type\": {\r\n        \"value\": \"Normal\"\r\n    }\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}PurchaseOrder?$select=OrderNbr,OrderTotal,Status,Type,VendorID",
+											"host": [
+												"{{EndpointURL}}PurchaseOrder"
+											],
+											"query": [
+												{
+													"key": "$select",
+													"value": "OrderNbr,OrderTotal,Status,Type,VendorID"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=C34018A62898D29D11EB6C5BEC0A5490; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:3119+sc:~/entity/default/20.200.001/purchaseorder+start:637486395632855824+tg:; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 11 Feb 2021 11:26:06 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "260"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"e24d65c3-5b6c-eb11-9dd2-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Hold\": {\n        \"value\": false\n    },\n    \"OrderNbr\": {\n        \"value\": \"000037\"\n    },\n    \"OrderTotal\": {\n        \"value\": 2.29\n    },\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"Type\": {\n        \"value\": \"Normal\"\n    },\n    \"VendorID\": {\n        \"value\": \"GOODFRUITS\"\n    },\n    \"custom\": {}\n}"
+								}
+							]
+						},
+						{
+							"name": "Creation of a Purchase Receipt",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"VendorID\": {\r\n        \"value\": \"GOODFRUITS\"\r\n    },\r\n    \"Location\": {\r\n        \"value\": \"MAIN\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"POOrderNbr\": {\r\n                \"value\": \"000037\"\r\n            },\r\n            \"POOrderType\": {\r\n                \"value\": \"Normal\"\r\n            }\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}PurchaseReceipt?$expand=Details&$select=Branch,ControlQty,CreateBill,CurrencyID,Details/InventoryID,Details/POOrderNbr,Details/POOrderType,Details/ReceiptQty,Details/TransactionDescription,Details/UnitCost,Details/UOM,Details/Warehouse,Hold,Location,ReceiptNbr,Status,TotalCost,VendorID",
+									"host": [
+										"{{EndpointURL}}PurchaseReceipt"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Details"
+										},
+										{
+											"key": "$select",
+											"value": "Branch,ControlQty,CreateBill,CurrencyID,Details/InventoryID,Details/POOrderNbr,Details/POOrderType,Details/ReceiptQty,Details/TransactionDescription,Details/UnitCost,Details/UOM,Details/Warehouse,Hold,Location,ReceiptNbr,Status,TotalCost,VendorID"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Creation of a Purchase Receipt",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"VendorID\": {\r\n        \"value\": \"GOODFRUITS\"\r\n    },\r\n    \"Location\": {\r\n        \"value\": \"MAIN\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"POOrderNbr\": {\r\n                \"value\": \"000037\"\r\n            },\r\n            \"POOrderType\": {\r\n                \"value\": \"Normal\"\r\n            }\r\n        }\r\n    ]\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}PurchaseReceipt?$expand=Details&$select=Branch,ControlQty,CreateBill,CurrencyID,Details/InventoryID,Details/POOrderNbr,Details/POOrderType,Details/ReceiptQty,Details/TransactionDescription,Details/UnitCost,Details/UOM,Details/Warehouse,Hold,Location,ReceiptNbr,Status,TotalCost,VendorID",
+											"host": [
+												"{{EndpointURL}}PurchaseReceipt"
+											],
+											"query": [
+												{
+													"key": "$expand",
+													"value": "Details"
+												},
+												{
+													"key": "$select",
+													"value": "Branch,ControlQty,CreateBill,CurrencyID,Details/InventoryID,Details/POOrderNbr,Details/POOrderType,Details/ReceiptQty,Details/TransactionDescription,Details/UnitCost,Details/UOM,Details/Warehouse,Hold,Location,ReceiptNbr,Status,TotalCost,VendorID"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=C34018A62898D29D11EB6C5C0022C502; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:1896+sc:~/entity/default/20.200.001/purchasereceipt+start:637486395970001794+tg:; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 11 Feb 2021 11:26:38 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "747"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"06c52200-5c6c-eb11-9dd2-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Branch\": {\n        \"value\": \"HEADOFFICE\"\n    },\n    \"ControlQty\": {\n        \"value\": 1\n    },\n    \"CreateBill\": {\n        \"value\": false\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"09c52200-5c6c-eb11-9dd2-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"APPLES\"\n            },\n            \"POOrderNbr\": {\n                \"value\": \"000037\"\n            },\n            \"POOrderType\": {\n                \"value\": \"Normal\"\n            },\n            \"ReceiptQty\": {\n                \"value\": 1\n            },\n            \"TransactionDescription\": {\n                \"value\": \"Fresh apples 1 lb\"\n            },\n            \"UnitCost\": {\n                \"value\": 2.29\n            },\n            \"UOM\": {\n                \"value\": \"LB\"\n            },\n            \"Warehouse\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {}\n        }\n    ],\n    \"Hold\": {\n        \"value\": false\n    },\n    \"Location\": {\n        \"value\": \"MAIN\"\n    },\n    \"ReceiptNbr\": {\n        \"value\": \"000027\"\n    },\n    \"Status\": {\n        \"value\": \"Balanced\"\n    },\n    \"TotalCost\": {\n        \"value\": 2.29\n    },\n    \"VendorID\": {\n        \"value\": \"GOODFRUITS\"\n    },\n    \"custom\": {}\n}"
+								}
+							]
+						},
 						{
 							"name": "Creation of a Bill for Particular Lines of a Purchase Order",
 							"request": {
@@ -2313,6 +2632,345 @@
 									],
 									"cookie": [],
 									"body": "{\n    \"id\": \"527c4d6b-2a66-eb11-9dcf-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"CustomerID\": {\n        \"value\": \"LAKECAFE\"\n    },\n    \"Details\": [],\n    \"OrderNbr\": {\n        \"value\": \"000062\"\n    },\n    \"OrderTotal\": {\n        \"value\": 52.5\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"Payments\": [],\n    \"custom\": {}\n}"
+								}
+							]
+						},
+						{
+							"name": "Creation of Sales Order 1",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"CustomerID\": {\r\n        \"value\": \"GOODFOOD\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"HEADOFFICE\"\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"APJAM08\"\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 2\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"PIECE\"\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"WHOLESALE\"\r\n            }\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}SalesOrder?$expand=Details&$select=CustomerID,Details/Branch,Details/InventoryID,Details/OrderQty,OrderNbr",
+									"host": [
+										"{{EndpointURL}}SalesOrder"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Details"
+										},
+										{
+											"key": "$select",
+											"value": "CustomerID,Details/Branch,Details/InventoryID,Details/OrderQty,OrderNbr"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Creation of Sales Order 1",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"CustomerID\": {\r\n        \"value\": \"GOODFOOD\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"HEADOFFICE\"\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"APJAM08\"\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 2\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"PIECE\"\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"WHOLESALE\"\r\n            }\r\n        }\r\n    ]\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}SalesOrder?$expand=Details&$select=CustomerID,Details/Branch,Details/InventoryID,Details/OrderQty,OrderNbr",
+											"host": [
+												"{{EndpointURL}}SalesOrder"
+											],
+											"query": [
+												{
+													"key": "$expand",
+													"value": "Details"
+												},
+												{
+													"key": "$select",
+													"value": "CustomerID,Details/Branch,Details/InventoryID,Details/OrderQty,OrderNbr"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=C34018A62898D19D11EB6B930395E88C; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:931+sc:~/entity/default/20.200.001/salesorder+start:637485532739452684+tg:; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 10 Feb 2021 11:27:54 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "402"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"8de89503-936b-eb11-9dd1-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"CustomerID\": {\n        \"value\": \"GOODFOOD\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"93e89503-936b-eb11-9dd1-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Branch\": {\n                \"value\": \"HEADOFFICE\"\n            },\n            \"InventoryID\": {\n                \"value\": \"APJAM08\"\n            },\n            \"OrderQty\": {\n                \"value\": 2\n            },\n            \"UOM\": {\n                \"value\": \"PIECE\"\n            },\n            \"WarehouseID\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {}\n        }\n    ],\n    \"OrderNbr\": {\n        \"value\": \"000071\"\n    },\n    \"custom\": {}\n}"
+								}
+							]
+						},
+						{
+							"name": "Creation of Sales Order 2",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"CustomerID\": {\r\n        \"value\": \"GOODFOOD\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"HEADOFFICE\"\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"APJAM32\"\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 1\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"BOX\"\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"WHOLESALE\"\r\n            }\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}SalesOrder?$expand=Details&$select=CustomerID,Details/Branch,Details/InventoryID,Details/OrderQty,OrderNbr",
+									"host": [
+										"{{EndpointURL}}SalesOrder"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Details"
+										},
+										{
+											"key": "$select",
+											"value": "CustomerID,Details/Branch,Details/InventoryID,Details/OrderQty,OrderNbr"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Creation of Sales Order 2",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"CustomerID\": {\r\n        \"value\": \"GOODFOOD\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"HEADOFFICE\"\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"APJAM32\"\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 1\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"BOX\"\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"WHOLESALE\"\r\n            }\r\n        }\r\n    ]\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}SalesOrder?$expand=Details&$select=CustomerID,Details/Branch,Details/InventoryID,Details/OrderQty,OrderNbr",
+											"host": [
+												"{{EndpointURL}}SalesOrder"
+											],
+											"query": [
+												{
+													"key": "$expand",
+													"value": "Details"
+												},
+												{
+													"key": "$select",
+													"value": "CustomerID,Details/Branch,Details/InventoryID,Details/OrderQty,OrderNbr"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=C34018A62898D19D11EB6B95EA98D075; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:3911+sc:~/entity/default/20.200.001/salesorder+start:637485545205114613+tg:; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 10 Feb 2021 11:48:44 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"76d098ea-956b-eb11-9dd1-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"CustomerID\": {\n        \"value\": \"GOODFOOD\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"7cd098ea-956b-eb11-9dd1-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Branch\": {\n                \"value\": \"HEADOFFICE\"\n            },\n            \"InventoryID\": {\n                \"value\": \"APJAM32\"\n            },\n            \"OrderQty\": {\n                \"value\": 1\n            },\n            \"UOM\": {\n                \"value\": \"BOX\"\n            },\n            \"WarehouseID\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {}\n        }\n    ],\n    \"OrderNbr\": {\n        \"value\": \"000072\"\n    },\n    \"custom\": {}\n}"
+								}
+							]
+						},
+						{
+							"name": "Creation of a Shipment",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"CustomerID\": {\r\n        \"value\": \"GOODFOOD\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"OrderNbr\": {\r\n                \"value\": \"000071\"\r\n            },\r\n            \"OrderType\": {\r\n                \"value\": \"SO\"\r\n            },\r\n            \"OrderLineNbr\": {\r\n                \"value\": 1\r\n            },\r\n            \"Allocations\": [\r\n                {\r\n                    \"InventoryID\": {\r\n                        \"value\": \"APJAM08\"\r\n                    },\r\n                    \"LocationID\": {\r\n                        \"value\": \"L2R3S1\"\r\n                    },\r\n                    \"Qty\": {\r\n                        \"value\": 1\r\n                    },\r\n                    \"UOM\": {\r\n                        \"value\": \"PIECE\"\r\n                    }\r\n                },\r\n                {\r\n                    \"InventoryID\": {\r\n                        \"value\": \"APJAM08\"\r\n                    },\r\n                    \"LocationID\": {\r\n                        \"value\": \"L3R2S1\"\r\n                    },\r\n                    \"Qty\": {\r\n                        \"value\": 1\r\n                    },\r\n                    \"UOM\": {\r\n                        \"value\": \"PIECE\"\r\n                    }\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"OrderNbr\": {\r\n                \"value\": \"000072\"\r\n            },\r\n            \"OrderType\": {\r\n                \"value\": \"SO\"\r\n            },\r\n            \"OrderLineNbr\": {\r\n                \"value\": 1\r\n            },\r\n            \"Allocations\": [\r\n                {\r\n                    \"InventoryID\": {\r\n                        \"value\": \"APJAM32\"\r\n                    },\r\n                    \"LocationID\": {\r\n                        \"value\": \"L1R3S2\"\r\n                    },\r\n                    \"Qty\": {\r\n                        \"value\": 6\r\n                    },\r\n                    \"UOM\": {\r\n                        \"value\": \"PIECE\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"LocationID\": {\r\n        \"value\": \"MAIN\"\r\n    },\r\n    \"Operation\": {\r\n        \"value\": \"Issue\"\r\n    },\r\n    \"Packages\": [\r\n        {\r\n            \"BoxID\": {\r\n                \"value\": \"LARGE\"\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"KG\"\r\n            },\r\n            \"Weight\": {\r\n                \"value\": 15\r\n            }\r\n        }\r\n    ],\r\n    \"WarehouseID\": {\r\n        \"value\": \"WHOLESALE\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Shipment?$expand=Details,Details/Allocations,Packages,Packages/PackageContents&$select=CustomerID,Details/Description,Details/OrderNbr,Details/Allocations/InventoryID,Details/Allocations/LocationID,Details/Allocations/Qty,Details/Allocations/UOM,LocationID,Operation,Packages/BoxID,Packages/PackageContents,Packages/UOM,Packages/Weight,PackageWeight,ShipmentNbr,ShippedQty,Status,WarehouseID",
+									"host": [
+										"{{EndpointURL}}Shipment"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Details,Details/Allocations,Packages,Packages/PackageContents"
+										},
+										{
+											"key": "$select",
+											"value": "CustomerID,Details/Description,Details/OrderNbr,Details/Allocations/InventoryID,Details/Allocations/LocationID,Details/Allocations/Qty,Details/Allocations/UOM,LocationID,Operation,Packages/BoxID,Packages/PackageContents,Packages/UOM,Packages/Weight,PackageWeight,ShipmentNbr,ShippedQty,Status,WarehouseID"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Creation of a Shipment",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"CustomerID\": {\r\n        \"value\": \"GOODFOOD\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"OrderNbr\": {\r\n                \"value\": \"000071\"\r\n            },\r\n            \"OrderType\": {\r\n                \"value\": \"SO\"\r\n            },\r\n            \"OrderLineNbr\": {\r\n                \"value\": 1\r\n            },\r\n            \"Allocations\": [\r\n                {\r\n                    \"InventoryID\": {\r\n                        \"value\": \"APJAM08\"\r\n                    },\r\n                    \"LocationID\": {\r\n                        \"value\": \"L2R3S1\"\r\n                    },\r\n                    \"Qty\": {\r\n                        \"value\": 1\r\n                    },\r\n                    \"UOM\": {\r\n                        \"value\": \"PIECE\"\r\n                    }\r\n                },\r\n                {\r\n                    \"InventoryID\": {\r\n                        \"value\": \"APJAM08\"\r\n                    },\r\n                    \"LocationID\": {\r\n                        \"value\": \"L3R2S1\"\r\n                    },\r\n                    \"Qty\": {\r\n                        \"value\": 1\r\n                    },\r\n                    \"UOM\": {\r\n                        \"value\": \"PIECE\"\r\n                    }\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"OrderNbr\": {\r\n                \"value\": \"000072\"\r\n            },\r\n            \"OrderType\": {\r\n                \"value\": \"SO\"\r\n            },\r\n            \"OrderLineNbr\": {\r\n                \"value\": 1\r\n            },\r\n            \"Allocations\": [\r\n                {\r\n                    \"InventoryID\": {\r\n                        \"value\": \"APJAM32\"\r\n                    },\r\n                    \"LocationID\": {\r\n                        \"value\": \"L1R3S2\"\r\n                    },\r\n                    \"Qty\": {\r\n                        \"value\": 6\r\n                    },\r\n                    \"UOM\": {\r\n                        \"value\": \"PIECE\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"LocationID\": {\r\n        \"value\": \"MAIN\"\r\n    },\r\n    \"Operation\": {\r\n        \"value\": \"Issue\"\r\n    },\r\n    \"Packages\": [\r\n        {\r\n            \"BoxID\": {\r\n                \"value\": \"LARGE\"\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"KG\"\r\n            },\r\n            \"Weight\": {\r\n                \"value\": 15\r\n            }\r\n        }\r\n    ],\r\n    \"WarehouseID\": {\r\n        \"value\": \"WHOLESALE\"\r\n    }\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Shipment?$expand=Details,Details/Allocations,Packages,Packages/PackageContents&$select=CustomerID,Details/Description,Details/OrderNbr,Details/Allocations/InventoryID,Details/Allocations/LocationID,Details/Allocations/Qty,Details/Allocations/UOM,LocationID,Operation,Packages/BoxID,Packages/PackageContents,Packages/UOM,Packages/Weight,PackageWeight,ShipmentNbr,ShippedQty,Status,WarehouseID",
+											"host": [
+												"{{EndpointURL}}Shipment"
+											],
+											"query": [
+												{
+													"key": "$expand",
+													"value": "Details,Details/Allocations,Packages,Packages/PackageContents"
+												},
+												{
+													"key": "$select",
+													"value": "CustomerID,Details/Description,Details/OrderNbr,Details/Allocations/InventoryID,Details/Allocations/LocationID,Details/Allocations/Qty,Details/Allocations/UOM,LocationID,Operation,Packages/BoxID,Packages/PackageContents,Packages/UOM,Packages/Weight,PackageWeight,ShipmentNbr,ShippedQty,Status,WarehouseID"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=C34018A62898D19D11EB6BA135EA09B0; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:2710+sc:~/entity/default/20.200.001/shipment+start:637485593713369136+tg:; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 10 Feb 2021 13:09:34 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1574"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"b109ea35-a16b-eb11-9dd1-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"CustomerID\": {\n        \"value\": \"GOODFOOD\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"b609ea35-a16b-eb11-9dd1-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Allocations\": [\n                {\n                    \"id\": \"24b8b0ae-4783-4fdd-8e39-fa2bbc0d1cbf\",\n                    \"rowNumber\": 1,\n                    \"note\": null,\n                    \"InventoryID\": {\n                        \"value\": \"APJAM08\"\n                    },\n                    \"LocationID\": {\n                        \"value\": \"L2R3S1\"\n                    },\n                    \"Qty\": {\n                        \"value\": 1\n                    },\n                    \"UOM\": {\n                        \"value\": \"PIECE\"\n                    },\n                    \"custom\": {}\n                },\n                {\n                    \"id\": \"72a221fc-4908-4eb4-ae9e-254df627b6fa\",\n                    \"rowNumber\": 2,\n                    \"note\": null,\n                    \"InventoryID\": {\n                        \"value\": \"APJAM08\"\n                    },\n                    \"LocationID\": {\n                        \"value\": \"L3R2S1\"\n                    },\n                    \"Qty\": {\n                        \"value\": 1\n                    },\n                    \"UOM\": {\n                        \"value\": \"PIECE\"\n                    },\n                    \"custom\": {}\n                }\n            ],\n            \"Description\": {\n                \"value\": \"Apple jam 8 oz.\"\n            },\n            \"OrderLineNbr\": {\n                \"value\": 1\n            },\n            \"OrderNbr\": {\n                \"value\": \"000071\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {}\n        },\n        {\n            \"id\": \"b809ea35-a16b-eb11-9dd1-9828a61840c3\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"Allocations\": [\n                {\n                    \"id\": \"2bbe4202-3a7e-4457-9e50-037df4f29ced\",\n                    \"rowNumber\": 1,\n                    \"note\": null,\n                    \"InventoryID\": {\n                        \"value\": \"APJAM32\"\n                    },\n                    \"LocationID\": {\n                        \"value\": \"L1R3S2\"\n                    },\n                    \"Qty\": {\n                        \"value\": 6\n                    },\n                    \"UOM\": {\n                        \"value\": \"PIECE\"\n                    },\n                    \"custom\": {}\n                }\n            ],\n            \"Description\": {\n                \"value\": \"Apple jam 32 oz\"\n            },\n            \"OrderLineNbr\": {\n                \"value\": 1\n            },\n            \"OrderNbr\": {\n                \"value\": \"000072\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {}\n        }\n    ],\n    \"LocationID\": {\n        \"value\": \"MAIN\"\n    },\n    \"Operation\": {\n        \"value\": \"Issue\"\n    },\n    \"Packages\": [\n        {\n            \"id\": \"b909ea35-a16b-eb11-9dd1-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"BoxID\": {\n                \"value\": \"LARGE\"\n            },\n            \"PackageContents\": [],\n            \"UOM\": {\n                \"value\": \"KG\"\n            },\n            \"Weight\": {\n                \"value\": 15\n            },\n            \"custom\": {}\n        }\n    ],\n    \"PackageWeight\": {\n        \"value\": 15\n    },\n    \"ShipmentNbr\": {\n        \"value\": \"000062\"\n    },\n    \"ShippedQty\": {\n        \"value\": 3\n    },\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"WarehouseID\": {\n        \"value\": \"WHOLESALE\"\n    },\n    \"custom\": {}\n}"
 								}
 							]
 						}
@@ -4106,7 +4764,7 @@
 										}
 									],
 									"cookie": [],
-									"body": null
+									"body": ""
 								}
 							]
 						},
@@ -4206,7 +4864,7 @@
 										}
 									],
 									"cookie": [],
-									"body": null
+									"body": ""
 								}
 							]
 						},
@@ -4555,10 +5213,6 @@
 												"value": "application/json"
 											}
 										],
-										"body": {
-											"mode": "raw",
-											"raw": ""
-										},
 										"url": {
 											"raw": "{{EndpointURL}}TimeEntry?$filter=cf.DateTime(f='Items.Date') ge datetimeoffset'2020-08-17' and cf.DateTime(f='Items.Date') le datetimeoffset'2020-08-18T23%3A59%3A59.999%2B04%3A00'&$select=Date,ProjectID,TimeSpent,BillableTime",
 											"host": [
@@ -4724,6 +5378,213 @@
 						}
 					],
 					"description": "This folder contains examples from the [Customer Relationship Management (REST API Example)](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b8e946bb-26ba-4286-9764-0dbb56ca13bf) chapter of the Integration Development Guide."
+				},
+				{
+					"name": "Organization",
+					"item": [
+						{
+							"name": "Retrieval of Ledgers, Companies, and Branches",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{EndpointURL}}Ledger?$expand=Branches,Companies&$select=LedgerID,Branches/BranchID,Branches/BranchName,Branches/CompanyName,Companies/Company,Companies/CompanyName",
+									"host": [
+										"{{EndpointURL}}Ledger"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Branches,Companies"
+										},
+										{
+											"key": "$select",
+											"value": "LedgerID,Branches/BranchID,Branches/BranchName,Branches/CompanyName,Companies/Company,Companies/CompanyName"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Retrieval of Ledgers, Companies, and Branches",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{EndpointURL}}Ledger?$expand=Branches,Companies&$select=LedgerID,Branches/BranchID,Branches/BranchName,Branches/CompanyName,Companies/Company,Companies/CompanyName",
+											"host": [
+												"{{EndpointURL}}Ledger"
+											],
+											"query": [
+												{
+													"key": "$expand",
+													"value": "Branches,Companies"
+												},
+												{
+													"key": "$select",
+													"value": "LedgerID,Branches/BranchID,Branches/BranchName,Branches/CompanyName,Companies/Company,Companies/CompanyName"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 10 Feb 2021 15:08:58 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "4795"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": \"fea0b6ee-56db-e811-b816-00155d408001\",\n        \"rowNumber\": 1,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Branches\": [\n            {\n                \"id\": \"78498d95-3061-4965-ae42-7091683e6c85\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"BranchID\": {\n                    \"value\": \"HEADOFFICE\"\n                },\n                \"BranchName\": {\n                    \"value\": \"SweetLife Head Office and Wholesale Center\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"SweetLife Fruits & Jams\"\n                },\n                \"custom\": {}\n            },\n            {\n                \"id\": \"0e455b53-79a4-4f3d-809c-72fbd16bff63\",\n                \"rowNumber\": 2,\n                \"note\": null,\n                \"BranchID\": {\n                    \"value\": \"RETAIL\"\n                },\n                \"BranchName\": {\n                    \"value\": \"SweetLife Store\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"SweetLife Fruits & Jams\"\n                },\n                \"custom\": {}\n            },\n            {\n                \"id\": \"e5fcbde9-387f-4cd9-a10d-c70e0de39ade\",\n                \"rowNumber\": 3,\n                \"note\": null,\n                \"BranchID\": {\n                    \"value\": \"SWEETEQUIP\"\n                },\n                \"BranchName\": {\n                    \"value\": \"Service and Equipment Sales Center\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"SweetLife Fruits & Jams\"\n                },\n                \"custom\": {}\n            }\n        ],\n        \"Companies\": [\n            {\n                \"id\": \"039c8ae2-1cbc-4cfe-a56d-6760e5218032\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Company\": {\n                    \"value\": \"SWEETLIFE\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"SweetLife Fruits & Jams\"\n                },\n                \"custom\": {}\n            }\n        ],\n        \"LedgerID\": {\n            \"value\": \"ACTUAL\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"28d0f767-55e3-e811-b816-00155d408001\",\n        \"rowNumber\": 2,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Branches\": [\n            {\n                \"id\": \"34766980-7d52-4c43-9b93-8623030cf312\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"BranchID\": {\n                    \"value\": \"HEADOFFICE\"\n                },\n                \"BranchName\": {\n                    \"value\": \"SweetLife Head Office and Wholesale Center\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"SweetLife Fruits & Jams\"\n                },\n                \"custom\": {}\n            },\n            {\n                \"id\": \"e97e4700-14e9-4df1-b297-127c74c019bc\",\n                \"rowNumber\": 2,\n                \"note\": null,\n                \"BranchID\": {\n                    \"value\": \"MHEAD\"\n                },\n                \"BranchName\": {\n                    \"value\": \"Muffins Head Office & Wholesale Center\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"Muffins & Cakes\"\n                },\n                \"custom\": {}\n            },\n            {\n                \"id\": \"4fb15acc-168b-4fbb-aca1-bb834c8ed5d9\",\n                \"rowNumber\": 3,\n                \"note\": null,\n                \"BranchID\": {\n                    \"value\": \"MRETAIL\"\n                },\n                \"BranchName\": {\n                    \"value\": \"Muffins Retail Shop\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"Muffins & Cakes\"\n                },\n                \"custom\": {}\n            },\n            {\n                \"id\": \"67bfde12-da33-4c83-9918-8013fcdc4bcd\",\n                \"rowNumber\": 4,\n                \"note\": null,\n                \"BranchID\": {\n                    \"value\": \"RETAIL\"\n                },\n                \"BranchName\": {\n                    \"value\": \"SweetLife Store\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"SweetLife Fruits & Jams\"\n                },\n                \"custom\": {}\n            },\n            {\n                \"id\": \"a64a6805-bae6-4b52-ba1d-986b6587903e\",\n                \"rowNumber\": 5,\n                \"note\": null,\n                \"BranchID\": {\n                    \"value\": \"SWEETEQUIP\"\n                },\n                \"BranchName\": {\n                    \"value\": \"Service and Equipment Sales Center\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"SweetLife Fruits & Jams\"\n                },\n                \"custom\": {}\n            }\n        ],\n        \"Companies\": [\n            {\n                \"id\": \"2352d22d-6b32-4e65-b0a9-e53991c00c4a\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Company\": {\n                    \"value\": \"SWEETLIFE\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"SweetLife Fruits & Jams\"\n                },\n                \"custom\": {}\n            },\n            {\n                \"id\": \"9c63e668-0dbd-4a87-b155-a3c3b016f9fe\",\n                \"rowNumber\": 2,\n                \"note\": null,\n                \"Company\": {\n                    \"value\": \"MUFFINS\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"Muffins & Cakes\"\n                },\n                \"custom\": {}\n            }\n        ],\n        \"LedgerID\": {\n            \"value\": \"BUDGET\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"0bedefdf-6125-ea11-b828-00155d408001\",\n        \"rowNumber\": 3,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Branches\": [\n            {\n                \"id\": \"ed80e910-c044-4fc2-95a6-32bf71e41045\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"BranchID\": {\n                    \"value\": \"HEADOFFICE\"\n                },\n                \"BranchName\": {\n                    \"value\": \"SweetLife Head Office and Wholesale Center\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"SweetLife Fruits & Jams\"\n                },\n                \"custom\": {}\n            },\n            {\n                \"id\": \"38259eb4-19b4-4c41-9332-a0ea24c08d23\",\n                \"rowNumber\": 2,\n                \"note\": null,\n                \"BranchID\": {\n                    \"value\": \"RETAIL\"\n                },\n                \"BranchName\": {\n                    \"value\": \"SweetLife Store\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"SweetLife Fruits & Jams\"\n                },\n                \"custom\": {}\n            },\n            {\n                \"id\": \"9b864b8d-ebba-4881-8262-3b33dbeac978\",\n                \"rowNumber\": 3,\n                \"note\": null,\n                \"BranchID\": {\n                    \"value\": \"SWEETEQUIP\"\n                },\n                \"BranchName\": {\n                    \"value\": \"Service and Equipment Sales Center\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"SweetLife Fruits & Jams\"\n                },\n                \"custom\": {}\n            }\n        ],\n        \"Companies\": [\n            {\n                \"id\": \"a68d3ea0-d503-44a1-b1a6-ea9cc547a9c5\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Company\": {\n                    \"value\": \"SWEETLIFE\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"SweetLife Fruits & Jams\"\n                },\n                \"custom\": {}\n            }\n        ],\n        \"LedgerID\": {\n            \"value\": \"HEADCOUNT\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"75a27336-3405-e911-b818-00155d408001\",\n        \"rowNumber\": 4,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Branches\": [\n            {\n                \"id\": \"06fa9a9c-4c29-4b6b-a705-c63f19b437b8\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"BranchID\": {\n                    \"value\": \"MHEAD\"\n                },\n                \"BranchName\": {\n                    \"value\": \"Muffins Head Office & Wholesale Center\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"Muffins & Cakes\"\n                },\n                \"custom\": {}\n            },\n            {\n                \"id\": \"eb518949-0d79-4199-ae9c-2ed9d3e2c793\",\n                \"rowNumber\": 2,\n                \"note\": null,\n                \"BranchID\": {\n                    \"value\": \"MRETAIL\"\n                },\n                \"BranchName\": {\n                    \"value\": \"Muffins Retail Shop\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"Muffins & Cakes\"\n                },\n                \"custom\": {}\n            }\n        ],\n        \"Companies\": [\n            {\n                \"id\": \"2c039aa6-c35d-4bc3-b848-48e02bd2a435\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Company\": {\n                    \"value\": \"MUFFINS\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"Muffins & Cakes\"\n                },\n                \"custom\": {}\n            }\n        ],\n        \"LedgerID\": {\n            \"value\": \"MACTUAL\"\n        },\n        \"custom\": {}\n    },\n    {\n        \"id\": \"45ee9696-5110-eb11-b835-00155d408001\",\n        \"rowNumber\": 5,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Branches\": [\n            {\n                \"id\": \"45427424-875d-4d06-a4fa-5a58fb46f466\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"BranchID\": {\n                    \"value\": \"TBGROUP\"\n                },\n                \"BranchName\": {\n                    \"value\": \"ToadGreen Building Group\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"ToadGreen Building Group\"\n                },\n                \"custom\": {}\n            }\n        ],\n        \"Companies\": [\n            {\n                \"id\": \"0935e0d2-72f3-4917-8c8a-400473ede935\",\n                \"rowNumber\": 1,\n                \"note\": null,\n                \"Company\": {\n                    \"value\": \"TOADGREEN\"\n                },\n                \"CompanyName\": {\n                    \"value\": \"ToadGreen Building Group\"\n                },\n                \"custom\": {}\n            }\n        ],\n        \"LedgerID\": {\n            \"value\": \"TOADGREEN\"\n        },\n        \"custom\": {}\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Retrieval of Companies Structure",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}CompaniesStructure?$expand=Results",
+									"host": [
+										"{{EndpointURL}}CompaniesStructure"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Results"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Retrieval of Companies Structure",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}CompaniesStructure?$expand=Results",
+											"host": [
+												"{{EndpointURL}}CompaniesStructure"
+											],
+											"query": [
+												{
+													"key": "$expand",
+													"value": "Results"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=C34018A62898D29D11EB6C738D5F0489; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:2453+sc:~/entity/default/20.200.001/companiesstructure+start:637486497123785481+tg:; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 11 Feb 2021 14:15:14 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "2727"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"ca26a0e2-0301-4aed-8784-2021283c343e\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Results\": [\n        {\n            \"id\": \"1c54b58b-54db-e811-b816-00155d408001\",\n            \"rowNumber\": 1,\n            \"note\": {\n                \"value\": \"\"\n            },\n            \"BaseCurrencyID\": {\n                \"value\": \"USD\"\n            },\n            \"BranchCountry\": {\n                \"value\": \"US\"\n            },\n            \"BranchID\": {\n                \"value\": \"RETAIL\"\n            },\n            \"BranchName\": {\n                \"value\": \"SweetLife Store\"\n            },\n            \"BranchStatus\": {\n                \"value\": true\n            },\n            \"CompanyID\": {\n                \"value\": \"SWEETLIFE\"\n            },\n            \"CompanyName\": {\n                \"value\": \"SweetLife Fruits & Jams\"\n            },\n            \"CompanyStatus\": {\n                \"value\": true\n            },\n            \"CompanyType\": {\n                \"value\": \"With Branches Not Requiring Balancing\"\n            },\n            \"custom\": {}\n        },\n        {\n            \"id\": \"1c54b58b-54db-e811-b816-00155d408001\",\n            \"rowNumber\": 2,\n            \"note\": {\n                \"value\": \"\"\n            },\n            \"BaseCurrencyID\": {\n                \"value\": \"USD\"\n            },\n            \"BranchCountry\": {\n                \"value\": \"US\"\n            },\n            \"BranchID\": {\n                \"value\": \"HEADOFFICE\"\n            },\n            \"BranchName\": {\n                \"value\": \"SweetLife Head Office and Wholesale Center\"\n            },\n            \"BranchStatus\": {\n                \"value\": true\n            },\n            \"CompanyID\": {\n                \"value\": \"SWEETLIFE\"\n            },\n            \"CompanyName\": {\n                \"value\": \"SweetLife Fruits & Jams\"\n            },\n            \"CompanyStatus\": {\n                \"value\": true\n            },\n            \"CompanyType\": {\n                \"value\": \"With Branches Not Requiring Balancing\"\n            },\n            \"custom\": {}\n        },\n        {\n            \"id\": \"1c54b58b-54db-e811-b816-00155d408001\",\n            \"rowNumber\": 3,\n            \"note\": {\n                \"value\": \"\"\n            },\n            \"BaseCurrencyID\": {\n                \"value\": \"USD\"\n            },\n            \"BranchCountry\": {\n                \"value\": \"US\"\n            },\n            \"BranchID\": {\n                \"value\": \"SWEETEQUIP\"\n            },\n            \"BranchName\": {\n                \"value\": \"Service and Equipment Sales Center\"\n            },\n            \"BranchStatus\": {\n                \"value\": true\n            },\n            \"CompanyID\": {\n                \"value\": \"SWEETLIFE\"\n            },\n            \"CompanyName\": {\n                \"value\": \"SweetLife Fruits & Jams\"\n            },\n            \"CompanyStatus\": {\n                \"value\": true\n            },\n            \"CompanyType\": {\n                \"value\": \"With Branches Not Requiring Balancing\"\n            },\n            \"custom\": {}\n        },\n        {\n            \"id\": \"f935876a-3405-e911-b818-00155d408001\",\n            \"rowNumber\": 4,\n            \"note\": null,\n            \"BaseCurrencyID\": {\n                \"value\": \"USD\"\n            },\n            \"BranchCountry\": {},\n            \"BranchID\": {\n                \"value\": \"MHEAD\"\n            },\n            \"BranchName\": {\n                \"value\": \"Muffins Head Office & Wholesale Center\"\n            },\n            \"BranchStatus\": {\n                \"value\": true\n            },\n            \"CompanyID\": {\n                \"value\": \"MUFFINS\"\n            },\n            \"CompanyName\": {\n                \"value\": \"Muffins & Cakes\"\n            },\n            \"CompanyStatus\": {\n                \"value\": true\n            },\n            \"CompanyType\": {\n                \"value\": \"With Branches Requiring Balancing\"\n            },\n            \"custom\": {}\n        },\n        {\n            \"id\": \"f935876a-3405-e911-b818-00155d408001\",\n            \"rowNumber\": 5,\n            \"note\": null,\n            \"BaseCurrencyID\": {\n                \"value\": \"USD\"\n            },\n            \"BranchCountry\": {},\n            \"BranchID\": {\n                \"value\": \"MRETAIL\"\n            },\n            \"BranchName\": {\n                \"value\": \"Muffins Retail Shop\"\n            },\n            \"BranchStatus\": {\n                \"value\": true\n            },\n            \"CompanyID\": {\n                \"value\": \"MUFFINS\"\n            },\n            \"CompanyName\": {\n                \"value\": \"Muffins & Cakes\"\n            },\n            \"CompanyStatus\": {\n                \"value\": true\n            },\n            \"CompanyType\": {\n                \"value\": \"With Branches Requiring Balancing\"\n            },\n            \"custom\": {}\n        },\n        {\n            \"id\": \"a5ac5eb0-5010-eb11-b835-00155d408001\",\n            \"rowNumber\": 6,\n            \"note\": null,\n            \"BaseCurrencyID\": {\n                \"value\": \"USD\"\n            },\n            \"BranchCountry\": {\n                \"value\": \"US\"\n            },\n            \"BranchID\": {\n                \"value\": \"TBGROUP\"\n            },\n            \"BranchName\": {\n                \"value\": \"ToadGreen Building Group\"\n            },\n            \"BranchStatus\": {\n                \"value\": true\n            },\n            \"CompanyID\": {\n                \"value\": \"TOADGREEN\"\n            },\n            \"CompanyName\": {\n                \"value\": \"ToadGreen Building Group\"\n            },\n            \"CompanyStatus\": {\n                \"value\": true\n            },\n            \"CompanyType\": {\n                \"value\": \"With Branches Not Requiring Balancing\"\n            },\n            \"custom\": {}\n        }\n    ],\n    \"custom\": {}\n}"
+								}
+							]
+						}
+					]
 				}
 			],
 			"description": "This folder contains examples from the [Contract-Based API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide.",
