@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d6869b92-2db9-4255-8ec3-ecf038c4c177",
+		"_postman_id": "c78e5367-62b6-484a-a5bf-f46a4dfc2cc6",
 		"name": "Integration Development Guide",
 		"description": "This collection contains examples from the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n - Deploy a new Acumatica ERP instance with the U100 dataset. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n - Specify the URL of the instance in the BaseURL variable of the collection. The EndpointURL variable uses the value from the BaseURL variable and specifies the URL of the Default/20.200.001 endpoint. You do not need to change this variable until you want to use another endpoint.\n - To sign in to the instance in the client application, use the tenant name (which you specified when you created the instance) and the HEADOFFICE branch.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -1997,7 +1997,8 @@
 											"value": "Branch,CurrencyID,Details/ExtendedCost,Details/InventoryID,Details/LineDescription,Details/OrderNbr,Details/OrderQty,Details/UnitCost,Details/UOM,Details/WarehouseID,Location,OrderNbr,OrderTotal,Status,Type,VendorID"
 										}
 									]
-								}
+								},
+								"description": "This example shows how to create a purchase order. This process is described in [Creation of a Purchase Order and Purchase Receipt](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=81e5ec25-09f7-421a-8f80-01b6b71d38c9)."
 							},
 							"response": [
 								{
@@ -2106,7 +2107,8 @@
 											"value": "OrderNbr,OrderTotal,Status,Type,VendorID"
 										}
 									]
-								}
+								},
+								"description": "This example shows how to release a purchase order from hold. This process is described in [Creation of a Purchase Order and Purchase Receipt](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=81e5ec25-09f7-421a-8f80-01b6b71d38c9)."
 							},
 							"response": [
 								{
@@ -2215,7 +2217,8 @@
 											"value": "Branch,ControlQty,CreateBill,CurrencyID,Details/InventoryID,Details/POOrderNbr,Details/POOrderType,Details/ReceiptQty,Details/TransactionDescription,Details/UnitCost,Details/UOM,Details/Warehouse,Hold,Location,ReceiptNbr,Status,TotalCost,VendorID"
 										}
 									]
-								}
+								},
+								"description": "This example shows how to create a purchase receipt from a purchase order. This process is described in [Creation of a Purchase Order and Purchase Receipt](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=81e5ec25-09f7-421a-8f80-01b6b71d38c9)."
 							},
 							"response": [
 								{
@@ -2670,7 +2673,8 @@
 											"value": "CustomerID,Details/Branch,Details/InventoryID,Details/OrderQty,OrderNbr"
 										}
 									]
-								}
+								},
+								"description": "This example shows how to create a sales order. This process is described in [Creation of a Shipment with Allocations and Package](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=f8ef40fd-5a93-4e39-a52b-e827355cb5b8)."
 							},
 							"response": [
 								{
@@ -2783,7 +2787,8 @@
 											"value": "CustomerID,Details/Branch,Details/InventoryID,Details/OrderQty,OrderNbr"
 										}
 									]
-								}
+								},
+								"description": "This example shows how to create a sales order. This process is described in [Creation of a Shipment with Allocations and Package](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=f8ef40fd-5a93-4e39-a52b-e827355cb5b8)."
 							},
 							"response": [
 								{
@@ -2896,7 +2901,8 @@
 											"value": "CustomerID,Details/Description,Details/OrderNbr,Details/Allocations/InventoryID,Details/Allocations/LocationID,Details/Allocations/Qty,Details/Allocations/UOM,LocationID,Operation,Packages/BoxID,Packages/PackageContents,Packages/UOM,Packages/Weight,PackageWeight,ShipmentNbr,ShippedQty,Status,WarehouseID"
 										}
 									]
-								}
+								},
+								"description": "This example shows how to create a shipment with allocations and package. This process is described in [Creation of a Shipment with Allocations and Package](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=f8ef40fd-5a93-4e39-a52b-e827355cb5b8)."
 							},
 							"response": [
 								{
@@ -2973,6 +2979,35 @@
 									"body": "{\n    \"id\": \"b109ea35-a16b-eb11-9dd1-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"CustomerID\": {\n        \"value\": \"GOODFOOD\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"b609ea35-a16b-eb11-9dd1-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Allocations\": [\n                {\n                    \"id\": \"24b8b0ae-4783-4fdd-8e39-fa2bbc0d1cbf\",\n                    \"rowNumber\": 1,\n                    \"note\": null,\n                    \"InventoryID\": {\n                        \"value\": \"APJAM08\"\n                    },\n                    \"LocationID\": {\n                        \"value\": \"L2R3S1\"\n                    },\n                    \"Qty\": {\n                        \"value\": 1\n                    },\n                    \"UOM\": {\n                        \"value\": \"PIECE\"\n                    },\n                    \"custom\": {}\n                },\n                {\n                    \"id\": \"72a221fc-4908-4eb4-ae9e-254df627b6fa\",\n                    \"rowNumber\": 2,\n                    \"note\": null,\n                    \"InventoryID\": {\n                        \"value\": \"APJAM08\"\n                    },\n                    \"LocationID\": {\n                        \"value\": \"L3R2S1\"\n                    },\n                    \"Qty\": {\n                        \"value\": 1\n                    },\n                    \"UOM\": {\n                        \"value\": \"PIECE\"\n                    },\n                    \"custom\": {}\n                }\n            ],\n            \"Description\": {\n                \"value\": \"Apple jam 8 oz.\"\n            },\n            \"OrderLineNbr\": {\n                \"value\": 1\n            },\n            \"OrderNbr\": {\n                \"value\": \"000071\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {}\n        },\n        {\n            \"id\": \"b809ea35-a16b-eb11-9dd1-9828a61840c3\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"Allocations\": [\n                {\n                    \"id\": \"2bbe4202-3a7e-4457-9e50-037df4f29ced\",\n                    \"rowNumber\": 1,\n                    \"note\": null,\n                    \"InventoryID\": {\n                        \"value\": \"APJAM32\"\n                    },\n                    \"LocationID\": {\n                        \"value\": \"L1R3S2\"\n                    },\n                    \"Qty\": {\n                        \"value\": 6\n                    },\n                    \"UOM\": {\n                        \"value\": \"PIECE\"\n                    },\n                    \"custom\": {}\n                }\n            ],\n            \"Description\": {\n                \"value\": \"Apple jam 32 oz\"\n            },\n            \"OrderLineNbr\": {\n                \"value\": 1\n            },\n            \"OrderNbr\": {\n                \"value\": \"000072\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {}\n        }\n    ],\n    \"LocationID\": {\n        \"value\": \"MAIN\"\n    },\n    \"Operation\": {\n        \"value\": \"Issue\"\n    },\n    \"Packages\": [\n        {\n            \"id\": \"b909ea35-a16b-eb11-9dd1-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"BoxID\": {\n                \"value\": \"LARGE\"\n            },\n            \"PackageContents\": [],\n            \"UOM\": {\n                \"value\": \"KG\"\n            },\n            \"Weight\": {\n                \"value\": 15\n            },\n            \"custom\": {}\n        }\n    ],\n    \"PackageWeight\": {\n        \"value\": 15\n    },\n    \"ShipmentNbr\": {\n        \"value\": \"000062\"\n    },\n    \"ShippedQty\": {\n        \"value\": 3\n    },\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"WarehouseID\": {\n        \"value\": \"WHOLESALE\"\n    },\n    \"custom\": {}\n}"
 								}
 							]
+						},
+						{
+							"name": "Creation of a Purchase Receipt in Non-Base Currency",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Type\": {\"value\": \"Receipt\"},\r\n    \"VendorID\": {\"value\": \"ACITAISYST\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"CurrencyID\": {\"value\": \"EUR\"},\r\n    \"CurrencyRate\": {\"value\": \"1.2\"},\r\n    \"Description\": {\"value\": \"Test receipt in non-base currency and with new cost fields\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE \"},\r\n            \"InventoryID\": {\"value\": \"FOODBREAD\"},\r\n            \"ReceiptQty\": {\"value\": 1.0},\r\n            \"ExpirationDate\": {\"value\": \"2021-04-25\"},\r\n            \"UnitCost\": {\"value\": \"111\"},\r\n            \"ExtendedCost\": {\"value\": \"333\"}\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}PurchaseReceipt",
+									"host": [
+										"{{EndpointURL}}PurchaseReceipt"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"description": "This folder contains examples from the [Inventory and Order Management (REST API Examples)](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ce68a4ed-491c-46e6-91ec-bde332c19218) chapter of the Integration Development Guide.",
@@ -5413,7 +5448,8 @@
 											"value": "LedgerID,Branches/BranchID,Branches/BranchName,Branches/CompanyName,Companies/Company,Companies/CompanyName"
 										}
 									]
-								}
+								},
+								"description": "This example shows how to retrieve available ledgers, companies, and branches. This process is described in [Retrieval of Ledgers, Companies, and Branches](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=d8d9b99f-019c-410c-a49e-d90a5b813809)."
 							},
 							"response": [
 								{
@@ -5510,7 +5546,8 @@
 											"value": "Results"
 										}
 									]
-								}
+								},
+								"description": "This example shows how to retrieve available companies and branches. This process is described in [Retrieval of Ledgers, Companies, and Branches](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=d8d9b99f-019c-410c-a49e-d90a5b813809)."
 							},
 							"response": [
 								{
@@ -5584,7 +5621,8 @@
 								}
 							]
 						}
-					]
+					],
+					"description": "This folder contains examples from the [Organization Management (REST API Example)](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=afa51ca5-37ae-4d7e-aa36-761779ca9320) chapter of the Integration Development Guide."
 				}
 			],
 			"description": "This folder contains examples from the [Contract-Based API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide.",
