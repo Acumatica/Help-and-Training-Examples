@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2ee86a1e-4cbf-4852-8f6d-f1f0cf228fe1",
+		"_postman_id": "0ebed0f9-aa6e-49bc-9169-ef9b9d8d081d",
 		"name": "Integration Development Guide",
 		"description": "This collection contains examples from the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n - Deploy a new Acumatica ERP instance with the U100 dataset. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n - Specify the URL of the instance in the BaseURL variable of the collection. The EndpointURL variable uses the value from the BaseURL variable and specifies the URL of the Default/20.200.001 endpoint. You do not need to change this variable until you want to use another endpoint.\n - To sign in to the instance in the client application, use the tenant name (which you specified when you created the instance) and the HEADOFFICE branch.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -5508,7 +5508,8 @@
 											"value": "CustomerClass,CustomerID,ShippingAddressOverride,ShippingContactOverride"
 										}
 									]
-								}
+								},
+								"description": "This example shows how to retrieve a list of customers in an optimized way in Acumatica ERP. This process is described in [Retrieval of Customers in an Optimized Way](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ec1757e2-90dc-492a-9439-068175bbb520)."
 							},
 							"response": [
 								{
