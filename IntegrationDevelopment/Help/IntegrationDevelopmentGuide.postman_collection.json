@@ -1303,7 +1303,7 @@
 								"ReopenSalesOrder"
 							]
 						},
-						"description": "This example shows the release of a sales order invoice, which is described in [Execution of an Action](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=91bf9106-062a-47a8-be1f-b48517a54324)."
+						"description": "This example shows the re-opening of a sales order, which is described in [Execution of an Action](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=91bf9106-062a-47a8-be1f-b48517a54324)."
 					},
 					"response": [
 						{
@@ -5477,7 +5477,7 @@
 							]
 						},
 						{
-							"name": "Retrieval of Customers in Optimized Way",
+							"name": "Retrieval of the List of Customers",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -5513,7 +5513,7 @@
 							},
 							"response": [
 								{
-									"name": "Retrieval of Customers in Optimized Way",
+									"name": "Retrieval of the List of Customers",
 									"originalRequest": {
 										"method": "GET",
 										"header": [
@@ -5583,7 +5583,7 @@
 					"name": "Organization",
 					"item": [
 						{
-							"name": "Retrieval of Ledgers, Companies, and Branches",
+							"name": "Retrieval of Ledgers, Companies, and Branches 1",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -5618,7 +5618,7 @@
 							},
 							"response": [
 								{
-									"name": "Retrieval of Ledgers, Companies, and Branches",
+									"name": "Retrieval of Ledgers, Companies, and Branches 1",
 									"originalRequest": {
 										"method": "GET",
 										"header": [
@@ -5681,7 +5681,7 @@
 							]
 						},
 						{
-							"name": "Retrieval of Companies Structure",
+							"name": "Retrieval of Ledgers, Companies, and Branches 2: Retrieval of Companies Structure",
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -5716,7 +5716,7 @@
 							},
 							"response": [
 								{
-									"name": "Retrieval of Companies Structure",
+									"name": "Retrieval of Ledgers, Companies, and Branches 2: Retrieval of Companies Structure",
 									"originalRequest": {
 										"method": "PUT",
 										"header": [
