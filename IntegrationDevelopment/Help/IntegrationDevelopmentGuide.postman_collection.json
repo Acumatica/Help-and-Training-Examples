@@ -1963,7 +1963,7 @@
 					"name": "Inventory and Order Management",
 					"item": [
 						{
-							"name": "Creation of a Purchase Order",
+							"name": "Creation of a Purchase Order and Purchase Receipt 1: Creation of a Purchase Order",
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -2002,7 +2002,7 @@
 							},
 							"response": [
 								{
-									"name": "Creation of a Purchase Order",
+									"name": "Creation of a Purchase Order and Purchase Receipt 1: Creation of a Purchase Order",
 									"originalRequest": {
 										"method": "PUT",
 										"header": [
@@ -2077,7 +2077,7 @@
 							]
 						},
 						{
-							"name": "Update of a Purchase Order",
+							"name": "Creation of a Purchase Order and Purchase Receipt 2: Update of a Purchase Order",
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -2112,7 +2112,7 @@
 							},
 							"response": [
 								{
-									"name": "Update of a Purchase Order",
+									"name": "Creation of a Purchase Order and Purchase Receipt 2: Update of a Purchase Order",
 									"originalRequest": {
 										"method": "PUT",
 										"header": [
@@ -2183,7 +2183,7 @@
 							]
 						},
 						{
-							"name": "Creation of a Purchase Receipt",
+							"name": "Creation of a Purchase Order and Purchase Receipt 3: Creation of a Purchase Receipt",
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -2222,7 +2222,7 @@
 							},
 							"response": [
 								{
-									"name": "Creation of a Purchase Receipt",
+									"name": "Creation of a Purchase Order and Purchase Receipt 3: Creation of a Purchase Receipt",
 									"originalRequest": {
 										"method": "PUT",
 										"header": [
@@ -2639,7 +2639,7 @@
 							]
 						},
 						{
-							"name": "Creation of Sales Order 1",
+							"name": "Creation of a Shipment with Allocations and Package 1: Creation of Sales Order 1",
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -2678,7 +2678,7 @@
 							},
 							"response": [
 								{
-									"name": "Creation of Sales Order 1",
+									"name": "Creation of a Shipment with Allocations and Package 1: Creation of Sales Order 1",
 									"originalRequest": {
 										"method": "PUT",
 										"header": [
@@ -2753,7 +2753,7 @@
 							]
 						},
 						{
-							"name": "Creation of Sales Order 2",
+							"name": "Creation of a Shipment with Allocations and Package 2: Creation of Sales Order 2",
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -2792,7 +2792,7 @@
 							},
 							"response": [
 								{
-									"name": "Creation of Sales Order 2",
+									"name": "Creation of a Shipment with Allocations and Package 2: Creation of Sales Order 2",
 									"originalRequest": {
 										"method": "PUT",
 										"header": [
@@ -2867,7 +2867,7 @@
 							]
 						},
 						{
-							"name": "Creation of a Shipment",
+							"name": "Creation of a Shipment with Allocations and Package 3: Creation of a Shipment",
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -2906,7 +2906,7 @@
 							},
 							"response": [
 								{
-									"name": "Creation of a Shipment",
+									"name": "Creation of a Shipment with Allocations and Package 3: Creation of a Shipment",
 									"originalRequest": {
 										"method": "PUT",
 										"header": [
