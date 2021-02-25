@@ -10,7 +10,7 @@
 			"name": "Part 1: Client Application Configuration",
 			"item": [
 				{
-					"name": "Lesson 1.2: Signing in to Acumatica ERP",
+					"name": "Lesson 1.1: Signing in to Acumatica ERP",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -27,7 +27,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"admin\",\r\n  \"password\": \"123\",\r\n  \"company\": \"MyStore\",\r\n  \"branch\": \"MYSTORE\"\r\n}"
+							"raw": "{\r\n  \"name\": \"admin\",\r\n  \"password\": \"123\",\r\n  \"tenant\": \"MyStore\",\r\n  \"branch\": \"MYSTORE\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost/MyStoreInstance/entity/auth/login",
@@ -45,7 +45,7 @@
 					},
 					"response": [
 						{
-							"name": "Lesson 1.2: Signing in to Acumatica ERP",
+							"name": "Lesson 1.1: Signing in to Acumatica ERP",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -62,7 +62,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"name\": \"admin\",\r\n  \"password\": \"123\",\r\n  \"company\": \"MyStore\",\r\n  \"branch\": \"MYSTORE\"\r\n}"
+									"raw": "{\r\n  \"name\": \"admin\",\r\n  \"password\": \"123\",\r\n  \"tenant\": \"MyStore\",\r\n  \"branch\": \"MYSTORE\"\r\n}"
 								},
 								"url": {
 									"raw": "http://localhost/MyStoreInstance/entity/auth/login",
@@ -88,7 +88,7 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "ASP.NET_SessionId=vuipr2mdx1qjh0z34dlpsjm1; path=/; HttpOnly; SameSite=Lax"
+									"value": "ASP.NET_SessionId=nhonb20fipjpji5pvdf3b5vu; path=/; HttpOnly; SameSite=Lax"
 								},
 								{
 									"key": "Set-Cookie",
@@ -96,15 +96,15 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Sun, 21-Feb-2021 12:53:50 GMT; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Sat, 27-Feb-2021 14:10:10 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": ".ASPXAUTH=9D22B0557E01845F627530AB54E490E9D6381C818C5C293BEBBCE592D7E3CA119C20451A64142B1E28CD22A5F9D4737416F52F37A5961225EBE903790C7EA7ED1B4A3E8A935A4884165E0A4866587A47EE84F3403F85230472F8D285CDA7B2E7BE8DB2437F718D4C4D33123945E9C338BCF157FF; path=/; HttpOnly"
+									"value": ".ASPXAUTH=4A3B448F0CA8BB26EBF079A9CC3D4B7B7D585D31D9C416449B9AA06CC45944C9351BCDB7FE4FEE38375E55F2BF960952E9F9167AF0FD2F3C316FA822C276841CCAE0A764AF3070A63E403B453926B5F6BA356B4DBB225A567A9118B7C1D15B600636D124B4108DD5AAEBBA4E8EC15DEEBA90304F; path=/; HttpOnly"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "ASP.NET_SessionId=vuipr2mdx1qjh0z34dlpsjm1; path=/; HttpOnly; SameSite=Lax"
+									"value": "ASP.NET_SessionId=nhonb20fipjpji5pvdf3b5vu; path=/; HttpOnly; SameSite=Lax"
 								},
 								{
 									"key": "Set-Cookie",
@@ -112,23 +112,23 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Sun, 21-Feb-2021 12:53:50 GMT; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Sat, 27-Feb-2021 14:10:10 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": ".ASPXAUTH=9D22B0557E01845F627530AB54E490E9D6381C818C5C293BEBBCE592D7E3CA119C20451A64142B1E28CD22A5F9D4737416F52F37A5961225EBE903790C7EA7ED1B4A3E8A935A4884165E0A4866587A47EE84F3403F85230472F8D285CDA7B2E7BE8DB2437F718D4C4D33123945E9C338BCF157FF; path=/; HttpOnly"
+									"value": ".ASPXAUTH=4A3B448F0CA8BB26EBF079A9CC3D4B7B7D585D31D9C416449B9AA06CC45944C9351BCDB7FE4FEE38375E55F2BF960952E9F9167AF0FD2F3C316FA822C276841CCAE0A764AF3070A63E403B453926B5F6BA356B4DBB225A567A9118B7C1D15B600636D124B4108DD5AAEBBA4E8EC15DEEBA90304F; path=/; HttpOnly"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requestid=C34018A62898D39D11EB71E8583FD4FC; path=/"
+									"value": "requestid=C34018A62898D39D11EB76A9FA8E5CC7; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requeststat=+st:778+sc:~/entity/auth/login+start:637492496302002328+tg:; path=/"
+									"value": "requeststat=+st:3693+sc:~/entity/auth/login+start:637497726067192587+tg:; path=/"
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 18 Feb 2021 12:53:50 GMT"
+									"value": "Wed, 24 Feb 2021 14:10:36 GMT"
 								}
 							],
 							"cookie": [],
@@ -137,7 +137,7 @@
 					]
 				},
 				{
-					"name": "Lesson 1.2: Signing out from Acumatica ERP",
+					"name": "Lesson 1.1: Signing out from Acumatica ERP",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -172,7 +172,7 @@
 					},
 					"response": [
 						{
-							"name": "Lesson 1.2: Signing out from Acumatica ERP",
+							"name": "Lesson 1.1: Signing out from Acumatica ERP",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
