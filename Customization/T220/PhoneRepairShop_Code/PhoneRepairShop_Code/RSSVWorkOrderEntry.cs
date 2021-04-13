@@ -1,22 +1,23 @@
-using System;
+﻿using System.Collections;
 using PX.Data;
+using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
 using PX.Objects.IN;
-using PX.Data.BQL;
-using System.Linq;
 
 namespace PhoneRepairShop
 {
     public class RSSVWorkOrderEntry : PXGraph<RSSVWorkOrderEntry, RSSVWorkOrder>
     {
         #region Views
-        //The primary view for the Summary area of the form
+
+        //The primary view
         public SelectFrom<RSSVWorkOrder>.View WorkOrders;
 
         //The view for the Repair Items tab
         public SelectFrom<RSSVWorkOrderItem>.
             Where<RSSVWorkOrderItem.orderNbr.IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
             RepairItems;
+
         //The view for the Labor tab
         public SelectFrom<RSSVWorkOrderLabor>.
             Where<RSSVWorkOrderLabor.orderNbr.IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
@@ -24,17 +25,33 @@ namespace PhoneRepairShop
 
         //The view for the auto-numbering of records
         public PXSetup<RSSVSetup> AutoNumSetup;
+
+        #endregion
+
+        #region Actions
+
+        public PXAction<RSSVWorkOrder> putOnHold;
+        [PXButton(CommitChanges = true), PXUIField(DisplayName = "Hold", MapEnableRights = PXCacheRights.Select, MapViewRights = PXCacheRights.Select)]
+        protected virtual IEnumerable PutOnHold(PXAdapter adapter) => adapter.Get();
+
+        public PXAction<RSSVWorkOrder> releaseFromHold;
+        [PXButton(CommitChanges = true), PXUIField(DisplayName = "Remove Hold", MapEnableRights = PXCacheRights.Select, MapViewRights = PXCacheRights.Select)]
+        protected virtual IEnumerable ReleaseFromHold(PXAdapter adapter) => adapter.Get();
+
         #endregion
 
         #region Constructors
+        
         //The graph constructor
         public RSSVWorkOrderEntry()
         {
             RSSVSetup setup = AutoNumSetup.Current;
         }
+
         #endregion
 
-        #region Events
+        #region Events 
+
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
         {
@@ -107,40 +124,10 @@ namespace PhoneRepairShop
             }
         }
 
-        //Change the status based on whether the Hold check box is selected or cleared.
-        protected virtual void _(Events.FieldUpdated<RSSVWorkOrder, RSSVWorkOrder.hold> e)
-        {
-            //If Hold is selected, change the status to On Hold
-            if (e.Row.Hold == true)
-            {
-                e.Row.Status = WorkOrderStatusConstants.OnHold;
-            }
-            else if (e.Row.ServiceID != null)
-            {
-                RSSVRepairService service = PXSelectorAttribute.Select<RSSVWorkOrder.serviceID>(
-                    e.Cache, e.Row) as RSSVRepairService;
-
-                //If Hold is cleared, specify the status 
-                // depending on the Prepayment field of the service
-                if (service != null)
-                {
-                    string newStatus;
-                    if (service.Prepayment == true)
-                    {
-                        newStatus = WorkOrderStatusConstants.PendingPayment;
-                    }
-                    else
-                    {
-                        newStatus = WorkOrderStatusConstants.ReadyForAssignment;
-                    }
-                    e.Row.Status = newStatus;
-                }
-            }
-        }
-
         //Validate that Quantity is greater than or equal to 0 and
         //correct the value to the default if the value is less than the default.
-        protected virtual void _(Events.FieldVerifying<RSSVWorkOrderLabor, RSSVWorkOrderLabor.quantity> e)
+        protected virtual void _(Events.FieldVerifying<RSSVWorkOrderLabor,
+          RSSVWorkOrderLabor.quantity> e)
         {
             if (e.Row == null || e.NewValue == null) return;
 
@@ -180,52 +167,31 @@ namespace PhoneRepairShop
             // The data record that is stored in the cache
             RSSVWorkOrder originalRow = e.Row;
 
-            if (!e.Cache.ObjectsEqual<RSSVWorkOrder.hold, RSSVWorkOrder.status>(row, originalRow))
+            if (!e.Cache.ObjectsEqual<RSSVWorkOrder.priority, RSSVWorkOrder.serviceID>(row, originalRow))
             {
-                if (row.Status == WorkOrderStatusConstants.PendingPayment ||
-                    row.Status == WorkOrderStatusConstants.ReadyForAssignment)
+                if (row.Priority == WorkOrderPriorityConstants.Low)
                 {
-                    //Select the required repair items for this service and device
-                    PXResultset<RSSVRepairItem> repairItems = SelectFrom<RSSVRepairItem>.
-                        Where<RSSVRepairItem.serviceID.IsEqual<RSSVWorkOrder.serviceID.FromCurrent>.
-                            And<RSSVRepairItem.deviceID.IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>.
-                            And<RSSVRepairItem.required.IsEqual<True>>>.
-                        AggregateTo<GroupBy<RSSVRepairItem.repairItemType>>.View.Select(this);
+                    //Obtain the service record
+                    RSSVRepairService service = SelectFrom<RSSVRepairService>.
+                        Where<RSSVRepairService.serviceID.IsEqual<@P.AsInt>>.View.Select(this, row.ServiceID);
 
-                    foreach (RSSVRepairItem line in repairItems)
+                    if (service != null && service.PreliminaryCheck == true)
                     {
-                        //Check whether at least one repair item of the required type
-                        // exists in the work order.
-                        var workOrderItemsExist = RepairItems.Select().AsEnumerable()
-                            .Any(item => item.GetItem<RSSVWorkOrderItem>().RepairItemType
-                                == line.RepairItemType);
+                        //Display the error for the priority field.
+                        WorkOrders.Cache.RaiseExceptionHandling<RSSVWorkOrder.priority>(row,
+                            originalRow.Priority,
+                            new PXSetPropertyException(Messages.PriorityTooLow));
 
-                        if (!workOrderItemsExist)
-                        {
-                            //Obtain the attribute assigned to 
-                            // the RSSVWorkOrderItem.RepairItemType field.
-                            var stringListAttribute = RepairItems.Cache
-                                .GetAttributesReadonly<RSSVWorkOrderItem.repairItemType>()
-                                .OfType<PXStringListAttribute>()
-                                .SingleOrDefault();
-                            //Obtain the label that corresponds to the required repair item type.
-                            stringListAttribute.ValueLabelDic.TryGetValue(line.RepairItemType,
-                                out string label);
-                            //Display the error for the status field.
-                            WorkOrders.Cache.RaiseExceptionHandling<RSSVWorkOrder.status>(row,
-                                originalRow.Status,
-                                new PXSetPropertyException(Messages.NoRequiredItem, label));
-
-                            //Cancel the change of the status.
-                            e.Cancel = true;
-
-                            break;
-                        }
+                        //Assign the proper priority
+                        e.NewRow.Priority = WorkOrderPriorityConstants.Medium;
                     }
                 }
             }
         }
+
+
         #endregion
+
 
     }
 }
