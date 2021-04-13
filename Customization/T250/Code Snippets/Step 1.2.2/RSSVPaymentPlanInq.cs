@@ -19,8 +19,8 @@ namespace PhoneRepairShop
         //    View.ReadOnly DetailsView;
 
         [PXFilterable]
-        public SelectFrom<RSSVWorkOrderToPay>.
-            InnerJoin<ARInvoice>.On<ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
+        public SelectFrom<RSSVWorkOrderToPay>.InnerJoin<ARInvoice>.
+            On<ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
             Where<RSSVWorkOrderToPay.status.IsNotEqual<workOrderStatusPaid>.
             And<RSSVWorkOrderToPayFilter.customerID.FromCurrent.IsNull.
               Or<RSSVWorkOrderToPay.customerID.IsEqual<

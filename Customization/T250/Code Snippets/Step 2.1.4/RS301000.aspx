@@ -1,7 +1,9 @@
-<px:PXTab ID="tab" runat="server" Width="100%" Height="150px" DataSourceID="ds" RepaintOnDemand = "false">
+<px:PXTab ID="tab" runat="server" Width="100%" Height="150px" DataSourceID="ds">
   <Items>
     ...
-    <px:PXTabItem Text="Payment Info">
+    <px:PXTabItem Text="Payment Info"
+      RepaintOnDemand = "false"
+      >
       <Template>
         <px:PXFormView DataMember="Payments" runat="server" ID="CstFormView27" >
           <Template>

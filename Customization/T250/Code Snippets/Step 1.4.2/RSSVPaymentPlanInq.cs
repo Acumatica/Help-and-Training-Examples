@@ -19,8 +19,8 @@ namespace PhoneRepairShop
             var filter = Filter.Current;
             if (filter.GroupByStatus != true)
             {
-                query = new SelectFrom<RSSVWorkOrderToPay>.
-                  InnerJoin<ARInvoice>.On<ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
+                query = new SelectFrom<RSSVWorkOrderToPay>.InnerJoin<ARInvoice>.
+                  On<ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
                   Where<RSSVWorkOrderToPay.status.IsNotEqual<workOrderStatusPaid>.
                     And<RSSVWorkOrderToPayFilter.customerID.FromCurrent.IsNull.
                       Or<RSSVWorkOrderToPay.customerID.IsEqual<
@@ -31,8 +31,8 @@ namespace PhoneRepairShop
             }
             else
             {
-                query = new SelectFrom<RSSVWorkOrderToPay>.
-                  InnerJoin<ARInvoice>.On<ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
+                query = new SelectFrom<RSSVWorkOrderToPay>.InnerJoin<ARInvoice>.
+                  On<ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
                   Where<RSSVWorkOrderToPay.status.IsNotEqual<workOrderStatusPaid>.
                     And<RSSVWorkOrderToPayFilter.customerID.FromCurrent.IsNull.
                       Or<RSSVWorkOrderToPay.customerID.IsEqual<
@@ -40,12 +40,21 @@ namespace PhoneRepairShop
                       And<RSSVWorkOrderToPayFilter.serviceID.FromCurrent.IsNull.
                         Or<RSSVWorkOrderToPay.serviceID.IsEqual<
                           RSSVWorkOrderToPayFilter.serviceID.FromCurrent>>>>.
-                    AggregateTo<GroupBy<RSSVWorkOrderToPay.status>, Sum<ARInvoice.curyDocBal>>();
+                    AggregateTo<GroupBy<RSSVWorkOrderToPay.status>,
+                        Sum<ARInvoice.curyDocBal>>();
             }
 
             var view = new PXView(this, true, query);
-            foreach (PXResult<RSSVWorkOrderToPay, ARInvoice> order in view.SelectMulti(null))
+            foreach (PXResult<RSSVWorkOrderToPay, ARInvoice> order in
+                view.SelectMulti(null))
             {
+                if (filter.GroupByStatus == true)
+                {
+                    ((RSSVWorkOrderToPay)order[0]).OrderNbr = "";
+                    ((RSSVWorkOrderToPay)order[0]).PercentPaid = null;
+                    ((RSSVWorkOrderToPay)order[0]).InvoiceNbr = "";
+                    ((ARInvoice)order[1]).DueDate = null;
+                }
                 yield return order;
             }
 
