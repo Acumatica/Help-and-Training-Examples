@@ -32,7 +32,7 @@ namespace PhoneRepairShop
         public new abstract class customerID : PX.Data.BQL.BqlInt.Field<customerID> { }
 
         #region OrderType
-        [PXString]
+        [PXString(IsKey = true)]
         [PXUIField(DisplayName = "Order Type")]
         [PXUnboundDefault(OrderTypeConstants.WorkOrder)]
         [PXStringList(

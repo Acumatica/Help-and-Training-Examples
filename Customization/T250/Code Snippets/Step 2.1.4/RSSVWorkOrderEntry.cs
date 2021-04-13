@@ -21,7 +21,8 @@ namespace PhoneRepairShop
                 && WorkOrders.Current.InvoiceNbr == null);
             CreateInvoiceAction.SetEnabled(WorkOrders.Current.InvoiceNbr == null);
 
-            Payments.Cache.AllowSelect = row.Status == WorkOrderStatusConstants.Paid;
+            Payments.Cache.AllowSelect =
+                row.Status == WorkOrderStatusConstants.Paid;
         }
 		
 		...

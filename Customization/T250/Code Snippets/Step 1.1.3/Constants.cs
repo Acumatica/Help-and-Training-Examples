@@ -9,10 +9,10 @@ namespace PhoneRepairShop
     ...
 
     public class workOrderStatusPaid :
-    PX.Data.BQL.BqlString.Constant<workOrderStatusPendingPayment>
+        PX.Data.BQL.BqlString.Constant<workOrderStatusPendingPayment>
     {
-        public workOrderStatusPaid()
-        : base(WorkOrderStatusConstants.Paid)
+        public workOrderStatusPaid() :
+            base(WorkOrderStatusConstants.Paid)
         {
         }
     }

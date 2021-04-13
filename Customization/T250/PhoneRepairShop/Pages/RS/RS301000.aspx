@@ -34,9 +34,9 @@
 	</px:PXFormView>
 </asp:Content>
 <asp:Content ID="cont3" ContentPlaceHolderID="phG" Runat="Server">
-	<px:PXTab ID="tab" runat="server" Width="100%" Height="150px" DataSourceID="ds" RepaintOnDemand = "false">
+	<px:PXTab ID="tab" runat="server" Width="100%" Height="150px" DataSourceID="ds">
 		<Items>
-			<px:PXTabItem Text="Repair Items">
+			<px:PXTabItem Text="Repair Items" RepaintOnDemand = "false">
 				<Template>
 					<px:PXGrid SyncPosition="True" SkinID="Details" Width="100%" runat="server" ID="CstPXGrid1">
 						<Levels>

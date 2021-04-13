@@ -26,13 +26,15 @@ namespace PhoneRepairShop
                 DescriptionField = typeof(RSSVRepairService.description),
                 SelectorMode = PXSelectorMode.DisplayModeText)]
             public virtual int? ServiceID { get; set; }
-            public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
+            public abstract class serviceID :
+                PX.Data.BQL.BqlInt.Field<serviceID> { }
             #endregion
 
             #region CustomerID
             [CustomerActive(DisplayName = "Customer ID", Required = true)]
             public virtual int? CustomerID { get; set; }
-            public abstract class customerID : PX.Data.BQL.BqlInt.Field<customerID> { }
+            public abstract class customerID :
+                PX.Data.BQL.BqlInt.Field<customerID> { }
             #endregion
         }
 
