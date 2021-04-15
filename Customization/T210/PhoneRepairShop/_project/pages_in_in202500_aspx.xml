@@ -4,7 +4,7 @@
             <AddItem>
                 <PXCheckBox TypeFullName="PX.Web.UI.PXCheckBox">
                     <Prop Key="Virtual:ApplyStylesheetSkin" />
-                    <Prop Key="ID" Value="CstPXCheckBoxRS1" />
+                    <Prop Key="ID" Value="CstPXCheckBox2" />
                     <Prop Key="DataField" Value="UsrRepairItem" />
                     <Prop Key="CommitChanges" Value="True" />
                 </PXCheckBox>
@@ -12,7 +12,7 @@
             <AddItem>
                 <PXDropDown TypeFullName="PX.Web.UI.PXDropDown">
                     <Prop Key="Virtual:ApplyStylesheetSkin" />
-                    <Prop Key="ID" Value="CstPXDropDownRS2" />
+                    <Prop Key="ID" Value="CstPXDropDown2" />
                     <Prop Key="DataField" Value="UsrRepairItemType" />
                 </PXDropDown>
             </AddItem>
