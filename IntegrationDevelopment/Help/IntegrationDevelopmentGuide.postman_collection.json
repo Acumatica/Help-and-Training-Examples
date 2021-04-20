@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0ebed0f9-aa6e-49bc-9169-ef9b9d8d081d",
+		"_postman_id": "2d0e09c7-3990-45a4-8215-f21fc8f5cd11",
 		"name": "Integration Development Guide",
 		"description": "This collection contains examples from the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n - Deploy a new Acumatica ERP instance with the U100 dataset. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n - Specify the URL of the instance in the BaseURL variable of the collection. The EndpointURL variable uses the value from the BaseURL variable and specifies the URL of the Default/20.200.001 endpoint. You do not need to change this variable until you want to use another endpoint.\n - To sign in to the instance in the client application, use the tenant name (which you specified when you created the instance) and the HEADOFFICE branch.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -5788,6 +5788,434 @@
 						}
 					],
 					"description": "This folder contains examples from the [Organization Management (REST API Example)](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=afa51ca5-37ae-4d7e-aa36-761779ca9320) chapter of the Integration Development Guide."
+				},
+				{
+					"name": "Manufacturing",
+					"item": [
+						{
+							"name": "Creation of Bills of Material: Sign In",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"name\" : \"gibbs\",\r\n\"password\" : \"123\",\r\n\"company\" : \"SWEETLIFE\",\r\n\"branch\" : \"HEADOFFICE\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost/AcumaticaU100/entity/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"AcumaticaU100",
+										"entity",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Creation of Bills of Material: Sign Out",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost/AcumaticaU100/entity/auth/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"AcumaticaU100",
+										"entity",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Creation of Bills of Material: Get All BOMs",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost/AcumaticaU100/entity/MANUFACTURING/20.200.001/BillOfMaterial?$expand=Operations,Operations/Material,Operations/Overheads,Operations/Steps,Operations/Tools",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"AcumaticaU100",
+										"entity",
+										"MANUFACTURING",
+										"20.200.001",
+										"BillOfMaterial"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Operations,Operations/Material,Operations/Overheads,Operations/Steps,Operations/Tools"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get All BOMs",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost/AcumaticaU100/entity/MANUFACTURING/20.200.001/BillOfMaterial?$expand=Operations,Operations/Material,Operations/Overheads,Operations/Steps,Operations/Tools",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"AcumaticaU100",
+												"entity",
+												"MANUFACTURING",
+												"20.200.001",
+												"BillOfMaterial"
+											],
+											"query": [
+												{
+													"key": "$expand",
+													"value": "Operations,Operations/Material,Operations/Overheads,Operations/Steps,Operations/Tools"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Cache-Control",
+											"value": "private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 Apr 2021 15:12:08 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "5612"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": \"d0aa63c8-86a0-eb11-9dde-9828a61840c3\",\n        \"rowNumber\": 1,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Active\": {\n            \"value\": true\n        },\n        \"BOMID\": {\n            \"value\": \"BOM000002\"\n        },\n        \"Description\": {\n            \"value\": \"A bill of material for assembly of configurable juicers for citrus fruits\"\n        },\n        \"EffEndDate\": {},\n        \"EffStartDate\": {\n            \"value\": \"2021-01-01T00:00:00+03:00\"\n        },\n        \"Hold\": {\n            \"value\": false\n        },\n        \"InventoryID\": {\n            \"value\": \"CFJCITRUS\"\n        },\n        \"Operations\": [\n            {\n                \"id\": \"c18af7fd-86a0-eb11-9dde-9828a61840c3\",\n                \"rowNumber\": 1,\n                \"note\": {\n                    \"value\": \"\"\n                },\n                \"BackflushLabor\": {\n                    \"value\": false\n                },\n                \"DropShippedtoVendor\": {\n                    \"value\": false\n                },\n                \"MachineTime\": {\n                    \"value\": \"0100\"\n                },\n                \"MachineUnits\": {\n                    \"value\": 0\n                },\n                \"Material\": [\n                    {\n                        \"id\": \"1d44bd25-87a0-eb11-9dde-9828a61840c3\",\n                        \"rowNumber\": 1,\n                        \"note\": {\n                            \"value\": \"\"\n                        },\n                        \"Backflush\": {\n                            \"value\": false\n                        },\n                        \"BatchSize\": {\n                            \"value\": 1\n                        },\n                        \"BubbleNbr\": {},\n                        \"CmpBOMEffDate\": {},\n                        \"CompBOMID\": {},\n                        \"CompBOMRevision\": {},\n                        \"Description\": {\n                            \"value\": \"Juicing reamer kit (for configurable juicers)\"\n                        },\n                        \"EffectiveDate\": {},\n                        \"ExpirationDate\": {},\n                        \"InventoryID\": {\n                            \"value\": \"JCREAMER\"\n                        },\n                        \"LineNbr\": {\n                            \"value\": 1\n                        },\n                        \"LineOrder\": {\n                            \"value\": 1\n                        },\n                        \"Location\": {},\n                        \"MaterialType\": {\n                            \"value\": \"Regular\"\n                        },\n                        \"PhantomRouting\": {\n                            \"value\": \"Before\"\n                        },\n                        \"PlannedCost\": {\n                            \"value\": 17.95\n                        },\n                        \"QtyRequired\": {\n                            \"value\": 1\n                        },\n                        \"ScrapFactor\": {\n                            \"value\": 0\n                        },\n                        \"SubcontractSource\": {\n                            \"value\": \"None\"\n                        },\n                        \"UnitCost\": {\n                            \"value\": 17.95\n                        },\n                        \"UOM\": {\n                            \"value\": \"EA\"\n                        },\n                        \"Warehouse\": {},\n                        \"custom\": {}\n                    },\n                    {\n                        \"id\": \"90cd392e-87a0-eb11-9dde-9828a61840c3\",\n                        \"rowNumber\": 2,\n                        \"note\": {\n                            \"value\": \"\"\n                        },\n                        \"Backflush\": {\n                            \"value\": false\n                        },\n                        \"BatchSize\": {\n                            \"value\": 1\n                        },\n                        \"BubbleNbr\": {},\n                        \"CmpBOMEffDate\": {},\n                        \"CompBOMID\": {},\n                        \"CompBOMRevision\": {},\n                        \"Description\": {\n                            \"value\": \"Juice cup 1 liter (for configurable juicers)\"\n                        },\n                        \"EffectiveDate\": {},\n                        \"ExpirationDate\": {},\n                        \"InventoryID\": {\n                            \"value\": \"JUICECUP1L\"\n                        },\n                        \"LineNbr\": {\n                            \"value\": 2\n                        },\n                        \"LineOrder\": {\n                            \"value\": 2\n                        },\n                        \"Location\": {},\n                        \"MaterialType\": {\n                            \"value\": \"Regular\"\n                        },\n                        \"PhantomRouting\": {\n                            \"value\": \"Before\"\n                        },\n                        \"PlannedCost\": {\n                            \"value\": 18.89\n                        },\n                        \"QtyRequired\": {\n                            \"value\": 1\n                        },\n                        \"ScrapFactor\": {\n                            \"value\": 0\n                        },\n                        \"SubcontractSource\": {\n                            \"value\": \"None\"\n                        },\n                        \"UnitCost\": {\n                            \"value\": 18.89\n                        },\n                        \"UOM\": {\n                            \"value\": \"EA\"\n                        },\n                        \"Warehouse\": {},\n                        \"custom\": {}\n                    },\n                    {\n                        \"id\": \"ccd28434-87a0-eb11-9dde-9828a61840c3\",\n                        \"rowNumber\": 3,\n                        \"note\": {\n                            \"value\": \"\"\n                        },\n                        \"Backflush\": {\n                            \"value\": false\n                        },\n                        \"BatchSize\": {\n                            \"value\": 1\n                        },\n                        \"BubbleNbr\": {},\n                        \"CmpBOMEffDate\": {},\n                        \"CompBOMID\": {},\n                        \"CompBOMRevision\": {},\n                        \"Description\": {\n                            \"value\": \"High-speed motor base (for configurable juicers)\"\n                        },\n                        \"EffectiveDate\": {},\n                        \"ExpirationDate\": {},\n                        \"InventoryID\": {\n                            \"value\": \"MRBASEHIGH\"\n                        },\n                        \"LineNbr\": {\n                            \"value\": 3\n                        },\n                        \"LineOrder\": {\n                            \"value\": 3\n                        },\n                        \"Location\": {},\n                        \"MaterialType\": {\n                            \"value\": \"Regular\"\n                        },\n                        \"PhantomRouting\": {\n                            \"value\": \"Before\"\n                        },\n                        \"PlannedCost\": {\n                            \"value\": 358.9\n                        },\n                        \"QtyRequired\": {\n                            \"value\": 1\n                        },\n                        \"ScrapFactor\": {\n                            \"value\": 0\n                        },\n                        \"SubcontractSource\": {\n                            \"value\": \"None\"\n                        },\n                        \"UnitCost\": {\n                            \"value\": 358.9\n                        },\n                        \"UOM\": {\n                            \"value\": \"EA\"\n                        },\n                        \"Warehouse\": {},\n                        \"custom\": {}\n                    },\n                    {\n                        \"id\": \"1682df3a-87a0-eb11-9dde-9828a61840c3\",\n                        \"rowNumber\": 4,\n                        \"note\": {\n                            \"value\": \"\"\n                        },\n                        \"Backflush\": {\n                            \"value\": false\n                        },\n                        \"BatchSize\": {\n                            \"value\": 1\n                        },\n                        \"BubbleNbr\": {},\n                        \"CmpBOMEffDate\": {},\n                        \"CompBOMID\": {},\n                        \"CompBOMRevision\": {},\n                        \"Description\": {\n                            \"value\": \"Micro-mash strainer basket (for configurable juicers)\"\n                        },\n                        \"EffectiveDate\": {},\n                        \"ExpirationDate\": {},\n                        \"InventoryID\": {\n                            \"value\": \"STRBASKET\"\n                        },\n                        \"LineNbr\": {\n                            \"value\": 4\n                        },\n                        \"LineOrder\": {\n                            \"value\": 4\n                        },\n                        \"Location\": {},\n                        \"MaterialType\": {\n                            \"value\": \"Regular\"\n                        },\n                        \"PhantomRouting\": {\n                            \"value\": \"Before\"\n                        },\n                        \"PlannedCost\": {\n                            \"value\": 49.9\n                        },\n                        \"QtyRequired\": {\n                            \"value\": 1\n                        },\n                        \"ScrapFactor\": {\n                            \"value\": 0\n                        },\n                        \"SubcontractSource\": {\n                            \"value\": \"None\"\n                        },\n                        \"UnitCost\": {\n                            \"value\": 49.9\n                        },\n                        \"UOM\": {\n                            \"value\": \"EA\"\n                        },\n                        \"Warehouse\": {},\n                        \"custom\": {}\n                    },\n                    {\n                        \"id\": \"1a82df3a-87a0-eb11-9dde-9828a61840c3\",\n                        \"rowNumber\": 5,\n                        \"note\": {\n                            \"value\": \"\"\n                        },\n                        \"Backflush\": {\n                            \"value\": false\n                        },\n                        \"BatchSize\": {\n                            \"value\": 1\n                        },\n                        \"BubbleNbr\": {},\n                        \"CmpBOMEffDate\": {},\n                        \"CompBOMID\": {},\n                        \"CompBOMRevision\": {},\n                        \"Description\": {\n                            \"value\": \"Splashguard (for configurable juicers)\"\n                        },\n                        \"EffectiveDate\": {},\n                        \"ExpirationDate\": {},\n                        \"InventoryID\": {\n                            \"value\": \"SPLGUARD\"\n                        },\n                        \"LineNbr\": {\n                            \"value\": 5\n                        },\n                        \"LineOrder\": {\n                            \"value\": 5\n                        },\n                        \"Location\": {},\n                        \"MaterialType\": {\n                            \"value\": \"Regular\"\n                        },\n                        \"PhantomRouting\": {\n                            \"value\": \"Before\"\n                        },\n                        \"PlannedCost\": {\n                            \"value\": 15.99\n                        },\n                        \"QtyRequired\": {\n                            \"value\": 1\n                        },\n                        \"ScrapFactor\": {\n                            \"value\": 0\n                        },\n                        \"SubcontractSource\": {\n                            \"value\": \"None\"\n                        },\n                        \"UnitCost\": {\n                            \"value\": 15.99\n                        },\n                        \"UOM\": {\n                            \"value\": \"EA\"\n                        },\n                        \"Warehouse\": {},\n                        \"custom\": {}\n                    }\n                ],\n                \"OperationDescription\": {\n                    \"value\": \"Work center for assembly of juicers\"\n                },\n                \"OperationNbr\": {\n                    \"value\": \"010\"\n                },\n                \"OutsideProcess\": {\n                    \"value\": false\n                },\n                \"Overheads\": [],\n                \"QueueTime\": {\n                    \"value\": \"0000\"\n                },\n                \"RunTime\": {\n                    \"value\": \"0100\"\n                },\n                \"RunUnits\": {\n                    \"value\": 6\n                },\n                \"ScrapAction\": {\n                    \"value\": \"No Action\"\n                },\n                \"SetupTime\": {\n                    \"value\": \"0030\"\n                },\n                \"Steps\": [\n                    {\n                        \"id\": \"8f157049-87a0-eb11-9dde-9828a61840c3\",\n                        \"rowNumber\": 1,\n                        \"note\": {\n                            \"value\": \"\"\n                        },\n                        \"Descr\": {\n                            \"value\": \"Attach the strain basket to the motor base.\"\n                        },\n                        \"custom\": {}\n                    },\n                    {\n                        \"id\": \"5d745059-87a0-eb11-9dde-9828a61840c3\",\n                        \"rowNumber\": 2,\n                        \"note\": {\n                            \"value\": \"\"\n                        },\n                        \"Descr\": {\n                            \"value\": \"Attach the reamer to the strain basket.\"\n                        },\n                        \"custom\": {}\n                    },\n                    {\n                        \"id\": \"69c99463-87a0-eb11-9dde-9828a61840c3\",\n                        \"rowNumber\": 3,\n                        \"note\": {\n                            \"value\": \"\"\n                        },\n                        \"Descr\": {\n                            \"value\": \"Attach the 1-liter juice cup to the motor base.\"\n                        },\n                        \"custom\": {}\n                    },\n                    {\n                        \"id\": \"6dc99463-87a0-eb11-9dde-9828a61840c3\",\n                        \"rowNumber\": 4,\n                        \"note\": {\n                            \"value\": \"\"\n                        },\n                        \"Descr\": {\n                            \"value\": \"Attach the splash guard.\"\n                        },\n                        \"custom\": {}\n                    }\n                ],\n                \"Tools\": [\n                    {\n                        \"id\": \"22886e78-87a0-eb11-9dde-9828a61840c3\",\n                        \"rowNumber\": 1,\n                        \"note\": {\n                            \"value\": \"\"\n                        },\n                        \"Description\": {},\n                        \"QtyRequired\": {\n                            \"value\": 2\n                        },\n                        \"ToolID\": {\n                            \"value\": \"HAMMER\"\n                        },\n                        \"UnitCost\": {\n                            \"value\": 0.02\n                        },\n                        \"custom\": {}\n                    },\n                    {\n                        \"id\": \"d2295486-87a0-eb11-9dde-9828a61840c3\",\n                        \"rowNumber\": 2,\n                        \"note\": {\n                            \"value\": \"\"\n                        },\n                        \"Description\": {},\n                        \"QtyRequired\": {\n                            \"value\": 2\n                        },\n                        \"ToolID\": {\n                            \"value\": \"SCREWDRIVER\"\n                        },\n                        \"UnitCost\": {\n                            \"value\": 0.2\n                        },\n                        \"custom\": {}\n                    }\n                ],\n                \"Vendor\": {},\n                \"VendorLocation\": {},\n                \"WorkCenter\": {\n                    \"value\": \"WCR10\"\n                },\n                \"custom\": {}\n            }\n        ],\n        \"Revision\": {\n            \"value\": \"A\"\n        },\n        \"Status\": {\n            \"value\": \"Active\"\n        },\n        \"Warehouse\": {\n            \"value\": \"WORKHOUSE\"\n        },\n        \"custom\": {}\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Creation of Bills of Material: New BOM",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{    \r\n    \"BOMID\": {\r\n        \"value\": \"<NEW>\"\r\n    },\r\n    \"Description\": {\r\n\t\"value\": \"Test BOM\"\r\n\t},\r\n    \"Hold\": {\r\n        \"value\": true\r\n    },\r\n    \"InventoryID\": {\r\n        \"value\": \"CFJCITRUS\"\r\n    },\r\n    \"Operations\": [\r\n        {\r\n            \"OperationNbr\": {\r\n                \"value\": \"010\"\r\n            },\r\n            \"WorkCenter\": {\r\n                \"value\": \"WCR10\"\r\n            },\r\n            \"OperationDescription\": {\r\n                \"value\": \"Work center for assembly of juicers\"\r\n            },\r\n            \"Material\" :[\r\n                {\r\n                    \"InventoryID\": {\r\n                        \"value\": \"JCREAMER\"\r\n                    },\r\n                    \"UOM\":{\r\n                        \"value\": \"EA\"\r\n                    }  \r\n                }\r\n            ]\r\n        }\r\n\t\t],\r\n    \"Revision\": {\r\n        \"value\": \"A\"\r\n    },\r\n    \"Warehouse\": {\r\n        \"value\": \"WORKHOUSE\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost/AcumaticaU100/entity/MANUFACTURING/20.200.001/BillOfMaterial?$expand=Operations,Operations/Material,Operations/Overheads,Operations/Steps,Operations/Tools",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"AcumaticaU100",
+										"entity",
+										"MANUFACTURING",
+										"20.200.001",
+										"BillOfMaterial"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Operations,Operations/Material,Operations/Overheads,Operations/Steps,Operations/Tools"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New BOM",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{    \r\n    \"BOMID\": {\r\n        \"value\": \"<NEW>\"\r\n    },\r\n    \"Description\": {\r\n\t\"value\": \"Test BOM\"\r\n\t},\r\n    \"Hold\": {\r\n        \"value\": true\r\n    },\r\n    \"InventoryID\": {\r\n        \"value\": \"CFJCITRUS\"\r\n    },\r\n    \"Operations\": [\r\n        {\r\n            \"OperationNbr\": {\r\n                \"value\": \"010\"\r\n            },\r\n            \"WorkCenter\": {\r\n                \"value\": \"WCR10\"\r\n            },\r\n            \"OperationDescription\": {\r\n                \"value\": \"Work center for assembly of juicers\"\r\n            },\r\n            \"Material\" :[\r\n                {\r\n                    \"InventoryID\": {\r\n                        \"value\": \"JCREAMER\"\r\n                    },\r\n                    \"UOM\":{\r\n                        \"value\": \"EA\"\r\n                    }  \r\n                }\r\n            ]\r\n        }\r\n\t\t],\r\n    \"Revision\": {\r\n        \"value\": \"A\"\r\n    },\r\n    \"Warehouse\": {\r\n        \"value\": \"WORKHOUSE\"\r\n    }\r\n}"
+										},
+										"url": {
+											"raw": "http://localhost/AcumaticaU100/entity/MANUFACTURING/20.200.001/BillOfMaterial?$expand=Operations,Operations/Material,Operations/Overheads,Operations/Steps,Operations/Tools",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"AcumaticaU100",
+												"entity",
+												"MANUFACTURING",
+												"20.200.001",
+												"BillOfMaterial"
+											],
+											"query": [
+												{
+													"key": "$expand",
+													"value": "Operations,Operations/Material,Operations/Overheads,Operations/Steps,Operations/Tools"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Cache-Control",
+											"value": "private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=C34018A62898DE9D11EBA12199E171DC; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:15228+sc:~/entity/manufacturing/20.200.001/billofmaterial+start:637544419310976972+tg:; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 Apr 2021 15:12:26 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1685"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"6411e8a4-21a1-eb11-9dde-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Active\": {\n        \"value\": false\n    },\n    \"BOMID\": {\n        \"value\": \"BOM000003\"\n    },\n    \"Description\": {\n        \"value\": \"Test BOM\"\n    },\n    \"EffEndDate\": {},\n    \"EffStartDate\": {\n        \"value\": \"2021-04-19T00:00:00+03:00\"\n    },\n    \"Hold\": {\n        \"value\": true\n    },\n    \"InventoryID\": {\n        \"value\": \"CFJCITRUS\"\n    },\n    \"Operations\": [\n        {\n            \"id\": \"6511e8a4-21a1-eb11-9dde-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"BackflushLabor\": {\n                \"value\": false\n            },\n            \"DropShippedtoVendor\": {\n                \"value\": false\n            },\n            \"MachineTime\": {\n                \"value\": \"0100\"\n            },\n            \"MachineUnits\": {\n                \"value\": 0\n            },\n            \"Material\": [\n                {\n                    \"id\": \"6711e8a4-21a1-eb11-9dde-9828a61840c3\",\n                    \"rowNumber\": 1,\n                    \"note\": null,\n                    \"Backflush\": {\n                        \"value\": false\n                    },\n                    \"BatchSize\": {\n                        \"value\": 1\n                    },\n                    \"BubbleNbr\": {},\n                    \"CmpBOMEffDate\": {},\n                    \"CompBOMID\": {},\n                    \"CompBOMRevision\": {},\n                    \"Description\": {\n                        \"value\": \"Juicing reamer kit (for configurable juicers)\"\n                    },\n                    \"EffectiveDate\": {},\n                    \"ExpirationDate\": {},\n                    \"InventoryID\": {\n                        \"value\": \"JCREAMER\"\n                    },\n                    \"LineNbr\": {\n                        \"value\": 1\n                    },\n                    \"LineOrder\": {\n                        \"value\": 1\n                    },\n                    \"Location\": {},\n                    \"MaterialType\": {\n                        \"value\": \"Regular\"\n                    },\n                    \"PhantomRouting\": {\n                        \"value\": \"Before\"\n                    },\n                    \"PlannedCost\": {\n                        \"value\": 17.95\n                    },\n                    \"QtyRequired\": {\n                        \"value\": 1\n                    },\n                    \"ScrapFactor\": {\n                        \"value\": 0\n                    },\n                    \"SubcontractSource\": {\n                        \"value\": \"None\"\n                    },\n                    \"UnitCost\": {\n                        \"value\": 17.95\n                    },\n                    \"UOM\": {\n                        \"value\": \"EA\"\n                    },\n                    \"Warehouse\": {},\n                    \"custom\": {}\n                }\n            ],\n            \"OperationDescription\": {\n                \"value\": \"Work center for assembly of juicers\"\n            },\n            \"OperationNbr\": {\n                \"value\": \"010\"\n            },\n            \"OutsideProcess\": {\n                \"value\": false\n            },\n            \"Overheads\": [],\n            \"QueueTime\": {\n                \"value\": \"0000\"\n            },\n            \"RunTime\": {\n                \"value\": \"0100\"\n            },\n            \"RunUnits\": {\n                \"value\": 0\n            },\n            \"ScrapAction\": {\n                \"value\": \"No Action\"\n            },\n            \"SetupTime\": {\n                \"value\": \"0000\"\n            },\n            \"Steps\": [],\n            \"Tools\": [],\n            \"Vendor\": {},\n            \"VendorLocation\": {},\n            \"WorkCenter\": {\n                \"value\": \"WCR10\"\n            },\n            \"custom\": {}\n        }\n    ],\n    \"Revision\": {\n        \"value\": \"A\"\n    },\n    \"Status\": {\n        \"value\": \"On Hold\"\n    },\n    \"Warehouse\": {\n        \"value\": \"WORKHOUSE\"\n    },\n    \"custom\": {}\n}"
+								}
+							]
+						},
+						{
+							"name": "Creation of Bills of Material: New BOM (BOMID=\"\")",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{    \r\n    \"BOMID\": {\r\n        \"value\": \"\"\r\n    },\r\n    \"Description\": {\r\n\t\"value\": \"Test BOM\"\r\n\t},\r\n    \"Hold\": {\r\n        \"value\": true\r\n    },\r\n    \"InventoryID\": {\r\n        \"value\": \"CFJCITRUS\"\r\n    },\r\n    \"Operations\": [\r\n        {\r\n            \"OperationNbr\": {\r\n                \"value\": \"010\"\r\n            },\r\n            \"WorkCenter\": {\r\n                \"value\": \"WCR10\"\r\n            },\r\n            \"OperationDescription\": {\r\n                \"value\": \"Work center for assembly of juicers\"\r\n            },\r\n            \"Material\" :[\r\n                {\r\n                    \"InventoryID\": {\r\n                        \"value\": \"JCREAMER\"\r\n                    },\r\n                    \"UOM\":{\r\n                        \"value\": \"EA\"\r\n                    }  \r\n                }\r\n            ]\r\n        }\r\n\t\t],\r\n    \"Revision\": {\r\n        \"value\": \"A\"\r\n    },\r\n    \"Warehouse\": {\r\n        \"value\": \"WORKHOUSE\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost/AcumaticaU100/entity/MANUFACTURING/20.200.001/BillOfMaterial",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"AcumaticaU100",
+										"entity",
+										"MANUFACTURING",
+										"20.200.001",
+										"BillOfMaterial"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New BOM (BOMID=\"\")",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{    \r\n    \"BOMID\": {\r\n        \"value\": \"\"\r\n    },\r\n    \"Description\": {\r\n\t\"value\": \"Test BOM\"\r\n\t},\r\n    \"Hold\": {\r\n        \"value\": true\r\n    },\r\n    \"InventoryID\": {\r\n        \"value\": \"CFJCITRUS\"\r\n    },\r\n    \"Operations\": [\r\n        {\r\n            \"OperationNbr\": {\r\n                \"value\": \"010\"\r\n            },\r\n            \"WorkCenter\": {\r\n                \"value\": \"WCR10\"\r\n            },\r\n            \"OperationDescription\": {\r\n                \"value\": \"Work center for assembly of juicers\"\r\n            },\r\n            \"Material\" :[\r\n                {\r\n                    \"InventoryID\": {\r\n                        \"value\": \"JCREAMER\"\r\n                    },\r\n                    \"UOM\":{\r\n                        \"value\": \"EA\"\r\n                    }  \r\n                }\r\n            ]\r\n        }\r\n\t\t],\r\n    \"Revision\": {\r\n        \"value\": \"A\"\r\n    },\r\n    \"Warehouse\": {\r\n        \"value\": \"WORKHOUSE\"\r\n    }\r\n}"
+										},
+										"url": {
+											"raw": "http://localhost/AcumaticaU100/entity/MANUFACTURING/20.200.001/BillOfMaterial",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"AcumaticaU100",
+												"entity",
+												"MANUFACTURING",
+												"20.200.001",
+												"BillOfMaterial"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Cache-Control",
+											"value": "private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": ".ASPXAUTH=47A1B05615011D990713033E7DDDB44013C0DA1653E95C3DA82C0D27E0D10ADD85BA59D3837D7E5EFFE65D46326D4F18AA520D31519633514F94336AA4E5B6CC3CC5CB5DAC2AE375A43D86195EC4703CF713FB2D8D8ECB21A7CE6DD37E5D8EA1694887D782D3D476619E007BE7674C00B60C2A7F; path=/; HttpOnly"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": ".ASPXAUTH=47A1B05615011D990713033E7DDDB44013C0DA1653E95C3DA82C0D27E0D10ADD85BA59D3837D7E5EFFE65D46326D4F18AA520D31519633514F94336AA4E5B6CC3CC5CB5DAC2AE375A43D86195EC4703CF713FB2D8D8ECB21A7CE6DD37E5D8EA1694887D782D3D476619E007BE7674C00B60C2A7F; path=/; HttpOnly"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=C34018A62898DE9D11EBA123DE09B9B7; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:2609+sc:~/entity/manufacturing/20.200.001/billofmaterial+start:637544428996038711+tg:; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 Apr 2021 15:28:22 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "501"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"b8b909de-23a1-eb11-9dde-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Active\": {\n        \"value\": false\n    },\n    \"BOMID\": {\n        \"value\": \"BOM000004\"\n    },\n    \"Description\": {\n        \"value\": \"Test BOM\"\n    },\n    \"EffEndDate\": {},\n    \"EffStartDate\": {\n        \"value\": \"2021-04-19T00:00:00+03:00\"\n    },\n    \"Hold\": {\n        \"value\": true\n    },\n    \"InventoryID\": {\n        \"value\": \"CFJCITRUS\"\n    },\n    \"Operations\": [\n        {\n            \"id\": \"bab909de-23a1-eb11-9dde-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Material\": [],\n            \"custom\": {}\n        }\n    ],\n    \"Revision\": {\n        \"value\": \"A\"\n    },\n    \"Status\": {\n        \"value\": \"On Hold\"\n    },\n    \"Warehouse\": {\n        \"value\": \"WORKHOUSE\"\n    },\n    \"custom\": {}\n}"
+								}
+							]
+						}
+					]
 				}
 			],
 			"description": "This folder contains examples from the [Contract-Based API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide.",
