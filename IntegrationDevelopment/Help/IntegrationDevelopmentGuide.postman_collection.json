@@ -5793,74 +5793,6 @@
 					"name": "Manufacturing",
 					"item": [
 						{
-							"name": "Creation of Bills of Material: Sign In",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n\"name\" : \"gibbs\",\r\n\"password\" : \"123\",\r\n\"company\" : \"SWEETLIFE\",\r\n\"branch\" : \"HEADOFFICE\"\r\n}"
-								},
-								"url": {
-									"raw": "http://localhost/AcumaticaU100/entity/auth/login",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"AcumaticaU100",
-										"entity",
-										"auth",
-										"login"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Creation of Bills of Material: Sign Out",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "http://localhost/AcumaticaU100/entity/auth/logout",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"path": [
-										"AcumaticaU100",
-										"entity",
-										"auth",
-										"logout"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Creation of Bills of Material: Get All BOMs",
 							"request": {
 								"method": "GET",
@@ -5895,7 +5827,8 @@
 											"value": "Operations,Operations/Material,Operations/Overheads,Operations/Steps,Operations/Tools"
 										}
 									]
-								}
+								},
+								"description": "This example shows how to retrieve all available bills of material."
 							},
 							"response": [
 								{
@@ -6008,7 +5941,8 @@
 											"value": "Operations,Operations/Material,Operations/Overheads,Operations/Steps,Operations/Tools"
 										}
 									]
-								}
+								},
+								"description": "This example shows how to create a bill of material. This process is described in [Creation of Bills of Material](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=3132bec8-c1e3-48f9-b6c3-80662fe9fe27)."
 							},
 							"response": [
 								{
@@ -6127,7 +6061,8 @@
 										"20.200.001",
 										"BillOfMaterial"
 									]
-								}
+								},
+								"description": "This example shows how to create a bill of material. This process is described in [Creation of Bills of Material](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=3132bec8-c1e3-48f9-b6c3-80662fe9fe27)."
 							},
 							"response": [
 								{
@@ -6215,7 +6150,8 @@
 								}
 							]
 						}
-					]
+					],
+					"description": "This folder contains examples from the [Manufacturing (REST API Example)](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=1df495a9-d14c-42b8-b689-b7bc5e5f71f3) chapter of the Integration Development Guide."
 				}
 			],
 			"description": "This folder contains examples from the [Contract-Based API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide.",
