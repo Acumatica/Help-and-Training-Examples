@@ -2,7 +2,6 @@ using System;
 using PX.Data;
 using PX.Objects.AR;
 using PX.Objects.CS;
-using PX.Objects.CR;
 using PX.TM;
 using PX.Data.BQL.Fluent;
 using PX.Objects.SO;
@@ -25,7 +24,6 @@ namespace PhoneRepairShop
         #region CustomerID
         [PXDefault]
         [CustomerActive(DisplayName = "Customer ID", DescriptionField = typeof(Customer.acctName))]
-        [PXUIEnabled(typeof(Where<RSSVWorkOrder.hold.IsEqual<True>>))]
         public virtual int? CustomerID { get; set; }
         public abstract class customerID : PX.Data.BQL.BqlInt.Field<customerID> { }
         #endregion
@@ -76,9 +74,6 @@ namespace PhoneRepairShop
         [PXDBBool()]
         [PXDefault(true)]
         [PXUIField(DisplayName = "Hold")]
-        [PXUIVisible(typeof(Where<RSSVWorkOrder.status.IsEqual<workOrderStatusOnHold>.
-            Or<RSSVWorkOrder.status.IsEqual<workOrderStatusPendingPayment>>.
-            Or<RSSVWorkOrder.status.IsEqual<workOrderStatusReadyForAssignment>>>))]
         public virtual bool? Hold { get; set; }
         public abstract class hold : PX.Data.BQL.BqlBool.Field<hold> { }
         #endregion
@@ -93,14 +88,12 @@ namespace PhoneRepairShop
         #region ServiceID
         [PXDBInt()]
         [PXDefault]
-        [PXUIField(DisplayName = "Service",
-            Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Service", Visibility = PXUIVisibility.SelectorVisible)]
         [PXSelector(typeof(Search<RSSVRepairService.serviceID>),
             typeof(RSSVRepairService.serviceCD),
             typeof(RSSVRepairService.description),
             SubstituteKey = typeof(RSSVRepairService.serviceCD),
             DescriptionField = typeof(RSSVRepairService.description))]
-        [PXUIEnabled(typeof(Where<RSSVWorkOrder.hold.IsEqual<True>>))]
         public virtual int? ServiceID { get; set; }
         public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
         #endregion
@@ -108,14 +101,12 @@ namespace PhoneRepairShop
         #region DeviceID
         [PXDBInt()]
         [PXDefault]
-        [PXUIField(DisplayName = "Device",
-            Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Device", Visibility = PXUIVisibility.SelectorVisible)]
         [PXSelector(typeof(Search<RSSVDevice.deviceID>),
             typeof(RSSVDevice.deviceCD),
             typeof(RSSVDevice.description),
             SubstituteKey = typeof(RSSVDevice.deviceCD),
             DescriptionField = typeof(RSSVDevice.description))]
-        [PXUIEnabled(typeof(Where<RSSVWorkOrder.hold.IsEqual<True>>))]
         public virtual int? DeviceID { get; set; }
         public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
         #endregion

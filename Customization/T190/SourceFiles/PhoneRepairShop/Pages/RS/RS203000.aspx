@@ -26,13 +26,13 @@
 		<Items>
 			<px:PXTabItem Text="Repair Items">
 				<Template>
-					<px:PXGrid SyncPosition="True" SkinID="Details" Width="100%" runat="server" ID="CstPXGrid5">
+					<px:PXGrid SyncPosition="True" Width="100%" SkinID="Details" runat="server" ID="CstPXGrid5">
 						<Levels>
 							<px:PXGridLevel DataMember="RepairItems" >
 								<Columns>
 									<px:PXGridColumn CommitChanges="True" DataField="RepairItemType" Width="70" ></px:PXGridColumn>
 									<px:PXGridColumn CommitChanges="True" DataField="Required" Width="80" Type="CheckBox" ></px:PXGridColumn>
-									<px:PXGridColumn CommitChanges="True" DataField="InventoryID" Width="70" ></px:PXGridColumn>
+									<px:PXGridColumn DataField="InventoryID" Width="70" ></px:PXGridColumn>
 									<px:PXGridColumn DataField="InventoryID_description" Width="280" ></px:PXGridColumn>
 									<px:PXGridColumn DataField="BasePrice" Width="100" ></px:PXGridColumn>
 									<px:PXGridColumn CommitChanges="True" Type="CheckBox" DataField="IsDefault" Width="80" ></px:PXGridColumn></Columns>
@@ -43,12 +43,12 @@
 			</px:PXTabItem>
 			<px:PXTabItem Text="Labor">
 				<Template>
-					<px:PXGrid SkinID="Details" Width="100%" runat="server" ID="CstPXGrid7">
+					<px:PXGrid Width="100%" SkinID="Details" runat="server" ID="CstPXGrid7">
 						<Levels>
 							<px:PXGridLevel DataMember="Labor" >
 								<Columns>
-									<px:PXGridColumn DataField="InventoryID" Width="70" CommitChanges="True" ></px:PXGridColumn>
-									<px:PXGridColumn DataField="InventoryID_description" Width="280" ></px:PXGridColumn>
+									<px:PXGridColumn CommitChanges="True" DataField="InventoryID" Width="70" ></px:PXGridColumn>
+									<px:PXGridColumn DataField="InventoryID_InventoryItem_descr" Width="280" ></px:PXGridColumn>
 									<px:PXGridColumn DataField="DefaultPrice" Width="100" ></px:PXGridColumn>
 									<px:PXGridColumn CommitChanges="True" DataField="Quantity" Width="100" ></px:PXGridColumn>
 									<px:PXGridColumn DataField="ExtPrice" Width="100" ></px:PXGridColumn></Columns></px:PXGridLevel></Levels>
@@ -60,8 +60,8 @@
 						<Levels>
 							<px:PXGridLevel DataMember="Warranty" >
 								<Columns>
-									<px:PXGridColumn CommitChanges="True" DataField="ContractID" Width="70" ></px:PXGridColumn>
-									<px:PXGridColumn DataField="ContractID_description" Width="220" />
+									<px:PXGridColumn DataField="ContractID" Width="70" CommitChanges="True" />
+									<px:PXGridColumn DataField="ContractID_description" Width="280" />
 									<px:PXGridColumn DataField="ContractDuration" Width="70" />
 									<px:PXGridColumn DataField="ContractDurationType" Width="70" />
 									<px:PXGridColumn DataField="ContractType" Width="70" /></Columns></px:PXGridLevel></Levels>

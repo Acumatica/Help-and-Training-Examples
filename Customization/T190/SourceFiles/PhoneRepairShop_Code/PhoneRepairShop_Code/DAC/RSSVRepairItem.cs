@@ -1,20 +1,22 @@
 using System;
 using PX.Data;
-using PX.Data.BQL;
-using PX.Data.BQL.Fluent;
 using PX.Objects.IN;
+using PX.Data.BQL.Fluent;
+using PX.Data.BQL;
 
 namespace PhoneRepairShop
 {
     [PXCacheName("Repair Item")]
     public class RSSVRepairItem : IBqlTable
-    {
+  {
         #region ServiceID
         [PXDBInt(IsKey = true)]
         [PXDBDefault(typeof(RSSVRepairPrice.serviceID))]
         [PXParent(typeof(SelectFrom<RSSVRepairPrice>.
-            Where<RSSVRepairPrice.serviceID.IsEqual<RSSVRepairItem.serviceID.FromCurrent>.
-            And<RSSVRepairPrice.deviceID.IsEqual<RSSVRepairItem.deviceID.FromCurrent>>>))]
+            Where<RSSVRepairPrice.serviceID.
+                IsEqual<RSSVRepairItem.serviceID.FromCurrent>.
+                And<RSSVRepairPrice.deviceID.
+                IsEqual<RSSVRepairItem.deviceID.FromCurrent>>>))]
         public virtual int? ServiceID { get; set; }
         public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
         #endregion
@@ -37,37 +39,31 @@ namespace PhoneRepairShop
         #region RepairItemType
         [PXDBString(2, IsFixed = true)]
         [PXStringList(
-            new string[]
-            {
-                RepairItemTypeConstants.Battery,
-                RepairItemTypeConstants.Screen,
-                RepairItemTypeConstants.ScreenCover,
-                RepairItemTypeConstants.BackCover,
-                RepairItemTypeConstants.Motherboard
-            },
-            new string[]
-            {
-                Messages.Battery,
-                Messages.Screen,
-                Messages.ScreenCover,
-                Messages.BackCover,
-                Messages.Motherboard
-            })]
+        new string[]
+        {
+            RepairItemTypeConstants.Battery,
+            RepairItemTypeConstants.Screen,
+            RepairItemTypeConstants.ScreenCover,
+            RepairItemTypeConstants.BackCover,
+            RepairItemTypeConstants.Motherboard
+        },
+        new string[]
+        {
+            Messages.Battery,
+            Messages.Screen,
+            Messages.ScreenCover,
+            Messages.BackCover,
+            Messages.Motherboard
+        })]
         [PXUIField(DisplayName = "Repair Item Type")]
         public virtual string RepairItemType { get; set; }
-        public abstract class repairItemType : PX.Data.BQL.BqlString.Field<repairItemType> { }
+        public abstract class repairItemType : 
+            PX.Data.BQL.BqlString.Field<repairItemType> { }
         #endregion
 
         #region InventoryID
         [Inventory]
         [PXDefault]
-        //[PXRestrictor(typeof(
-        //    Where<InventoryItemExt.usrRepairItem.IsEqual<True>.
-        //        And<Brackets<RSSVRepairItem.repairItemType.FromCurrent.IsNull.
-        //            Or<InventoryItemExt.usrRepairItemType.
-        //    IsEqual<RSSVRepairItem.repairItemType.FromCurrent>>>>>),
-        //        Messages.StockItemIncorrectRepairItemType,
-        //            typeof(RSSVRepairItem.repairItemType))]
         public virtual int? InventoryID { get; set; }
         public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
         #endregion
@@ -92,45 +88,58 @@ namespace PhoneRepairShop
         [PXDBDecimal()]
         [PXDefault(TypeCode.Decimal, "0.0")]
         [PXUIField(DisplayName = "Price")]
-        [PXFormula(null, typeof(SumCalc<RSSVRepairPrice.price>))]
+        [PXFormula(null,
+            typeof(SumCalc<RSSVRepairPrice.price>))]
         public virtual Decimal? BasePrice { get; set; }
         public abstract class basePrice : PX.Data.BQL.BqlDecimal.Field<basePrice> { }
-        #endregion
-
-        #region CreatedByID
-        [PXDBCreatedByID()]
-        public virtual Guid? CreatedByID { get; set; }
-        public abstract class createdByID : PX.Data.BQL.BqlGuid.Field<createdByID> { }
-        #endregion
-
-        #region CreatedByScreenID
-        [PXDBCreatedByScreenID()]
-        public virtual string CreatedByScreenID { get; set; }
-        public abstract class createdByScreenID : PX.Data.BQL.BqlString.Field<createdByScreenID> { }
         #endregion
 
         #region CreatedDateTime
         [PXDBCreatedDateTime()]
         public virtual DateTime? CreatedDateTime { get; set; }
-        public abstract class createdDateTime : PX.Data.BQL.BqlDateTime.Field<createdDateTime> { }
+        public abstract class createdDateTime :
+            PX.Data.BQL.BqlDateTime.Field<createdDateTime>
+        { }
         #endregion
 
-        #region LastModifiedByID
-        [PXDBLastModifiedByID()]
-        public virtual Guid? LastModifiedByID { get; set; }
-        public abstract class lastModifiedByID : PX.Data.BQL.BqlGuid.Field<lastModifiedByID> { }
+        #region CreatedByID
+        [PXDBCreatedByID()]
+        public virtual Guid? CreatedByID { get; set; }
+        public abstract class createdByID :
+            PX.Data.BQL.BqlGuid.Field<createdByID>
+        { }
         #endregion
 
-        #region LastModifiedByScreenID
-        [PXDBLastModifiedByScreenID()]
-        public virtual string LastModifiedByScreenID { get; set; }
-        public abstract class lastModifiedByScreenID : PX.Data.BQL.BqlString.Field<lastModifiedByScreenID> { }
+        #region CreatedByScreenID
+        [PXDBCreatedByScreenID()]
+        public virtual string CreatedByScreenID { get; set; }
+        public abstract class createdByScreenID :
+            PX.Data.BQL.BqlString.Field<createdByScreenID>
+        { }
         #endregion
 
         #region LastModifiedDateTime
         [PXDBLastModifiedDateTime()]
         public virtual DateTime? LastModifiedDateTime { get; set; }
-        public abstract class lastModifiedDateTime : PX.Data.BQL.BqlDateTime.Field<lastModifiedDateTime> { }
+        public abstract class lastModifiedDateTime :
+            PX.Data.BQL.BqlDateTime.Field<lastModifiedDateTime>
+        { }
+        #endregion
+
+        #region LastModifiedByID
+        [PXDBLastModifiedByID()]
+        public virtual Guid? LastModifiedByID { get; set; }
+        public abstract class lastModifiedByID :
+            PX.Data.BQL.BqlGuid.Field<lastModifiedByID>
+        { }
+        #endregion
+
+        #region LastModifiedByScreenID
+        [PXDBLastModifiedByScreenID()]
+        public virtual string LastModifiedByScreenID { get; set; }
+        public abstract class lastModifiedByScreenID :
+            PX.Data.BQL.BqlString.Field<lastModifiedByScreenID>
+        { }
         #endregion
 
         #region Tstamp

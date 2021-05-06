@@ -1,14 +1,13 @@
 using System;
 using PX.Data;
-using PX.Objects.CR;
 using PX.Objects.AR;
 using PX.Objects.CS;
 using PX.TM;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Repair Work Order Preferences")]
     [PXPrimaryGraph(typeof(RSSVSetupMaint))]
+    [PXCacheName("Repair Work Order Preferences")]
     public class RSSVSetup : IBqlTable
     {
         #region NumberingID
@@ -18,7 +17,7 @@ namespace PhoneRepairShop
         [PXSelector(typeof(Numbering.numberingID), DescriptionField = typeof(Numbering.descr))]
         public virtual string NumberingID { get; set; }
         public abstract class numberingID : PX.Data.BQL.BqlString.Field<numberingID> { }
-            #endregion
+        #endregion
 
         #region WalkInCustomerID
         [CustomerActive(DisplayName = "Walk-In Customer", DescriptionField = typeof(Customer.acctName))]
