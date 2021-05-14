@@ -92,6 +92,13 @@ namespace PhoneRepairShop
             var view = new PXView(this, true, query);
             foreach (PXResult<RSSVWorkOrderToPay, ARInvoice> order in view.SelectMulti(null))
             {
+                if (filter.GroupByStatus == true)
+                {
+                    ((RSSVWorkOrderToPay)order[0]).OrderNbr = "";
+                    ((RSSVWorkOrderToPay)order[0]).PercentPaid = null;
+                    ((RSSVWorkOrderToPay)order[0]).InvoiceNbr = "";
+                    ((ARInvoice)order[1]).DueDate = null;
+                }
                 yield return order;
             }
 

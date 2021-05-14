@@ -22,11 +22,11 @@ namespace PhoneRepairShop
         public const string BackCover = "Back Cover";
         public const string Motherboard = "Motherboard";
 
+        //Messages
         public const string StockItemIncorrectRepairItemType =
             "This stock item has a repair item type that differs from {0}.";
-
-        public const string CannotAddStockItemToRepairPrice =
-            "Cannot add a stock item to a repair price.";
-        public const string DefaultWarrantyCanNotBeDeleted = "This record cannot be deleted.";
+        public const string ItemIsStock = "This item is a stock item.";
+        public const string DefaultWarrantyCanNotBeDeleted =
+        "The default warranty cannot be deleted.";
     }
 }

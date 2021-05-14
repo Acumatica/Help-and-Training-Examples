@@ -1,12 +1,13 @@
 ﻿<GenericInquiryScreen>
     <data-set>
-        <relations format-version="3" relations-version="20190630" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
+        <relations format-version="3" relations-version="20201113" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
             <link from="GIFilter (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIGroupBy (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIMassAction (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIMassUpdateField (DesignID)" to="GIDesign (DesignID)" />
             <link from="GINavigationScreen (DesignID)" to="GIDesign (DesignID)" />
             <link from="GINavigationParameter (DesignID, NavigationScreenLineNbr)" to="GINavigationScreen (DesignID, LineNbr)" />
+            <link from="GINavigationCondition (DesignID, NavigationScreenLineNbr)" to="GINavigationScreen (DesignID, LineNbr)" />
             <link from="GIOn (DesignID, RelationNbr)" to="GIRelation (DesignID, LineNbr)" />
             <link from="GIRecordDefault (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIRelation (DesignID, ParentTable)" to="GITable (DesignID, Alias)" />
@@ -58,6 +59,7 @@
                 <table name="GIMassUpdateField" uplink="(DesignID) = (DesignID)" />
                 <table name="GINavigationScreen" uplink="(DesignID) = (DesignID)">
                     <table name="GINavigationParameter" uplink="(DesignID, LineNbr) = (DesignID, NavigationScreenLineNbr)" />
+                    <table name="GINavigationCondition" uplink="(DesignID, LineNbr) = (DesignID, NavigationScreenLineNbr)" />
                 </table>
                 <table name="GIRecordDefault" uplink="(DesignID) = (DesignID)" />
                 <table name="GISort" uplink="(DesignID) = (DesignID)">
@@ -131,8 +133,8 @@
         </layout>
         <data>
             <GIDesign>
-                <row DesignID="f86e43fd-80ec-4fa2-affb-9671b37adc74" Name="Serviced Devices" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS202000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0">
-                    <GINavigationScreen ScreenID="RS202000" LineNbr="1" WindowMode="I">
+                <row DesignID="f86e43fd-80ec-4fa2-affb-9671b37adc74" Name="Serviced Devices" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS202000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0">
+                    <GINavigationScreen Link="RS202000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1">
                         <GINavigationParameter LineNbr="1" FieldName="DeviceCD" ParameterName="ServicedDevices.DeviceCD" IsExpression="0" />
                     </GINavigationScreen>
                     <GITable Alias="ServicedDevices" Name="PhoneRepairShop.RSSVDevice">
@@ -144,12 +146,16 @@
                     <SiteMap linkname="toDesignById">
                         <row Position="5" Title="Serviced Devices" Url="~/GenericInquiry/GenericInquiry.aspx?id=f86e43fd-80ec-4fa2-affb-9671b37adc74" ScreenID="RS2020PL" NodeID="baebb11d-483a-4b77-8052-56e1595828ca" ParentID="43c55fae-b3fd-42a9-b29b-7331167d143a">
                             <ListEntryPoint EntryScreenID="RS202000" IsActive="1" />
-                            <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="2040" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" />
+                            <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="2040" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4">
+                                <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
+                            </MUIScreen>
                         </row>
                     </SiteMap>
                     <SiteMap linkname="to1Screen">
-                        <row Title="Serviced Devices" Url="~/Pages/RS/RS202000.aspx" NodeID="9ec44913-4c87-4b0a-b7df-311ab289fae4" ParentID="00000000-0000-0000-0000-000000000000">
-                            <MUIScreen IsPortal="0" WorkspaceID="c60d7807-01fa-4ad7-ba64-774a3fa8e6f2" Order="20" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385" />
+                        <row Title="Serviced Devices" Url="~/Pages/RS/RS202000.aspx" NodeID="3a60d24e-7262-481b-98f7-57861dd0af48" ParentID="00000000-0000-0000-0000-000000000000">
+                            <MUIScreen IsPortal="0" WorkspaceID="26396cbc-c93c-410b-8048-af5f3707639b" Order="20" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
+                                <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
+                            </MUIScreen>
                         </row>
                     </SiteMap>
                 </row>
@@ -161,7 +167,7 @@
                 <row IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="32" Title="Data Views" Icon="poll" IsSystem="1">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
-                <row IsPortal="0" WorkspaceID="c60d7807-01fa-4ad7-ba64-774a3fa8e6f2" Order="48" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0">
+                <row IsPortal="0" WorkspaceID="26396cbc-c93c-410b-8048-af5f3707639b" Order="38" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
             </MUIWorkspace>

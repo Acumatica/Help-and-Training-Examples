@@ -66,7 +66,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ARReleaseProcess.cs" />
     <Compile Include="DAC\RSSVDevice.cs" />
     <Compile Include="Data\InputData.cs" />
     <Compile Include="Helper\Constants.cs" />
@@ -87,6 +86,7 @@
     <Compile Include="DAC\RSSVRepairService.cs" />
     <Compile Include="RSSVDeviceMaint.cs" />
     <Compile Include="RSSVRepairServiceMaint.cs" />
+    <Compile Include="Workflows\RSSVWorkOrderWorkflow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

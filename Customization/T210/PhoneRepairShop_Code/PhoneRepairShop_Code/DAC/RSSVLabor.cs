@@ -27,8 +27,8 @@ namespace PhoneRepairShop
 
         #region InventoryID
         [Inventory(IsKey = true)]
-        [PXRestrictor(typeof(Where<InventoryItem.stkItem, Equal<False>>),
-            Messages.CannotAddStockItemToRepairPrice)]
+        [PXRestrictor(typeof(Where<InventoryItem.stkItem.IsEqual<False>>),
+            Messages.ItemIsStock)]
         public virtual int? InventoryID { get; set; }
         public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
         #endregion

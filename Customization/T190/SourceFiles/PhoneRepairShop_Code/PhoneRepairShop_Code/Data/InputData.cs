@@ -178,7 +178,7 @@ namespace PhoneRepairShop
                                 {
                                     DeviceID = Convert.ToInt32(dic["DeviceID"]),
                                     ServiceID = Convert.ToInt32(dic["ServiceID"]),
-                                    Price = Convert.ToDecimal(dic["Price"]),
+                                    //Price = Convert.ToDecimal(dic["Price"]),
                                     RepairItemLineCntr = Convert.ToInt32(dic["RepairItemLineCntr"])
                                 };
                                 repairPriceGraph.RepairPrices.Insert(price);
