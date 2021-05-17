@@ -69,7 +69,7 @@
 									<px:PXGridColumn DataField="InventoryID" Width="70" />
 									<px:PXGridColumn DataField="InventoryID_description" Width="280" />
 									<px:PXGridColumn DataField="DefaultPrice" Width="100" />
-									<px:PXGridColumn CommitChanges="True" DataField="Quantity" Width="100" ></px:PXGridColumn>
+									<px:PXGridColumn DataField="Quantity" Width="100" ></px:PXGridColumn>
 									<px:PXGridColumn DataField="ExtPrice" Width="100" /></Columns></px:PXGridLevel></Levels>
 						<AutoSize Enabled="True" ></AutoSize></px:PXGrid></Template>
 			</px:PXTabItem>

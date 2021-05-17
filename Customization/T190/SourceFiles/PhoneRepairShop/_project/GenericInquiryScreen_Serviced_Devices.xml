@@ -1,6 +1,6 @@
 ﻿<GenericInquiryScreen>
     <data-set>
-        <relations format-version="3" relations-version="20190630" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
+        <relations format-version="3" relations-version="20201113" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
             <link from="GIFilter (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIGroupBy (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIMassAction (DesignID)" to="GIDesign (DesignID)" />
@@ -131,8 +131,8 @@
         </layout>
         <data>
             <GIDesign>
-                <row DesignID="f86e43fd-80ec-4fa2-affb-9671b37adc74" Name="Serviced Devices" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS202000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0">
-                    <GINavigationScreen ScreenID="RS202000" LineNbr="1" WindowMode="I">
+                <row DesignID="f86e43fd-80ec-4fa2-affb-9671b37adc74" Name="Serviced Devices" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS202000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0">
+                    <GINavigationScreen Link="RS202000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1">
                         <GINavigationParameter LineNbr="1" FieldName="DeviceCD" ParameterName="ServicedDevices.DeviceCD" IsExpression="0" />
                     </GINavigationScreen>
                     <GITable Alias="ServicedDevices" Name="PhoneRepairShop.RSSVDevice">
@@ -149,7 +149,9 @@
                     </SiteMap>
                     <SiteMap linkname="to1Screen">
                         <row Title="Serviced Devices" Url="~/Pages/RS/RS202000.aspx" NodeID="9ec44913-4c87-4b0a-b7df-311ab289fae4" ParentID="00000000-0000-0000-0000-000000000000">
-                            <MUIScreen IsPortal="0" WorkspaceID="c60d7807-01fa-4ad7-ba64-774a3fa8e6f2" Order="20" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385" />
+                            <MUIScreen IsPortal="0" WorkspaceID="c60d7807-01fa-4ad7-ba64-774a3fa8e6f2" Order="20" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
+                                <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
+                            </MUIScreen>
                         </row>
                     </SiteMap>
                 </row>

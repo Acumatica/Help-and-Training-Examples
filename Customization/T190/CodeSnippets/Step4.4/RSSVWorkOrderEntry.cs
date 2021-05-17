@@ -9,25 +9,35 @@ using System.Collections.Generic;
 
 namespace PhoneRepairShop
 {
-    public class RSSVWorkOrderEntry : PXGraph<RSSVWorkOrderEntry, RSSVWorkOrder>
-    {
+	// Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod
+	// extension should be constantly active
+	public class RSSVWorkOrderEntry : PXGraph<RSSVWorkOrderEntry, RSSVWorkOrder>
+	{
 		...
 		
-		#region Event Handlers
+		#region Actions
 		 
 		...
 		
-		protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
-        {
-            ...
-
-            CreateInvoiceAction.SetVisible(WorkOrders.Current.Status == WorkOrderStatusConstants.PendingPayment ||
-               WorkOrders.Current.Status == WorkOrderStatusConstants.Completed
-               && WorkOrders.Current.InvoiceNbr == null);
-            CreateInvoiceAction.SetEnabled(WorkOrders.Current.InvoiceNbr == null);
-
-        }
+		public PXAction<RSSVWorkOrder> ActionsMenuItem;
+		[PXButton(SpecialType = PXSpecialButtonType.ActionsFolder)]
+		[PXUIField(DisplayName = "Actions")]
+		protected virtual IEnumerable actionsMenuItem(PXAdapter adapter)
+		{
+			return adapter.Get();
+		}
 
 		#endregion
+	}
+
+	// Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod
+	// extension should be constantly active
+	public class RSSVWorkOrderEntry_Extension : PXGraphExtension<RSSVWorkOrderEntry>
+	{
+		public override void Initialize()
+		{
+			base.Initialize();
+			Base.ActionsMenuItem.AddMenuAction(Base.CreateInvoiceAction);
+		}
 	}
 }

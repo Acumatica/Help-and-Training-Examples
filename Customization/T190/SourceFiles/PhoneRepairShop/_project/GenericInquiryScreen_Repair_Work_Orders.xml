@@ -1,6 +1,6 @@
 ﻿<GenericInquiryScreen>
     <data-set>
-        <relations format-version="3" relations-version="20190630" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
+        <relations format-version="3" relations-version="20201113" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
             <link from="GIFilter (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIGroupBy (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIMassAction (DesignID)" to="GIDesign (DesignID)" />
@@ -131,8 +131,8 @@
         </layout>
         <data>
             <GIDesign>
-                <row DesignID="eae45e7b-e3c5-480c-9af9-6f4c80223e41" Name="Repair Work Orders" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS301000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0">
-                    <GINavigationScreen ScreenID="RS301000" LineNbr="1" WindowMode="I">
+                <row DesignID="eae45e7b-e3c5-480c-9af9-6f4c80223e41" Name="Repair Work Orders" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS301000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0">
+                    <GINavigationScreen Link="RS301000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1">
                         <GINavigationParameter LineNbr="4" FieldName="ServiceID" ParameterName="WorkOrder.ServiceID" IsExpression="0" />
                         <GINavigationParameter LineNbr="3" FieldName="DeviceID" ParameterName="WorkOrder.DeviceID" IsExpression="0" />
                         <GINavigationParameter LineNbr="2" FieldName="CustomerID" ParameterName="WorkOrder.CustomerID" IsExpression="0" />
@@ -148,7 +148,7 @@
                     <SiteMap linkname="toDesignById">
                         <row Position="1114" Title="Repair Work Orders" Url="~/GenericInquiry/GenericInquiry.aspx?id=eae45e7b-e3c5-480c-9af9-6f4c80223e41" ScreenID="RS3010PL" NodeID="fb3cea48-eb71-4dea-838d-914fffcba205" ParentID="12167736-ae7e-46ab-8a8c-dd4b86217519">
                             <ListEntryPoint EntryScreenID="RS301000" IsActive="1" />
-                            <FilterHeader FilterID="53168" UserName="admin" ViewName="Results" FilterName="To Assign" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0">
+                            <FilterHeader FilterID="0000cfb0-0000-0000-0000-000000000000" UserName="admin" ViewName="Results" FilterName="To Assign" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="53168">
                                 <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="WorkOrder_status" Condition="0" ValueSt="RA" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="1" />
                             </FilterHeader>
                             <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="2030" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" />

@@ -1,6 +1,6 @@
 ﻿<GenericInquiryScreen>
     <data-set>
-        <relations format-version="3" relations-version="20190630" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
+        <relations format-version="3" relations-version="20201113" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
             <link from="GIFilter (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIGroupBy (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIMassAction (DesignID)" to="GIDesign (DesignID)" />
@@ -131,8 +131,8 @@
         </layout>
         <data>
             <GIDesign>
-                <row DesignID="134b2979-46f9-452f-ad39-57b3be8e4958" Name="Services and Prices" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS203000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0">
-                    <GINavigationScreen ScreenID="RS203000" LineNbr="1" WindowMode="I">
+                <row DesignID="134b2979-46f9-452f-ad39-57b3be8e4958" Name="Services and Prices" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS203000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0">
+                    <GINavigationScreen Link="RS203000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1">
                         <GINavigationParameter LineNbr="2" FieldName="DeviceID" ParameterName="RepairPrice.DeviceID" IsExpression="0" />
                         <GINavigationParameter LineNbr="1" FieldName="ServiceID" ParameterName="RepairPrice.ServiceID" IsExpression="0" />
                     </GINavigationScreen>

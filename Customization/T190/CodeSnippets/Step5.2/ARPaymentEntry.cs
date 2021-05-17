@@ -4,6 +4,8 @@ using PhoneRepairShop;
 
 namespace PX.Objects.AR
 {
+    // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod
+    // extension should be constantly active
     public class ARPaymentEntry_Extension : PXGraphExtension<ARPaymentEntry>
     {
         public virtual void _(Events.FieldDefaulting<ARPayment,
