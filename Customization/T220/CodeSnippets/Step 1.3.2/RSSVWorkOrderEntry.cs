@@ -1,5 +1,4 @@
-//Display an error if a required repair item is missing in a work order
-//for which a user clears the Hold check box.
+//Display an error if the priority is too low for the selected service
 protected virtual void _(Events.RowUpdating<RSSVWorkOrder> e)
 {
     // The modified data record (not in the cache yet)
@@ -19,7 +18,7 @@ protected virtual void _(Events.RowUpdating<RSSVWorkOrder> e)
 
             if (service != null && service.PreliminaryCheck == true)
             {
-                //Display the error for the priority field.
+                //Display the error for the Priority field
                 WorkOrders.Cache.RaiseExceptionHandling<RSSVWorkOrder.priority>(row,
                     originalRow.Priority,
                     new PXSetPropertyException(Messages.PriorityTooLow));

@@ -1,3 +1,6 @@
+using PX.Objects.IN;
+...
+
 //Update price and repair item type when inventory ID of repair item is updated.
 protected void _(Events.FieldUpdated<RSSVWorkOrderItem, RSSVWorkOrderItem.inventoryID> e)
 {
