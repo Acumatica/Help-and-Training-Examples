@@ -3099,7 +3099,8 @@
 									"host": [
 										"{{EndpointURL}}PurchaseOrder"
 									]
-								}
+								},
+								"description": "This example shows how to create a purchase order. This process is described in [Creation of a Purchase Receipt with Allocations](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=918995d9-45ce-4cf7-a271-608abf967ae8)."
 							},
 							"response": [
 								{
@@ -3203,7 +3204,8 @@
 											"disabled": true
 										}
 									]
-								}
+								},
+								"description": "This example shows how to release a purchase receipt from hold. This process is described in [Creation of a Purchase Receipt with Allocations](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=918995d9-45ce-4cf7-a271-608abf967ae8)."
 							},
 							"response": [
 								{
@@ -3313,7 +3315,8 @@
 											"value": "Details,Details/Allocations"
 										}
 									]
-								}
+								},
+								"description": "This example shows how to create a purchase receipt with allocations. This process is described in [Creation of a Purchase Receipt with Allocations](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=918995d9-45ce-4cf7-a271-608abf967ae8)."
 							},
 							"response": [
 								{
