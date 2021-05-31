@@ -3393,6 +3393,116 @@
 									"body": "{\n    \"id\": \"6b7ba1b9-98bf-eb11-9de4-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"BaseCurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"BillDate\": {\n        \"value\": \"2021-05-28T00:00:00+03:00\"\n    },\n    \"Branch\": {\n        \"value\": \"HEADOFFICE\"\n    },\n    \"ControlQty\": {\n        \"value\": 20\n    },\n    \"CreateBill\": {\n        \"value\": false\n    },\n    \"CurrencyEffectiveDate\": {\n        \"value\": \"2021-01-13T00:00:00+03:00\"\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"CurrencyRate\": {\n        \"value\": 1\n    },\n    \"CurrencyRateTypeID\": {},\n    \"CurrencyReciprocalRate\": {\n        \"value\": 1\n    },\n    \"Date\": {\n        \"value\": \"2021-05-28T00:00:00+03:00\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"6d7ba1b9-98bf-eb11-9de4-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Account\": {},\n            \"AccrualAccount\": {\n                \"value\": \"20100\"\n            },\n            \"Allocations\": [\n                {\n                    \"id\": \"47f55dfd-3792-4193-9ad8-9a67b20e4475\",\n                    \"rowNumber\": 1,\n                    \"note\": null,\n                    \"ExpirationDate\": {\n                        \"value\": \"2021-05-29T00:00:00+03:00\"\n                    },\n                    \"LineNbr\": {\n                        \"value\": 1\n                    },\n                    \"Location\": {\n                        \"value\": \"MAIN\"\n                    },\n                    \"LotSerialNbr\": {\n                        \"value\": \"FRT000862\"\n                    },\n                    \"Qty\": {\n                        \"value\": 10\n                    },\n                    \"ReceiptNbr\": {\n                        \"value\": \"000023\"\n                    },\n                    \"SplitLineNbr\": {\n                        \"value\": 2\n                    },\n                    \"custom\": {}\n                },\n                {\n                    \"id\": \"1e0eb683-f63c-4630-87c1-1f0e3ee8b0a5\",\n                    \"rowNumber\": 2,\n                    \"note\": null,\n                    \"ExpirationDate\": {\n                        \"value\": \"2021-05-29T00:00:00+03:00\"\n                    },\n                    \"LineNbr\": {\n                        \"value\": 1\n                    },\n                    \"Location\": {\n                        \"value\": \"MAIN\"\n                    },\n                    \"LotSerialNbr\": {\n                        \"value\": \"FRT000877\"\n                    },\n                    \"Qty\": {\n                        \"value\": 10\n                    },\n                    \"ReceiptNbr\": {\n                        \"value\": \"000023\"\n                    },\n                    \"SplitLineNbr\": {\n                        \"value\": 3\n                    },\n                    \"custom\": {}\n                }\n            ],\n            \"Branch\": {\n                \"value\": \"HEADOFFICE\"\n            },\n            \"Description\": {},\n            \"EditableUnitCost\": {\n                \"value\": true\n            },\n            \"EstimatedINExtendedCost\": {\n                \"value\": 199\n            },\n            \"ExpirationDate\": {\n                \"value\": \"2021-05-29T00:00:00+03:00\"\n            },\n            \"ExtendedCost\": {\n                \"value\": 199\n            },\n            \"FinalINExtendedCost\": {},\n            \"InventoryID\": {\n                \"value\": \"GUAVAS\"\n            },\n            \"LineNbr\": {\n                \"value\": 1\n            },\n            \"LineType\": {\n                \"value\": \"Goods for IN\"\n            },\n            \"Location\": {\n                \"value\": \"MAIN\"\n            },\n            \"LotSerialNbr\": {},\n            \"OpenQty\": {},\n            \"OrderedQty\": {},\n            \"POLineNbr\": {},\n            \"POOrderNbr\": {},\n            \"POOrderType\": {},\n            \"POReceiptLineNbr\": {},\n            \"POReceiptNbr\": {},\n            \"ReceiptQty\": {\n                \"value\": 20\n            },\n            \"TransactionDescription\": {\n                \"value\": \"Fresh guavas 1 lb\"\n            },\n            \"TransferOrderLineNbr\": {},\n            \"TransferOrderNbr\": {},\n            \"TransferOrderType\": {},\n            \"TransferShipmentNbr\": {},\n            \"UnitCost\": {\n                \"value\": 9.95\n            },\n            \"UOM\": {\n                \"value\": \"LB\"\n            },\n            \"Warehouse\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {}\n        }\n    ],\n    \"Hold\": {\n        \"value\": false\n    },\n    \"Location\": {\n        \"value\": \"MAIN\"\n    },\n    \"PostPeriod\": {\n        \"value\": \"052021\"\n    },\n    \"ProcessReturnWithOriginalCost\": {\n        \"value\": false\n    },\n    \"ReceiptNbr\": {\n        \"value\": \"000023\"\n    },\n    \"Status\": {\n        \"value\": \"Balanced\"\n    },\n    \"TotalCost\": {\n        \"value\": 199\n    },\n    \"TotalQty\": {\n        \"value\": 20\n    },\n    \"Type\": {\n        \"value\": \"Receipt\"\n    },\n    \"UnbilledQuantity\": {\n        \"value\": 20\n    },\n    \"VendorID\": {\n        \"value\": \"GLORYFRUIT\"\n    },\n    \"VendorRef\": {},\n    \"Warehouse\": {},\n    \"custom\": {}\n}"
 								}
 							]
+						},
+						{
+							"name": "Creation of a Transfer Receipt with Allocations",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Type\": {\r\n        \"value\": \"Transfer Receipt\"\r\n    },\r\n    \"Warehouse\": {\r\n        \"value\": \"RETAIL\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"TransferOrderType\": {\r\n                \"value\": \"TR\"\r\n            },\r\n            \"TransferOrderNbr\": {\r\n                \"value\": \"000064\"\r\n            },\r\n            \"TransferOrderLineNbr\": {\r\n                \"value\": \"1\"\r\n            },\r\n            \"TransferShipmentNbr\": {\r\n                \"value\": \"000059\"\r\n            },\r\n            \"ReceiptQty\": {\r\n                \"value\": \"1\"\r\n            },\r\n            \"Allocations\": [\r\n                {\r\n                    \"Location\": {\r\n                        \"value\": \"MAIN\"\r\n                    },\r\n                    \"Qty\": {\r\n                        \"value\": \"1\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}PurchaseReceipt?$expand=Details,Details/Allocations",
+									"host": [
+										"{{EndpointURL}}PurchaseReceipt"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Details,Details/Allocations"
+										}
+									]
+								},
+								"description": "This example shows how to create a transfer receipt with allocations. This process is described in [Creation of a Transfer Receipt with Allocations](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=24c68cc6-6985-4421-86c9-e29156f3c150)."
+							},
+							"response": [
+								{
+									"name": "Creation of a Transfer Receipt with Allocations",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"Type\": {\r\n        \"value\": \"Transfer Receipt\"\r\n    },\r\n    \"Warehouse\": {\r\n        \"value\": \"RETAIL\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"TransferOrderType\": {\r\n                \"value\": \"TR\"\r\n            },\r\n            \"TransferOrderNbr\": {\r\n                \"value\": \"000064\"\r\n            },\r\n            \"TransferOrderLineNbr\": {\r\n                \"value\": \"1\"\r\n            },\r\n            \"TransferShipmentNbr\": {\r\n                \"value\": \"000059\"\r\n            },\r\n            \"ReceiptQty\": {\r\n                \"value\": \"1\"\r\n            },\r\n            \"Allocations\": [\r\n                {\r\n                    \"Location\": {\r\n                        \"value\": \"MAIN\"\r\n                    },\r\n                    \"Qty\": {\r\n                        \"value\": \"1\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}PurchaseReceipt?$expand=Details,Details/Allocations",
+											"host": [
+												"{{EndpointURL}}PurchaseReceipt"
+											],
+											"query": [
+												{
+													"key": "$expand",
+													"value": "Details,Details/Allocations"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Cache-Control",
+											"value": "private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=C34018A62898E49D11EBC22C664E8B71; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:18920+sc:~/entity/default/20.200.001/purchasereceipt+start:637580749525705201+tg:; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 31 May 2021 16:22:51 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "2087"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"86d92c70-2cc2-eb11-9de4-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"BaseCurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"BillDate\": {\n        \"value\": \"2021-05-31T00:00:00+03:00\"\n    },\n    \"Branch\": {\n        \"value\": \"RETAIL\"\n    },\n    \"ControlQty\": {\n        \"value\": 1\n    },\n    \"CreateBill\": {\n        \"value\": false\n    },\n    \"CurrencyEffectiveDate\": {\n        \"value\": \"2021-05-31T00:00:00+03:00\"\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"CurrencyRate\": {\n        \"value\": 1\n    },\n    \"CurrencyRateTypeID\": {},\n    \"CurrencyReciprocalRate\": {\n        \"value\": 1\n    },\n    \"Date\": {\n        \"value\": \"2021-05-31T00:00:00+03:00\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"88d92c70-2cc2-eb11-9de4-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Account\": {},\n            \"AccrualAccount\": {},\n            \"Allocations\": [\n                {\n                    \"id\": \"cc83e10e-7be8-40da-a42b-73d63b048071\",\n                    \"rowNumber\": 1,\n                    \"note\": null,\n                    \"ExpirationDate\": {},\n                    \"LineNbr\": {\n                        \"value\": 1\n                    },\n                    \"Location\": {\n                        \"value\": \"MAIN\"\n                    },\n                    \"LotSerialNbr\": {\n                        \"value\": \"\"\n                    },\n                    \"Qty\": {\n                        \"value\": 1\n                    },\n                    \"ReceiptNbr\": {\n                        \"value\": \"000024\"\n                    },\n                    \"SplitLineNbr\": {\n                        \"value\": 2\n                    },\n                    \"custom\": {}\n                }\n            ],\n            \"Branch\": {\n                \"value\": \"RETAIL\"\n            },\n            \"Description\": {},\n            \"EditableUnitCost\": {\n                \"value\": false\n            },\n            \"EstimatedINExtendedCost\": {\n                \"value\": 0\n            },\n            \"ExpirationDate\": {},\n            \"ExtendedCost\": {\n                \"value\": 0\n            },\n            \"FinalINExtendedCost\": {},\n            \"InventoryID\": {\n                \"value\": \"APJAM08\"\n            },\n            \"LineNbr\": {\n                \"value\": 1\n            },\n            \"LineType\": {\n                \"value\": \"Goods for IN\"\n            },\n            \"Location\": {\n                \"value\": \"MAIN\"\n            },\n            \"LotSerialNbr\": {\n                \"value\": \"\"\n            },\n            \"OpenQty\": {\n                \"value\": 0\n            },\n            \"OrderedQty\": {\n                \"value\": 1\n            },\n            \"POLineNbr\": {},\n            \"POOrderNbr\": {},\n            \"POOrderType\": {},\n            \"POReceiptLineNbr\": {},\n            \"POReceiptNbr\": {},\n            \"ReceiptQty\": {\n                \"value\": 1\n            },\n            \"TransactionDescription\": {\n                \"value\": \"Apple jam 8 oz.\"\n            },\n            \"TransferOrderLineNbr\": {\n                \"value\": 1\n            },\n            \"TransferOrderNbr\": {\n                \"value\": \"000064\"\n            },\n            \"TransferOrderType\": {\n                \"value\": \"TR\"\n            },\n            \"TransferShipmentNbr\": {\n                \"value\": \"000059\"\n            },\n            \"UnitCost\": {\n                \"value\": 0\n            },\n            \"UOM\": {\n                \"value\": \"PIECE\"\n            },\n            \"Warehouse\": {\n                \"value\": \"RETAIL\"\n            },\n            \"custom\": {}\n        }\n    ],\n    \"Hold\": {\n        \"value\": false\n    },\n    \"Location\": {\n        \"value\": \"MAIN\"\n    },\n    \"PostPeriod\": {\n        \"value\": \"052021\"\n    },\n    \"ProcessReturnWithOriginalCost\": {\n        \"value\": false\n    },\n    \"ReceiptNbr\": {\n        \"value\": \"000024\"\n    },\n    \"Status\": {\n        \"value\": \"Balanced\"\n    },\n    \"TotalCost\": {\n        \"value\": 0\n    },\n    \"TotalQty\": {\n        \"value\": 1\n    },\n    \"Type\": {\n        \"value\": \"Transfer Receipt\"\n    },\n    \"UnbilledQuantity\": {\n        \"value\": 1\n    },\n    \"VendorID\": {\n        \"value\": \"RETAIL\"\n    },\n    \"VendorRef\": {},\n    \"Warehouse\": {\n        \"value\": \"RETAIL\"\n    },\n    \"custom\": {}\n}"
+								}
+							]
 						}
 					],
 					"description": "This folder contains examples from the [Inventory and Order Management (REST API Examples)](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ce68a4ed-491c-46e6-91ec-bde332c19218) chapter of the Integration Development Guide.",
