@@ -1,0 +1,4 @@
+﻿<AutomationScreenCondition ConditionID="6e29b935-55b5-407a-b683-c795830e9077" ScreenID="CR306000" ConditionName="DateLate" Order="3">
+    <FilterRow LineNbr="1" CloseBrackets="0" OpenBrackets="0" FieldName="CreatedDateTime" Condition="5" Operator="0" Value2="" Value="@Today" IsActive="True" IsFromScheme="True" />
+    <FilterRow LineNbr="2" CloseBrackets="0" OpenBrackets="0" FieldName="OwnerID" Condition="12" Operator="0" Value2="" Value="" IsActive="True" IsFromScheme="True" />
+</AutomationScreenCondition>

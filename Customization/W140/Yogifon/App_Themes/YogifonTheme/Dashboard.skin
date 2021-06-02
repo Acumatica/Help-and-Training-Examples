@@ -1,0 +1,88 @@
+<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+
+<px:PXDashboardContainer runat="server" CssClass="Dashboards" />
+
+<px:PXButton runat="server" CssClass="ButtonT" SkinID="RemoveDef">
+	<Styles>
+		<Hover CssClass="ButtonHWithCursor" />
+		<Pushed CssClass="ButtonP" />
+		<DropDown CssClass="ButtonDD" />
+		<Disabled CssClass="ButtonD" />
+		<DropNormal CssClass="ButtonDN" />
+		<DropHover CssClass="ButtonDH" />
+	</Styles>
+</px:PXButton>
+
+<%----------------- Chart types skins -----------------%>
+<px:PXPieChart runat="server" SkinID="Chart0" LegendEnabled="true" Gradient="Linear" PathToImages="~/App_Themes/Default/Images/" 
+	StartDuration="0" LabelText="[[title]]" Colors="#357CD2,#736DBA,#00BDAE,#FFD687,#EC007C,#E35970,#483C6C,#E1777B,#95EF8F"
+	MarginTop="0" MarginBottom="0" PullOutRadius="0%" PullOutDuration="0" InnerRadius="30%" Depth3D="0" Angle="0" LabelRadius="15" HideLabelsPercent="1"
+	OutlineThickness="2" OutlineAlpha="1" ResponsiveEnabled="true" ShowHandOnHover="true"
+	BalloonText="[[title]]: [[percents]]% ([[description]])" MaxLabelWidth="100">
+	<Legend MarkerType="Circle" ValueWidth=100 Spacing=30 ValueText="[[description]]" />
+</px:PXPieChart>
+
+<px:PXFunnelChart runat="server" LegendEnabled="true" Gradient="Linear" PathToImages="~/App_Themes/Default/Images/" 
+	StartDuration="0" LabelText="[[title]]" Colors="#357CD2,#736DBA,#00BDAE,#FFD687,#EC007C,#E35970,#483C6C,#E1777B,#95EF8F" 
+	MarginLeft="10" MarginRight="10" Depth3D="0" Angle="15" LabelRadius="15" HideLabelsPercent="4" NeckWidth="30%" PullDistance="0%" PullOutDuration="0"
+	OutlineThickness="2" OutlineAlpha="1" ResponsiveEnabled="true" ShowHandOnHover="true"
+	NeckHeight="30%" BaseWidth="100%" LabelPosition="center" BalloonText="[[title]]: [[percents]]% ([[description]])" MaxLabelWidth="100">	
+	<Legend MarkerType="Circle" ValueWidth=100 Spacing=30 ValueText="[[description]]" />
+</px:PXFunnelChart>
+
+<px:PXSerialChart runat="server" SkinID="Chart1" LegendEnabled="true" ScrollbarEnabled="false" CursorEnabled="true" 
+	PlotAreaBorderAlpha="0.2" PathToImages="~/App_Themes/Default/Images/" MarginLeft="50" MarginRight="50" MarginTop="20" MarginBottom="50" ResponsiveEnabled="true" ShowHandOnHover="true">
+	<Scrollbar UpdateOnReleaseOnly="true" />
+	<Legend ValueWidth=100 Spacing=30 ValueText="[[description]]" />
+	<CategoryAxis AxisAlpha="0.4" GridAlpha="0.1" GridPosition="start" LabelRotation="20" />
+	<ValueAxis>
+		<px:PXChartValueAxis StackType="None" GridAlpha="0.1" />
+		<px:PXChartValueAxis StackType="None" GridAlpha="0" Position="Right" />
+	</ValueAxis>
+	<DefaultGraph Type="Line" LineThickness="1" Bullet="Round" BulletSize="5" BalloonText="[[title]]: ([[description]])" />
+</px:PXSerialChart>
+	
+<px:PXSerialChart runat="server" SkinID="Chart2" LegendEnabled="true" ScrollbarEnabled="false" CursorEnabled="true"
+	PlotAreaBorderAlpha="0.2"  Colors="#357CD2,#736DBA,#00BDAE,#FFD687,#EC007C,#E35970,#483C6C,#E1777B,#95EF8F" 
+	PathToImages="~/App_Themes/Default/Images/" MarginLeft="50" MarginRight="50" MarginTop="20" MarginBottom="50" ResponsiveEnabled="true" ShowHandOnHover="true">
+	<Scrollbar UpdateOnReleaseOnly="true" />
+	<Legend ValueWidth=100 Spacing=30 ValueText="[[description]]" />
+	<CategoryAxis AxisAlpha="0" GridAlpha="0.1" GridPosition="start" LabelRotation="20" />
+	<ValueAxis>
+		<px:PXChartValueAxis StackType="None" GridAlpha="0.1" />
+		<px:PXChartValueAxis StackType="None" GridAlpha="0" Position="Right" />
+	</ValueAxis>
+	<DefaultGraph Type="Column" LineAlpha="0" FillAlphas="1" BalloonText="[[title]]: ([[description]])" />
+	<Cursor ValueBalloonsEnabled="false" CategoryBalloonEnabled="true" />
+</px:PXSerialChart>
+
+<px:PXSerialChart runat="server" SkinID="Chart3" LegendEnabled="true" ScrollbarEnabled="false" CursorEnabled="true"
+	PlotAreaBorderAlpha="0.2" Colors="#357CD2,#736DBA,#00BDAE,#FFD687,#EC007C,#E35970,#483C6C,#E1777B,#95EF8F" 
+	PathToImages="~/App_Themes/Default/Images/" MarginLeft="50" MarginRight="50"  MarginTop="20" MarginBottom="50" ResponsiveEnabled="true" ShowHandOnHover="true">
+	<Scrollbar UpdateOnReleaseOnly="true" />
+	<Legend ValueWidth=100 Spacing=30 ValueText="[[description]]" />
+	<CategoryAxis AxisAlpha="0" GridAlpha="0.1" GridPosition="start" LabelRotation="20" />
+	<ValueAxis>
+		<px:PXChartValueAxis StackType="Regular" GridAlpha="0.1" />
+		<px:PXChartValueAxis StackType="Regular" GridAlpha="0" Position="Right" />
+	</ValueAxis>
+	<DefaultGraph Type="Column" LineAlpha="0" FillAlphas="1" BalloonText="[[title]]: ([[description]])" />
+	<Cursor ValueBalloonsEnabled="false" CategoryBalloonEnabled="true" />
+</px:PXSerialChart>
+
+<pxd:PXDashboardGrid runat="server" RowHeight="24" >
+</pxd:PXDashboardGrid>

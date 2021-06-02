@@ -1,0 +1,3 @@
+﻿<Fields ScreenID="AR303000">
+    <Field IsActive="True" DisplayName="Type" FieldName="AddressType" ObjectName="PX.Objects.CR.Address" />
+</Fields>

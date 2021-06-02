@@ -1,0 +1,12 @@
+﻿<Automation screen="CR306000">
+    <Fields ScreenID="CR306000">
+        <Field IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Resolution" ObjectName="PX.Objects.CR.CRCase" ComboBoxValues="Set|RJ|Rejected;Set|RD|Resolved;Set|MI|More Info Requested;Set|IP|In Process;Set|IN|Internal;Set|ES|In Escalation;Set|DP|Duplicate;Set|CR|Waiting Confirmation;Set|CP|Customer Postpone;Set|CL|Canceled;Set|CC|Pending Closure;Set|CA|Abandoned;Set|AS|Unassigned;Set|AD|Updated;Set|PC|Closed on Portal;Set|PO|Opened on Portal" />
+        <Field IsActive="True" DisplayName="Owner" FieldName="OwnerID" RequiredCondition="7d2b5c09-4601-425c-bcfe-e600f1d59871" ObjectName="PX.Objects.CR.CRCase" />
+    </Fields>
+    <Conditions screen="CR306000">
+        <AutomationScreenCondition ConditionID="7d2b5c09-4601-425c-bcfe-e600f1d59871" ScreenID="CR306000" ConditionName="PriorityOrSeverityHigh" Order="1" AppendSystemCondition="False" JoinMethod="AND" InvertCondition="False">
+            <FilterRow LineNbr="1" CloseBrackets="0" OpenBrackets="0" FieldName="Priority" Condition="1" Operator="1" Value2="" Value="H" IsActive="True" IsFromScheme="True" />
+            <FilterRow LineNbr="2" CloseBrackets="0" OpenBrackets="0" FieldName="Severity" Condition="1" Operator="0" Value2="" Value="H" IsActive="True" IsFromScheme="True" />
+        </AutomationScreenCondition>
+    </Conditions>
+</Automation>

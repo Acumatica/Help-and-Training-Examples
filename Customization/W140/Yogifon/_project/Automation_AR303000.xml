@@ -1,0 +1,11 @@
+﻿<Automation screen="AR303000">
+    <Fields ScreenID="AR303000">
+        <Field IsActive="True" DisplayName="Type" FieldName="AddressType" ObjectName="PX.Objects.CR.Address" />
+    </Fields>
+    <Actions ScreenID="AR303000">
+        <Action IsActive="True" ActionName="SOOpenByCustomer" ActionType="S" DestinationScreenID="GI400001" DisplayName="SO Open By Customer" MassProcessingScreen="AR303000" BatchMode="False" MenuFolderType="20" WindowMode="N" DisablePersist="False">
+            <StateActionFields />
+            <StateActionParams />
+        </Action>
+    </Actions>
+</Automation>
