@@ -1,3 +1,0 @@
-﻿<AutomationScreenCondition ConditionID="31358d1e-be67-447e-921b-44658151a13e" ScreenID="CR306000" ConditionName="StatusReleased" Order="1">
-    <FilterRow LineNbr="1" CloseBrackets="0" OpenBrackets="0" FieldName="Status" Condition="1" Operator="0" Value2="" Value="R" IsActive="True" IsFromScheme="True" />
-</AutomationScreenCondition>
