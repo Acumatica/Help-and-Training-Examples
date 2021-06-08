@@ -1,8 +1,9 @@
-﻿using System.Collections;
+using System;
+using System.Collections;
 using PX.Data;
-using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
 using PX.Objects.IN;
+using PX.Data.BQL;
 
 namespace PhoneRepairShop
 {
@@ -15,12 +16,14 @@ namespace PhoneRepairShop
 
         //The view for the Repair Items tab
         public SelectFrom<RSSVWorkOrderItem>.
-            Where<RSSVWorkOrderItem.orderNbr.IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
+            Where<RSSVWorkOrderItem.orderNbr.
+            IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
             RepairItems;
 
         //The view for the Labor tab
         public SelectFrom<RSSVWorkOrderLabor>.
-            Where<RSSVWorkOrderLabor.orderNbr.IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
+            Where<RSSVWorkOrderLabor.orderNbr.
+            IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
             Labor;
 
         //The view for the auto-numbering of records
@@ -28,29 +31,37 @@ namespace PhoneRepairShop
 
         #endregion
 
-        #region Actions
-
-        public PXAction<RSSVWorkOrder> putOnHold;
-        [PXButton(CommitChanges = true), PXUIField(DisplayName = "Hold", MapEnableRights = PXCacheRights.Select, MapViewRights = PXCacheRights.Select)]
-        protected virtual IEnumerable PutOnHold(PXAdapter adapter) => adapter.Get();
-
-        public PXAction<RSSVWorkOrder> releaseFromHold;
-        [PXButton(CommitChanges = true), PXUIField(DisplayName = "Remove Hold", MapEnableRights = PXCacheRights.Select, MapViewRights = PXCacheRights.Select)]
-        protected virtual IEnumerable ReleaseFromHold(PXAdapter adapter) => adapter.Get();
-
-        #endregion
-
         #region Constructors
-        
+
         //The graph constructor
         public RSSVWorkOrderEntry()
         {
             RSSVSetup setup = AutoNumSetup.Current;
         }
 
+
         #endregion
 
-        #region Events 
+
+
+        #region Actions
+
+        public PXAction<RSSVWorkOrder> putOnHold;
+        [PXButton(CommitChanges = true), PXUIField(DisplayName = "Hold",
+          MapEnableRights = PXCacheRights.Select,
+          MapViewRights = PXCacheRights.Select)]
+        protected virtual IEnumerable PutOnHold(PXAdapter adapter) => adapter.Get();
+
+        public PXAction<RSSVWorkOrder> releaseFromHold;
+        [PXButton(CommitChanges = true), PXUIField(DisplayName = "Remove Hold",
+          MapEnableRights = PXCacheRights.Select,
+          MapViewRights = PXCacheRights.Select)]
+        protected virtual IEnumerable ReleaseFromHold(PXAdapter adapter) => adapter.Get();
+
+        #endregion
+
+        #region Event Handlers 
+
 
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
@@ -124,6 +135,7 @@ namespace PhoneRepairShop
             }
         }
 
+
         //Validate that Quantity is greater than or equal to 0 and
         //correct the value to the default if the value is less than the default.
         protected virtual void _(Events.FieldVerifying<RSSVWorkOrderLabor,
@@ -158,8 +170,8 @@ namespace PhoneRepairShop
             }
         }
 
-        //Display an error if a required repair item is missing in a work order
-        //for which a user clears the Hold check box.
+
+        //Display an error if the priority is too low for the selected service
         protected virtual void _(Events.RowUpdating<RSSVWorkOrder> e)
         {
             // The modified data record (not in the cache yet)
@@ -167,17 +179,19 @@ namespace PhoneRepairShop
             // The data record that is stored in the cache
             RSSVWorkOrder originalRow = e.Row;
 
-            if (!e.Cache.ObjectsEqual<RSSVWorkOrder.priority, RSSVWorkOrder.serviceID>(row, originalRow))
+            if (!e.Cache.ObjectsEqual<RSSVWorkOrder.priority,
+                   RSSVWorkOrder.serviceID>(row, originalRow))
             {
                 if (row.Priority == WorkOrderPriorityConstants.Low)
                 {
                     //Obtain the service record
                     RSSVRepairService service = SelectFrom<RSSVRepairService>.
-                        Where<RSSVRepairService.serviceID.IsEqual<@P.AsInt>>.View.Select(this, row.ServiceID);
+                        Where<RSSVRepairService.serviceID.IsEqual<@P.AsInt>>.
+                            View.Select(this, row.ServiceID);
 
                     if (service != null && service.PreliminaryCheck == true)
                     {
-                        //Display the error for the priority field.
+                        //Display the error for the Priority field
                         WorkOrders.Cache.RaiseExceptionHandling<RSSVWorkOrder.priority>(row,
                             originalRow.Priority,
                             new PXSetPropertyException(Messages.PriorityTooLow));
@@ -188,7 +202,6 @@ namespace PhoneRepairShop
                 }
             }
         }
-
 
         #endregion
 

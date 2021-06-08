@@ -72,7 +72,6 @@ namespace PhoneRepairShop
         #region Hold
         [PXDBBool()]
         [PXDefault(true)]
-        [PXUIField(DisplayName = "Hold")]
         public virtual bool? Hold { get; set; }
         public abstract class hold : PX.Data.BQL.BqlBool.Field<hold> { }
         #endregion

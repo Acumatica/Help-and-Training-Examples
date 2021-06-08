@@ -12,8 +12,9 @@ using PX.Objects.CS;
 using System.CodeDom;
 using PX.Data.BQL.Fluent;
 using static PX.Data.WorkflowAPI.BoundedTo<PhoneRepairShop.RSSVWorkOrderEntry, PhoneRepairShop.RSSVWorkOrder>;
+using PX.Objects.AR;
 
-namespace PhoneRepairShop_Code.Workflows
+namespace PhoneRepairShop.Workflows
 {
 	public class RSSVWorkOrderWorkflow : PX.Data.PXGraphExtension<RSSVWorkOrderEntry>
 	{
@@ -26,6 +27,9 @@ namespace PhoneRepairShop_Code.Workflows
 			public const string OnHold = WorkOrderStatusConstants.OnHold;
 			public const string ReadyForAssignment = WorkOrderStatusConstants.ReadyForAssignment;
 			public const string PendingPayment = WorkOrderStatusConstants.PendingPayment;
+			public const string Assigned = WorkOrderStatusConstants.Assigned;
+			public const string Completed = WorkOrderStatusConstants.Completed;
+			public const string Paid = WorkOrderStatusConstants.Paid;
 
 			public class onHold : PX.Data.BQL.BqlString.Constant<onHold>
 			{
@@ -41,17 +45,28 @@ namespace PhoneRepairShop_Code.Workflows
 			{
 				public pendingPayment() : base(PendingPayment) { }
 			}
+
+			public class assigned : PX.Data.BQL.BqlString.Constant<assigned>
+			{
+				public assigned() : base(Assigned) { }
+			}
+
+			public class completed : PX.Data.BQL.BqlString.Constant<completed>
+			{
+				public completed() : base(Completed) { }
+			}
+
+			public class paid : PX.Data.BQL.BqlString.Constant<paid>
+			{
+				public paid() : base(Paid) { }
+			}
 		}
 
-		private const string
-				_fieldReason = "Status",
+		#endregion
 
-				_actionRemoveHold = "RemoveFromHold";
-        #endregion
+		#region Conditions
 
-        #region Conditions
-
-        public class Conditions : Condition.Pack
+		public class Conditions : Condition.Pack
 		{
 			//public Condition IsOnHold => GetOrCreate(b => b.FromBql<
 			//	RSSVWorkOrder.hold.IsEqual<True>
@@ -63,7 +78,7 @@ namespace PhoneRepairShop_Code.Workflows
 
 			public Condition RequiresPrepayment => GetOrCreate(b => b.FromBql<
 				Where<Selector<RSSVWorkOrder.serviceID, RSSVRepairService.prepayment>, Equal<True>>
-			> ());
+			>());
 
 			public Condition DoesNotRequirePrepayment => GetOrCreate(b => b.FromBql<
 				Where<Selector<RSSVWorkOrder.serviceID, RSSVRepairService.prepayment>, Equal<False>>
@@ -71,11 +86,11 @@ namespace PhoneRepairShop_Code.Workflows
 
 		}
 
-        #endregion Conditions
+		#endregion Conditions
 
-        public override void Configure(PXScreenConfiguration config)
+		public override void Configure(PXScreenConfiguration config)
 		{
-			
+
 			var context = config.GetScreenConfigurationContext<RSSVWorkOrderEntry, RSSVWorkOrder>();
 			var conditions = context.Conditions.GetPack<Conditions>();
 
@@ -110,7 +125,7 @@ namespace PhoneRepairShop_Code.Workflows
 									.WithActions(actions =>
 									{
 										actions.Add(g => g.PutOnHold, a => a.IsDuplicatedInToolbar());
-
+										actions.Add(g => g.Assign, a => a.IsDuplicatedInToolbar());
 									});
 							});
 							fss.Add<States.pendingPayment>(flowState =>
@@ -128,15 +143,55 @@ namespace PhoneRepairShop_Code.Workflows
 
 									});
 							});
+							fss.Add<States.assigned>(flowState =>
+							{
+								return flowState
+									.WithFieldStates(states =>
+									{
+										states.AddField<RSSVWorkOrder.customerID>(state => state.IsDisabled());
+										states.AddField<RSSVWorkOrder.serviceID>(state => state.IsDisabled());
+										states.AddField<RSSVWorkOrder.deviceID>(state => state.IsDisabled());
+									})
+									.WithActions(actions =>
+									{
+										actions.Add(g => g.Complete, a => a.IsDuplicatedInToolbar());
+									});
+							});
+							fss.Add<States.completed>(flowState =>
+							{
+								return flowState
+									.WithFieldStates(states =>
+									{
+										states.AddField<RSSVWorkOrder.customerID>(state => state.IsDisabled());
+										states.AddField<RSSVWorkOrder.serviceID>(state => state.IsDisabled());
+										states.AddField<RSSVWorkOrder.deviceID>(state => state.IsDisabled());
+										states.AddField<RSSVWorkOrder.dateCompleted>(state => state.IsDisabled());
+									})
+									.WithEventHandlers(handlers =>
+									{
+										handlers.Add(g => g.OnCloseDocument);
+									});
+							});
+							fss.Add<States.paid>(flowState =>
+							{
+								return flowState
+									.WithFieldStates(states =>
+									{
+										states.AddField<RSSVWorkOrder.customerID>(state => state.IsDisabled());
+										states.AddField<RSSVWorkOrder.serviceID>(state => state.IsDisabled());
+										states.AddField<RSSVWorkOrder.deviceID>(state => state.IsDisabled());
+										states.AddField<RSSVWorkOrder.dateCompleted>(state => state.IsDisabled());
+									});
+							});
 						})
 					.WithTransitions(transitions =>
 					{
-					//transitions.AddGroupFrom(initialState, ts =>
-					//{
-					//	ts.Add(t => t.To<States.onHold>()
-					//		.IsTriggeredOn(g => g.initializeState)
-					//		.When(conditions.IsOnHold)); // New Hold
-					//});
+						//transitions.AddGroupFrom(initialState, ts =>
+						//{
+						//	ts.Add(t => t.To<States.onHold>()
+						//		.IsTriggeredOn(g => g.initializeState)
+						//		.When(conditions.IsOnHold)); // New Hold
+						//});
 						transitions.AddGroupFrom<States.onHold>(ts =>
 						{
 							//add condition
@@ -147,16 +202,24 @@ namespace PhoneRepairShop_Code.Workflows
 							ts.Add(t => t.To<States.pendingPayment>()
 								.IsTriggeredOn(g => g.ReleaseFromHold)
 								.When(conditions.RequiresPrepayment));
-								//.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.hold>(f => f.SetFromValue(false))));
+							//.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.hold>(f => f.SetFromValue(false))));
 						});
 						transitions.AddGroupFrom<States.readyForAssignment>(ts =>
 						{
-
 							ts.Add(t => t.To<States.onHold>().IsTriggeredOn(g => g.PutOnHold));
+							ts.Add(t => t.To<States.assigned>().IsTriggeredOn(g => g.Assign));
 						});
 						transitions.AddGroupFrom<States.pendingPayment>(ts =>
 						{
 							ts.Add(t => t.To<States.onHold>().IsTriggeredOn(g => g.PutOnHold));
+						});
+						transitions.AddGroupFrom<States.assigned>(ts =>
+						{
+							ts.Add(t => t.To<States.completed>().IsTriggeredOn(g => g.Complete));
+						});
+						transitions.AddGroupFrom<States.completed>(ts =>
+						{
+							ts.Add(t => t.To<States.paid>().IsTriggeredOn(g => g.OnCloseDocument));
 						});
 
 					}
@@ -169,8 +232,24 @@ namespace PhoneRepairShop_Code.Workflows
 						//.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.hold>(f => f.SetFromValue(true)))); ;
 						actions.Add(g => g.ReleaseFromHold, c => c
 							.InFolder(FolderType.ActionsFolder));
-							//.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.hold>(f => f.SetFromValue(false))));
+						//.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.hold>(f => f.SetFromValue(false))));
+						actions.Add(g => g.Assign, c => c
+							.InFolder(FolderType.ActionsFolder));
+						actions.Add(g => g.Complete, c => c
+							.InFolder(FolderType.ActionsFolder)
+							.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.dateCompleted>(f => f.SetFromToday())));
 					})
+					.WithHandlers(handlers =>
+					{
+						handlers.Add(handler => handler
+							.WithTargetOf<ARInvoice>()
+							.OfEntityEvent<ARInvoice.Events>(e => e.CloseDocument)
+							.Is(g => g.OnCloseDocument)
+							.UsesPrimaryEntityGetter<
+								SelectFrom<RSSVWorkOrder>.
+								Where<RSSVWorkOrder.invoiceNbr.IsEqual<ARRegister.refNbr.FromCurrent>>>());
+					})
+
 				);
 
 
