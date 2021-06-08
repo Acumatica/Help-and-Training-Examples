@@ -1,0 +1,287 @@
+<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+
+<px:PXSplitContainer runat="server" Panel1MinSize="150" CssClass="splitContainer">
+	<NormalStyle CssClass="splitterVert" />
+	<HoverStyle CssClass="splitterH" />
+	<ActiveStyle CssClass="splitterA" />
+</px:PXSplitContainer>
+
+<px:PXSplitContainer runat="server" Panel1MinSize="150" SkinID="Transparent" CssClass="splitContainer transparent">
+	<NormalStyle CssClass="splitterVert" />
+	<HoverStyle CssClass="splitterH" />
+	<ActiveStyle CssClass="splitterA" />
+</px:PXSplitContainer>
+
+<px:PXSplitContainer runat="server" SkinID="Horizontal" Panel1MinSize="250" Panel2MinSize="250" 
+	Orientation="Horizontal" CssClass="splitContainer">
+	<NormalStyle CssClass="splitterHor" />
+	<ActiveStyle CssClass="splitterA" />
+</px:PXSplitContainer>
+
+<px:PXSplitContainer runat="server" SkinID="HorizontalT" Panel1MinSize="250" Panel2MinSize="250" 
+	Orientation="Horizontal" CssClass="splitContainer transparent">
+	<NormalStyle CssClass="splitterHor" />
+	<ActiveStyle CssClass="splitterA" />
+</px:PXSplitContainer>
+
+<%----------------- PXFormView & PXTab control skins -----------------%>
+<px:PXFormView runat="server" ButtonSkinID="FormView" CssClass="FormView" LinkPage="~/Main" 
+	RoundCaption="false" CaptionVisible="False" MinHeight="63">
+	<CaptionStyle CssClass="FormCaption" />
+	<ContentStyle CssClass="FormContent" />
+	<ErrorStyle CssClass="FormError" />
+	<WarningStyle CssClass="FormWarn" />
+	<InfoStyle CssClass="FormInfo" />
+	<FilesMenuUrls FileInfoUrl="~/Pages/SM/SM202510.aspx" FilesDisplayUrl="~/Frames/GetFile.ashx" FilesListUrl="" />
+</px:PXFormView>
+
+<px:PXFormView runat="server" CaptionVisible="False" LinkPage="~/Main" SkinID="Transparent"
+	OverflowX="Visible" OverflowY="Visible" RenderStyle="Simple" AllowCollapse="false">
+	<CaptionStyle CssClass="FormCaption" />
+	<ErrorStyle CssClass="FormError" />
+	<WarningStyle CssClass="FormWarn" />
+	<InfoStyle CssClass="FormInfo" />
+	<ContentLayout OuterSpacing="Around" />
+	<FilesMenuUrls FileInfoUrl="~/Pages/SM/SM202510.aspx" FilesDisplayUrl="~/Frames/GetFile.ashx" FilesListUrl="" />
+</px:PXFormView>
+
+<px:PXFormView runat="server" CssClass="FormView" CaptionVisible="True" LinkPage="~/Main" AllowCollapse="false" 
+	RoundCaption="false" SkinID="Inside" MinHeight="63">
+	<CaptionStyle CssClass="GridCaption" />
+	<ErrorStyle CssClass="FormError" />
+	<WarningStyle CssClass="FormWarn" />
+	<InfoStyle CssClass="FormInfo" />
+	<FilesMenuUrls FileInfoUrl="~/Pages/SM/SM202510.aspx" FilesDisplayUrl="~/Frames/GetFile.ashx" FilesListUrl="" />
+</px:PXFormView>
+
+<px:PXFormView runat="server" CssClass="FormView" CaptionVisible="True" LinkPage="~/Main" AllowCollapse="false" 
+	RoundCaption="false" SkinID="Preview" MinHeight="63">
+	<CaptionStyle CssClass="GridCaption" />
+	<ErrorStyle CssClass="FormError" />
+	<WarningStyle CssClass="FormWarn" />
+	<InfoStyle CssClass="FormInfo" />
+	<FilesMenuUrls FileInfoUrl="~/Pages/SM/SM202510.aspx" FilesDisplayUrl="~/Frames/GetFile.ashx" FilesListUrl="" />
+</px:PXFormView>
+
+<px:PXGenericFormView runat="server" CssClass="FormView" ButtonSkinID="FormView" LinkPage="~/Main" 
+	RoundCaption="false" CaptionVisible="False" MinHeight="63">
+	<CaptionStyle CssClass="FormCaption" />
+	<ContentStyle CssClass="FormContent" />
+	<ErrorStyle CssClass="FormError" />
+	<WarningStyle CssClass="FormWarn" />
+	<InfoStyle CssClass="FormInfo" />
+	<RoundImages LeftCssClass="FormRoundL" MiddleCssClass="FormRoundM" RightCssClass="FormRoundR" />
+	<FilesMenuUrls FileInfoUrl="~/Pages/SM/SM202510.aspx" FilesDisplayUrl="~/Frames/GetFile.ashx" FilesListUrl="" />
+</px:PXGenericFormView>
+
+<px:PXTab runat="server" TabsBackColor="214, 214, 231" LinkPage="~/Main" CssClass="tabView" TabsShift="5" MinHeight="63">
+	<TabImages Enabled="False">
+		<Normal LeftCssClass="tabRoundNL" MiddleCssClass="tabRoundNM" RightCssClass="tabRoundNR" RightSideWidth="2" />
+		<Selected LeftCssClass="tabRoundSL" MiddleCssClass="tabRoundSM" RightCssClass="tabRoundSR" RightSideWidth="2" />
+		<Hover LeftCssClass="tabRoundHL" MiddleCssClass="tabRoundHM" RightCssClass="tabRoundHR" RightSideWidth="2" />
+	</TabImages>
+	<Styles>
+		<Base CssClass="tabBase" />
+		<Normal CssClass="tabNormal" />
+		<Content CssClass="tabContent" />
+		<Hover CssClass="tabHover" />
+		<Selected CssClass="tabSelected" />
+		<Disabled CssClass="tabDisabled" />
+		<Error CssClass="FormError" />
+		<Warning CssClass="FormWarn" />
+		<Info CssClass="FormInfo" />
+	</Styles>
+	<FilesMenuUrls FileInfoUrl="~/Pages/SM/SM202510.aspx" FilesDisplayUrl="~/Frames/GetFile.ashx" FilesListUrl="" />
+</px:PXTab>
+
+<%----------------- PXNavPanel control skins -----------------%>
+<px:PXNavPanel runat="server" CssClass="NavPanel">
+	<Styles>
+		<Caption CssClass="NavPanelCaption" />
+		<Frame CssClass="NavPanelFrame" /> 
+		<Footer CssClass="NavPanelFt" />
+		<Splitter CssClass="NavPanelSpt" />
+		<Bar CssClass="NavPanelBar" />
+		<ActiveBar CssClass="NavPanelBarA" />
+		<HoverBar CssClass="NavPanelBarH" />
+	</Styles>
+</px:PXNavPanel>
+
+<px:PXWizard runat="server" CssClass="Wizard">
+	<Styles>
+		<Caption CssClass="WizardCaption" />
+		<Content CssClass="WizardContent" />
+		<Footer CssClass="WizardFooter" />
+		<Error CssClass="FormError" />
+		<Warning CssClass="FormWarn" />
+		<Info CssClass="FormInfo" />
+	</Styles>
+</px:PXWizard>
+
+<px:PXWizard runat="server" SkinID="Flat" CssClass="Wizard" CaptionVisible="false">
+	<Styles>
+		<Caption CssClass="WizardCaptionF" />
+		<Content CssClass="WizardContentF" />
+		<Footer CssClass="WizardFooterF" />
+		<Error CssClass="FormError" />
+		<Warning CssClass="FormWarn" />
+		<Info CssClass="FormInfo" />
+	</Styles>
+</px:PXWizard>
+
+<px:PXWizard runat="server" SkinID="Transparent" CssClass="Wizard" CaptionVisible="false">
+	<Styles>
+		<Caption CssClass="WizardCaptionF" />
+		<Footer CssClass="WizardFooterT" />
+		<Error CssClass="FormError" />
+		<Warning CssClass="FormWarn" />
+		<Info CssClass="FormInfo" />
+	</Styles>
+</px:PXWizard>
+
+<%----------------- PXSmartPanel control skins -----------------%>
+<px:PXSmartPanel runat="server" WindowStyle="Flat" CssClass="SmartPanel" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXSmartPanel>
+
+<px:PXSmartPanel runat="server" SkinID="Frame" CssClass="SmartPanelF" RenderVisible="true" 
+	AllowResize="false" AllowMove="false" Position="Original" AutoSize-Enabled="true">
+</px:PXSmartPanel>
+
+<px:PXDynamicPanel runat="server" WindowStyle="Flat" CssClass="SmartPanel" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXDynamicPanel>
+
+<px:PXMessage runat="server" WindowStyle="Flat" CssClass="SmartPanel" ButtonCss="MessageButton" 
+  ContentCss="SmartPanelCN" CaptionCss="SmartPanelC">
+</px:PXMessage>
+
+<px:PXInputBox runat="server" WindowStyle="Flat" CssClass="SmartPanel" ButtonCss="MessageButton" 
+	EditorCss="editor" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXInputBox>
+
+<px:PXPopupNoteEdit runat="server" WindowStyle="Flat" CssClass="SmartPanel" ButtonCss="MessageButton" 
+	EditorCss="editor" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN popup-note">
+</px:PXPopupNoteEdit>
+
+<px:PXOptionBox runat="server" WindowStyle="Flat" CssClass="SmartPanel" ButtonCss="MessageButton" 
+	EditorCss="editor" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXOptionBox>
+
+<px:PXFilesDialog runat="server" WindowStyle="Flat" CssClass="SmartPanel files" LabelCss="label" 
+	GridSkin="Inquire" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN" Width="700px" Height="500px">
+	<FilesMenuUrls FileInfoUrl="~/Pages/SM/SM202510.aspx" FilesDisplayUrl="~/Frames/GetFile.ashx" />
+</px:PXFilesDialog>
+
+<px:PXFilterDialog runat="server" WindowStyle="Flat" CssClass="SmartPanel" LabelCss="label" 
+	CaptionCss="SmartPanelC" ContentCss="SmartPanelCN" Width="250px">
+</px:PXFilterDialog>
+
+<px:PXColumnsDialog runat="server" WindowStyle="Flat" CssClass="SmartPanel columns" LabelCss="label" 
+	CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXColumnsDialog>
+
+<px:PXDashboardWizard runat="server" WindowStyle="Flat" CssClass="SmartPanel" LabelCss="label" 
+	CaptionCss="SmartPanelC" ContentCss="SmartPanelCN" Width="600px" Height="450px">
+</px:PXDashboardWizard>
+
+<px:PXUploadDialog runat="server" WindowStyle="Flat" CssClass="SmartPanel" LabelCss="label" 
+	ButtonCss="Button" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXUploadDialog>
+
+<px:PXWikiImageEdit runat="server" WindowStyle="Flat" CssClass="SmartPanel" ButtonCss="MessageButton" 
+	EditorCss="editor" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</px:PXWikiImageEdit>
+
+<px:PXWikiLinkEdit runat="server" WindowStyle="Flat" CssClass="SmartPanel" ButtonCss="MessageButton" 
+	EditorCss="editor" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+  <RoundStyle TopEdgesWidth="5" BottomEdgesWidth="3" BorderWidth="3">
+		<EdgeStyles Left="WindowL" Right="WindowR" Top="WindowT" Bottom="WindowB" LeftT="WindowTL" 
+		  RightT="WindowTR" LeftB="WindowBL" RightB="WindowBR" />
+  </RoundStyle>
+</px:PXWikiLinkEdit>
+
+<pxa:PXLinkEditor runat="server" WindowStyle="Flat" CssClass="SmartPanel" ButtonCss="MessageButton" 
+	EditorCss="editor" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+	<RoundStyle TopEdgesWidth="5" BottomEdgesWidth="3" BorderWidth="3">
+		<EdgeStyles Left="WindowL" Right="WindowR" Top="WindowT" Bottom="WindowB" LeftT="WindowTL" 
+			RightT="WindowTR" LeftB="WindowBL" RightB="WindowBR" />
+	</RoundStyle>
+</pxa:PXLinkEditor>
+
+<pxa:PXImageEditor runat="server" WindowStyle="Flat" CssClass="SmartPanel" ButtonCss="MessageButton" 
+	EditorCss="editor" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</pxa:PXImageEditor>
+
+<pxa:PXLoadTemplatePanel runat="server" WindowStyle="Flat" CssClass="SmartPanel" ButtonCss="MessageButton" 
+	EditorCss="editor" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</pxa:PXLoadTemplatePanel>
+
+<pxa:PXParameterPanel runat="server" WindowStyle="Flat" CssClass="SmartPanel" ButtonCss="MessageButton" 
+	EditorCss="editor" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN">
+</pxa:PXParameterPanel>
+
+<px:PXGroupBox runat="server" CssClass="groupBox" />
+<px:PXPanel runat="server" CssClass="groupBox" />
+<px:PXPanel runat="server" SkinID="Transparent" CssClass="groupBox" ContentLayout-OuterSpacing="Around" 
+	RenderStyle="Simple" />
+
+<px:PXPanel runat="server" SkinID="Buttons" CssClass="groupBox buttonPanel" RenderStyle="Simple" 
+	ContentLayout-ContentAlign="Right" ContentLayout-Layout="Stack" ContentLayout-Orientation="Horizontal" 
+	ContentLayout-OuterSpacing="Around" />
+
+<px:PXPanel runat="server" SkinID="Buttons2" CssClass="groupBox buttonPanel" RenderStyle="Simple" 
+	ContentLayout-ContentAlign="Right" ContentLayout-Layout="Stack" ContentLayout-Orientation="Horizontal" 
+	ContentLayout-OuterSpacing="None" />
+
+<%----------------- PXFilterEditor control skins -----------------%>
+<px:PXFilterEditor runat="server" WindowStyle="Flat" CssClass="SmartPanel" ButtonCss="MessageButton" 
+	CaptionCss="SmartPanelC"  ContentCss="SmartPanelCN">
+</px:PXFilterEditor>
+
+<px:PXFilterEditor runat="server" SkinID="External" WindowStyle="Flat" RenderVisible="True" 
+	Position="Original" AllowMove="False" ShowShortcut="False" ButtonsPosition="Right" 
+	CssClass="SmartPanelT" ButtonCss="MessageButton" CaptionCss="SmartPanelC"
+	ContentCss="SmartPanelCNT" Width="500px" Height="130px">
+</px:PXFilterEditor>
+
+<%----------------- PXWikiShow control skins -----------------%>
+<px:PXWikiShow runat="server" BorderStyle="Solid" BorderWidth="1px" BorderColor="SteelBlue" BackColor="White" style="margin: 5px">
+	<ContentStyle>
+		<Padding Bottom="5px" Left="5px" Right="5px" Top="5px" />
+	</ContentStyle>
+</px:PXWikiShow>
+
+<%----------------- PXComparer control skins -----------------%>
+<px:PXComparer runat="server">
+	<CaptionStyle CssClass="FormCaption" />
+	<ContentStyle CssClass="ComparerContent" />
+	<RoundImages LeftCssClass="FormRoundL" MiddleCssClass="FormRoundM" RightCssClass="FormRoundR" />
+</px:PXComparer>
+
+<%----------------- PXKBShow control skins -----------------%>
+<pxa:KB.PXKBShow runat="server" BorderStyle="Solid" BorderWidth="1px" BorderColor="SteelBlue" BackColor="White" style="margin: 5px">
+	<ContentStyle>
+		<Padding Bottom="5px" Left="5px" Right="5px" Top="5px" />
+	</ContentStyle>
+</pxa:KB.PXKBShow>
+
+<%----------------- PXGetLinkDialog control skins -----------------%>
+<px:PXGetLinkDialog runat="server" CssClass="SmartPanel" CaptionCss="SmartPanelC" ContentCss="SmartPanelCN"
+  RoundStyle-TopEdgesWidth="5" RoundStyle-BottomEdgesWidth="3" RoundStyle-BorderWidth="3"
+  RoundStyle-EdgeStyles-Left="WindowL" RoundStyle-EdgeStyles-Right="WindowR" RoundStyle-EdgeStyles-Top="WindowT" 
+  RoundStyle-EdgeStyles-Bottom="WindowB" RoundStyle-EdgeStyles-LeftT="WindowTL" RoundStyle-EdgeStyles-RightT="WindowTR"
+  RoundStyle-EdgeStyles-LeftB="WindowBL" RoundStyle-EdgeStyles-RightB="WindowBR">
+</px:PXGetLinkDialog>

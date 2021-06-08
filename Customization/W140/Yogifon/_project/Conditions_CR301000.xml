@@ -1,0 +1,8 @@
+﻿<Conditions screen="CR301000">
+    <AutomationScreenCondition ConditionID="a0dc7a6f-a223-4183-be2a-99feec098bdb" ScreenID="CR301000" ConditionName="StatusNew" Order="1" AppendSystemCondition="False" JoinMethod="AND" InvertCondition="False">
+        <FilterRow LineNbr="1" CloseBrackets="0" OpenBrackets="0" FieldName="Status" Condition="1" Operator="0" Value2="" Value="H" IsActive="True" IsFromScheme="True" />
+    </AutomationScreenCondition>
+    <AutomationScreenCondition ConditionID="dcce7f17-f604-4669-8f93-249ac1ec0ae1" ScreenID="CR301000" ConditionName="CampaignSource" Order="2" AppendSystemCondition="False" JoinMethod="AND" InvertCondition="False">
+        <FilterRow LineNbr="3" CloseBrackets="0" OpenBrackets="0" FieldName="Source" Condition="1" Operator="0" Value2="" Value="C" IsActive="True" IsFromScheme="True" />
+    </AutomationScreenCondition>
+</Conditions>
