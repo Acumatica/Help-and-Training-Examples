@@ -94,7 +94,7 @@ namespace PhoneRepairShop_Code.Workflows
 									.IsInitial()
 									.WithActions(actions =>
 									{
-										actions.Add(g => g.ReleaseFromHold, a => a.IsDuplicatedInToolbar());
+										actions.Add(g => g.releaseFromHold, a => a.IsDuplicatedInToolbar());
 
 									});
 							});
@@ -109,7 +109,7 @@ namespace PhoneRepairShop_Code.Workflows
 									})
 									.WithActions(actions =>
 									{
-										actions.Add(g => g.PutOnHold, a => a.IsDuplicatedInToolbar());
+										actions.Add(g => g.putOnHold, a => a.IsDuplicatedInToolbar());
 
 									});
 							});
@@ -124,7 +124,7 @@ namespace PhoneRepairShop_Code.Workflows
 									})
 									.WithActions(actions =>
 									{
-										actions.Add(g => g.PutOnHold, a => a.IsDuplicatedInToolbar());
+										actions.Add(g => g.putOnHold, a => a.IsDuplicatedInToolbar());
 
 									});
 							});
@@ -141,22 +141,22 @@ namespace PhoneRepairShop_Code.Workflows
 						{
 							//add condition
 							ts.Add(t => t.To<States.readyForAssignment>()
-								.IsTriggeredOn(g => g.ReleaseFromHold)
+								.IsTriggeredOn(g => g.releaseFromHold)
 								.When(conditions.DoesNotRequirePrepayment));
 							//.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.hold>(f => f.SetFromValue(false))));
 							ts.Add(t => t.To<States.pendingPayment>()
-								.IsTriggeredOn(g => g.ReleaseFromHold)
+								.IsTriggeredOn(g => g.releaseFromHold)
 								.When(conditions.RequiresPrepayment));
 								//.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.hold>(f => f.SetFromValue(false))));
 						});
 						transitions.AddGroupFrom<States.readyForAssignment>(ts =>
 						{
 
-							ts.Add(t => t.To<States.onHold>().IsTriggeredOn(g => g.PutOnHold));
+							ts.Add(t => t.To<States.onHold>().IsTriggeredOn(g => g.putOnHold));
 						});
 						transitions.AddGroupFrom<States.pendingPayment>(ts =>
 						{
-							ts.Add(t => t.To<States.onHold>().IsTriggeredOn(g => g.PutOnHold));
+							ts.Add(t => t.To<States.onHold>().IsTriggeredOn(g => g.putOnHold));
 						});
 
 					}
@@ -164,10 +164,10 @@ namespace PhoneRepairShop_Code.Workflows
 					.WithActions(actions =>
 					{
 						//actions.Add(g => g.initializeState, a => a.IsHiddenAlways());
-						actions.Add(g => g.PutOnHold, c => c
+						actions.Add(g => g.putOnHold, c => c
 							.InFolder(FolderType.ActionsFolder));
 						//.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.hold>(f => f.SetFromValue(true)))); ;
-						actions.Add(g => g.ReleaseFromHold, c => c
+						actions.Add(g => g.releaseFromHold, c => c
 							.InFolder(FolderType.ActionsFolder));
 							//.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.hold>(f => f.SetFromValue(false))));
 					})
