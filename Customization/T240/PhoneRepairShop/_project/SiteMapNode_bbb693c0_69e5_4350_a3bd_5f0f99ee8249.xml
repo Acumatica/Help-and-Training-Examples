@@ -25,8 +25,8 @@
         </layout>
         <data>
             <SiteMap>
-                <row Title="Serviced Devices" Url="~/Pages/RS/RS202000.aspx" ScreenID="RS202000" NodeID="9ec44913-4c87-4b0a-b7df-311ab289fae4" ParentID="00000000-0000-0000-0000-000000000000">
-                    <MUIScreen IsPortal="0" WorkspaceID="c60d7807-01fa-4ad7-ba64-774a3fa8e6f2" Order="20" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
+                <row Position="5960" Title="Repair Work Order Preferences" Url="~/Pages/RS/RS101000.aspx" ScreenID="RS101000" NodeID="bbb693c0-69e5-4350-a3bd-5f0f99ee8249" ParentID="00000000-0000-0000-0000-000000000000">
+                    <MUIScreen IsPortal="0" WorkspaceID="c60d7807-01fa-4ad7-ba64-774a3fa8e6f2" Order="10" SubcategoryID="8a93637d-b507-4667-a739-adaf6fb5f7ea">
                         <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                     </MUIScreen>
                 </row>
@@ -37,7 +37,7 @@
                 </row>
             </MUIWorkspace>
             <MUISubcategory>
-                <row IsPortal="0" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385" Order="96" Name="Configuration" Icon="" IsSystem="0" />
+                <row IsPortal="0" SubcategoryID="8a93637d-b507-4667-a739-adaf6fb5f7ea" Order="1391.813" Name="Preferences" Icon="" IsSystem="0" />
             </MUISubcategory>
         </data>
     </data-set>

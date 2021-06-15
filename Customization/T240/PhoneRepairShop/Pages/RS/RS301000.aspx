@@ -7,38 +7,44 @@
         PrimaryView="WorkOrders"
         >
 		<CallbackCommands>
-			<px:PXDSCallbackCommand Visible="false" CommitChanges="true" Name="Complete" ></px:PXDSCallbackCommand>
+<px:PXDSCallbackCommand Visible="false" CommitChanges="true" Name="UpdateItemPrices" >
+</px:PXDSCallbackCommand>
+<px:PXDSCallbackCommand Visible="false" CommitChanges="true" Name="UpdateLaborPrices" >
+</px:PXDSCallbackCommand>
 		</CallbackCommands>
 	</px:PXDataSource>
 </asp:Content>
 <asp:Content ID="cont2" ContentPlaceHolderID="phF" Runat="Server">
-	<px:PXFormView ID="form" runat="server" DataSourceID="ds" DataMember="WorkOrders" Width="100%" Height="" AllowAutoHide="false">
-		<Template>
-			<px:PXLayoutRule ControlSize="SM" LabelsWidth="S" ID="PXLayoutRule1" runat="server" StartRow="True"></px:PXLayoutRule>
-			<px:PXSelector runat="server" ID="CstPXSelector11" DataField="OrderNbr" ></px:PXSelector>
-			<px:PXDropDown CommitChanges="True" runat="server" ID="CstPXDropDown15" DataField="Status" ></px:PXDropDown>
-			<px:PXCheckBox CommitChanges="True" runat="server" ID="CstPXCheckBox9" DataField="Hold" ></px:PXCheckBox>
-			<px:PXDateTimeEdit runat="server" ID="CstPXDateTimeEdit6" DataField="DateCreated" ></px:PXDateTimeEdit>
-			<px:PXDateTimeEdit runat="server" ID="CstPXDateTimeEdit5" DataField="DateCompleted" ></px:PXDateTimeEdit>
-			<px:PXLayoutRule runat="server" ID="CstLayoutRule18" ColumnSpan="3" ></px:PXLayoutRule>
-			<px:PXTextEdit runat="server" ID="CstPXTextEdit7" DataField="Description" ></px:PXTextEdit>
-			<px:PXLayoutRule runat="server" ID="CstPXLayoutRule16" StartColumn="True" ControlSize="XM" LabelsWidth="S" ></px:PXLayoutRule>
-			<px:PXSegmentMask CommitChanges="True" runat="server" ID="CstPXSegmentMask4" DataField="CustomerID" ></px:PXSegmentMask>
-			<px:PXSelector CommitChanges="True" runat="server" ID="CstPXSelector14" DataField="ServiceID" ></px:PXSelector>
-			<px:PXSelector CommitChanges="True" runat="server" ID="CstPXSelector8" DataField="DeviceID" ></px:PXSelector>
-			<px:PXSelector runat="server" ID="CstPXSelector3" DataField="Assignee" ></px:PXSelector>
-			<px:PXDropDown runat="server" ID="CstPXDropDown13" DataField="Priority" ></px:PXDropDown>
-			<px:PXLayoutRule runat="server" ID="CstPXLayoutRule17" StartColumn="True" ControlSize="M" LabelsWidth="S" ></px:PXLayoutRule>
-			<px:PXNumberEdit runat="server" ID="CstPXNumberEdit12" DataField="OrderTotal" ></px:PXNumberEdit>
-			<px:PXSelector ID="edInvoiceNbr" runat="server" DataField="InvoiceNbr" Enabled="False" AllowEdit="True" /></Template>
-	</px:PXFormView>
+	<px:PXFormView ID="form" runat="server" DataSourceID="ds" DataMember="WorkOrders" 
+  Width="100%" Height="" AllowAutoHide="false">
+	<Template>
+		<px:PXLayoutRule ControlSize="SM" LabelsWidth="S" ID="PXLayoutRule1" 
+                 runat="server" StartRow="True"></px:PXLayoutRule>
+		<px:PXSelector runat="server" ID="CstPXSelector11" DataField="OrderNbr" ></px:PXSelector>
+		<px:PXDropDown runat="server" ID="CstPXDropDown20" DataField="Status" ></px:PXDropDown>
+		<px:PXDateTimeEdit runat="server" ID="CstPXDateTimeEdit6" DataField="DateCreated" ></px:PXDateTimeEdit>
+		<px:PXDateTimeEdit runat="server" ID="CstPXDateTimeEdit5" DataField="DateCompleted" ></px:PXDateTimeEdit>
+		<px:PXDropDown CommitChanges="True" runat="server" ID="CstPXDropDown13" DataField="Priority" ></px:PXDropDown>
+		<px:PXLayoutRule runat="server" ID="CstPXLayoutRule16" 
+                 StartColumn="True" ControlSize="XM" LabelsWidth="S" ></px:PXLayoutRule>
+		<px:PXSegmentMask CommitChanges="True" runat="server" ID="CstPXSegmentMask4" DataField="CustomerID" ></px:PXSegmentMask>
+		<px:PXSelector CommitChanges="True" runat="server" ID="CstPXSelector14" DataField="ServiceID" ></px:PXSelector>
+		<px:PXSelector CommitChanges="True" runat="server" ID="CstPXSelector8" DataField="DeviceID" ></px:PXSelector>
+		<px:PXSelector runat="server" ID="CstPXSelector3" DataField="Assignee" ></px:PXSelector>
+		<px:PXLayoutRule runat="server" ID="CstLayoutRule18" ColumnSpan="2" ></px:PXLayoutRule>
+		<px:PXTextEdit runat="server" ID="CstPXTextEdit7" DataField="Description" ></px:PXTextEdit>
+		<px:PXLayoutRule runat="server" ID="CstPXLayoutRule17" 
+                 StartColumn="True" ControlSize="M" LabelsWidth="S" ></px:PXLayoutRule>
+		<px:PXNumberEdit runat="server" ID="CstPXNumberEdit12" DataField="OrderTotal" ></px:PXNumberEdit>
+		<px:PXSelector ID="edInvoiceNbr" runat="server" DataField="InvoiceNbr" Enabled="False" AllowEdit="True" /></Template>
+</px:PXFormView>
 </asp:Content>
 <asp:Content ID="cont3" ContentPlaceHolderID="phG" Runat="Server">
 	<px:PXTab ID="tab" runat="server" Width="100%" Height="150px" DataSourceID="ds" AllowAutoHide="false">
 		<Items>
 			<px:PXTabItem Text="Repair Items">
 				<Template>
-					<px:PXGrid SyncPosition="True" SkinID="Details" Width="100%" runat="server" ID="CstPXGrid1">
+					<px:PXGrid SkinID="Details" Width="100%" runat="server" ID="CstPXGrid1">
 						<Levels>
 							<px:PXGridLevel DataMember="RepairItems" >
 								<Columns>
@@ -47,15 +53,24 @@
 									<px:PXGridColumn DataField="InventoryID_description" Width="280" ></px:PXGridColumn>
 									<px:PXGridColumn DataField="BasePrice" Width="100" ></px:PXGridColumn></Columns>
 								<RowTemplate>
-									<px:PXLayoutRule runat="server" ID="CstPXLayoutRule19" StartRow="True" ></px:PXLayoutRule>
+									<px:PXLayoutRule runat="server" ID="CstPXLayoutRule21" StartRow="True" ></px:PXLayoutRule>
 									<px:PXLayoutRule ControlSize="M" LabelsWidth="SM" runat="server" ID="CstPXLayoutRule26" StartGroup="True" GroupCaption="Repair Item" ></px:PXLayoutRule>
-									<px:PXDropDown runat="server" ID="CstPXDropDown23" DataField="RepairItemType" ></px:PXDropDown>
-									<px:PXSegmentMask runat="server" ID="CstPXSegmentMask21" DataField="InventoryID" ></px:PXSegmentMask>
-									<px:PXTextEdit runat="server" ID="CstPXTextEdit22" DataField="InventoryID_description" ></px:PXTextEdit>
-									<px:PXLayoutRule LabelsWidth="S" StartColumn="True" runat="server" ID="CstPXLayoutRule24" StartGroup="True" GroupCaption="Price Info" ></px:PXLayoutRule>
-									<px:PXNumberEdit runat="server" ID="CstPXNumberEdit20" DataField="BasePrice" ></px:PXNumberEdit></RowTemplate></px:PXGridLevel></Levels>
-						<AutoSize Enabled="True" ></AutoSize>
-						<Mode AllowFormEdit="True" ></Mode></px:PXGrid></Template>
+									<px:PXDropDown runat="server" ID="CstPXDropDown25" DataField="RepairItemType" ></px:PXDropDown>
+									<px:PXSegmentMask runat="server" ID="CstPXSegmentMask23" DataField="InventoryID" ></px:PXSegmentMask>
+									<px:PXTextEdit runat="server" ID="CstPXTextEdit24" DataField="InventoryID_description" ></px:PXTextEdit>
+									<px:PXLayoutRule LabelsWidth="S" StartColumn="True" GroupCaption="Price Info" runat="server" ID="CstPXLayoutRule27" StartGroup="True" ></px:PXLayoutRule>
+									<px:PXNumberEdit runat="server" ID="CstPXNumberEdit22" DataField="BasePrice" ></px:PXNumberEdit></RowTemplate></px:PXGridLevel></Levels>
+<ActionBar>
+	<CustomItems>
+		<px:PXToolBarButton Text="UpdateItemPrices">
+			<AutoCallBack Command="UpdateItemPrices" Target="ds">
+				<Behavior CommitChanges="True" ></Behavior>
+			</AutoCallBack>
+		</px:PXToolBarButton>
+	</CustomItems>
+</ActionBar>				
+<AutoSize Enabled="True" ></AutoSize>
+						<Mode AllowFormEdit="True" InitNewRow="True" ></Mode></px:PXGrid></Template>
 			</px:PXTabItem>
 			<px:PXTabItem Text="Labor">
 				<Template>
@@ -68,16 +83,16 @@
 									<px:PXGridColumn DataField="DefaultPrice" Width="100" />
 									<px:PXGridColumn CommitChanges="True" DataField="Quantity" Width="100" ></px:PXGridColumn>
 									<px:PXGridColumn DataField="ExtPrice" Width="100" /></Columns></px:PXGridLevel></Levels>
-						<ActionBar>
-							<CustomItems>
-								<px:PXToolBarButton Text="Complete">
-									<AutoCallBack Command="Complete" Target="ds">
-										<Behavior CommitChanges="True" ></Behavior>
-									</AutoCallBack>
-								</px:PXToolBarButton>
-							</CustomItems>
-						</ActionBar>
-						<AutoSize Enabled="True" /></px:PXGrid></Template>
+<ActionBar>
+	<CustomItems>
+		<px:PXToolBarButton Text="UpdateLaborPrices">
+			<AutoCallBack Command="UpdateLaborPrices" Target="ds">
+				<Behavior CommitChanges="True" ></Behavior>
+			</AutoCallBack>
+		</px:PXToolBarButton>
+	</CustomItems>
+</ActionBar>						
+<AutoSize Enabled="True" ></AutoSize></px:PXGrid></Template>
 			</px:PXTabItem>
 		</Items>
 		<AutoSize Container="Window" Enabled="True" MinHeight="150" />

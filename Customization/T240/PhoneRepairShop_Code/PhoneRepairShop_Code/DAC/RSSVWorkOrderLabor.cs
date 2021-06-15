@@ -5,6 +5,7 @@ using PX.Objects.IN;
 
 namespace PhoneRepairShop
 {
+    [Serializable]
     [PXCacheName("Work Order Labor")]
     public class RSSVWorkOrderLabor : IBqlTable
     {
@@ -12,7 +13,8 @@ namespace PhoneRepairShop
         [PXDBString(15, IsKey = true, IsUnicode = true, InputMask = "")]
         [PXDBDefault(typeof(RSSVWorkOrder.orderNbr))]
         [PXParent(typeof(SelectFrom<RSSVWorkOrder>.
-            Where<RSSVWorkOrder.orderNbr.IsEqual<RSSVWorkOrderLabor.orderNbr.FromCurrent>>))]
+            Where<RSSVWorkOrder.orderNbr.
+            IsEqual<RSSVWorkOrderLabor.orderNbr.FromCurrent>>))]
         public virtual string OrderNbr { get; set; }
         public abstract class orderNbr : PX.Data.BQL.BqlString.Field<orderNbr> { }
         #endregion
@@ -20,7 +22,7 @@ namespace PhoneRepairShop
         #region InventoryID
         [Inventory(IsKey = true)]
         [PXRestrictor(typeof(Where<InventoryItem.stkItem, Equal<False>>),
-            Messages.CannotAddStockItemToRepairPrice)]
+            Messages.ItemIsStock)]
         public virtual int? InventoryID { get; set; }
         public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
         #endregion
