@@ -46,17 +46,17 @@ namespace PhoneRepairShop
 
         #region Actions
 
-        public PXAction<RSSVWorkOrder> putOnHold;
+        public PXAction<RSSVWorkOrder> PutOnHold;
         [PXButton(CommitChanges = true), PXUIField(DisplayName = "Hold",
           MapEnableRights = PXCacheRights.Select,
           MapViewRights = PXCacheRights.Select)]
-        protected virtual IEnumerable PutOnHold(PXAdapter adapter) => adapter.Get();
+        protected virtual IEnumerable putOnHold(PXAdapter adapter) => adapter.Get();
 
-        public PXAction<RSSVWorkOrder> releaseFromHold;
+        public PXAction<RSSVWorkOrder> ReleaseFromHold;
         [PXButton(CommitChanges = true), PXUIField(DisplayName = "Remove Hold",
           MapEnableRights = PXCacheRights.Select,
           MapViewRights = PXCacheRights.Select)]
-        protected virtual IEnumerable ReleaseFromHold(PXAdapter adapter) => adapter.Get();
+        protected virtual IEnumerable releaseFromHold(PXAdapter adapter) => adapter.Get();
 
         #endregion
 
