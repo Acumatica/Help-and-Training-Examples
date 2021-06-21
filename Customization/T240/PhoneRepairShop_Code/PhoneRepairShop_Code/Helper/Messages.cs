@@ -22,12 +22,13 @@ namespace PhoneRepairShop
         public const string BackCover = "Back Cover";
         public const string Motherboard = "Motherboard";
 
+        //Messages
         public const string StockItemIncorrectRepairItemType =
             "This stock item has a repair item type that differs from {0}.";
+        public const string ItemIsStock = "This item is a stock item.";
+        public const string DefaultWarrantyCanNotBeDeleted =
+            "The default warranty cannot be deleted.";
 
-        public const string CannotAddStockItemToRepairPrice =
-            "Cannot add a stock item to a repair price.";
-        public const string DefaultWarrantyCanNotBeDeleted = "This record cannot be deleted.";
 
         //Work order statuses
         public const string OnHold = "On Hold";
@@ -38,15 +39,18 @@ namespace PhoneRepairShop
         public const string Paid = "Paid";
 
 
-        public const string QuantityCannotBeNegative = "The value in the Quantity column cannot be negative.";
-        public const string QuantityToSmall = @"The value in the Quantity column has been 
-             corrected to the minimum possible value.";
+        public const string QuantityCannotBeNegative =
+            "The value in the Quantity column cannot be negative.";
+        public const string QuantityToSmall = @"The value in the Quantity column 
+            has been corrected to the minimum possible value.";
 
-        public const string NoRequiredItem = "The work order does not contain a required repair item of the {0} type.";
+
+        public const string PriorityTooLow =
+            @"The priority must be at least Medium for the repair service that requires preliminary check.";
 
         public const string WorkOrderAssigned =
             "The {0} work order has been successfully assigned.";
-        
+
         public const string ExceedingMaximumNumberOfAssingedWorkOrders =
             @"Updating the number of assigned work orders for the employee 
             will lead to exceeding of the maximum number of assigned work orders, 
