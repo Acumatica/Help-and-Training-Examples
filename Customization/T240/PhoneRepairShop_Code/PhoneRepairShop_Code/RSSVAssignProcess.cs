@@ -62,7 +62,7 @@ namespace PhoneRepairShop
                 }
                 catch (Exception e)
                 {
-                    PXProcessing<RSSVWorkOrderToAssign>.SetError(
+                    PXProcessing<RSSVWorkOrder>.SetError(
                         orders.IndexOf(order), e);
                 }
             }
