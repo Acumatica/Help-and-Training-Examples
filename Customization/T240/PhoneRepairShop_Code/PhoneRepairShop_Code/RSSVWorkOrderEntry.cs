@@ -66,9 +66,6 @@ namespace PhoneRepairShop
           MapViewRights = PXCacheRights.Select)]
         protected virtual IEnumerable releaseFromHold(PXAdapter adapter) => adapter.Get();
 
-        //Event handler for a workflow event
-        public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument;
-
         public PXAction<RSSVWorkOrder> Assign;
         [PXProcessButton]
         [PXUIField(DisplayName = "Assign", Enabled = false)]
@@ -457,12 +454,33 @@ namespace PhoneRepairShop
             CreateInvoiceAction.SetVisible(
               WorkOrders.Current.Status == WorkOrderStatusConstants.Completed);
             CreateInvoiceAction.SetEnabled(WorkOrders.Current.InvoiceNbr == null &&
-              WorkOrders.Current.Status == WorkOrderStatusConstants.Completed);
+              (WorkOrders.Current.Status == WorkOrderStatusConstants.Completed ||
+              WorkOrders.Current.Status == WorkOrderStatusConstants.PendingPayment));
         }
 
         #endregion
 
+        #region WorkdlowEvents
 
+        //Event handler for a workflow event
+        public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument;
+
+        //Event handler for a workflow event
+        public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnInvoiceGotPrepaid;
+
+
+        #endregion
+
+    }
+
+    public class ARPaymentEvents : PXEntityEvent<ARPayment>.Container<ARPaymentEvents>
+    {
+        public PXEntityEvent<ARPayment> InvoiceGotPrepaid;
+    }
+
+    public class MyEvents : PXEntityEventBase<ARInvoice>.Container<MyEvents>
+    {
+        public PXEntityEvent<ARInvoice> InvoiceGotPrepaid;
     }
 
     public class RSSVWorkOrderEntry_Extension : PXGraphExtension<RSSVWorkOrderEntry>
