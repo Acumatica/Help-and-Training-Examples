@@ -140,7 +140,6 @@ namespace PhoneRepairShop.Workflows
 									.WithActions(actions =>
 									{
 										actions.Add(g => g.PutOnHold, a => a.IsDuplicatedInToolbar());
-
 									});
 							});
 							fss.Add<States.assigned>(flowState =>
@@ -212,6 +211,7 @@ namespace PhoneRepairShop.Workflows
 						transitions.AddGroupFrom<States.pendingPayment>(ts =>
 						{
 							ts.Add(t => t.To<States.onHold>().IsTriggeredOn(g => g.PutOnHold));
+							ts.Add(t => t.To<States.readyForAssignment>().IsTriggeredOn(g => g.OnInvoiceGotPrepaid));
 						});
 						transitions.AddGroupFrom<States.assigned>(ts =>
 						{
@@ -245,6 +245,13 @@ namespace PhoneRepairShop.Workflows
 							.WithTargetOf<ARInvoice>()
 							.OfEntityEvent<ARInvoice.Events>(e => e.CloseDocument)
 							.Is(g => g.OnCloseDocument)
+							.UsesPrimaryEntityGetter<
+								SelectFrom<RSSVWorkOrder>.
+								Where<RSSVWorkOrder.invoiceNbr.IsEqual<ARRegister.refNbr.FromCurrent>>>());
+						handlers.Add(handler => handler
+							.WithTargetOf<ARInvoice>()
+							.OfEntityEvent<MyEvents>(e => e.InvoiceGotPrepaid)
+							.Is(g => g.OnInvoiceGotPrepaid)
 							.UsesPrimaryEntityGetter<
 								SelectFrom<RSSVWorkOrder>.
 								Where<RSSVWorkOrder.invoiceNbr.IsEqual<ARRegister.refNbr.FromCurrent>>>());
