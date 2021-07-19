@@ -34,13 +34,11 @@ namespace PhoneRepairShop
         {
             _SingleRecord = true;
         }
-
         //Override the PrepareInsert method.
         protected override bool PrepareInsert(PXCache sender, object row,
             PXAccumulatorCollection columns)
         {
             if (!base.PrepareInsert(sender, row, columns)) return false;
-
             RSSVEmployeeWorkOrderQty newQty = (RSSVEmployeeWorkOrderQty)row;
             if (newQty.NbrOfAssignedOrders != null)
             {
@@ -48,9 +46,9 @@ namespace PhoneRepairShop
                 // RSSVEmployeeWorkOrderQty.NbrOfAssignedOrders.
                 columns.AppendException(
                     Messages.ExceedingMaximumNumberOfAssingedWorkOrders,
-                    new PXAccumulatorRestriction<
-                        RSSVEmployeeWorkOrderQty.nbrOfAssignedOrders>(
-                        PXComp.LE, 10));
+                new PXAccumulatorRestriction<
+                    RSSVEmployeeWorkOrderQty.nbrOfAssignedOrders>(
+                    PXComp.LE, 10));
             }
             // Update NbrOfAssignedOrders by using Summarize.
             columns.Update<RSSVEmployeeWorkOrderQty.nbrOfAssignedOrders>(

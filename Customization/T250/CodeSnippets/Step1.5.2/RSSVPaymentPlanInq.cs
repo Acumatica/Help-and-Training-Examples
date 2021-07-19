@@ -1,19 +1,12 @@
-using System;
-using System.Collections;
-using PX.Data;
-using PX.Data.BQL;
-using PX.Data.BQL.Fluent;
-using PX.Objects.AR;
-using PX.Objects.SO;
-
 namespace PhoneRepairShop
 {
     public class RSSVPaymentPlanInq : PXGraph<RSSVPaymentPlanInq>
     {
-
         ...
-		
-        #region Actions
+
+        public PXFilter<RSSVWorkOrderToPayFilter> Filter;
+
+        public PXCancel<RSSVWorkOrderToPayFilter> Cancel;
 
         public PXAction<RSSVWorkOrderToPay> ViewOrder;
         [PXButton]
@@ -55,10 +48,8 @@ namespace PhoneRepairShop
             }
         }
 
-        #endregion
-
-		...
-
-
+        ...
     }
+
+    ...
 }

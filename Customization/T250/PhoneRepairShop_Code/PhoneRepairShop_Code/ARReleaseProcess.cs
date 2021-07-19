@@ -1,30 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using PX.Data;
-using PhoneRepairShop;
+using PX.Objects.AR;
 using PX.Data.BQL.Fluent;
 
-namespace PX.Objects.AR
+namespace PhoneRepairShop
 {
     public class ARReleaseProcess_Extension : PXGraphExtension<ARReleaseProcess>
     {
         public SelectFrom<RSSVWorkOrder>.View UpdWorkOrder;
-
-        public delegate void CloseInvoiceAndClearBalancesDelegate(ARRegister ardoc);
-        [PXOverride]
-        public virtual void CloseInvoiceAndClearBalances(ARRegister ardoc,
-                                                         CloseInvoiceAndClearBalancesDelegate baseMethod)
-        {
-            RSSVWorkOrder order = SelectFrom<RSSVWorkOrder>.Where<RSSVWorkOrder.invoiceNbr.
-                                  IsEqual<ARRegister.refNbr.FromCurrent>>.View.SelectSingleBound(Base, new[] { ardoc });
-            if (order != null)
-            {
-                order.Status = WorkOrderStatusConstants.Paid;
-                UpdWorkOrder.Update(order);  // update cache
-                                             // no need to call the Persist method
-            }
-
-            baseMethod(ardoc);
-        }
 
         [PXOverride]
         public virtual void Persist(Action baseMethod)
@@ -33,14 +20,17 @@ namespace PX.Objects.AR
             {
                 baseMethod();
                 UpdWorkOrder.Cache.Persist(PXDBOperation.Update);
+                var orders = UpdWorkOrder.Select();
                 ts.Complete(Base);
             }
             UpdWorkOrder.Cache.Persisted(false);
         }
 
-        public delegate void UpdateBalancesDelegate(ARAdjust adj, ARRegister adjddoc, ARTran adjdtran);
+        public delegate void UpdateBalancesDelegate(ARAdjust adj, ARRegister adjddoc, ARTran
+adjdtran);
         [PXOverride]
-        public virtual void UpdateBalances(ARAdjust adj, ARRegister adjddoc, ARTran adjdtran, UpdateBalancesDelegate baseMethod)
+        public virtual void UpdateBalances(ARAdjust adj, ARRegister adjddoc, ARTran adjdtran,
+        UpdateBalancesDelegate baseMethod)
         {
             baseMethod(adj, adjddoc, adjdtran);
             ARRegister ardoc = adjddoc;
@@ -50,23 +40,32 @@ namespace PX.Objects.AR
                 ardoc = cached;
             }
             RSSVWorkOrder order = SelectFrom<RSSVWorkOrder>.
-                Where<RSSVWorkOrder.invoiceNbr.IsEqual<ARRegister.refNbr.FromCurrent>>
-                .View.SelectSingleBound(Base, new[] { ardoc });
+            Where<RSSVWorkOrder.invoiceNbr.IsEqual<ARRegister.refNbr.FromCurrent>>
+            .View.SelectSingleBound(Base, new[] { ardoc });
             if (order != null && order.Status == WorkOrderStatusConstants.PendingPayment)
             {
                 var payment = SelectFrom<ARPayment>.
-                    Where<ARPayment.docType.IsEqual<ARAdjust.adjgDocType.FromCurrent>.
-                    And<ARPayment.refNbr.IsEqual<ARAdjust.adjgRefNbr.FromCurrent>>>
-                    .View.SelectSingleBound(Base, new[] { ardoc });
+                Where<ARPayment.docType.IsEqual<ARAdjust.adjgDocType.FromCurrent>.
+                And<ARPayment.refNbr.IsEqual<ARAdjust.adjgRefNbr.FromCurrent>>>
+                .View.SelectSingleBound(Base, new[] { ardoc });
                 if (payment != null)
                 {
                     var paidPercent = (ardoc.CuryOrigDocAmt - ardoc.CuryDocBal) * 100 /
                     ardoc.CuryOrigDocAmt;
                     var paymentExt = PXCache<ARPayment>.GetExtension<ARPaymentExt>(payment);
-                    if (paidPercent >= paymentExt.UsrPrepaymentPercent)
+
+                    // for testing purposes                    
+                    //paymentExt.UsrPrepaymentPercent = 10;
+                    decimal percent = 10;
+                    //
+
+                    if (paidPercent >= percent)
                     {
-                        order.Status = WorkOrderStatusConstants.ReadyForAssignment;
-                        UpdWorkOrder.Update(order);
+                        //order.Status = WorkOrderStatusConstants.ReadyForAssignment;
+                        //UpdWorkOrder.Update(order);
+
+                        ARPaymentEvents.Select(e => e.InvoiceGotPrepaid).FireOn(Base, payment);
+
                         // No need to call the Persist method.
                     }
                 }
