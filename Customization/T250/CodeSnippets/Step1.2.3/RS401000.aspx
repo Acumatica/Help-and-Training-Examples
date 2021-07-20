@@ -17,8 +17,8 @@
     <Template>
       <px:PXLayoutRule LabelsWidth="XM" runat="server" ID="CstPXLayoutRule3" 
         StartColumn="True" ></px:PXLayoutRule>
-      <px:PXSegmentMask CommitChanges="True" runat="server"
-        ID="CstPXSegmentMask1" DataField="CustomerID" ></px:PXSegmentMask>
+      <px:PXSegmentMask CommitChanges="True" runat="server" ID="CstPXSegmentMask1" 
+        DataField="CustomerID" ></px:PXSegmentMask>
       <px:PXSelector CommitChanges="True" runat="server" ID="CstPXSelector2" 
         DataField="ServiceID" ></px:PXSelector>
     </Template>
@@ -28,15 +28,15 @@
   <px:PXGrid ID="grid" runat="server" DataSourceID="ds" Width="100%" Height="150px" SkinID="Details" AllowAutoHide="false">
     <Levels>
       <px:PXGridLevel DataMember="DetailsView">
-        <Columns>
-          <px:PXGridColumn DataField="OrderNbr" Width="72" />
-          <px:PXGridColumn DataField="Status" Width="140" />
-          <px:PXGridColumn DataField="InvoiceNbr" Width="72" />
-          <px:PXGridColumn DataField="PercentPaid" Width="72" />
-          <px:PXGridColumn DataField="ARInvoice__DueDate" Width="72" />
-          <px:PXGridColumn DataField="ARInvoice__CuryDocBal" Width="100" />
-        </Columns>
-</px:PXGridLevel>
+          <Columns>
+              <px:PXGridColumn DataField="OrderNbr" Width="72" />
+              <px:PXGridColumn DataField="Status" Width="140" />
+              <px:PXGridColumn DataField="InvoiceNbr" Width="72" />
+              <px:PXGridColumn DataField="PercentPaid" Width="72" />
+              <px:PXGridColumn DataField="ARInvoice__DueDate" Width="72" />
+              <px:PXGridColumn DataField="ARInvoice__CuryDocBal" Width="100" />
+          </Columns>
+      </px:PXGridLevel>
     </Levels>
     <AutoSize Container="Window" Enabled="True" MinHeight="150" />
     <ActionBar >

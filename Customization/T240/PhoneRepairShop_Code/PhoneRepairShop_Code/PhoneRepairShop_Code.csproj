@@ -64,6 +64,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ARReleaseProcess.cs" />
+    <Compile Include="DAC\ARPaymentExtension.cs" />
     <Compile Include="DAC\RSSVDevice.cs" />
     <Compile Include="DAC\RSSVLabor.cs" />
     <Compile Include="DAC\RSSVWarranty.cs" />

@@ -7,8 +7,6 @@ using PX.Data.BQL;
 using PX.Data.WorkflowAPI;
 using PX.Objects.AR;
 using PX.Objects.SO;
-using PX.Objects.AR;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace PhoneRepairShop
