@@ -1,4 +1,0 @@
-﻿<Fields ScreenID="CR306000">
-    <Field IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Resolution" ObjectName="PX.Objects.CR.CRCase" ComboBoxValues="Set|RJ|Rejected;Set|RD|Resolved;Set|MI|More Info Requested;Set|IP|In Process;Set|IN|Internal;Set|ES|In Escalation;Set|DP|Duplicate;Set|CR|Waiting Confirmation;Set|CP|Customer Postpone;Set|CL|Canceled;Set|CC|Pending Closure;Set|CA|Abandoned;Set|AS|Unassigned;Set|AD|Updated;Set|PC|Closed on Portal;Set|PO|Opened on Portal" />
-    <Field IsActive="True" DisplayName="Owner" FieldName="OwnerID" RequiredCondition="7d2b5c09-4601-425c-bcfe-e600f1d59871" ObjectName="PX.Objects.CR.CRCase" />
-</Fields>

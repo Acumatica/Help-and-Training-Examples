@@ -11,7 +11,8 @@ Customization
  * [T230](Customization/T230): Examples from the [T230 Development: Actions](https://openuni.acumatica.com/courses/development/t230-actions/) training course
  * [T240](Customization/T240): Examples from the [T240 Development: Processing Forms](https://openuni.acumatica.com/courses/development/t240-processing-forms/) training course
  * [T250](Customization/T250): Examples from the [T250 Development: Inquiry Forms](https://openuni.acumatica.com/courses/development/t250-inquiry-forms/) training course 
-
+ * [T280](Customization/T280): Examples from the [T280 Development: Inquiry Forms](https://openuni.acumatica.com/courses/development/t250-inquiry-forms/) training course 
+ * 
 Integration development
 
   * [Help](IntegrationDevelopment/Help): Examples from the [Integration Development Guide](https://help-2021r1.acumatica.com/Help?ScreenId=ShowWiki&pageid=ff22837c-cd3a-410e-b768-88ca6e53b165)
