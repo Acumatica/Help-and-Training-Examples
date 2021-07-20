@@ -2,14 +2,13 @@ using System;
 using PX.Data;
 using PX.Objects.AR;
 using PX.Objects.CS;
-using PX.Objects.CR;
 using PX.TM;
 using PX.Data.BQL.Fluent;
 using PX.Objects.SO;
-using PX.Data.BQL;
 
 namespace PhoneRepairShop
 {
+    [Serializable]
     [PXCacheName("Repair Work Order")]
     public class RSSVWorkOrder : IBqlTable
     {
@@ -33,7 +32,6 @@ namespace PhoneRepairShop
         #region CustomerID
         [PXDefault]
         [CustomerActive(DisplayName = "Customer ID", DescriptionField = typeof(Customer.acctName))]
-        [PXUIEnabled(typeof(Where<RSSVWorkOrder.hold.IsEqual<True>>))]
         public virtual int? CustomerID { get; set; }
         public abstract class customerID : PX.Data.BQL.BqlInt.Field<customerID> { }
         #endregion
@@ -83,10 +81,6 @@ namespace PhoneRepairShop
         #region Hold
         [PXDBBool()]
         [PXDefault(true)]
-        [PXUIField(DisplayName = "Hold")]
-        [PXUIVisible(typeof(Where<RSSVWorkOrder.status.IsEqual<workOrderStatusOnHold>.
-            Or<RSSVWorkOrder.status.IsEqual<workOrderStatusPendingPayment>>.
-            Or<RSSVWorkOrder.status.IsEqual<workOrderStatusReadyForAssignment>>>))]
         public virtual bool? Hold { get; set; }
         public abstract class hold : PX.Data.BQL.BqlBool.Field<hold> { }
         #endregion
@@ -101,14 +95,12 @@ namespace PhoneRepairShop
         #region ServiceID
         [PXDBInt()]
         [PXDefault]
-        [PXUIField(DisplayName = "Service",
-            Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Service", Visibility = PXUIVisibility.SelectorVisible)]
         [PXSelector(typeof(Search<RSSVRepairService.serviceID>),
             typeof(RSSVRepairService.serviceCD),
             typeof(RSSVRepairService.description),
             SubstituteKey = typeof(RSSVRepairService.serviceCD),
             DescriptionField = typeof(RSSVRepairService.description))]
-        [PXUIEnabled(typeof(Where<RSSVWorkOrder.hold.IsEqual<True>>))]
         public virtual int? ServiceID { get; set; }
         public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
         #endregion
@@ -116,14 +108,12 @@ namespace PhoneRepairShop
         #region DeviceID
         [PXDBInt()]
         [PXDefault]
-        [PXUIField(DisplayName = "Device",
-            Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Device", Visibility = PXUIVisibility.SelectorVisible)]
         [PXSelector(typeof(Search<RSSVDevice.deviceID>),
             typeof(RSSVDevice.deviceCD),
             typeof(RSSVDevice.description),
             SubstituteKey = typeof(RSSVDevice.deviceCD),
             DescriptionField = typeof(RSSVDevice.description))]
-        [PXUIEnabled(typeof(Where<RSSVWorkOrder.hold.IsEqual<True>>))]
         public virtual int? DeviceID { get; set; }
         public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
         #endregion
@@ -173,24 +163,30 @@ namespace PhoneRepairShop
         #region InvoiceNbr
         [PXDBString(15, IsUnicode = true)]
         [PXUIField(DisplayName = "Invoice Nbr.", Enabled = false)]
-        [PXSelector(typeof(SearchFor<SOInvoice.refNbr>.Where<SOInvoice.docType.IsEqual<ARDocType.invoice>>))]
+        [PXSelector(typeof(SearchFor<SOInvoice.refNbr>.
+                   Where<SOInvoice.docType.IsEqual<ARDocType.invoice>>))]
         public virtual string InvoiceNbr { get; set; }
         public abstract class invoiceNbr : PX.Data.BQL.BqlString.Field<invoiceNbr> { }
         #endregion
 
         #region TimeWithoutAction
         [PXInt]
-        [PXDBCalced(typeof(RSSVWorkOrder.dateCreated.Diff<Now>.Days), typeof(int))]
+        [PXDBCalced(typeof(RSSVWorkOrder.dateCreated.Diff<Now>.Days),
+         typeof(int))]
         [PXUIField(DisplayName = "Number of Days Unassigned")]
         public virtual int? TimeWithoutAction { get; set; }
-        public abstract class timeWithoutAction : PX.Data.BQL.BqlInt.Field<timeWithoutAction> { }
+        public abstract class timeWithoutAction :
+         PX.Data.BQL.BqlInt.Field<timeWithoutAction>
+        { }
         #endregion
 
         #region DefaultAssignee
         [PXInt]
         [PXUIField(DisplayName = "Default Assignee")]
         public virtual int? DefaultAssignee { get; set; }
-        public abstract class defaultAssignee : PX.Data.BQL.BqlInt.Field<defaultAssignee> { }
+        public abstract class defaultAssignee :
+         PX.Data.BQL.BqlInt.Field<defaultAssignee>
+        { }
         #endregion
 
         #region AssignTo
@@ -261,24 +257,36 @@ namespace PhoneRepairShop
     [PXHidden]
     public class RSSVWorkOrderToAssign : RSSVWorkOrder
     {
+        #region Selected
+        public abstract class selected : PX.Data.BQL.BqlBool.Field<selected> { }
+        [PXBool]
+        [PXUIField(DisplayName = "Selected")]
+        public virtual bool? Selected { get; set; }
+        #endregion
+
         #region Status
         public new abstract class status : PX.Data.BQL.BqlString.Field<status> { }
         #endregion
 
         #region Priority
-        public new abstract class priority : PX.Data.BQL.BqlString.Field<priority> { }
+        public new abstract class priority : PX.Data.BQL.BqlString.Field<priority>
+        { }
         #endregion
 
         #region ServiceID
-        public new abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
+        public new abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID>
+        { }
         #endregion
 
         #region DateCreated
-        public new abstract class dateCreated : PX.Data.BQL.BqlDateTime.Field<dateCreated> { }
+        public new abstract class dateCreated :
+         PX.Data.BQL.BqlDateTime.Field<dateCreated>
+        { }
         #endregion
 
         #region Assignee
-        public new abstract class assignee : PX.Data.BQL.BqlGuid.Field<assignee> { }
+        public new abstract class assignee : PX.Data.BQL.BqlGuid.Field<assignee>
+        { }
         #endregion
 
         #region TimeWithoutAction
@@ -291,6 +299,59 @@ namespace PhoneRepairShop
         public abstract class timeWithoutAction :
             PX.Data.BQL.BqlInt.Field<timeWithoutAction>
         { }
+        #endregion
+    }
+
+    [PXCacheName("Repair Work Order to Pay")]
+    public class RSSVWorkOrderToPay : RSSVWorkOrder
+    {
+        #region InvoiceNbr
+        public new abstract class invoiceNbr :
+            PX.Data.BQL.BqlString.Field<invoiceNbr> { }
+        #endregion
+
+        #region Status
+        public new abstract class status :
+            PX.Data.BQL.BqlString.Field<status> { }
+        #endregion
+
+        #region OrderNbr
+        public new abstract class orderNbr :
+            PX.Data.BQL.BqlString.Field<orderNbr> { }
+        #endregion
+
+        #region PercentPaid
+        [PXDecimal]
+        [PXUIField(DisplayName = "Percent Paid")]
+        public virtual Decimal? PercentPaid { get; set; }
+        public abstract class percentPaid :
+            PX.Data.BQL.BqlDecimal.Field<percentPaid> { }
+        #endregion
+
+        public new abstract class serviceID :
+            PX.Data.BQL.BqlInt.Field<serviceID> { }
+
+        public new abstract class customerID :
+            PX.Data.BQL.BqlInt.Field<customerID> { }
+
+        #region OrderType
+        [PXString(IsKey = true)]
+        [PXUIField(DisplayName = "Order Type")]
+        [PXUnboundDefault(OrderTypeConstants.WorkOrder)]
+        [PXStringList(
+          new string[]
+          {
+              OrderTypeConstants.SalesOrder,
+              OrderTypeConstants.WorkOrder
+          },
+          new string[]
+          {
+              Messages.SalesOrder,
+              Messages.WorkOrder
+          })]
+        public virtual String OrderType { get; set; }
+        public abstract class orderType :
+            PX.Data.BQL.BqlDecimal.Field<orderType> { }
         #endregion
     }
 }
