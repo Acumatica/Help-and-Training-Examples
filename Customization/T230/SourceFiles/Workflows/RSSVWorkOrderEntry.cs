@@ -10,10 +10,10 @@ namespace PhoneRepairShop
         //Event handler for a workflow event
         public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument;
 
-        public PXAction<RSSVWorkOrder> assign;
+        public PXAction<RSSVWorkOrder> Assign;
         [PXButton(CommitChanges = true)]
         [PXUIField(DisplayName = "Assign", Enabled = false)]
-        protected virtual void Assign()
+        protected virtual void assign()
         {
             // Get the current order from the cache.
             RSSVWorkOrder row = WorkOrders.Current;
@@ -33,10 +33,10 @@ namespace PhoneRepairShop
             Actions.PressSave();
         }
 
-        public PXAction<RSSVWorkOrder> complete;
+        public PXAction<RSSVWorkOrder> Complete;
         [PXButton(CommitChanges = true)]
         [PXUIField(DisplayName = "Complete", Enabled = false)]
-        protected virtual IEnumerable Complete(PXAdapter adapter) => adapter.Get();
+        protected virtual IEnumerable complete(PXAdapter adapter) => adapter.Get();
 
     }
 }
