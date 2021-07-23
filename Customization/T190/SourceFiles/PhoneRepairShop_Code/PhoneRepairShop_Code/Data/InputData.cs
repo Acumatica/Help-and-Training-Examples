@@ -8,6 +8,7 @@ using PX.Objects.IN;
 using PX.Data.BQL.Fluent;
 using PX.Api;
 using PX.Data.BQL;
+using System.Globalization;
 
 namespace PhoneRepairShop
 {
@@ -111,46 +112,52 @@ namespace PhoneRepairShop
             //InventoryItem invItem = SelectFrom<InventoryItem>.Where<InventoryItemExt.usrRepairItem.IsEqual<True>>.View.ReadOnly.Select(iiEntry);
             //if (invItem == null)
             //{
-            using (StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "InputData\\InventoryItem.csv"))
-            {
-                string header = file.ReadLine();
-                if (header != null)
+                using (StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "InputData\\InventoryItem.csv"))
                 {
-                    string[] headerParts = header.Split(';');
-                    while (true)
+                    string header = file.ReadLine();
+                    if (header != null)
                     {
-                        string line = file.ReadLine();
-                        if (line != null)
+                        string[] headerParts = header.Split(';');
+                        while (true)
                         {
-                            string[] lineParts = line.Split(';');
-                            IDictionary<string, string> dic = headerParts.Select((k, i) => new { k, v = lineParts[i] }).ToDictionary(x => x.k, x => x.v);
-                            InventoryItem invItem = SelectFrom<InventoryItem>.Where<InventoryItem.inventoryID.IsEqual<@P.AsInt>>.View.ReadOnly.Select(iiEntry, Convert.ToInt32(dic["InventoryID"]));
-                            if (invItem == null)
+                            string line = file.ReadLine();
+                            if (line != null)
                             {
-                                var iItem = new InventoryItem
+                                string[] lineParts = line.Split(';');
+                                IDictionary<string, string> dic = headerParts.Select((k, i) => new { k, v = lineParts[i] }).ToDictionary(x => x.k, x => x.v);
+                                InventoryItem invItem = SelectFrom<InventoryItem>.Where<InventoryItem.inventoryID.IsEqual<@P.AsInt>>.View.ReadOnly.Select(iiEntry, Convert.ToInt32(dic["InventoryID"]));
+                                if (invItem == null)
                                 {
-                                    InventoryCD = dic["InventoryCD"],
-                                    ItemClassID = Convert.ToInt32(dic["ItemClassID"])
-                                };
-                                iItem = PXCache<InventoryItem>.CreateCopy(iiEntry.Item.Insert(iItem));
-                                iItem.Descr = dic["Descr"];
-                                iItem.BasePrice = Convert.ToDecimal(dic["BasePrice"]);
-                                iItem = PXCache<InventoryItem>.CreateCopy(iiEntry.Item.Update(iItem));
-                                iItem.DfltSiteID = Convert.ToInt32(dic["DfltSiteID"]);
-                                iItem = PXCache<InventoryItem>.CreateCopy(iiEntry.Item.Update(iItem));
-                                //var extItem = PXCache<InventoryItem>.GetExtension<InventoryItemExt>(iItem);
-                                //extItem.UsrRepairItem = true;
-                                //extItem.UsrRepairItemType = dic["UsrRepairItemType"];
-                                //iItem = PXCache<InventoryItem>.CreateCopy(iiEntry.Item.Update(iItem));
-                                iiEntry.Actions.PressSave();
-                                iiEntry.Clear();
+                                    //Create a stock item
+                                    var iItem = new InventoryItem
+                                    {
+                                        InventoryCD = dic["InventoryCD"],
+                                        Descr = dic["Descr"],
+                                    };
+                                    iItem = iiEntry.Item.Insert(iItem);
+                                    iItem.ItemClassID = Convert.ToInt32(dic["ItemClassID"]);
+                                    iItem = iiEntry.Item.Update(iItem);
+
+                                    /*//Assign the values of custom fields
+                                    var extItem = PXCache<InventoryItem>.GetExtension<InventoryItemExt>(iItem);
+                                    extItem.UsrRepairItem = true;
+                                    extItem.UsrRepairItemType = dic["UsrRepairItemType"];
+                                    iiEntry.Item.Update(iItem);*/
+                                    //Assign base price and default warehouse
+                                    InventoryItemCurySettings curySettings = iiEntry.ItemCurySettings.Current;
+                                    curySettings.DfltSiteID = Convert.ToInt32(dic["DfltSiteID"]);
+                                    curySettings.BasePrice = Decimal.Parse(dic["BasePrice"], NumberStyles.Any, CultureInfo.InvariantCulture);
+                                    iiEntry.ItemCurySettings.Update(curySettings);
+
+                                    iiEntry.Actions.PressSave();
+                                    iiEntry.Clear();
+                                }
                             }
+                            else break;
                         }
-                        else break;
                     }
+                    this.WriteLog("InventoryItem updated");
                 }
-                this.WriteLog("InventoryItem updated");
-            }
             //}
             #endregion
 
