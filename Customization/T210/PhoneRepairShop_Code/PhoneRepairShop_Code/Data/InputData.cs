@@ -122,22 +122,27 @@ namespace PhoneRepairShop
                             {
                                 string[] lineParts = line.Split(';');
                                 IDictionary<string, string> dic = headerParts.Select((k, i) => new { k, v = lineParts[i] }).ToDictionary(x => x.k, x => x.v);
+                                //Create a stock item
                                 var iItem = new InventoryItem
                                 {
                                     InventoryCD = dic["InventoryCD"],
                                     Descr = dic["Descr"],
-                                    ItemClassID = Convert.ToInt32(dic["ItemClassID"]),
                                 };
-                                iItem = PXCache<InventoryItem>.CreateCopy(iiEntry.Item.Insert(iItem));
-                                iItem.BasePrice = Decimal.Parse(dic["BasePrice"], NumberStyles.Any, CultureInfo.InvariantCulture);
-                                iItem = PXCache<InventoryItem>.CreateCopy(iiEntry.Item.Update(iItem));
-                                iItem.DfltSiteID = Convert.ToInt32(dic["DfltSiteID"]);
-                                iItem = PXCache<InventoryItem>.CreateCopy(iiEntry.Item.Update(iItem));
+                                iItem = iiEntry.Item.Insert(iItem);
+                                iItem.ItemClassID = Convert.ToInt32(dic["ItemClassID"]);
+                                iItem = iiEntry.Item.Update(iItem);
+
+                                //Assign the values of custom fields
                                 var extItem = PXCache<InventoryItem>.GetExtension<InventoryItemExt>(iItem);
                                 extItem.UsrRepairItem = true;
                                 extItem.UsrRepairItemType = dic["UsrRepairItemType"];
                                 iiEntry.Item.Update(iItem);
-                                //iItem = PXCache<InventoryItem>.CreateCopy(iiEntry.Item.Update(iItem));
+                                //Assign base price and default warehouse
+                                InventoryItemCurySettings curySettings = iiEntry.ItemCurySettings.Current;
+                                curySettings.DfltSiteID = Convert.ToInt32(dic["DfltSiteID"]);
+                                curySettings.BasePrice = Decimal.Parse(dic["BasePrice"], NumberStyles.Any, CultureInfo.InvariantCulture);
+                                iiEntry.ItemCurySettings.Update(curySettings);
+
                                 iiEntry.Actions.PressSave();
                                 iiEntry.Clear();
                             }

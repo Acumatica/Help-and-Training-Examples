@@ -128,15 +128,11 @@ namespace PhoneRepairShop
                                 {
                                     InventoryCD = dic["InventoryCD"],
                                     Descr = dic["Descr"],
-                                    ItemClassID = Convert.ToInt32(dic["ItemClassID"]),
                                 };
-                                //iItem = PXCache<InventoryItem>.CreateCopy(iiEntry.Item.Insert(iItem));
-                                iiEntry.RowInserting.AddHandler<InventoryItemCurySettings>((sender, e) =>
-                                {
-                                    InventoryItemCurySettings s = (InventoryItemCurySettings)e.Row;
-                                });
                                 iItem = iiEntry.Item.Insert(iItem);
-                                /*
+                                iItem.ItemClassID = Convert.ToInt32(dic["ItemClassID"]);
+                                iItem = iiEntry.Item.Update(iItem);
+                                
                                 //Assign the values of custom fields
                                 var extItem = PXCache<InventoryItem>.GetExtension<InventoryItemExt>(iItem);
                                 extItem.UsrRepairItem = true;
@@ -147,7 +143,6 @@ namespace PhoneRepairShop
                                 curySettings.DfltSiteID = Convert.ToInt32(dic["DfltSiteID"]);
                                 curySettings.BasePrice = Decimal.Parse(dic["BasePrice"], NumberStyles.Any, CultureInfo.InvariantCulture);
                                 iiEntry.ItemCurySettings.Update(curySettings);
-                                */
 
                                 iiEntry.Actions.PressSave();
                                 iiEntry.Clear();
