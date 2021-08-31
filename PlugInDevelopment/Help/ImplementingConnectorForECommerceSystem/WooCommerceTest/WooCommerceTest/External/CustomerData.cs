@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using PX.Commerce.Core;
 using Newtonsoft.Json;
 
 namespace WooCommerceTest
 {
-    [Description(WCCaptions.Customer)]
+    [CommerceDescription(WCCaptions.Customer)]
     public class CustomerData : BCAPIEntity, IWooEntity
     {
         [JsonProperty("id")]
@@ -16,7 +15,7 @@ namespace WooCommerceTest
         [JsonProperty("date_created")]
         public DateTime? DateCreatedUT { get; set; }
 
-        [Description(WCCaptions.DateCreatedUT)]
+        [CommerceDescription(WCCaptions.DateCreatedUT)]
         [ShouldNotSerialize]
         public virtual DateTime? CreatedDateTime
         {
@@ -29,7 +28,7 @@ namespace WooCommerceTest
         [JsonProperty("date_modified_gmt")]
         public DateTime? DateModified { get; set; }
 
-        [Description(WCCaptions.DateModifiedUT)]
+        [CommerceDescription(WCCaptions.DateModifiedUT)]
         [ShouldNotSerialize]
         public virtual DateTime? ModifiedDateTime
         {
@@ -54,10 +53,6 @@ namespace WooCommerceTest
         [ValidateRequired()]
         public string LastName { get; set; }
 
-        [JsonProperty("role")]
-        [CommerceDescription(WCCaptions.Role, FieldFilterStatus.Skipped, FieldMappingStatus.Import)]
-        public string Role { get; set; }
-
         [JsonProperty("username")]
         [CommerceDescription(WCCaptions.UserName, FieldFilterStatus.Skipped, FieldMappingStatus.Import)]
         public string Username { get; set; }
@@ -67,16 +62,5 @@ namespace WooCommerceTest
 
         [JsonProperty("shipping")]
         public CustomerAddressData Shipping { get; set; }
-
-        [JsonProperty("is_paying_customer")]
-        public bool? IsPayingCustomer { get; set; }
-
-        [JsonProperty("avatar_url")]
-        public string AvatarUrl { get; set; }
-
-        [JsonProperty("meta_data")]
-        public IEnumerable<object> MetaData { get; set; }
-
-
     }
 }

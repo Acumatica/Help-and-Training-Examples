@@ -21,7 +21,6 @@ namespace WooCommerceTest
         public const string DateCreatedUT = "Date Created UT";
         public const string DateModifiedUT = "Date Modified UT";
         public const string ID = "ID";
-        public const string Role = "Role";
         public const string UserName = "UserName";
     }
 }
