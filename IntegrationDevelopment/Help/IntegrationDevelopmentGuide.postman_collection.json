@@ -258,7 +258,7 @@
 										"{{EndpointURL}}Customer"
 									]
 								},
-								"description": "This example shows the creation of a record, which is described in [Creation of a Record](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=9d966d50-a0a1-4456-a9ff-1cc2159d48d4)."
+								"description": "This example shows the creation of a record, which is described in [Create a Record](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=9d966d50-a0a1-4456-a9ff-1cc2159d48d4)."
 							},
 							"response": [
 								{
@@ -362,7 +362,7 @@
 										}
 									]
 								},
-								"description": "This example shows the update of a record, which is described in [Update of a Record](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=af48c02a-afbc-4fdb-b1e5-635ac7ebbaf1)."
+								"description": "This example shows the update of a record, which is described in [Update a Record](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=af48c02a-afbc-4fdb-b1e5-635ac7ebbaf1)."
 							},
 							"response": [
 								{
@@ -479,7 +479,7 @@
 										}
 									]
 								},
-								"description": "This example shows the retrieval of a record by the values of its key fields, which is described in [Retrieval of a Record by Key Fields](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=52c97a83-1fa1-40e9-8219-52a89a91f2da)."
+								"description": "This example shows the retrieval of a record by the values of its key fields, which is described in [Retrieve a Record by Key Fields](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=52c97a83-1fa1-40e9-8219-52a89a91f2da)."
 							},
 							"response": [
 								{
@@ -583,7 +583,7 @@
 										}
 									]
 								},
-								"description": "This example shows the retrieval of a record by the value of the entity ID, which is described in [Retrieval of a Record by ID](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bc9531b0-717b-4b2d-8899-ff7ca805ade1)."
+								"description": "This example shows the retrieval of a record by the value of the entity ID, which is described in [Retrieve a Record by ID](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bc9531b0-717b-4b2d-8899-ff7ca805ade1)."
 							},
 							"response": [
 								{
@@ -691,7 +691,7 @@
 										}
 									]
 								},
-								"description": "This example shows the retrieval of records that satisfy the specified conditions, which is described in [Retrieval of Records by Conditions](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=775ca16b-cba6-4c1d-89d5-c1df7833bfea)."
+								"description": "This example shows the retrieval of records that satisfy the specified conditions, which is described in [Retrieve Records by Conditions](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=775ca16b-cba6-4c1d-89d5-c1df7833bfea)."
 							},
 							"response": [
 								{
@@ -789,7 +789,7 @@
 										}
 									]
 								},
-								"description": "This example shows the retrieval of data from an inquiry form, which is described in [Retrieval of Data from an Inquiry Form](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=6340cff3-4732-4231-9e42-5d1e5e65b5dd)."
+								"description": "This example shows the retrieval of data from an inquiry form, which is described in [Retrieve Data from an Inquiry Form](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=6340cff3-4732-4231-9e42-5d1e5e65b5dd)."
 							},
 							"response": [
 								{
@@ -891,7 +891,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to get leads together with their attributes. This process is described in [Retrieval of Records with Attributes](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=56831ee7-14b0-45ef-8207-dace30beb2cb)."
+								"description": "This example shows how to get leads together with their attributes. This process is described in [Retrieve Records with Attributes](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=56831ee7-14b0-45ef-8207-dace30beb2cb)."
 							},
 							"response": [
 								{
@@ -986,7 +986,7 @@
 										"CGFEEDER"
 									]
 								},
-								"description": "This example shows the removal of a record by key fields, which is described in [Removal of a Record](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=d806636f-3cb8-4fd6-bc1e-fef9cdf9683d)."
+								"description": "This example shows the removal of a record by key fields, which is described in [Remove a Record by Key Fields](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=d806636f-3cb8-4fd6-bc1e-fef9cdf9683d)."
 							},
 							"response": [
 								{
@@ -1050,7 +1050,107 @@
 							]
 						},
 						{
-							"name": "Execute an Action",
+							"name": "Remove a Record by ID",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{EndpointURL}}SalesOrder/286F2AF0-21F5-EB11-9DF1-9828A61840C3",
+									"host": [
+										"{{EndpointURL}}SalesOrder"
+									],
+									"path": [
+										"286F2AF0-21F5-EB11-9DF1-9828A61840C3"
+									]
+								},
+								"description": "This example shows the removal of a record by its ID, which is described in [Remove a Record by ID](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=04825ddc-c3af-49de-8663-ae119e84b987)."
+							},
+							"response": [
+								{
+									"name": "Remove a Record by ID",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{EndpointURL}}SalesOrder/286F2AF0-21F5-EB11-9DF1-9828A61840C3",
+											"host": [
+												"{{EndpointURL}}SalesOrder"
+											],
+											"path": [
+												"286F2AF0-21F5-EB11-9DF1-9828A61840C3"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=C34018A62898FC9D11EC0B250DE0CDBF; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:1948+sc:~/entity/default/20.200.001/salesorder/286f2af0-21f5-eb11-9df1-9828a61840c3+start:637660982326174783+tg:; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 01 Sep 2021 13:03:54 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Execute an Action That Is Present in an Endpoint",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -1078,11 +1178,11 @@
 										"ReopenSalesOrder"
 									]
 								},
-								"description": "This example shows the re-opening of a sales order, which is described in [Execution of an Action](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=91bf9106-062a-47a8-be1f-b48517a54324)."
+								"description": "This example shows the re-opening of a sales order, which is described in [Execute an Action That Is Present in an Endpoint](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=91bf9106-062a-47a8-be1f-b48517a54324)."
 							},
 							"response": [
 								{
-									"name": "Execution of an Action",
+									"name": "Execute an Action That Is Present in an Endpoint",
 									"originalRequest": {
 										"method": "POST",
 										"header": [
@@ -1146,7 +1246,7 @@
 							]
 						},
 						{
-							"name": "Execute an Action: Retrieve the Status of the Operation",
+							"name": "Execute an Action That Is Present in an Endpoint: Retrieve the Status of the Operation",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1179,11 +1279,11 @@
 										"a6295b33-c7f6-e811-b817-00155d408001"
 									]
 								},
-								"description": "This example shows the retrieval of the status of the release of a sales order invoice, which is described in [Execution of an Action](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=91bf9106-062a-47a8-be1f-b48517a54324)."
+								"description": "This example shows the retrieval of the status of the re-opening a sales order, which is described in [Execute an Action That Is Present in an Endpoint](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=91bf9106-062a-47a8-be1f-b48517a54324)."
 							},
 							"response": [
 								{
-									"name": "Execution of an Action: Retrieval of the Status of the Operation",
+									"name": "Execute an Action That Is Present in an Endpoint: Retrieve the Status of the Operation",
 									"originalRequest": {
 										"method": "GET",
 										"header": [
@@ -1237,6 +1337,109 @@
 							]
 						},
 						{
+							"name": "Execute a Custom Action",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"entity\": {\r\n        \"id\": \"6781fe19-9aa6-eb11-b846-00155d408001\"\r\n    },\r\n    \"parameters\": {\r\n        \"custom\": {\r\n            \"FilterPreview\": {\r\n                \"Reason\": {\r\n                    \"type\" : \"CustomStringField\", \r\n                    \"value\" : \"Abandoned\"\r\n                }\r\n            }\r\n        }\r\n    }    \r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Case/Close",
+									"host": [
+										"{{EndpointURL}}Case"
+									],
+									"path": [
+										"Close"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Execute a Custom Action",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"entity\": {\r\n        \"id\": \"6781fe19-9aa6-eb11-b846-00155d408001\"\r\n    },\r\n    \"parameters\": {\r\n        \"custom\": {\r\n            \"FilterPreview\": {\r\n                \"Reason\": {\r\n                    \"type\" : \"CustomStringField\", \r\n                    \"value\" : \"Abandoned\"\r\n                }\r\n            }\r\n        }\r\n    }    \r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Case/Close",
+											"host": [
+												"{{EndpointURL}}Case"
+											],
+											"path": [
+												"Close"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Location",
+											"value": "/AcumaticaERP/entity/Default/20.200.001/Case/6781fe19-9aa6-eb11-b846-00155d408001"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=C34018A62898FC9D11EC0B3B8F803CE0; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:1022+sc:~/entity/default/20.200.001/case/close+start:637661078990164832+tg:; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 01 Sep 2021 15:45:00 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
 							"name": "Retrieve a File Attached to a Record: Retrieve the List of Attached Files",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -1280,11 +1483,11 @@
 										}
 									]
 								},
-								"description": "This example shows the retrieval of the list of attached files, which is described in [Retrieval of a File Attached to a Record](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b1bc82ee-ae6b-442a-a369-863d98f14630)."
+								"description": "This example shows the retrieval of the list of attached files, which is described in [Retrieve a File Attached to a Record](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b1bc82ee-ae6b-442a-a369-863d98f14630)."
 							},
 							"response": [
 								{
-									"name": "Retrieval of the List of Attached Files of a Record",
+									"name": "Retrieve a File Attached to a Record: Retrieve the List of Attached Files",
 									"originalRequest": {
 										"method": "GET",
 										"header": [
@@ -1475,7 +1678,7 @@
 										"T2MCRO.jpg"
 									]
 								},
-								"description": "This example shows the attachment of a file to a record, which is described in [Attachment of a File to a Record](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=591def3d-5fe5-42c1-bb35-cfe5b4c77f6f)."
+								"description": "This example shows the attachment of a file to a record, which is described in [Attach a File to a Record](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=591def3d-5fe5-42c1-bb35-cfe5b4c77f6f)."
 							},
 							"response": [
 								{
@@ -1571,7 +1774,7 @@
 										"$adHocSchema"
 									]
 								},
-								"description": "This example shows the retrieval of the schema of custom fields, which is described in [Retrieval of the Schema of Custom Fields](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=64daacf1-75c4-4bfa-b57b-36222020e7c9)."
+								"description": "This example shows the retrieval of the schema of custom fields, which is described in [Retrieve the Schema of Custom Fields](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=64daacf1-75c4-4bfa-b57b-36222020e7c9)."
 							},
 							"response": [
 								{
@@ -1670,7 +1873,7 @@
 										"{{EndpointURL}}JournalTransaction"
 									]
 								},
-								"description": "This example shows how to set the active branch and business date for a request. This process is described in [Change of the Business Date or Current Branch](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=9821cff9-4970-4153-a0f8-dbf5758133a7)."
+								"description": "This example shows how to set the active branch and business date for a request. This process is described in [Change the Business Date or Current Branch](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=9821cff9-4970-4153-a0f8-dbf5758133a7)."
 							},
 							"response": [
 								{
@@ -1764,7 +1967,7 @@
 										"entity"
 									]
 								},
-								"description": "This example obtains the Acumatica ERP version and the list of contract-based endpoints available in this version by using the REST API. This example is described in [Retrieval of the Acumatica ERP Version and the List of Endpoints](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=da0fe495-b2e5-4d34-ab5a-5829e408f684)."
+								"description": "This example obtains the Acumatica ERP version and the list of contract-based endpoints available in this version by using the REST API. This example is described in [Retrieve the Acumatica ERP Version and the List of Endpoints](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=da0fe495-b2e5-4d34-ab5a-5829e408f684)."
 							},
 							"response": [
 								{
@@ -1854,7 +2057,7 @@
 										}
 									]
 								},
-								"description": "This example illustrates the use of the $custom parameter, which is described in [Parameters for Retrieving Data](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=c5e2f36a-0971-4b33-b127-3c3fe14106ff).\n\nTo test this example, you need to add a user-defined field for the ORGSIZE attribute on the Sales Orders (SO301000) form and specify its value for the 000029 sales order.\n\nFor details about how to add a user-defined field, see [To Add User-Defined Fields to a Form](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=810b4857-2ffe-4764-aebf-4d657334f0be)."
+								"description": "This example illustrates the use of the $custom parameter, which is described in [$custom Parameter](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a0444120-2e5d-41cd-8c65-0385210b0f8a).\n\nTo test this example, you need to add a user-defined field for the ORGSIZE attribute on the Sales Orders (SO301000) form and specify its value for the 000029 sales order.\n\nFor details about how to add a user-defined field, see [To Add User-Defined Fields to a Form](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=810b4857-2ffe-4764-aebf-4d657334f0be)."
 							},
 							"response": [
 								{
@@ -1937,7 +2140,7 @@
 							]
 						}
 					],
-					"description": "This folder contains examples from the [Working with the Contract-Based REST API](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=1c767ad9-da6d-4047-bc93-6970ad469504) chapter of the Integration Development Guide.",
+					"description": "This folder contains examples from the [Basic Requests](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=1c767ad9-da6d-4047-bc93-6970ad469504) chapter of the Integration Development Guide.",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1960,26 +2163,10 @@
 					]
 				},
 				{
-					"name": "Parameters for Retrieving Records",
-					"item": []
-				},
-				{
-					"name": "Account",
-					"item": []
-				},
-				{
-					"name": "AccountDetailsForPeriodInquiry",
-					"item": []
-				},
-				{
-					"name": "AccountGroup",
-					"item": []
-				},
-				{
 					"name": "Activity",
 					"item": [
 						{
-							"name": "Create an Activity that is Linked to a Case: 2 Create an Activity",
+							"name": "Create an Activity that is Linked to a Case",
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -2003,11 +2190,12 @@
 									"host": [
 										"{{EndpointURL}}Activity"
 									]
-								}
+								},
+								"description": "This example shows the creation of an activity that is linked to a case, which is described in [Create an Activity that is Linked to a Case](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=281011f8-aaf5-440f-a558-ff83afd09e62)."
 							},
 							"response": [
 								{
-									"name": "Create an Activity that is Linked to a Case: 2 Create an Activity",
+									"name": "Create an Activity that is Linked to a Case",
 									"originalRequest": {
 										"method": "PUT",
 										"header": [
@@ -2076,7 +2264,7 @@
 							]
 						},
 						{
-							"name": "Create an Activity that is Linked to a Customer: 2 Create an Activity",
+							"name": "Create an Activity that is Linked to a Customer",
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -2100,11 +2288,12 @@
 									"host": [
 										"{{EndpointURL}}Activity"
 									]
-								}
+								},
+								"description": "This example shows the creation of an activity that is linked to a customer, which is described in [Create an Activity that is Linked to a Customer](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=19b027ab-a469-481c-94c7-567f9884bbab)."
 							},
 							"response": [
 								{
-									"name": "Create an Activity that is Linked to a Customer: 2 Create an Activity",
+									"name": "Create an Activity that is Linked to a Customer",
 									"originalRequest": {
 										"method": "PUT",
 										"header": [
@@ -2177,108 +2366,7 @@
 							]
 						},
 						{
-							"name": "Create an Activity that is Linked to a Lead: 1 Create a Lead",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"FirstName\": {\"value\": \"Brent\"},\r\n    \"LastName\": {\"value\": \"Edds\"},\r\n    \"Email\": {\"value\": \"brent.edds.test27@avantehs.com\"}\r\n}"
-								},
-								"url": {
-									"raw": "{{EndpointURL}}Lead",
-									"host": [
-										"{{EndpointURL}}Lead"
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Create an Activity that is Linked to a Lead: 1 Create a Lead",
-									"originalRequest": {
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"FirstName\": {\"value\": \"Brent\"},\r\n    \"LastName\": {\"value\": \"Edds\"},\r\n    \"Email\": {\"value\": \"brent.edds.test27@avantehs.com\"}\r\n}"
-										},
-										"url": {
-											"raw": "{{EndpointURL}}Lead",
-											"host": [
-												"{{EndpointURL}}Lead"
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requestid=C34018A62898EE9D11EBEA3A1ACECB34; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requeststat=+st:14447+sc:~/entity/default/20.200.001/lead+start:637624788853694900+tg:; path=/"
-										},
-										{
-											"key": "Date",
-											"value": "Wed, 21 Jul 2021 15:41:39 GMT"
-										},
-										{
-											"key": "Content-Length",
-											"value": "1279"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"id\": \"23561922-3aea-eb11-9dee-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Active\": {\n        \"value\": true\n    },\n    \"BusinessAccount\": {},\n    \"CompanyName\": {},\n    \"ContactMethod\": {\n        \"value\": \"Any\"\n    },\n    \"ConvertedBy\": {},\n    \"Description\": {},\n    \"DoNotCall\": {\n        \"value\": false\n    },\n    \"DoNotEmail\": {\n        \"value\": false\n    },\n    \"DoNotFax\": {\n        \"value\": false\n    },\n    \"DoNotMail\": {\n        \"value\": false\n    },\n    \"Duplicate\": {\n        \"value\": \"Validated\"\n    },\n    \"DuplicateFound\": {\n        \"value\": false\n    },\n    \"Email\": {\n        \"value\": \"brent.edds.test27@avantehs.com\"\n    },\n    \"Fax\": {},\n    \"FaxType\": {\n        \"value\": \"Fax\"\n    },\n    \"FirstName\": {\n        \"value\": \"Brent\"\n    },\n    \"JobTitle\": {},\n    \"LanguageOrLocale\": {},\n    \"LastIncomingActivity\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2021-07-21T18:41:39.627+03:00\"\n    },\n    \"LastName\": {\n        \"value\": \"Edds\"\n    },\n    \"LastOutgoingActivity\": {},\n    \"LeadClass\": {\n        \"value\": \"BAKERY\"\n    },\n    \"LeadDisplayName\": {\n        \"value\": \"Brent Edds\"\n    },\n    \"LeadID\": {\n        \"value\": 100222\n    },\n    \"NoMarketing\": {\n        \"value\": false\n    },\n    \"NoMassMail\": {\n        \"value\": false\n    },\n    \"NoteID\": {\n        \"value\": \"23561922-3aea-eb11-9dee-9828a61840c3\"\n    },\n    \"Owner\": {},\n    \"OwnerEmployeeName\": {},\n    \"ParentAccount\": {},\n    \"Phone1\": {},\n    \"Phone1Type\": {\n        \"value\": \"Business 1\"\n    },\n    \"Phone2\": {},\n    \"Phone2Type\": {\n        \"value\": \"Cell\"\n    },\n    \"Phone3\": {},\n    \"Phone3Type\": {\n        \"value\": \"Home\"\n    },\n    \"QualificationDate\": {},\n    \"Reason\": {\n        \"value\": \"Created\"\n    },\n    \"RefContactID\": {},\n    \"Source\": {},\n    \"SourceCampaign\": {},\n    \"Status\": {\n        \"value\": \"New\"\n    },\n    \"Title\": {},\n    \"WebSite\": {},\n    \"Workgroup\": {},\n    \"WorkgroupDescription\": {},\n    \"custom\": {}\n}"
-								}
-							]
-						},
-						{
-							"name": "Create an Activity that is Linked to a Lead: 2 Create an Activity",
+							"name": "Create an Activity that is Linked to a Lead",
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -2302,11 +2390,12 @@
 									"host": [
 										"{{EndpointURL}}Activity"
 									]
-								}
+								},
+								"description": "This example shows the creation of an activity that is linked to a lead, which is described in [Create an Activity that is Linked to a Lead](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=498dbbec-97a2-416b-a151-459ed07994dd)."
 							},
 							"response": [
 								{
-									"name": "Create an Activity that is Linked to a Lead: 2 Create an Activity",
+									"name": "Create an Activity that is Linked to a Lead",
 									"originalRequest": {
 										"method": "PUT",
 										"header": [
@@ -2378,7 +2467,8 @@
 								}
 							]
 						}
-					]
+					],
+					"description": "This folder contains requests that use the [Activity](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=6856d876-f6fd-407d-a530-01b81fbeeb49) entity."
 				},
 				{
 					"name": "Bill",
@@ -2419,7 +2509,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to create an AP bill for a particular line of a purchase order in Acumatica ERP. This process is described in [Creation of a Bill for Particular Lines of a Purchase Order or Receipt](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a1116acb-66aa-4415-8148-5bbab45b0a50)."
+								"description": "This example shows how to create an AP bill for a particular line of a purchase order in Acumatica ERP. This process is described in [Create a Bill for Particular Lines of a Purchase Order](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a1116acb-66aa-4415-8148-5bbab45b0a50)."
 							},
 							"response": [
 								{
@@ -2541,7 +2631,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to create an AP bill for a particular line of a purchase receipt in Acumatica ERP. This process is described in [Creation of a Bill for Particular Lines of a Purchase Order or Receipt](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a1116acb-66aa-4415-8148-5bbab45b0a50)."
+								"description": "This example shows how to create an AP bill for a particular line of a purchase receipt in Acumatica ERP. This process is described in [Create a Bill for Particular Lines of a Purchase Receipt](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=dadf0b5e-6ff5-4fb3-b089-60be8c8514b2)."
 							},
 							"response": [
 								{
@@ -2627,7 +2717,8 @@
 								}
 							]
 						}
-					]
+					],
+					"description": "This folder contains requests that use the [Bill](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=74a426d9-d4f7-4005-ba45-d88817d62dff) entity."
 				},
 				{
 					"name": "BillOfMaterial",
@@ -2670,7 +2761,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to create a bill of material. This process is described in [Creation of Bills of Material](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=3132bec8-c1e3-48f9-b6c3-80662fe9fe27)."
+								"description": "This example shows how to create a bill of material. This process is described in [Create a Bill of Material](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=3132bec8-c1e3-48f9-b6c3-80662fe9fe27)."
 							},
 							"response": [
 								{
@@ -2792,7 +2883,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to retrieve all available bills of material."
+								"description": "This example shows how to retrieve all available bills of material. This process is described in [Retrieve the Bills of Material](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=58a2b2bd-88fa-4d26-a55a-62fd8f3309c1)."
 							},
 							"response": [
 								{
@@ -2860,11 +2951,8 @@
 								}
 							]
 						}
-					]
-				},
-				{
-					"name": "BusinessAccount",
-					"item": []
+					],
+					"description": "This folder contains requests that use the [BillOfMaterial](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a3d65aae-9011-4159-878b-a35872532083) entity."
 				},
 				{
 					"name": "Case",
@@ -2894,7 +2982,8 @@
 									"host": [
 										"{{EndpointURL}}Case"
 									]
-								}
+								},
+								"description": "This example shows the creation of a case, which is described in [Create a Case](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a9a35cac-f845-4d4b-a47d-107ec2cd4322)."
 							},
 							"response": [
 								{
@@ -3072,7 +3161,8 @@
 								}
 							]
 						}
-					]
+					],
+					"description": "This folder contains requests that use the [Case](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=3cb9b4b1-8c78-4b16-a026-c55a11953e00) entity."
 				},
 				{
 					"name": "CompaniesStructure",
@@ -3109,7 +3199,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to retrieve available companies and branches. This process is described in [Retrieval of Ledgers, Companies, and Branches](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=d8d9b99f-019c-410c-a49e-d90a5b813809)."
+								"description": "This example shows how to retrieve available companies and branches. This process is described in [Retrieve the Companies' Structure](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=d8d9b99f-019c-410c-a49e-d90a5b813809)."
 							},
 							"response": [
 								{
@@ -3191,7 +3281,8 @@
 								}
 							]
 						}
-					]
+					],
+					"description": "This folder contains requests that use the [CompaniesStructure](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=6e0f2b89-a66f-403a-af79-a87d2b31c735) entity."
 				},
 				{
 					"name": "Contact",
@@ -3221,7 +3312,8 @@
 									"host": [
 										"{{EndpointURL}}Contact"
 									]
-								}
+								},
+								"description": "This example shows the creation of a contact with attributes, which is described in [Create a Contact with Attributes](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=832734ca-ea2a-4ff8-8a91-c263927c8286)."
 							},
 							"response": [
 								{
@@ -3328,7 +3420,8 @@
 											"value": "FirstName eq 'Brent' and LastName eq 'Edds'"
 										}
 									]
-								}
+								},
+								"description": "This example shows the activation of a contact, which is described in [Activate a Contact](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=77e8d81b-5495-44d4-82fb-e9f2e3887aea)."
 							},
 							"response": [
 								{
@@ -3410,7 +3503,8 @@
 								}
 							]
 						}
-					]
+					],
+					"description": "This folder contains requests that use the [Contact](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=90132644-1859-4e07-b35b-ad0575c2c6fc) entity."
 				},
 				{
 					"name": "Customer",
@@ -3440,7 +3534,8 @@
 									"host": [
 										"{{EndpointURL}}Customer"
 									]
-								}
+								},
+								"description": "This example shows the creation of a customer, which is described in [Create a Customer](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=51059f24-01f8-4d78-a17b-cc255fe8b8e0)."
 							},
 							"response": [
 								{
@@ -3517,7 +3612,7 @@
 							]
 						},
 						{
-							"name": "Retrieval of the List of Customers",
+							"name": "Retrieve the List of Customers in an Optimized Way",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -3549,11 +3644,11 @@
 										}
 									]
 								},
-								"description": "This example shows how to retrieve a list of customers in an optimized way in Acumatica ERP. This process is described in [Retrieval of Customers in an Optimized Way](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ec1757e2-90dc-492a-9439-068175bbb520)."
+								"description": "This example shows how to retrieve a list of customers in an optimized way in Acumatica ERP. This process is described in [Retrieve the List of Customers in an Optimized Way](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ec1757e2-90dc-492a-9439-068175bbb520)."
 							},
 							"response": [
 								{
-									"name": "Retrieval of the List of Customers",
+									"name": "Retrieve the List of Customers in an Optimized Way",
 									"originalRequest": {
 										"method": "GET",
 										"header": [
@@ -3616,15 +3711,8 @@
 								}
 							]
 						}
-					]
-				},
-				{
-					"name": "CustomerPaymentMethod",
-					"item": []
-				},
-				{
-					"name": "Employee",
-					"item": []
+					],
+					"description": "This folder contains requests that use the [Customer](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=e3e19ea8-4b3e-40e6-954b-1d51e1426062) entity."
 				},
 				{
 					"name": "JournalTransaction",
@@ -3661,7 +3749,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to create GL transactions with project codes that do not produce project transactions. This process is described in [Creation of a General Ledger Transaction with a Project Code That Does Not Produce a Project Transaction](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=682496e3-6498-4855-b33d-a40dbf501b82)."
+								"description": "This example shows how to create GL transactions with project codes that do not produce project transactions. This process is described in [Create a General Ledger Transaction with a Project Code That Does Not Produce a Project Transaction](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=682496e3-6498-4855-b33d-a40dbf501b82)."
 							},
 							"response": [
 								{
@@ -3743,19 +3831,116 @@
 								}
 							]
 						}
-					]
-				},
-				{
-					"name": "InventorySummaryInquiry",
-					"item": []
-				},
-				{
-					"name": "Invoice",
-					"item": []
+					],
+					"description": "This folder contains requests that use the [JournalTransaction](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=8a4db230-e31f-411b-b84e-661caf1f0315) entity."
 				},
 				{
 					"name": "Lead",
-					"item": []
+					"item": [
+						{
+							"name": "Create a Lead",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"FirstName\": {\"value\": \"Brent\"},\r\n    \"LastName\": {\"value\": \"Edds\"},\r\n    \"Email\": {\"value\": \"brent.edds.test27@avantehs.com\"}\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Lead",
+									"host": [
+										"{{EndpointURL}}Lead"
+									]
+								},
+								"description": "This example shows the creation of a lead, which is described in [Create a Lead](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=0a505774-5a07-4d95-8d80-6945b8d94a13)."
+							},
+							"response": [
+								{
+									"name": "Create a Lead",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"FirstName\": {\"value\": \"Brent\"},\r\n    \"LastName\": {\"value\": \"Edds\"},\r\n    \"Email\": {\"value\": \"brent.edds.test27@avantehs.com\"}\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Lead",
+											"host": [
+												"{{EndpointURL}}Lead"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=C34018A62898FC9D11EC0B683630BE03; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:5823+sc:~/entity/default/20.200.001/lead+start:637661270836924515+tg:; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 01 Sep 2021 21:04:49 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1287"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"ac4f8a3d-680b-ec11-9dfc-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Active\": {\n        \"value\": true\n    },\n    \"BusinessAccount\": {},\n    \"CompanyName\": {},\n    \"ContactMethod\": {\n        \"value\": \"Any\"\n    },\n    \"ConvertedBy\": {},\n    \"Description\": {},\n    \"DoNotCall\": {\n        \"value\": false\n    },\n    \"DoNotEmail\": {\n        \"value\": false\n    },\n    \"DoNotFax\": {\n        \"value\": false\n    },\n    \"DoNotMail\": {\n        \"value\": false\n    },\n    \"Duplicate\": {\n        \"value\": \"Possible Duplicate\"\n    },\n    \"DuplicateFound\": {\n        \"value\": true\n    },\n    \"Email\": {\n        \"value\": \"brent.edds.test27@avantehs.com\"\n    },\n    \"Fax\": {},\n    \"FaxType\": {\n        \"value\": \"Fax\"\n    },\n    \"FirstName\": {\n        \"value\": \"Brent\"\n    },\n    \"JobTitle\": {},\n    \"LanguageOrLocale\": {},\n    \"LastIncomingActivity\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2021-09-02T00:04:48.987+03:00\"\n    },\n    \"LastName\": {\n        \"value\": \"Edds\"\n    },\n    \"LastOutgoingActivity\": {},\n    \"LeadClass\": {\n        \"value\": \"BAKERY\"\n    },\n    \"LeadDisplayName\": {\n        \"value\": \"Brent Edds\"\n    },\n    \"LeadID\": {\n        \"value\": 100224\n    },\n    \"NoMarketing\": {\n        \"value\": false\n    },\n    \"NoMassMail\": {\n        \"value\": false\n    },\n    \"NoteID\": {\n        \"value\": \"ac4f8a3d-680b-ec11-9dfc-9828a61840c3\"\n    },\n    \"Owner\": {},\n    \"OwnerEmployeeName\": {},\n    \"ParentAccount\": {},\n    \"Phone1\": {},\n    \"Phone1Type\": {\n        \"value\": \"Business 1\"\n    },\n    \"Phone2\": {},\n    \"Phone2Type\": {\n        \"value\": \"Cell\"\n    },\n    \"Phone3\": {},\n    \"Phone3Type\": {\n        \"value\": \"Home\"\n    },\n    \"QualificationDate\": {},\n    \"Reason\": {\n        \"value\": \"Created\"\n    },\n    \"RefContactID\": {},\n    \"Source\": {},\n    \"SourceCampaign\": {},\n    \"Status\": {\n        \"value\": \"New\"\n    },\n    \"Title\": {},\n    \"WebSite\": {},\n    \"Workgroup\": {},\n    \"WorkgroupDescription\": {},\n    \"custom\": {}\n}"
+								}
+							]
+						}
+					],
+					"description": "This folder contains requests that use the [Lead](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2eb731db-7a6b-4667-a80d-de1fd9906b3b) entity."
 				},
 				{
 					"name": "Ledger",
@@ -3792,7 +3977,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to retrieve available ledgers, companies, and branches. This process is described in [Retrieval of Ledgers, Companies, and Branches](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=d8d9b99f-019c-410c-a49e-d90a5b813809)."
+								"description": "This example shows how to retrieve available ledgers, companies, and branches. This process is described in [Retrieve the List of Ledgers](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=33888e9b-c23c-4c05-a87a-231dcf211f59)."
 							},
 							"response": [
 								{
@@ -3858,918 +4043,14 @@
 								}
 							]
 						}
-					]
-				},
-				{
-					"name": "Opportunity",
-					"item": []
-				},
-				{
-					"name": "Payment",
-					"item": []
+					],
+					"description": "This folder contains requests that use the [Ledger](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ecb27adb-53da-42c9-ab22-e6ffa614a64b) entity."
 				},
 				{
 					"name": "ProFormaInvoice",
 					"item": [
 						{
-							"name": "Send a Pro Forma Invoice by Email: 1 Create a Project",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"ProjectTemplateID\" : {\"value\" : \"PROGRESS\"},\r\n  \"Customer\" : {\"value\" : \"COFFEESHOP\"},\r\n  \"BillingAndAllocationSettings\" : \r\n   {\r\n      \"BillingRule\" : {\"value\" : \"PROGRESS\"},\r\n      \"BillingPeriod\" : {\"value\" : \"Month\"},\r\n    }\r\n}"
-								},
-								"url": {
-									"raw": "{{EndpointURL}}Project",
-									"host": [
-										"{{EndpointURL}}Project"
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Send a Pro Forma Invoice by Email: 1 Create a Project",
-									"originalRequest": {
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"ProjectTemplateID\" : {\"value\" : \"PROGRESS\"},\r\n  \"Customer\" : {\"value\" : \"COFFEESHOP\"},\r\n  \"BillingAndAllocationSettings\" : \r\n   {\r\n      \"BillingRule\" : {\"value\" : \"PROGRESS\"},\r\n      \"BillingPeriod\" : {\"value\" : \"Month\"},\r\n    }\r\n}"
-										},
-										"url": {
-											"raw": "{{EndpointURL}}Project",
-											"host": [
-												"{{EndpointURL}}Project"
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requestid=C34018A62898EE9D11EBED647D3DC28A; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requeststat=+st:29106+sc:~/entity/default/20.200.001/project+start:637628269511624498+tg:; path=/"
-										},
-										{
-											"key": "Date",
-											"value": "Sun, 25 Jul 2021 16:23:00 GMT"
-										},
-										{
-											"key": "Content-Length",
-											"value": "498"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"id\": \"2fb72591-64ed-eb11-9dee-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Assets\": {},\n    \"BillingAndAllocationSettings\": null,\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"Expenses\": {},\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": true\n    },\n    \"Income\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2021-07-25T19:22:59.26+03:00\"\n    },\n    \"Liabilities\": {},\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"In Planning\"\n    },\n    \"custom\": {}\n}"
-								}
-							]
-						},
-						{
-							"name": "Send a Pro Forma Invoice by Email: 2 Activate a Project",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"Hold\" : {\"value\" : false}\r\n}"
-								},
-								"url": {
-									"raw": "{{EndpointURL}}Project",
-									"host": [
-										"{{EndpointURL}}Project"
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Send a Pro Forma Invoice by Email: 2 Activate a Project",
-									"originalRequest": {
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"Hold\" : {\"value\" : false}\r\n}"
-										},
-										"url": {
-											"raw": "{{EndpointURL}}Project",
-											"host": [
-												"{{EndpointURL}}Project"
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": ".ASPXAUTH=B79D9DD0CDBF2B038796CEF0600C71C22AC499F2585CF678A3C5C067C5B71001D9A8A79DC689587080BA728238BDF356C10567ACA897DFA9BD40DBCD1EA85121E0ACCDA31FA16083600F2BE5E20E19C3B3663033FDFC910E5B24139EA5BC2528007C77B113A8E59B48FBA5387025D55A226EF6F0; path=/; HttpOnly"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": ".ASPXAUTH=B79D9DD0CDBF2B038796CEF0600C71C22AC499F2585CF678A3C5C067C5B71001D9A8A79DC689587080BA728238BDF356C10567ACA897DFA9BD40DBCD1EA85121E0ACCDA31FA16083600F2BE5E20E19C3B3663033FDFC910E5B24139EA5BC2528007C77B113A8E59B48FBA5387025D55A226EF6F0; path=/; HttpOnly"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requestid=C34018A62898EE9D11EBED6A4B950770; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requeststat=+st:2524+sc:~/entity/default/20.200.001/project+start:637628294415379547+tg:; path=/"
-										},
-										{
-											"key": "Date",
-											"value": "Sun, 25 Jul 2021 17:04:04 GMT"
-										},
-										{
-											"key": "Content-Length",
-											"value": "459"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"id\": \"2fb72591-64ed-eb11-9dee-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Assets\": {},\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"Expenses\": {},\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"Income\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2021-07-25T20:04:03.977+03:00\"\n    },\n    \"Liabilities\": {},\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {}\n}"
-								}
-							]
-						},
-						{
-							"name": "Send a Pro Forma Invoice by Email: 3 Set Next Billing Date",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"BillingAndAllocationSettings\" : \r\n    {\r\n        \"NextBillingDate\" : {\"value\" : \"2021-08-15\"},\r\n    }\r\n}"
-								},
-								"url": {
-									"raw": "{{EndpointURL}}Project",
-									"host": [
-										"{{EndpointURL}}Project"
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Send a Pro Forma Invoice by Email: 3 Set Next Billing Date",
-									"originalRequest": {
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"BillingAndAllocationSettings\" : \r\n    {\r\n        \"NextBillingDate\" : {\"value\" : \"2021-08-15\"},\r\n    }\r\n}"
-										},
-										"url": {
-											"raw": "{{EndpointURL}}Project",
-											"host": [
-												"{{EndpointURL}}Project"
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requestid=C34018A62898EE9D11EBED6BBD24EC93; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requeststat=+st:697+sc:~/entity/default/20.200.001/project+start:637628300565529363+tg:; path=/"
-										},
-										{
-											"key": "Date",
-											"value": "Sun, 25 Jul 2021 17:14:17 GMT"
-										},
-										{
-											"key": "Content-Length",
-											"value": "495"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"id\": \"2fb72591-64ed-eb11-9dee-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Assets\": {},\n    \"BillingAndAllocationSettings\": null,\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"Expenses\": {},\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"Income\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2021-07-25T20:14:16.887+03:00\"\n    },\n    \"Liabilities\": {},\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {}\n}"
-								}
-							]
-						},
-						{
-							"name": "Send a Pro Forma Invoice by Email: 4 Retrieve a Project Task",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{EndpointURL}}ProjectTask?$filter=ProjectID eq 'TESTPR3' and ProjectTaskID eq 'PHASE1'",
-									"host": [
-										"{{EndpointURL}}ProjectTask"
-									],
-									"query": [
-										{
-											"key": "$filter",
-											"value": "ProjectID eq 'TESTPR3' and ProjectTaskID eq 'PHASE1'"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Send a Pro Forma Invoice by Email: 4 Retrieve a Project Task",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{EndpointURL}}ProjectTask?$filter=ProjectID eq 'TESTPR3' and ProjectTaskID eq 'PHASE1'",
-											"host": [
-												"{{EndpointURL}}ProjectTask"
-											],
-											"query": [
-												{
-													"key": "$filter",
-													"value": "ProjectID eq 'TESTPR3' and ProjectTaskID eq 'PHASE1'"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Date",
-											"value": "Tue, 27 Jul 2021 10:28:57 GMT"
-										},
-										{
-											"key": "Content-Length",
-											"value": "354"
-										}
-									],
-									"cookie": [],
-									"body": "[\n    {\n        \"id\": \"35b72591-64ed-eb11-9dee-9828a61840c3\",\n        \"rowNumber\": 1,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Default\": {\n            \"value\": true\n        },\n        \"Description\": {\n            \"value\": \"A juicer with the installation\"\n        },\n        \"ExternalRefNbr\": {},\n        \"LastModifiedDateTime\": {\n            \"value\": \"2021-07-25T23:00:23.26+03:00\"\n        },\n        \"ProjectID\": {\n            \"value\": \"TESTPR3\"\n        },\n        \"ProjectTaskID\": {\n            \"value\": \"PHASE1\"\n        },\n        \"Status\": {\n            \"value\": \"Active\"\n        },\n        \"custom\": {}\n    }\n]"
-								}
-							]
-						},
-						{
-							"name": "Send a Pro Forma Invoice by Email: 4 Activate a Project Task",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"entity\":\r\n    {\r\n        \"id\": \"35b72591-64ed-eb11-9dee-9828a61840c3\"\r\n    },\r\n    \"parameters\": {}\r\n}"
-								},
-								"url": {
-									"raw": "{{EndpointURL}}ProjectTask/Activate",
-									"host": [
-										"{{EndpointURL}}ProjectTask"
-									],
-									"path": [
-										"Activate"
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Send a Pro Forma Invoice by Email: 4 Activate a Project Task",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"entity\":\r\n    {\r\n        \"id\": \"35b72591-64ed-eb11-9dee-9828a61840c3\"\r\n    },\r\n    \"parameters\": {}\r\n}"
-										},
-										"url": {
-											"raw": "{{EndpointURL}}ProjectTask/Activate",
-											"host": [
-												"{{EndpointURL}}ProjectTask"
-											],
-											"path": [
-												"Activate"
-											]
-										}
-									},
-									"status": "No Content",
-									"code": 204,
-									"_postman_previewlanguage": "plain",
-									"header": [
-										{
-											"key": "Location",
-											"value": "/AcumaticaERP/entity/Default/20.200.001/ProjectTask/35b72591-64ed-eb11-9dee-9828a61840c3"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requestid=C34018A62898EE9D11EBED82E59E43E9; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requeststat=+st:20674+sc:~/entity/default/20.200.001/projecttask/activate+start:637628400028818025+tg:; path=/"
-										},
-										{
-											"key": "Date",
-											"value": "Sun, 25 Jul 2021 20:00:23 GMT"
-										}
-									],
-									"cookie": [],
-									"body": null
-								}
-							]
-						},
-						{
-							"name": "Send a Pro Forma Invoice by Email: 5 Specify the Progress of the Project Task",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"InventoryID\" : {\"value\" : \"<N/A>\"},\r\n  \"Completed\" : {\"value\" : 25},\r\n  \"PendingInvoiceAmount\" : {\"value\" : 725}\r\n}"
-								},
-								"url": {
-									"raw": "{{EndpointURL}}ProjectBudget",
-									"host": [
-										"{{EndpointURL}}ProjectBudget"
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Send a Pro Forma Invoice by Email: 5 Specify the Progress of the Project Task",
-									"originalRequest": {
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"InventoryID\" : {\"value\" : \"<N/A>\"},\r\n  \"Completed\" : {\"value\" : 25},\r\n  \"PendingInvoiceAmount\" : {\"value\" : 725}\r\n}"
-										},
-										"url": {
-											"raw": "{{EndpointURL}}ProjectBudget",
-											"host": [
-												"{{EndpointURL}}ProjectBudget"
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requestid=C34018A62898EE9D11EBED8E92FBBB47; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requeststat=+st:6471+sc:~/entity/default/20.200.001/projectbudget+start:637628450274380720+tg:; path=/"
-										},
-										{
-											"key": "Date",
-											"value": "Sun, 25 Jul 2021 21:23:53 GMT"
-										},
-										{
-											"key": "Content-Length",
-											"value": "1747"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"id\": \"36b72591-64ed-eb11-9dee-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"AccountGroup\": {\n        \"value\": \"REVENUE\"\n    },\n    \"ActualAmount\": {\n        \"value\": 0\n    },\n    \"ActualPlusOpenCommittedAmount\": {\n        \"value\": 0\n    },\n    \"ActualQty\": {\n        \"value\": 0\n    },\n    \"AutoCompleted\": {\n        \"value\": false\n    },\n    \"BudgetedCOAmount\": {\n        \"value\": 0\n    },\n    \"BudgetedCOQty\": {\n        \"value\": 0\n    },\n    \"CommittedCOAmount\": {\n        \"value\": 0\n    },\n    \"CommittedCOQty\": {\n        \"value\": 0\n    },\n    \"CommittedInvoicedAmount\": {\n        \"value\": 0\n    },\n    \"CommittedInvoicedQty\": {\n        \"value\": 0\n    },\n    \"CommittedOpenAmount\": {\n        \"value\": 0\n    },\n    \"CommittedOpenQty\": {\n        \"value\": 0\n    },\n    \"CommittedReceivedQty\": {\n        \"value\": 0\n    },\n    \"Completed\": {\n        \"value\": 25\n    },\n    \"CostAtCompletion\": {\n        \"value\": 0\n    },\n    \"CostCode\": {\n        \"value\": \"00000\"\n    },\n    \"CostToComplete\": {\n        \"value\": 0\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation\"\n    },\n    \"DraftInvoicesAmount\": {\n        \"value\": 0\n    },\n    \"InventoryID\": {\n        \"value\": \"<N/A>\"\n    },\n    \"LastCostAtCompletion\": {\n        \"value\": 0\n    },\n    \"LastCostToComplete\": {\n        \"value\": 0\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2021-07-26T00:23:52.17+03:00\"\n    },\n    \"LastPercentageOfCompletion\": {\n        \"value\": 0\n    },\n    \"OriginalBudgetedAmount\": {\n        \"value\": 2900\n    },\n    \"OriginalBudgetedQty\": {\n        \"value\": 0\n    },\n    \"OriginalCommittedAmount\": {\n        \"value\": 0\n    },\n    \"OriginalCommittedQty\": {\n        \"value\": 0\n    },\n    \"PendingInvoiceAmount\": {\n        \"value\": 725\n    },\n    \"PercentageOfCompletion\": {\n        \"value\": 0\n    },\n    \"Performance\": {\n        \"value\": 0\n    },\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTaskID\": {\n        \"value\": \"PHASE1\"\n    },\n    \"Retainage\": {\n        \"value\": 0\n    },\n    \"RevenueTask\": {},\n    \"RevisedBudgetedAmount\": {\n        \"value\": 2900\n    },\n    \"RevisedBudgetedQty\": {\n        \"value\": 0\n    },\n    \"RevisedCommittedAmount\": {\n        \"value\": 0\n    },\n    \"RevisedCommittedQty\": {\n        \"value\": 0\n    },\n    \"TaxCategory\": {},\n    \"Type\": {\n        \"value\": \"Income\"\n    },\n    \"UnitRate\": {\n        \"value\": 0\n    },\n    \"UOM\": {\n        \"value\": \"HOUR\"\n    },\n    \"VarianceAmount\": {\n        \"value\": 2900\n    },\n    \"custom\": {}\n}"
-								}
-							]
-						},
-						{
-							"name": "Send a Pro Forma Invoice by Email: 6 Run Project Billing",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"entity\" : {\r\n    \"ProjectID\": {\r\n        \"value\": \"TESTPR3\"\r\n    }\r\n  }\r\n}"
-								},
-								"url": {
-									"raw": "{{EndpointURL}}Project/RunProjectBilling",
-									"host": [
-										"{{EndpointURL}}Project"
-									],
-									"path": [
-										"RunProjectBilling"
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Send a Pro Forma Invoice by Email: 6 Run Project Billing",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n  \"entity\" : {\r\n    \"ProjectID\": {\r\n        \"value\": \"TESTPR3\"\r\n    }\r\n  }\r\n}"
-										},
-										"url": {
-											"raw": "{{EndpointURL}}Project/RunProjectBilling",
-											"host": [
-												"{{EndpointURL}}Project"
-											],
-											"path": [
-												"RunProjectBilling"
-											]
-										}
-									},
-									"status": "Accepted",
-									"code": 202,
-									"_postman_previewlanguage": "plain",
-									"header": [
-										{
-											"key": "Location",
-											"value": "/AcumaticaERP/entity/Default/20.200.001/Project/RunProjectBilling/status/ce53aed7-7ff0-491c-8ff4-8b3d2803a0b2"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": ".ASPXAUTH=A88B0B7354E6AB741998449287F77D55040EEA4BF6F66B081D9E8C79F3C5A21ED5D2371F1F9F61B948ECAB86110AFD7D5BBD089056361A328A49802F1DEA5CA7F78DE9197EDA5AA543751429BBC361FBD8E0C2A06217C11992ABF54BDBBAC2BE340135FD80F7C7B54D7969C0604A5DECC4DF706C; path=/; HttpOnly"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": ".ASPXAUTH=A88B0B7354E6AB741998449287F77D55040EEA4BF6F66B081D9E8C79F3C5A21ED5D2371F1F9F61B948ECAB86110AFD7D5BBD089056361A328A49802F1DEA5CA7F78DE9197EDA5AA543751429BBC361FBD8E0C2A06217C11992ABF54BDBBAC2BE340135FD80F7C7B54D7969C0604A5DECC4DF706C; path=/; HttpOnly"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requestid=C34018A62898EE9D11EBED94F85322FD; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requeststat=+st:6944+sc:~/entity/default/20.200.001/project/runprojectbilling+start:637628477652072829+tg:; path=/"
-										},
-										{
-											"key": "Date",
-											"value": "Sun, 25 Jul 2021 22:09:32 GMT"
-										},
-										{
-											"key": "Content-Length",
-											"value": "0"
-										}
-									],
-									"cookie": [],
-									"body": null
-								}
-							]
-						},
-						{
-							"name": "Send a Pro Forma Invoice by Email: 7 Check the Operation Status",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{EndpointURL}}Project/RunProjectBilling/status/ce53aed7-7ff0-491c-8ff4-8b3d2803a0b2",
-									"host": [
-										"{{EndpointURL}}Project"
-									],
-									"path": [
-										"RunProjectBilling",
-										"status",
-										"ce53aed7-7ff0-491c-8ff4-8b3d2803a0b2"
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Send a Pro Forma Invoice by Email: 7 Check the Operation Status",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{EndpointURL}}Project/RunProjectBilling/status/ce53aed7-7ff0-491c-8ff4-8b3d2803a0b2",
-											"host": [
-												"{{EndpointURL}}Project"
-											],
-											"path": [
-												"RunProjectBilling",
-												"status",
-												"ce53aed7-7ff0-491c-8ff4-8b3d2803a0b2"
-											]
-										}
-									},
-									"status": "No Content",
-									"code": 204,
-									"_postman_previewlanguage": "plain",
-									"header": [
-										{
-											"key": "Location",
-											"value": "/AcumaticaERP/entity/Default/20.200.001/Project/00000000-0000-0000-0000-000000000000"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Date",
-											"value": "Sun, 25 Jul 2021 22:15:54 GMT"
-										}
-									],
-									"cookie": [],
-									"body": null
-								}
-							]
-						},
-						{
-							"name": "Send a Pro Forma Invoice by Email: 8 Get the List of Pro Forma Invoices",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{EndpointURL}}Project/TESTPR3?$expand=Invoices",
-									"host": [
-										"{{EndpointURL}}Project"
-									],
-									"path": [
-										"TESTPR3"
-									],
-									"query": [
-										{
-											"key": "$expand",
-											"value": "Invoices"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Send a Pro Forma Invoice by Email: 8 Get the List of Pro Forma Invoices",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{EndpointURL}}Project/TESTPR3?$expand=Invoices",
-											"host": [
-												"{{EndpointURL}}Project"
-											],
-											"path": [
-												"TESTPR3"
-											],
-											"query": [
-												{
-													"key": "$expand",
-													"value": "Invoices"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Date",
-											"value": "Sun, 25 Jul 2021 22:29:16 GMT"
-										},
-										{
-											"key": "Content-Length",
-											"value": "1064"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"id\": \"2fb72591-64ed-eb11-9dee-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Assets\": {},\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"Expenses\": {},\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"Income\": {},\n    \"Invoices\": [\n        {\n            \"id\": \"24c778be-8f91-4b83-b8b5-d509fc7811d1\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"ARDocDate\": {},\n            \"ARDocDescription\": {},\n            \"ARDocOriginalAmount\": {},\n            \"ARDocStatus\": {},\n            \"ARDocType\": {},\n            \"ARReferenceNbr\": {},\n            \"BillingNbr\": {\n                \"value\": 1\n            },\n            \"Description\": {\n                \"value\": \"Invoice for TESTPR3\"\n            },\n            \"InvoiceTotal\": {\n                \"value\": 725\n            },\n            \"OpenARBalance\": {},\n            \"OriginalRefNbr\": {},\n            \"OriginalRetainage\": {},\n            \"PaidRetainage\": {},\n            \"ProFormaDate\": {\n                \"value\": \"2021-08-15T00:00:00+03:00\"\n            },\n            \"ProFormaReferenceNbr\": {\n                \"value\": \"000019\"\n            },\n            \"RetainageInvoice\": {},\n            \"Status\": {\n                \"value\": \"On Hold\"\n            },\n            \"TotalAmount\": {},\n            \"UnpaidRetainage\": {},\n            \"UnreleasedRetainage\": {},\n            \"custom\": {}\n        }\n    ],\n    \"LastModifiedDateTime\": {\n        \"value\": \"2021-07-26T01:09:33.91+03:00\"\n    },\n    \"Liabilities\": {},\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {}\n}"
-								}
-							]
-						},
-						{
-							"name": "Send a Pro Forma Invoice by Email: 9 Send the Pro Forma Invoice by Email",
+							"name": "Send a Pro Forma Invoice by Email",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -4796,11 +4077,12 @@
 									"path": [
 										"EmailProFormaInvoice"
 									]
-								}
+								},
+								"description": "This example shows how to send a pro forma invoice by email. This process is described in [Send a Pro Forma Invoice by Email](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a6a0d09a-e695-4b25-a639-2cea565613f8)."
 							},
 							"response": [
 								{
-									"name": "Send a Pro Forma Invoice by Email: 9 Send the Pro Forma Invoice by Email",
+									"name": "Send a Pro Forma Invoice by Email",
 									"originalRequest": {
 										"method": "POST",
 										"header": [
@@ -4884,7 +4166,7 @@
 							]
 						},
 						{
-							"name": "Send a Pro Forma Invoice by Email: 10 Get the Email Sending Operation Status",
+							"name": "Send a Pro Forma Invoice by Email: Get the Email Sending Operation Status",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -4909,11 +4191,12 @@
 										"status",
 										"04ad650d-37fc-4ff1-a994-f27ad9fb3624"
 									]
-								}
+								},
+								"description": "This example shows how to check the status of the operation of sending a pro forma invoice by email. This process is described in [Send a Pro Forma Invoice by Email](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a6a0d09a-e695-4b25-a639-2cea565613f8)."
 							},
 							"response": [
 								{
-									"name": "Send a Pro Forma Invoice by Email: 10 Get the Email Sending Operation Status",
+									"name": "Send a Pro Forma Invoice by Email: Get the Email Sending Operation Status",
 									"originalRequest": {
 										"method": "GET",
 										"header": [
@@ -4966,11 +4249,124 @@
 								}
 							]
 						}
-					]
+					],
+					"description": "This folder contains requests that use the [ProFormaInvoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=7993b042-713d-4d4e-806c-5840aa2d7dea) entity."
 				},
 				{
 					"name": "Project",
-					"item": []
+					"item": [
+						{
+							"name": "Make a Project Active",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"Hold\" : {\"value\" : false}\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}Project",
+									"host": [
+										"{{EndpointURL}}Project"
+									]
+								},
+								"description": "This example shows how to make a project active. This process is described in [Make a Project Active](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=0d018113-1e33-49f7-be22-8e40db5475c3)."
+							},
+							"response": [
+								{
+									"name": "Make a Project Active",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"Hold\" : {\"value\" : false}\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}Project",
+											"host": [
+												"{{EndpointURL}}Project"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": ".ASPXAUTH=E9BE263DDFDB9A3FF4837D2C0F031B4A8FCB5B37A3E85427989233054FF72645A832E0A155CED2CC075F79C0558856479BB43065BB0F44325AD07188DE461B01E6164606944C836072FF2253E7F3828FA6D8C22FD089D63D062EF45E6A5723B3690EF8E50212954C1921F62C839B611EE7570CB2; path=/; HttpOnly"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": ".ASPXAUTH=E9BE263DDFDB9A3FF4837D2C0F031B4A8FCB5B37A3E85427989233054FF72645A832E0A155CED2CC075F79C0558856479BB43065BB0F44325AD07188DE461B01E6164606944C836072FF2253E7F3828FA6D8C22FD089D63D062EF45E6A5723B3690EF8E50212954C1921F62C839B611EE7570CB2; path=/; HttpOnly"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=C34018A62898FC9D11EC0B6CCFDD858B; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:1006+sc:~/entity/default/20.200.001/project+start:637661290523417611+tg:; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 01 Sep 2021 21:37:33 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "459"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"2fb72591-64ed-eb11-9dee-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Assets\": {},\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"Expenses\": {},\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"Income\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2021-09-02T00:37:33.073+03:00\"\n    },\n    \"Liabilities\": {},\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {}\n}"
+								}
+							]
+						}
+					],
+					"description": "This folder contains requests that use the [Project](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=1d003380-9c62-4542-b01c-66db8bb09b71) entity."
 				},
 				{
 					"name": "ProjectBilling",
@@ -5006,7 +4402,8 @@
 											"value": "Details"
 										}
 									]
-								}
+								},
+								"description": "This example shows the retrieval of projects that can be billed, which is described in [Retrieve the List of Projects That Can Be Billed](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bda6331a-6797-4408-9045-f821a7d5ac86)."
 							},
 							"response": [
 								{
@@ -5116,7 +4513,8 @@
 									"path": [
 										"ProjectBillingProcess"
 									]
-								}
+								},
+								"description": "This example shows the invocation of project billing for selected projects, which is described in [Invoke Project Billing for Selected Projects](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=aaf1ab18-da13-4a6f-9890-b5f800afc6cf)."
 							},
 							"response": [
 								{
@@ -5221,7 +4619,8 @@
 										"status",
 										"168de2ca-a992-4c35-8646-4616e607d9f4"
 									]
-								}
+								},
+								"description": "This example shows how to check the status of a project billing operation, which is described in [Invoke Project Billing for Selected Projects](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=aaf1ab18-da13-4a6f-9890-b5f800afc6cf)."
 							},
 							"response": [
 								{
@@ -5306,7 +4705,8 @@
 									"path": [
 										"ProjectBillingProcessAll"
 									]
-								}
+								},
+								"description": "This example shows the invocation of project billing for all projects available for billing, which is described in [Invoke Project Billing for All Projects Available for Billing](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=5886373e-d5c8-4077-8822-f1a6d7fe6e1b)."
 							},
 							"response": [
 								{
@@ -5411,7 +4811,8 @@
 										"status",
 										"a97a21dc-45bf-41bd-b130-4ba72550582b"
 									]
-								}
+								},
+								"description": "This example shows how to check the status of a project billing operation, which is described in [Invoke Project Billing for All Projects Available for Billing](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=5886373e-d5c8-4077-8822-f1a6d7fe6e1b)."
 							},
 							"response": [
 								{
@@ -5468,15 +4869,212 @@
 								}
 							]
 						}
-					]
+					],
+					"description": "This folder contains requests that use the [ProjectBilling](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=36f82af8-49d5-45d9-878e-acf603ff1d5a) entity."
 				},
 				{
 					"name": "ProjectBudget",
-					"item": []
+					"item": [
+						{
+							"name": "Specify the Progress of a Project Task",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"InventoryID\" : {\"value\" : \"<N/A>\"},\r\n  \"Completed\" : {\"value\" : 25},\r\n  \"PendingInvoiceAmount\" : {\"value\" : 725}\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}ProjectBudget",
+									"host": [
+										"{{EndpointURL}}ProjectBudget"
+									]
+								},
+								"description": "This example shows how to specify the progress of a project task, which is described in [Specify the Progress of a Project Task](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=06e096c8-c83d-4392-9a90-b83a9acfbc8e)."
+							},
+							"response": [
+								{
+									"name": "Specify the Progress of a Project Task",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"InventoryID\" : {\"value\" : \"<N/A>\"},\r\n  \"Completed\" : {\"value\" : 25},\r\n  \"PendingInvoiceAmount\" : {\"value\" : 725}\r\n}"
+										},
+										"url": {
+											"raw": "{{EndpointURL}}ProjectBudget",
+											"host": [
+												"{{EndpointURL}}ProjectBudget"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=C34018A62898FC9D11EC0B6F1468241B; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:3282+sc:~/entity/default/20.200.001/projectbudget+start:637661300263287451+tg:; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 01 Sep 2021 21:53:49 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1753"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"36b72591-64ed-eb11-9dee-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"AccountGroup\": {\n        \"value\": \"REVENUE\"\n    },\n    \"ActualAmount\": {\n        \"value\": 0\n    },\n    \"ActualPlusOpenCommittedAmount\": {\n        \"value\": 0\n    },\n    \"ActualQty\": {\n        \"value\": 0\n    },\n    \"AutoCompleted\": {\n        \"value\": false\n    },\n    \"BudgetedCOAmount\": {\n        \"value\": 0\n    },\n    \"BudgetedCOQty\": {\n        \"value\": 0\n    },\n    \"CommittedCOAmount\": {\n        \"value\": 0\n    },\n    \"CommittedCOQty\": {\n        \"value\": 0\n    },\n    \"CommittedInvoicedAmount\": {\n        \"value\": 0\n    },\n    \"CommittedInvoicedQty\": {\n        \"value\": 0\n    },\n    \"CommittedOpenAmount\": {\n        \"value\": 0\n    },\n    \"CommittedOpenQty\": {\n        \"value\": 0\n    },\n    \"CommittedReceivedQty\": {\n        \"value\": 0\n    },\n    \"Completed\": {\n        \"value\": 25\n    },\n    \"CostAtCompletion\": {\n        \"value\": 0\n    },\n    \"CostCode\": {\n        \"value\": \"00000\"\n    },\n    \"CostToComplete\": {\n        \"value\": 0\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation\"\n    },\n    \"DraftInvoicesAmount\": {\n        \"value\": 725\n    },\n    \"InventoryID\": {\n        \"value\": \"<N/A>\"\n    },\n    \"LastCostAtCompletion\": {\n        \"value\": 0\n    },\n    \"LastCostToComplete\": {\n        \"value\": 0\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2021-09-02T00:53:49.013+03:00\"\n    },\n    \"LastPercentageOfCompletion\": {\n        \"value\": 0\n    },\n    \"OriginalBudgetedAmount\": {\n        \"value\": 2900\n    },\n    \"OriginalBudgetedQty\": {\n        \"value\": 0\n    },\n    \"OriginalCommittedAmount\": {\n        \"value\": 0\n    },\n    \"OriginalCommittedQty\": {\n        \"value\": 0\n    },\n    \"PendingInvoiceAmount\": {\n        \"value\": 725\n    },\n    \"PercentageOfCompletion\": {\n        \"value\": 0\n    },\n    \"Performance\": {\n        \"value\": 0\n    },\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTaskID\": {\n        \"value\": \"PHASE1\"\n    },\n    \"Retainage\": {\n        \"value\": 0\n    },\n    \"RevenueTask\": {},\n    \"RevisedBudgetedAmount\": {\n        \"value\": 2900\n    },\n    \"RevisedBudgetedQty\": {\n        \"value\": 0\n    },\n    \"RevisedCommittedAmount\": {\n        \"value\": 0\n    },\n    \"RevisedCommittedQty\": {\n        \"value\": 0\n    },\n    \"TaxCategory\": {},\n    \"Type\": {\n        \"value\": \"Income\"\n    },\n    \"UnitRate\": {\n        \"value\": 0\n    },\n    \"UOM\": {\n        \"value\": \"HOUR\"\n    },\n    \"VarianceAmount\": {\n        \"value\": 2900\n    },\n    \"custom\": {}\n}"
+								}
+							]
+						}
+					],
+					"description": "This folder contains requests that use the [ProjectBudget](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=8d596065-ab9a-49d7-b765-a02b30f8d9bd) entity."
 				},
 				{
 					"name": "ProjectTask",
-					"item": []
+					"item": [
+						{
+							"name": "Retrieve a Project Task",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{EndpointURL}}ProjectTask?$filter=ProjectID%20eq%20'TESTPR3'%20and%20ProjectTaskID%20eq%20'PHASE1'",
+									"host": [
+										"{{EndpointURL}}ProjectTask"
+									],
+									"query": [
+										{
+											"key": "$filter",
+											"value": "ProjectID%20eq%20'TESTPR3'%20and%20ProjectTaskID%20eq%20'PHASE1'"
+										}
+									]
+								},
+								"description": "This example shows the retrieval of a project task, which is described in [Retrieve a Project Task](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=aa71a74c-9b66-4514-a96d-8530964af759)."
+							},
+							"response": [
+								{
+									"name": "Retrieve a Project Task",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{EndpointURL}}ProjectTask?$filter=ProjectID%20eq%20'TESTPR3'%20and%20ProjectTaskID%20eq%20'PHASE1'",
+											"host": [
+												"{{EndpointURL}}ProjectTask"
+											],
+											"query": [
+												{
+													"key": "$filter",
+													"value": "ProjectID%20eq%20'TESTPR3'%20and%20ProjectTaskID%20eq%20'PHASE1'"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "UserBranch=2; path=/"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 01 Sep 2021 21:56:24 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "354"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": \"35b72591-64ed-eb11-9dee-9828a61840c3\",\n        \"rowNumber\": 1,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"Default\": {\n            \"value\": true\n        },\n        \"Description\": {\n            \"value\": \"A juicer with the installation\"\n        },\n        \"ExternalRefNbr\": {},\n        \"LastModifiedDateTime\": {\n            \"value\": \"2021-07-25T23:00:23.26+03:00\"\n        },\n        \"ProjectID\": {\n            \"value\": \"TESTPR3\"\n        },\n        \"ProjectTaskID\": {\n            \"value\": \"PHASE1\"\n        },\n        \"Status\": {\n            \"value\": \"Active\"\n        },\n        \"custom\": {}\n    }\n]"
+								}
+							]
+						}
+					],
+					"description": "This folder contains requests that use the [ProjectTask](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=06221686-e569-47ce-982e-8cabdafd8a80) entity."
 				},
 				{
 					"name": "PurchaseOrder",
@@ -5512,7 +5110,8 @@
 											"value": "Details"
 										}
 									]
-								}
+								},
+								"description": "This example shows the creation of a purchase order, which is described in [Create a Purchase Order](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=81e5ec25-09f7-421a-8f80-01b6b71d38c9)."
 							},
 							"response": [
 								{
@@ -5594,7 +5193,8 @@
 								}
 							]
 						}
-					]
+					],
+					"description": "This folder contains requests that use the [PurchaseOrder](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=cbc0ce21-c2fe-4965-afed-622c4291b18f) entity."
 				},
 				{
 					"name": "PurchaseReceipt",
@@ -5630,7 +5230,8 @@
 											"value": "Details"
 										}
 									]
-								}
+								},
+								"description": "This example shows the creation of a purchase receipt, which is described in [Create a Purchase Receipt](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a93b5926-d164-4a1b-97fe-a1c46af67ea6)."
 							},
 							"response": [
 								{
@@ -5743,7 +5344,8 @@
 											"value": "Details,Details/Allocations"
 										}
 									]
-								}
+								},
+								"description": "This example shows the adding of lines with allocations (with the location) to a purchase receipt, which is described in [Insert Lines with Allocations (with Location) to a PO Receipt](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=1998826c-ae50-47cc-8c10-0fb05ddc42f2)."
 							},
 							"response": [
 								{
@@ -5856,7 +5458,8 @@
 											"value": "Details,Details/Allocations"
 										}
 									]
-								}
+								},
+								"description": "This example shows the adding of lines with allocations (with the expiration date) to a purchase receipt, which is described in [Insert Lines with Allocations (with Expiration Date) to a PO Receipt](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=852c5c92-c763-4c0e-b3f5-be6663254611)."
 							},
 							"response": [
 								{
@@ -5969,7 +5572,8 @@
 											"value": "Details"
 										}
 									]
-								}
+								},
+								"description": "This example shows the cration of a purchase return from a purchase receipt record, which is described in [Create a Purchase Return from a Purchase Receipt Record](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=9a4a2d4c-6a81-4b92-a123-e1cfd509f832)."
 							},
 							"response": [
 								{
@@ -6082,7 +5686,8 @@
 											"value": "Details"
 										}
 									]
-								}
+								},
+								"description": "This example shows the cration of a purchase return from a purchase receipt, which is described in [Create a Purchase Return from a Purchase Receipt](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ded2af68-35ad-4b44-b9ee-5371a8790341)."
 							},
 							"response": [
 								{
@@ -6195,7 +5800,8 @@
 											"value": "Details"
 										}
 									]
-								}
+								},
+								"description": "This example shows the creation of a purchase return for particular items, which is described in [Create a Purchase Return for Particular Items](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=c96f5760-dd88-4003-87eb-1cb68470875d)."
 							},
 							"response": [
 								{
@@ -6303,7 +5909,7 @@
 										"{{EndpointURL}}PurchaseReceipt"
 									]
 								},
-								"description": "This example shows how to create a purchase receipt in non-base currency. This process is described in [Creation of a Purchase Receipts and Purchase Returns](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=7980dfe2-b2e4-4238-aa60-7afb024d95da)."
+								"description": "This example shows how to create a purchase receipt in non-base currency. This process is described in [Create a Purchase Receipt in Non-Base Currency](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=6177b57c-ed78-47c7-9994-d22dfe2d5507)."
 							},
 							"response": [
 								{
@@ -6411,7 +6017,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to create a transfer receipt with allocations. This process is described in [Creation of a Transfer Receipt with Allocations](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=24c68cc6-6985-4421-86c9-e29156f3c150)."
+								"description": "This example shows how to create a transfer receipt with allocations for a transfer order. This process is described in [Creation of a Transfer Receipt with Allocations for a Transfer Order](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=24c68cc6-6985-4421-86c9-e29156f3c150)."
 							},
 							"response": [
 								{
@@ -6493,11 +6099,8 @@
 								}
 							]
 						}
-					]
-				},
-				{
-					"name": "SalesInvoice",
-					"item": []
+					],
+					"description": "This folder contains requests that use the [PurchaseReceipt](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=19972ae2-0d5d-45b6-8bec-fc0e2388a9ba) entity."
 				},
 				{
 					"name": "SalesOrder",
@@ -6533,7 +6136,8 @@
 											"value": "Details"
 										}
 									]
-								}
+								},
+								"description": "This example shows the creation of a sales order with a unit of measure specified, which is described in [Create a Sales Order with the Unit of Measure Specified](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2d5fae3b-463b-4262-bb44-1a9fb571b998)."
 							},
 							"response": [
 								{
@@ -6643,7 +6247,8 @@
 									"path": [
 										"AutoRecalculateDiscounts"
 									]
-								}
+								},
+								"description": "This example shows the application of discounts to a sales order, which is described in [Apply Discounts to a Sales Order](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=c6ad394e-9e1f-4dc4-ad50-bc4ab988fc1f)."
 							},
 							"response": [
 								{
@@ -6719,155 +6324,6 @@
 							]
 						},
 						{
-							"name": "Creation of a Sales Order with Payments",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Accept",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"CustomerID\": {\r\n        \"value\": \"LAKECAFE\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"InventoryID\": {\r\n                \"value\": \"APJAM08\"\r\n            },\r\n            \"LineNbr\": {\r\n                \"value\": 1\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 10\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 5\r\n            }\r\n        }\r\n    ],\r\n\t\"Payments\": [\r\n        {\r\n            \"AppliedToOrder\": {\r\n                \"value\": 30\r\n            },\r\n            \"CashAccount\": {\r\n                \"value\": \"10100ST\"\r\n            },\r\n            \"CurrencyID\": {\r\n                \"value\": \"USD\"\r\n            },\r\n            \"DocType\": {\r\n                \"value\": \"Payment\"\r\n            },\r\n            \"PaymentMethod\": {\r\n                \"value\": \"CASH\"\r\n            },\r\n            \"PaymentAmount\": {\r\n                \"value\": 30\r\n            }\r\n        },\r\n         {\r\n            \"AppliedToOrder\": {\r\n                \"value\": 20\r\n            },\r\n            \"CashAccount\": {\r\n                \"value\": \"10200WH\"\r\n            },\r\n            \"CurrencyID\": {\r\n                \"value\": \"USD\"\r\n            },\r\n            \"DocType\": {\r\n                \"value\": \"Prepayment\"\r\n            },\r\n            \"PaymentMethod\": {\r\n                \"value\": \"CHECK\"\r\n            },\r\n            \"PaymentAmount\": {\r\n                \"value\": 20\r\n            }\r\n        }\r\n    ]\r\n}"
-								},
-								"url": {
-									"raw": "{{EndpointURL}}SalesOrder?$select=OrderType,OrderNbr,OrderTotal",
-									"host": [
-										"{{EndpointURL}}SalesOrder"
-									],
-									"query": [
-										{
-											"key": "$select",
-											"value": "OrderType,OrderNbr,OrderTotal"
-										}
-									]
-								},
-								"description": "This example shows how to create a sales order with payments in Acumatica ERP. This process is described in [Creation of a Sales Order with Payments](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=51f9a74e-64f5-4c4d-af48-600be817efdd)."
-							},
-							"response": [
-								{
-									"name": "Creation of a Sales Order with Payments",
-									"originalRequest": {
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Accept",
-												"type": "text",
-												"value": "application/json"
-											},
-											{
-												"key": "Content-Type",
-												"type": "text",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"CustomerID\": {\r\n        \"value\": \"LAKECAFE\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"InventoryID\": {\r\n                \"value\": \"APJAM08\"\r\n            },\r\n            \"LineNbr\": {\r\n                \"value\": 1\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 10\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 5\r\n            }\r\n        }\r\n    ],\r\n\t\"Payments\": [\r\n        {\r\n            \"AppliedToOrder\": {\r\n                \"value\": 30\r\n            },\r\n            \"CashAccount\": {\r\n                \"value\": \"10100ST\"\r\n            },\r\n            \"CurrencyID\": {\r\n                \"value\": \"USD\"\r\n            },\r\n            \"DocType\": {\r\n                \"value\": \"Payment\"\r\n            },\r\n            \"PaymentMethod\": {\r\n                \"value\": \"CASH\"\r\n            },\r\n            \"PaymentAmount\": {\r\n                \"value\": 30\r\n            }\r\n        },\r\n         {\r\n            \"AppliedToOrder\": {\r\n                \"value\": 20\r\n            },\r\n            \"CashAccount\": {\r\n                \"value\": \"10200WH\"\r\n            },\r\n            \"CurrencyID\": {\r\n                \"value\": \"USD\"\r\n            },\r\n            \"DocType\": {\r\n                \"value\": \"Prepayment\"\r\n            },\r\n            \"PaymentMethod\": {\r\n                \"value\": \"CHECK\"\r\n            },\r\n            \"PaymentAmount\": {\r\n                \"value\": 20\r\n            }\r\n        }\r\n    ]\r\n}"
-										},
-										"url": {
-											"raw": "{{EndpointURL}}SalesOrder?$select=OrderType,OrderNbr,OrderTotal",
-											"host": [
-												"{{EndpointURL}}SalesOrder"
-											],
-											"query": [
-												{
-													"key": "$select",
-													"value": "OrderType,OrderNbr,OrderTotal"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": ".ASPXAUTH=4C596C4BE596DACC026177347B1C6C0DEAF84C155D73E132DACBB98F9A5A59F2EF48459A50B06B210008D75CA50605B3A3826BB443CFA971DD19E2B7E1CEE0542908F58F2D52CC14BAC27D33020971A76A4203C3CA118BBFBC856BC1D35C08797A837D2C04089097176986710E6D33AC631E39BE; path=/; HttpOnly"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": ".ASPXAUTH=4C596C4BE596DACC026177347B1C6C0DEAF84C155D73E132DACBB98F9A5A59F2EF48459A50B06B210008D75CA50605B3A3826BB443CFA971DD19E2B7E1CEE0542908F58F2D52CC14BAC27D33020971A76A4203C3CA118BBFBC856BC1D35C08797A837D2C04089097176986710E6D33AC631E39BE; path=/; HttpOnly"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requestid=C34018A62898CF9D11EB662A6B4D7C51; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "requeststat=+st:10666+sc:~/entity/default/20.200.001/salesorder+start:637479585949841857+tg:; path=/"
-										},
-										{
-											"key": "Date",
-											"value": "Wed, 03 Feb 2021 14:16:45 GMT"
-										},
-										{
-											"key": "Content-Length",
-											"value": "238"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"id\": \"527c4d6b-2a66-eb11-9dcf-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"CustomerID\": {\n        \"value\": \"LAKECAFE\"\n    },\n    \"Details\": [],\n    \"OrderNbr\": {\n        \"value\": \"000062\"\n    },\n    \"OrderTotal\": {\n        \"value\": 52.5\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"Payments\": [],\n    \"custom\": {}\n}"
-								}
-							]
-						},
-						{
-							"name": "Create a Sales Order with a Credit Card Payment",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"CustomerID\": {\"value\": \"HMBAKERY\"},\r\n    \"Date\": {\"value\": \"2020-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"BASKET\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 290.00},\r\n            \"UOM\": {\"value\": \"PIECE\"},\r\n            \"WarehouseID\": {\"value\": \"EQUIPHOUSE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"VISA\"},\r\n            \"PaymentRef\": {\"value\": \"ABC CreditCard\"}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2020-05-10T00:00:00\"}\r\n}"
-								},
-								"url": {
-									"raw": "{{EndpointURL}}SalesOrder?$expand=Details,Payments",
-									"host": [
-										"{{EndpointURL}}SalesOrder"
-									],
-									"query": [
-										{
-											"key": "$expand",
-											"value": "Details,Payments"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Create a Return for Credit Without Validation of the Card Refund Against the Original Transaction",
 							"request": {
 								"method": "PUT",
@@ -6898,7 +6354,8 @@
 											"value": "Details,Payments"
 										}
 									]
-								}
+								},
+								"description": "This example shows how to create a return for credit with and without validation of the card refund against the original transaction, which is described in [Create a Return for Credit Without Validation of the Card Refund Against the Original Transaction](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=11c419cf-78ae-41cd-abad-897c00a96a43)."
 							},
 							"response": [
 								{
@@ -7057,11 +6514,8 @@
 								}
 							]
 						}
-					]
-				},
-				{
-					"name": "ServiceOrder",
-					"item": []
+					],
+					"description": "This folder contains requests that use the [SalesOrder](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=22f2d9a6-c0d8-4909-a430-415d21d50eb1) entity."
 				},
 				{
 					"name": "Shipment",
@@ -7097,7 +6551,8 @@
 											"value": "Details,Details/Allocations,Packages,Packages/PackageContents"
 										}
 									]
-								}
+								},
+								"description": "This example shows the creation of a shipment for two sales orders with allocations and a package, which is described in [Create a Shipment for Two Sales Orders with Allocations and Package](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ab83de33-505c-476e-b8b8-99f2a98e142c)."
 							},
 							"response": [
 								{
@@ -7179,15 +6634,8 @@
 								}
 							]
 						}
-					]
-				},
-				{
-					"name": "StockItem",
-					"item": []
-				},
-				{
-					"name": "TaxCategory",
-					"item": []
+					],
+					"description": "This folder contains requests that use the [Shipment](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b6caac53-f98e-48aa-8571-eb0656100f5a) entity."
 				},
 				{
 					"name": "TimeEntry",
@@ -7218,7 +6666,7 @@
 										"{{EndpointURL}}TimeEntry"
 									]
 								},
-								"description": "This example shows how to specify the time spent on the tasks of projects. This process is described in [Time Entry](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=847b54c3-116e-47b1-89af-14a19cc5855a)."
+								"description": "This example shows how to specify the time spent on the tasks of projects. This process is described in [Write Employee Time Activities](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=26ffd94a-ac96-4684-a03c-9676a5446211)."
 							},
 							"response": [
 								{
@@ -7333,7 +6781,7 @@
 										}
 									]
 								},
-								"description": "This example shows how to search for the time entries entered on particular date. This process is described in [Search for Time Entries by Date](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=c7576634-c730-42fd-9cc7-03aa85164bb9)."
+								"description": "This example shows how to search for the time entries entered on particular date. This process is described in [Search for Time Entries by Date](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=3127b81c-8f59-4051-9f1a-db0896e3b5af)."
 							},
 							"response": [
 								{
@@ -7403,11 +6851,8 @@
 								}
 							]
 						}
-					]
-				},
-				{
-					"name": "Vendor",
-					"item": []
+					],
+					"description": "This folder contains requests that use the [TimeEntry](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=223986c1-b5a5-4506-b0d7-f426bc89d1b7) entity."
 				},
 				{
 					"name": "Scenarios",
@@ -7543,7 +6988,7 @@
 												"{{EndpointURL}}Account"
 											]
 										},
-										"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+										"description": "This example shows how to add an account to an account group. This process is described in [Management of Account Groups](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
 									},
 									"response": [
 										{
@@ -7645,7 +7090,7 @@
 												"{{EndpointURL}}Account"
 											]
 										},
-										"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+										"description": "This example shows how to add an account to an account group. This process is described in [Management of Account Groups](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
 									},
 									"response": [
 										{
@@ -7747,7 +7192,7 @@
 												"{{EndpointURL}}AccountGroup"
 											]
 										},
-										"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+										"description": "This example shows how to specify the default account in an account group. This process is described in [Management of Account Groups](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
 									},
 									"response": [
 										{
@@ -7862,7 +7307,7 @@
 												}
 											]
 										},
-										"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+										"description": "This example shows how to retrieve the list of accounts that belong to an account group. This process is described in [Management of Account Groups](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
 									},
 									"response": [
 										{
@@ -7966,7 +7411,7 @@
 												"{{EndpointURL}}Account"
 											]
 										},
-										"description": "This example shows how to create an account group. This process is described in [Management of Account Groups](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
+										"description": "This example shows how to remove an account from an account group. This process is described in [Management of Account Groups](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2c26840b-56b5-4da3-b881-b47757e9b589)."
 									},
 									"response": [
 										{
@@ -8043,7 +7488,7 @@
 									]
 								}
 							],
-							"description": "This folder contains examples from the [Project Accounting (REST API Examples)](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=78967236-3bc1-48c6-8dc2-d01812ed2326) chapter of the Integration Development Guide.",
+							"description": "This folder contains examples from the [Project Accounting](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=78967236-3bc1-48c6-8dc2-d01812ed2326) chapter of the Integration Development Guide.",
 							"event": [
 								{
 									"listen": "prerequest",
@@ -8065,10 +7510,11 @@
 								}
 							]
 						}
-					]
+					],
+					"description": "This folder contains requests that implement various [Scenarios](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=eb256305-e1f9-45e8-8eb1-82bd51068937)."
 				}
 			],
-			"description": "This folder contains examples from the [Contract-Based API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide.",
+			"description": "This folder contains examples from the [REST API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide.",
 			"event": [
 				{
 					"listen": "prerequest",
