@@ -1,6 +1,6 @@
 # Examples from Acumatica ERP Help and Training Courses
 
-This repository contains examples that are included in the Acumatica ERP developer guides and training courses in Version 2021 R1.
+This repository contains examples that are included in the Acumatica ERP developer guides and training courses in Version 2021 R2.
 
 Customization
 
@@ -13,10 +13,10 @@ Customization
  * [T250](Customization/T250): Examples from the [T250 Development: Inquiry Forms](https://openuni.acumatica.com/courses/development/t250-development-inquiry-forms/) training course 
  * [T280](Customization/T280): Examples from the [T280 Development: Testing Business Logic](https://openuni.acumatica.com/courses/development/t280-development-testing-business-logic/) training course 
  
-<!--Integration development
+Integration development
 
-  * [Help](IntegrationDevelopment/Help): Examples from the [Integration Development Guide](https://help-2021r1.acumatica.com/Help?ScreenId=ShowWiki&pageid=ff22837c-cd3a-410e-b768-88ca6e53b165)
-  * [I300](IntegrationDevelopment/I300): Examples from the [I300 Web Services: Basic | Data Retrieval](https://openuni.acumatica.com/courses/integration/i300-web-services-basic-data-retrieval/) training course
+  * [Help](IntegrationDevelopment/Help): Examples from the [Integration Development Guide](https://help-2021r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=ff22837c-cd3a-410e-b768-88ca6e53b165)
+<!--  * [I300](IntegrationDevelopment/I300): Examples from the [I300 Web Services: Basic | Data Retrieval](https://openuni.acumatica.com/courses/integration/i300-web-services-basic-data-retrieval/) training course
   * [I310](IntegrationDevelopment/I310): Examples from the [I310 Web Services: Advanced | Data Retrieval](https://openuni.acumatica.com/courses/integration/i310-web-services-advanced-data-retrieval/) training course
   * [I320](IntegrationDevelopment/I320): Examples from the [I320 Web Services: Data Manipulation](https://openuni.acumatica.com/courses/integration/i320-web-services-data-manipulation/) training course-->
 
