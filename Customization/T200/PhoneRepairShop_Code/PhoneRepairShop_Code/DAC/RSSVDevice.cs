@@ -108,10 +108,10 @@ namespace PhoneRepairShop
         public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
         #endregion
 
-        #region Noteid
-        [PXNote()]
-        public virtual Guid? Noteid { get; set; }
-        public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
-        #endregion
+		#region NoteID
+		[PXNote()]
+		public virtual Guid? NoteID { get; set; }
+		public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
+		#endregion
     }
 }
