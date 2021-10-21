@@ -16,10 +16,10 @@ Customization
 Integration development
 
   * [Help](IntegrationDevelopment/Help): Examples from the [Integration Development Guide](https://help-2021r2.acumatica.com/Help?ScreenId=ShowWiki&pageid=ff22837c-cd3a-410e-b768-88ca6e53b165)
-  * [I300](IntegrationDevelopment/I300): Examples from the [I300 Web Services: OData](https://openuni.acumatica.com/courses/integration/i300-web-services-odata/) training course
-  * [I310](IntegrationDevelopment/I310): Examples from the [I310 Web Services: Basic | Data Retrieval](https://openuni.acumatica.com/courses/integration/i310-web-services-basic-data-retrieval/) training course
-  * [I320](IntegrationDevelopment/I320): Examples from the [I320 Web Services: Advanced | Data Retrieval](https://openuni.acumatica.com/courses/integration/i320-web-services-advanced-data-retrieval/) training course
-  * [I330](IntegrationDevelopment/I330): Examples from the [I330 Web Services: Data Manipulation](https://openuni.acumatica.com/courses/integration/i330-web-services-data-manipulation/) training course
+  * [I300](IntegrationDevelopment/I300): Examples from the [I300 Web Services: Data Retrieval with OData](https://openuni.acumatica.com/courses/integration/i300-web-services-odata/) training course
+  * [I310](IntegrationDevelopment/I310): Examples from the [I310 Web Services: Basic | Data Retrieval with REST API](https://openuni.acumatica.com/courses/integration/i310-web-services-basic-data-retrieval/) training course
+  * [I320](IntegrationDevelopment/I320): Examples from the [I320 Web Services: Advanced | Data Retrieval with REST API](https://openuni.acumatica.com/courses/integration/i320-web-services-advanced-data-retrieval/) training course
+  * [I330](IntegrationDevelopment/I330): Examples from the [I330 Web Services: Data Manipulation with REST API](https://openuni.acumatica.com/courses/integration/i330-web-services-data-manipulation/) training course
 
 Plug-in development  
 
