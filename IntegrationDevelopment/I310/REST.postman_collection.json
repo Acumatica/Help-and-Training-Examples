@@ -2,7 +2,6 @@
 	"info": {
 		"_postman_id": "501b10bf-3d50-4b84-a839-1de02df7b858",
 		"name": "MyBIIntegrationREST",
-		"description": "The set of examples for the Data Retrieval Basics training course.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [

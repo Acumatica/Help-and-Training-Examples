@@ -9,7 +9,7 @@
 			"name": "Part 1: Client Application Configuration",
 			"item": [
 				{
-					"name": "Lesson 1.1: Testing Signing In to Acumatica ERP with Basic Authorization (OData 3)",
+					"name": "Lesson 1.1: Signing In to Acumatica ERP | Example: Using OData Version 3",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -27,7 +27,7 @@
 					},
 					"response": [
 						{
-							"name": "Lesson 1.1: Testing Signing In to Acumatica ERP with Basic Authorization (OData 3)",
+							"name": "Lesson 1.1: Signing In to Acumatica ERP | Example: Using OData Version 3",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -86,7 +86,7 @@
 					]
 				},
 				{
-					"name": "Lesson 1.1: Testing Signing In to Acumatica ERP with Basic Authorization (OData 4)",
+					"name": "Lesson 1.1: Signing In to Acumatica ERP | Example: Using OData Version 4",
 					"request": {
 						"method": "GET",
 						"header": [],

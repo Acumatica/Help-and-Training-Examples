@@ -6,10 +6,10 @@
 	},
 	"item": [
 		{
-			"name": "Part 1: Authorizing the Application to Work with the Web Service",
+			"name": "Part 1: Authorization of the Application to Work with the Web Service",
 			"item": [
 				{
-					"name": "Lesson 1.2: Requesting token manually",
+					"name": "Lesson 1.2: Requesting a Token Manually",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -74,7 +74,7 @@
 					},
 					"response": [
 						{
-							"name": "Lesson 1.2: Requesting token manually",
+							"name": "Lesson 1.2: Requesting a Token Manually",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -177,7 +177,7 @@
 					]
 				},
 				{
-					"name": "Lesson 1.3: Signing out from Acumatica ERP",
+					"name": "Lesson 1.3: Signing Out from Acumatica ERP",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -212,7 +212,7 @@
 					},
 					"response": [
 						{
-							"name": "Lesson 1.3: Signing out from Acumatica ERP",
+							"name": "Lesson 1.3: Signing Out from Acumatica ERP",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
