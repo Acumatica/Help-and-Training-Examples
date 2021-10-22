@@ -22,8 +22,8 @@ namespace PhoneRepairShop
         #endregion
 
         #region Event Handlers
-        //Update price and repair item type when inventory ID of repair item 
-        //is updated.
+        //Update the price and repair item type when the inventory ID of
+        //the repair item is updated.
         protected void _(Events.FieldUpdated<RSSVRepairItem, 
             RSSVRepairItem.inventoryID> e)
         {
@@ -55,8 +55,12 @@ namespace PhoneRepairShop
                 InventoryItem item = PXSelectorAttribute.
                     Select<RSSVRepairItem.inventoryID>(e.Cache, row) 
                     as InventoryItem;
+                //Retrieve the base price for the stock item.
+                InventoryItemCurySettings curySettings = 
+                    InventoryItemCurySettings.PK.Find(
+                    this, item.InventoryID, Accessinfo.BaseCuryID);
                 //Copy the base price from the stock item to the row.
-                e.NewValue = item.BasePrice;
+                    e.NewValue = curySettings.BasePrice;
             }
         }
         #endregion

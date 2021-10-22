@@ -1,12 +1,12 @@
-using PhoneRepairShop;
 using PX.Data;
+using PhoneRepairShop;
 using PX.Data.BQL.Fluent;
 
 namespace PX.Objects.IN
 {
     // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
     public class InventoryItemMaint_Extension : PXGraphExtension<InventoryItemMaint>
-    {
+  {
         #region Data Views
         public SelectFrom<RSSVStockItemDevice>.
             Where<RSSVStockItemDevice.inventoryID.
@@ -15,7 +15,6 @@ namespace PX.Objects.IN
         #endregion
 
         #region Event Handlers
-
         protected void _(Events.RowSelected<InventoryItem> e)
         {
             InventoryItem item = e.Row;
@@ -32,7 +31,6 @@ namespace PX.Objects.IN
             //is selected.
             CompatibleDevices.Cache.AllowSelect = enableFields;
         }
-
         #endregion
     }
 }

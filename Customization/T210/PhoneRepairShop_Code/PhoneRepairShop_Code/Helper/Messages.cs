@@ -7,7 +7,7 @@ using PX.Common;
 
 namespace PhoneRepairShop
 {
-    [PXLocalizable()]
+    [PXLocalizable]
     public static class Messages
     {
         //Complexity of repair
@@ -27,6 +27,6 @@ namespace PhoneRepairShop
             "This stock item has a repair item type that differs from {0}.";
         public const string ItemIsStock = "This item is a stock item.";
         public const string DefaultWarrantyCanNotBeDeleted =
-        "The default warranty cannot be deleted.";
+            "The default warranty cannot be deleted.";
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using PX.Data;
-using PX.Objects.IN;
 using PX.Data.BQL.Fluent;
+using PX.Objects.IN;
 using PX.Data.BQL;
 
 namespace PhoneRepairShop
@@ -39,26 +39,27 @@ namespace PhoneRepairShop
         #region RepairItemType
         [PXDBString(2, IsFixed = true)]
         [PXStringList(
-        new string[]
-        {
-            RepairItemTypeConstants.Battery,
-            RepairItemTypeConstants.Screen,
-            RepairItemTypeConstants.ScreenCover,
-            RepairItemTypeConstants.BackCover,
-            RepairItemTypeConstants.Motherboard
-        },
-        new string[]
-        {
-            Messages.Battery,
-            Messages.Screen,
-            Messages.ScreenCover,
-            Messages.BackCover,
-            Messages.Motherboard
-        })]
+            new string[]
+            {
+                RepairItemTypeConstants.Battery,
+                RepairItemTypeConstants.Screen,
+                RepairItemTypeConstants.ScreenCover,
+                RepairItemTypeConstants.BackCover,
+                RepairItemTypeConstants.Motherboard
+            },
+            new string[]
+            {
+                Messages.Battery,
+                Messages.Screen,
+                Messages.ScreenCover,
+                Messages.BackCover,
+                Messages.Motherboard
+            })]
         [PXUIField(DisplayName = "Repair Item Type")]
         public virtual string RepairItemType { get; set; }
-        public abstract class repairItemType : 
-            PX.Data.BQL.BqlString.Field<repairItemType> { }
+        public abstract class repairItemType :
+            PX.Data.BQL.BqlString.Field<repairItemType>
+        { }
         #endregion
 
         #region InventoryID
@@ -156,10 +157,10 @@ namespace PhoneRepairShop
         public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
         #endregion
 
-        #region Noteid
+        #region NoteID
         [PXNote()]
-        public virtual Guid? Noteid { get; set; }
-        public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
+        public virtual Guid? NoteID { get; set; }
+        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
     }
 }

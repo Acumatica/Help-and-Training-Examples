@@ -5,7 +5,7 @@ namespace PhoneRepairShop
 {
     [PXCacheName("Repair Price")]
     public class RSSVRepairPrice : IBqlTable
-    {
+  {
         #region ServiceID
         [PXDBInt(IsKey = true)]
         [PXDefault]
@@ -101,10 +101,10 @@ namespace PhoneRepairShop
         public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
         #endregion
 
-        #region Noteid
+        #region NoteID
         [PXNote()]
-        public virtual Guid? Noteid { get; set; }
-        public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
+        public virtual Guid? NoteID { get; set; }
+        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
     }
 }
