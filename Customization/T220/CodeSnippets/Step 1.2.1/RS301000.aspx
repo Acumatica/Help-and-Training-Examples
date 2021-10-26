@@ -1,2 +1,0 @@
-<px:PXSelector CommitChanges="True" runat="server" ID="CstPXSelector14" DataField="ServiceID" ></px:PXSelector>
-<px:PXSelector CommitChanges="True" runat="server" ID="CstPXSelector8" DataField="DeviceID" ></px:PXSelector>
