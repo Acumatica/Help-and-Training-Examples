@@ -65,7 +65,7 @@ namespace PhoneRepairShop
         }
 
         //Set the value of the Price column.
-        protected void _(Events.FieldDefaulting<RSSVRepairItem, 
+        protected void _(Events.FieldDefaulting<RSSVRepairItem,
             RSSVRepairItem.basePrice> e)
         {
             RSSVRepairItem row = e.Row;
@@ -73,10 +73,13 @@ namespace PhoneRepairShop
             {
                 //Use the PXSelector attribute to select the stock item.
                 InventoryItem item = PXSelectorAttribute.
-                    Select<RSSVRepairItem.inventoryID>(e.Cache, row) 
+                    Select<RSSVRepairItem.inventoryID>(e.Cache, row)
                     as InventoryItem;
+                //Retrieve the base price for the stock item.
+                InventoryItemCurySettings curySettings = InventoryItemCurySettings.PK.Find(
+                    this, item.InventoryID, Accessinfo.BaseCuryID ?? "USD");
                 //Copy the base price from the stock item to the row.
-                e.NewValue = item.BasePrice;
+                e.NewValue = curySettings.BasePrice;
             }
         }
 

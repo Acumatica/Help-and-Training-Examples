@@ -5,7 +5,6 @@ using PX.Objects.IN;
 
 namespace PhoneRepairShop
 {
-    [Serializable]
     [PXCacheName("Work Order Labor")]
     public class RSSVWorkOrderLabor : IBqlTable
     {
@@ -96,10 +95,10 @@ namespace PhoneRepairShop
         public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
         #endregion
 
-        #region Noteid
+        #region NoteID
         [PXNote()]
-        public virtual Guid? Noteid { get; set; }
-        public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
+        public virtual Guid? NoteID { get; set; }
+        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
     }
 }
