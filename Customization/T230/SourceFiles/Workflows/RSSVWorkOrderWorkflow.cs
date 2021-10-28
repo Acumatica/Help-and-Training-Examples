@@ -68,14 +68,6 @@ namespace PhoneRepairShop.Workflows
 
 		public class Conditions : Condition.Pack
 		{
-			//public Condition IsOnHold => GetOrCreate(b => b.FromBql<
-			//	RSSVWorkOrder.hold.IsEqual<True>
-			//>());
-
-			//public Condition IsNotOnHold => GetOrCreate(b => b.FromBql<
-			//	RSSVWorkOrder.hold.IsEqual<False>
-			//>());
-
 			public Condition RequiresPrepayment => GetOrCreate(b => b.FromBql<
 				Where<Selector<RSSVWorkOrder.serviceID, RSSVRepairService.prepayment>, Equal<True>>
 			>());
@@ -102,7 +94,6 @@ namespace PhoneRepairShop.Workflows
 						flow
 						.WithFlowStates(fss =>
 						{
-							//fss.Add(initialState, flowState => flowState.IsInitial(g => g.initializeState));
 							fss.Add<States.onHold>(flowState =>
 							{
 								return flowState
@@ -186,23 +177,15 @@ namespace PhoneRepairShop.Workflows
 						})
 					.WithTransitions(transitions =>
 					{
-						//transitions.AddGroupFrom(initialState, ts =>
-						//{
-						//	ts.Add(t => t.To<States.onHold>()
-						//		.IsTriggeredOn(g => g.initializeState)
-						//		.When(conditions.IsOnHold)); // New Hold
-						//});
 						transitions.AddGroupFrom<States.onHold>(ts =>
 						{
 							//add condition
 							ts.Add(t => t.To<States.readyForAssignment>()
 								.IsTriggeredOn(g => g.ReleaseFromHold)
 								.When(conditions.DoesNotRequirePrepayment));
-							//.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.hold>(f => f.SetFromValue(false))));
 							ts.Add(t => t.To<States.pendingPayment>()
 								.IsTriggeredOn(g => g.ReleaseFromHold)
 								.When(conditions.RequiresPrepayment));
-							//.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.hold>(f => f.SetFromValue(false))));
 						});
 						transitions.AddGroupFrom<States.readyForAssignment>(ts =>
 						{
@@ -226,17 +209,10 @@ namespace PhoneRepairShop.Workflows
 					))
 					.WithActions(actions =>
 					{
-						//actions.Add(g => g.initializeState, a => a.IsHiddenAlways());
-						actions.Add(g => g.PutOnHold, c => c
-							.InFolder(FolderType.ActionsFolder));
-						//.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.hold>(f => f.SetFromValue(true)))); ;
-						actions.Add(g => g.ReleaseFromHold, c => c
-							.InFolder(FolderType.ActionsFolder));
-						//.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.hold>(f => f.SetFromValue(false))));
-						actions.Add(g => g.Assign, c => c
-							.InFolder(FolderType.ActionsFolder));
-						actions.Add(g => g.Complete, c => c
-							.InFolder(FolderType.ActionsFolder)
+						actions.Add(g => g.PutOnHold, c => c.WithCategory(PredefinedCategory.Actions, g => g.ReleaseFromHold));
+						actions.Add(g => g.ReleaseFromHold, c => c.WithCategory(PredefinedCategory.Actions));
+						actions.Add(g => g.Assign, c => c.WithCategory(PredefinedCategory.Actions, g => g.PutOnHold));
+						actions.Add(g => g.Complete, c => c.WithCategory(PredefinedCategory.Actions, g => g.Assign)
 							.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.dateCompleted>(f => f.SetFromToday())));
 					})
 					.WithHandlers(handlers =>
