@@ -58,7 +58,7 @@ namespace PhoneRepairShop
                 //Retrieve the base price for the stock item.
                 InventoryItemCurySettings curySettings = 
                     InventoryItemCurySettings.PK.Find(
-                    this, item.InventoryID, Accessinfo.BaseCuryID);
+                    this, item.InventoryID, Accessinfo.BaseCuryID ?? "USD");
                 //Copy the base price from the stock item to the row.
                     e.NewValue = curySettings.BasePrice;
             }
