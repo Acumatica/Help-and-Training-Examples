@@ -157,7 +157,7 @@ namespace PhoneRepairShop
         [PXDBString(15, IsUnicode = true)]
         [PXUIField(DisplayName = "Invoice Nbr.", Enabled = false)]
         [PXSelector(typeof(SearchFor<SOInvoice.refNbr>.
-                   Where<SOInvoice.docType.IsEqual<ARDocType.invoice>>))]
+            Where<SOInvoice.docType.IsEqual<ARDocType.invoice>>))]
         public virtual string InvoiceNbr { get; set; }
         public abstract class invoiceNbr : PX.Data.BQL.BqlString.Field<invoiceNbr> { }
         #endregion
@@ -204,10 +204,10 @@ namespace PhoneRepairShop
         public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
         #endregion
 
-        #region Noteid
+        #region NoteID
         [PXNote()]
-        public virtual Guid? Noteid { get; set; }
-        public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
+        public virtual Guid? NoteID { get; set; }
+        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
     }
 }

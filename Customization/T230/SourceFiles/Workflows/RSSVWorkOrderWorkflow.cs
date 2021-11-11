@@ -13,6 +13,7 @@ using System.CodeDom;
 using PX.Data.BQL.Fluent;
 using static PX.Data.WorkflowAPI.BoundedTo<PhoneRepairShop.RSSVWorkOrderEntry, PhoneRepairShop.RSSVWorkOrder>;
 using PX.Objects.AR;
+using PX.Objects.Common;
 
 namespace PhoneRepairShop.Workflows
 {
@@ -85,6 +86,10 @@ namespace PhoneRepairShop.Workflows
 
 			var context = config.GetScreenConfigurationContext<RSSVWorkOrderEntry, RSSVWorkOrder>();
 			var conditions = context.Conditions.GetPack<Conditions>();
+
+			var commonCategories = CommonActionCategories.Get(context);
+			var processingCategory = commonCategories.Processing;
+			var otherCategory = commonCategories.Other;
 
 			// start
 			context.AddScreenConfigurationFor(screen =>
@@ -209,10 +214,10 @@ namespace PhoneRepairShop.Workflows
 					))
 					.WithActions(actions =>
 					{
-						actions.Add(g => g.PutOnHold, c => c.WithCategory(PredefinedCategory.Actions, g => g.ReleaseFromHold));
-						actions.Add(g => g.ReleaseFromHold, c => c.WithCategory(PredefinedCategory.Actions));
-						actions.Add(g => g.Assign, c => c.WithCategory(PredefinedCategory.Actions, g => g.PutOnHold));
-						actions.Add(g => g.Complete, c => c.WithCategory(PredefinedCategory.Actions, g => g.Assign)
+						actions.Add(g => g.PutOnHold, c => c.WithCategory(processingCategory, g => g.ReleaseFromHold));
+						actions.Add(g => g.ReleaseFromHold, c => c.WithCategory(processingCategory));
+						actions.Add(g => g.Assign, c => c.WithCategory(processingCategory, g => g.PutOnHold));
+						actions.Add(g => g.Complete, c => c.WithCategory(processingCategory, g => g.Assign)
 							.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.dateCompleted>(f => f.SetFromToday())));
 					})
 					.WithHandlers(handlers =>
@@ -225,7 +230,11 @@ namespace PhoneRepairShop.Workflows
 								SelectFrom<RSSVWorkOrder>.
 								Where<RSSVWorkOrder.invoiceNbr.IsEqual<ARRegister.refNbr.FromCurrent>>>());
 					})
-
+					.WithCategories(categories =>
+					{
+						categories.Add(processingCategory);
+						categories.Add(otherCategory);
+					})
 				);
 
 

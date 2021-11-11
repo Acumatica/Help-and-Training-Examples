@@ -1,5 +1,5 @@
 public PXAction<RSSVWorkOrder> UpdateItemPrices;
-[PXButton(CommitChanges = true)]
+[PXButton (DisplayOnMainToolbar = false)]
 [PXUIField(DisplayName = "Update Prices", Enabled = true)]
 protected virtual void updateItemPrices()
 {

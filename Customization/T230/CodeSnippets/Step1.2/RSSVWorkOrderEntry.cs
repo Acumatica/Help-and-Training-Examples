@@ -1,3 +1,4 @@
+// Manage visibility and availability of the actions.
 protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
 {
   RSSVWorkOrder row = e.Row;

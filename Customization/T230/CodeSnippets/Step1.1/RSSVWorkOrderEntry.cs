@@ -1,7 +1,6 @@
-#region Actions
 public PXAction<RSSVWorkOrder> AssignToMe;
-[PXButton(CommitChanges = true)]
-[PXUIField(DisplayName = "Assign To Me", Enabled = true)]
+[PXButton]
+[PXUIField(DisplayName = "Assign to Me", Enabled = true)]
 protected virtual void assignToMe()
 {
 	// Get the current order from the cache.
@@ -16,4 +15,3 @@ protected virtual void assignToMe()
 	// Trigger the Save action to save changes in the database.
 	Actions.PressSave();
 }
-#endregion

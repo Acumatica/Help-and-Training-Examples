@@ -49,13 +49,13 @@ namespace PhoneRepairShop
         #region Actions
 
         public PXAction<RSSVWorkOrder> PutOnHold;
-        [PXButton(CommitChanges = true), PXUIField(DisplayName = "Hold",
+        [PXButton, PXUIField(DisplayName = "Hold",
           MapEnableRights = PXCacheRights.Select,
           MapViewRights = PXCacheRights.Select)]
         protected virtual IEnumerable putOnHold(PXAdapter adapter) => adapter.Get();
 
         public PXAction<RSSVWorkOrder> ReleaseFromHold;
-        [PXButton(CommitChanges = true), PXUIField(DisplayName = "Remove Hold",
+        [PXButton, PXUIField(DisplayName = "Remove Hold",
           MapEnableRights = PXCacheRights.Select,
           MapViewRights = PXCacheRights.Select)]
         protected virtual IEnumerable releaseFromHold(PXAdapter adapter) => adapter.Get();
@@ -213,7 +213,7 @@ namespace PhoneRepairShop
         public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument;
 
         public PXAction<RSSVWorkOrder> Assign;
-        [PXButton(CommitChanges = true)]
+        [PXButton]
         [PXUIField(DisplayName = "Assign", Enabled = false)]
         protected virtual void assign()
         {
@@ -236,7 +236,7 @@ namespace PhoneRepairShop
         }
 
         public PXAction<RSSVWorkOrder> Complete;
-        [PXButton(CommitChanges = true)]
+        [PXButton]
         [PXUIField(DisplayName = "Complete", Enabled = false)]
         protected virtual IEnumerable complete(PXAdapter adapter) => adapter.Get();
         #endregion

@@ -51,52 +51,20 @@ namespace PhoneRepairShop
         #region Actions
 
         public PXAction<RSSVWorkOrder> PutOnHold;
-        [PXButton(CommitChanges = true), PXUIField(DisplayName = "Hold",
+        [PXButton, PXUIField(DisplayName = "Hold",
           MapEnableRights = PXCacheRights.Select,
           MapViewRights = PXCacheRights.Select)]
         protected virtual IEnumerable putOnHold(PXAdapter adapter) => adapter.Get();
 
         public PXAction<RSSVWorkOrder> ReleaseFromHold;
-        [PXButton(CommitChanges = true), PXUIField(DisplayName = "Remove Hold",
+        [PXButton, PXUIField(DisplayName = "Remove Hold",
           MapEnableRights = PXCacheRights.Select,
           MapViewRights = PXCacheRights.Select)]
         protected virtual IEnumerable releaseFromHold(PXAdapter adapter) => adapter.Get();
 
-        //Event handler for a workflow event
-        public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument;
-
-        public PXAction<RSSVWorkOrder> Assign;
-        [PXButton(CommitChanges = true)]
-        [PXUIField(DisplayName = "Assign", Enabled = false)]
-        protected virtual void assign()
-        {
-            // Get the current order from the cache.
-            RSSVWorkOrder row = WorkOrders.Current;
-
-            // If an Assignee has not been specified,
-            // change the Assignee box value to the default employee value.
-            if (row.Assignee == null)
-                row.Assignee = AutoNumSetup.Current.DefaultEmployee;
-
-            // Change the order status to Assigned.
-            // row.Status = WorkOrderStatusConstants.Assigned;
-
-            // Update the data record in the cache.
-            WorkOrders.Update(row);
-
-            // Trigger the Save action to save changes in the database.
-            Actions.PressSave();
-        }
-
-        public PXAction<RSSVWorkOrder> Complete;
-        [PXButton(CommitChanges = true)]
-        [PXUIField(DisplayName = "Complete", Enabled = false)]
-        protected virtual IEnumerable complete(PXAdapter adapter) => adapter.Get();
-
-
         public PXAction<RSSVWorkOrder> AssignToMe;
-        [PXButton(CommitChanges = true)]
-        [PXUIField(DisplayName = "Assign To Me", Enabled = true)]
+        [PXButton]
+        [PXUIField(DisplayName = "Assign to Me", Enabled = true)]
         protected virtual void assignToMe()
         {
             // Get the current order from the cache.
@@ -112,8 +80,9 @@ namespace PhoneRepairShop
             Actions.PressSave();
         }
 
+
         public PXAction<RSSVWorkOrder> UpdateItemPrices;
-        [PXButton(CommitChanges = true)]
+        [PXButton (DisplayOnMainToolbar = false)]
         [PXUIField(DisplayName = "Update Prices", Enabled = true)]
         protected virtual void updateItemPrices()
         {
@@ -138,7 +107,7 @@ namespace PhoneRepairShop
         }
 
         public PXAction<RSSVWorkOrder> UpdateLaborPrices;
-        [PXButton(CommitChanges = true)]
+        [PXButton(DisplayOnMainToolbar = false)]
         [PXUIField(DisplayName = "Update Prices", Enabled = true)]
         protected virtual void updateLaborPrices()
         {
@@ -215,7 +184,7 @@ namespace PhoneRepairShop
         }
 
         public PXAction<RSSVWorkOrder> CreateInvoiceAction;
-        [PXButton(CommitChanges = true)]
+        [PXButton]
         [PXUIField(DisplayName = "Create Invoice", Enabled = true)]
         protected virtual IEnumerable createInvoiceAction(PXAdapter adapter)
         {
@@ -237,19 +206,9 @@ namespace PhoneRepairShop
             // Return the local list variable.
             return list;
         }
-
-        public PXAction<RSSVWorkOrder> ActionsMenuItem;
-        [PXButton(SpecialType = PXSpecialButtonType.ActionsFolder)]
-        [PXUIField(DisplayName = "Actions")]
-        protected virtual IEnumerable actionsMenuItem(PXAdapter adapter)
-        {
-            return adapter.Get();
-        }
-
         #endregion
 
         #region Event Handlers 
-
 
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
@@ -318,8 +277,11 @@ namespace PhoneRepairShop
             {
                 //Use the PXSelector attribute to select the stock item.
                 InventoryItem item = PXSelectorAttribute.Select<RSSVWorkOrderItem.inventoryID>(e.Cache, row) as InventoryItem;
+                //Retrieve the base price for the stock item.
+                InventoryItemCurySettings curySettings = InventoryItemCurySettings.PK.Find(
+                    this, item.InventoryID, Accessinfo.BaseCuryID ?? "USD");
                 //Copy the base price from the stock item to the row.
-                e.NewValue = item.BasePrice;
+                e.NewValue = curySettings.BasePrice;
             }
         }
 
@@ -391,35 +353,57 @@ namespace PhoneRepairShop
             }
         }
 
+        // Manage visibility and availability of the actions.
         protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
         {
             RSSVWorkOrder row = e.Row;
             if (row == null) return;
-
             AssignToMe.SetEnabled((row.Status == WorkOrderStatusConstants.ReadyForAssignment ||
-                row.Status == WorkOrderStatusConstants.OnHold) &&
-                WorkOrders.Cache.GetStatus(row) != PXEntryStatus.Inserted);
+              row.Status == WorkOrderStatusConstants.OnHold) &&
+              WorkOrders.Cache.GetStatus(row) != PXEntryStatus.Inserted);
             AssignToMe.SetVisible(row.Assignee != PXAccess.GetContactID());
+
             UpdateItemPrices.SetEnabled(WorkOrders.Current.InvoiceNbr == null);
             UpdateLaborPrices.SetEnabled(WorkOrders.Current.InvoiceNbr == null);
 
             CreateInvoiceAction.SetVisible(
-              WorkOrders.Current.Status == WorkOrderStatusConstants.Completed);
+                WorkOrders.Current.Status == WorkOrderStatusConstants.Completed);
             CreateInvoiceAction.SetEnabled(WorkOrders.Current.InvoiceNbr == null &&
-              WorkOrders.Current.Status == WorkOrderStatusConstants.Completed);
+                WorkOrders.Current.Status == WorkOrderStatusConstants.Completed);
         }
-
         #endregion
 
+        #region Workflow Implementation
+        //Event handler for a workflow event
+        public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument;
 
-    }
-
-    public class RSSVWorkOrderEntry_Extension : PXGraphExtension<RSSVWorkOrderEntry>
-    {
-        public override void Initialize()
+        public PXAction<RSSVWorkOrder> Assign;
+        [PXButton]
+        [PXUIField(DisplayName = "Assign", Enabled = false)]
+        protected virtual void assign()
         {
-            base.Initialize();
-            Base.ActionsMenuItem.AddMenuAction(Base.CreateInvoiceAction);
+            // Get the current order from the cache.
+            RSSVWorkOrder row = WorkOrders.Current;
+
+            // If an Assignee has not been specified,
+            // change the Assignee box value to the default employee value.
+            if (row.Assignee == null)
+                row.Assignee = AutoNumSetup.Current.DefaultEmployee;
+
+            // Change the order status to Assigned.
+            // row.Status = WorkOrderStatusConstants.Assigned;
+
+            // Update the data record in the cache.
+            WorkOrders.Update(row);
+
+            // Trigger the Save action to save changes in the database.
+            Actions.PressSave();
         }
+
+        public PXAction<RSSVWorkOrder> Complete;
+        [PXButton]
+        [PXUIField(DisplayName = "Complete", Enabled = false)]
+        protected virtual IEnumerable complete(PXAdapter adapter) => adapter.Get();
+        #endregion
     }
 }
