@@ -1,7 +1,7 @@
 using Xunit;
 using PX.Data;
 using PX.Objects.IN;
-using PX.Data.Unit;
+using PX.Tests.Unit;
 using PhoneRepairShop;
 
 namespace PhoneRepairShop_Code.Tests
@@ -33,6 +33,12 @@ namespace PhoneRepairShop_Code.Tests
                 {
                     InventoryCD = "Battery1"
                 });
+            graph.Caches[typeof(InventoryItemCurySettings)].Insert(new
+                InventoryItemCurySettings
+                {
+                    InventoryID = battery1.InventoryID,
+                    CuryID = "USD"
+                });
             InventoryItemExt batteryExt1 =
                 battery1.GetExtension<InventoryItemExt>();
             batteryExt1.UsrRepairItem = true;
@@ -45,6 +51,12 @@ namespace PhoneRepairShop_Code.Tests
              {
                  InventoryCD = "Battery2"
              });
+            graph.Caches[typeof(InventoryItemCurySettings)].Insert(new
+                InventoryItemCurySettings
+                {
+                    InventoryID = battery2.InventoryID,
+                    CuryID = "USD"
+                });
             InventoryItemExt batteryExt2 =
                 battery2.GetExtension<InventoryItemExt>();
             batteryExt2.UsrRepairItem = true;
@@ -57,6 +69,12 @@ namespace PhoneRepairShop_Code.Tests
              {
                  InventoryCD = "BackCover1"
              });
+            graph.Caches[typeof(InventoryItemCurySettings)].Insert(new
+                InventoryItemCurySettings
+                {
+                    InventoryID = backCover1.InventoryID,
+                    CuryID = "USD"
+                });
             InventoryItemExt backCoverExt1 =
              backCover1.GetExtension<InventoryItemExt>();
             backCoverExt1.UsrRepairItem = true;

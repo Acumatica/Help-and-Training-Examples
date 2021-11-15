@@ -1,13 +1,12 @@
 using System;
 using PX.Data;
 using PX.Objects.AR;
-using PX.Objects.CS;
 using PX.TM;
+using PX.Objects.CS;
 
 namespace PhoneRepairShop
 {
-    [Serializable]
-    [PXCacheName("RSSVWorkOrder")]
+    [PXCacheName("Repair Work Order")]
     public class RSSVWorkOrder : IBqlTable
     {
         #region OrderNbr
@@ -200,10 +199,10 @@ namespace PhoneRepairShop
         public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
         #endregion
 
-        #region Noteid
+        #region NoteID
         [PXNote()]
-        public virtual Guid? Noteid { get; set; }
-        public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
+        public virtual Guid? NoteID { get; set; }
+        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
     }
 }
