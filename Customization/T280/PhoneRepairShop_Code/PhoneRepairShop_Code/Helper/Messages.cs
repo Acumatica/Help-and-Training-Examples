@@ -10,7 +10,7 @@ namespace PhoneRepairShop
     [PXLocalizable()]
     public static class Messages
     {
-        //Complexity of repair
+        //Complexity of repair and work order priorities
         public const string High = "High";
         public const string Medium = "Medium";
         public const string Low = "Low";

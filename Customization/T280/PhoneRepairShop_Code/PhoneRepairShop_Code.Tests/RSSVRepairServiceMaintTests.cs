@@ -1,6 +1,6 @@
-using Xunit;
+﻿using Xunit;
 using PX.Data;
-using PX.Data.Unit;
+using PX.Tests.Unit;
 using PhoneRepairShop;
 
 namespace PhoneRepairShop_Code.Tests

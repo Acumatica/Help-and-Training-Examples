@@ -6,7 +6,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D7EA9886-CBDC-44CD-A265-BBE996F3F071}</ProjectGuid>
+    <ProjectGuid>{2255F4BD-46D8-4A2D-A415-A4304AC8DC0C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PhoneRepairShop_Code.Tests</RootNamespace>
@@ -36,21 +36,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PX.Common">
-      <HintPath>..\..\..\..\..\PhoneRepairShop\Bin\PX.Common.dll</HintPath>
+      <HintPath>..\..\..\..\Bin\PX.Common.dll</HintPath>
     </Reference>
     <Reference Include="PX.Common.Std, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\PhoneRepairShop\Bin\PX.Common.Std.dll</HintPath>
+      <HintPath>..\..\..\..\Bin\PX.Common.Std.dll</HintPath>
     </Reference>
     <Reference Include="PX.Data">
-      <HintPath>..\..\..\..\..\PhoneRepairShop\Bin\PX.Data.dll</HintPath>
+      <HintPath>..\..\..\..\Bin\PX.Data.dll</HintPath>
     </Reference>
     <Reference Include="PX.Data.BQL.Fluent">
-      <HintPath>..\..\..\..\..\PhoneRepairShop\Bin\PX.Data.BQL.Fluent.dll</HintPath>
+      <HintPath>..\..\..\..\Bin\PX.Data.BQL.Fluent.dll</HintPath>
     </Reference>
     <Reference Include="PX.Objects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\PhoneRepairShop\Bin\PX.Objects.dll</HintPath>
+      <HintPath>..\..\..\..\Bin\PX.Objects.dll</HintPath>
+    </Reference>
+    <Reference Include="PX.Tests.Unit">
+      <HintPath>..\..\..\..\Bin\PX.Tests.Unit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
