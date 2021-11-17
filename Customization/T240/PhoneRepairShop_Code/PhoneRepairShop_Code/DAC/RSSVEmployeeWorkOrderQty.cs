@@ -27,7 +27,7 @@ namespace PhoneRepairShop
     }
 
     public class RSSVEmployeeWorkOrderQtyAccumulator :
-    PXAccumulatorAttribute
+        PXAccumulatorAttribute
     {
         //Specify the single-record mode of update in the constructor.
         public RSSVEmployeeWorkOrderQtyAccumulator()
