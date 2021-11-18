@@ -9,8 +9,8 @@ Customization
  * [T210](Customization/T210): Examples from the [T210 Development: Customized Forms and Master-Detail Relationship](https://openuni.acumatica.com/courses/development/t210-development-customized-forms-and-master-detail-relationship/) training course
  * [T220](Customization/T220): Examples from the [T220 Development: Data Entry and Setup Forms](https://openuni.acumatica.com/courses/development/t220-development-data-entry-and-setup-forms/) training course
  * [T230](Customization/T230): Examples from the [T230 Development: Actions](https://openuni.acumatica.com/courses/development/t230-development-actions/) training course
-<!-- * [T240](Customization/T240): Examples from the [T240 Development: Processing Forms](https://openuni.acumatica.com/courses/development/t240-development-processing-forms/) training course
- * [T250](Customization/T250): Examples from the [T250 Development: Inquiry Forms](https://openuni.acumatica.com/courses/development/t250-development-inquiry-forms/) training course 
+ * [T240](Customization/T240): Examples from the [T240 Development: Processing Forms](https://openuni.acumatica.com/courses/development/t240-development-processing-forms/) training course
+<!-- * [T250](Customization/T250): Examples from the [T250 Development: Inquiry Forms](https://openuni.acumatica.com/courses/development/t250-development-inquiry-forms/) training course 
  * [T280](Customization/T280): Examples from the [T280 Development: Testing Business Logic](https://openuni.acumatica.com/courses/development/t280-development-testing-business-logic/) training course -->
  
 Integration development
