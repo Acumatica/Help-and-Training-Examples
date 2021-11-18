@@ -20,12 +20,15 @@ namespace PhoneRepairShop
                     RSSVWorkOrderToAssignFilter.timeWithoutAction.FromCurrent>.
                     And<RSSVWorkOrder.priority.IsEqual<
                         RSSVWorkOrderToAssignFilter.priority.FromCurrent>.
-                        Or<RSSVWorkOrderToAssignFilter.priority.FromCurrent.IsNull>>.
+                        Or<RSSVWorkOrderToAssignFilter.priority.FromCurrent.
+                            IsNull>>.
                     And<RSSVWorkOrder.serviceID.IsEqual<
                         RSSVWorkOrderToAssignFilter.serviceID.FromCurrent>.
-                        Or<RSSVWorkOrderToAssignFilter.serviceID.FromCurrent.IsNull>>>>,
+                        Or<RSSVWorkOrderToAssignFilter.serviceID.FromCurrent.
+                            IsNull>>>>,
             OrderBy<Desc<RSSVWorkOrder.timeWithoutAction,
                 RSSVWorkOrder.priority.Desc>>> WorkOrders;
+
 
         public RSSVAssignProcess()
         {
