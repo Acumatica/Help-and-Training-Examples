@@ -132,7 +132,7 @@ namespace PhoneRepairShop
                                 iItem = iiEntry.Item.Insert(iItem);
                                 iItem.ItemClassID = Convert.ToInt32(dic["ItemClassID"]);
                                 iItem = iiEntry.Item.Update(iItem);
-                                
+
                                 //Assign the values of custom fields
                                 var extItem = PXCache<InventoryItem>.GetExtension<InventoryItemExt>(iItem);
                                 extItem.UsrRepairItem = true;
@@ -371,6 +371,7 @@ namespace PhoneRepairShop
                             {
                                 string[] lineParts = line.Split(';');
                                 IDictionary<string, string> dic = headerParts.Select((k, i) => new { k, v = lineParts[i] }).ToDictionary(x => x.k, x => x.v);
+
                                 RSSVSetup settings = new RSSVSetup
                                 {
                                     NumberingID = dic["NumberingID"],
@@ -424,8 +425,6 @@ namespace PhoneRepairShop
                                     RepairItemLineCntr = Convert.ToInt32(dic["RepairItemLineCntr"]),
                                     Priority = dic["Priority"]
                                 };
-                                if (!String.Equals(dic["Assignee"], "NULL"))
-                                    order.Assignee = Convert.ToInt32(dic["Assignee"]);
                                 workOrderGraph.WorkOrders.Insert(order);
                                 workOrderGraph.Actions.PressSave();
                                 workOrderGraph.Clear();
@@ -516,41 +515,6 @@ namespace PhoneRepairShop
 
 
 
-			#endregion
-
-            #region T240Data
-            #region RSSVEmployeeWorkOrderQty
-            //Add data to RSSVEmployeeWorkOrderQty
-            RSSVEmployeeWorkOrderQty qty = SelectFrom<RSSVEmployeeWorkOrderQty>.View.ReadOnly.Select(workOrderGraph);
-            if (qty == null)
-            {
-                using (StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "InputData\\RSSVEmployeeWorkOrderQty.csv"))
-                {
-                    string header = file.ReadLine();
-                    if (header != null)
-                    {
-                        string[] headerParts = header.Split(';');
-                        while (true)
-                        {
-                            string line = file.ReadLine();
-                            if (line != null)
-                            {
-                                string[] lineParts = line.Split(';');
-                                IDictionary<string, string> dic = headerParts.Select((k, i) => new { k, v = lineParts[i] }).ToDictionary(x => x.k, x => x.v);
-                                //we skip graph logic for RSSVEmployeeWorkOrderQty because there is a PXAccumulator attribute for its field
-                                PXDatabase.Insert<RSSVEmployeeWorkOrderQty>(
-                                    new PXDataFieldAssign<RSSVEmployeeWorkOrderQty.userid>(Convert.ToInt32(dic["UserID"])),
-                                    new PXDataFieldAssign<RSSVEmployeeWorkOrderQty.nbrOfAssignedOrders>(Convert.ToInt32(dic["NbrOfAssignedOrders"])),
-                                    new PXDataFieldAssign<RSSVWorkOrder.lastModifiedDateTime>(workOrderGraph.Accessinfo.BusinessDate)
-                                    );
-                            }
-                            else break;
-                        }
-                    }
-                    this.WriteLog("RSSVEmployeeWorkOrderQty updated");
-                }
-            }
-            #endregion
             #endregion
         }
     }

@@ -9,7 +9,7 @@ namespace PhoneRepairShop
         public PXCancel<RSSVWorkOrderToPayFilter> Cancel;
 
         public PXAction<RSSVWorkOrderToPay> ViewOrder;
-        [PXButton]
+        [PXButton(DisplayOnMainToolbar=false)]
         [PXUIField]
         protected virtual void viewOrder()
         {

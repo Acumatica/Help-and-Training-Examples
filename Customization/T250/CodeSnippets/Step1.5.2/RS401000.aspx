@@ -8,9 +8,9 @@
         PrimaryView="Filter"
         >
     <CallbackCommands>
-      <px:PXDSCallbackCommand Visible="false" CommitChanges="true" 
-          Name="ViewOrder" DependOnGrid="grid">
-      </px:PXDSCallbackCommand>
+       
+      
+      
     </CallbackCommands>
   </px:PXDataSource>
 </asp:Content>

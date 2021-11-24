@@ -22,14 +22,6 @@ namespace PhoneRepairShop
         public const string BackCover = "Back Cover";
         public const string Motherboard = "Motherboard";
 
-        //Messages
-        public const string StockItemIncorrectRepairItemType =
-            "This stock item has a repair item type that differs from {0}.";
-        public const string ItemIsStock = "This item is a stock item.";
-        public const string DefaultWarrantyCanNotBeDeleted =
-            "The default warranty cannot be deleted.";
-
-
         //Work order statuses
         public const string OnHold = "On Hold";
         public const string PendingPayment = "Pending Payment";
@@ -37,6 +29,17 @@ namespace PhoneRepairShop
         public const string Assigned = "Assigned";
         public const string Completed = "Completed";
         public const string Paid = "Paid";
+
+        // Order types
+        public const string SalesOrder = "SO";
+        public const string WorkOrder = "WO";
+
+        //Messages
+        public const string StockItemIncorrectRepairItemType =
+            "This stock item has a repair item type that differs from {0}.";
+        public const string ItemIsStock = "This item is a stock item.";
+        public const string DefaultWarrantyCanNotBeDeleted =
+            "The default warranty cannot be deleted.";
 
 
         public const string QuantityCannotBeNegative =
@@ -47,19 +50,5 @@ namespace PhoneRepairShop
 
         public const string PriorityTooLow =
             @"The priority must be at least Medium for the repair service that requires preliminary check.";
-
-        public const string WorkOrderAssigned =
-            "The {0} work order has been successfully assigned.";
-
-        public const string ExceedingMaximumNumberOfAssingedWorkOrders =
-            @"Updating the number of assigned work orders for the employee 
-            will lead to exceeding of the maximum number of assigned work orders, 
-            which is 10.";
-
-        public const string ReportRS601000Title = "Assigned Work Orders";
-
-        // Order types
-        public const string SalesOrder = "SO";
-        public const string WorkOrder = "WO";
     }
 }

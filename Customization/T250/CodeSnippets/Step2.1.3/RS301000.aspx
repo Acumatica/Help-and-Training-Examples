@@ -7,10 +7,10 @@
         PrimaryView="WorkOrders"
         >
 		<CallbackCommands>
-<px:PXDSCallbackCommand Visible="false" CommitChanges="true" Name="UpdateItemPrices" >
-</px:PXDSCallbackCommand>
-<px:PXDSCallbackCommand Visible="false" CommitChanges="true" Name="UpdateLaborPrices" >
-</px:PXDSCallbackCommand>
+
+
+
+
 		</CallbackCommands>
 	</px:PXDataSource>
 </asp:Content>

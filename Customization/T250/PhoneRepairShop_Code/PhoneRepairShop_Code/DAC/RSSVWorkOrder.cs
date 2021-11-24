@@ -8,17 +8,9 @@ using PX.Objects.SO;
 
 namespace PhoneRepairShop
 {
-    [Serializable]
     [PXCacheName("Repair Work Order")]
     public class RSSVWorkOrder : IBqlTable
     {
-        #region Selected
-        public abstract class selected : PX.Data.BQL.BqlBool.Field<selected> { }
-        [PXBool]
-        [PXUIField(DisplayName = "Selected")]
-        public virtual bool? Selected { get; set; }
-        #endregion
-
         #region OrderNbr
         [PXDBString(15, IsKey = true, IsUnicode = true, InputMask = ">CCCCCCCCCCCCCCC")]
         [PXDefault(PersistingCheck = PXPersistingCheck.NullOrBlank)]
@@ -164,45 +156,9 @@ namespace PhoneRepairShop
         [PXDBString(15, IsUnicode = true)]
         [PXUIField(DisplayName = "Invoice Nbr.", Enabled = false)]
         [PXSelector(typeof(SearchFor<SOInvoice.refNbr>.
-                   Where<SOInvoice.docType.IsEqual<ARDocType.invoice>>))]
+            Where<SOInvoice.docType.IsEqual<ARDocType.invoice>>))]
         public virtual string InvoiceNbr { get; set; }
         public abstract class invoiceNbr : PX.Data.BQL.BqlString.Field<invoiceNbr> { }
-        #endregion
-
-        #region TimeWithoutAction
-        [PXInt]
-        [PXDBCalced(typeof(RSSVWorkOrder.dateCreated.Diff<Now>.Days),
-         typeof(int))]
-        [PXUIField(DisplayName = "Number of Days Unassigned")]
-        public virtual int? TimeWithoutAction { get; set; }
-        public abstract class timeWithoutAction :
-         PX.Data.BQL.BqlInt.Field<timeWithoutAction>
-        { }
-        #endregion
-
-        #region DefaultAssignee
-        [PXInt]
-        [PXUIField(DisplayName = "Default Assignee")]
-        public virtual int? DefaultAssignee { get; set; }
-        public abstract class defaultAssignee :
-         PX.Data.BQL.BqlInt.Field<defaultAssignee>
-        { }
-        #endregion
-
-        #region AssignTo
-        [PXInt]
-        [PXUIField(DisplayName = "Assign To")]
-        public virtual int? AssignTo { get; set; }
-        public abstract class assignTo : PX.Data.BQL.BqlInt.Field<assignTo> { }
-        #endregion
-
-        #region NbrOfAssignedOrders
-        [PXInt]
-        [PXUIField(DisplayName = "Number of Assigned Work Orders")]
-        public virtual int? NbrOfAssignedOrders { get; set; }
-        public abstract class nbrOfAssignedOrders :
-            PX.Data.BQL.BqlInt.Field<nbrOfAssignedOrders>
-        { }
         #endregion
 
         #region CreatedByID
@@ -247,58 +203,10 @@ namespace PhoneRepairShop
         public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
         #endregion
 
-        #region Noteid
+        #region NoteID
         [PXNote()]
-        public virtual Guid? Noteid { get; set; }
-        public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
-        #endregion
-    }
-
-    [PXHidden]
-    public class RSSVWorkOrderToAssign : RSSVWorkOrder
-    {
-        #region Selected
-        public abstract class selected : PX.Data.BQL.BqlBool.Field<selected> { }
-        [PXBool]
-        [PXUIField(DisplayName = "Selected")]
-        public virtual bool? Selected { get; set; }
-        #endregion
-
-        #region Status
-        public new abstract class status : PX.Data.BQL.BqlString.Field<status> { }
-        #endregion
-
-        #region Priority
-        public new abstract class priority : PX.Data.BQL.BqlString.Field<priority>
-        { }
-        #endregion
-
-        #region ServiceID
-        public new abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID>
-        { }
-        #endregion
-
-        #region DateCreated
-        public new abstract class dateCreated :
-         PX.Data.BQL.BqlDateTime.Field<dateCreated>
-        { }
-        #endregion
-
-        #region Assignee
-        public new abstract class assignee : PX.Data.BQL.BqlGuid.Field<assignee>
-        { }
-        #endregion
-
-        #region TimeWithoutAction
-        [PXInt]
-        [PXDBCalced(
-            typeof(RSSVWorkOrderToAssign.dateCreated.Diff<Now>.Days),
-            typeof(int))]
-        [PXUIField(DisplayName = "Number of Days Unassigned")]
-        public virtual int? TimeWithoutAction { get; set; }
-        public abstract class timeWithoutAction :
-            PX.Data.BQL.BqlInt.Field<timeWithoutAction>
-        { }
+        public virtual Guid? NoteID { get; set; }
+        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
     }
 
@@ -307,17 +215,20 @@ namespace PhoneRepairShop
     {
         #region InvoiceNbr
         public new abstract class invoiceNbr :
-            PX.Data.BQL.BqlString.Field<invoiceNbr> { }
+            PX.Data.BQL.BqlString.Field<invoiceNbr>
+        { }
         #endregion
 
         #region Status
         public new abstract class status :
-            PX.Data.BQL.BqlString.Field<status> { }
+            PX.Data.BQL.BqlString.Field<status>
+        { }
         #endregion
 
         #region OrderNbr
         public new abstract class orderNbr :
-            PX.Data.BQL.BqlString.Field<orderNbr> { }
+            PX.Data.BQL.BqlString.Field<orderNbr>
+        { }
         #endregion
 
         #region PercentPaid
@@ -325,14 +236,17 @@ namespace PhoneRepairShop
         [PXUIField(DisplayName = "Percent Paid")]
         public virtual Decimal? PercentPaid { get; set; }
         public abstract class percentPaid :
-            PX.Data.BQL.BqlDecimal.Field<percentPaid> { }
+            PX.Data.BQL.BqlDecimal.Field<percentPaid>
+        { }
         #endregion
 
         public new abstract class serviceID :
-            PX.Data.BQL.BqlInt.Field<serviceID> { }
+            PX.Data.BQL.BqlInt.Field<serviceID>
+        { }
 
         public new abstract class customerID :
-            PX.Data.BQL.BqlInt.Field<customerID> { }
+            PX.Data.BQL.BqlInt.Field<customerID>
+        { }
 
         #region OrderType
         [PXString(IsKey = true)]
@@ -351,7 +265,8 @@ namespace PhoneRepairShop
           })]
         public virtual String OrderType { get; set; }
         public abstract class orderType :
-            PX.Data.BQL.BqlDecimal.Field<orderType> { }
+            PX.Data.BQL.BqlDecimal.Field<orderType>
+        { }
         #endregion
     }
 }
