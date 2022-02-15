@@ -23,7 +23,8 @@ namespace WooCommerceTest
         URL = "user-edit.php?user_id={0}"
     )]
     [BCProcessorRealtime(PushSupported = true, HookSupported = false,
-        PushSources = new String[] { "BC-PUSH-Customers" }
+        PushSources = new String[] { "BC-PUSH-Customers" },
+        PushDestination = WCCaptions.PushDestination
     )]
     public class WooCustomerProcessor : BCProcessorSingleBase<WooCustomerProcessor, WooCustomerEntityBucket, MappedCustomer>, IProcessor
     {
