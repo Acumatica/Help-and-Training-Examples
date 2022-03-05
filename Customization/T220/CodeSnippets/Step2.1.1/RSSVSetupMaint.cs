@@ -9,7 +9,7 @@ namespace PhoneRepairShop
 
         public PXSave<RSSVSetup> Save;
         public PXCancel<RSSVSetup> Cancel;
-
+		
         public SelectFrom<RSSVSetup>.View Setup;
     }
 }

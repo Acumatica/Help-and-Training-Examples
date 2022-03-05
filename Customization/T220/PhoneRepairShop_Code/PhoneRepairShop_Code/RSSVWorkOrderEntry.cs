@@ -39,29 +39,9 @@ namespace PhoneRepairShop
             RSSVSetup setup = AutoNumSetup.Current;
         }
 
-
-        #endregion
-
-
-
-        #region Actions
-
-        public PXAction<RSSVWorkOrder> PutOnHold;
-        [PXButton(CommitChanges = true), PXUIField(DisplayName = "Hold",
-          MapEnableRights = PXCacheRights.Select,
-          MapViewRights = PXCacheRights.Select)]
-        protected virtual IEnumerable putOnHold(PXAdapter adapter) => adapter.Get();
-
-        public PXAction<RSSVWorkOrder> ReleaseFromHold;
-        [PXButton(CommitChanges = true), PXUIField(DisplayName = "Remove Hold",
-          MapEnableRights = PXCacheRights.Select,
-          MapViewRights = PXCacheRights.Select)]
-        protected virtual IEnumerable releaseFromHold(PXAdapter adapter) => adapter.Get();
-
         #endregion
 
         #region Event Handlers 
-
 
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
@@ -115,8 +95,7 @@ namespace PhoneRepairShop
             if (row.InventoryID != null && row.RepairItemType == null)
             {
                 //Use the PXSelector attribute to select the stock item.
-                InventoryItem item = PXSelectorAttribute.Select<RSSVWorkOrderItem.inventoryID>(
-                    e.Cache, row) as InventoryItem;
+                InventoryItem item = PXSelectorAttribute.Select<RSSVWorkOrderItem.inventoryID>(e.Cache, row) as InventoryItem;
                 //Copy the repair item type from the stock item to the row.
                 InventoryItemExt itemExt = item.GetExtension<InventoryItemExt>();
                 row.RepairItemType = itemExt.UsrRepairItemType;
@@ -130,8 +109,7 @@ namespace PhoneRepairShop
             if (row.InventoryID != null)
             {
                 //Use the PXSelector attribute to select the stock item.
-                InventoryItem item = PXSelectorAttribute.Select<RSSVWorkOrderItem.inventoryID>(
-                    e.Cache, row) as InventoryItem;
+                InventoryItem item = PXSelectorAttribute.Select<RSSVWorkOrderItem.inventoryID>(e.Cache, row) as InventoryItem;
                 //Retrieve the base price for the stock item.
                 InventoryItemCurySettings curySettings = InventoryItemCurySettings.PK.Find(
                     this, item.InventoryID, Accessinfo.BaseCuryID ?? "USD");
@@ -175,7 +153,6 @@ namespace PhoneRepairShop
             }
         }
 
-
         //Display an error if the priority is too low for the selected service
         protected virtual void _(Events.RowUpdating<RSSVWorkOrder> e)
         {
@@ -207,9 +184,6 @@ namespace PhoneRepairShop
                 }
             }
         }
-
         #endregion
-
-
     }
 }

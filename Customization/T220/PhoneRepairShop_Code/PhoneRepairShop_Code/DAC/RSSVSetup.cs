@@ -6,16 +6,16 @@ using PX.Objects.CS;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Repair Work Order Preferences")]
     [PXPrimaryGraph(typeof(RSSVSetupMaint))]
+    [PXCacheName("Repair Work Order Preferences")]
     public class RSSVSetup : IBqlTable
     {
         #region NumberingID
-        [PXDBString(10, IsUnicode = true)]
         [PXDefault("WORKORDER")]
-        [PXUIField(DisplayName = "Numbering Sequence")]
         [PXSelector(typeof(Numbering.numberingID),
-            DescriptionField = typeof(Numbering.descr))]
+          DescriptionField = typeof(Numbering.descr))]
+        [PXDBString(10, IsUnicode = true)]
+        [PXUIField(DisplayName = "Numbering Sequence")]
         public virtual string NumberingID { get; set; }
         public abstract class numberingID : PX.Data.BQL.BqlString.Field<numberingID> { }
         #endregion
@@ -42,45 +42,56 @@ namespace PhoneRepairShop
         public abstract class prepaymentPercent : PX.Data.BQL.BqlDecimal.Field<prepaymentPercent> { }
         #endregion
 
+        #region CreatedDateTime
+        [PXDBCreatedDateTime()]
+        public virtual DateTime? CreatedDateTime { get; set; }
+        public abstract class createdDateTime :
+            PX.Data.BQL.BqlDateTime.Field<createdDateTime>
+        { }
+        #endregion
+
         #region CreatedByID
         [PXDBCreatedByID()]
         public virtual Guid? CreatedByID { get; set; }
-        public abstract class createdByID : PX.Data.BQL.BqlGuid.Field<createdByID> { }
+        public abstract class createdByID :
+            PX.Data.BQL.BqlGuid.Field<createdByID>
+        { }
         #endregion
 
         #region CreatedByScreenID
         [PXDBCreatedByScreenID()]
         public virtual string CreatedByScreenID { get; set; }
-        public abstract class createdByScreenID : PX.Data.BQL.BqlString.Field<createdByScreenID> { }
-        #endregion
-
-        #region CreatedDateTime
-        [PXDBCreatedDateTime()]
-        public virtual DateTime? CreatedDateTime { get; set; }
-        public abstract class createdDateTime : PX.Data.BQL.BqlDateTime.Field<createdDateTime> { }
-        #endregion
-
-        #region LastModifiedByID
-        [PXDBLastModifiedByID()]
-        public virtual Guid? LastModifiedByID { get; set; }
-        public abstract class lastModifiedByID : PX.Data.BQL.BqlGuid.Field<lastModifiedByID> { }
-        #endregion
-
-        #region LastModifiedByScreenID
-        [PXDBLastModifiedByScreenID()]
-        public virtual string LastModifiedByScreenID { get; set; }
-        public abstract class lastModifiedByScreenID : PX.Data.BQL.BqlString.Field<lastModifiedByScreenID> { }
+        public abstract class createdByScreenID :
+            PX.Data.BQL.BqlString.Field<createdByScreenID>
+        { }
         #endregion
 
         #region LastModifiedDateTime
         [PXDBLastModifiedDateTime()]
         public virtual DateTime? LastModifiedDateTime { get; set; }
-        public abstract class lastModifiedDateTime : PX.Data.BQL.BqlDateTime.Field<lastModifiedDateTime> { }
+        public abstract class lastModifiedDateTime :
+            PX.Data.BQL.BqlDateTime.Field<lastModifiedDateTime>
+        { }
+        #endregion
+
+        #region LastModifiedByID
+        [PXDBLastModifiedByID()]
+        public virtual Guid? LastModifiedByID { get; set; }
+        public abstract class lastModifiedByID :
+            PX.Data.BQL.BqlGuid.Field<lastModifiedByID>
+        { }
+        #endregion
+
+        #region LastModifiedByScreenID
+        [PXDBLastModifiedByScreenID()]
+        public virtual string LastModifiedByScreenID { get; set; }
+        public abstract class lastModifiedByScreenID :
+            PX.Data.BQL.BqlString.Field<lastModifiedByScreenID>
+        { }
         #endregion
 
         #region Tstamp
         [PXDBTimestamp()]
-        [PXUIField(DisplayName = "Tstamp")]
         public virtual byte[] Tstamp { get; set; }
         public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
         #endregion
