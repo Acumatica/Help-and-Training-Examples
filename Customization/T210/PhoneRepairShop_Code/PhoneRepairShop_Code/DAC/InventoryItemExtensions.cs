@@ -27,13 +27,11 @@ namespace PX.Objects.IN
     {
         #region UsrRepairItem
         [PXDBBool]
-        [PXUIField(DisplayName="Repair Item")]
+        [PXUIField(DisplayName = "Repair Item")]
         [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
-
         public bool? UsrRepairItem { get; set; }
         public abstract class usrRepairItem : PX.Data.BQL.BqlBool.Field<usrRepairItem> { }
         #endregion
-
 
         #region UsrRepairItemType
         [PXDBString(2, IsFixed = true)]
@@ -57,7 +55,7 @@ namespace PX.Objects.IN
         [PXUIField(DisplayName = "Repair Item Type", Enabled = false)]
         public string UsrRepairItemType { get; set; }
         public abstract class usrRepairItemType :
-          PX.Data.BQL.BqlString.Field<usrRepairItemType>
+            PX.Data.BQL.BqlString.Field<usrRepairItemType>
         { }
         #endregion
     }
