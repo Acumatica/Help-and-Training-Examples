@@ -13,7 +13,6 @@ namespace PhoneRepairShop
         public const string High = "H";
     }
 
-
     //Constants for the repair item types
     public static class RepairItemTypeConstants
     {

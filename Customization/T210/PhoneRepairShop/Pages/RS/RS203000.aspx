@@ -34,7 +34,7 @@
 									<px:PXGridColumn CommitChanges="True" Type="CheckBox" DataField="Required" Width="80" ></px:PXGridColumn>
 									<px:PXGridColumn CommitChanges="True" DataField="InventoryID" Width="70" ></px:PXGridColumn>
 									<px:PXGridColumn DataField="InventoryID_description" Width="280" ></px:PXGridColumn>
-									<px:PXGridColumn DataField="BasePrice" Width="100" ></px:PXGridColumn>
+									<px:PXGridColumn CommitChanges="True" DataField="BasePrice" Width="100" ></px:PXGridColumn>
 									<px:PXGridColumn CommitChanges="True" Type="CheckBox" DataField="IsDefault" Width="80" ></px:PXGridColumn></Columns>
 								<RowTemplate>
 									<px:PXSegmentMask runat="server" ID="CstPXSegmentMask6" DataField="InventoryID" AutoRefresh="True" ></px:PXSegmentMask></RowTemplate></px:PXGridLevel></Levels>
@@ -43,20 +43,20 @@
 			</px:PXTabItem>
 			<px:PXTabItem Text="Labor">
 				<Template>
-					<px:PXGrid runat="server" ID="CstPXGrid7" SkinID="Details" Width="100%">
+					<px:PXGrid Width="100%" SkinID="Details" runat="server" ID="CstPXGrid7">
 						<Levels>
 							<px:PXGridLevel DataMember="Labor" >
 								<Columns>
 									<px:PXGridColumn DataField="InventoryID" Width="70" CommitChanges="True" ></px:PXGridColumn>
 									<px:PXGridColumn DataField="InventoryID_InventoryItem_descr" Width="280" ></px:PXGridColumn>
-									<px:PXGridColumn DataField="DefaultPrice" Width="100" ></px:PXGridColumn>
+									<px:PXGridColumn CommitChanges="True" DataField="DefaultPrice" Width="100" ></px:PXGridColumn>
 									<px:PXGridColumn CommitChanges="True" DataField="Quantity" Width="100" ></px:PXGridColumn>
 									<px:PXGridColumn DataField="ExtPrice" Width="100" ></px:PXGridColumn></Columns></px:PXGridLevel></Levels>
 						<AutoSize Enabled="True" ></AutoSize></px:PXGrid></Template>
 			</px:PXTabItem>
 			<px:PXTabItem Text="Warranty" >
 				<Template>
-					<px:PXGrid runat="server" ID="CstPXGrid8" SkinID="Details" Width="100%">
+					<px:PXGrid Width="100%" SkinID="Details" runat="server" ID="CstPXGrid8">
 						<Levels>
 							<px:PXGridLevel DataMember="Warranty" >
 								<Columns>
@@ -65,7 +65,7 @@
 									<px:PXGridColumn DataField="ContractDuration" Width="70" />
 									<px:PXGridColumn DataField="ContractDurationType" Width="70" />
 									<px:PXGridColumn DataField="ContractType" Width="70" /></Columns></px:PXGridLevel></Levels>
-						<AutoSize Enabled="True" /></px:PXGrid></Template></px:PXTabItem></Items>
+						<AutoSize Enabled="True" ></AutoSize></px:PXGrid></Template></px:PXTabItem></Items>
 		<AutoSize Container="Window" Enabled="True" MinHeight="150" ></AutoSize>
 	</px:PXTab>
 </asp:Content>

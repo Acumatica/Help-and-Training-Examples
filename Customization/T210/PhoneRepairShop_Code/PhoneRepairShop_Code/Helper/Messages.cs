@@ -1,13 +1,13 @@
-﻿using System;
+﻿using PX.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PX.Common;
 
 namespace PhoneRepairShop
 {
-    [PXLocalizable]
+    [PXLocalizable()]
     public static class Messages
     {
         //Complexity of repair
