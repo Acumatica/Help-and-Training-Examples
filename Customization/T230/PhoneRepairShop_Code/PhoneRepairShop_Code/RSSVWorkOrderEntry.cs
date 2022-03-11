@@ -62,6 +62,7 @@ namespace PhoneRepairShop
           MapViewRights = PXCacheRights.Select)]
         protected virtual IEnumerable releaseFromHold(PXAdapter adapter) => adapter.Get();
 
+
         public PXAction<RSSVWorkOrder> AssignToMe;
         [PXButton]
         [PXUIField(DisplayName = "Assign to Me", Enabled = true)]
@@ -82,7 +83,7 @@ namespace PhoneRepairShop
 
 
         public PXAction<RSSVWorkOrder> UpdateItemPrices;
-        [PXButton (DisplayOnMainToolbar = false)]
+        [PXButton(DisplayOnMainToolbar = false)]
         [PXUIField(DisplayName = "Update Prices", Enabled = true)]
         protected virtual void updateItemPrices()
         {
@@ -209,6 +210,7 @@ namespace PhoneRepairShop
         #endregion
 
         #region Event Handlers 
+
 
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
@@ -352,6 +354,7 @@ namespace PhoneRepairShop
                 }
             }
         }
+
 
         // Manage visibility and availability of the actions.
         protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)

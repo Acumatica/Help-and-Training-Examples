@@ -7,10 +7,10 @@ using PX.Common;
 
 namespace PhoneRepairShop
 {
-    [PXLocalizable()]
+    [PXLocalizable]
     public static class Messages
     {
-        //Complexity of repair
+        //Complexity of repair and work order priorities
         public const string High = "High";
         public const string Medium = "Medium";
         public const string Low = "Low";
@@ -22,14 +22,6 @@ namespace PhoneRepairShop
         public const string BackCover = "Back Cover";
         public const string Motherboard = "Motherboard";
 
-        //Messages
-        public const string StockItemIncorrectRepairItemType =
-            "This stock item has a repair item type that differs from {0}.";
-        public const string ItemIsStock = "This item is a stock item.";
-        public const string DefaultWarrantyCanNotBeDeleted =
-            "The default warranty cannot be deleted.";
-
-
         //Work order statuses
         public const string OnHold = "On Hold";
         public const string PendingPayment = "Pending Payment";
@@ -38,14 +30,18 @@ namespace PhoneRepairShop
         public const string Completed = "Completed";
         public const string Paid = "Paid";
 
-
+        //Messages
+        public const string StockItemIncorrectRepairItemType =
+            "This stock item has a repair item type that differs from {0}.";
+        public const string ItemIsStock = "This item is a stock item.";
+        public const string DefaultWarrantyCanNotBeDeleted =
+            "The default warranty cannot be deleted.";
         public const string QuantityCannotBeNegative =
-            "The value in the Quantity column cannot be negative.";
+          "The value in the Quantity column cannot be negative.";
         public const string QuantityToSmall = @"The value in the Quantity column 
             has been corrected to the minimum possible value.";
-
-
         public const string PriorityTooLow =
-            @"The priority must be at least Medium for the repair service that requires preliminary check.";
+            @"The priority must be at least Medium for 
+            the repair service that requires preliminary check.";
     }
 }

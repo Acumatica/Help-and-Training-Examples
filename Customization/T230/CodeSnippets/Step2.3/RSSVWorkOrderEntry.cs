@@ -44,8 +44,7 @@ namespace PhoneRepairShop
 
 ...
 
-        // Make the Assign to Me action visible only for orders with
-        // the Ready for Assignment status and available if Assignee is not the current user
+        // Manage visibility and availability of the actions.
         protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
         {
             RSSVWorkOrder row = e.Row;

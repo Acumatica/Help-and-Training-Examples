@@ -1,6 +1,6 @@
 ﻿<SharedFilter>
     <data-set>
-        <relations format-version="3" relations-version="20200713" main-table="FilterHeader" file-name="(ScreenID)-(FilterName)">
+        <relations format-version="3" relations-version="20210719" main-table="FilterHeader" file-name="(ScreenID)-(FilterName)">
             <link from="FilterRow (FilterID)" to="FilterHeader (FilterID)" />
             <link from="FilterHeader (NoteID)" to="Note (NoteID)" type="Note" />
             <link from="FilterHeader (NoteID)" to="FilterHeaderKvExt (RecordID)" type="RowKvExt" />

@@ -214,10 +214,10 @@ namespace PhoneRepairShop.Workflows
 					))
 					.WithActions(actions =>
 					{
-						actions.Add(g => g.PutOnHold, c => c.WithCategory(commonCategories.Processing, g => g.ReleaseFromHold));
-						actions.Add(g => g.ReleaseFromHold, c => c.WithCategory(commonCategories.Processing));
-						actions.Add(g => g.Assign, c => c.WithCategory(commonCategories.Processing, g => g.PutOnHold));
-						actions.Add(g => g.Complete, c => c.WithCategory(commonCategories.Processing, g => g.Assign)
+						actions.Add(g => g.PutOnHold, c => c.WithCategory(processingCategory, g => g.ReleaseFromHold));
+						actions.Add(g => g.ReleaseFromHold, c => c.WithCategory(processingCategory));
+						actions.Add(g => g.Assign, c => c.WithCategory(processingCategory, g => g.PutOnHold));
+						actions.Add(g => g.Complete, c => c.WithCategory(processingCategory, g => g.Assign)
 							.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.dateCompleted>(f => f.SetFromToday())));
 					})
 					.WithHandlers(handlers =>
