@@ -1,0 +1,1975 @@
+{
+	"info": {
+		"_postman_id": "1d3cf88c-f029-4e10-b623-32eb39e7743a",
+		"name": "MyStoreIntegration_DataManipulation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Prerequisites",
+			"item": [
+				{
+					"name": "Requesting token manually",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "api",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "8B12B2E7-8236-5471-9947-343DEDAD1817@MyStore",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "1oiJiL6AoE9LWiBWTMfJOQ",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost/MyStoreInstance/identity/connect/token",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"identity",
+								"connect",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Requesting token manually",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "api",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "8B12B2E7-8236-5471-9947-343DEDAD1817@MyStore",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "1oiJiL6AoE9LWiBWTMfJOQ",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/identity/connect/token",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"identity",
+										"connect",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-store, no-cache, max-age=0, private"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Content-Length",
+									"value": "91"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=C34018A62898D39D11EB7AAFBE1D1E37; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requeststat=+st:398+sc:~/identity/connect/token+start:637502148802386937+tg:; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 01 Mar 2021 17:01:20 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"74a77d2b92c2afca11d7b1078b201f8f\",\n    \"expires_in\": 3600,\n    \"token_type\": \"Bearer\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Signing out from Acumatica ERP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/MyStoreInstance/entity/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Signing out from Acumatica ERP",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost/MyStoreInstance/entity/auth/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Thu, 04-Mar-2021 17:02:06 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Thu, 04-Mar-2021 17:02:06 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": ".ASPXAUTH=; expires=Mon, 11-Oct-1999 20:00:00 GMT; path=/; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "ASP.NET_SessionId=; expires=Sun, 01-Mar-2020 17:02:06 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Thu, 04-Mar-2021 17:02:06 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": ".ASPXAUTH=; expires=Mon, 11-Oct-1999 20:00:00 GMT; path=/; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "ASP.NET_SessionId=; expires=Sun, 01-Mar-2020 17:02:06 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=C34018A62898D39D11EB7AAFD856CC32; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requeststat=+st:663+sc:~/entity/auth/logout+start:637502149258668518+tg:; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 01 Mar 2021 17:02:06 GMT"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Part 1: Creation of Records",
+			"item": [
+				{
+					"name": "Lesson 1.1: Creating a Shipment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/Shipment?$select=Type,ShipmentNbr,Status,Details/InventoryID&$expand=Details",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"Default",
+								"20.200.001",
+								"Shipment"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "Type,ShipmentNbr,Status,Details/InventoryID"
+								},
+								{
+									"key": "$expand",
+									"value": "Details"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Lesson 1.1: Creating a Shipment",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\n\t\t}\n\t]\n}"
+								},
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/Shipment?$select=Type,ShipmentNbr,Status,Details/InventoryID&$expand=Details",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"20.200.001",
+										"Shipment"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "Type,ShipmentNbr,Status,Details/InventoryID"
+										},
+										{
+											"key": "$expand",
+											"value": "Details"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Thu, 04-Mar-2021 17:23:06 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Thu, 04-Mar-2021 17:23:06 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=C34018A62898D39D11EB7AB2C8DA354E; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requeststat=+st:47575+sc:~/entity/default/20.200.001/shipment+start:637502161867443150+tg:; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 01 Mar 2021 17:23:54 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "791"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"5b1037da-b27a-eb11-9dd3-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"CustomerID\": {\n        \"value\": \"C000000003\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"601037da-b27a-eb11-9dd3-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000004\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {}\n        },\n        {\n            \"id\": \"38c554e0-b27a-eb11-9dd3-9828a61840c3\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"CONGRILL\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000004\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {}\n        },\n        {\n            \"id\": \"3ac554e0-b27a-eb11-9dd3-9828a61840c3\",\n            \"rowNumber\": 3,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"AAMACHINE1\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000006\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {}\n        }\n    ],\n    \"ShipmentNbr\": {\n        \"value\": \"000008\"\n    },\n    \"Status\": {\n        \"value\": \"On Hold\"\n    },\n    \"Type\": {\n        \"value\": \"Shipment\"\n    },\n    \"WarehouseID\": {\n        \"value\": \"MAIN\"\n    },\n    \"custom\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Lesson 1.2: Creating a Stock Item with Attributes",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"InventoryID\":{\"value\":\"BASESERV1\"},\n\t\"Description\":{\"value\":\"Baseline level of performance\"},\n\t\"ItemClass\":{\"value\":\"STOCKITEM\"},\n\t\"Attributes\":[\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"Operation System\"},\n\t\t\t\"Value\":{\"value\":\"Windows\"}\n\t\t},\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"SOFTVER\"},\n\t\t\t\"Value\":{\"value\":\"Server 2012 R2\"}\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/StockItem?$select=InventoryID,Attributes/AttributeDescription,Attributes/Value&$expand=Attributes",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"Default",
+								"20.200.001",
+								"StockItem"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "InventoryID,Attributes/AttributeDescription,Attributes/Value"
+								},
+								{
+									"key": "$expand",
+									"value": "Attributes"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Lesson 1.2: Creating a Stock Item with Attributes",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"InventoryID\":{\"value\":\"BASESERV1\"},\n\t\"Description\":{\"value\":\"Baseline level of performance\"},\n\t\"ItemClass\":{\"value\":\"STOCKITEM\"},\n\t\"Attributes\":[\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"Operation System\"},\n\t\t\t\"Value\":{\"value\":\"Windows\"}\n\t\t},\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"SOFTVER\"},\n\t\t\t\"Value\":{\"value\":\"Server 2012 R2\"}\n\t\t}\n\t]\n}"
+								},
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/StockItem?$select=InventoryID,Attributes/AttributeDescription,Attributes/Value&$expand=Attributes",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"20.200.001",
+										"StockItem"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "InventoryID,Attributes/AttributeDescription,Attributes/Value"
+										},
+										{
+											"key": "$expand",
+											"value": "Attributes"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Mon, 08-Mar-2021 10:40:55 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=73; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Mon, 08-Mar-2021 10:40:55 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=73; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=C34018A62898D49D11EB7D9F3E20BF64; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requeststat=+st:4878+sc:~/entity/default/20.200.001/stockitem+start:637505376550450213+tg:; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Mar 2021 10:40:59 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "633"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"68bf203e-9f7d-eb11-9dd4-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"Attributes\": [\n        {\n            \"id\": \"af766044-9f7d-eb11-9dd4-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"AttributeDescription\": {\n                \"value\": \"Operation System\"\n            },\n            \"AttributeID\": {\n                \"value\": \"OPERATSYST\"\n            },\n            \"Value\": {\n                \"value\": \"Windows\"\n            },\n            \"custom\": {}\n        },\n        {\n            \"id\": \"b0766044-9f7d-eb11-9dd4-9828a61840c3\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"AttributeDescription\": {\n                \"value\": \"Version of Software\"\n            },\n            \"AttributeID\": {\n                \"value\": \"SOFTVER\"\n            },\n            \"Value\": {\n                \"value\": \"Server 2012 R2\"\n            },\n            \"custom\": {}\n        }\n    ],\n    \"Description\": {\n        \"value\": \"Baseline level of performance\"\n    },\n    \"InventoryID\": {\n        \"value\": \"BASESERV1\"\n    },\n    \"ItemClass\": {\n        \"value\": \"STOCKITEM\"\n    },\n    \"custom\": {}\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Part 2: Update of Records",
+			"item": [
+				{
+					"name": "Lesson 2.1: Updating a Customer Account",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"CustomerClass\":{\"value\":\"INTL\"},\r\n\t\"BillingContactOverride\":{\"value\":true},\r\n\t\"BillingContact\":{\r\n\t\t\"Email\":{\"value\":\"green@jevy-comp.con\"},\r\n\t\t\"Attention\":{\"value\":\"Mr. Jack Green\"},\r\n\t\t\"JobTitle\":{\"value\":\"\"}\r\n\t}\r\n}\r\n"
+						},
+						"url": {
+							"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/Customer?$filter=MainContact/Email eq 'info@jevy-comp.con'&$expand=MainContact,BillingContact&$select=CustomerID,CustomerClass,BillingContact/Email",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"Default",
+								"20.200.001",
+								"Customer"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "MainContact/Email eq 'info@jevy-comp.con'"
+								},
+								{
+									"key": "$expand",
+									"value": "MainContact,BillingContact"
+								},
+								{
+									"key": "$select",
+									"value": "CustomerID,CustomerClass,BillingContact/Email"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Lesson 2.1: Updating a Customer Account",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"CustomerClass\":{\"value\":\"INTL\"},\r\n\t\"BillingContactOverride\":{\"value\":true},\r\n\t\"BillingContact\":{\r\n\t\t\"Email\":{\"value\":\"green@jevy-comp.con\"},\r\n\t\t\"Attention\":{\"value\":\"Mr. Jack Green\"},\r\n\t\t\"JobTitle\":{\"value\":\"\"}\r\n\t}\r\n}\r\n"
+								},
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/Customer?$filter=MainContact/Email eq 'info@jevy-comp.con'&$expand=MainContact,BillingContact&$select=CustomerID,CustomerClass,BillingContact/Email",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"20.200.001",
+										"Customer"
+									],
+									"query": [
+										{
+											"key": "$filter",
+											"value": "MainContact/Email eq 'info@jevy-comp.con'"
+										},
+										{
+											"key": "$expand",
+											"value": "MainContact,BillingContact"
+										},
+										{
+											"key": "$select",
+											"value": "CustomerID,CustomerClass,BillingContact/Email"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 14:32:04 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 14:32:04 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=C34018A62898D39D11EB7B640E707CA2; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requeststat=+st:2812+sc:~/entity/default/20.200.001/customer+start:637502923244131106+tg:; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Mar 2021 14:32:07 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "404"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"fc3d3c1c-8765-e411-a267-e06995c86014\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"BillingContact\": {\n        \"id\": \"8e21ef59-def2-4f9c-a790-df8ba3d1a69c\",\n        \"rowNumber\": 1,\n        \"note\": null,\n        \"Attention\": {\n            \"value\": \"Mr. Jack Green\"\n        },\n        \"Email\": {\n            \"value\": \"green@jevy-comp.con\"\n        },\n        \"JobTitle\": {\n            \"value\": \"\"\n        },\n        \"custom\": {}\n    },\n    \"BillingContactOverride\": {\n        \"value\": true\n    },\n    \"CustomerClass\": {\n        \"value\": \"INTL\"\n    },\n    \"CustomerID\": {\n        \"value\": \"C000000003\"\n    },\n    \"custom\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Lesson 2.2: Retrieving the Sales Order with Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/SalesOrder?$expand=Details&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"Default",
+								"20.200.001",
+								"SalesOrder"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Details"
+								},
+								{
+									"key": "$filter",
+									"value": "OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'"
+								},
+								{
+									"key": "$select",
+									"value": "OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Lesson 2.2: Retrieving the Sales Order with Details",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/SalesOrder?$expand=Details&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"20.200.001",
+										"SalesOrder"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Details"
+										},
+										{
+											"key": "$filter",
+											"value": "OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'"
+										},
+										{
+											"key": "$select",
+											"value": "OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 16:23:58 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Mar 2021 16:23:59 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "679"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"7313e950-7381-e511-80c0-00155d012302\",\n        \"rowNumber\": 1,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO248-563-06\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"08731a64-7381-e511-80c0-00155d012302\",\n                \"rowNumber\": 1,\n                \"note\": {\n                    \"value\": \"\"\n                },\n                \"InventoryID\": {\n                    \"value\": \"CONGRILL\"\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {}\n            },\n            {\n                \"id\": \"f4a7e172-7381-e511-80c0-00155d012302\",\n                \"rowNumber\": 2,\n                \"note\": {\n                    \"value\": \"\"\n                },\n                \"InventoryID\": {\n                    \"value\": \"AALEGO500\"\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {}\n            },\n            {\n                \"id\": \"091b0d7f-7381-e511-80c0-00155d012302\",\n                \"rowNumber\": 3,\n                \"note\": {\n                    \"value\": \"\"\n                },\n                \"InventoryID\": {\n                    \"value\": \"CONTABLE1\"\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {}\n            }\n        ],\n        \"OrderNbr\": {\n            \"value\": \"000003\"\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {}\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Lesson 2.2: Updating Detail Lines",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"OrderType\":{\"value\":\"SO\"},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"08731a64-7381-e511-80c0-00155d012302\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"f4a7e172-7381-e511-80c0-00155d012302\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID&$expand=Details",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"Default",
+								"20.200.001",
+								"SalesOrder"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID"
+								},
+								{
+									"key": "$expand",
+									"value": "Details"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Lesson 2.2: Updating Detail Lines",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"OrderType\":{\"value\":\"SO\"},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"08731a64-7381-e511-80c0-00155d012302\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"f4a7e172-7381-e511-80c0-00155d012302\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
+								},
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID&$expand=Details",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"20.200.001",
+										"SalesOrder"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID"
+										},
+										{
+											"key": "$expand",
+											"value": "Details"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 16:29:32 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 16:29:32 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=C34018A62898D39D11EB7B7477376C69; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requeststat=+st:5237+sc:~/entity/default/20.200.001/salesorder+start:637502993721475817+tg:; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Mar 2021 16:29:37 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "536"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"7313e950-7381-e511-80c0-00155d012302\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"f4a7e172-7381-e511-80c0-00155d012302\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"OrderQty\": {\n                \"value\": 5\n            },\n            \"custom\": {}\n        },\n        {\n            \"id\": \"091b0d7f-7381-e511-80c0-00155d012302\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"CONTABLE1\"\n            },\n            \"OrderQty\": {\n                \"value\": 2\n            },\n            \"custom\": {}\n        }\n    ],\n    \"Hold\": {\n        \"value\": false\n    },\n    \"OrderedQty\": {\n        \"value\": 7\n    },\n    \"OrderNbr\": {\n        \"value\": \"000003\"\n    },\n    \"OrderTotal\": {\n        \"value\": 295\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"custom\": {}\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Part 3: Execution of Actions",
+			"item": [
+				{
+					"name": "Lesson 3.1: Release from Hold of an Invoice",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Type\":{\"value\":\"Invoice\"},\r\n    \"ReferenceNbr\":{\"value\":\"INV000046\"},\r\n    \"Hold\":{\"value\":false}\r\n}"
+						},
+						"url": {
+							"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/SalesInvoice",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"Default",
+								"20.200.001",
+								"SalesInvoice"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Lesson 3.1: Release from Hold of an Invoice",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Type\":{\"value\":\"Invoice\"},\r\n    \"ReferenceNbr\":{\"value\":\"INV000046\"},\r\n    \"Hold\":{\"value\":false}\r\n}"
+								},
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/SalesInvoice",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"20.200.001",
+										"SalesInvoice"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 17:53:36 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 17:53:36 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=C34018A62898D39D11EB7B8035EBBE38; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requeststat=+st:3512+sc:~/entity/default/20.200.001/salesinvoice+start:637503044165604536+tg:; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Mar 2021 17:53:40 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "722"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"5157ccca-3204-e911-b818-00155d408001\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Amount\": {\n        \"value\": 585\n    },\n    \"Balance\": {\n        \"value\": 585\n    },\n    \"CashDiscount\": {\n        \"value\": 0\n    },\n    \"CreditHold\": {\n        \"value\": false\n    },\n    \"Currency\": {\n        \"value\": \"USD\"\n    },\n    \"CustomerID\": {\n        \"value\": \"C000000003\"\n    },\n    \"CustomerOrder\": {\n        \"value\": \"SO145-689-90\"\n    },\n    \"Date\": {\n        \"value\": \"2018-12-20T00:00:00+03:00\"\n    },\n    \"Description\": {},\n    \"DetailTotal\": {\n        \"value\": 585\n    },\n    \"DiscountTotal\": {\n        \"value\": 0\n    },\n    \"DueDate\": {\n        \"value\": \"2019-01-19T00:00:00+03:00\"\n    },\n    \"FreightPrice\": {\n        \"value\": 0\n    },\n    \"Hold\": {\n        \"value\": false\n    },\n    \"PaymentTotal\": {\n        \"value\": 0\n    },\n    \"Project\": {\n        \"value\": \"X\"\n    },\n    \"ReferenceNbr\": {\n        \"value\": \"INV000046\"\n    },\n    \"Status\": {\n        \"value\": \"Balanced\"\n    },\n    \"TaxTotal\": {\n        \"value\": 0\n    },\n    \"Type\": {\n        \"value\": \"Invoice\"\n    },\n    \"custom\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Lesson 3.1: Invoking Release of an Invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"entity\":{\r\n\t\t\"Type\":{\"value\":\"Invoice\"},\r\n\t\t\"ReferenceNbr\":{\"value\":\"INV000046\"}\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/SalesInvoice/ReleaseSalesInvoice",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"Default",
+								"20.200.001",
+								"SalesInvoice",
+								"ReleaseSalesInvoice"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Lesson 3.1: Invoking Release of an Invoice",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"entity\":{\r\n\t\t\"Type\":{\"value\":\"Invoice\"},\r\n\t\t\"ReferenceNbr\":{\"value\":\"INV000046\"}\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/SalesInvoice/ReleaseSalesInvoice",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"20.200.001",
+										"SalesInvoice",
+										"ReleaseSalesInvoice"
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Location",
+									"value": "/MyStoreInstance/entity/Default/20.200.001/SalesInvoice/ReleaseSalesInvoice/status/389fbc0c-7fc1-42f9-a2d2-822e15959f15"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 18:06:36 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 18:06:36 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=C34018A62898D39D11EB7B8206C91C26; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requeststat=+st:2020+sc:~/entity/default/20.200.001/salesinvoice/releasesalesinvoice+start:637503051964740262+tg:; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Mar 2021 18:06:38 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Lesson 3.1: Retrieving the Status of the Release Operation",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/SalesInvoice/ReleaseSalesInvoice/status/389fbc0c-7fc1-42f9-a2d2-822e15959f15",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"Default",
+								"20.200.001",
+								"SalesInvoice",
+								"ReleaseSalesInvoice",
+								"status",
+								"389fbc0c-7fc1-42f9-a2d2-822e15959f15"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Lesson 3.1: Retrieving the Status of the Release Operation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/SalesInvoice/ReleaseSalesInvoice/status/389fbc0c-7fc1-42f9-a2d2-822e15959f15",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"20.200.001",
+										"SalesInvoice",
+										"ReleaseSalesInvoice",
+										"status",
+										"389fbc0c-7fc1-42f9-a2d2-822e15959f15"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Location",
+									"value": "/MyStoreInstance/entity/Default/20.200.001/SalesInvoice/5157ccca-3204-e911-b818-00155d408001"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 18:07:06 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Mar 2021 18:07:06 GMT"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Lesson 3.1: Retrieving the Released Invoice",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/SalesInvoice/Invoice/INV000046?$select=ReferenceNbr,Type,Status",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"Default",
+								"20.200.001",
+								"SalesInvoice",
+								"Invoice",
+								"INV000046"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ReferenceNbr,Type,Status"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Lesson 3.1: Retrieving the Released Invoice",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/SalesInvoice/Invoice/INV000046?$select=ReferenceNbr,Type,Status",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"20.200.001",
+										"SalesInvoice",
+										"Invoice",
+										"INV000046"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "ReferenceNbr,Type,Status"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 18:12:24 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Mar 2021 18:12:25 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "181"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"5157ccca-3204-e911-b818-00155d408001\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"ReferenceNbr\": {\n        \"value\": \"INV000046\"\n    },\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"Type\": {\n        \"value\": \"Invoice\"\n    },\n    \"custom\": {}\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Part 4: Processing of Payments by Credit Cards",
+			"item": [
+				{
+					"name": "Lesson 4.1: Registering a Customer Credit Card",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"PaymentMethod\":{\"value\":\"VISA\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"CustomerProfileID\":{\"value\":\"1510928386\"},\n\t\"CashAccount\":{\"value\":\"102050MYST\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"Name\":{\"value\":\"Payment Profile ID\"},\n\t\t\t\"Value\":{\"value\":\"1516403307\"}\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/CustomerPaymentMethod?$select=CardAccountNbr,Details/Name&$expand=Details",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"Default",
+								"20.200.001",
+								"CustomerPaymentMethod"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "CardAccountNbr,Details/Name"
+								},
+								{
+									"key": "$expand",
+									"value": "Details"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Lesson 4.1: Registering a Customer Credit Card",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"PaymentMethod\":{\"value\":\"VISA\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"CustomerProfileID\":{\"value\":\"1510928386\"},\n\t\"CashAccount\":{\"value\":\"102050MYST\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"Name\":{\"value\":\"Payment Profile ID\"},\n\t\t\t\"Value\":{\"value\":\"1516403307\"}\n\t\t}\n\t]\n}"
+								},
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/CustomerPaymentMethod?$select=CardAccountNbr,Details/Name&$expand=Details",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"20.200.001",
+										"CustomerPaymentMethod"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "CardAccountNbr,Details/Name"
+										},
+										{
+											"key": "$expand",
+											"value": "Details"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 20:19:05 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 20:19:05 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=C34018A62898D39D11EB7B9488875E11; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requeststat=+st:3385+sc:~/entity/default/20.200.001/customerpaymentmethod+start:637503131450881169+tg:; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Mar 2021 20:19:08 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "438"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"195e8788-947b-eb11-9dd3-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"CardAccountNbr\": {\n        \"value\": \"VISA:****-****-****-0027\"\n    },\n    \"CashAccount\": {\n        \"value\": \"102050MYST\"\n    },\n    \"CustomerID\": {\n        \"value\": \"C000000003\"\n    },\n    \"CustomerProfileID\": {\n        \"value\": \"1510928386\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"1c5e8788-947b-eb11-9dd3-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Name\": {\n                \"value\": \"CCPID\"\n            },\n            \"Value\": {\n                \"value\": \"1516403307\"\n            },\n            \"custom\": {}\n        }\n    ],\n    \"PaymentMethod\": {\n        \"value\": \"VISA\"\n    },\n    \"custom\": {}\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Part 5: Attachment of Files and Notes",
+			"item": [
+				{
+					"name": "Lesson 5.1: Adding a Note to a Stock Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"InventoryID\":{\"value\":\"AALEGO500\"},\n\t\"note\": {\"value\": \"My note\"}\n}"
+						},
+						"url": {
+							"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/StockItem?$select=InventoryID",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"Default",
+								"20.200.001",
+								"StockItem"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "InventoryID"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Lesson 5.1: Adding a Note to a Stock Item",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"InventoryID\":{\"value\":\"AALEGO500\"},\n\t\"note\": {\"value\": \"My note\"}\n}"
+								},
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/StockItem?$select=InventoryID",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"20.200.001",
+										"StockItem"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "InventoryID"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 20:28:11 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 20:28:11 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=C34018A62898D39D11EB7B95CCC38739; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requeststat=+st:10729+sc:~/entity/default/20.200.001/stockitem+start:637503136890641849+tg:; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Mar 2021 20:28:19 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "134"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"cae53ce0-1614-e511-9b82-c86000dddf0b\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"My note\"\n    },\n    \"InventoryID\": {\n        \"value\": \"AALEGO500\"\n    },\n    \"custom\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Lesson 5.2: Attaching a File to a Stock Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": "/C:/Temp/T2MCRO.jpg"
+							}
+						},
+						"url": {
+							"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/StockItem/AALEGO500/files/T2MCRO.jpg",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"MyStoreInstance",
+								"entity",
+								"Default",
+								"20.200.001",
+								"StockItem",
+								"AALEGO500",
+								"files",
+								"T2MCRO.jpg"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Lesson 5.2: Attaching a File to a Stock Item",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "file",
+									"file": {
+										"src": "/C:/Temp/T2MCRO.jpg"
+									}
+								},
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/20.200.001/StockItem/AALEGO500/files/T2MCRO.jpg",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"20.200.001",
+										"StockItem",
+										"AALEGO500",
+										"files",
+										"T2MCRO.jpg"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Location",
+									"value": "/MyStoreInstance/entity/Default/20.200.001/files/25152045-df89-4c3f-bf84-bd68342ad0a8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 20:33:29 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 05-Mar-2021 20:33:29 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=C34018A62898D39D11EB7B968B7E6CCF; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requeststat=+st:1286+sc:~/entity/default/20.200.001/stockitem/aalego500/files/t2mcro.jpg+start:637503140090561359+tg:; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Mar 2021 20:33:30 GMT"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "clientSecret",
+				"value": "8xZkcLA_X9wMBoXjvcrrtw",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "2CC9CB98-1292-B2CE-2EEF-23844235E9B2@MyStore",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "123",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "MyStoreIntegration",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "api",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "password_credentials",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "body",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://localhost/MyStoreInstance/identity/connect/token",
+				"type": "string"
+			},
+			{
+				"key": "accessToken",
+				"value": "38330a4878b7030b138c32cfa3baa6f6",
+				"type": "string"
+			},
+			{
+				"key": "tokenType",
+				"value": "Bearer",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
