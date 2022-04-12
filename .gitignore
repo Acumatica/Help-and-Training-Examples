@@ -4,4 +4,11 @@
 *.ide-shm
 *.ide-wal
 obj
-bin
+/Customization/T200/PhoneRepairShop_Code/PhoneRepairShop_Code/bin/Debug
+/Customization/T210/PhoneRepairShop_Code/PhoneRepairShop_Code/bin/Debug
+/Customization/T220/PhoneRepairShop_Code/PhoneRepairShop_Code/bin/Debug
+/Customization/T230/PhoneRepairShop_Code/PhoneRepairShop_Code/bin/Debug
+/Customization/T240/PhoneRepairShop_Code/PhoneRepairShop_Code/bin/Debug
+/Customization/T250/PhoneRepairShop_Code/PhoneRepairShop_Code/bin/Debug
+/Customization/T270/PhoneRepairShop_Code/PhoneRepairShop_Code/bin/Debug
+/Customization/T280/PhoneRepairShop_Code/PhoneRepairShop_Code/bin/Debug
