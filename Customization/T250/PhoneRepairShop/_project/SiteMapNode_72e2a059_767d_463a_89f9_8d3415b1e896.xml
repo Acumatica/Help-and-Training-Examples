@@ -25,30 +25,20 @@
         </layout>
         <data>
             <SiteMap>
-                <row Position="1" Title="Stock Items" Url="~/Pages/IN/IN202500.aspx" ScreenID="IN202500" NodeID="f21272b4-6f90-4504-96fd-f825b085710b" ParentID="c45494a4-36f3-479f-b2de-d4fd01816970">
-                    <MUIScreen IsPortal="0" WorkspaceID="90e7422d-6a71-4c71-9cb7-e325344ae33d" Order="10" SubcategoryID="6d40b0b6-18f4-4139-adac-8ec8cb2a17ea">
+                <row Position="5961" Title="Repair Work Order Preferences" Url="~/Pages/RS/RS101000.aspx" ScreenID="RS101000" NodeID="72e2a059-767d-463a-89f9-8d3415b1e896" ParentID="00000000-0000-0000-0000-000000000000">
+                    <MUIScreen IsPortal="0" WorkspaceID="90e7422d-6a71-4c71-9cb7-e325344ae33d" Order="10" SubcategoryID="8a93637d-b507-4667-a739-adaf6fb5f7ea">
                         <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                     </MUIScreen>
-                    <MUIScreen IsPortal="0" WorkspaceID="6557c1c6-747e-45bb-9072-54f096598d61" Order="5" SubcategoryID="6d40b0b6-18f4-4139-adac-8ec8cb2a17ea">
-                        <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
-                    </MUIScreen>
-                    <MUITile IsPortal="0" TileID="a6b07e24-2d8e-46e4-934b-171acfe3a791" WorkspaceID="6557c1c6-747e-45bb-9072-54f096598d61" Order="40" Title="New Stock Item" Icon="work" Parameters="" />
                 </row>
             </SiteMap>
             <MUIWorkspace>
                 <row IsPortal="0" WorkspaceID="90e7422d-6a71-4c71-9cb7-e325344ae33d" Order="38" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
-                <row IsPortal="0" WorkspaceID="6557c1c6-747e-45bb-9072-54f096598d61" Order="284" Title="Inventory" Icon="local_shipping" AreaID="62cfd5dc-8eb9-4e92-bbcd-e0a99eb5e5df" ScreenID="WSIN0000" IsSystem="0">
-                    <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
-                </row>
             </MUIWorkspace>
             <MUISubcategory>
-                <row IsPortal="0" SubcategoryID="6d40b0b6-18f4-4139-adac-8ec8cb2a17ea" Order="128" Name="Profiles" Icon="" IsSystem="0" />
+                <row IsPortal="0" SubcategoryID="8a93637d-b507-4667-a739-adaf6fb5f7ea" Order="1391.813" Name="Preferences" Icon="" IsSystem="0" />
             </MUISubcategory>
-            <MUIArea>
-                <row IsPortal="0" AreaID="62cfd5dc-8eb9-4e92-bbcd-e0a99eb5e5df" Order="20" Name="Operations" />
-            </MUIArea>
         </data>
     </data-set>
 </SiteMapNode>
