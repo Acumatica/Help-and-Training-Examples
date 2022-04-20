@@ -29,12 +29,15 @@
 				<px:PXGridColumn DataField="ServiceID" Width="140" ></px:PXGridColumn>
 				<px:PXGridColumn DataField="DeviceID" Width="140" ></px:PXGridColumn>
 				<px:PXGridColumn DataField="Priority" Width="70" ></px:PXGridColumn>
+				<px:PXGridColumn CommitChanges="False" DataField="Assignee" Width="70" ></px:PXGridColumn>
+				<px:PXGridColumn DataField="DefaultAssignee" Width="70" ></px:PXGridColumn>
 				<px:PXGridColumn CommitChanges="True" DataField="AssignTo" Width="70" ></px:PXGridColumn>
 				<px:PXGridColumn DataField="NbrOfAssignedOrders" Width="100" ></px:PXGridColumn>
 				<px:PXGridColumn DataField="TimeWithoutAction" Width="100" ></px:PXGridColumn></Columns>
 			
 				<RowTemplate>
-					<px:PXSelector runat="server" ID="CstPXSelector7" DataField="AssignTo" AutoRefresh="True" ></px:PXSelector></RowTemplate></px:PXGridLevel>
+					<px:PXSelector runat="server" ID="CstPXSelector6" DataField="Assignee" AutoRefresh="True" ></px:PXSelector>
+								<px:PXSelector runat="server" ID="CstPXSelector7" DataField="AssignTo" AutoRefresh="True" /></RowTemplate></px:PXGridLevel>
 		</Levels>
 		<AutoSize Container="Window" Enabled="True" MinHeight="150" ></AutoSize>
 		<ActionBar >

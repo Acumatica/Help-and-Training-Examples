@@ -4,43 +4,37 @@ namespace PhoneRepairShop
     {
         public PXFilter<RSSVWorkOrderToAssignFilter> Filter;
         public PXCancel<RSSVWorkOrderToAssignFilter> Cancel;
-        public PXFilteredProcessing<RSSVWorkOrderToAssign, 
+        public PXFilteredProcessing<RSSVWorkOrder, 
             RSSVWorkOrderToAssignFilter,
-            Where<RSSVWorkOrderToAssign.status.IsEqual<
+            Where<RSSVWorkOrder.status.IsEqual<
                 RSSVWorkOrderWorkflow.States.readyForAssignment>.
-                And<RSSVWorkOrderToAssign.timeWithoutAction.IsGreaterEqual<
+                And<RSSVWorkOrder.timeWithoutAction.IsGreaterEqual<
                     RSSVWorkOrderToAssignFilter.timeWithoutAction.
                         FromCurrent>.
-                And<RSSVWorkOrderToAssign.priority.IsEqual<
+                And<RSSVWorkOrder.priority.IsEqual<
                     RSSVWorkOrderToAssignFilter.priority.FromCurrent>.
                     Or<RSSVWorkOrderToAssignFilter.priority.FromCurrent.
                         IsNull>>.
-                And<RSSVWorkOrderToAssign.serviceID.IsEqual<
+                And<RSSVWorkOrder.serviceID.IsEqual<
                     RSSVWorkOrderToAssignFilter.serviceID.FromCurrent>.
                     Or<RSSVWorkOrderToAssignFilter.serviceID.FromCurrent.
                         IsNull>>>>,
-            OrderBy<Desc<RSSVWorkOrderToAssign.timeWithoutAction, 
-                RSSVWorkOrderToAssign.priority.Desc>>> WorkOrders;
+            OrderBy<Desc<RSSVWorkOrder.timeWithoutAction, 
+                RSSVWorkOrder.priority.Desc>>> WorkOrders;
 
         public RSSVAssignProcess()
         {
             WorkOrders.SetProcessCaption("Assign");
             WorkOrders.SetProcessAllCaption("Assign All");
-            WorkOrders.SetProcessDelegate<RSSVWorkOrderEntry>(
-                delegate (RSSVWorkOrderEntry graph, RSSVWorkOrderToAssign order)
-                {
-                    try
-                    {
-                        graph.Clear();
-                        graph.AssignOrder(order, true);
-                    }
-                    catch (Exception e)
-                    {
-                        PXProcessing<RSSVWorkOrderToAssign>.SetError(e);
-                    }
-                });
-            PXUIFieldAttribute.SetEnabled<RSSVWorkOrderToAssign.assignee>(
+            PXUIFieldAttribute.SetEnabled<RSSVWorkOrder.assignee>(
                 WorkOrders.Cache, null, true);
+        }
+        
+        protected virtual void _(Events.RowSelected<
+            RSSVWorkOrderToAssignFilter> e) 
+        {
+            WorkOrders.SetProcessWorkflowAction<RSSVWorkOrderEntry>(
+                g => g.Assign);
         }
 
         ...

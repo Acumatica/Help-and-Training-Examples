@@ -1,11 +1,7 @@
 using System;
 using PX.Data;
-using PX.Data.BQL.Fluent;
 using PhoneRepairShop.Workflows;
-using PX.TM;
 using System.Collections.Generic;
-using PX.Data.BQL;
-using System.Linq;
 
 namespace PhoneRepairShop
 {
@@ -20,19 +16,14 @@ namespace PhoneRepairShop
         {
             WorkOrders.SetProcessCaption("Assign");
             WorkOrders.SetProcessAllCaption("Assign All");
-            WorkOrders.SetProcessDelegate<RSSVWorkOrderEntry>(
-            delegate (RSSVWorkOrderEntry graph, RSSVWorkOrder order)
-            {
-                try
-                {
-                    graph.Clear();
-                    graph.AssignOrder(order, true);
-                }
-                catch (Exception e)
-                {
-                    PXProcessing<RSSVWorkOrder>.SetError(e);
-                }
-            });
         }
+        
+        protected virtual void _(Events.RowSelected<RSSVWorkOrder> e) 
+        {
+            WorkOrders.SetProcessWorkflowAction<RSSVWorkOrderEntry>(
+                g => g.Assign);
+        }
+        
+        ...
     }
 }

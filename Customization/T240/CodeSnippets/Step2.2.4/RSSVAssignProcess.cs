@@ -19,7 +19,7 @@ namespace PhoneRepairShop
             if (e.Row == null) return;
             RSSVEmployeeWorkOrderQty employeeNbrOfOrders =
                 SelectFrom<RSSVEmployeeWorkOrderQty>.
-                Where<RSSVEmployeeWorkOrderQty.userid.IsEqual<@P.AsInt>>.
+                Where<RSSVEmployeeWorkOrderQty.userID.IsEqual<@P.AsInt>>.
                     View.Select(this, e.Row.AssignTo);
             if (employeeNbrOfOrders != null)
             {

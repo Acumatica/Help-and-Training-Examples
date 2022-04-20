@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using PX.Data;
 
 namespace PhoneRepairShop
@@ -7,10 +7,10 @@ namespace PhoneRepairShop
     [RSSVEmployeeWorkOrderQtyAccumulator]
     public class RSSVEmployeeWorkOrderQty : IBqlTable
     {
-        #region Userid
+        #region UserID
         [PXDBInt(IsKey = true)]
-        public virtual int? Userid { get; set; }
-        public abstract class userid : PX.Data.BQL.BqlInt.Field<userid> { }
+        public virtual int? UserID { get; set; }
+        public abstract class userID : PX.Data.BQL.BqlInt.Field<userID> { }
         #endregion
 
         #region NbrOfAssignedOrders

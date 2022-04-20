@@ -66,6 +66,7 @@ namespace PhoneRepairShop
           MapViewRights = PXCacheRights.Select)]
         protected virtual IEnumerable releaseFromHold(PXAdapter adapter) => adapter.Get();
 
+
         public PXAction<RSSVWorkOrder> AssignToMe;
         [PXButton]
         [PXUIField(DisplayName = "Assign to Me", Enabled = true)]
@@ -86,7 +87,7 @@ namespace PhoneRepairShop
 
 
         public PXAction<RSSVWorkOrder> UpdateItemPrices;
-        [PXButton (DisplayOnMainToolbar = false)]
+        [PXButton(DisplayOnMainToolbar = false)]
         [PXUIField(DisplayName = "Update Prices", Enabled = true)]
         protected virtual void updateItemPrices()
         {
@@ -213,6 +214,7 @@ namespace PhoneRepairShop
         #endregion
 
         #region Event Handlers 
+
 
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
@@ -357,6 +359,7 @@ namespace PhoneRepairShop
             }
         }
 
+
         // Manage visibility and availability of the actions.
         protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
         {
@@ -383,9 +386,10 @@ namespace PhoneRepairShop
 
         public PXAction<RSSVWorkOrder> Assign;
         [PXProcessButton]
-        [PXUIField(DisplayName = "Assign", Enabled = false)]
+        [PXUIField(DisplayName = "Assign")]
         protected virtual IEnumerable assign(PXAdapter adapter)
         {
+            bool isMassProcess = adapter.MassProcess;
             // Populate a local list variable.
             List<RSSVWorkOrder> list = new List<RSSVWorkOrder>();
             foreach (RSSVWorkOrder order in adapter.Get<RSSVWorkOrder>())
@@ -393,55 +397,90 @@ namespace PhoneRepairShop
                 list.Add(order);
             }
             // Trigger the Save action to save changes in the database.
-            Actions.PressSave();
-            PXLongOperation.StartOperation(this, delegate () {
-                var workOrderEntry = PXGraph.CreateInstance<RSSVWorkOrderEntry>();
-                foreach (RSSVWorkOrder workOrder in list)
-                {
-                    workOrderEntry.Clear();
-                    workOrderEntry.AssignOrder(workOrder);
-                }
+            Save.Press();
+
+            PXLongOperation.StartOperation(this, delegate ()
+            {
+                AssignOrders(list, isMassProcess);
             });
+
             // Return the local list variable.
             return list;
         }
 
-        public void AssignOrder(RSSVWorkOrder order, bool isMassProcess = false)
+        public static void AssignOrders(List<RSSVWorkOrder> list,
+            bool isMassProcess = false)
         {
-            WorkOrders.Current = order;
-            //If the assignee is not specified, specify the default employee.
-            if (order.Assignee == null)
+            // The result set to run the report on.
+            PXReportResultset assignedOrders =
+                new PXReportResultset(typeof(RSSVWorkOrder));
+
+            var workOrderEntry = PXGraph.CreateInstance<RSSVWorkOrderEntry>();
+            for (int i = 0; i < list.Count; i++)
             {
-                //Retrieve the record with the default setting
-                RSSVSetup setupRecord = AutoNumSetup.Current;
-                order.Assignee = setupRecord.DefaultEmployee;
+                if (list[i] == null)
+                    continue;
+
+                RSSVWorkOrder workOrder = list[i];
+                try
+                {
+                    workOrderEntry.Clear();
+                    workOrderEntry.WorkOrders.Current = workOrder;
+                    //If the assignee is not specified, 
+                    //specify the default employee.
+                    if (workOrder.Assignee == null)
+                    {
+                        //Retrieve the record with the default setting
+                        RSSVSetup setupRecord =
+                            workOrderEntry.AutoNumSetup.Current;
+                        workOrder.Assignee = setupRecord.DefaultEmployee;
+                    }
+
+                    //Update the work order in the cache.
+                    workOrderEntry.WorkOrders.Update(workOrder);
+
+                    //Modify the number of assigned orders for the employee.
+                    RSSVEmployeeWorkOrderQty employeeNbrOfOrders =
+                        new RSSVEmployeeWorkOrderQty();
+                    employeeNbrOfOrders.UserID = workOrder.Assignee;
+                    employeeNbrOfOrders.NbrOfAssignedOrders = 1;
+                    workOrderEntry.Quantity.Insert(employeeNbrOfOrders);
+
+                    //Trigger the Save action to save the changes 
+                    //to the database
+                    workOrderEntry.Actions.PressSave();
+
+                    //Display the message to indicate successful processing.
+                    if (isMassProcess)
+                    {
+                        PXProcessing<RSSVWorkOrder>.SetInfo(i,
+                            string.Format(Messages.WorkOrderAssigned,
+                            workOrder.OrderNbr));
+                    }
+
+                    // Add to the result set the order 
+                    // that has been successfully assigned.
+                    if (workOrder.Status == WorkOrderStatusConstants.Assigned)
+                    {
+                        assignedOrders.Add(workOrder);
+                    }
+                }
+                catch (Exception e)
+                {
+                    PXProcessing<RSSVWorkOrder>.SetError(i, e);
+                }
             }
-            //Change the status of the work order.
-            order.Status = WorkOrderStatusConstants.Assigned;
-            //Update the work order in the cache.
-            order = WorkOrders.Update(order);
 
-            //Modify the number of assigned orders for the employee.
-            RSSVEmployeeWorkOrderQty employeeNbrOfOrders =
-                new RSSVEmployeeWorkOrderQty();
-            employeeNbrOfOrders.Userid = order.Assignee;
-            employeeNbrOfOrders.NbrOfAssignedOrders = 1;
-            Quantity.Insert(employeeNbrOfOrders);
-
-            // Trigger the Save action to save the changes to the database
-            Actions.PressSave();
-
-            //Display the message to indicate successful processing.
-            if (isMassProcess)
+            if (assignedOrders.GetRowCount() > 0 && isMassProcess)
             {
-                PXProcessing.SetInfo(string.Format(Messages.WorkOrderAssigned,
-                    order.OrderNbr));
+                throw new PXReportRequiredException(assignedOrders, "RS601000",
+                                                    Messages.ReportRS601000Title);
             }
         }
 
         public PXAction<RSSVWorkOrder> Complete;
-        [PXButton(CommitChanges = true)]
-        [PXUIField(DisplayName = "Complete", Enabled = false)]
+        [PXButton]
+        [PXUIField(DisplayName = "Complete")]
         protected virtual IEnumerable complete(PXAdapter adapter)
         {
             // Get the current order from the cache
@@ -449,7 +488,7 @@ namespace PhoneRepairShop
             //Modify the number of assigned orders for the employee
             RSSVEmployeeWorkOrderQty employeeNbrOfOrders =
                 new RSSVEmployeeWorkOrderQty();
-            employeeNbrOfOrders.Userid = row.Assignee;
+            employeeNbrOfOrders.UserID = row.Assignee;
             employeeNbrOfOrders.NbrOfAssignedOrders = -1;
             Quantity.Insert(employeeNbrOfOrders);
             // Trigger the Save action to save changes in the database

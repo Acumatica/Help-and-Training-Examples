@@ -19,9 +19,10 @@ namespace PhoneRepairShop
 
         public PXAction<RSSVWorkOrder> Assign;
         [PXProcessButton]
-        [PXUIField(DisplayName = "Assign", Enabled = false)]
+        [PXUIField(DisplayName = "Assign")]
         protected virtual IEnumerable assign(PXAdapter adapter)
         {
+            bool isMassProcess = adapter.MassProcess;
             // Populate a local list variable.
             List<RSSVWorkOrder> list = new List<RSSVWorkOrder>();
             foreach (RSSVWorkOrder order in adapter.Get<RSSVWorkOrder>())
@@ -29,43 +30,60 @@ namespace PhoneRepairShop
                 list.Add(order);
             }
             // Trigger the Save action to save changes in the database.
-            Actions.PressSave();
+            Save.Press();
 
-            PXLongOperation.StartOperation(this, delegate () {
-                var workOrderEntry = PXGraph.CreateInstance<RSSVWorkOrderEntry>();
-                foreach (RSSVWorkOrder workOrder in list)
-                {
-                    workOrderEntry.Clear();
-                    workOrderEntry.AssignOrder(workOrder);
-                }
+            PXLongOperation.StartOperation(this, delegate ()
+            {
+            AssignOrders(list, isMassProcess);
             });
 
             // Return the local list variable.
             return list;
         }
 
-        public void AssignOrder(RSSVWorkOrder order, bool isMassProcess = false)
+        public static void AssignOrders(List<RSSVWorkOrder> list, 
+            bool isMassProcess = false)
         {
-            WorkOrders.Current = order;
-            //If the assignee is not specified, specify the default employee.
-            if (order.Assignee == null)
+            var workOrderEntry = PXGraph.CreateInstance<RSSVWorkOrderEntry>();
+            for (int i = 0; i < list.Count; i++)
             {
-                //Retrieve the record with the default setting
-                RSSVSetup setupRecord = AutoNumSetup.Current;
-                order.Assignee = setupRecord.DefaultEmployee;
-            }
-            //Change the status of the work order.
-            order.Status = WorkOrderStatusConstants.Assigned;
-            //Update the work order in the cache.
-            order = WorkOrders.Update(order);
+                if (list[i] == null)
+                    continue;
 
-            // Trigger the Save action to save the changes to the database
-            Actions.PressSave();
-            //Display the message to indicate successful processing.
-            if (isMassProcess)
-            {
-                PXProcessing.SetInfo(string.Format(Messages.WorkOrderAssigned,
-                    order.OrderNbr));
+                RSSVWorkOrder workOrder = list[i];
+                try
+                {
+                    workOrderEntry.Clear();
+                    workOrderEntry.WorkOrders.Current = workOrder;
+                    //If the assignee is not specified, 
+                    //specify the default employee.
+                    if (workOrder.Assignee == null)
+                    {
+                        //Retrieve the record with the default setting
+                        RSSVSetup setupRecord = 
+                            workOrderEntry.AutoNumSetup.Current;
+                        workOrder.Assignee = setupRecord.DefaultEmployee;
+                    }
+
+                    //Update the work order in the cache.
+                    workOrderEntry.WorkOrders.Update(workOrder);
+
+                    //Trigger the Save action to save the changes 
+                    //to the database
+                    workOrderEntry.Actions.PressSave();
+
+                    //Display the message to indicate successful processing.
+                    if (isMassProcess)
+                    {
+                        PXProcessing<RSSVWorkOrder>.SetInfo(i,
+                            string.Format(Messages.WorkOrderAssigned,
+                            workOrder.OrderNbr));
+                    }
+                }
+                catch (Exception e)
+                {
+                    PXProcessing<RSSVWorkOrder>.SetError(i, e);
+                }
             }
         }
 

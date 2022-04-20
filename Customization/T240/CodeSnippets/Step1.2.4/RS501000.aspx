@@ -15,26 +15,25 @@
 	<px:PXFormView runat="server" ID="CstFormView1" DataMember="Filter" Width="100%" >
 		<Template>
 			<px:PXLayoutRule ControlSize="S" runat="server" ID="CstPXLayoutRule4" StartColumn="True" LabelsWidth="XM" ></px:PXLayoutRule>
-			<px:PXDropDown CommitChanges="True" runat="server" ID="CstPXDropDown2" DataField="Priority" ></px:PXDropDown>
-			<px:PXNumberEdit CommitChanges="True" runat="server" ID="CstPXNumberEdit4" DataField="TimeWithoutAction" ></px:PXNumberEdit>
-			<px:PXLayoutRule runat="server" ID="CstPXLayoutRule5" StartColumn="True" />
+			<px:PXDropDown runat="server" ID="CstPXDropDown2" DataField="Priority" CommitChanges="True" ></px:PXDropDown>
+			<px:PXNumberEdit LabelWidth="" CommitChanges="True" runat="server" ID="CstPXNumberEdit4" DataField="TimeWithoutAction" ></px:PXNumberEdit>
+			<px:PXLayoutRule runat="server" ID="CstPXLayoutRule5" StartColumn="True" ></px:PXLayoutRule>
 			<px:PXSelector CommitChanges="True" runat="server" ID="CstPXSelector3" DataField="ServiceID" ></px:PXSelector></Template></px:PXFormView>
 	<px:PXGrid SyncPosition="True" AllowPaging="True" AdjustPageSize="Auto" ID="grid" runat="server" DataSourceID="ds" Width="100%" Height="150px" SkinID="Inquire" AllowAutoHide="false">
 		<Levels>
 			<px:PXGridLevel DataMember="WorkOrders">
 			    <Columns>
-				<px:PXGridColumn Type="CheckBox" AllowCheckAll="True" TextAlign="Center" DataField="Selected" Width="60" ></px:PXGridColumn>
+				<px:PXGridColumn AllowCheckAll="True" Type="CheckBox" TextAlign="Center" DataField="Selected" Width="60" ></px:PXGridColumn>
 				<px:PXGridColumn DataField="OrderNbr" Width="140" ></px:PXGridColumn>
 				<px:PXGridColumn DataField="Description" Width="220" ></px:PXGridColumn>
 				<px:PXGridColumn DataField="ServiceID" Width="140" ></px:PXGridColumn>
 				<px:PXGridColumn DataField="DeviceID" Width="140" ></px:PXGridColumn>
 				<px:PXGridColumn DataField="Priority" Width="70" ></px:PXGridColumn>
-				<px:PXGridColumn CommitChanges="True" DataField="AssignTo" Width="70" ></px:PXGridColumn>
-				<px:PXGridColumn DataField="NbrOfAssignedOrders" Width="100" ></px:PXGridColumn>
+				<px:PXGridColumn CommitChanges="True" DataField="Assignee" Width="70" ></px:PXGridColumn>
 				<px:PXGridColumn DataField="TimeWithoutAction" Width="100" ></px:PXGridColumn></Columns>
 			
 				<RowTemplate>
-					<px:PXSelector runat="server" ID="CstPXSelector7" DataField="AssignTo" AutoRefresh="True" ></px:PXSelector></RowTemplate></px:PXGridLevel>
+					<px:PXSelector runat="server" ID="CstPXSelector8" DataField="Assignee" AutoRefresh="True" /></RowTemplate></px:PXGridLevel>
 		</Levels>
 		<AutoSize Container="Window" Enabled="True" MinHeight="150" ></AutoSize>
 		<ActionBar >

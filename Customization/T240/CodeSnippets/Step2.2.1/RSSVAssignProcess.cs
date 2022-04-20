@@ -24,19 +24,6 @@ namespace PhoneRepairShop
         {
             WorkOrders.SetProcessCaption("Assign");
             WorkOrders.SetProcessAllCaption("Assign All");
-            WorkOrders.SetProcessDelegate<RSSVWorkOrderEntry>(
-                delegate (RSSVWorkOrderEntry graph, RSSVWorkOrder order)
-                {
-                    try
-                    {
-                        graph.Clear();
-                        graph.AssignOrder(order, true);
-                    }
-                    catch (Exception e)
-                    {
-                        PXProcessing<RSSVWorkOrder>.SetError(e);
-                    }
-                });
             PXUIFieldAttribute.SetEnabled<RSSVWorkOrder.assignTo>(
                 WorkOrders.Cache, null, true);
         }
