@@ -27,41 +27,58 @@ namespace PhoneRepairShop
 
         ...
 
-        public void AssignOrder(RSSVWorkOrder order, bool isMassProcess = false)
+        public static void AssignOrders(List<RSSVWorkOrder> list, bool isMassProcess = false)
         {
-            WorkOrders.Current = order;
-            //If the assignee is not specified, specify the default employee.
-            if (order.Assignee == null)
+            var workOrderEntry = PXGraph.CreateInstance<RSSVWorkOrderEntry>();
+            for (int i = 0; i < list.Count; i++)
             {
-                //Retrieve the record with the default setting
-                RSSVSetup setupRecord = AutoNumSetup.Current;
-                order.Assignee = setupRecord.DefaultEmployee;
-            }
-            //Change the status of the work order.
-            order.Status = WorkOrderStatusConstants.Assigned;
-            //Update the work order in the cache.
-            order = WorkOrders.Update(order);
+                if (list[i] == null)
+                    continue;
 
-            //Modify the number of assigned orders for the employee.
-            RSSVEmployeeWorkOrderQty employeeNbrOfOrders =
-                new RSSVEmployeeWorkOrderQty();
-            employeeNbrOfOrders.Userid = order.Assignee;
-            employeeNbrOfOrders.NbrOfAssignedOrders = 1;
-            Quantity.Insert(employeeNbrOfOrders);
+                RSSVWorkOrder workOrder = list[i];
+                try
+                {
+                    workOrder.Assignee = workOrder.AssignTo;
+                    workOrderEntry.Clear();
+                    workOrderEntry.WorkOrders.Current = workOrder;
+                    //If the assignee is not specified, specify the default employee.
+                    if (workOrder.Assignee == null)
+                    {
+                        //Retrieve the record with the default setting
+                        RSSVSetup setupRecord = workOrderEntry.AutoNumSetup.Current;
+                        workOrder.Assignee = setupRecord.DefaultEmployee;
+                    }
 
-            // Trigger the Save action to save the changes to the database
-            Actions.PressSave();
-            //Display the message to indicate successful processing.
-            if (isMassProcess)
-            {
-                PXProcessing.SetInfo(string.Format(Messages.WorkOrderAssigned,
-                    order.OrderNbr));
+                    //Update the work order in the cache.
+                    workOrderEntry.WorkOrders.Update(workOrder);
+
+                    //Modify the number of assigned orders for the employee.
+                    RSSVEmployeeWorkOrderQty employeeNbrOfOrders =
+                        new RSSVEmployeeWorkOrderQty();
+                    employeeNbrOfOrders.UserID = workOrder.Assignee;
+                    employeeNbrOfOrders.NbrOfAssignedOrders = 1;
+                    workOrderEntry.Quantity.Insert(employeeNbrOfOrders);
+
+                    // Trigger the Save action to save the changes to the database
+                    workOrderEntry.Actions.PressSave();
+
+                    //Display the message to indicate successful processing.
+                    if (isMassProcess)
+                    {
+                        PXProcessing<RSSVWorkOrder>.SetInfo(i, string.Format(Messages.WorkOrderAssigned,
+                            workOrder.OrderNbr));
+                    }
+                }
+                catch (Exception e)
+                {
+                    PXProcessing<RSSVWorkOrder>.SetError(i, e);
+                }
             }
         }
 
         public PXAction<RSSVWorkOrder> Complete;
-        [PXButton(CommitChanges = true)]
-        [PXUIField(DisplayName = "Complete", Enabled = false)]
+        [PXButton]
+        [PXUIField(DisplayName = "Complete")]
         protected virtual IEnumerable complete(PXAdapter adapter)
         {
             // Get the current order from the cache
@@ -69,7 +86,7 @@ namespace PhoneRepairShop
             //Modify the number of assigned orders for the employee
             RSSVEmployeeWorkOrderQty employeeNbrOfOrders =
                 new RSSVEmployeeWorkOrderQty();
-            employeeNbrOfOrders.Userid = row.Assignee;
+            employeeNbrOfOrders.UserID = row.Assignee;
             employeeNbrOfOrders.NbrOfAssignedOrders = -1;
             Quantity.Insert(employeeNbrOfOrders);
             // Trigger the Save action to save changes in the database

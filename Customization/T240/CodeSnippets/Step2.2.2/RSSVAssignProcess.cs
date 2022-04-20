@@ -18,21 +18,22 @@ namespace PhoneRepairShop
         [PXDBScalar(typeof(SelectFrom<OwnerAttribute.Owner>.
             LeftJoin<RSSVEmployeeWorkOrderQty>.
             On<OwnerAttribute.Owner.contactID.IsEqual<
-                RSSVEmployeeWorkOrderQty.userid>>.
+                RSSVEmployeeWorkOrderQty.userID>>.
             Where<OwnerAttribute.Owner.acctCD.IsNotNull>.
             OrderBy<RSSVEmployeeWorkOrderQty.nbrOfAssignedOrders.Asc,
                 RSSVEmployeeWorkOrderQty.lastModifiedDateTime.Asc>.
             SearchFor<OwnerAttribute.Owner.contactID>))]
-        protected virtual void RSSVWorkOrder_DefaultAssignee_CacheAttached(
-            PXCache sender)
+        protected virtual void _(
+            Events.CacheAttached<RSSVWorkOrder.defaultAssignee> e)
         { }
 
+        [PXMergeAttributes(Method = MergeMethod.Append)]
         [Owner(IsDBField = false, DisplayName = "Assign To")]
         [PXUnboundDefault(typeof(RSSVWorkOrder.assignee.When<
             RSSVWorkOrder.assignee.IsNotNull>.
             Else<RSSVWorkOrder.defaultAssignee>))]
-        protected virtual void RSSVWorkOrder_AssignTo_CacheAttached(
-            PXCache sender)
+        protected virtual void _(
+            Events.CacheAttached<RSSVWorkOrder.assignTo> e)
         { }
 
         ...

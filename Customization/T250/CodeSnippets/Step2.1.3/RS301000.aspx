@@ -7,10 +7,6 @@
         PrimaryView="WorkOrders"
         >
 		<CallbackCommands>
-
-
-
-
 		</CallbackCommands>
 	</px:PXDataSource>
 </asp:Content>
@@ -36,7 +32,8 @@
 		<px:PXLayoutRule runat="server" ID="CstPXLayoutRule17" 
                  StartColumn="True" ControlSize="M" LabelsWidth="S" ></px:PXLayoutRule>
 		<px:PXNumberEdit runat="server" ID="CstPXNumberEdit12" DataField="OrderTotal" ></px:PXNumberEdit>
-		<px:PXSelector ID="edInvoiceNbr" runat="server" DataField="InvoiceNbr" Enabled="False" AllowEdit="True" /></Template>
+		<px:PXSelector ID="edInvoiceNbr" runat="server" 
+			DataField="InvoiceNbr" Enabled="False" AllowEdit="True" /></Template>
 </px:PXFormView>
 </asp:Content>
 <asp:Content ID="cont3" ContentPlaceHolderID="phG" Runat="Server">
@@ -60,16 +57,15 @@
 									<px:PXTextEdit runat="server" ID="CstPXTextEdit24" DataField="InventoryID_description" ></px:PXTextEdit>
 									<px:PXLayoutRule LabelsWidth="S" StartColumn="True" GroupCaption="Price Info" runat="server" ID="CstPXLayoutRule27" StartGroup="True" ></px:PXLayoutRule>
 									<px:PXNumberEdit runat="server" ID="CstPXNumberEdit22" DataField="BasePrice" ></px:PXNumberEdit></RowTemplate></px:PXGridLevel></Levels>
+						
 <ActionBar>
 	<CustomItems>
 		<px:PXToolBarButton Text="UpdateItemPrices">
-			<AutoCallBack Command="UpdateItemPrices" Target="ds">
-				<Behavior CommitChanges="True" ></Behavior>
-			</AutoCallBack>
+			<AutoCallBack Command="UpdateItemPrices" Target="ds" ></AutoCallBack>
 		</px:PXToolBarButton>
-	</CustomItems>
-</ActionBar>				
-<AutoSize Enabled="True" ></AutoSize>
+		</CustomItems>
+</ActionBar>
+						<AutoSize Enabled="True" ></AutoSize>
 						<Mode AllowFormEdit="True" InitNewRow="True" ></Mode></px:PXGrid></Template>
 			</px:PXTabItem>
 			<px:PXTabItem Text="Labor">
@@ -83,18 +79,16 @@
 									<px:PXGridColumn DataField="DefaultPrice" Width="100" ></px:PXGridColumn>
 									<px:PXGridColumn CommitChanges="True" DataField="Quantity" Width="100" ></px:PXGridColumn>
 									<px:PXGridColumn DataField="ExtPrice" Width="100" ></px:PXGridColumn></Columns></px:PXGridLevel></Levels>
-<ActionBar>
-	<CustomItems>
-		<px:PXToolBarButton Text="UpdateLaborPrices">
-			<AutoCallBack Command="UpdateLaborPrices" Target="ds">
-				<Behavior CommitChanges="True" ></Behavior>
-			</AutoCallBack>
-		</px:PXToolBarButton>
-	</CustomItems>
-</ActionBar>						
-<AutoSize Enabled="True" ></AutoSize></px:PXGrid></Template>
+						<ActionBar>
+							<CustomItems>
+								<px:PXToolBarButton Text="UpdateLaborPrices">
+									<AutoCallBack Command="UpdateLaborPrices" Target="ds" ></AutoCallBack>
+								</px:PXToolBarButton>
+							</CustomItems>
+						</ActionBar>
+						<AutoSize Enabled="True" ></AutoSize></px:PXGrid></Template>
 			</px:PXTabItem>
-			<px:PXTabItem Text="Payment Info" >
+			<px:PXTabItem Text="Payment Info">
 				<Template>
 					<px:PXFormView runat="server" ID="CstFormView28" DataMember="Payments" >
 						<Template>
