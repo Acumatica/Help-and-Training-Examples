@@ -1,0 +1,12 @@
+add screen AP303000 {
+  add container "VendorSummary" {
+    ...
+    
+    add recordAction "NewLocation" {
+      displayName = "Add Location"
+      behavior = Record
+      redirect = True
+    }
+  }
+  ...
+}

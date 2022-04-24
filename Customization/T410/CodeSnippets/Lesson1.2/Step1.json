@@ -1,0 +1,21 @@
+add layout "InvoiceHeader" {
+  layout = "HeaderSimple"
+  add layout "InvoiceHeaderRow1" {
+    layout = "Inline"
+    add field "Type"
+    add field "Date"
+  }
+  add layout "InvoiceHeaderRow2" {
+    layout = "Inline"
+    add field "Status"
+    add field "Amount"
+  }
+  add layout "InvoiceHeaderRow3" {
+    layout = "Inline"
+    add field "Customer"
+  }
+  add layout "InvoiceHeaderRow4" {
+    layout = "Inline"
+    add field "Description"
+  }
+}
