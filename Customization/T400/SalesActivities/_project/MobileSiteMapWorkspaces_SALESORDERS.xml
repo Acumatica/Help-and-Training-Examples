@@ -1,0 +1,56 @@
+﻿<MobileSiteMapWorkspaces>
+    <data-set>
+        <relations format-version="3" relations-version="20160101" main-table="MobileSiteMapWorkspaces">
+            <link from="MobileSiteMapWorkspaceWidgets (WorkspaceName, WorkspaceOwner)" to="MobileSiteMapWorkspaces (Name, Owner)" type="WeakIfEmpty" isEmpty="Owner" />
+            <link from="Dashboard (DashboardID)" to="MobileSiteMapWorkspaceWidgets (DashboardID)" />
+            <link from="DashboardParameter (DashboardID)" to="Dashboard (DashboardID)" />
+            <link from="DashboardParameter (NoteID)" to="DashboardParameterKvExt (RecordID)" type="RowKvExt" />
+            <link from="Widget (DashboardID, WidgetID)" to="MobileSiteMapWorkspaceWidgets (DashboardID, WidgetID)" type="WeakIfEmpty" isEmpty="OwnerName" />
+            <link from="Widget (NoteID)" to="WidgetKvExt (RecordID)" type="RowKvExt" />
+            <link from="SiteMap (ScreenID)" to="Dashboard (ScreenID)" />
+            <link from="MobileSiteMapWorkspaceItems (WorkspaceName, WorkspaceOwner)" to="MobileSiteMapWorkspaces (Name, Owner)" type="WeakIfEmpty" isEmpty="Owner" />
+            <link from="MUIScreen (NodeID)" to="SiteMap (NodeID)" />
+            <link from="MUIWorkspace (WorkspaceID)" to="MUIScreen (WorkspaceID)" type="FromMaster" linkname="workspaceToScreen" split-location="yes" updateable="True" />
+            <link from="MUISubcategory (SubcategoryID)" to="MUIScreen (SubcategoryID)" type="FromMaster" updateable="True" />
+            <link from="MUITile (ScreenID)" to="SiteMap (ScreenID)" />
+            <link from="MUIWorkspace (WorkspaceID)" to="MUITile (WorkspaceID)" type="FromMaster" linkname="workspaceToTile" split-location="yes" updateable="True" />
+            <link from="MUIArea (AreaID)" to="MUIWorkspace (AreaID)" type="FromMaster" updateable="True" />
+            <link from="MUIPinnedScreen (NodeID, WorkspaceID)" to="MUIScreen (NodeID, WorkspaceID)" type="WeakIfEmpty" isEmpty="Username" />
+            <link from="MUIFavoriteWorkspace (WorkspaceID)" to="MUIWorkspace (WorkspaceID)" type="WeakIfEmpty" isEmpty="Username" />
+        </relations>
+        <layout>
+            <table name="MobileSiteMapWorkspaces">
+                <table name="MobileSiteMapWorkspaceWidgets" uplink="(Name, Owner) = (WorkspaceName, WorkspaceOwner)">
+                    <table name="Dashboard" uplink="(DashboardID) = (DashboardID)">
+                        <table name="DashboardParameter" uplink="(DashboardID) = (DashboardID)">
+                            <table name="DashboardParameterKvExt" uplink="(NoteID) = (RecordID)" />
+                        </table>
+                        <table name="SiteMap" uplink="(ScreenID) = (ScreenID)">
+                            <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                                <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                            </table>
+                            <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+                        </table>
+                    </table>
+                    <table name="Widget" uplink="(DashboardID, WidgetID) = (DashboardID, WidgetID)">
+                        <table name="WidgetKvExt" uplink="(NoteID) = (RecordID)" />
+                    </table>
+                </table>
+                <table name="MobileSiteMapWorkspaceItems" uplink="(Name, Owner) = (WorkspaceName, WorkspaceOwner)" />
+            </table>
+            <table name="MUIWorkspace">
+                <table name="MUIFavoriteWorkspace" uplink="(WorkspaceID) = (WorkspaceID)" />
+            </table>
+            <table name="MUISubcategory" />
+            <table name="MUIArea" />
+        </layout>
+        <data>
+            <MobileSiteMapWorkspaces>
+                <row MobileWorkspaceID="637d98d7-ea24-44c3-989e-db1fe6995399" Name="SALESORDERS" DisplayName="Sales Orders" Icon="pen_frame" IsActive="1" Owner="" Priority="50" NoteID="04b8f5f1-7b6c-457f-9a47-c3792f828699">
+                    <MobileSiteMapWorkspaceItems ItemID="SalesOrders" ItemType="HubFolder" IsActive="1" Priority="0" Owner="" NoteID="a07ed236-e4a4-4796-88a7-a6a4cb809610" />
+                    <MobileSiteMapWorkspaceItems ItemID="GI400001" ItemType="FilterListScreen" IsActive="1" Priority="10" Owner="" NoteID="13bcabfc-29b0-ec11-8378-98c15a4471ec" />
+                </row>
+            </MobileSiteMapWorkspaces>
+        </data>
+    </data-set>
+</MobileSiteMapWorkspaces>

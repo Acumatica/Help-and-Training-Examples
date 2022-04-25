@@ -1,0 +1,13 @@
+update screen SO301000 {
+  update container "OrderSummary" {
+    … 
+    attachments {
+      add type "jpg" {
+        extension = "jpg"
+      }
+      add type "png" {
+        extension = "png"
+      }
+    }
+  }
+}
