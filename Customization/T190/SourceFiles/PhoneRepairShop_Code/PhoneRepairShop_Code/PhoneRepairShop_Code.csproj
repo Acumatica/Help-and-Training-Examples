@@ -38,8 +38,7 @@
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe">
       <Version>5.0.0</Version>
     </PackageReference>
-    <Reference Include="PX.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="PX.Common">
       <HintPath>..\..\..\..\Bin\PX.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
@@ -49,16 +48,14 @@
     <Reference Include="PX.CS.Contracts">
       <HintPath>..\..\..\..\Bin\PX.CS.Contracts.dll</HintPath>
     </Reference>
-    <Reference Include="PX.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="PX.Data">
       <HintPath>..\..\..\..\Bin\PX.Data.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="PX.Data.BQL.Fluent">
       <HintPath>..\..\..\..\Bin\PX.Data.BQL.Fluent.dll</HintPath>
     </Reference>
-    <Reference Include="PX.Objects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="PX.Objects">
       <HintPath>..\..\..\..\Bin\PX.Objects.DLL</HintPath>
       <Private>False</Private>
     </Reference>
@@ -92,7 +89,7 @@
     <Compile Include="DAC\RSSVRepairService.cs" />
     <Compile Include="RSSVDeviceMaint.cs" />
     <Compile Include="RSSVRepairServiceMaint.cs" />
-    <Compile Include="Workflows\RSSVWorkOrderWorkflow.cs" />
+    <Compile Include="Workflow\RSSVWorkOrderWorkflow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

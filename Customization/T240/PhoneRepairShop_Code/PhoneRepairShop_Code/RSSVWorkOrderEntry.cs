@@ -408,8 +408,7 @@ namespace PhoneRepairShop
             return list;
         }
 
-        public static void AssignOrders(List<RSSVWorkOrder> list,
-            bool isMassProcess = false)
+        public static void AssignOrders(List<RSSVWorkOrder> list, bool isMassProcess = false)
         {
             // The result set to run the report on.
             PXReportResultset assignedOrders =
@@ -424,15 +423,14 @@ namespace PhoneRepairShop
                 RSSVWorkOrder workOrder = list[i];
                 try
                 {
+                    workOrder.Assignee = workOrder.AssignTo;
                     workOrderEntry.Clear();
                     workOrderEntry.WorkOrders.Current = workOrder;
-                    //If the assignee is not specified, 
-                    //specify the default employee.
+                    //If the assignee is not specified, specify the default employee.
                     if (workOrder.Assignee == null)
                     {
                         //Retrieve the record with the default setting
-                        RSSVSetup setupRecord =
-                            workOrderEntry.AutoNumSetup.Current;
+                        RSSVSetup setupRecord = workOrderEntry.AutoNumSetup.Current;
                         workOrder.Assignee = setupRecord.DefaultEmployee;
                     }
 
@@ -446,15 +444,13 @@ namespace PhoneRepairShop
                     employeeNbrOfOrders.NbrOfAssignedOrders = 1;
                     workOrderEntry.Quantity.Insert(employeeNbrOfOrders);
 
-                    //Trigger the Save action to save the changes 
-                    //to the database
+                    // Trigger the Save action to save the changes to the database
                     workOrderEntry.Actions.PressSave();
 
                     //Display the message to indicate successful processing.
                     if (isMassProcess)
                     {
-                        PXProcessing<RSSVWorkOrder>.SetInfo(i,
-                            string.Format(Messages.WorkOrderAssigned,
+                        PXProcessing<RSSVWorkOrder>.SetInfo(i, string.Format(Messages.WorkOrderAssigned,
                             workOrder.OrderNbr));
                     }
 
@@ -470,8 +466,7 @@ namespace PhoneRepairShop
                     PXProcessing<RSSVWorkOrder>.SetError(i, e);
                 }
             }
-
-            if (assignedOrders.GetRowCount() > 0 && isMassProcess)
+            if (assignedOrders.GetRowCount() > 0 /*&& isMassProcess*/)
             {
                 throw new PXReportRequiredException(assignedOrders, "RS601000",
                                                     Messages.ReportRS601000Title);

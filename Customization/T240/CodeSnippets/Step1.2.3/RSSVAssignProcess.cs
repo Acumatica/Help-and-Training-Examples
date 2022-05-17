@@ -4,8 +4,7 @@ namespace PhoneRepairShop
     {
         public PXFilter<RSSVWorkOrderToAssignFilter> Filter;
         public PXCancel<RSSVWorkOrderToAssignFilter> Cancel;
-        public PXFilteredProcessing<RSSVWorkOrder, 
-            RSSVWorkOrderToAssignFilter,
+        public SelectFrom<RSSVWorkOrder>.
             Where<RSSVWorkOrder.status.IsEqual<
                 RSSVWorkOrderWorkflow.States.readyForAssignment>.
                 And<RSSVWorkOrder.timeWithoutAction.IsGreaterEqual<
@@ -18,9 +17,11 @@ namespace PhoneRepairShop
                 And<RSSVWorkOrder.serviceID.IsEqual<
                     RSSVWorkOrderToAssignFilter.serviceID.FromCurrent>.
                     Or<RSSVWorkOrderToAssignFilter.serviceID.FromCurrent.
-                        IsNull>>>>,
-            OrderBy<Desc<RSSVWorkOrder.timeWithoutAction, 
-                RSSVWorkOrder.priority.Desc>>> WorkOrders;
+                        IsNull>>>>.
+           OrderBy<RSSVWorkOrder.timeWithoutAction.Desc,
+               RSSVWorkOrder.priority.Desc>.
+           ProcessingView.
+           FilteredBy<RSSVWorkOrderToAssignFilter> WorkOrders;
 
         public RSSVAssignProcess()
         {

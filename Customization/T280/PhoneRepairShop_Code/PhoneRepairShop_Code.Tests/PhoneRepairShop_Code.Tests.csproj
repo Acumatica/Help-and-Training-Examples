@@ -42,8 +42,7 @@
     <Reference Include="PX.Common">
       <HintPath>..\..\..\..\Bin\PX.Common.dll</HintPath>
     </Reference>
-    <Reference Include="PX.Common.Std, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="PX.Common.Std">
       <HintPath>..\..\..\..\Bin\PX.Common.Std.dll</HintPath>
     </Reference>
     <Reference Include="PX.Data">
@@ -52,8 +51,7 @@
     <Reference Include="PX.Data.BQL.Fluent">
       <HintPath>..\..\..\..\Bin\PX.Data.BQL.Fluent.dll</HintPath>
     </Reference>
-    <Reference Include="PX.Objects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="PX.Objects">
       <HintPath>..\..\..\..\Bin\PX.Objects.dll</HintPath>
     </Reference>
     <Reference Include="PX.Tests.Unit">

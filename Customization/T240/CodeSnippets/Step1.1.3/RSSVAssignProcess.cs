@@ -1,6 +1,7 @@
 using System;
 using PX.Data;
 using PhoneRepairShop.Workflows;
+using PX.Data.BQL.Fluent;
 using System.Collections.Generic;
 
 namespace PhoneRepairShop
@@ -8,9 +9,10 @@ namespace PhoneRepairShop
     public class RSSVAssignProcess : PXGraph<RSSVAssignProcess>
     {
         public PXCancel<RSSVWorkOrder> Cancel;
-        public PXProcessing<RSSVWorkOrder, 
-            Where<RSSVWorkOrder.status.IsEqual<
-            RSSVWorkOrderWorkflow.States.readyForAssignment>>> WorkOrders;
+        public SelectFrom<RSSVWorkOrder>.
+            Where<RSSVWorkOrder.status.
+                IsEqual<RSSVWorkOrderWorkflow.States.readyForAssignment>>.
+            ProcessingView WorkOrders;
 
         public RSSVAssignProcess()
         {
