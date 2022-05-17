@@ -17,9 +17,11 @@ using PX.Objects.Common;
 
 namespace PhoneRepairShop.Workflows
 {
-    // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
-    public class RSSVWorkOrderWorkflow : PX.Data.PXGraphExtension<RSSVWorkOrderEntry>
+	public class RSSVWorkOrderWorkflow : PX.Data.PXGraphExtension<RSSVWorkOrderEntry>
 	{
+		// workflow works without checking active
+		public static bool IsActive() => false;
+
 		#region Constants
 		public static class States
 		{
@@ -74,6 +76,7 @@ namespace PhoneRepairShop.Workflows
 			public Condition DoesNotRequirePrepayment => GetOrCreate(b => b.FromBql<
 				Where<Selector<RSSVWorkOrder.serviceID, RSSVRepairService.prepayment>, Equal<False>>
 			>());
+
 		}
 
 		#endregion Conditions
@@ -213,8 +216,11 @@ namespace PhoneRepairShop.Workflows
 					{
 						actions.Add(g => g.PutOnHold, c => c.WithCategory(processingCategory, g => g.ReleaseFromHold));
 						actions.Add(g => g.ReleaseFromHold, c => c.WithCategory(processingCategory));
-						actions.Add(g => g.Assign, c => c.WithCategory(processingCategory, g => g.PutOnHold)
-							.MassProcessingScreen<RSSVAssignProcess>().InBatchMode());
+						actions.Add(g => g.Assign,
+							c => c.WithCategory(
+								processingCategory, g => g.PutOnHold)
+							.MassProcessingScreen<RSSVAssignProcess>()
+							.InBatchMode());
 						actions.Add(g => g.Complete, c => c.WithCategory(processingCategory, g => g.Assign)
 							.WithFieldAssignments(fas => fas.Add<RSSVWorkOrder.dateCompleted>(f => f.SetFromToday())));
 					})

@@ -1,38 +1,41 @@
 using System;
 using PX.Data;
 using PhoneRepairShop.Workflows;
-using System.Collections.Generic;
 using PX.TM;
 using PX.Data.BQL.Fluent;
 using PX.Data.BQL;
+using System.Linq;
 
 namespace PhoneRepairShop
 {
     public class RSSVAssignProcess : PXGraph<RSSVAssignProcess>
     {
         /*public PXCancel<RSSVWorkOrder> Cancel;
+        public SelectFrom<RSSVWorkOrder>.
+            Where<RSSVWorkOrder.status.
+                IsEqual<RSSVWorkOrderWorkflow.States.readyForAssignment>>.
+            ProcessingView WorkOrders;*/
 
-        public PXProcessing<RSSVWorkOrder,
-            Where<RSSVWorkOrder.status.IsEqual<
-                RSSVWorkOrderWorkflow.States.readyForAssignment>>> WorkOrders;*/
-
-        public PXCancel<RSSVWorkOrderToAssignFilter> Cancel;
         public PXFilter<RSSVWorkOrderToAssignFilter> Filter;
-        public PXFilteredProcessing<RSSVWorkOrder, RSSVWorkOrderToAssignFilter,
+        public SelectFrom<RSSVWorkOrder>.
             Where<RSSVWorkOrder.status.IsEqual<
                 RSSVWorkOrderWorkflow.States.readyForAssignment>.
                 And<RSSVWorkOrder.timeWithoutAction.IsGreaterEqual<
-                    RSSVWorkOrderToAssignFilter.timeWithoutAction.FromCurrent>.
-                    And<RSSVWorkOrder.priority.IsEqual<
-                        RSSVWorkOrderToAssignFilter.priority.FromCurrent>.
-                        Or<RSSVWorkOrderToAssignFilter.priority.FromCurrent.
-                            IsNull>>.
-                    And<RSSVWorkOrder.serviceID.IsEqual<
-                        RSSVWorkOrderToAssignFilter.serviceID.FromCurrent>.
-                        Or<RSSVWorkOrderToAssignFilter.serviceID.FromCurrent.
-                            IsNull>>>>,
-            OrderBy<Desc<RSSVWorkOrder.timeWithoutAction,
-                RSSVWorkOrder.priority.Desc>>> WorkOrders;
+                    RSSVWorkOrderToAssignFilter.timeWithoutAction.
+                        FromCurrent>.
+                And<RSSVWorkOrder.priority.IsEqual<
+                    RSSVWorkOrderToAssignFilter.priority.FromCurrent>.
+                    Or<RSSVWorkOrderToAssignFilter.priority.FromCurrent.
+                        IsNull>>.
+                And<RSSVWorkOrder.serviceID.IsEqual<
+                    RSSVWorkOrderToAssignFilter.serviceID.FromCurrent>.
+                    Or<RSSVWorkOrderToAssignFilter.serviceID.FromCurrent.
+                        IsNull>>>>.
+            OrderBy<RSSVWorkOrder.timeWithoutAction.Desc,
+                RSSVWorkOrder.priority.Desc>.
+            ProcessingView.
+            FilteredBy<RSSVWorkOrderToAssignFilter> WorkOrders;
+        public PXCancel<RSSVWorkOrderToAssignFilter> Cancel;
 
         public RSSVAssignProcess()
         {
@@ -46,6 +49,60 @@ namespace PhoneRepairShop
             get
             {
                 return false;
+            }
+        }
+
+        /*protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
+        {
+            WorkOrders.SetProcessWorkflowAction<RSSVWorkOrderEntry>(
+                g => g.Assign);
+        }*/
+        protected virtual void _(Events.RowSelected<
+            RSSVWorkOrderToAssignFilter> e)
+        {
+            WorkOrders.SetProcessWorkflowAction<RSSVWorkOrderEntry>(
+                g => g.Assign);
+        }
+
+        [PXMergeAttributes(Method = MergeMethod.Append)]
+        [Owner(IsDBField = false, DisplayName = "Default Assignee")]
+        [PXDBScalar(typeof(SelectFrom<OwnerAttribute.Owner>.
+            LeftJoin<RSSVEmployeeWorkOrderQty>.
+            On<OwnerAttribute.Owner.contactID.IsEqual<
+                RSSVEmployeeWorkOrderQty.userID>>.
+            Where<OwnerAttribute.Owner.acctCD.IsNotNull>.
+            OrderBy<RSSVEmployeeWorkOrderQty.nbrOfAssignedOrders.Asc,
+                RSSVEmployeeWorkOrderQty.lastModifiedDateTime.Asc>.
+            SearchFor<OwnerAttribute.Owner.contactID>))]
+        protected virtual void _(
+            Events.CacheAttached<RSSVWorkOrder.defaultAssignee> e)
+        { }
+
+        [PXMergeAttributes(Method = MergeMethod.Append)]
+        [Owner(IsDBField = false, DisplayName = "Assign To")]
+        [PXUnboundDefault(typeof(RSSVWorkOrder.assignee.When<
+            RSSVWorkOrder.assignee.IsNotNull>.
+            Else<RSSVWorkOrder.defaultAssignee>))]
+        protected virtual void _(
+            Events.CacheAttached<RSSVWorkOrder.assignTo> e)
+        { }
+
+        protected virtual void _(Events.FieldSelecting<RSSVWorkOrder,
+                         RSSVWorkOrder.nbrOfAssignedOrders> e)
+        {
+            if (e.Row == null) return;
+            RSSVEmployeeWorkOrderQty employeeNbrOfOrders =
+                SelectFrom<RSSVEmployeeWorkOrderQty>.
+                Where<RSSVEmployeeWorkOrderQty.userID.IsEqual<@P.AsInt>>.
+                    View.Select(this, e.Row.AssignTo);
+            if (employeeNbrOfOrders != null)
+            {
+                e.ReturnValue = employeeNbrOfOrders.NbrOfAssignedOrders.
+                    GetValueOrDefault();
+            }
+            else
+            {
+                e.ReturnValue = 0;
             }
         }
 
@@ -97,53 +154,6 @@ namespace PhoneRepairShop
                 PX.Data.BQL.BqlInt.Field<serviceID>
             { }
             #endregion
-        }
-
-        [PXMergeAttributes(Method = MergeMethod.Append)]
-        [Owner(IsDBField = false, DisplayName = "Default Assignee")]
-        [PXDBScalar(typeof(SelectFrom<OwnerAttribute.Owner>.
-            LeftJoin<RSSVEmployeeWorkOrderQty>.
-            On<OwnerAttribute.Owner.contactID.IsEqual<
-                RSSVEmployeeWorkOrderQty.userID>>.
-            Where<OwnerAttribute.Owner.acctCD.IsNotNull>.
-            OrderBy<RSSVEmployeeWorkOrderQty.nbrOfAssignedOrders.Asc,
-                RSSVEmployeeWorkOrderQty.lastModifiedDateTime.Asc>.
-            SearchFor<OwnerAttribute.Owner.contactID>))]
-        protected virtual void _(
-            Events.CacheAttached<RSSVWorkOrder.defaultAssignee> e)
-        { }
-
-        [PXMergeAttributes(Method = MergeMethod.Append)]
-        [Owner(IsDBField = false, DisplayName = "Assign To")]
-        [PXUnboundDefault(typeof(RSSVWorkOrder.assignee.When<
-            RSSVWorkOrder.assignee.IsNotNull>.
-            Else<RSSVWorkOrder.defaultAssignee>))]
-        protected virtual void _(
-            Events.CacheAttached<RSSVWorkOrder.assignTo> e)
-        { }
-
-        protected virtual void _(Events.FieldSelecting<RSSVWorkOrder,
-                         RSSVWorkOrder.nbrOfAssignedOrders> e)
-        {
-            if (e.Row == null) return;
-            RSSVEmployeeWorkOrderQty employeeNbrOfOrders =
-                SelectFrom<RSSVEmployeeWorkOrderQty>.
-                Where<RSSVEmployeeWorkOrderQty.userID.IsEqual<@P.AsInt>>.
-                    View.Select(this, e.Row.AssignTo);
-            if (employeeNbrOfOrders != null)
-            {
-                e.ReturnValue = employeeNbrOfOrders.NbrOfAssignedOrders.
-                    GetValueOrDefault();
-            }
-            else
-            {
-                e.ReturnValue = 0;
-            }
-        }
-
-        protected virtual void _(Events.RowSelected<RSSVWorkOrderToAssignFilter> e) 
-        {
-            WorkOrders.SetProcessWorkflowAction<RSSVWorkOrderEntry>(g => g.Assign);
         }
     }
 }
