@@ -27,7 +27,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PhoneRepairShop", "..\..\..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneRepairShop_Code", "PhoneRepairShop_Code\PhoneRepairShop_Code.csproj", "{9BC6D61A-5D4B-4D57-BC6B-5E3F9D04377E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneRepairShop_Code.Tests", "PhoneRepairShop_Code.Tests\PhoneRepairShop_Code.Tests.csproj", "{2255F4BD-46D8-4A2D-A415-A4304AC8DC0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneRepairShop_Code.Tests", "PhoneRepairShop_Code.Tests\PhoneRepairShop_Code.Tests.csproj", "{3776106A-C48F-42C7-95A9-6E5A0E265437}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +43,10 @@ Global
 		{9BC6D61A-5D4B-4D57-BC6B-5E3F9D04377E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BC6D61A-5D4B-4D57-BC6B-5E3F9D04377E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BC6D61A-5D4B-4D57-BC6B-5E3F9D04377E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2255F4BD-46D8-4A2D-A415-A4304AC8DC0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2255F4BD-46D8-4A2D-A415-A4304AC8DC0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2255F4BD-46D8-4A2D-A415-A4304AC8DC0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2255F4BD-46D8-4A2D-A415-A4304AC8DC0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3776106A-C48F-42C7-95A9-6E5A0E265437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3776106A-C48F-42C7-95A9-6E5A0E265437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3776106A-C48F-42C7-95A9-6E5A0E265437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3776106A-C48F-42C7-95A9-6E5A0E265437}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
