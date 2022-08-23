@@ -24,3 +24,7 @@ Integration development
 Plug-in development  
 
  * [Help](PlugInDevelopment/Help): Examples from the [Plug-In Development Guide](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=03156779-6d2b-4723-b2f5-49baf251f7e3)
+
+Barcode-driven engine
+
+ * [Help](BarcodeDrivenEngine/Help): Examples from the [Barcode-Driven Engine Guide](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=422a7a11-bd6e-4eba-ba34-f70612ad1b1f)
