@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using PX.Common;
 using System.Linq;
 using PX.Data;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace WooCommerceTest
 {
@@ -25,27 +27,7 @@ namespace WooCommerceTest
         public override string ConnectorType { get => TYPE; }
         public override string ConnectorName { get => NAME; }
 
-        public virtual IEnumerable<TInfo> GetExternalInfo<TInfo>(string infoType, int? bindingID)
-            where TInfo : class
-        {
-            if (string.IsNullOrEmpty(infoType) || bindingID == null) return null;
-            BCBindingWooCommerce binding = BCBindingWooCommerce.PK.Find(this, bindingID);
-            if (binding == null) return null;
-
-            try
-            {
-                List<TInfo> result = new List<TInfo>();
-                return result;
-            }
-            catch (Exception ex)
-            {
-                LogError(new BCLogTypeScope(typeof(WooCommerceConnector)), ex);
-            }
-
-            return null;
-        }
-
-        public void NavigateExtern(ISyncStatus status)
+        public void NavigateExtern(ISyncStatus status, ISyncDetail detail = null)
         {
             if (status?.ExternID == null) return;
 
@@ -61,7 +43,8 @@ namespace WooCommerceTest
             throw new PXRedirectToUrlException(redirectUrl, PXBaseRedirectException.WindowMode.New, string.Empty);
         }
 
-        public virtual SyncInfo[] Process(ConnectorOperation operation, int?[] syncIDs = null)
+        public virtual async Task<ConnectorOperationResult> Process(ConnectorOperation operation, int?[] syncIDs = null,
+            CancellationToken cancellationToken = default)
         {
             LogInfo(operation.LogScope(), BCMessages.LogConnectorStarted, NAME);
 
@@ -69,7 +52,7 @@ namespace WooCommerceTest
             using (IProcessor graph = (IProcessor)CreateInstance(info.ProcessorType))
             {
                 graph.Initialise(this, operation);
-                return graph.Process(syncIDs);
+                return await graph.Process(syncIDs, cancellationToken);
             }
         }
 
@@ -89,7 +72,7 @@ namespace WooCommerceTest
             throw new NotImplementedException();
         }
 
-        public virtual void ProcessHook(IEnumerable<BCExternQueueMessage> messages)
+        public virtual async Task ProcessHook(IEnumerable<BCExternQueueMessage> messages, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
@@ -126,6 +109,14 @@ namespace WooCommerceTest
                 ServiceLocator.Current.GetInstance<Serilog.ILogger>());
 
             return client;
+        }
+
+        public List<Tuple<string, string, string>> GetExternalFields(string type, int? binding, string entity)
+        {
+            List<Tuple<string, string, string>> fieldsList = new List<Tuple<string, string, string>>();
+            if (entity != BCEntitiesAttribute.Customer && entity != BCEntitiesAttribute.Address) return fieldsList;
+
+            return fieldsList;
         }
     }
 }

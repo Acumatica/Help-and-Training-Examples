@@ -14,6 +14,6 @@ namespace WooCommerceTest
         public MappedCustomer(Customer entity, Guid? id, DateTime? timestamp)
             : base(WooCommerceConnector.TYPE, TYPE, entity, id, timestamp) { }
         public MappedCustomer(CustomerData entity, string id, DateTime? timestamp)
-            : base(WooCommerceConnector.TYPE, TYPE, entity, id, timestamp) { }
+            : base(WooCommerceConnector.TYPE, TYPE, entity, id, id,timestamp) { }
     }
 }

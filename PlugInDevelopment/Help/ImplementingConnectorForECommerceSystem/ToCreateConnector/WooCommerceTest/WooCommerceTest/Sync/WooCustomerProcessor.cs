@@ -6,10 +6,12 @@ using PX.Objects.AR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace WooCommerceTest
 {
-    [BCProcessor(typeof(WooCommerceConnector), BCEntitiesAttribute.Customer, BCCaptions.Customer,
+    [BCProcessor(typeof(WooCommerceConnector), BCEntitiesAttribute.Customer, BCCaptions.Customer, 20,
         IsInternal = false,
         Direction = SyncDirection.Import,
         PrimaryDirection = SyncDirection.Import,
@@ -41,7 +43,7 @@ namespace WooCommerceTest
         #endregion
 
         #region Import
-        public override void MapBucketImport(WooCustomerEntityBucket bucket, IMappedEntity existing)
+        public override async Task MapBucketImport(WooCustomerEntityBucket bucket, IMappedEntity existing, CancellationToken cancellationToken = default)
         {
             MappedCustomer customerObj = bucket.Customer;
 
@@ -155,9 +157,9 @@ namespace WooCommerceTest
             return address;
         }
 
-        public override IEnumerable<MappedCustomer> PullSimilar(IExternEntity entity, out string uniqueField)
+        public override async Task<PullSimilarResult<MappedCustomer>> PullSimilar(IExternEntity entity, CancellationToken cancellationToken = default)
         {
-            uniqueField = string.IsNullOrWhiteSpace(((CustomerData)entity)?.Billing.Email) ? ((CustomerData)entity)?.Email : ((CustomerData)entity)?.Billing.Email;
+            var uniqueField = string.IsNullOrWhiteSpace(((CustomerData)entity)?.Billing.Email) ? ((CustomerData)entity)?.Email : ((CustomerData)entity)?.Billing.Email;
             if (uniqueField == null) return null;
 
             List<MappedCustomer> result = new List<MappedCustomer>();
@@ -169,22 +171,20 @@ namespace WooCommerceTest
 
             if (result == null || result?.Count == 0) return null;
 
-            return result;
+            return new PullSimilarResult<MappedCustomer>() { UniqueField = uniqueField, Entities = result };
         }
 
-        public override IEnumerable<MappedCustomer> PullSimilar(ILocalEntity entity, out string uniqueField)
+        public override async Task<PullSimilarResult<MappedCustomer>> PullSimilar(ILocalEntity entity, CancellationToken cancellationToken = default)
         {
-            uniqueField = ((PX.Commerce.Core.API.Customer)entity)?.MainContact?.Email?.Value;
+            var uniqueField = ((PX.Commerce.Core.API.Customer)entity)?.MainContact?.Email?.Value;
             if (uniqueField == null) return null;
-            /*FilterCustomers filter = new FilterCustomers { Email = uniqueField };
-            IEnumerable<CustomerData> datas = customerDataProvider.GetAll(filter);*/
             IEnumerable<CustomerData> datas = customerDataProvider.GetAll(null);
             if (datas == null) return null;
 
-            return datas.Select(data => new MappedCustomer(data, data.Id.ToString(), data.DateModified.ToDate()));
+            return new PullSimilarResult<MappedCustomer>() { UniqueField = uniqueField, Entities = datas.Select(data => new MappedCustomer(data, data.Id.ToString(), data.DateModified.ToDate())) };
         }
 
-        public override void SaveBucketImport(WooCustomerEntityBucket bucket, IMappedEntity existing, string operation)
+        public override async Task SaveBucketImport(WooCustomerEntityBucket bucket, IMappedEntity existing, string operation, CancellationToken cancellationToken = default)
         {
             MappedCustomer obj = bucket.Customer;
 
@@ -197,26 +197,26 @@ namespace WooCommerceTest
 
         #region Export
 
-        public override void MapBucketExport(WooCustomerEntityBucket bucket, IMappedEntity existing)
+        public override async Task MapBucketExport(WooCustomerEntityBucket bucket, IMappedEntity existing, CancellationToken cancellationToken = default)
         {
         }
 
-        public override void SaveBucketExport(WooCustomerEntityBucket bucket, IMappedEntity existing, string operation)
+        public override async Task SaveBucketExport(WooCustomerEntityBucket bucket, IMappedEntity existing, string operation, CancellationToken cancellationToken = default)
         {
         }
         #endregion
 
         #region Pull
-        public override MappedCustomer PullEntity(Guid? localID, Dictionary<string, object> externalInfo)
+        public override async Task<MappedCustomer> PullEntity(Guid? localID, Dictionary<string, object> externalInfo, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
-        public override MappedCustomer PullEntity(string externID, string externalInfo)
+        public override async Task<MappedCustomer> PullEntity(string externID, string externalInfo, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public override void FetchBucketsForImport(DateTime? minDateTime, DateTime? maxDateTime, PXFilterRow[] filters)
+        public override async Task FetchBucketsForImport(DateTime? minDateTime, DateTime? maxDateTime, PXFilterRow[] filters, CancellationToken cancellationToken = default)
         {
             /*FilterProductCategories filter = new FilterProductCategories();
             if (minDateTime != null)
@@ -231,28 +231,28 @@ namespace WooCommerceTest
             {
                 WooCustomerEntityBucket bucket = CreateBucket();
 
-                MappedCustomer mapped = bucket.Customer = bucket.Customer.Set(data, data.Id.ToString(), data.DateModified.ToDate());
+                MappedCustomer mapped = bucket.Customer = bucket.Customer.Set(data, data.Id.ToString(), data.LastName, data.DateModified.ToDate());
                 EnsureStatus(mapped, SyncDirection.Import);
             }
         }
 
-        public override void FetchBucketsForExport(DateTime? minDateTime, DateTime? maxDateTime, PXFilterRow[] filters)
+        public override async Task FetchBucketsForExport(DateTime? minDateTime, DateTime? maxDateTime, PXFilterRow[] filters, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public override EntityStatus GetBucketForImport(WooCustomerEntityBucket bucket, BCSyncStatus syncstatus)
+        public override async Task<EntityStatus> GetBucketForImport(WooCustomerEntityBucket bucket, BCSyncStatus syncstatus, CancellationToken cancellationToken = default)
         {
             CustomerData data = client.Get<CustomerData>(
                 string.Format("/customers/{0}", syncstatus.ExternID));
 
-            MappedCustomer obj = bucket.Customer = bucket.Customer.Set(data, data.Id.ToString(), data.DateModified.ToDate());
+            MappedCustomer obj = bucket.Customer = bucket.Customer.Set(data, data.Id.ToString(), data.LastName, data.DateModified.ToDate());
             EntityStatus status = EnsureStatus(obj, SyncDirection.Import);
 
             return status;
         }
 
-        public override EntityStatus GetBucketForExport(WooCustomerEntityBucket bucket, BCSyncStatus bcstatus)
+        public override async Task<EntityStatus> GetBucketForExport(WooCustomerEntityBucket bucket, BCSyncStatus bcstatus, CancellationToken cancellationToken = default)
         {
             PX.Commerce.Core.API.Customer impl = cbapi.GetByID<PX.Commerce.Core.API.Customer>(bcstatus.LocalID, GetCustomFieldsForExport());
             if (impl == null) return EntityStatus.None;

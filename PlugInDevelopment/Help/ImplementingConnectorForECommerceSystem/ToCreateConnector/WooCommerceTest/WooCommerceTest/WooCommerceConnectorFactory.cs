@@ -1,6 +1,5 @@
 ﻿using PX.Commerce.Core;
-using System.Collections.Generic;
-using System.Linq;
+using System;
 
 namespace WooCommerceTest
 {
@@ -11,14 +10,14 @@ namespace WooCommerceTest
 
         public override string Type => WooCommerceConnector.TYPE;
 
-        public WooCommerceConnectorFactory(IEnumerable<IProcessorsFactory> processors)
-            : base(processors)
+        public WooCommerceConnectorFactory(ProcessorFactory factory)
+            : base(factory)
         {
         }
 
-        public IConnectorDescriptor GetDescriptor()
+        public virtual Guid? GenerateExternID(BCExternNotification message)
         {
-            return new WooCommercesConnectorDescriptor(_processors.Values.ToList());
+            throw new NotImplementedException();
         }
     }
 }

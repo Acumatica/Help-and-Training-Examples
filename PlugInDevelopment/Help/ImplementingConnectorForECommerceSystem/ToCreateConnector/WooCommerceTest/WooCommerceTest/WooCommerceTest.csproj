@@ -110,11 +110,9 @@
     <Compile Include="Internal\Case.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sync\MappedCustomer.cs" />
-    <Compile Include="Sync\WooCommerceProcessorFactory.cs" />
     <Compile Include="Sync\WooCustomerEntityBucket.cs" />
     <Compile Include="Sync\WooCustomerProcessor.cs" />
     <Compile Include="WooCommerceConnector.cs" />
-    <Compile Include="WooCommerceConnectorDescriptor.cs" />
     <Compile Include="WooCommerceConnectorFactory.cs" />
     <Compile Include="WooCommerceStoreMaint.cs" />
   </ItemGroup>
