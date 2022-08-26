@@ -25,8 +25,19 @@
         </layout>
         <data>
             <SiteMap>
-                <row Url="~/Pages/WO/WO201000.aspx" ScreenID="WO201000" NodeID="2a1e6024-b4ad-494b-9d91-2563a0991eb6" ParentID="00000000-0000-0000-0000-000000000000" />
+                <row Title="WooCommerce Stores" Url="~/Pages/WO/WO201000.aspx" ScreenID="WO201000" NodeID="ec4782c2-5766-4831-8dc8-a1cc779522ee" ParentID="00000000-0000-0000-0000-000000000000">
+                    <MUIScreen IsPortal="0" WorkspaceID="416dc8d1-6e8b-4332-89ba-f5fff46ee05c" Order="126" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385" />
+                </row>
             </SiteMap>
+            <MUIWorkspace>
+                <row IsPortal="0" WorkspaceID="416dc8d1-6e8b-4332-89ba-f5fff46ee05c" Order="865" Title="Commerce" Icon="basket" AreaID="3635ea7d-0975-48ff-b4ac-a870f7e1e8b5" ScreenID="WSBC0000" IsSystem="0" />
+            </MUIWorkspace>
+            <MUISubcategory>
+                <row IsPortal="0" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385" Order="96" Name="Configuration" Icon="" IsSystem="0" />
+            </MUISubcategory>
+            <MUIArea>
+                <row IsPortal="0" AreaID="3635ea7d-0975-48ff-b4ac-a870f7e1e8b5" Order="30" Name="Configuration" />
+            </MUIArea>
         </data>
     </data-set>
 </SiteMapNode>
