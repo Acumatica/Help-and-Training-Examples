@@ -43,7 +43,7 @@ namespace PhoneRepairShopWMS
         public abstract class Msg
         {
             public const string CannotReceiveItem = 
-                "The {0} item can not be received. No more penguins slavery!";
+                "The {0} item cannot be received.";
         }
     }
 }

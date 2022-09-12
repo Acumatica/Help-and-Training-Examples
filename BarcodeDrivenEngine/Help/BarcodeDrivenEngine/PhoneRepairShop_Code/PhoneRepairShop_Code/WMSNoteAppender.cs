@@ -11,7 +11,7 @@ namespace PhoneRepairShopWMS
         PXGraphExtension<TScanBasis, TScanGraph>
     where TDocument : class, IBqlTable, new()
     where TScanBasis : BarcodeDrivenStateMachine<TScanBasis, TScanGraph>
-    where TScanGraph : PXGraph, new()
+    where TScanGraph : PXGraph, new() 
     {
         protected TScanBasis Basis => Base1;
 

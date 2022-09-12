@@ -385,12 +385,12 @@ namespace PhoneRepairShop
             var state = base.DecorateScanState(original);
 
             if (state is WMSBase.LotSerialState lotSerialState)
-                PatchLotSerialState(lotSerialState);
+                InjectLotSerialDeactivationOnNonEnterableLotSerials(lotSerialState);
 
             return state;
         }
 
-        protected virtual void PatchLotSerialState(
+        protected virtual void InjectLotSerialDeactivationOnNonEnterableLotSerials(
             WMSBase.LotSerialState lotSerialState)
         {
             lotSerialState
