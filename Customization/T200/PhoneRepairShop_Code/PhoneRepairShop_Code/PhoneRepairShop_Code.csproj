@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="RSSVDeviceMaint.cs" />
     <Compile Include="DAC\RSSVDevice.cs" />
+	<Compile Include="Data\InputData.cs" />
     <Compile Include="Helper\Constants.cs" />
     <Compile Include="Helper\Messages.cs" />
     <Compile Include="RSSVRepairServiceMaint.cs" />
