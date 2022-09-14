@@ -14,16 +14,17 @@ namespace PhoneRepairShop
         [PXDBIdentity]
         public virtual int? DeviceID { get; set; }
         public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
-        #endregion
+        #endregion 
 
         #region DeviceCD
-        [PXDBString(15, IsUnicode = true, IsKey = true, InputMask = ">aaaaaaaaaaaaaaa")]
+        [PXDBString(15, IsUnicode = true, IsKey = true,
+            InputMask = ">aaaaaaaaaaaaaaa")]
         [PXDefault]
         [PXUIField(DisplayName = "Device Code")]
         [PXSelector(typeof(Search<RSSVDevice.deviceCD>),
-            typeof(RSSVDevice.deviceCD),
-            typeof(RSSVDevice.active),
-            typeof(RSSVDevice.avgComplexityOfRepair))]
+                            typeof(RSSVDevice.deviceCD),
+                            typeof(RSSVDevice.active),
+                            typeof(RSSVDevice.avgComplexityOfRepair))]
         public virtual string DeviceCD { get; set; }
         public abstract class deviceCD : PX.Data.BQL.BqlString.Field<deviceCD> { }
         #endregion
@@ -33,7 +34,7 @@ namespace PhoneRepairShop
         [PXUIField(DisplayName = "Description")]
         public virtual string Description { get; set; }
         public abstract class description :
-        PX.Data.BQL.BqlString.Field<description>
+            PX.Data.BQL.BqlString.Field<description>
         { }
         #endregion
 
@@ -50,19 +51,19 @@ namespace PhoneRepairShop
         [PXDefault(RepairComplexity.Medium)]
         [PXUIField(DisplayName = "Complexity")]
         [PXStringList(
-        new string[]
-        {
-            RepairComplexity.Low,
-            RepairComplexity.Medium,
-            RepairComplexity.High
-        },
-        new string[]
-        {
-            Messages.Low, Messages.Medium, Messages.High
-        })]
+                  new string[]
+                  {
+                    RepairComplexity.Low,
+                    RepairComplexity.Medium,
+                    RepairComplexity.High
+                  },
+                  new string[]
+                  {
+                    Messages.Low, Messages.Medium, Messages.High
+                  })]
         public virtual string AvgComplexityOfRepair { get; set; }
         public abstract class avgComplexityOfRepair :
-        PX.Data.BQL.BqlString.Field<avgComplexityOfRepair>
+            PX.Data.BQL.BqlString.Field<avgComplexityOfRepair>
         { }
         #endregion
 
@@ -108,10 +109,11 @@ namespace PhoneRepairShop
         public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
         #endregion
 
-		#region NoteID
-		[PXNote()]
-		public virtual Guid? NoteID { get; set; }
-		public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
-		#endregion
+        #region NoteID
+        [PXNote()]
+        public virtual Guid? NoteID { get; set; }
+        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
+        #endregion
+
     }
 }
