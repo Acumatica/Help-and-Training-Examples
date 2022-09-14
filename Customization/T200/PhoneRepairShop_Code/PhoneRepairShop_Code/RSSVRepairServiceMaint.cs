@@ -40,21 +40,6 @@ namespace PhoneRepairShop
         public PXSave<RSSVRepairService> Save;
     public PXCancel<RSSVRepairService> Cancel;
 
-
-//   public PXFilter<MasterTable> MasterView;
-//   public PXFilter<DetailsTable> DetailsView;
-
-//  [Serializable]
-//  public class MasterTable : IBqlTable
-//  {
-
-//  }
-
-//  [Serializable]
-//  public class DetailsTable : IBqlTable
-//   {
-
-// }
     public SelectFrom<RSSVRepairService>.View RepairService;
 
 
