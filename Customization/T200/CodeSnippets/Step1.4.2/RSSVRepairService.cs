@@ -18,7 +18,8 @@ namespace PhoneRepairShop
         [PXDefault]
         [PXUIField(DisplayName = "Service ID")]
         public virtual string ServiceCD { get; set; }
-        public abstract class serviceCD : PX.Data.BQL.BqlString.Field<serviceCD> { }
+        public abstract class serviceCD : 
+                PX.Data.BQL.BqlString.Field<serviceCD> { }
         #endregion
 
         #region Description
@@ -61,7 +62,8 @@ namespace PhoneRepairShop
         [PXDefault(false)]
         [PXUIField(DisplayName = "Requires Prepayment")]
         public virtual bool? Prepayment { get; set; }
-        public abstract class prepayment : PX.Data.BQL.BqlBool.Field<prepayment> { }
+        public abstract class prepayment : 
+                PX.Data.BQL.BqlBool.Field<prepayment> { }
         #endregion
 
         #region CreatedDateTime
