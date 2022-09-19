@@ -1,0 +1,10 @@
+add screen SO303000 {
+  add container "InvoiceSummary" {
+    ...
+    add recordAction "TestURL" {
+      behavior = Void
+      redirect = True
+    }
+  }
+  ...
+}

@@ -1,0 +1,8 @@
+add group "FinancialDetails" {
+  displayName = "Financial Details"
+  collapsable = True
+  collapsed = True
+  add field "FinancialLinkToGL#ARAccount"
+  add field "FinancialLinkToGL#Branch"
+  add field "FinancialLinkToGL#ARSubaccount"
+}

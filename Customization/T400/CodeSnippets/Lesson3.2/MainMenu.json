@@ -1,0 +1,3 @@
+add item "GI400001" {
+  displayName = "Open SO by Customer"
+}

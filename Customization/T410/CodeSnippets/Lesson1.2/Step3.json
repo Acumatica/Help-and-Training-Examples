@@ -1,0 +1,19 @@
+add layout "Other" {
+  layout = Tab
+  add field "VATExemptTotal"
+  add field "VATTaxableTotal"
+}
+
+add layout "Details" {
+  layout = DataTab
+  add containerLink "Details" {
+    control = "ListItem"
+  }
+}
+
+add layout "Taxes" {
+  layout = DataTab
+  add containerLink "Taxes" {
+    control = "ListItem"
+  }
+}

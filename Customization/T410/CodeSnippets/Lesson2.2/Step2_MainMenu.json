@@ -1,0 +1,7 @@
+update sitemap {
+  ...
+  add item "AP303010" {
+    displayName = "Vendor Locations"
+    visible = False
+  }
+}

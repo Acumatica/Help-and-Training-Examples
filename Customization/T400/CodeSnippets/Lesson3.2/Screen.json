@@ -1,0 +1,15 @@
+add screen "GI400001" {
+  type = FilterListScreen
+  add container "Filter_" {
+    add field "DateFrom" # required parameter
+    add field "DateTo"   # required parameter
+    add field "Customer" # optional parameter
+  }
+  add container "Result" {
+    add field "CustomerName"
+    add field "OrderNbr"
+    add field "Quantity"
+    add field "SalesOrderTotal"
+    add field "Status"
+  }
+}

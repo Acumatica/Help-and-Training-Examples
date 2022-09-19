@@ -1,0 +1,10 @@
+update screen SO301000 {
+  update container "OrderSummary" {
+    ...
+    add recordAction "SignReport" {
+      behavior = SignReport
+      displayName = "Sign"
+    }
+    ...
+  }
+}

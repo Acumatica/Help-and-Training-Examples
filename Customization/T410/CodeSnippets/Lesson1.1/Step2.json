@@ -1,0 +1,17 @@
+add container "InvoiceSummary" {
+  # fields declaration
+  …
+  add recordAction "Save" {
+    behavior = Save
+  }
+  add recordAction "Cancel" {
+    behavior = Cancel
+  }
+  add containerAction "Insert" {
+    behavior = Create
+  }
+  add recordAction "Release" {
+    syncLongOperation = true
+    behavior = Record
+  }
+}

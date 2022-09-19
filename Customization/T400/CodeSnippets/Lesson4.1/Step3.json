@@ -1,0 +1,10 @@
+update screen SO301000 {
+  update container "OrderSummary" {
+    … 
+    update layout "OrderSettingsTab" {
+      update group "BillToInfoGroup" {
+        remove field "AddressesBillToAddress#AddressLine2"
+      }
+    }
+  }
+}

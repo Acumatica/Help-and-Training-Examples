@@ -1,0 +1,29 @@
+add screen SO303000 {
+  ...
+  add container "Details" {
+    ...
+    
+    add containerAction "SelectShipment" {
+      behavior = Void
+      redirect = True
+      redirectToContainer = "AddOrder$List"
+    }
+  }
+  ...
+  
+  add container "AddOrder" {
+	type = SelectionActionList
+	visible = False
+	listActionsToExpand = 1
+	add field "Selected" {
+		special = ListSelection
+	}
+	add field "OrderType"
+	add field "OrderNbr"
+	add field "Location"
+	add listAction "AddShipment" {
+	  icon = "system://Check"
+	  behavior = Void
+	}
+  }
+}
