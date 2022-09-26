@@ -524,7 +524,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem?$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2022-09-24T00:00:00.000'&$expand=WarehouseDetails&$select=InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM",
+							"raw": "http://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem?$filter=ItemStatus eq 'Active' and LastModified gt\ndatetimeoffset'2022-09-24T00:00:00.000'&$expand=WarehouseDetails&$select=InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -539,7 +539,7 @@
 							"query": [
 								{
 									"key": "$filter",
-									"value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2022-09-24T00:00:00.000'"
+									"value": "ItemStatus eq 'Active' and LastModified gt\ndatetimeoffset'2022-09-24T00:00:00.000'"
 								},
 								{
 									"key": "$expand",
