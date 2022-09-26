@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "501b10bf-3d50-4b84-a839-1de02df7b858",
+		"_postman_id": "a34ea6b5-43e5-4948-bbc4-9c41665f5e07",
 		"name": "MyBIIntegrationREST",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23398134"
 	},
 	"item": [
 		{
@@ -131,7 +132,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				},
@@ -250,7 +251,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				}
@@ -276,7 +277,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost/MyStoreInstance/entity/Default/20.200.001/Customer?$expand=MainContact,MainContact/Address&$select=CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode",
+							"raw": "http://localhost/MyStoreInstance/entity/Default/22.200.001/Customer?$expand=MainContact,MainContact/Address&$select=CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,\nMainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -285,7 +286,7 @@
 								"MyStoreInstance",
 								"entity",
 								"Default",
-								"20.200.001",
+								"22.200.001",
 								"Customer"
 							],
 							"query": [
@@ -318,7 +319,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost/MyStoreInstance/entity/Default/20.200.001/Customer?$expand=MainContact,MainContact/Address&$select=CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode",
+									"raw": "http://localhost/MyStoreInstance/entity/Default/22.200.001/Customer?$expand=MainContact,MainContact/Address&$select=CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -327,7 +328,7 @@
 										"MyStoreInstance",
 										"entity",
 										"Default",
-										"20.200.001",
+										"22.200.001",
 										"Customer"
 									],
 									"query": [
@@ -523,7 +524,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost/MyStoreInstance/entity/Default/20.200.001/StockItem?$select=InventoryID,Description,ItemClass,BaseUOM,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand&$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2019-11-14T00:00:00.000'&$expand=WarehouseDetails",
+							"raw": "http://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem?$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2022-09-24T00:00:00.000'&$expand=WarehouseDetails&$select=InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -532,21 +533,21 @@
 								"MyStoreInstance",
 								"entity",
 								"Default",
-								"20.200.001",
+								"22.200.001",
 								"StockItem"
 							],
 							"query": [
 								{
-									"key": "$select",
-									"value": "InventoryID,Description,ItemClass,BaseUOM,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand"
-								},
-								{
 									"key": "$filter",
-									"value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2019-11-14T00:00:00.000'"
+									"value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2022-09-24T00:00:00.000'"
 								},
 								{
 									"key": "$expand",
 									"value": "WarehouseDetails"
+								},
+								{
+									"key": "$select",
+									"value": "InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM"
 								}
 							]
 						}
@@ -569,7 +570,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost/MyStoreInstance/entity/Default/20.200.001/StockItem?$select=InventoryID,Description,ItemClass,BaseUOM,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand&$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2019-11-14T00:00:00.000'&$expand=WarehouseDetails",
+									"raw": "http://localhost/MyStoreInstance/entity/Default/20.200.001/StockItem?$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2022-09-24T00:00:00.000'&$expand=WarehouseDetails&$select=InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -583,16 +584,16 @@
 									],
 									"query": [
 										{
-											"key": "$select",
-											"value": "InventoryID,Description,ItemClass,BaseUOM,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand"
-										},
-										{
 											"key": "$filter",
-											"value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2019-11-14T00:00:00.000'"
+											"value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2022-09-24T00:00:00.000'"
 										},
 										{
 											"key": "$expand",
 											"value": "WarehouseDetails"
+										},
+										{
+											"key": "$select",
+											"value": "InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM"
 										}
 									]
 								}
