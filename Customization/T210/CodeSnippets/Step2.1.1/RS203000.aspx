@@ -24,27 +24,10 @@
 <asp:Content ID="cont3" ContentPlaceHolderID="phG" Runat="Server">
 	<px:PXTab ID="tab" runat="server" Width="100%" Height="150px" DataSourceID="ds" AllowAutoHide="false">
 		<Items>
-			<px:PXTabItem Text="Repair Items">
+			<px:PXTabItem Text="Tab item 1">
 				<Template>
-					<px:PXGrid SyncPosition="True" Width="100%" SkinID="Details" runat="server" ID="CstPXGrid5">
-						<Levels>
-							<px:PXGridLevel DataMember="RepairItems" >
-								<Columns>
-									<px:PXGridColumn CommitChanges="True" DataField="RepairItemType" Width="70" ></px:PXGridColumn>
-									<px:PXGridColumn Type="CheckBox" DataField="Required" Width="80" ></px:PXGridColumn>
-									<px:PXGridColumn DataField="InventoryID" Width="70" ></px:PXGridColumn>
-									<px:PXGridColumn DataField="InventoryID_description" Width="280" ></px:PXGridColumn>
-									<px:PXGridColumn DataField="BasePrice" Width="100" ></px:PXGridColumn>
-									<px:PXGridColumn Type="CheckBox" DataField="IsDefault" Width="80" ></px:PXGridColumn></Columns>
-<%-- The added code --%>
-	<RowTemplate>
-		<px:PXSegmentMask runat="server" ID="CstPXSegmentMask6" 
-			DataField="InventoryID" AutoRefresh="True" ></px:PXSegmentMask>
-	</RowTemplate>
-<%-- The end of added code --%>
-							</px:PXGridLevel></Levels>
-						<AutoSize Enabled="True" ></AutoSize>
-						<Mode InitNewRow="True" ></Mode></px:PXGrid></Template>
+					
+				</Template>
 			</px:PXTabItem>
 			<px:PXTabItem Text="Tab item 2">
 				<Template>

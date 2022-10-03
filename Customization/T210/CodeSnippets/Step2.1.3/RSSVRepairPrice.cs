@@ -5,7 +5,7 @@ namespace PhoneRepairShop
 {
     [PXCacheName("Repair Price")]
     public class RSSVRepairPrice : IBqlTable
-  {
+    {
         #region ServiceID
         [PXDBInt(IsKey = true)]
         [PXDefault]
@@ -16,7 +16,9 @@ namespace PhoneRepairShop
             SubstituteKey = typeof(RSSVRepairService.serviceCD),
             DescriptionField = typeof(RSSVRepairService.description))]
         public virtual int? ServiceID { get; set; }
-        public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
+        public abstract class serviceID :
+            PX.Data.BQL.BqlInt.Field<serviceID>
+        { }
         #endregion
 
         #region DeviceID
@@ -29,7 +31,9 @@ namespace PhoneRepairShop
             SubstituteKey = typeof(RSSVDevice.deviceCD),
             DescriptionField = typeof(RSSVDevice.description))]
         public virtual int? DeviceID { get; set; }
-        public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
+        public abstract class deviceID :
+            PX.Data.BQL.BqlInt.Field<deviceID>
+        { }
         #endregion
 
         #region Price
@@ -40,12 +44,16 @@ namespace PhoneRepairShop
         public abstract class price : PX.Data.BQL.BqlDecimal.Field<price> { }
         #endregion
 
+        ////////// The added code
         #region RepairItemLineCntr
         [PXDBInt()]
         [PXDefault(0)]
         public virtual Int32? RepairItemLineCntr { get; set; }
-        public abstract class repairItemLineCntr : PX.Data.BQL.BqlInt.Field<repairItemLineCntr> { }
+        public abstract class repairItemLineCntr :
+            PX.Data.BQL.BqlInt.Field<repairItemLineCntr>
+        { }
         #endregion
+        ////////// The end of added code
 
         #region CreatedDateTime
         [PXDBCreatedDateTime()]
@@ -98,13 +106,15 @@ namespace PhoneRepairShop
         #region Tstamp
         [PXDBTimestamp()]
         public virtual byte[] Tstamp { get; set; }
-        public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
+        public abstract class tstamp :
+            PX.Data.BQL.BqlByteArray.Field<tstamp>
+        { }
         #endregion
 
-        #region Noteid
+        #region NoteID
         [PXNote()]
-        public virtual Guid? Noteid { get; set; }
-        public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
+        public virtual Guid? NoteID { get; set; }
+        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
     }
 }

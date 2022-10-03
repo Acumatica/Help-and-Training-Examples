@@ -1,27 +1,31 @@
 using System;
 using PX.Data;
 using PX.Objects.IN;
-using PX.Data.BQL.Fluent;
-using PX.Data.BQL;
 
 namespace PhoneRepairShop
 {
     [PXCacheName("Repair Item")]
     public class RSSVRepairItem : IBqlTable
-  {
+    {
         #region ServiceID
-        public virtual int? ServiceID { get; set; }
-        public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
-        #endregion
+    [PXDBInt(IsKey = true)]
+    [PXUIField(DisplayName = "Service ID")]
+    public virtual int? ServiceID { get; set; }
+    public abstract class serviceID : PX.Data.BQL.BqlInt.Field<serviceID> { }
+    #endregion
 
         #region DeviceID
-        public virtual int? DeviceID { get; set; }
-        public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
-        #endregion
+    [PXDBInt(IsKey = true)]
+    [PXUIField(DisplayName = "Device ID")]
+    public virtual int? DeviceID { get; set; }
+    public abstract class deviceID : PX.Data.BQL.BqlInt.Field<deviceID> { }
+    #endregion
 
         #region LineNbr
-        public virtual int? LineNbr { get; set; }
-        public abstract class lineNbr : PX.Data.BQL.BqlInt.Field<lineNbr> { }
+    [PXDBInt(IsKey = true)]
+    [PXUIField(DisplayName = "Line Nbr")]
+    public virtual int? LineNbr { get; set; }
+    public abstract class lineNbr : PX.Data.BQL.BqlInt.Field<lineNbr> { }
         #endregion
 
         #region RepairItemType
@@ -45,15 +49,18 @@ namespace PhoneRepairShop
             })]
         [PXUIField(DisplayName = "Repair Item Type")]
         public virtual string RepairItemType { get; set; }
-        public abstract class repairItemType : 
-            PX.Data.BQL.BqlString.Field<repairItemType> { }
+        public abstract class repairItemType :
+            PX.Data.BQL.BqlString.Field<repairItemType>
+        { }
         #endregion
 
         #region InventoryID
         [Inventory]
         [PXDefault]
         public virtual int? InventoryID { get; set; }
-        public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
+        public abstract class inventoryID :
+            PX.Data.BQL.BqlInt.Field<inventoryID>
+        { }
         #endregion
 
         #region Required
@@ -61,7 +68,9 @@ namespace PhoneRepairShop
         [PXDefault(false)]
         [PXUIField(DisplayName = "Required")]
         public virtual bool? Required { get; set; }
-        public abstract class required : PX.Data.BQL.BqlBool.Field<required> { }
+        public abstract class required :
+            PX.Data.BQL.BqlBool.Field<required>
+        { }
         #endregion
 
         #region IsDefault
@@ -69,7 +78,9 @@ namespace PhoneRepairShop
         [PXDefault(false)]
         [PXUIField(DisplayName = "Default")]
         public virtual bool? IsDefault { get; set; }
-        public abstract class isDefault : PX.Data.BQL.BqlBool.Field<isDefault> { }
+        public abstract class isDefault :
+            PX.Data.BQL.BqlBool.Field<isDefault>
+        { }
         #endregion
 
         #region BasePrice
@@ -77,7 +88,9 @@ namespace PhoneRepairShop
         [PXDefault(TypeCode.Decimal, "0.0")]
         [PXUIField(DisplayName = "Price")]
         public virtual Decimal? BasePrice { get; set; }
-        public abstract class basePrice : PX.Data.BQL.BqlDecimal.Field<basePrice> { }
+        public abstract class basePrice :
+            PX.Data.BQL.BqlDecimal.Field<basePrice>
+        { }
         #endregion
 
         #region CreatedDateTime
@@ -131,13 +144,15 @@ namespace PhoneRepairShop
         #region Tstamp
         [PXDBTimestamp()]
         public virtual byte[] Tstamp { get; set; }
-        public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
+        public abstract class tstamp :
+            PX.Data.BQL.BqlByteArray.Field<tstamp>
+        { }
         #endregion
 
-        #region Noteid
+        #region NoteID
         [PXNote()]
-        public virtual Guid? Noteid { get; set; }
-        public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
+        public virtual Guid? NoteID { get; set; }
+        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
     }
 }

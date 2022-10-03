@@ -33,6 +33,7 @@ namespace PX.Objects.IN
         public abstract class usrRepairItem : PX.Data.BQL.BqlBool.Field<usrRepairItem> { }
         #endregion
 
+        ////////// The added code
         #region UsrRepairItemType
         [PXDBString(2, IsFixed = true)]
         [PXStringList(
@@ -58,5 +59,6 @@ namespace PX.Objects.IN
           PX.Data.BQL.BqlString.Field<usrRepairItemType>
         { }
         #endregion
+        ////////// The end of added code
     }
 }
