@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using PX.Data;
 
 namespace PhoneRepairShop
@@ -22,7 +22,9 @@ namespace PhoneRepairShop
         #region LastModifiedDateTime
         [PXDBLastModifiedDateTime()]
         public virtual DateTime? LastModifiedDateTime { get; set; }
-        public abstract class lastModifiedDateTime : PX.Data.BQL.BqlDateTime.Field<lastModifiedDateTime> { }
+        public abstract class lastModifiedDateTime :
+            PX.Data.BQL.BqlDateTime.Field<lastModifiedDateTime>
+        { }
         #endregion
     }
 

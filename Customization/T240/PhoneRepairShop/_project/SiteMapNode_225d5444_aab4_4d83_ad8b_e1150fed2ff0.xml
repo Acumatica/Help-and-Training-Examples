@@ -25,7 +25,7 @@
         </layout>
         <data>
             <SiteMap>
-                <row Position="5962" Title="Assign Work Orders" Url="~/Pages/RS/RS501000.aspx" ScreenID="RS501000" NodeID="41dc4cec-1a1b-40bf-ab66-6c08580004fb" ParentID="00000000-0000-0000-0000-000000000000">
+                <row Position="5962" Title="Assign Work Orders" Url="~/Pages/RS/RS501000.aspx" ScreenID="RS501000" NodeID="225d5444-aab4-4d83-ad8b-e1150fed2ff0" ParentID="00000000-0000-0000-0000-000000000000">
                     <MUIScreen IsPortal="0" WorkspaceID="90e7422d-6a71-4c71-9cb7-e325344ae33d" Order="10" SubcategoryID="32130442-2305-4394-9389-cf915b191d2a">
                         <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                     </MUIScreen>
