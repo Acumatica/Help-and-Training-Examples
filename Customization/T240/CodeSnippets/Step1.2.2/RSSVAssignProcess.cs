@@ -1,18 +1,30 @@
 using System;
 using PX.Data;
-using PX.Data.BQL.Fluent;
 using PhoneRepairShop.Workflows;
-using PX.TM;
-using System.Collections.Generic;
-using PX.Data.BQL;
-using System.Linq;
+using PX.Data.BQL.Fluent;
 
 namespace PhoneRepairShop
 {
     public class RSSVAssignProcess : PXGraph<RSSVAssignProcess>
     {
-        ...
+        public PXCancel<RSSVWorkOrder> Cancel;
+        public SelectFrom<RSSVWorkOrder>.
+            Where<RSSVWorkOrder.status.
+                IsEqual<RSSVWorkOrderWorkflow.States.readyForAssignment>>.
+            ProcessingView WorkOrders;
 
+        public RSSVAssignProcess()
+        {
+            WorkOrders.SetProcessCaption("Assign");
+            WorkOrders.SetProcessAllCaption("Assign All");
+        }
+
+        protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
+        {
+            WorkOrders.SetProcessWorkflowAction<RSSVWorkOrderEntry>(
+                g => g.Assign);
+        }
+        ////////// The added code
         [PXHidden]
         public class RSSVWorkOrderToAssignFilter : IBqlTable
         {
@@ -62,5 +74,6 @@ namespace PhoneRepairShop
             { }
             #endregion
         }
+        ////////// The end of added code
     }
 }

@@ -384,30 +384,6 @@ namespace PhoneRepairShop
         //Event handler for a workflow event
         public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument;
 
-        public PXAction<RSSVWorkOrder> Assign;
-        [PXProcessButton]
-        [PXUIField(DisplayName = "Assign")]
-        protected virtual IEnumerable assign(PXAdapter adapter)
-        {
-            bool isMassProcess = adapter.MassProcess;
-            // Populate a local list variable.
-            List<RSSVWorkOrder> list = new List<RSSVWorkOrder>();
-            foreach (RSSVWorkOrder order in adapter.Get<RSSVWorkOrder>())
-            {
-                list.Add(order);
-            }
-            // Trigger the Save action to save changes in the database.
-            Save.Press();
-
-            PXLongOperation.StartOperation(this, delegate ()
-            {
-                AssignOrders(list, isMassProcess);
-            });
-
-            // Return the local list variable.
-            return list;
-        }
-
         public static void AssignOrders(List<RSSVWorkOrder> list,
             bool isMassProcess = false)
         {
@@ -424,6 +400,7 @@ namespace PhoneRepairShop
                 RSSVWorkOrder workOrder = list[i];
                 try
                 {
+                    workOrder.Assignee = workOrder.AssignTo;
                     workOrderEntry.Clear();
                     workOrderEntry.WorkOrders.Current = workOrder;
                     //If the assignee is not specified, 
@@ -476,6 +453,30 @@ namespace PhoneRepairShop
                 throw new PXReportRequiredException(assignedOrders, "RS601000",
                                                     Messages.ReportRS601000Title);
             }
+        }
+
+        public PXAction<RSSVWorkOrder> Assign;
+        [PXProcessButton]
+        [PXUIField(DisplayName = "Assign")]
+        protected virtual IEnumerable assign(PXAdapter adapter)
+        {
+            bool isMassProcess = adapter.MassProcess;
+            // Populate a local list variable.
+            List<RSSVWorkOrder> list = new List<RSSVWorkOrder>();
+            foreach (RSSVWorkOrder order in adapter.Get<RSSVWorkOrder>())
+            {
+                list.Add(order);
+            }
+            // Trigger the Save action to save changes in the database.
+            Save.Press();
+
+            PXLongOperation.StartOperation(this, delegate ()
+            {
+                AssignOrders(list, isMassProcess);
+            });
+
+            // Return the local list variable.
+            return list;
         }
 
         public PXAction<RSSVWorkOrder> Complete;
