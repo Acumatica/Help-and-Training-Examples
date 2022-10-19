@@ -35,10 +35,10 @@ namespace PhoneRepairShop_Code.Tests
                 });
             graph.Caches[typeof(InventoryItemCurySettings)].Insert(new
                 InventoryItemCurySettings
-                {
-                    InventoryID = battery1.InventoryID,
-                    CuryID = "USD"
-                });
+            {
+                InventoryID = battery1.InventoryID,
+                CuryID = "USD"
+            });
             InventoryItemExt batteryExt1 =
                 battery1.GetExtension<InventoryItemExt>();
             batteryExt1.UsrRepairItem = true;
@@ -53,10 +53,10 @@ namespace PhoneRepairShop_Code.Tests
              });
             graph.Caches[typeof(InventoryItemCurySettings)].Insert(new
                 InventoryItemCurySettings
-                {
-                    InventoryID = battery2.InventoryID,
-                    CuryID = "USD"
-                });
+            {
+                InventoryID = battery2.InventoryID,
+                CuryID = "USD"
+            });
             InventoryItemExt batteryExt2 =
                 battery2.GetExtension<InventoryItemExt>();
             batteryExt2.UsrRepairItem = true;
@@ -71,10 +71,10 @@ namespace PhoneRepairShop_Code.Tests
              });
             graph.Caches[typeof(InventoryItemCurySettings)].Insert(new
                 InventoryItemCurySettings
-                {
-                    InventoryID = backCover1.InventoryID,
-                    CuryID = "USD"
-                });
+            {
+                InventoryID = backCover1.InventoryID,
+                CuryID = "USD"
+            });
             InventoryItemExt backCoverExt1 =
              backCover1.GetExtension<InventoryItemExt>();
             backCoverExt1.UsrRepairItem = true;
