@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31019.35
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PhoneRepairShop", "..\..\..\", "{511A7860-082C-42D2-BB57-8FD0AD5F6C6F}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -27,7 +27,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PhoneRepairShop", "..\..\..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneRepairShop_Code", "PhoneRepairShop_Code\PhoneRepairShop_Code.csproj", "{9BC6D61A-5D4B-4D57-BC6B-5E3F9D04377E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneRepairShop_Code.Tests", "PhoneRepairShop_Code.Tests\PhoneRepairShop_Code.Tests.csproj", "{3776106A-C48F-42C7-95A9-6E5A0E265437}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneRepairShop_Code.Tests", "PhoneRepairShop_Code.Tests\PhoneRepairShop_Code.Tests.csproj", "{47B0F86E-9132-45D8-B3DC-B831C1842AFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,17 +36,16 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{511A7860-082C-42D2-BB57-8FD0AD5F6C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{511A7860-082C-42D2-BB57-8FD0AD5F6C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{511A7860-082C-42D2-BB57-8FD0AD5F6C6F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{511A7860-082C-42D2-BB57-8FD0AD5F6C6F}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{9BC6D61A-5D4B-4D57-BC6B-5E3F9D04377E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9BC6D61A-5D4B-4D57-BC6B-5E3F9D04377E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BC6D61A-5D4B-4D57-BC6B-5E3F9D04377E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BC6D61A-5D4B-4D57-BC6B-5E3F9D04377E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3776106A-C48F-42C7-95A9-6E5A0E265437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3776106A-C48F-42C7-95A9-6E5A0E265437}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3776106A-C48F-42C7-95A9-6E5A0E265437}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3776106A-C48F-42C7-95A9-6E5A0E265437}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47B0F86E-9132-45D8-B3DC-B831C1842AFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47B0F86E-9132-45D8-B3DC-B831C1842AFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47B0F86E-9132-45D8-B3DC-B831C1842AFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47B0F86E-9132-45D8-B3DC-B831C1842AFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

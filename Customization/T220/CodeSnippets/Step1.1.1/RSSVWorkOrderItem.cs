@@ -6,7 +6,6 @@ using PX.Objects.IN;
 
 namespace PhoneRepairShop
 {
-    [Serializable]
     [PXCacheName("Repair Item Included in Repair Work Order")]
     public class RSSVWorkOrderItem : IBqlTable
     {
@@ -15,7 +14,7 @@ namespace PhoneRepairShop
         [PXDBDefault(typeof(RSSVWorkOrder.orderNbr))]
         [PXParent(typeof(SelectFrom<RSSVWorkOrder>.
             Where<RSSVWorkOrder.orderNbr.
-			IsEqual<RSSVWorkOrderItem.orderNbr.FromCurrent>>))]
+                IsEqual<RSSVWorkOrderItem.orderNbr.FromCurrent>>))]
         public virtual string OrderNbr { get; set; }
         public abstract class orderNbr : PX.Data.BQL.BqlString.Field<orderNbr> { }
         #endregion
@@ -50,8 +49,7 @@ namespace PhoneRepairShop
             )]
         [PXUIField(DisplayName = "Repair Item Type")]
         public virtual string RepairItemType { get; set; }
-        public abstract class repairItemType : 
-		  PX.Data.BQL.BqlString.Field<repairItemType> { }
+        public abstract class repairItemType : PX.Data.BQL.BqlString.Field<repairItemType> { }
         #endregion
 
         #region InventoryID
@@ -119,10 +117,10 @@ namespace PhoneRepairShop
         public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
         #endregion
 
-        #region Noteid
+        #region NoteID
         [PXNote()]
-        public virtual Guid? Noteid { get; set; }
-        public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
+        public virtual Guid? NoteID { get; set; }
+        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
     }
 }

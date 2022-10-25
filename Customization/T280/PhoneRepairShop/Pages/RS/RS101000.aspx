@@ -16,9 +16,9 @@
 		<Template>
 			<px:PXLayoutRule LabelsWidth="SM" ControlSize="SM" ID="PXLayoutRule1" runat="server" StartRow="True"></px:PXLayoutRule>
 			<px:PXSelector AllowEdit="True" runat="server" ID="CstPXSelector2" DataField="NumberingID" ></px:PXSelector>
-			<px:PXSegmentMask runat="server" ID="CstPXSegmentMask4" DataField="WalkInCustomerID" ></px:PXSegmentMask>
-			<px:PXSelector runat="server" ID="CstPXSelector1" DataField="DefaultEmployee" ></px:PXSelector>
-			<px:PXNumberEdit runat="server" ID="CstPXNumberEdit3" DataField="PrepaymentPercent" ></px:PXNumberEdit></Template>
+			<px:PXSegmentMask runat="server" ID="CstPXSegmentMask4" DataField="WalkInCustomerID" />
+			<px:PXSelector runat="server" ID="CstPXSelector1" DataField="DefaultEmployee" />
+			<px:PXNumberEdit runat="server" ID="CstPXNumberEdit3" DataField="PrepaymentPercent" /></Template>
 		<AutoSize Container="Window" Enabled="True" MinHeight="200" ></AutoSize>
 	</px:PXFormView>
 </asp:Content>

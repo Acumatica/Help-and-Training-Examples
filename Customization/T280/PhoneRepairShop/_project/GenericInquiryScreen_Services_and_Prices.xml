@@ -1,6 +1,6 @@
 ﻿<GenericInquiryScreen>
     <data-set>
-        <relations format-version="3" relations-version="20201113" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
+        <relations format-version="3" relations-version="20220426" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
             <link from="GIFilter (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIGroupBy (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIMassAction (DesignID)" to="GIDesign (DesignID)" />
@@ -45,6 +45,7 @@
             <link from="GITable (NoteID)" to="Note (NoteID)" type="Note" />
             <link from="GIWhere (NoteID)" to="Note (NoteID)" type="Note" />
             <link from="FilterHeader (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="FilterHeader (NoteID)" to="FilterHeaderKvExt (RecordID)" type="RowKvExt" />
         </relations>
         <layout>
             <table name="GIDesign">
@@ -89,6 +90,7 @@
                             <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
                         </table>
                         <table name="Note" uplink="(NoteID) = (NoteID)" />
+                        <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
                     </table>
                     <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
                         <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
@@ -103,6 +105,7 @@
                             <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
                         </table>
                         <table name="Note" uplink="(NoteID) = (NoteID)" />
+                        <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
                     </table>
                     <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
                         <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
@@ -117,6 +120,7 @@
                             <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
                         </table>
                         <table name="Note" uplink="(NoteID) = (NoteID)" />
+                        <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
                     </table>
                     <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
                         <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
@@ -134,7 +138,7 @@
         <data>
             <GIDesign>
                 <row DesignID="134b2979-46f9-452f-ad39-57b3be8e4958" Name="Services and Prices" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS203000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0">
-                    <GINavigationScreen Link="RS203000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1">
+                    <GINavigationScreen Link="RS203000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1" NoteID="66e29b84-792f-49f5-a091-5cd9db9c1d6c">
                         <GINavigationParameter LineNbr="2" FieldName="DeviceID" ParameterName="RepairPrice.DeviceID" IsExpression="0" />
                         <GINavigationParameter LineNbr="1" FieldName="ServiceID" ParameterName="RepairPrice.ServiceID" IsExpression="0" />
                     </GINavigationScreen>
@@ -152,8 +156,8 @@
                         </row>
                     </SiteMap>
                     <SiteMap linkname="to1Screen">
-                        <row Position="5959" Title="Services and Prices" Url="~/Pages/RS/RS203000.aspx" NodeID="be86639e-b3b2-4333-aa87-5d67194a59c0" ParentID="00000000-0000-0000-0000-000000000000">
-                            <MUIScreen IsPortal="0" WorkspaceID="26396cbc-c93c-410b-8048-af5f3707639b" Order="30" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
+                        <row Position="5959" Title="Services and Prices" Url="~/Pages/RS/RS203000.aspx" NodeID="a1ee94a7-8ec0-4eff-a9a3-1f992c7a2b9b" ParentID="00000000-0000-0000-0000-000000000000">
+                            <MUIScreen IsPortal="0" WorkspaceID="28b3b75b-c42b-4f42-908e-e23344279d9b" Order="20" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
                                 <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                             </MUIScreen>
                         </row>
@@ -167,7 +171,7 @@
                 <row IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="32" Title="Data Views" Icon="poll" IsSystem="1">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
-                <row IsPortal="0" WorkspaceID="26396cbc-c93c-410b-8048-af5f3707639b" Order="38" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0">
+                <row IsPortal="0" WorkspaceID="28b3b75b-c42b-4f42-908e-e23344279d9b" Order="38" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
             </MUIWorkspace>
