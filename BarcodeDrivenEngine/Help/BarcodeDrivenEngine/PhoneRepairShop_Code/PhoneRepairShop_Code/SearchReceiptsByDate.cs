@@ -13,12 +13,12 @@ namespace PhoneRepairShopWMS
     public class SearchReceiptsByDate : ReceivePutAway.ScanExtension
     {
         [PXOverride]
-        public virtual ScanState<ReceivePutAway> DecoracteScanState(
+        public virtual ScanState<ReceivePutAway> DecorateScanState(
             ScanState<ReceivePutAway> original,
             Func<ScanState<ReceivePutAway>, 
-                ScanState<ReceivePutAway>> base_DecoracteScanState)
+                ScanState<ReceivePutAway>> base_DecorateScanState)
         {
-            var state = base_DecoracteScanState(original);
+            var state = base_DecorateScanState(original);
 
             if (state is ReceivePutAway.ReceiveMode.ReceiptState receiptState)
                 PatchReceiptStateInReceiveMode(receiptState); 
