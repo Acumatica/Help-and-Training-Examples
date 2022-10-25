@@ -1,8 +1,8 @@
 using System;
 using PX.Data;
 using PX.Objects.AR;
-using PX.TM;
 using PX.Objects.CS;
+using PX.TM;
 
 namespace PhoneRepairShop
 {
@@ -10,10 +10,13 @@ namespace PhoneRepairShop
     public class RSSVWorkOrder : IBqlTable
     {
         #region OrderNbr
-        [PXDBString(15, IsKey = true, IsUnicode = true, InputMask = ">CCCCCCCCCCCCCCC")]
+        [PXDBString(15, IsKey = true, IsUnicode = true,
+            InputMask = ">CCCCCCCCCCCCCCC")]
         [PXDefault(PersistingCheck = PXPersistingCheck.NullOrBlank)]
-        [PXUIField(DisplayName = "Order Nbr.", Visibility = PXUIVisibility.SelectorVisible)]
-        [AutoNumber(typeof(RSSVSetup.numberingID), typeof(RSSVWorkOrder.dateCreated))]
+        [PXUIField(DisplayName = "Order Nbr.",
+            Visibility = PXUIVisibility.SelectorVisible)]
+        [AutoNumber(typeof(RSSVSetup.numberingID),
+            typeof(RSSVWorkOrder.dateCreated))]
         [PXSelector(typeof(Search<RSSVWorkOrder.orderNbr>))]
         public virtual string OrderNbr { get; set; }
         public abstract class orderNbr : PX.Data.BQL.BqlString.Field<orderNbr> { }
@@ -21,7 +24,8 @@ namespace PhoneRepairShop
 
         #region CustomerID
         [PXDefault]
-        [CustomerActive(DisplayName = "Customer ID", DescriptionField = typeof(Customer.acctName))]
+        [CustomerActive(DisplayName = "Customer ID",
+            DescriptionField = typeof(Customer.acctName))]
         public virtual int? CustomerID { get; set; }
         public abstract class customerID : PX.Data.BQL.BqlInt.Field<customerID> { }
         #endregion
@@ -77,7 +81,8 @@ namespace PhoneRepairShop
 
         #region Description
         [PXDBString(60, IsUnicode = true)]
-        [PXUIField(DisplayName = "Description", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Description",
+            Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string Description { get; set; }
         public abstract class description : PX.Data.BQL.BqlString.Field<description> { }
         #endregion
@@ -85,7 +90,8 @@ namespace PhoneRepairShop
         #region ServiceID
         [PXDBInt()]
         [PXDefault]
-        [PXUIField(DisplayName = "Service", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Service",
+            Visibility = PXUIVisibility.SelectorVisible)]
         [PXSelector(typeof(Search<RSSVRepairService.serviceID>),
             typeof(RSSVRepairService.serviceCD),
             typeof(RSSVRepairService.description),
@@ -98,7 +104,8 @@ namespace PhoneRepairShop
         #region DeviceID
         [PXDBInt()]
         [PXDefault]
-        [PXUIField(DisplayName = "Device", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Device",
+            Visibility = PXUIVisibility.SelectorVisible)]
         [PXSelector(typeof(Search<RSSVDevice.deviceID>),
             typeof(RSSVDevice.deviceCD),
             typeof(RSSVDevice.description),
@@ -120,7 +127,8 @@ namespace PhoneRepairShop
         [PXDBInt()]
         [PXDefault(0)]
         public virtual int? RepairItemLineCntr { get; set; }
-        public abstract class repairItemLineCntr : PX.Data.BQL.BqlInt.Field<repairItemLineCntr> { }
+        public abstract class repairItemLineCntr :
+            PX.Data.BQL.BqlInt.Field<repairItemLineCntr> { }
         #endregion
 
         #region Assignee
