@@ -40,8 +40,6 @@ namespace PhoneRepairShopWMS
                                 IsEqual<Vendor.bAccountID>>.SingleTableOnly.
                             Where<
                                 POReceipt.receiptDate.IsEqual<@P.AsDateTime>.
-                                And<POReceipt.released.IsEqual<False>>.
-                                And<POReceipt.hold.IsEqual<False>>.
                                 And<POReceipt.receiptType.IsEqual<POReceiptType.poreceipt>>.
                                 And<
                                     Vendor.bAccountID.IsNull.
