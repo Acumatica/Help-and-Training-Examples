@@ -40,20 +40,20 @@ namespace PhoneRepairShop
         #region Actions
 
         // T220 section
-        public PXAction<RSSVWorkOrder> putOnHold;
+        public PXAction<RSSVWorkOrder> PutOnHold;
         [PXButton(CommitChanges = true), PXUIField(DisplayName = "Hold", MapEnableRights = PXCacheRights.Select, MapViewRights = PXCacheRights.Select)]
-        protected virtual IEnumerable PutOnHold(PXAdapter adapter) => adapter.Get();
+        protected virtual IEnumerable putOnHold(PXAdapter adapter) => adapter.Get();
 
-        public PXAction<RSSVWorkOrder> releaseFromHold;
+        public PXAction<RSSVWorkOrder> ReleaseFromHold;
         [PXButton(CommitChanges = true), PXUIField(DisplayName = "Remove Hold", MapEnableRights = PXCacheRights.Select, MapViewRights = PXCacheRights.Select)]
-        protected virtual IEnumerable ReleaseFromHold(PXAdapter adapter) => adapter.Get();
+        protected virtual IEnumerable releaseFromHold(PXAdapter adapter) => adapter.Get();
 
 
         // T230 section
-        public PXAction<RSSVWorkOrder> assign;
+        public PXAction<RSSVWorkOrder> Assign;
         [PXButton(CommitChanges = true)]
         [PXUIField(DisplayName = "Assign", Enabled = false)]
-        protected virtual void Assign()
+        protected virtual void assign()
         {
             // Get the current order from the cache.
             RSSVWorkOrder row = WorkOrders.Current;
@@ -73,10 +73,10 @@ namespace PhoneRepairShop
             Actions.PressSave();
         }
 
-        public PXAction<RSSVWorkOrder> complete;
+        public PXAction<RSSVWorkOrder> Complete;
         [PXButton(CommitChanges = true)]
         [PXUIField(DisplayName = "Complete", Enabled = false)]
-        protected virtual IEnumerable Complete(PXAdapter adapter) => adapter.Get();
+        protected virtual IEnumerable complete(PXAdapter adapter) => adapter.Get();
 
         #endregion
 
