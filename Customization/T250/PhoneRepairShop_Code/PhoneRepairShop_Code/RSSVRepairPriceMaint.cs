@@ -83,7 +83,6 @@ namespace PhoneRepairShop
             }
         }
 
-
         //When Repair Item Type is updated,
         //clear the values of the Inventory ID and Default columns and
         //trigger FieldDefaulting for the Required column.
