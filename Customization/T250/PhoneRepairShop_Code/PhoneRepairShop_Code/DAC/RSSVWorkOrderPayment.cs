@@ -1,7 +1,11 @@
-﻿using PX.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using PX.Data;
 using PX.Data.BQL.Fluent;
 using PX.Objects.AR;
-using System;
 
 namespace PhoneRepairShop
 {
@@ -21,8 +25,7 @@ namespace PhoneRepairShop
         [PXUIField(DisplayName = "Invoice Nbr.", Enabled = false)]
         public virtual String InvoiceNbr { get; set; }
         public abstract class invoiceNbr :
-            PX.Data.BQL.BqlString.Field<invoiceNbr>
-        { }
+            PX.Data.BQL.BqlString.Field<invoiceNbr> { }
         #endregion
 
         #region DueDate
@@ -30,8 +33,7 @@ namespace PhoneRepairShop
         [PXUIField(DisplayName = "Due Date", Enabled = false)]
         public virtual DateTime? DueDate { get; set; }
         public abstract class dueDate :
-            PX.Data.BQL.BqlDateTime.Field<dueDate>
-        { }
+            PX.Data.BQL.BqlDateTime.Field<dueDate> { }
         #endregion
 
         #region AdjgRefNbr
@@ -39,8 +41,7 @@ namespace PhoneRepairShop
         [PXUIField(DisplayName = "Latest Payment", Enabled = false)]
         public virtual String AdjgRefNbr { get; set; }
         public abstract class adjgRefNbr :
-            PX.Data.BQL.BqlString.Field<adjgRefNbr>
-        { }
+            PX.Data.BQL.BqlString.Field<adjgRefNbr> { }
         #endregion
 
         #region CuryAdjdAmt
@@ -48,8 +49,7 @@ namespace PhoneRepairShop
         [PXUIField(DisplayName = "Latest Amount Paid", Enabled = false)]
         public virtual Decimal? CuryAdjdAmt { get; set; }
         public abstract class curyAdjdAmt :
-            PX.Data.BQL.BqlDecimal.Field<curyAdjdAmt>
-        { }
+            PX.Data.BQL.BqlDecimal.Field<curyAdjdAmt> { }
         #endregion
     }
 }

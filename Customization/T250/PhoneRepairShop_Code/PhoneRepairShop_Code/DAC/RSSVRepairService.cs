@@ -100,12 +100,12 @@ namespace PhoneRepairShop
     [PXDBTimestamp()]
     public virtual byte[] Tstamp { get; set; }
     public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
-        #endregion
+    #endregion
 
-        #region NoteID
-        [PXNote()]
-        public virtual Guid? NoteID { get; set; }
-        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
-        #endregion
-    }
+    #region NoteID
+    [PXNote()]
+    public virtual Guid? NoteID { get; set; }
+    public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
+    #endregion
+  }
 }

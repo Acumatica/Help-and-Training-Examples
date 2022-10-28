@@ -11,7 +11,5 @@ namespace PhoneRepairShop
         public PXCancel<RSSVSetup> Cancel;
 
         public SelectFrom<RSSVSetup>.View Setup;
-
-
     }
 }
