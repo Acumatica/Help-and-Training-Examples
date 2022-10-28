@@ -2,9 +2,11 @@ using PX.Data;
 
 namespace PX.Objects.IN
 {
-    public class InventoryItemMaint_Extension : PXGraphExtension<InventoryItemMaint>
+    // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
+    public class InventoryItemMaint_Extension : PXGraphExtension<PX.Objects.IN.InventoryItemMaint>
     {
         #region Event Handlers
+
         protected void _(Events.RowSelected<InventoryItem> e)
         {
             InventoryItem item = e.Row;
@@ -17,6 +19,7 @@ namespace PX.Objects.IN
             PXUIFieldAttribute.SetEnabled<InventoryItemExt.usrRepairItemType>(
                 e.Cache, e.Row, enableFields);
         }
+
         #endregion
     }
 }
