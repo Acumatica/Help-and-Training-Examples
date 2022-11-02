@@ -1,8 +1,8 @@
 using System;
 using PX.Data;
 using PX.Objects.AR;
-using PX.Objects.CS;
 using PX.TM;
+using PX.Objects.CS;
 using PX.Data.BQL.Fluent;
 using PX.Objects.SO;
 
@@ -122,7 +122,9 @@ namespace PhoneRepairShop
         [PXDBInt()]
         [PXDefault(0)]
         public virtual int? RepairItemLineCntr { get; set; }
-        public abstract class repairItemLineCntr : PX.Data.BQL.BqlInt.Field<repairItemLineCntr> { }
+        public abstract class repairItemLineCntr :
+          PX.Data.BQL.BqlInt.Field<repairItemLineCntr>
+        { }
         #endregion
 
         #region Assignee
@@ -161,40 +163,52 @@ namespace PhoneRepairShop
         public abstract class invoiceNbr : PX.Data.BQL.BqlString.Field<invoiceNbr> { }
         #endregion
 
+        #region CreatedDateTime
+        [PXDBCreatedDateTime()]
+        public virtual DateTime? CreatedDateTime { get; set; }
+        public abstract class createdDateTime :
+            PX.Data.BQL.BqlDateTime.Field<createdDateTime>
+        { }
+        #endregion
+
         #region CreatedByID
         [PXDBCreatedByID()]
         public virtual Guid? CreatedByID { get; set; }
-        public abstract class createdByID : PX.Data.BQL.BqlGuid.Field<createdByID> { }
+        public abstract class createdByID :
+            PX.Data.BQL.BqlGuid.Field<createdByID>
+        { }
         #endregion
 
         #region CreatedByScreenID
         [PXDBCreatedByScreenID()]
         public virtual string CreatedByScreenID { get; set; }
-        public abstract class createdByScreenID : PX.Data.BQL.BqlString.Field<createdByScreenID> { }
-        #endregion
-
-        #region CreatedDateTime
-        [PXDBCreatedDateTime()]
-        public virtual DateTime? CreatedDateTime { get; set; }
-        public abstract class createdDateTime : PX.Data.BQL.BqlDateTime.Field<createdDateTime> { }
-        #endregion
-
-        #region LastModifiedByID
-        [PXDBLastModifiedByID()]
-        public virtual Guid? LastModifiedByID { get; set; }
-        public abstract class lastModifiedByID : PX.Data.BQL.BqlGuid.Field<lastModifiedByID> { }
-        #endregion
-
-        #region LastModifiedByScreenID
-        [PXDBLastModifiedByScreenID()]
-        public virtual string LastModifiedByScreenID { get; set; }
-        public abstract class lastModifiedByScreenID : PX.Data.BQL.BqlString.Field<lastModifiedByScreenID> { }
+        public abstract class createdByScreenID :
+            PX.Data.BQL.BqlString.Field<createdByScreenID>
+        { }
         #endregion
 
         #region LastModifiedDateTime
         [PXDBLastModifiedDateTime()]
         public virtual DateTime? LastModifiedDateTime { get; set; }
-        public abstract class lastModifiedDateTime : PX.Data.BQL.BqlDateTime.Field<lastModifiedDateTime> { }
+        public abstract class lastModifiedDateTime :
+            PX.Data.BQL.BqlDateTime.Field<lastModifiedDateTime>
+        { }
+        #endregion
+
+        #region LastModifiedByID
+        [PXDBLastModifiedByID()]
+        public virtual Guid? LastModifiedByID { get; set; }
+        public abstract class lastModifiedByID :
+            PX.Data.BQL.BqlGuid.Field<lastModifiedByID>
+        { }
+        #endregion
+
+        #region LastModifiedByScreenID
+        [PXDBLastModifiedByScreenID()]
+        public virtual string LastModifiedByScreenID { get; set; }
+        public abstract class lastModifiedByScreenID :
+            PX.Data.BQL.BqlString.Field<lastModifiedByScreenID>
+        { }
         #endregion
 
         #region Tstamp
@@ -240,14 +254,6 @@ namespace PhoneRepairShop
         { }
         #endregion
 
-        public new abstract class serviceID :
-            PX.Data.BQL.BqlInt.Field<serviceID>
-        { }
-
-        public new abstract class customerID :
-            PX.Data.BQL.BqlInt.Field<customerID>
-        { }
-
         #region OrderType
         [PXString(IsKey = true)]
         [PXUIField(DisplayName = "Order Type")]
@@ -268,5 +274,12 @@ namespace PhoneRepairShop
             PX.Data.BQL.BqlDecimal.Field<orderType>
         { }
         #endregion
+
+        public new abstract class serviceID :
+            PX.Data.BQL.BqlInt.Field<serviceID>
+        { }
+        public new abstract class customerID :
+            PX.Data.BQL.BqlInt.Field<customerID>
+        { }
     }
 }

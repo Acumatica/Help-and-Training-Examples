@@ -1,8 +1,8 @@
 using System;
 using PX.Data;
-using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
 using PX.Objects.IN;
+using PX.Data.BQL;
 
 namespace PhoneRepairShop
 {
@@ -75,7 +75,8 @@ namespace PhoneRepairShop
         [PXDefault]
         public virtual int? InventoryID { get; set; }
         public abstract class inventoryID :
-            PX.Data.BQL.BqlInt.Field<inventoryID> { }
+            PX.Data.BQL.BqlInt.Field<inventoryID>
+        { }
         #endregion
 
         #region Required
@@ -105,7 +106,7 @@ namespace PhoneRepairShop
         [PXFormula(null,
             typeof(SumCalc<RSSVRepairPrice.price>))]
         public virtual Decimal? BasePrice { get; set; }
-        public abstract class basePrice :
+        public abstract class basePrice : 
             PX.Data.BQL.BqlDecimal.Field<basePrice> { }
         #endregion
 
@@ -168,8 +169,7 @@ namespace PhoneRepairShop
         #region NoteID
         [PXNote()]
         public virtual Guid? NoteID { get; set; }
-        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID>
-        { }
+        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
     }
 }

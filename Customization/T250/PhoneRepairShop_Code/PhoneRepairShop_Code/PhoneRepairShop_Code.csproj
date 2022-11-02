@@ -59,12 +59,13 @@
       <HintPath>..\..\..\..\Bin\PX.Web.Customization.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAC\RSSVDevice.cs" />
-    <Compile Include="DAC\RSSVLabor.cs" />
-    <Compile Include="DAC\RSSVWarranty.cs" />
     <Compile Include="DAC\RSSVWorkOrderPayment.cs" />
     <Compile Include="Data\InputData.cs" />
     <Compile Include="Helper\Constants.cs" />
@@ -78,6 +79,8 @@
     <Compile Include="DAC\RSSVRepairPrice.cs" />
     <Compile Include="DAC\RSSVRepairItem.cs" />
     <Compile Include="DAC\RSSVStockItemDevice.cs" />
+    <Compile Include="DAC\RSSVLabor.cs" />
+    <Compile Include="DAC\RSSVWarranty.cs" />
     <Compile Include="RSSVWorkOrderEntry.cs" />
     <Compile Include="DAC\RSSVWorkOrder.cs" />
     <Compile Include="DAC\RSSVWorkOrderItem.cs" />

@@ -1,7 +1,7 @@
 using System;
 using PX.Data;
-using PX.Objects.IN;
 using PX.Data.BQL.Fluent;
+using PX.Objects.IN;
 
 namespace PhoneRepairShop
 {
@@ -12,8 +12,7 @@ namespace PhoneRepairShop
         [PXDBInt(IsKey = true)]
         [PXDBDefault(typeof(InventoryItem.inventoryID))]
         [PXParent(typeof(SelectFrom<InventoryItem>.
-            Where<InventoryItem.inventoryID.IsEqual<
-                RSSVStockItemDevice.inventoryID.FromCurrent>>))]
+            Where<InventoryItem.inventoryID.IsEqual<RSSVStockItemDevice.inventoryID.FromCurrent>>))]
         public virtual int? InventoryID { get; set; }
         public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
         #endregion

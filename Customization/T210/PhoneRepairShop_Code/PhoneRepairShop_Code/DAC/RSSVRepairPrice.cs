@@ -48,7 +48,9 @@ namespace PhoneRepairShop
         [PXDBInt()]
         [PXDefault(0)]
         public virtual Int32? RepairItemLineCntr { get; set; }
-        public abstract class repairItemLineCntr : PX.Data.BQL.BqlInt.Field<repairItemLineCntr> { }
+        public abstract class repairItemLineCntr :
+            PX.Data.BQL.BqlInt.Field<repairItemLineCntr>
+        { }
         #endregion
 
         #region CreatedDateTime
@@ -110,8 +112,7 @@ namespace PhoneRepairShop
         #region NoteID
         [PXNote()]
         public virtual Guid? NoteID { get; set; }
-        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID>
-        { }
+        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
     }
 }

@@ -1,14 +1,14 @@
 using System;
 using PX.Data;
-using PX.Objects.IN;
 using PX.Data.BQL.Fluent;
+using PX.Objects.IN;
 using PX.Data.BQL;
 
 namespace PhoneRepairShop
 {
     [PXCacheName("Repair Item")]
     public class RSSVRepairItem : IBqlTable
-  {
+    {
         #region ServiceID
         [PXDBInt(IsKey = true)]
         [PXDBDefault(typeof(RSSVRepairPrice.serviceID))]
@@ -39,28 +39,30 @@ namespace PhoneRepairShop
         #region RepairItemType
         [PXDBString(2, IsFixed = true)]
         [PXStringList(
-        new string[]
-        {
-            RepairItemTypeConstants.Battery,
-            RepairItemTypeConstants.Screen,
-            RepairItemTypeConstants.ScreenCover,
-            RepairItemTypeConstants.BackCover,
-            RepairItemTypeConstants.Motherboard
-        },
-        new string[]
-        {
-            Messages.Battery,
-            Messages.Screen,
-            Messages.ScreenCover,
-            Messages.BackCover,
-            Messages.Motherboard
-        })]
+            new string[]
+            {
+                RepairItemTypeConstants.Battery,
+                RepairItemTypeConstants.Screen,
+                RepairItemTypeConstants.ScreenCover,
+                RepairItemTypeConstants.BackCover,
+                RepairItemTypeConstants.Motherboard
+            },
+            new string[]
+            {
+                Messages.Battery,
+                Messages.Screen,
+                Messages.ScreenCover,
+                Messages.BackCover,
+                Messages.Motherboard
+            })]
         [PXUIField(DisplayName = "Repair Item Type")]
         public virtual string RepairItemType { get; set; }
-        public abstract class repairItemType : 
-            PX.Data.BQL.BqlString.Field<repairItemType> { }
+        public abstract class repairItemType :
+            PX.Data.BQL.BqlString.Field<repairItemType>
+        { }
         #endregion
 
+        ////////// The modified code
         #region InventoryID
         [PXRestrictor(typeof(
             Where<InventoryItemExt.usrRepairItem.IsEqual<True>.
@@ -73,15 +75,20 @@ namespace PhoneRepairShop
         [Inventory]
         [PXDefault]
         public virtual int? InventoryID { get; set; }
-        public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
+        public abstract class inventoryID :
+            PX.Data.BQL.BqlInt.Field<inventoryID>
+        { }
         #endregion
+        ////////// The end of modified code
 
         #region Required
         [PXDBBool()]
         [PXDefault(false)]
         [PXUIField(DisplayName = "Required")]
         public virtual bool? Required { get; set; }
-        public abstract class required : PX.Data.BQL.BqlBool.Field<required> { }
+        public abstract class required :
+            PX.Data.BQL.BqlBool.Field<required>
+        { }
         #endregion
 
         #region IsDefault
@@ -89,17 +96,19 @@ namespace PhoneRepairShop
         [PXDefault(false)]
         [PXUIField(DisplayName = "Default")]
         public virtual bool? IsDefault { get; set; }
-        public abstract class isDefault : PX.Data.BQL.BqlBool.Field<isDefault> { }
+        public abstract class isDefault :
+            PX.Data.BQL.BqlBool.Field<isDefault>
+        { }
         #endregion
 
         #region BasePrice
         [PXDBDecimal()]
         [PXDefault(TypeCode.Decimal, "0.0")]
         [PXUIField(DisplayName = "Price")]
-        [PXFormula(null,
-            typeof(SumCalc<RSSVRepairPrice.price>))]
         public virtual Decimal? BasePrice { get; set; }
-        public abstract class basePrice : PX.Data.BQL.BqlDecimal.Field<basePrice> { }
+        public abstract class basePrice :
+            PX.Data.BQL.BqlDecimal.Field<basePrice>
+        { }
         #endregion
 
         #region CreatedDateTime
@@ -153,13 +162,15 @@ namespace PhoneRepairShop
         #region Tstamp
         [PXDBTimestamp()]
         public virtual byte[] Tstamp { get; set; }
-        public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
+        public abstract class tstamp :
+            PX.Data.BQL.BqlByteArray.Field<tstamp>
+        { }
         #endregion
 
-        #region Noteid
+        #region NoteID
         [PXNote()]
-        public virtual Guid? Noteid { get; set; }
-        public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
+        public virtual Guid? NoteID { get; set; }
+        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
     }
 }

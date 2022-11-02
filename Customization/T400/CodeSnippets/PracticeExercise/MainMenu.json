@@ -1,8 +1,0 @@
-add folder "InvoicedItems" {
-  type = HubFolder
-  displayName = "Invoiced Items"
-
-  add item "GI000008" {
-    displayName = "Invoiced Items"
-  }
-}

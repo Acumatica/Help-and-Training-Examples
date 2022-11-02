@@ -1,3 +1,24 @@
-add item "SO641010" { 
-   visible = False
+update sitemap {
+  add item "GI000023" {
+    displayName = "Sales Activities"
+  }
+    
+  add item "DB000012" {
+    displayName = "Sales Operations"
+  }
+    
+  
+  add folder "InvoicedItems" {
+    type = HubFolder
+    displayName = "Invoiced Items"
+
+    add item "GI000008" {
+    displayName = "Invoiced Items"
+    }
+  }
+    
+    
+  add item "SO641010" {
+     visible = False
+  }
 }

@@ -13,6 +13,7 @@ namespace PhoneRepairShop
         public const string High = "H";
     }
 
+    ////////// The added code
     //Constants for the repair item types
     public static class RepairItemTypeConstants
     {
@@ -22,4 +23,5 @@ namespace PhoneRepairShop
         public const string BackCover = "BC";
         public const string Motherboard = "MB";
     }
+    ////////// The end of added code
 }
