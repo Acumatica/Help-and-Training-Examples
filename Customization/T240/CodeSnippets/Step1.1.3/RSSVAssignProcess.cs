@@ -1,11 +1,13 @@
 using System;
 using PX.Data;
+////////// The added code
 using PhoneRepairShop.Workflows;
 using PX.Data.BQL.Fluent;
-using System.Collections.Generic;
+////////// The end of added code
 
 namespace PhoneRepairShop
 {
+    ////////// The added code
     public class RSSVAssignProcess : PXGraph<RSSVAssignProcess>
     {
         public PXCancel<RSSVWorkOrder> Cancel;
@@ -19,13 +21,12 @@ namespace PhoneRepairShop
             WorkOrders.SetProcessCaption("Assign");
             WorkOrders.SetProcessAllCaption("Assign All");
         }
-        
-        protected virtual void _(Events.RowSelected<RSSVWorkOrder> e) 
+
+        protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
         {
             WorkOrders.SetProcessWorkflowAction<RSSVWorkOrderEntry>(
                 g => g.Assign);
         }
-        
-        ...
     }
+    ////////// The end of added code
 }

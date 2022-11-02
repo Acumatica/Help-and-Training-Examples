@@ -14,34 +14,50 @@
 <asp:Content ID="cont2" ContentPlaceHolderID="phF" Runat="Server">
 	<px:PXFormView ID="form" runat="server" DataSourceID="ds" DataMember="RepairPrices" Width="100%" Height="" AllowAutoHide="false">
 		<Template>
-			<px:PXLayoutRule ControlSize="M" LabelsWidth="S" ID="PXLayoutRule1" runat="server" StartRow="True"></px:PXLayoutRule>
-			<px:PXSelector runat="server" ID="CstPXSelector3" DataField="ServiceID" ></px:PXSelector>
-			<px:PXSelector runat="server" ID="CstPXSelector1" DataField="DeviceID" ></px:PXSelector>
-			<px:PXLayoutRule ControlSize="M" LabelsWidth="SM" runat="server" ID="CstPXLayoutRule4" StartColumn="True" ></px:PXLayoutRule>
-			<px:PXNumberEdit runat="server" ID="CstPXNumberEdit2" DataField="Price" ></px:PXNumberEdit></Template>
+			<px:PXLayoutRule ControlSize="m" LabelsWidth="s" ID="PXLayoutRule1" runat="server" StartRow="True"></px:PXLayoutRule>
+			<px:PXSelector runat="server" ID="CstPXSelector3" DataField="ServiceID" />
+			<px:PXSelector runat="server" ID="CstPXSelector1" DataField="DeviceID" />
+			<px:PXLayoutRule ControlSize="m" LabelsWidth="sm" runat="server" ID="CstPXLayoutRule4" StartColumn="True" ></px:PXLayoutRule>
+			<px:PXNumberEdit runat="server" ID="CstPXNumberEdit2" DataField="Price" /></Template>
 	</px:PXFormView>
 </asp:Content>
 <asp:Content ID="cont3" ContentPlaceHolderID="phG" Runat="Server">
 	<px:PXTab ID="tab" runat="server" Width="100%" Height="150px" DataSourceID="ds" AllowAutoHide="false">
 		<Items>
+			<%-- The added code --%>
 			<px:PXTabItem Text="Repair Items">
 				<Template>
-					<px:PXGrid SyncPosition="True" SkinID="Details" Width="100%" runat="server" ID="CstPXGrid5">
-					<Levels>
-						<px:PXGridLevel DataMember="RepairItems" >
-<Columns>
-	<px:PXGridColumn DataField="RepairItemType" Width="70" ></px:PXGridColumn>
-	<px:PXGridColumn DataField="Required" Width="80" Type="CheckBox" ></px:PXGridColumn>
-	<px:PXGridColumn DataField="InventoryID" Width="70" ></px:PXGridColumn>
-	<px:PXGridColumn DataField="InventoryID_description" Width="280" ></px:PXGridColumn>
-	<px:PXGridColumn DataField="BasePrice" Width="100" ></px:PXGridColumn>
-	<px:PXGridColumn Type="CheckBox" DataField="IsDefault" Width="80" ></px:PXGridColumn>
-</Columns>
-						</px:PXGridLevel></Levels>
+					<px:PXGrid Width="100%" SkinID="Details" runat="server" 
+						ID="CstPXGrid5">
+						<Levels>
+							<px:PXGridLevel DataMember="RepairItems" >
+								<Columns>
+									<px:PXGridColumn DataField="RepairItemType" 
+										Width="70" />
+									<px:PXGridColumn Type="CheckBox" 
+										DataField="Required" Width="80" >										
+									</px:PXGridColumn>
+									<px:PXGridColumn DataField="InventoryID" 
+										Width="70" />
+									<px:PXGridColumn 
+										DataField="InventoryID_description" 
+										Width="280" />
+									<px:PXGridColumn DataField="BasePrice" 
+										Width="100" />
+									<px:PXGridColumn Type="CheckBox" 
+										DataField="IsDefault" Width="80" >										
+									</px:PXGridColumn>
+								</Columns></px:PXGridLevel></Levels>
 						<AutoSize Enabled="True" ></AutoSize>
-						<Mode InitNewRow="True" ></Mode></px:PXGrid></Template>
+						<Mode InitNewRow="True" /></px:PXGrid></Template>
 			</px:PXTabItem>
-</Items>
-		<AutoSize Container="Window" Enabled="True" MinHeight="150" ></AutoSize>
+			<%-- The end of added code --%>
+			<px:PXTabItem Text="Tab item 2">
+				<Template>
+					
+				</Template>
+			</px:PXTabItem>
+		</Items>
+		<AutoSize Container="Window" Enabled="True" MinHeight="150" />
 	</px:PXTab>
 </asp:Content>

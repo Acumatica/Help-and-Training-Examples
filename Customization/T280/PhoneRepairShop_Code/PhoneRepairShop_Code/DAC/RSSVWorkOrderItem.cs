@@ -14,7 +14,7 @@ namespace PhoneRepairShop
         [PXDBDefault(typeof(RSSVWorkOrder.orderNbr))]
         [PXParent(typeof(SelectFrom<RSSVWorkOrder>.
             Where<RSSVWorkOrder.orderNbr.
-            IsEqual<RSSVWorkOrderItem.orderNbr.FromCurrent>>))]
+                IsEqual<RSSVWorkOrderItem.orderNbr.FromCurrent>>))]
         public virtual string OrderNbr { get; set; }
         public abstract class orderNbr : PX.Data.BQL.BqlString.Field<orderNbr> { }
         #endregion

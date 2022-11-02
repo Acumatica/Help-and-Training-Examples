@@ -386,8 +386,8 @@ namespace PhoneRepairShop
                                     OrderNbr = dic["OrderNbr"],
                                     CustomerID = Convert.ToInt32(dic["CustomerID"]),
                                     DateCreated = Convert.ToDateTime(dic["DateCreated"]),
-                                    Status = dic["Status"],
-                                    Hold = Convert.ToBoolean(Convert.ToInt32(dic["Hold"])),
+                                    //Status = dic["Status"],
+                                    //Hold = Convert.ToBoolean(Convert.ToInt32(dic["Hold"])),
                                     Description = dic["Description"],
                                     DeviceID = Convert.ToInt32(dic["DeviceID"]),
                                     ServiceID = Convert.ToInt32(dic["ServiceID"]),
@@ -395,11 +395,11 @@ namespace PhoneRepairShop
                                     RepairItemLineCntr = Convert.ToInt32(dic["RepairItemLineCntr"]),
                                     Priority = dic["Priority"]
                                 };
-                                if (dic["DateCompleted"] != "NULL") order.DateCompleted = Convert.ToDateTime(dic["DateCompleted"]);
+                                //if (dic["DateCompleted"] != "NULL") order.DateCompleted = Convert.ToDateTime(dic["DateCompleted"]);
                                 //if (dic["InvoiceNbr"] != "NULL") order.InvoiceNbr = dic["InvoiceNbr"];
                                 if (dic["Assignee"] != "NULL") order.Assignee = Convert.ToInt32(dic["Assignee"]);
                                 workOrderGraph.WorkOrders.Insert(order);
-                                workOrderGraph.Actions.PressSave();
+                                workOrderGraph.Save.Press();
                                 workOrderGraph.Clear();
                             }
                             else break;

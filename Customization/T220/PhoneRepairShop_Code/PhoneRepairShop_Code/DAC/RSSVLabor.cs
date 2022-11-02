@@ -38,7 +38,9 @@ namespace PhoneRepairShop
         [PXDefault(TypeCode.Decimal, "0.0")]
         [PXUIField(DisplayName = "Default Price")]
         public virtual Decimal? DefaultPrice { get; set; }
-        public abstract class defaultPrice : PX.Data.BQL.BqlDecimal.Field<defaultPrice> { }
+        public abstract class defaultPrice :
+            PX.Data.BQL.BqlDecimal.Field<defaultPrice>
+        { }
         #endregion
 
         #region Quantity

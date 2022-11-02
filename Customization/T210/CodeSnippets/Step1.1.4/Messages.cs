@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PX.Common;
 
 namespace PhoneRepairShop
 {
-    [PXLocalizable()]
     public static class Messages
     {
         //Complexity of repair
@@ -15,11 +13,13 @@ namespace PhoneRepairShop
         public const string Medium = "Medium";
         public const string Low = "Low";
 
+        ////////// The added code
         //Repair item types
         public const string Battery = "Battery";
         public const string Screen = "Screen";
         public const string ScreenCover = "Screen Cover";
         public const string BackCover = "Back Cover";
         public const string Motherboard = "Motherboard";
+        ////////// The end of added code
     }
 }

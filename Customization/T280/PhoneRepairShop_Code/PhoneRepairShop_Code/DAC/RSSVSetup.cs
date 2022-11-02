@@ -12,26 +12,29 @@ namespace PhoneRepairShop
     {
         #region NumberingID
         [PXDBString(10, IsUnicode = true)]
-        [PXDefault("WORKORDER")]
         [PXUIField(DisplayName = "Numbering Sequence")]
         [PXSelector(typeof(Numbering.numberingID),
             DescriptionField = typeof(Numbering.descr))]
+        [PXDefault("WORKORDER")]
         public virtual string NumberingID { get; set; }
         public abstract class numberingID : PX.Data.BQL.BqlString.Field<numberingID> { }
         #endregion
 
         #region WalkInCustomerID
-        [CustomerActive(DisplayName = "Walk-In Customer", DescriptionField = typeof(Customer.acctName))]
+        [CustomerActive(DisplayName = "Walk-In Customer",
+            DescriptionField = typeof(Customer.acctName))]
         [PXDefault]
         public virtual int? WalkInCustomerID { get; set; }
-        public abstract class walkInCustomerID : PX.Data.BQL.BqlInt.Field<walkInCustomerID> { }
+        public abstract class walkInCustomerID :
+            PX.Data.BQL.BqlInt.Field<walkInCustomerID> { }
         #endregion
 
         #region DefaultEmployee
         [Owner(DisplayName = "Default Employee")]
         [PXDefault]
         public virtual int? DefaultEmployee { get; set; }
-        public abstract class defaultEmployee : PX.Data.BQL.BqlInt.Field<defaultEmployee> { }
+        public abstract class defaultEmployee :
+            PX.Data.BQL.BqlInt.Field<defaultEmployee> { }
         #endregion
 
         #region PrepaymentPercent
@@ -39,7 +42,8 @@ namespace PhoneRepairShop
         [PXDefault(TypeCode.Decimal, "0.0")]
         [PXUIField(DisplayName = "Prepayment Percent", Required = true)]
         public virtual Decimal? PrepaymentPercent { get; set; }
-        public abstract class prepaymentPercent : PX.Data.BQL.BqlDecimal.Field<prepaymentPercent> { }
+        public abstract class prepaymentPercent :
+            PX.Data.BQL.BqlDecimal.Field<prepaymentPercent> { }
         #endregion
 
         #region CreatedByID

@@ -1,13 +1,12 @@
 using System;
+using System.Linq;
 using PX.Data;
 using PX.Data.BQL.Fluent;
 using PX.Objects.IN;
-using System.Linq;
-using PX.Objects.CT;
 
 namespace PhoneRepairShop
 {
-    public class RSSVRepairPriceMaint : 
+    public class RSSVRepairPriceMaint :
         PXGraph<RSSVRepairPriceMaint, RSSVRepairPrice>
     {
         #region Data Views
@@ -22,41 +21,49 @@ namespace PhoneRepairShop
         #endregion
 
         #region Event Handlers
-        ...
-
-        //When Repair Item Type is updated,
-        //clear the values of the Inventory ID and Default columns and
-        //trigger FieldDefaulting for the Required column.
-        protected void _(Events.FieldUpdated<RSSVRepairItem, 
-            RSSVRepairItem.repairItemType> e)
+        //Update the price and repair item type when the inventory ID of
+        //the repair item is updated.
+        protected void _(Events.FieldUpdated<RSSVRepairItem,
+            RSSVRepairItem.inventoryID> e)
         {
             RSSVRepairItem row = e.Row;
-            e.Cache.SetDefaultExt<RSSVRepairItem.required>(row);
-            if (e.OldValue != null)
+
+            if (row.InventoryID != null && row.RepairItemType == null)
             {
-                e.Cache.SetValueExt<RSSVRepairItem.inventoryID>(row, null);
-                e.Cache.SetValue<RSSVRepairItem.isDefault>(row, false);
+                //Use the PXSelector attribute to select the stock item.
+                InventoryItem item = PXSelectorAttribute.
+                    Select<RSSVRepairItem.inventoryID>(e.Cache, row)
+                    as InventoryItem;
+                //Copy the repair item type from the stock item to the row.
+                InventoryItemExt itemExt = item.GetExtension<InventoryItemExt>();
+                e.Cache.SetValueExt<RSSVRepairItem.repairItemType>(
+                    row, itemExt.UsrRepairItemType);
+            }
+            //Trigger the FieldDefaulting event handler for basePrice.
+            e.Cache.SetDefaultExt<RSSVRepairItem.basePrice>(e.Row);
+        }
+
+        //Set the value of the Price column.
+        protected void _(Events.FieldDefaulting<RSSVRepairItem,
+            RSSVRepairItem.basePrice> e)
+        {
+            RSSVRepairItem row = e.Row;
+            if (row.InventoryID != null)
+            {
+                //Use the PXSelector attribute to select the stock item.
+                InventoryItem item = PXSelectorAttribute.
+                    Select<RSSVRepairItem.inventoryID>(e.Cache, row)
+                    as InventoryItem;
+                //Retrieve the base price for the stock item.
+                InventoryItemCurySettings curySettings =
+                    InventoryItemCurySettings.PK.Find(
+                    this, item.InventoryID, Accessinfo.BaseCuryID ?? "USD");
+                //Copy the base price from the stock item to the row.
+                e.NewValue = curySettings.BasePrice;
             }
         }
 
-        //Set the value of the Required column.
-        protected void _(Events.FieldDefaulting<RSSVRepairItem, 
-            RSSVRepairItem.required> e)
-        {
-            RSSVRepairItem row = e.Row;
-            if (row.RepairItemType != null)
-            {
-                // Use LINQ to check whether there are any repair items 
-                // with the same repair item type.
-                var repairItem = (RSSVRepairItem)RepairItems.Select()
-                    .FirstOrDefault(item =>
-                        item.GetItem<RSSVRepairItem>().RepairItemType == row.RepairItemType &&
-                        item.GetItem<RSSVRepairItem>().LineNbr != row.LineNbr);
-                //Copy the Required value from the previous records.
-                e.NewValue = repairItem?.Required;
-            }
-        }
-
+        ////////// The added code
         //Update the IsDefault and Required fields of other records 
         //with the same repair item type when these fields are updated.
         protected void _(Events.RowUpdated<RSSVRepairItem> e)
@@ -81,7 +88,7 @@ namespace PhoneRepairShop
                     RepairItems.Update(repairItem);
                 }
                 //Make the Required field identical for all items of the type.
-                if (row.Required != e.OldRow.Required && 
+                if (row.Required != e.OldRow.Required &&
                     repairItem.Required != row.Required)
                 {
                     repairItem.Required = row.Required;
@@ -91,7 +98,41 @@ namespace PhoneRepairShop
             //Refresh the UI.
             RepairItems.View.RequestRefresh();
         }
-        #endregion
 
+        //When Repair Item Type is updated,
+        //clear the values of the Inventory ID and Default columns and
+        //trigger FieldDefaulting for the Required column.
+        protected void _(Events.FieldUpdated<RSSVRepairItem,
+            RSSVRepairItem.repairItemType> e)
+        {
+            RSSVRepairItem row = e.Row;
+            e.Cache.SetDefaultExt<RSSVRepairItem.required>(row);
+            if (e.OldValue != null)
+            {
+                e.Cache.SetValueExt<RSSVRepairItem.inventoryID>(row, null);
+                e.Cache.SetValue<RSSVRepairItem.isDefault>(row, false);
+            }
+        }
+
+        //Set the value of the Required column.
+        protected void _(Events.FieldDefaulting<RSSVRepairItem,
+            RSSVRepairItem.required> e)
+        {
+            RSSVRepairItem row = e.Row;
+            if (row.RepairItemType != null)
+            {
+                // Use LINQ to check whether there are any repair items 
+                // with the same repair item type.
+                var repairItem = (RSSVRepairItem)RepairItems.Select()
+                    .FirstOrDefault(item =>
+                        item.GetItem<RSSVRepairItem>().RepairItemType ==
+                            row.RepairItemType &&
+                        item.GetItem<RSSVRepairItem>().LineNbr != row.LineNbr);
+                //Copy the Required value from the previous records.
+                e.NewValue = repairItem?.Required;
+            }
+        }
+        ////////// The end of added code
+        #endregion
     }
 }

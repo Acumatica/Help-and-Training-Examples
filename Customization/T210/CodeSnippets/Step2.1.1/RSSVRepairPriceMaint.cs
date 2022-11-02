@@ -4,7 +4,7 @@ using PX.Data.BQL.Fluent;
 
 namespace PhoneRepairShop
 {
-    public class RSSVRepairPriceMaint : 
+    public class RSSVRepairPriceMaint :
         PXGraph<RSSVRepairPriceMaint, RSSVRepairPrice>
     {
         #region Data Views

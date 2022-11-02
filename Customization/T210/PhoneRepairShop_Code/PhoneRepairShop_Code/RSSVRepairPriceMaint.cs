@@ -1,14 +1,14 @@
 using System;
+using System.Linq;
 using PX.Data;
 using PX.Data.BQL.Fluent;
 using PX.Objects.IN;
 using PX.Objects.CT;
-using System.Linq;
 
 namespace PhoneRepairShop
 {
     public class RSSVRepairPriceMaint :
-          PXGraph<RSSVRepairPriceMaint, RSSVRepairPrice>
+        PXGraph<RSSVRepairPriceMaint, RSSVRepairPrice>
     {
         #region Data Views
         public SelectFrom<RSSVRepairPrice>.View RepairPrices;
@@ -84,14 +84,12 @@ namespace PhoneRepairShop
             }
         }
 
-        //Update the IsDefault field of other records with the same repair item type 
-        //when the IsDefault field is updated.
+        //Update the IsDefault and Required fields of other records 
+        //with the same repair item type when these fields are updated.
         protected void _(Events.RowUpdated<RSSVRepairItem> e)
         {
-            //Update the IsDefault and Required fields of other records 
-            //with the same repair item type when these fields are updated.
             if (e.Cache.ObjectsEqual<RSSVRepairItem.isDefault,
-                RSSVRepairItem.required>(e.Row, e.OldRow)) return;
+                                     RSSVRepairItem.required>(e.Row, e.OldRow)) return;
 
             RSSVRepairItem row = e.Row;
             //Use LINQ to select the repair items 
@@ -102,6 +100,7 @@ namespace PhoneRepairShop
             foreach (RSSVRepairItem repairItem in repairItems)
             {
                 if (repairItem.LineNbr == row.LineNbr) continue;
+
                 //Set IsDefault to false for all other items.
                 if (row.IsDefault == true && repairItem.IsDefault == true)
                 {
@@ -181,6 +180,7 @@ namespace PhoneRepairShop
         protected virtual void _(Events.RowDeleting<RSSVWarranty> e)
         {
             if (e.Row.DefaultWarranty != true) return;
+
             if (e.ExternalCall && RepairPrices.Current != null &&
                 RepairPrices.Cache.GetStatus(RepairPrices.Current) !=
                 PXEntryStatus.Deleted)

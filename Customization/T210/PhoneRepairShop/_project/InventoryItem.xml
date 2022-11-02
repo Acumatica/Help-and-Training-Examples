@@ -1,4 +1,4 @@
 ﻿<Table TableName="InventoryItem">
     <Column TableName="InventoryItem" ColumnName="UsrRepairItem" ColumnType="bool" AllowNull="True" MaxLength="25" DecimalPrecision="2" IsNewColumn="True" IsUnicode="True" />
-    <Column TableName="InventoryItem" ColumnName="UsrRepairItemType" ColumnType="string" AllowNull="True" MaxLength="2" DecimalPrecision="2" DecimalLength="2" IsNewColumn="True" IsUnicode="True" />
+    <Column TableName="InventoryItem" ColumnName="UsrRepairItemType" ColumnType="string" AllowNull="True" MaxLength="2" DecimalPrecision="0" DecimalLength="0" IsNewColumn="True" IsUnicode="True" />
 </Table>
