@@ -1,0 +1,1816 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PX.CCProcessingBase</name>
+    </assembly>
+    <members>
+        <member name="T:PX.CCProcessingBase.CCPaymentProcessingHelper">
+            <exclude />
+        </member>
+        <member name="T:PX.CCProcessingBase.CCPaymentProcessingHelper.SettingsType">
+            <exclude />
+        </member>
+        <member name="T:PX.CCProcessingBase.CCTranType">
+            <summary>Defines the credit card transaction types.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCTranType.AuthorizeAndCapture">
+            <summary>Checks if the requested amount might be taken from the credit card, locks it on the credit card account, and takes the authorized amount from the card simultaneously.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCTranType.AuthorizeOnly">
+            <summary>Checks if the requested amount might be taken from the credit card and locks it on the credit card account. </summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCTranType.PriorAuthorizedCapture">
+            <summary>Captures the previously authorized transaction.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCTranType.CaptureOnly">
+            <summary>Captures the manually authorized transaction.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCTranType.Credit">
+            <summary>
+            Returns the money back to the card.
+            </summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCTranType.Void">
+            <summary>Reverses the authorized or captured transaction.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCTranType.VoidOrCredit">
+            <summary>
+            Performs a void first and then performs a credit if the void failed.
+            </summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.CCTranStatus">
+            <summary>Contains the transaction statuses returned by the processing center.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCTranStatus.Approved">
+            <summary>The transaction was approved.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCTranStatus.Declined">
+            <summary>The transaction was declined.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCTranStatus.Error">
+            <summary>
+            An error occurred when the transaction is processed.
+            </summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCTranStatus.HeldForReview">
+            <summary>
+            The transaction is under review.
+            </summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCTranStatus.Unknown">
+            <summary>
+            There was no answer or the answer can't be interpreted.
+            </summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.ProcessingInput">
+            <summary>A supplementary class to receive specific transaction data from the Acumatica ERP core.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingInput.TranID">
+            <summary>The internal unique transaction identifier.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingInput.PMInstanceID">
+            <summary>The internal Acumatica ERP unique credit card identifier.</summary>
+            <remarks>Information on credit cards might be obtained by using the <tt>ReadData</tt> method of the <see cref="T:PX.CCProcessingBase.ICreditCardDataReader" /> interface.</remarks>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingInput.CustomerCD">
+            <summary>The unique customer identifier.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingInput.DocType">
+            <summary>The type of the payment document.</summary>
+            <remarks>Document information might be obtained by using <see cref="T:PX.CCProcessingBase.IDocDetailsDataReader" /> interface.</remarks>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingInput.DocRefNbr">
+            <summary>The reference number of the payment document.</summary>
+            <remarks>Document information might be obtained by using <see cref="T:PX.CCProcessingBase.IDocDetailsDataReader" /> interface.</remarks>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingInput.OrigRefNbr">
+            <summary>The original reference number of the document.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingInput.CuryID">
+            <summary>The ISO code of the transaction currency.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingInput.Amount">
+            <summary>The amount of transaction.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingInput.VerifyCVV">
+            <summary>A field that indicates (if set to <tt>true</tt>) that verification of the CVV is required.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.ProcessingResult">
+            <summary>A supplementary class to return the result of the authorization center transaction to Acumatica ERP.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingResult.TranID">
+            <summary>The internal transaction identifier, which must be the same as the <see cref="F:PX.CCProcessingBase.ProcessingInput.TranID" /> passed to the payment gateway.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingResult.TranStatus">
+            <summary>The transaction status.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingResult.isAuthorized">
+            <summary>A field that indicates (if set to <tt>true</tt>) that the transaction was authorized.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingResult.PCTranNumber">
+            <summary>The transaction number that was assigned by the authorization center.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingResult.PCResponseCode">
+            <summary>The raw authorization center response code.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingResult.PCResponseReasonCode">
+            <summary>The raw response reason code.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingResult.PCResponse">
+            <summary>The complete raw response from the authorization center.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingResult.PCCVVResponse">
+            <summary>The additional CVV code from the authorization center (part of the complete response).</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingResult.AuthorizationNbr">
+            <summary>The authorization number.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingResult.PCResponseReasonText">
+            <summary>The response reason message. This text will be displayed in the credit card payment processing interface.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingResult.ErrorText">
+            <summary>The error message.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingResult.ExpireAfterDays">
+            <summary>The period (in days) after which the transaction automatically expires (for authorization transactions).</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingResult.ResultFlag">
+            <summary>The result flag.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingResult.CcvVerificatonStatus">
+            <summary>The CVV verification status.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.ProcessingResult.ErrorSource">
+            <summary>The error source.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.CCResultFlag">
+            <exclude />
+        </member>
+        <member name="T:PX.CCProcessingBase.CcvVerificationStatus">
+            <summary>Defines the CVV verification statuses returned by the credit card authority.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CcvVerificationStatus.Match">
+            <summary>The CVV code is correct.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CcvVerificationStatus.NotMatch">
+            <summary>The CVV code is incorrect.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CcvVerificationStatus.NotProcessed">
+            <summary>The CVV code is not processed.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CcvVerificationStatus.ShouldHaveBeenPresent">
+            <summary>The CVV code was not provided but is required for the authorization.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CcvVerificationStatus.IssuerUnableToProcessRequest">
+            <summary>The card issue authority was unable to verify the code.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CcvVerificationStatus.RelyOnPreviousVerification">
+            <summary>The CVV code has already been verified by the Acumatica ERP core.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CcvVerificationStatus.Unknown">
+            <summary>Any other status is returned.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.ISettingsDetail">
+            <summary>A detail line, which is displayed on the <strong>Settings</strong> tab of the Processing Centers (CA205000) form.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.ISettingsDetail.ControlType">
+            <summary>The type of the control for the <strong>Value</strong> column of the <strong>Settings</strong> tab of the Processing Centers (CA205000) form.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.ISettingsDetail.Descr">
+            <summary>A description of the key, which is displayed in the <strong>Description</strong> column of the <strong>Settings</strong> tab of the Processing Centers
+            (CA205000) form.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.ISettingsDetail.DetailID">
+            <summary>The ID of the key required by the plug-in developed for the processing center. This ID is displayed in the <strong>ID</strong> column of the
+            <strong>Settings</strong> tab of the Processing Centers (CA205000) form.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.ISettingsDetail.Value">
+            <summary>The value selected by the user for the key.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.ISettingsDetail.IsEncryptionRequired">
+            <summary>Indicates (if set to <tt>true</tt>) that encryption of the key value is required.</summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.ISettingsDetail.GetComboValues">
+            <summary>Retrieves the values in the combo box if the <see cref="P:PX.CCProcessingBase.ISettingsDetail.ControlType" /> is <see cref="F:PX.CCProcessingBase.Interfaces.V2.SettingsControlType.Combo" />.</summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.ISettingsDetail.SetComboValues(System.Collections.Generic.IList{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>Sets the values to be displayed in the combo box if the <see cref="P:PX.CCProcessingBase.ISettingsDetail.ControlType" /> is <see cref="F:PX.CCProcessingBase.Interfaces.V2.SettingsControlType.Combo" />.</summary>
+            <param name="list">The list of <see cref="P:PX.CCProcessingBase.ISettingsDetail.DetailID" />-<see cref="P:PX.CCProcessingBase.ISettingsDetail.Value" /> pairs.</param>
+        </member>
+        <member name="T:PX.CCProcessingBase.CCProcessingSettingsType">
+            <summary>Defines the types of settings for processing credit card payments.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCProcessingSettingsType.ProcessingCenter">
+            <summary>The settings of credit card payments are specified on the processing center side.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCProcessingSettingsType.PaymentMethodDetails">
+            <summary>The settings of credit card payments are specified on the <strong>Payment Method Details</strong> tab of the Customer Payment Methods (AR303010) form.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.APIResponse">
+            <summary>A class that holds the responses returned by the processing center.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.APIResponse.isSucess">
+            <summary>
+            Must be <tt>true</tt> if the request was completed without any errors and <tt>false</tt> otherwise.
+            </summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.APIResponse.Messages">
+            <summary>
+            Contains the error messages received from the processing center.
+            </summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.APIResponse.ErrorSource">
+            <summary>Specifies the error source.</summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.APIResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="T:PX.CCProcessingBase.CCErrors">
+            <summary>A class that describes an error in processing a credit card payment.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.CCErrors.CCErrorSource">
+            <summary>Defines the error sources.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCErrors.CCErrorSource.None">
+            <summary>No error.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCErrors.CCErrorSource.Internal">
+            <summary>An internal object error.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCErrors.CCErrorSource.ProcessingCenter">
+            <summary>A processing center error.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCErrors.CCErrorSource.Network">
+            <summary>A network error.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCErrors.ErrorMessage">
+            <summary>The error message.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.CCErrors.source">
+            <summary>The source of the error.</summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.CCErrors.GetCode(PX.CCProcessingBase.CCErrors.CCErrorSource)">
+            <summary>Retrieves the code of the error.</summary>
+            <param name="aErrSrc">The error source.</param>
+        </member>
+        <member name="M:PX.CCProcessingBase.CCErrors.GetDescription(PX.CCProcessingBase.CCErrors.CCErrorSource)">
+            <summary>Retrieves the description of the error.</summary>
+            <param name="aErrSrc">The error source.</param>
+        </member>
+        <member name="T:PX.CCProcessingBase.SyncPMResponse">
+            <summary>
+            A class that contains credit card details returned by the processing server.
+            </summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.IProcessingCenterSettingsStorage">
+            <summary>A supplementary interface to read processing center settings from the Acumatica ERP core.</summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.IProcessingCenterSettingsStorage.ReadSettings(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>Reads the processing center settings from the specified object.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.ICreditCardDataReader">
+            <summary>A supplementary interface to read credit card information from the Acumatica ERP core.</summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICreditCardDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>Reads the credit card data from the Acumatica ERP core to the specified dictionary.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICreditCardDataReader.Key_CardNumber">
+            <summary>The key to obtain the card number.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICreditCardDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICreditCardDataReader.Key_CardExpiryDate">
+            <summary>The key to obtain the expiration date of the card.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICreditCardDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICreditCardDataReader.Key_CardCVV">
+            <summary>The key to obtain the CVV value.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICreditCardDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICreditCardDataReader.Key_PMCCProcessingID">
+            <summary>The key to obtain the payment profile ID.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICreditCardDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="T:PX.CCProcessingBase.ICustomerDataReader">
+            <summary>A supplementary interface to read customer data from the Acumatica ERP core.</summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>Reads the customer data from the Acumatica ERP core to the specified dictionary.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICustomerDataReader.Key_CustomerCD">
+            <summary>The key to obtain the identifier of the customer that is used on the UI.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICustomerDataReader.Key_CustomerName">
+            <summary>The key to obtain the name of the customer.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICustomerDataReader.Key_Customer_FirstName">
+            <summary>The key to obtain the first name of the customer.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICustomerDataReader.Key_Customer_LastName">
+            <summary>The key to obtain the last name of the customer.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICustomerDataReader.Key_Customer_CCProcessingID">
+            <summary>The key to obtain the customer profile ID.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICustomerDataReader.Key_BillAddr_Country">
+            <summary>The key to obtain the customer's country.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICustomerDataReader.Key_BillAddr_State">
+            <summary>The key to obtain the customer's state or province.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICustomerDataReader.Key_BillAddr_City">
+            <summary>The key to obtain the customer's city.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICustomerDataReader.Key_BillAddr_Address">
+            <summary>The key to obtain the customer address.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICustomerDataReader.Key_BillAddr_AddressLine1">
+            <summary>The key to obtain the customer address line 1.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICustomerDataReader.Key_BillAddr_AddressLine2">
+            <summary>The key to obtain the customer address line 2.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICustomerDataReader.Key_BillAddr_AddressLine3">
+            <summary>The key to obtain the customer address line 3.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICustomerDataReader.Key_BillAddr_PostalCode">
+            <summary>The key to obtain the customer's postal code.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICustomerDataReader.Key_BillContact_Phone">
+            <summary>The key to obtain the phone number of the customer.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICustomerDataReader.Key_BillContact_Fax">
+            <summary>The key to obtain the fax number of the customer.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="P:PX.CCProcessingBase.ICustomerDataReader.Key_BillContact_Email">
+            <summary>The key to obtain the email address of the customer.</summary>
+            <remarks>By using this key, you can retrieve the value from the aData dictionary, which is obtained by using the <see cref="M:PX.CCProcessingBase.ICustomerDataReader.ReadData(System.Collections.Generic.Dictionary{System.String,System.String})" /> method.</remarks>
+        </member>
+        <member name="T:PX.CCProcessingBase.IDocDetailsDataReader">
+            <summary>A supplementary interface to read specific document items from the Acumatica ERP core.</summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.IDocDetailsDataReader.ReadData(System.Collections.Generic.List{PX.CCProcessingBase.DocDetailInfo})">
+            <summary>Reads the document details from the specified list.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.DocDetailInfo">
+            <summary>A supplementary class to store information about a particular document.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.DocDetailInfo.ItemID">
+            <summary>
+            The item ID.
+            </summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.DocDetailInfo.ItemName">
+            <summary>
+            The item name.
+            </summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.DocDetailInfo.ItemDescription">
+            <summary>
+            The item description.
+            </summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.DocDetailInfo.Quantity">
+            <summary>
+            The item quantity.
+            </summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.DocDetailInfo.Price">
+            <summary>
+            The item price.
+            </summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.DocDetailInfo.IsTaxable">
+            <summary>
+            A field that determines if the price includes taxes.
+            </summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.ICCPaymentProcessing">
+            <summary>The root class that manages the communication routine with the authorization center.</summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCPaymentProcessing.Initialize(PX.CCProcessingBase.IProcessingCenterSettingsStorage,PX.CCProcessingBase.ICreditCardDataReader,PX.CCProcessingBase.ICustomerDataReader,PX.CCProcessingBase.IDocDetailsDataReader)">
+            <summary>Provides a communication interface (used by the <see cref="M:PX.CCProcessingBase.ICCPaymentProcessing.DoTransaction(PX.CCProcessingBase.CCTranType,PX.CCProcessingBase.ProcessingInput,PX.CCProcessingBase.ProcessingResult)">DoTransaction()</see> method).</summary>
+            <param name="aSettingsReader"></param>
+            <param name="aCardDataReader"></param>
+            <param name="aCustomerDataReader"></param>
+            <param name="aDocDetailsReader"></param>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCPaymentProcessing.Initialize(PX.CCProcessingBase.IProcessingCenterSettingsStorage,PX.CCProcessingBase.ICreditCardDataReader,PX.CCProcessingBase.ICustomerDataReader)">
+            <summary>Provides a communication interface (used by the <see cref="M:PX.CCProcessingBase.ICCPaymentProcessing.DoTransaction(PX.CCProcessingBase.CCTranType,PX.CCProcessingBase.ProcessingInput,PX.CCProcessingBase.ProcessingResult)">DoTransaction()</see> method).</summary>
+            <param name="aSettingsReader"></param>
+            <param name="aCardDataReader"></param>
+            <param name="aCustomerDataReader"></param>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCPaymentProcessing.DoTransaction(PX.CCProcessingBase.CCTranType,PX.CCProcessingBase.ProcessingInput,PX.CCProcessingBase.ProcessingResult)">
+            <summary>
+            Initiates a request to the authorization center to perform a transaction.
+            </summary>
+            <param name="aType">A transaction type.</param>
+            <param name="aInputData">A processing parameter.</param>
+            <param name="aResult">An actual transaction result.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCPaymentProcessing.IsSupported(PX.CCProcessingBase.CCTranType)">
+            <summary>Determines if the operation is supported by the processing center.</summary>
+            <param name="aType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCPaymentProcessing.ExportSettings(System.Collections.Generic.IList{PX.CCProcessingBase.ISettingsDetail})">
+            <summary>
+            Exports the setting keys that are required for the processing.
+            </summary>
+            <param name="aSettings"></param>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCPaymentProcessing.ExportSettings(System.Collections.Generic.IList{PX.CCProcessingBase.ISettingsDetail},PX.CCProcessingBase.CCProcessingSettingsType)">
+            <summary>
+            Exports the setting keys that are required for the processing.
+            </summary>
+            <param name="aSettings"></param>
+            <param name="settingsType"></param>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCPaymentProcessing.ValidateSettings(PX.CCProcessingBase.ISettingsDetail)">
+            <summary>
+            Validates the settings.
+            </summary>
+            <param name="setting">A setting to validate.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCPaymentProcessing.TestCredentials(PX.CCProcessingBase.APIResponse)">
+            <summary>Tests the connection to the payment gateway by using the credentials specified by the user.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.ICCTokenizedPaymentProcessing">
+            <summary>
+            An interface that contains the methods that are necessary for the tokenized processing.
+            </summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCTokenizedPaymentProcessing.CreateCustomer(PX.CCProcessingBase.APIResponse,System.String@)">
+            <summary>
+             Creates a new customer in the processing center and returns its ID.
+            </summary>
+            <param name="apiResponse"></param>
+            <param name="id"></param>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCTokenizedPaymentProcessing.CheckCustomerID(PX.CCProcessingBase.APIResponse)">
+            <summary>Checks if a customer with the provided ID exists in the processing center.</summary>
+            <param name="apiResponse"></param>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCTokenizedPaymentProcessing.DeleteCustomer(PX.CCProcessingBase.APIResponse)">
+            <summary>
+            Deletes customer information from the processing center.
+            </summary>
+            <param name="apiResponse"></param>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCTokenizedPaymentProcessing.CreatePMI(PX.CCProcessingBase.APIResponse,System.String@)">
+            <summary>
+            Creates a new payment method at the processing center server and returns its ID.
+            </summary>
+            <param name="apiResponse"></param>
+            <param name="id"></param>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCTokenizedPaymentProcessing.GetPMI(PX.CCProcessingBase.APIResponse,PX.CCProcessingBase.SyncPMResponse)">
+            <summary>
+            Requests the payment method details from the processing center by using the payment method ID. 
+            All the details that have been retrieved from the processing center should be stored in the <tt>syncResponse</tt> parameter.
+            </summary>
+            <param name="apiResponse"></param>
+            <param name="syncResponse"></param>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCTokenizedPaymentProcessing.DeletePMI(PX.CCProcessingBase.APIResponse)">
+            <summary>
+            Deletes payment method information from the processing center.
+            </summary>
+            <param name="apiResponse"></param>
+        </member>
+        <member name="T:PX.CCProcessingBase.ICCProcessingHostedForm">
+            <summary>An interface that contains the methods for managing the hosted form. On this form, the user enters credit card information, which is then sent to the processing center.</summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCProcessingHostedForm.GetCallbackURL">
+            <summary>
+            Returns the URL that should be used by the processing center to post callbacks to Acumatica ERP.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCProcessingHostedForm.CreatePaymentMethodHostedForm(PX.CCProcessingBase.APIResponse,System.String)">
+            <summary>
+            Displays a form hosted by the processing center when you create a payment method.
+            </summary>
+            <param name="apiResponse"></param>
+            <param name="callbackURL"></param>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCProcessingHostedForm.SynchronizePaymentMethods(PX.CCProcessingBase.APIResponse,PX.CCProcessingBase.SyncPMResponse)">
+            <summary>
+            Returns the available payment methods.
+            </summary>
+            <param name="apiResponse"></param>
+            <param name="syncResponse"></param>
+            <remarks>This method is invoked by Acumatica ERP with each call of the CreatePaymentMethodHostedForm or ManagePaymentMethodHostedForm method.</remarks>
+        </member>
+        <member name="M:PX.CCProcessingBase.ICCProcessingHostedForm.ManagePaymentMethodHostedForm(PX.CCProcessingBase.APIResponse,System.String)">
+            <summary>
+            Displays a form hosted by the processing center when you manage a payment method.
+            </summary>
+            <param name="apiResponse"></param>
+            <param name="callbackURL"></param>
+        </member>
+        <member name="T:PX.CCProcessingBase.InterfaceConstants">
+            <exclude />
+        </member>
+        <member name="T:PX.CCProcessingBase.ICCProcessingExpDateFormatting">
+            <exclude />
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.AddressData">
+            <summary>The class that contains the address information related to the credit card of the customer. Acumatica ERP passes this information to the payment
+            plug-in along with the credit card data.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.AddressData.FirstName">
+            <summary>The first name of the customer.</summary>
+            <value>Receives the value from the <strong>CR.Contact.FirstName</strong> DAC field.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.AddressData.LastName">
+            <summary>The last name of the customer.</summary>
+            <value>Receives the value from the <strong>CR.Contact.LastName</strong> DAC field.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.AddressData.Country">
+            <summary>The customer's country.</summary>
+            <value>Receives the value from the <strong>CR.Address.CountryID</strong> DAC field.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.AddressData.State">
+            <summary>The customer's state or province.</summary>
+            <value>Receives the value from the <strong>CR.Address.State</strong> DAC field.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.AddressData.City">
+            <summary>The customer's city.</summary>
+            <value>Receives the value from the <strong>CR.Address.City</strong> DAC field.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.AddressData.Address">
+            <summary>The customer address.</summary>
+            <value>Receives the concatenated value of the <strong>CR.Address.AddressLine1</strong> and <strong>CR.Address.AddressLine2</strong> DAC fields.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.AddressData.AddressLine1">
+            <summary>The customer address line 1.</summary>
+            <value>Receives the concatenated value of the <strong>CR.Address.AddressLine1</strong> and <strong>CR.Address.AddressLine2</strong> DAC fields.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.AddressData.AddressLine2">
+            <summary>The customer address line 2.</summary>
+            <value>Receives the concatenated value of the <strong>CR.Address.AddressLine1</strong> and <strong>CR.Address.AddressLine2</strong> DAC fields.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.AddressData.AddressLine3">
+            <summary>The customer address line 3.</summary>
+            <value>Receives the concatenated value of the <strong>CR.Address.AddressLine1</strong> and <strong>CR.Address.AddressLine2</strong> DAC fields.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.AddressData.PostalCode">
+            <summary>The customer's postal code.</summary>
+            <value>Receives the value from the <strong>CR.Address.PostalCode</strong> DAC field.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.AddressData.Phone">
+            <summary>The phone number of the customer.</summary>
+            <value>Receives the value from the <strong>CR.Contact.Phone1</strong> DAC field.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.AddressData.Fax">
+            <summary>The fax number of the customer.</summary>
+            <value>Receives the value from the <strong>CR.Contact.Fax</strong> DAC field.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.AddressData.Email">
+            <summary>The email address of the customer.</summary>
+            <value>Receives the value from the <strong>CR.Contact.EMail</strong> DAC field.</value>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.BatchData">
+            <summary>
+            Batch details.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchData.BatchId">
+            <summary>
+            Batch ID from the processing center.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchData.SettlementTimeUTC">
+            <summary>
+            Settlement date and time in UTC.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchData.SettlementTimeLocal">
+            <summary>
+            Settlement date and time in time zone specified at the processing center.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchData.SettlementState">
+            <summary>
+            Settlement state  of the batch.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchData.PaymentMethod">
+            <summary>
+             Payment method.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchData.MarketType">
+            <summary>
+            Market Type.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchData.Product">
+            <summary>
+            Product.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchData.Statistics">
+            <summary>
+            Batch statistics by card type.
+            </summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.BatchSearchParams">
+            <summary>
+            Parameters used to search for the settled batch.
+            The class is used in <see cref="T:PX.CCProcessingBase.Interfaces.V2.ICCSettledBatchGetter"/>.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchSearchParams.FirstSettlementDate">
+            <summary>
+            First date of the search range.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchSearchParams.LastSettlementDate">
+            <summary>
+            Last date of the search range.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchSearchParams.IncludeStatistics">
+            <summary>
+            Indicates whether the result should include batch statistics.
+            </summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.BatchStatisticsData">
+            <summary>
+            Batch statistics.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchStatisticsData.CardType">
+            <summary>
+            The card type used for the transactions.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchStatisticsData.ProcCenterCardType">
+            <summary>
+            Original card type value received from the processing center.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchStatisticsData.SettledAmount">
+            <summary>
+            The total amount of settled transactions.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchStatisticsData.SettledCount">
+            <summary>
+            The number of settled transactions.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchStatisticsData.RefundAmount">
+            <summary>
+            The total amount of refund transactions.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchStatisticsData.RefundCount">
+            <summary>
+            The number of refund transactions.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchStatisticsData.VoidCount">
+            <summary>
+            The number of voided transactions.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchStatisticsData.DeclineCount">
+            <summary>
+            The number of declined transactions.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.BatchStatisticsData.ErrorCount">
+            <summary>
+            The number of errored transactions.
+            </summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">
+            <summary>The exception that is thrown by the methods of the <see cref="T:PX.CCProcessingBase.Interfaces.V2.ICCTransactionProcessor" /> and <see cref="T:PX.CCProcessingBase.Interfaces.V2.ICCProfileProcessor" /> interfaces if any errors occur on the
+            payment gateway side, or if incorrect input parameters are passed to the method.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException.ExceptionReason">
+            <summary>Defines the reason for the exception.</summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.CCProcessingException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>Creates an exception with the serialized data.</summary>
+            <param name="info">The <tt>System.Runtime.Serialization.SerializationInfo</tt> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <tt>System.Runtime.Serialization.StreamingContext</tt> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.CCProcessingException.#ctor(System.String)">
+            <summary>Creates an exception with the specified error message.</summary>
+            <param name="error">The error message.</param>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.CCProcessingException.#ctor(System.String,PX.CCProcessingBase.Interfaces.V2.CCProcessingException.ExceptionReason)">
+            <summary>Creates an exception with the specified error message and exception reason.</summary>
+            <param name="error">The error message.</param>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.CCProcessingException.#ctor(System.String,PX.CCProcessingBase.Interfaces.V2.CCProcessingException.ExceptionReason,System.Int32)">
+            <summary>Creates an exception with the specified error message, exception reason, reasdon code.</summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.CCProcessingException.#ctor(System.String,System.Exception)">
+            <summary>Creates an exception with the specified error message and inner exception.</summary>
+            <param name="error">The error message.</param>
+            <param name="inner">The inner exception.</param>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.CreateTranPaymentProfileParams">
+            <summary>
+            The class that is used in the method of the <see cref="T:PX.CCProcessingBase.Interfaces.V2.ICCProfileCreator" /> interface.
+            In this class, you should pass the Acumatica ERP customer ID if you do not know
+            the customer profile ID that is specific to the processing center (that is, 
+            if the suitable customer profile ID is not found in the system).
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.CreateTranPaymentProfileParams.LocalCustomerId">
+            <summary>The customer ID in Acumatica ERP.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.CreateTranPaymentProfileParams.PCCustomerId">
+            <summary>The customer profile ID in the processing center.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.CreateTranPaymentProfileParams.Description">
+            <summary>The customer Description in the processing center.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.CreateTranPaymentProfileParams.CustomerData">
+            <summary>Customer details</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.CreditCardData">
+            <summary>The class that contains the credit card data that Acumatica ERP passes to the payment plug-in.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.CreditCardData.PaymentMethodType">
+            <summary>The payment method type.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.CreditCardData.PaymentProfileID">
+            <summary>The payment profile ID.</summary>
+            <value>Receives data from the <strong>Value</strong> field of the <strong>CustomerPaymentMethodDetail</strong> DAC record that is linked to the
+            <strong>PaymentMethodDetail</strong> DAC record with <strong>Descr</strong>="Payment Profile ID".</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.CreditCardData.CardNumber">
+            <summary>The card number.</summary>
+            <value>Receives data from the <strong>Value</strong> field of the <strong>CustomerPaymentMethodDetail</strong> DAC record that is linked to the
+            <strong>PaymentMethodDetail</strong> DAC record with <strong>Descr</strong>="Card Number".</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.CreditCardData.CardExpirationDate">
+            <summary>The expiration date of the card.</summary>
+            <value>Receives data from the <strong>Value</strong> field of the <strong>CustomerPaymentMethodDetail</strong> DAC record that is linked to the
+            <strong>PaymentMethodDetail</strong> DAC record with <strong>Descr</strong>="Expiration Date".</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.CreditCardData.CVV">
+            <summary>The CVV value.</summary>
+            <value>Receives data from the <strong>Value</strong> field of the <strong>CustomerPaymentMethodDetail</strong> DAC record that is linked to the
+            <strong>PaymentMethodDetail</strong> DAC record with <strong>Descr</strong>="Card Verification Code".</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.CreditCardData.AddressData">
+            <summary>The address information related to the credit card of the customer.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.CreditCardData.CardTypeCode">
+            <summary>The card type used for the transactions.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.CreditCardData.CardType">
+            <summary> Original card type value sent by a processing center</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.CustomerData">
+            <summary>The class that contains the customer data that Acumatica ERP passes to the payment plug-in.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.CustomerData.CustomerProfileID">
+            <summary>The customer profile ID.</summary>
+            <value>Receives the value from the <span><strong>CustomerPaymentMethod.CustomerCCPID</strong></span> DAC field.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.CustomerData.CustomerCD">
+            <summary>The identifier of the customer that is used on the UI.</summary>
+            <value>Receives the value from the <strong>Customer.AcctCD</strong> DAC field.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.CustomerData.CustomerName">
+            <summary>The name of the customer.</summary>
+            <value>Receives the value from the <strong>Customer.AcctName</strong> DAC field.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.CustomerData.Email">
+            <summary>The email address of the customer.</summary>
+            <value>Receives the value from the <strong>CR.Contact.EMail</strong> DAC field.</value>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.DocumentData">
+            <summary>
+              <para>The class that contains the document data that Acumatica ERP passes to the payment plug-in. The document can be any of the following: an AR payment, a cash
+            sale, a sales invoice, or a sales order.</para>
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.DocumentData.DocType">
+            <summary>The document type.</summary>
+            <value>Receives the value from one of the following DAC fields, depending on the type of the document from which the operation was invoked:
+            <list type="bullet"><item>For an AR payment, <strong>ARPayment.DocType</strong></item><item>For a cash sale, <strong>ARCashSale.</strong><strong>DocType</strong></item><item>For a sales invoice, <strong>SOInvoice.</strong><strong>DocType</strong></item><item>For a sales order, <strong>SOOrder.</strong><strong>DocType</strong></item></list></value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.DocumentData.DocRefNbr">
+            <summary>The document reference number.</summary>
+            <value>
+              <para>Receives the value from one of the following DAC fields, depending on the type of the document from which the operation was invoked:</para>
+              <list type="bullet">
+                <item>For an AR payment, <strong>ARPayment.RefNbr</strong></item>
+                <item>For a cash sale, <strong>ARCashSale.RefNbr</strong></item>
+                <item>For a sales invoice, <strong>SOInvoice.RefNbr</strong></item>
+                <item>For a sales order, <strong>SOOrder.RefNbr</strong></item>
+              </list>
+            </value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.DocumentData.DocumentDetails">
+            <summary>The detail lines of the document.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.DocumentDetailData">
+            <summary>A detail line of the document.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.DocumentDetailData.ItemID">
+            <summary>The identifier of the item.</summary>
+            <value>
+              <span>The value is <code>ARAdjust.AdjdDocType + "+" + ARAdjust.AdjdRefNbr</code>.</span>
+            </value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.DocumentDetailData.ItemName">
+            <summary>The name of the item.</summary>
+            <value>
+              <span>The value is <code>ARAdjust.AdjdDocType + " " + ARAdjust.AdjdRefNbr</code>.</span>
+            </value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.DocumentDetailData.ItemDescription">
+            <summary>The description of the item.</summary>
+            <value>
+              <span>The value is <code>"Payment of invoice " + ARAdjust.AdjdDocType + ARAdjust.AdjdRefNbr + " - " + ARAdjust.CuryAdjgAmt</code>.</span>
+            </value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.DocumentDetailData.Quantity">
+            <summary>The quantity of the item.</summary>
+            <value>The value is always 1.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.DocumentDetailData.Price">
+            <summary>The price of the item.</summary>
+            <value>Receives the value from the <strong>ARAdjust.CuryAdjgAmt</strong> DAC field.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.DocumentDetailData.IsTaxable">
+            <summary>A property that indicates (if set to <tt>true</tt>) that the item is taxable.</summary>
+            <value>The value is always <tt>null</tt>.</value>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.CCTranType">
+            <summary>Defines the credit card transaction types.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranType.AuthorizeAndCapture">
+            <summary>Checks if the requested amount can be taken from the credit card, locks it on the credit card account, and takes the authorized amount from the card
+            simultaneously.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranType.AuthorizeOnly">
+            <summary>Checks if the requested amount can be taken from the credit card and locks it on the credit card account.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranType.PriorAuthorizedCapture">
+            <summary>Captures the previously authorized transaction.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranType.CaptureOnly">
+            <summary>Captures the manually authorized transaction.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranType.Credit">
+            <summary>Returns the money to the card.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranType.Void">
+            <summary>Reverses the authorized or captured transaction.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranType.VoidOrCredit">
+            <summary>Performs a void first and then performs a credit if the void failed.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.CCResultFlag">
+            <exclude />
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.CcvVerificationStatus">
+            <summary>Defines the CVV verification statuses returned by the credit card authority.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CcvVerificationStatus.Match">
+            <summary>The CVV code is correct.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CcvVerificationStatus.NotMatch">
+            <summary>The CVV code is incorrect.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CcvVerificationStatus.NotProcessed">
+            <summary>The CVV code is not processed.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CcvVerificationStatus.ShouldHaveBeenPresent">
+            <summary>The CVV code was not provided but is required for the authorization.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CcvVerificationStatus.IssuerUnableToProcessRequest">
+            <summary>The card issue authority was unable to verify the code.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CcvVerificationStatus.RelyOnPreviousVerification">
+            <summary>The CVV code has already been verified by the Acumatica ERP core.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CcvVerificationStatus.Unknown">
+            <summary>Any other status is returned.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.CCTranStatus">
+            <summary>Contains the transaction statuses returned by the processing center.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranStatus.Approved">
+            <summary>The transaction was approved.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranStatus.Declined">
+            <summary>The transaction was declined.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranStatus.Error">
+            <summary>An error occurred when the transaction is processed.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranStatus.HeldForReview">
+            <summary>The transaction is under review.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranStatus.Expired">
+            <summary>The transaction was expired.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranStatus.Unknown">
+            <summary>There was no answer or the answer can't be interpreted.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranStatus.SettledSuccessfully">
+            <summary>The transaction was settled successfully.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranStatus.Voided">
+            <summary>The transaction was voided successfully</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranStatus.RefundSettledSuccessfully">
+            <summary>The refund was settled successfully.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranStatus.SettlementError">
+            <summary>The transaction was not settled due to an error.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCTranStatus.GeneralError">
+            <summary>An error occurred when the transaction was settled.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCBatchState.SettledSuccessfully">
+            <summary>The batch was settled successfully.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCBatchState.SettlementError">
+            <summary>The was an error on batch settlement.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCBatchState.PendingSettlement">
+            <summary>The batch is pending settlement.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.CCBatchState.Unknown">
+            <summary>There was no answer or the answer can't be interpreted.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.SettingsControlType">
+            <summary>Defines the possible types of the control that is used in the <strong>Value</strong> column on the <strong>Settings</strong> tab of the Processing Centers (CA205000) form.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.SettingsControlType.Text">
+            <summary>Plain text.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.SettingsControlType.Combo">
+            <summary>A combo box.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.SettingsControlType.CheckBox">
+            <summary>A check box.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.WebhookEvent">
+            <summary>
+            Defines the webhook types.
+            </summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.WebhookEvent.CreateCustomerProfile">
+            <summary>Creation of a customer profile.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.WebhookEvent.CreateCustomerPaymentProfile">
+            <summary>Creation of a customer payment profile.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.WebhookEvent.UpdateCustomerProfile">
+            <summary>Update of a customer profile.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.WebhookEvent.UpdateCustomerPaymentProfile">
+            <summary>Update of a customer payment profile.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.WebhookEvent.DeleteCustomerProfile">
+            <summary>Removal of a customer profile.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.WebhookEvent.DeleteCustomerPaymentProfile">
+            <summary>Removal of a customer payment profile.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.WebhookEvent.CreateAuthCaptureTran">
+            <summary>Creation of a transaction that should be authorized and captured.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.WebhookEvent.CreateAuthTran">
+            <summary>Creation of a transaction that should be authorized.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.WebhookEvent.CreateCaptureTran">
+            <summary>Creation of a transaction that should be captured.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.WebhookEvent.CreatePriorAuthCaptureTran">
+            <summary>Creation of a previously authorized transaction that should be captured.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.WebhookEvent.CreateRefundTran">
+            <summary>Creation of a transaction that should be refunded.</summary>
+        </member>
+        <member name="F:PX.CCProcessingBase.Interfaces.V2.WebhookEvent.CreateVoidTran">
+            <summary>Creation of a transaction that should be voided.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ProfileFormAction">
+            <summary>
+            Defines profile form actions
+            </summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.CCCardType">
+            <summary>Defines the possible card types</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.InterfaceExtensions">
+            <summary>A supplementary class that provides the method for the retrieval of missing payment profiles from the payment gateway.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.InterfaceExtensions.CreditCardDataEqualityComparer">
+            <summary>A supplementary class that provides the method that checks whether the <see cref="P:PX.CCProcessingBase.Interfaces.V2.CreditCardData.PaymentProfileID" /> settings of two credit cards are equal.</summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.InterfaceExtensions.CreditCardDataEqualityComparer.Equals(PX.CCProcessingBase.Interfaces.V2.CreditCardData,PX.CCProcessingBase.Interfaces.V2.CreditCardData)">
+            <summary>Checks whether the <see cref="P:PX.CCProcessingBase.Interfaces.V2.CreditCardData.PaymentProfileID" /> settings of two credit cards are equal.</summary>
+            <param name="x">The data of the first credit card.</param>
+            <param name="y">The data of the second credit card.</param>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.InterfaceExtensions.CreditCardDataEqualityComparer.GetHashCode(PX.CCProcessingBase.Interfaces.V2.CreditCardData)">
+            <summary>Returns the hash code for <see cref="P:PX.CCProcessingBase.Interfaces.V2.CreditCardData.PaymentProfileID" />.</summary>
+            <param name="obj">The credit card data.</param>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.InterfaceExtensions.CreditCardDataComparer">
+            <summary>A supplementary class that provides the method that compares the <see cref="P:PX.CCProcessingBase.Interfaces.V2.CreditCardData.PaymentProfileID" /> of two credit cards.</summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.InterfaceExtensions.CreditCardDataComparer.Compare(PX.CCProcessingBase.Interfaces.V2.CreditCardData,PX.CCProcessingBase.Interfaces.V2.CreditCardData)">
+            <summary>Compares the values of <see cref="P:PX.CCProcessingBase.Interfaces.V2.CreditCardData.PaymentProfileID" /> of two credit cards.</summary>
+            <param name="x">The data of the first card.</param>
+            <param name="y">The data of the second card.</param>
+            <returns>Returns 0, if <see cref="P:PX.CCProcessingBase.Interfaces.V2.CreditCardData.PaymentProfileID" /> are identical.</returns>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.InterfaceExtensions.ProfileIDComparer">
+            <summary>A supplementary class that provides the method that compares two strings.</summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.InterfaceExtensions.ProfileIDComparer.Compare(System.String,System.String)">
+            <summary>Compares the values of two strings.</summary>
+            <param name="x">The first string.</param>
+            <param name="y">The second string.</param>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.InterfaceExtensions.GetMissingPaymentProfiles(PX.CCProcessingBase.Interfaces.V2.ICCProfileProcessor,System.String,System.Collections.Generic.IEnumerable{PX.CCProcessingBase.Interfaces.V2.CreditCardData})">
+            <summary>For the specified customer profile, returns the payment profiles that exist on the payment gateway's side but do not exist in Acumatica ERP.</summary>
+            <param name="processor">The profile processor.</param>
+            <param name="customerProfileId">The ID of the customer profile that is being checked.</param>
+            <param name="existingProfiles">The list of payment profiles that exist in Acumatica ERP for <paramref name="customerProfileId" />.</param>
+            <returns>The list of payment profiles that are missing in Acumatica ERP.</returns>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.HostedFormData">
+            <summary>The class that contains the data that Acumatica ERP uses to display the hosted form.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.HostedFormData.Caption">
+            <summary>The caption of the form.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.HostedFormData.Url">
+            <summary>The URL of the hosted form.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.HostedFormData.Token">
+            <summary>The token to access the hosted form.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.HostedFormData.Parameters">
+            <summary>The parameters that should be passed to the hosted form.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.HostedFormData.DisableTopLevelNavigation">
+            <summary>
+            The property that (if set to <c>true</c>) disables the top-level navigation from iframe resources.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.HostedFormData.UseGetMethod">
+            <summary>The property that specifies the HTTP method for opening of the form. 
+            </summary>
+            <value>
+              If set to <c>true</c>, the GET method is used; otherwise, the POST method is used.
+            </value>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.HostedFormResponse">
+            <summary>The class that contains the data that is obtained from hosted pop-up forms.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.HostedFormResponse.TranID">
+            <summary>The transaction ID in the processing center.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ICCBatchTransactionGetter">
+            <summary>
+            This interface provides methods to get transactions from the processing centers.
+            </summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCBatchTransactionGetter.GetTransactionsByBatch(System.String,PX.CCProcessingBase.Interfaces.V2.TransactionSearchParams)">
+            <summary>
+            Retrieves data for all transactions in a specified batch.
+            </summary>
+            <param name="batchID">Batch ID from the processing center.</param>
+            <param name="searchParams">Search parameters.</param>
+            <returns>Returns the transaction data as IEnumerable&lt;T>.</returns>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ICCFeatureManager">
+            <summary>
+            Provides methods to manage features of the processing center plug-in.
+            </summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCFeatureManager.IsFeatureSupported(PX.CCProcessingBase.Interfaces.V2.PluginFeature)">
+            <summary>Checks whether a feature is supported by the plug-in.</summary>
+            <returns>
+            true, if the feature is explicitly supported; false, if the feature is explicitly unsupported;
+            null, if the plug-in doesn't specify whether the feature is supported, and default value should be used.
+            </returns>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ICCHostedFormProcessor">
+            <summary>
+            This interface provides methods to work with hosted forms for creating and managing payment profiles.
+            </summary>	
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCHostedFormProcessor.GetDataForCreateForm(PX.CCProcessingBase.Interfaces.V2.CustomerData,PX.CCProcessingBase.Interfaces.V2.AddressData)">
+            <summary>
+            Returns the data for creating the Add Payment Profile pop-up form.
+            </summary>
+            <param name="customerData">The customer data for pre-populating the hosted form.</param>
+            <param name="addressData">The address data for pre-populating the billing address on the hosted form.</param>
+            <returns>The data for creating the Add Payment Profile form.</returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCHostedFormProcessor.GetDataForManageForm(PX.CCProcessingBase.Interfaces.V2.CustomerData,PX.CCProcessingBase.Interfaces.V2.CreditCardData)">
+            <summary>
+            Returns the data for creating the Edit Payment Profile pop-up form.
+            </summary>
+            <param name="customerData">The data of the customer profile that contains the payment profile that will be edited.</param>
+            <param name="cardData">The data of the payment profile that will be edited.</param>
+            <returns>Returns the data for creating the Edit Payment Profile pop-up form.</returns>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ICCHostedPaymentFormProcessor">
+            <summary>
+            This interface provides the method to work with a hosted form for creating a payment transaction without an existing payment profile.
+            </summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCHostedPaymentFormProcessor.GetDataForPaymentForm(PX.CCProcessingBase.Interfaces.V2.ProcessingInput)">
+            <summary>Returns the data to create the hosted form.</summary>
+            <param name="inputData">The payment information that is used to fill in the values on the form.</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+            <returns>Returns the data that contains unique session token for the form creation.</returns>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ICCHostedPaymentFormResponseParser">
+            <summary>
+            This interface provides the method to parse the Hosted Payment form response.
+            </summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCHostedPaymentFormResponseParser.Parse(System.String)">
+            <summary>
+            Parses the data which is obtained from the Hosted Payment pop-up form.
+            </summary>
+            <param name="input">A string (in XML or JSON format) with the information about the credit card transaction.</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+            <returns>Returns the data that contains the transaction ID.</returns>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ICCPaymentFormProcessor">
+            <summary>
+            This interface provides methods to work with a card data entry form for payment handling.
+            </summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCPaymentFormProcessor.PreparePaymentForm(PX.CCProcessingBase.Interfaces.V2.PaymentFormPrepareOptions)">
+            <summary>
+            Initializes payment form.
+            </summary>
+            <param name="options">Payment form initialization context.</param>
+            <returns>Payment form initialization data.</returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCPaymentFormProcessor.ProcessPaymentFormResponse(PX.CCProcessingBase.Interfaces.V2.PaymentFormResponseProcessOptions)">
+            <summary>
+            Processes payment form response.
+            </summary>
+            <param name="options">Raw payment form response.</param>
+            <returns>Parsed payment form response.</returns>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ICCProcessingPlugin">
+            <summary>This interface is the root interface for credit card processing. Classes that implement this interface are automatically discovered by Acumatica ERP
+            and are available for selection in the <strong>Payment Plug-In (Type)</strong> box on the Processing Centers (CA205000) form.
+            The types that implement this interface should have a public parameterless constructor (either explicit or default).</summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProcessingPlugin.ExportSettings">
+             <summary>
+            Exports the settings that are required on the Processing Centers (CA205000) form.
+             </summary>
+             <returns>The settings that can be configured by a user.</returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProcessingPlugin.ValidateSettings(PX.CCProcessingBase.Interfaces.V2.SettingsValue)">
+            <summary>
+            Validates the settings if they have been modified by the user.
+            </summary>
+            <param name="setting">The setting that should be validated.</param>
+            <returns>Returns an error message if a validation error occurred,
+            or null if validation was successful.</returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProcessingPlugin.TestCredentials(System.Collections.Generic.IEnumerable{PX.CCProcessingBase.Interfaces.V2.SettingsValue})">
+            <summary>
+            Tests the connection to the payment gateway by using the credentials specified by the user.
+            </summary>
+            <param name="settingValues">The credentials specified by the user.</param>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProcessingPlugin.CreateProcessor``1(System.Collections.Generic.IEnumerable{PX.CCProcessingBase.Interfaces.V2.SettingsValue})">
+            <summary>
+            Creates a new instance of the processing plug-in that implements the interface that is passed from a caller.
+            </summary>
+            <typeparam name="T">The type of processor interface, which can be any of the following: <see cref="T:PX.CCProcessingBase.Interfaces.V2.ICCTransactionProcessor"/>, <see cref="T:PX.CCProcessingBase.Interfaces.V2.ICCProfileProcessor"/>, or <see cref="T:PX.CCProcessingBase.Interfaces.V2.ICCHostedFormProcessor"/>.</typeparam>
+            <param name="settingValues">The settings configured by the user.</param>
+            <returns>If the specified processor type is supported, returns a new instance of credit card processor; otherwise, returns null.</returns>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ICCProfileCreator">
+            <summary>
+            This interface provides the method to obtain or create the customer payment profile by the transaction ID.
+            The interface is used to create the customer payment profile after the payment is submitted on the hosted form
+            that posts transactions without preliminary creation of customer payment profiles.
+            </summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProfileCreator.GetOrCreatePaymentProfileFromTransaction(System.String,PX.CCProcessingBase.Interfaces.V2.CreateTranPaymentProfileParams)">
+            <summary>
+            By transaction ID, retrieves the customer payment profile ID and the customer profile ID that is specific to the processing center.
+            </summary>
+            <param name="transactionId">The transaction ID that is specific to the processing center.</param>
+            <param name="cParams">The additional parameters.</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+            <returns>The object that contains the customer profile ID and the customer payment profile ID.</returns>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ICCProfileFormProcessor">
+            <summary>
+            This interface provides methods to work with a card data entry form for profile handling.
+            </summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProfileFormProcessor.PrepareProfileForm(PX.CCProcessingBase.Interfaces.V2.ProfileFormPrepareOptions)">
+            <summary>
+            Initializes profile form.
+            </summary>
+            <param name="options">Profile form initialization context.</param>
+            <returns>Profile form initialization data.</returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProfileFormProcessor.ProcessProfileFormResponse(PX.CCProcessingBase.Interfaces.V2.ProfileFormResponseProcessOptions)">
+            <summary>
+            Processes profile form response.
+            </summary>
+            <param name="options">Raw profile form response.</param>
+            <returns>Parsed profile form response.</returns>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ICCProfileProcessor">
+            <summary>
+            This interface provides methods to manage customer profiles and payment profiles. You need to implement this interface for a tokenized payment plug-in.
+            </summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProfileProcessor.CreateCustomerProfile(PX.CCProcessingBase.Interfaces.V2.CustomerData)">
+            <summary>
+            Creates a new customer profile by using the provided data.
+            </summary>
+            <param name="customerData">The customer data provided by Acumatica ERP.</param>
+            <returns>Returns the profile ID of the created customer profile.</returns>
+            <exception caption="" cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProfileProcessor.GetCustomerProfile(System.String)">
+            <summary>
+            Retrieves the customer profile data from the payment gateway.
+            </summary>
+            <param name="customerProfileId">The ID of the customer profile that should be retrieved.</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+            <returns>Returns the customer profile data.</returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProfileProcessor.UpdateCustomerProfile(PX.CCProcessingBase.Interfaces.V2.CustomerData)">
+            <summary>
+            Updates the customer profile data on the payment gateway side.
+            </summary>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+            <param name="customerData">The customer data that updates the customer profile.</param>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProfileProcessor.DeleteCustomerProfile(System.String)">
+            <summary>
+            Deletes the customer profile on the payment gateway side.
+            </summary>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+            <param name="customerProfileId">The ID of the customer profile that should be deleted.</param>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProfileProcessor.GetAllCustomerProfiles">
+            <summary>
+            Retrieves all customer profiles that exist on the payment gateway side.
+            </summary>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+            <returns>Returns the data from the customer profiles.</returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProfileProcessor.CreatePaymentProfile(System.String,PX.CCProcessingBase.Interfaces.V2.CreditCardData)">
+            <summary>
+            Creates a payment profile.
+            </summary>
+            <param name="customerProfileId">The ID of the customer profile that will contain a new payment profile.</param>
+            <param name="cardData">The data of the card for the new payment profile.</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+            <returns>Returns the ID of the new payment profile.</returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProfileProcessor.GetPaymentProfile(System.String,System.String)">
+            <summary>
+            Retrieves the payment profile data from the payment gateway.
+            </summary>
+            <param name="customerProfileId">The ID of the customer profile that contains the needed payment profile.</param>
+            <param name="paymentProfileId">The ID of the needed payment profile.</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+            <returns>Returns the data of the needed payment profile.</returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProfileProcessor.UpdatePaymentProfile(System.String,PX.CCProcessingBase.Interfaces.V2.CreditCardData)">
+            <summary>
+            Updates the payment profile data on the payment gateway side.
+            </summary>
+            <param name="customerProfileId">The ID of the customer profile that contains the needed payment profile.</param>
+            <param name="cardData">The data that updates the payment profile</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProfileProcessor.DeletePaymentProfile(System.String,System.String)">
+            <summary>
+            Deletes the payment profile on the payment gateway side.
+            </summary>
+            <param name="customerProfileId">The ID of the customer profile that contains the needed payment profile.</param>
+            <param name="paymentProfileId">The ID of the payment profile that should be deleted.</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCProfileProcessor.GetAllPaymentProfiles(System.String)">
+            <summary>
+            Retrieves the list of payment profiles of the customer profile.
+            </summary>
+            <param name="customerProfileId">The ID of the customer profile from which the list of payment profiles should be retrieved.</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+            <returns>Returns the data from payment profiles.</returns>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ICCRedirectOptionsWithTransactionID.TransactionID">
+            <summary>ID of the transaction in the processing center</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ICCSettledBatchGetter">
+            <summary>
+            This interface provides methods to get settled batches from the processing centers.
+            </summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCSettledBatchGetter.GetSettledBatches(PX.CCProcessingBase.Interfaces.V2.BatchSearchParams)">
+            <summary>
+            Retrieves data for all settled batches within a range of dates.
+            </summary>
+            <param name="batchSearchParams">Batch search parameters.</param>
+            <returns>Returns the batch data as IEnumerable&lt;T>.</returns>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ICCTransactionGetter">
+            <summary>
+            This interface provides methods to get transactions from the processing centers.
+            </summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCTransactionGetter.GetTransaction(System.String)">
+            <summary>
+            Retrieves the transaction data by the transaction ID. 
+            </summary>
+            <param name="transactionId">The transaction ID from the processing center.</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+            <returns>Returns the detailed transaction data.</returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCTransactionGetter.GetTransactionsByCustomer(System.String,PX.CCProcessingBase.Interfaces.V2.TransactionSearchParams)">
+            <summary>
+            By customer profile ID and search parameters, retrieves the transaction data as IEnumerable&lt;T>.
+            </summary>
+            <param name="customerProfileId">The customer profile ID from the processing center.</param>
+            <param name="searchParams">The search parameters.</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+            <returns>Returns the transaction data as IEnumerable&lt;T>.</returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCTransactionGetter.GetUnsettledTransactions(PX.CCProcessingBase.Interfaces.V2.TransactionSearchParams)">
+            <summary>
+            By search parameters, retrieves the data of unsettled transactions as IEnumerable&lt;T>.
+            </summary>
+            <param name="searchParams">The search parameters.</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+            <returns>Returns the data of unsettled transactions as IEnumerable&lt;T>.</returns>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ICCTransactionProcessor">
+            <summary>
+            This interface provides the functionality for processing credit card transactions.
+            </summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCTransactionProcessor.DoTransaction(PX.CCProcessingBase.Interfaces.V2.ProcessingInput)">
+            <summary>
+            Processes the specified credit card transaction.
+            </summary>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or error is returned from the payment gateway.
+            </exception>
+            <param name="inputData">The data of a new credit card transaction.</param>
+            <returns>Returns the transaction details obtained from the payment gateway.</returns>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ICCTranStatusGetter">
+            <summary>
+            The interface provides the method to interpret the transaction status from <see cref="T:PX.CCProcessingBase.Interfaces.V2.ProcessingResult" />.
+            </summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCTranStatusGetter.GetTranStatus(PX.CCProcessingBase.Interfaces.V2.ProcessingResult)">
+            <summary>
+            Retrieves the transaction status by the information that is stored in <see cref="T:PX.CCProcessingBase.Interfaces.V2.ProcessingResult"/>.
+            </summary>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ICCWebhookProcessor">
+            <summary>
+            This interface provides methods to manage processing center webhooks.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ICCWebhookProcessor.WebhookEnabled">
+            <summary>
+            Checks whether the processing center supports webhooks.
+            </summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCWebhookProcessor.GetAttachedWebhooks">
+            <summary>Retrieves the webhooks that are attached to the processing center.</summary>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+            <returns>Returns the enumeration of webhooks.</returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCWebhookProcessor.AddWebhook(PX.CCProcessingBase.Interfaces.V2.Webhook)">
+            <summary>Adds a new webhook to the processing center.</summary>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCWebhookProcessor.UpdateWebhook(PX.CCProcessingBase.Interfaces.V2.Webhook)">
+            <summary>Updates the webhook information in the processing center.</summary>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCWebhookProcessor.DeleteWebhook(PX.CCProcessingBase.Interfaces.V2.Webhook)">
+            <summary>Deletes the webhook from the processing center.</summary>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ICCWebhookResolver">
+            <summary>
+            This interface provides methods to define the webhook's processing center and to parse raw webhook information.
+            </summary>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCWebhookResolver.IsSuitableResolver(PX.CCProcessingBase.Interfaces.V2.WebhookRequestData)">
+            <summary>Checks whether this resolver can parse the webhook data.</summary>
+            <param name="reqData">The data of the webhook request.</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCWebhookResolver.GetEvent(PX.CCProcessingBase.Interfaces.V2.WebhookRequestData)">
+            <summary>Obtains the event that has raised the webhook request.</summary>
+            <param name="reqData">The data of the webhook request.</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+            <returns>Returns the webhook event.</returns>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCWebhookResolver.GetId(PX.CCProcessingBase.Interfaces.V2.WebhookRequestData)">
+            <summary>Obtains the data identifier from the webhook request.</summary>
+            <param name="reqData">The data of the webhook request.</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCWebhookResolver.GetAuthSign(PX.CCProcessingBase.Interfaces.V2.WebhookRequestData)">
+            <summary>Obtains the authentication signature.</summary>
+            <param name="reqData">The data of the webhook request.</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+        </member>
+        <member name="M:PX.CCProcessingBase.Interfaces.V2.ICCWebhookResolver.CheckSettings(PX.CCProcessingBase.Interfaces.V2.WebhookRequestData,System.Collections.Generic.IEnumerable{PX.CCProcessingBase.Interfaces.V2.SettingsValue})">
+            <summary>Checks whether the processing center settings allow the webhook to be used.</summary>
+            <param name="reqData">The data of the webhook request.</param>
+            <param name="settings">The processing center settings.</param>
+            <exception cref="T:PX.CCProcessingBase.Interfaces.V2.CCProcessingException">Throws the exception if there is an error in input data, 
+            or an error is returned from the payment gateway.
+            </exception>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.PaymentFormPrepareOptions">
+            <summary>Data required to initiate a payment form.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.PaymentFormResponseProcessOptions">
+            <summary>Data requred to process payment form response.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.PaymentFormResponseProcessResult">
+            <summary>Result of payment form response processing.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.PaymentFormResponseProcessResult.TranID">
+            <summary>Transaction ID in the processing center.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.PluginFeature">
+            <summary>Features supported by the processing center plug-in</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ProcessingInput">
+            <summary>The class that contains the processing data that Acumatica ERP passes to the payment plug-in.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingInput.TranType">
+            <summary>The type of transaction.</summary>
+            <value>The value depends on the user action on the Acumatica ERP form.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingInput.Amount">
+            <summary>The amount of the transaction.</summary>
+            <value>
+              <para>Receives the value from one of the following DAC fields depending on the type of the document from which the operation was invoked:</para>
+              <list type="bullet">
+                <item>For an AR payment, <strong>ARPayment.CuryDocBal</strong>.</item>
+                <item>For a cash sale, <strong>ARCashSale.CuryDocBal</strong>.</item>
+                <item>For a sales invoice, <strong>SOInvoice.CuryPaymentAmt</strong>.</item>
+                <item>For a sales order, <strong>SOOrder.CuryUnpaidBalance</strong> + <strong>SOOrder.CuryCCPreAuthAmount</strong>. If the sum is negative, 0 is passed.</item>
+              </list>
+            </value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingInput.CuryID">
+            <summary>The identifier of the currency.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingInput.OrigTranID">
+            <summary>The transaction ID in Acumatica ERP.</summary>
+            <value>Receives the value from the <strong>CCProcTran.PCTranNumber</strong> DAC field.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingInput.AuthCode">
+            <summary>The authorization code.</summary>
+            <value>If <tt>TranType=CaptureOnly</tt>, receives the value from the <strong>CCProcTran.AuthNumber</strong> DAC field. For other transaction types, receives the
+            number of the original transaction (<see cref="P:PX.CCProcessingBase.Interfaces.V2.ProcessingInput.OrigTranID" />).</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingInput.DocumentData">
+            <summary>The data of the document.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingInput.CustomerData">
+            <summary>The data of the customer.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingInput.CardData">
+            <summary>The data of the card.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingInput.TranUID">
+            <summary>A unique identifier of transaction generated by Acumatica ERP.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingInput.SaveCard">
+            <summary>The flag indicating whether the card data needs to be saved for future usage.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingInput.MeansOfPayment">
+            <summary>Means of payment of the transaction.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ProcessingResult">
+            <summary>The class that contains the results of the transaction processing performed by the payment gateway.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingResult.TransactionNumber">
+            <summary>The transaction number.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingResult.ResponseCode">
+            <summary>The response code.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingResult.ResponseText">
+            <summary>The text of the response.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingResult.ResponseReasonCode">
+            <summary>The response reason code.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingResult.ResponseReasonText">
+            <summary>The response reason text.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingResult.AuthorizationNbr">
+            <summary>The authorization number.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingResult.ExpireAfterDays">
+            <summary>The period (in days) after which the transaction automatically expires (for authorization transactions).</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingResult.CcvVerificatonStatus">
+            <summary>The status of the CVV verification.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingResult.CardTypeCode">
+            <summary>The card type used for the transactions.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.ProcessingResult.CardType">
+            <summary> Original card type value sent by a processing center</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ProfileFormPrepareOptions">
+            <summary>Data required to initiate a profile form.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ProfileFormResponseProcessOptions">
+            <summary>Data requred to process profile form response.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.ProfileFormResponseProcessResult">
+            <summary>Result of profile form response processing.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.SettingsDetail">
+            <summary>A detail line that is displayed on the <strong>Settings</strong> tab of the Processing Centers (CA205000) form.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.SettingsDetail.ControlType">
+            <summary>The type of the control for the <strong>Value</strong> column of the <strong>Settings</strong> tab of the Processing Centers (CA205000) form.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.SettingsDetail.Descr">
+            <summary>A description of the key, which is displayed in the <strong>Description</strong> column of the <strong>Settings</strong> tab of the Processing
+            Centers (CA205000) form.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.SettingsDetail.DetailID">
+            <summary>The ID of the key required by the plug-in developed for the processing center. This ID is displayed in the <strong>ID</strong> column of the
+            <strong>Settings</strong> tab of the Processing Centers (CA205000) form.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.SettingsDetail.DefaultValue">
+            <summary>The default value of the key.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.SettingsDetail.IsEncryptionRequired">
+            <summary>Indicates (if set to <tt>true</tt>) that encryption of the key value is required.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.SettingsDetail.ComboValues">
+            <summary>The values to be displayed in the combo box if <see cref="P:PX.CCProcessingBase.Interfaces.V2.SettingsDetail.ControlType" /> is <see cref="F:PX.CCProcessingBase.Interfaces.V2.SettingsControlType.Combo" />.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.SettingsValue">
+            <summary>The value of the key required by the plug-in developed for the processing center.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.SettingsValue.DetailID">
+            <summary>The ID of the key required by the plug-in developed for the processing center.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.SettingsValue.Value">
+            <summary>The value selected by the user for the key.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.TranProfile">
+            <summary>
+            The class that is used in <see cref="T:PX.CCProcessingBase.Interfaces.V2.ICCProfileCreator"/>.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TranProfile.CustomerProfileId">
+            <summary>The customer profile ID in the processing center.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TranProfile.PaymentProfileId">
+            <summary>The customer payment profile ID in the processing center.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.TransactionData">
+            <summary>
+            The class that contains details about the transaction.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.TranID">
+            <summary>The transaction ID in the processing center.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.PaymentMethodType">
+            <summary>The transaction payment method type. Null field is treated as CreditCard.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.AuthCode">
+            <summary>The authorization number.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.CustomerId">
+            <summary>The customer profile ID in the processing center.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.PaymentId">
+            <summary>The customer payment profile ID in the processing center.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.CardNumber">
+            <summary>The document number. Usually this is the document type and the reference number in Acumatica ERP.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.Amount">
+            <summary>The amount of the transaction.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.AccountNumber">
+            <summary>Card number or bank account number used for the transaction.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.RefTranID">
+            <summary>The reference transaction ID.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.TranType">
+            <summary>The transaction type.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.SubmitTime">
+            <summary>The time of the transaction submission in UTC format.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.TranStatus">
+            <summary>The transaction status.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.CardTypeCode">
+            <summary>The card type used for the transactions.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.CardType">
+            <summary>Original card type value sent by a processing center</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.ResponseReasonCode">
+            <summary>The reason cone that is specific to the processing center.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.ResponseReasonText">
+            <summary>The text of the response reason that is specific to the processing center.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.ExpireAfterDays">
+            <summary>The period (in days) after which the transaction automatically expires (for authorization transactions).</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.CcvVerificationStatus">
+            <summary>The status of the CVV verification.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.TranUID">
+            <summary>Description of the order used to transfer the NoteID of the transaction.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.FixedFee">
+            <summary>
+            Fixed fee amount. Positive amount for a fee that will be charged and negative amount for a fee that will be received.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.PercentageFee">
+            <summary>
+            Percentage fee amount. Positive amount for a fee that will be charged and negative amount for a fee that will be received.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionData.FeeType">
+            <summary>
+            Fee Type. Transaction type or some other parameter can be used. Used to determine Entry Type.
+            </summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.TransactionSearchParams">
+            <summary>
+            The class that defines the parameters that are used to search for the transactions. 
+            The class is used in <see cref="T:PX.CCProcessingBase.Interfaces.V2.ICCTransactionGetter"/>.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionSearchParams.PaymentProfileId">
+            <summary>
+            The customer payment profile ID in the processing center.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionSearchParams.Offset">
+            <summary>
+            The number of the page in the results returned from the processing center.
+            </summary>
+            <value>The value should be positive.
+            <c>-1</c> means that the parameter is not used.</value>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.TransactionSearchParams.Limit">
+            <summary>
+            The number of transactions per page.
+            </summary>
+            <value>The value should be positive.
+            <c>-1</c> means that the parameter is not used.</value>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.Webhook">
+            <summary>
+            The class that contains webhook information.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.Webhook.Guid">
+            <summary>The unique webhook identifier.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.Webhook.Name">
+            <summary>The webhook name.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.Webhook.Enable">
+            <summary>The property that indicates (if set to <c>true</c>) that the webhook can be checked.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.Webhook.Url">
+            <summary>The webhook destination address.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.Webhook.Events">
+            <summary>The list of events on which the webhook is used.</summary>
+        </member>
+        <member name="T:PX.CCProcessingBase.Interfaces.V2.WebhookRequestData">
+            <summary>
+            The class that contains the data of the webhook request.
+            </summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.WebhookRequestData.Uri">
+            <summary>The destination URI address.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.WebhookRequestData.Headers">
+            <summary>The request headers.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.WebhookRequestData.BodyStr">
+            <summary>The request body as a string.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.WebhookRequestData.BodyArr">
+            <summary>The request body as an array of bytes.</summary>
+        </member>
+        <member name="P:PX.CCProcessingBase.Interfaces.V2.WebhookRequestData.HttpMethod">
+            <summary>The HTTP method (get or post).</summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,781 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>PX.Common</name>
+  </assembly>
+  <members>
+    <member name="M:PX.Common.PXBufferedResponse.WriteBinary(System.Byte[],System.Int64,System.Int64)">
+      <summary>
+            Writes binary data in streaming mode to the current response.
+            </summary>
+      <param name="data">Binary data to write.</param>
+      <param name="startIndex">Start index to write</param>
+    </member>
+    <member name="F:PX.Common.WebConfig.PortalSiteID">
+      <summary>
+            Identificator for Portal instances. Not used in ERP.
+            </summary>
+    </member>
+    <member name="T:PX.Common.IPXIdentity">
+      <summary>
+            Contains the context information for the current user identity.
+            </summary>
+    </member>
+    <member name="P:PX.Common.IPXIdentity.Username">
+      <summary>
+        <para>Returns the username for the current user.</para>
+        <para>Please note that the tenant ID is not returned as a part of the username;
+            it is returned by <see cref="P:PX.Common.IPXIdentity.TenantId" /> property.</para>
+      </summary>
+    </member>
+    <member name="P:PX.Common.IPXIdentity.TenantId">
+      <summary>
+            Returns Tenant ID (login name) for the current tenant,
+            or <see langword="null" /> if there is only a single tenant in the system.
+            </summary>
+    </member>
+    <member name="P:PX.Common.IPXIdentity.BranchId">
+      <summary>
+            Returns the ID of the current branch, or <see langword="null" />
+            if Multi-Branch Support feature is turned off or there are no branches in the system.
+            </summary>
+    </member>
+    <member name="P:PX.Common.IPXIdentity.Culture">
+      <summary>
+            Returns the current culture. If it is not defined, invariant culture should be returned.
+            </summary>
+    </member>
+    <member name="P:PX.Common.IPXIdentity.BusinessDate">
+      <summary>
+            Returns the current business date. If it is not defined, the current date should be returned.
+            </summary>
+    </member>
+    <member name="P:PX.Common.IPXIdentity.TimeZone">
+      <summary>
+            Returns the current time zone. If it is not defined, invariant timezone should be returned. 
+            </summary>
+    </member>
+    <member name="P:PX.Common.IPXIdentity.User">
+      <summary>
+            Returns the current user.
+            </summary>
+    </member>
+    <member name="P:PX.Common.IPXIdentityAccessor.Identity">
+      <summary>
+            Returns the information about the current user identity,
+            or <see langword="null" /> if there is no identity available.
+            </summary>
+    </member>
+    <member name="P:PX.Common.DaylightSavingTime.Start">
+      <summary>
+            Represents start date and time of the DST in the time zone's standard time.
+            </summary>
+    </member>
+    <member name="P:PX.Common.DaylightSavingTime.End">
+      <summary>
+            Represents end date and time of the DST in the time zone's daylight saving time.
+            </summary>
+    </member>
+    <member name="T:PX.Common.Mail.MailSender.DebugMailSender">
+      <summary>
+            Dumps all attachments to the ~/App_Data/Attachments folder.
+            </summary>
+    </member>
+    <member name="T:PX.Common.Parser.ExpressionContext">
+      <summary>
+            Provides the base class of the expression context.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.CopyProperties(System.String,PX.Common.Parser.ExpressionContext)">
+      <summary>
+            Copy all properties from specified expression context.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.UnregisterProperty(System.String)">
+      <summary>
+            Unregister custom property with specified name.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.UnregisterProperties">
+      <summary>
+            Unregister all custom properties.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.RegisterExternalObject(System.String,System.Object)">
+      <summary>
+            Register specified object for using inside report expressions.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.UnregisterExternalObject(System.String)">
+      <summary>
+            Unregister expression object with specified name.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.CBool(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Converts the specified value to its Boolean equivalent.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.CDate(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Converts the specified value to its DateTime equivalent.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.CStr(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Converts the specified value to its String equivalent.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.CDbl(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Converts the specified value to its Double equivalent.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.CSng(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Converts the specified value to its Single equivalent.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.CDec(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Converts the specified value to its Double equivalent.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.CInt(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Converts the specified value to its Integer equivalent.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.CShort(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Converts the specified value to its Integer equivalent.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.CLong(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Converts the specified value to its Long equivalent.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.LTrim(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Removes all occurrences of a space characters from the beginning of this instance.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.RTrim(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Removes all occurrences of a space characters from the end of this instance.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Trim(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Removes all occurrences of a space characters from the beginning and end of this instance.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Format(PX.Common.Parser.FunctionContext,System.Object,System.Object[])">
+      <summary>
+            Returns a string formatted according to instructions contained in a format String expression.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.UCase(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Returns a string or character containing the specified string converted to uppercase.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.LCase(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Returns a string or character containing the specified string converted to lowercase.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.InStr(PX.Common.Parser.FunctionContext,System.Object,System.Object)">
+      <summary>
+            Returns an integer specifying the start position of the first occurrence 
+            of one string within another.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.InStrRev(PX.Common.Parser.FunctionContext,System.Object,System.Object)">
+      <summary>
+            Returns the position of the first occurrence of one string within another, 
+            starting from the right side of the string.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Len(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Gets the number of characters in this instance.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Left(PX.Common.Parser.FunctionContext,System.Object,System.Object)">
+      <summary>
+            Returns a string containing a specified number of characters from the 
+            left side of a string.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Right(PX.Common.Parser.FunctionContext,System.Object,System.Object)">
+      <summary>
+            Returns a string containing a specified number of characters from the 
+            right side of a string.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Substring(PX.Common.Parser.FunctionContext,System.Object,System.Object,System.Object)">
+      <summary>
+            Returns a string containing a specified number of characters from the specified position.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Replace(PX.Common.Parser.FunctionContext,System.Object,System.Object,System.Object)">
+      <summary>
+            Returns a string in which a specified substring has been replaced with another substring.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.PadRight(PX.Common.Parser.FunctionContext,System.Object,System.Object,System.Object)">
+      <summary>
+            Left-aligns the characters in this string, padding on the right with a specified
+            Unicode character, for a specified total length.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.PadLeft(PX.Common.Parser.FunctionContext,System.Object,System.Object,System.Object)">
+      <summary>
+            Right-aligns the characters in this instance, padding on the left with a
+            specified Unicode character for a specified total length.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Concat(PX.Common.Parser.FunctionContext,System.Object[])">
+      <summary>
+            Concatenates several strings into a single one.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Abs(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Returns the absolute value of a floating-point number.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Floor(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Returns the largest integer less than or equal to the specified floating-point number.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Ceiling(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Returns the smallest integer greater than or equal to the floating-point decimal number.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Round(PX.Common.Parser.FunctionContext,System.Object,System.Object)">
+      <summary>
+            Rounds a floating-point value to a specified precision.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Min(PX.Common.Parser.FunctionContext,System.Object,System.Object)">
+      <summary>
+            Returns the smaller of two floating-point numbers.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Max(PX.Common.Parser.FunctionContext,System.Object,System.Object)">
+      <summary>
+            Returns the larger of two floating-point numbers.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Pow(PX.Common.Parser.FunctionContext,System.Object,System.Object)">
+      <summary>
+            Returns a specified number raised to the specified power.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Now(PX.Common.Parser.FunctionContext)">
+      <summary>
+            Gets the current DateTime object using user's timezone.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.NowUTC(PX.Common.Parser.FunctionContext)">
+      <summary>
+            Gets the current DateTime object.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Today(PX.Common.Parser.FunctionContext)">
+      <summary>
+            Gets the current date using user's timezone.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.TodayUTC(PX.Common.Parser.FunctionContext)">
+      <summary>
+            Gets the current date.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.DateDiff(PX.Common.Parser.FunctionContext,System.Object,System.Object,System.Object)">
+      <summary>
+            Returns a Date value containing a date and time value to which a specified time 
+            interval has been added.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.DateAdd(PX.Common.Parser.FunctionContext,System.Object,System.Object,System.Object)">
+      <summary>
+            Returns a Date value containing a date and time value to which a specified time 
+            interval has been added.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Year(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Gets the year component of the date.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Month(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Gets the month component of the date.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Day(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Gets the day component of the date.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.MonthName(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Gets the month name.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.DayOfWeek(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Gets the day of the week.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.DayOfYear(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Gets the day of the year.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Hour(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Gets the Hour component of the date.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Minute(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Gets the minute component of the date.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Second(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Gets the second component of the date.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.DayOrdinal(PX.Common.Parser.FunctionContext,System.Object)">
+      <summary>
+            Converts the specified integer value to an ordinal number string with suffix. 
+            For numbers less than 1 or greater than 31 returns empty string.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.IsNull(PX.Common.Parser.FunctionContext,System.Object,System.Object)">
+      <summary>
+            Gets the default value if value is nullable.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.IIf(PX.Common.Parser.FunctionContext,System.Object,System.Object,System.Object)">
+      <summary>
+            Calculate expression and returns the true or false part.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.NullIf(PX.Common.Parser.FunctionContext,System.Object,System.Object)">
+      <summary>
+            Returns the first value if the two values are not equal. If the values are equal, NULLIF returns a null value.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Switch(PX.Common.Parser.FunctionContext,System.Object[])">
+      <summary>
+            Implements the switch operator.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Assign(PX.Common.Parser.FunctionContext,System.Object,System.Object)">
+      <summary>
+            Register a custom variable with specified name.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.Assign(PX.Common.Parser.FunctionContext,System.Object,System.Object,System.Object)">
+      <summary>
+            Register a custom variable with specified name.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.LineNbr(PX.Common.Parser.FunctionContext)">
+      <summary>
+            Return line number from PXContext (for import/export scenarios)
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.CheckNumericProperty(System.String,System.Object,System.Int32)">
+      <summary>
+            Check if specified value is numeric.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.CheckIntegerProperty(System.String,System.Object,System.Int32)">
+      <summary>
+            Check if specified value is integer.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionContext.CheckDateProperty(System.String,System.Object,System.Int32)">
+      <summary>
+            Check if specified value is DateTime.
+            </summary>
+    </member>
+    <member name="T:PX.Common.Parser.ExpressionParser">
+      <summary>
+            Provides the base class of the expression parser.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionParser.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of the ExpressionParser class.
+            </summary>
+    </member>
+    <member name="P:PX.Common.Parser.ExpressionParser.ValidateNames">
+      <summary>
+            Specifies whether the parser perform data field names validation.
+            </summary>
+    </member>
+    <member name="P:PX.Common.Parser.ExpressionParser.Context">
+      <summary>
+            Gets the expressions context object.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionParser.CreateContext">
+      <summary>
+            Create and return the report expressions context object.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionParser.CreateNameNode(PX.Common.Parser.ExpressionNode,System.String)">
+      <summary>
+            Create and return the name node.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionParser.ValidateName(PX.Common.Parser.NameNode,System.String)">
+      <summary>
+            Validate the specified name node.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionParser.IsAggregate(System.String)">
+      <summary>
+            Check if method with specified name is aggregate function.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionParser.CreateFunctionNode(PX.Common.Parser.ExpressionNode,System.String)">
+      <summary>
+            Create and return the function node.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionParser.CreateAggregateNode(System.String,System.String)">
+      <summary>
+            Create and return aggregate node.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionParser.StartParse">
+      <summary>
+            Starts the expression parsing.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionParser.SetContext(System.Type,System.String,System.String)">
+      <summary>
+            Sets the parsed expression context.
+            </summary>
+    </member>
+    <member name="M:PX.Common.Parser.ExpressionParser.Parse">
+      <summary>
+            Parse the current report expression.
+            </summary>
+    </member>
+    <member name="T:PX.Common.PdfPrinter.PdfPrinterConfigurationManager">
+      <summary>
+            Configure registry for AppPool user to use pdf printer 
+            </summary>
+    </member>
+    <member name="M:PX.Common.PdfPrinter.PdfPrinterConfigurationManager.SetDefaultPrinter(System.String,System.String)">
+      <summary>
+            Setting default printer for printer and disable windows printer managment
+            </summary>
+      <param name="printerRegistryName">Printe name and params. You can get this information from regkey: Software\Microsoft\Windows NT\CurrentVersion\Devices. Example (Acumatica_PrinterSite_Landscape, winspool,Ne08:)</param>
+      <param name="sid">User Security Identifier</param>
+      <returns>False if can't edit registry</returns>
+    </member>
+    <member name="M:PX.Common.PdfPrinter.PdfPrinterConfigurationManager.SetDefaultIEConfiguration(System.String)">
+      <summary>
+            Setting default IE configuration for printing. Remove header, footer and allow print background
+            </summary>
+      <param name="sid">User Security Identifier</param>
+      <returns>False if can't edit registry</returns>
+    </member>
+    <member name="M:PX.Common.PdfPrinter.PdfPrinterConfigurationManager.SetIEPageOrientation(System.String,System.Boolean)">
+      <summary>
+            Setting default page orientation for printing.
+            </summary>
+      <param name="printerName">Printer name from web.config</param>
+    </member>
+    <member name="M:PX.Common.PdfPrinter.PrinterWinApiCommands.ChangePrinterLayout(System.String,System.Boolean)">
+      <summary>
+            based on this demo https://www.codeproject.com/KB/dotnet/NET_Printer_Library.aspx?display=PrintAll
+            </summary>
+    </member>
+    <member name="P:PX.Common.PXHostingEnvironment.IsHosted">
+      <summary>
+            Gets a value indicating whether the current application domain is being hosted
+            by an <see cref="T:System.Web.Hosting.ApplicationManager" /> object, and the domain was not internally created
+            from code for service purposes.
+            </summary>
+      <remarks>
+        <para>Some parts of the system (like CustomizationProjectBuilder) may create an application domain from the code
+            by using <see cref="M:System.Web.Hosting.ApplicationHost.CreateApplicationHost(System.Type,System.String,System.String)" /> method.</para>
+        <para>In that case, <see cref="P:System.Web.Hosting.HostingEnvironment.IsHosted" /> is true but the list of running applications
+            is empty because the new application is created with <see cref="F:System.Web.Hosting.HostingEnvironmentFlags.HideFromAppManager" /> flag.</para>
+      </remarks>
+    </member>
+    <member name="M:PX.Common.PXReflectionSerializer.CloneSequence``1(System.Collections.Generic.IEnumerable{``0})">
+      <summary>
+            Returns a sequence where each element was cloned by <see cref="M:PX.Common.PXReflectionSerializer.Clone``1(``0)" /> method from corresponding one of the source sequence
+            </summary>
+    </member>
+    <member name="F:PX.Common.PXUrl.ScreenParams">
+      <summary>
+            The list of query string parameters that are preserved when logging a request URL for performance analysis.
+            </summary>
+      <remarks>Used in <see cref="M:PX.Common.PXUrl.GetScreenUrl(System.String)" /> that is called by Request Profiler to get a request URL. Not used anywhere else, including the actual user-facing page URL in the browser.</remarks>
+    </member>
+    <member name="M:PX.Common.PXUrl.IngoreAllQueryParameters(System.String)">
+      <summary>
+            Removes all the query parameters from the url.
+            </summary>
+    </member>
+    <member name="M:PX.Common.PXUrl.QuoteString(System.String)">
+      <summary>
+            Encode the specified string value for JavaScript.
+            </summary>
+    </member>
+    <member name="M:PX.Common.PXUrl.GetWebsiteUrl(System.Uri,System.Func{System.String,System.String})">
+      <summary>
+            Returns url for current website in format http(s)://hostname/ 
+            This url can be used in external links.
+            </summary>
+      <param name="requestUrl">Request URL</param>
+      <param name="headerProvider">Header provider. Must return <c>null</c> if header isn't found</param>
+    </member>
+    <member name="M:PX.Common.Tools.ToCodeString(System.Type,System.Boolean)">
+      <summary>
+            Converts a type instance to its code representation
+            </summary>
+      <remarks>
+        <code>typeof(Dictionary&lt;Tuple&lt;int, string&gt;, List&lt;double&gt;&gt;).ToCodeString()</code> will return "Dictionary&lt;Tuple&lt;int, string&gt;, List&lt;double&gt;&gt;"
+            </remarks>
+    </member>
+    <member name="M:PX.Common.Tools.GetInheritanceDepth(System.Type)">
+      <summary>
+            Returns a number representing the length of the inheritance chain for the current type
+            (count of base classes, including the current type itself).
+            </summary>
+      <remarks>Function will return 1 for <see cref="T:System.Object" /> type</remarks>
+      <param name="type">Inspecting type</param>
+    </member>
+    <member name="M:PX.Common.Tools.GetInheritanceChain(System.Type)">
+      <summary>
+            Returns a sequence of base classes which are present in the inheritance chain of the current type, 
+            starting with the current type itself and ending with an <see cref="T:System.Object" /> type.
+            </summary>
+      <param name="type">Inspecting type</param>
+    </member>
+    <member name="M:PX.Common.Tools.GetWeekNumber(System.DateTime)">
+      <summary>
+            ISO 8601
+            </summary>
+    </member>
+    <member name="M:PX.Common.Tools.GetWeekStart(System.Int32,System.Int32)">
+      <summary>
+            ISO 8601
+            </summary>
+    </member>
+    <member name="M:PX.Common.Tools.ToVoid``1(``0)">
+      <summary>
+            Suppress expression type
+            </summary>
+      <typeparam name="T">Expression original type</typeparam>
+      <param name="expression">Expression whose type should be suppressed</param>
+    </member>
+    <member name="M:PX.Common.Tools.Implies(System.Boolean,System.Func{System.Boolean})">
+      <summary>
+            Logical implication (lazy)
+            </summary>
+      <param name="antecedent">Antecedent</param>
+      <param name="consequent">Consequent</param>
+      <returns>
+        <c>false</c> if <paramref name="antecedent" /> is <c>true</c> 
+            and <paramref name="consequent" /> is <c>false</c>, otherwise - <c>true</c></returns>
+    </member>
+    <member name="M:PX.Common.Tools.Implies(System.Boolean,System.Boolean)">
+      <summary>
+            Logical implication (eager)
+            </summary>
+      <param name="antecedent">Antecedent</param>
+      <param name="consequent">Consequent</param>
+      <returns>
+        <c>false</c> if <paramref name="antecedent" /> is <c>true</c> 
+            and <paramref name="consequent" /> is <c>false</c>, otherwise - <c>true</c></returns>
+    </member>
+    <member name="M:PX.Common.Func.Id``1">
+      <summary>
+            Returns function that returns its parameter
+            </summary>
+    </member>
+    <member name="M:PX.Common.Func.Memorize``1(System.Func{``0})">
+      <summary>
+            Apply memorizing behavior to the function,
+            which means that original function would be
+            called only once for a certain input parameter
+            </summary>
+      <typeparam name="TOut">Function output result type</typeparam>
+      <param name="originalFunc">Function</param>
+      <returns>Function with memorizing behavior</returns>
+    </member>
+    <member name="M:PX.Common.Func.Memorize``2(System.Func{``0,``1})">
+      <summary>
+            Apply memorizing behavior to the function,
+            which means that original function would be
+            called only once for a certain input parameter
+            </summary>
+      <typeparam name="TIn">Function input parameter type</typeparam>
+      <typeparam name="TOut">Function output result type</typeparam>
+      <param name="originalFunc">Function</param>
+      <returns>Function with memorizing behavior</returns>
+    </member>
+    <member name="M:PX.Common.Func.Memorize``3(System.Func{``0,``1,``2})">
+      <summary>
+            Apply memorizing behavior to the function,
+            which means that original function would be
+            called only once for a certain input parameter
+            </summary>
+      <typeparam name="TIn1">Function first input parameter type</typeparam>
+      <typeparam name="TIn2">Function second input parameter type</typeparam>
+      <typeparam name="TOut">Function output result type</typeparam>
+      <param name="originalFunc">Function</param>
+      <returns>Function with memorizing behavior</returns>
+    </member>
+    <member name="M:PX.Common.Func.Memorize``4(System.Func{``0,``1,``2,``3})">
+      <summary>
+            Apply memorizing behavior to the function,
+            which means that original function would be
+            called only once for a certain input parameter
+            </summary>
+      <typeparam name="TIn1">Function first input parameter type</typeparam>
+      <typeparam name="TIn2">Function second input parameter type</typeparam>
+      <typeparam name="TIn3">Function third input parameter type</typeparam>
+      <typeparam name="TOut">Function output result type</typeparam>
+      <param name="originalFunc">Function</param>
+      <returns>Function with memorizing behavior</returns>
+    </member>
+    <member name="M:PX.Common.Func.Memorize``5(System.Func{``0,``1,``2,``3,``4})">
+      <summary>
+            Apply memorizing behavior to the function,
+            which means that original function would be
+            called only once for a certain input parameter
+            </summary>
+      <typeparam name="TIn1">Function first input parameter type</typeparam>
+      <typeparam name="TIn2">Function second input parameter type</typeparam>
+      <typeparam name="TIn3">Function third input parameter type</typeparam>
+      <typeparam name="TIn4">Function fourth input parameter type</typeparam>
+      <typeparam name="TOut">Function output result type</typeparam>
+      <param name="originalFunc">Function</param>
+      <returns>Function with memorizing behavior</returns>
+    </member>
+    <member name="M:PX.Common.Func.Memorize``6(System.Func{``0,``1,``2,``3,``4,``5})">
+      <summary>
+            Apply memorizing behavior to the function,
+            which means that original function would be
+            called only once for a certain input parameter
+            </summary>
+      <typeparam name="TIn1">Function first input parameter type</typeparam>
+      <typeparam name="TIn2">Function second input parameter type</typeparam>
+      <typeparam name="TIn3">Function third input parameter type</typeparam>
+      <typeparam name="TIn4">Function fourth input parameter type</typeparam>
+      <typeparam name="TIn5">Function fifth input parameter type</typeparam>
+      <typeparam name="TOut">Function output result type</typeparam>
+      <param name="originalFunc">Function</param>
+      <returns>Function with memorizing behavior</returns>
+    </member>
+    <member name="M:PX.Common.Func.Memorize``7(System.Func{``0,``1,``2,``3,``4,``5,``6})">
+      <summary>
+            Apply memorizing behavior to the function,
+            which means that original function would be
+            called only once for a certain input parameter
+            </summary>
+      <typeparam name="TIn1">Function first input parameter type</typeparam>
+      <typeparam name="TIn2">Function second input parameter type</typeparam>
+      <typeparam name="TIn3">Function third input parameter type</typeparam>
+      <typeparam name="TIn4">Function fourth input parameter type</typeparam>
+      <typeparam name="TIn5">Function fifth input parameter type</typeparam>
+      <typeparam name="TIn6">Function sixth input parameter type</typeparam>
+      <typeparam name="TOut">Function output result type</typeparam>
+      <param name="originalFunc">Function</param>
+      <returns>Function with memorizing behavior</returns>
+    </member>
+    <member name="M:PX.Common.Func.Memorize``8(System.Func{``0,``1,``2,``3,``4,``5,``6,``7})">
+      <summary>
+            Apply memorizing behavior to the function,
+            which means that original function would be
+            called only once for a certain input parameter
+            </summary>
+      <typeparam name="TIn1">Function first input parameter type</typeparam>
+      <typeparam name="TIn2">Function second input parameter type</typeparam>
+      <typeparam name="TIn3">Function third input parameter type</typeparam>
+      <typeparam name="TIn4">Function fourth input parameter type</typeparam>
+      <typeparam name="TIn5">Function fifth input parameter type</typeparam>
+      <typeparam name="TIn6">Function sixth input parameter type</typeparam>
+      <typeparam name="TIn7">Function seventh input parameter type</typeparam>
+      <typeparam name="TOut">Function output result type</typeparam>
+      <param name="originalFunc">Function</param>
+      <returns>Function with memorizing behavior</returns>
+    </member>
+    <member name="M:PX.Common.Func.Conjoin``1(System.Func{``0,System.Boolean},System.Func{``0,System.Boolean})">
+      <summary>
+            Combines two Func delagates (AND condition)
+            </summary>
+      <typeparam name="TIn">Function input parameter type</typeparam>
+      <param name="firstFunc">First function</param>
+      <param name="secondFunc">Second function</param>
+      <returns>Returns (firstFunc &amp;&amp; secondFunc)</returns>
+    </member>
+    <member name="M:PX.Common.Func.Disjoin``1(System.Func{``0,System.Boolean},System.Func{``0,System.Boolean})">
+      <summary>
+            Combines two Func delagates (OR condition)
+            </summary>
+      <typeparam name="TIn">Function input parameter type</typeparam>
+      <param name="firstFunc">First function</param>
+      <param name="secondFunc">Second function</param>
+      <returns>Returns (firstFunc || secondFunc)</returns>
+    </member>
+    <member name="M:PX.Common.Func.Negate``1(System.Func{``0,System.Boolean})">
+      <summary>
+            Negates the Func delegate (NOT condition)
+            </summary>
+      <typeparam name="TIn">Function input parameter type</typeparam>
+      <param name="func">Original function</param>
+      <returns>Returns !func</returns>
+    </member>
+    <member name="T:PX.Common.IImplement`1">
+      <summary>
+            Allows to create tricky restrictions for generic parameters.
+            </summary>
+    </member>
+    <member name="T:PX.Common.AtomicLazy`1">
+      <summary>
+            ThreadSafeValueOnly Lazy, doesn't cache exceptions
+            </summary>
+    </member>
+    <member name="M:HttpRequestEx.GetWebsiteUrl(System.Web.HttpRequest)">
+      <summary>
+            Returns url for current website in format http(s)://hostname/ 
+            This url can be used in external links.
+            </summary>
+      <param name="request">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:HttpRequestEx.GetWebsiteAuthority(System.Web.HttpRequest)">
+      <summary>
+            Returns scheme and hostname for current website.
+            This url can be used in external links.
+            </summary>
+      <param name="request">
+      </param>
+      <returns>
+      </returns>
+    </member>
+  </members>
+</doc>

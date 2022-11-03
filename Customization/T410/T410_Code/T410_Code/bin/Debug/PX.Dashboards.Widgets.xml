@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PX.Dashboards.Widgets</name>
+    </assembly>
+    <members>
+        <member name="T:PX.Dashboards.Widgets.ChartTypeListAttribute">
+            <summary>
+            List Attrubute with the following values : Pie, Line, Column, ColumnStacked, Bar, BarStacked, Funnel.
+            </summary>
+        </member>
+        <member name="T:PX.Dashboards.Widgets.LegendPositionListAttribute">
+            <summary>
+            List Attrubute with the following values : None, Left, Right, Top, Bottop, Popup.
+            </summary>
+        </member>
+        <member name="T:PX.Dashboards.Widgets.SortTypeListAttribute">
+            <summary>
+            List Attrubute with the following values : Pie, Line, Column, ColumnStacked, Bar, BarStacked, Funnel.
+            </summary>
+        </member>
+        <member name="T:PX.Dashboards.Widgets.DateRoundListAttribute">
+            <summary>
+            List Attrubute with the following values date rounding available values.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.ChartSettingsMaint.ChartSettings_RowUpdated(PX.Data.PXCache,PX.Data.PXRowUpdatedEventArgs)">
+            <summary>
+            Row Updated event handler.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.ChartSettingsMaint.SettingsRowSelected(PX.Data.PXCache,PX.Dashboards.Widgets.ChartSettings,PX.Data.InqField[])">
+            <summary>
+            Row Selected event handler.
+            </summary>
+        </member>
+        <member name="T:PX.Dashboards.Widgets.PXChartWidget">
+            <summary>
+            Implements the data table widget.
+            </summary>
+        </member>
+        <member name="T:PX.Dashboards.Widgets.PXChartWidget.ExprParser">
+            <summary>
+            Provides the report expression parser.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.ExprParser.#ctor(System.String,PX.Dashboards.Widgets.PXChartWidget)">
+            <summary>
+            Initializes a new instance of the ExpressionParser class.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.ExprParser.Parse(System.String,PX.Dashboards.Widgets.PXChartWidget)">
+            <summary>
+            Parse the specified expression string.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.ExprParser.Eval(System.String,PX.Dashboards.Widgets.PXChartWidget)">
+            <summary>
+            Evalute the specified expression string.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.ExprParser.CreateContext">
+            <summary>
+            Create and return the report expressions context object.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.ExprParser.CreateNameNode(PX.Common.Parser.ExpressionNode,System.String)">
+            <summary>
+            Create and return the name node.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.ExprParser.IsAggregate(System.String)">
+            <summary>
+            Check if method with specified name is aggregate function.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.ExprParser.ValidateName(PX.Common.Parser.NameNode,System.String)">
+            <summary>
+            Validate the specified name node.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.Render(PX.Web.UI.PXDataSource,System.Int32)">
+            <summary>
+            Creates the widget content.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.RenderComplete">
+            <summary>
+            Is called after widget added into the controls hierarchy.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.CreateChartControl(System.Int32)">
+            <summary>
+            Creates the chart control by chart type.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.ProcessData(PX.Data.PXGraph)">
+            <summary>
+            Must be used for heavy tasks of asynchronous data loading.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.SetProcessResult(System.Object)">
+            <summary>
+            Sets the widget data calculated by 'ProcessData' method.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.BuildPivotTable">
+            <summary>
+            Creates and fills the pivot table.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.BuildCubeLayout">
+            <summary>
+            Creates the data cube layout object.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.FillChartData(PX.Olap.PivotTable)">
+            <summary>
+            Creates the chart control data source.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.FillChartGraphs(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.Object,PX.Dashboards.Widgets.PXChartWidget.SeriesPoint}},System.Collections.Generic.List{System.String})">
+            <summary>
+            Fills the chart graphs list.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.RenderSettingsComplete(PX.Web.UI.PXDataSource,System.Web.UI.WebControls.WebControl)">
+            <summary>
+            The render settings post event.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.CreateSettingsPanel(PX.Web.UI.PXDataSource,System.String)">
+            <summary>
+            Creates the chart settings panel.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXChartWidget.GetProcessedColor">
+            <summary>
+            Process Expression property  and returns processed value.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.InquiryBasedWidgetCacheManager`3.#ctor">
+            <summary>
+            For unit tests only.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.InquiryBasedWidgetMaint`2.GetFieldsInUse">
+            <summary>
+            Must return all fields from the inquiry screen that are used by the widget.
+            This list is used for settings validation (to check that all the fields used by the widget exist in the inquiry screen).
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.InquiryBasedWidgetMaint`2.GetFilters(PX.Data.PXGraph,System.String,System.Boolean)">
+            <summary>
+            Retrieves filter rows by filter ID specified in the settings.
+            </summary>
+            <returns>Filter rows; null if primary view is not filterable or filter with the specified ID does not exist.</returns>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.AggregateFunctionsListAttribute.#ctor(System.Boolean)">
+            <param name="extendedSet">Shows additional aggregate functions not supported by SQL (e.g., Median and Count Distinct)</param>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.KPIMaintBase`3.CreateGraph">
+            <summary>
+            Instantiates Generic Inquiry graph with custom schema that contains aggregation function on the specific field.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.KPIMaintBase`3.ReadDataValue(PX.Data.PXGenericInqGrph,PX.Data.PXFilterRow[])">
+            <summary>
+            Performs select to retrieve aggregated value from the inquiry graph using specified filters.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.KPIMaintBase`3.GetStatus(`2)">
+            <summary>
+            Determines card status based on data values.
+            </summary>
+        </member>
+        <member name="P:PX.Dashboards.Widgets.KPIWidgetBase`3.CssClass">
+            <summary>
+            Gets the CSS class name of the topmost panel.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.KPIScoreMaint.CreateGroupedGraph(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Instantiates Generic Inquiry graph with custom schema that contains aggregation function on the specific field.
+            </summary>
+        </member>
+        <member name="P:PX.Dashboards.Widgets.PXTrendcardWidget.CssClass">
+            <summary>
+            Gets the CSS class name of the topmost panel.
+            </summary>
+        </member>
+        <member name="P:PX.Dashboards.Widgets.TrendPeriodBase.DisplayName">
+            <summary>
+            Display name of the previos period (e.g. Yesterday).
+            </summary>
+        </member>
+        <member name="P:PX.Dashboards.Widgets.TrendPeriodBase.DisplayNameCurrent">
+            <summary>
+            Display Name of the current period (e.g. Today).
+            </summary>
+        </member>
+        <member name="T:PX.Dashboards.Widgets.PXLinkWidget">
+            <summary>
+            Implements the link widget
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PivotTableSettingsMaint.PivotTableSettings_RowUpdated(PX.Data.PXCache,PX.Data.PXRowUpdatedEventArgs)">
+            <summary>
+            Row Updated event handler.
+            </summary>
+        </member>
+        <member name="T:PX.Dashboards.Widgets.PXPivotTableWidget">
+            <summary>
+            Implements the pivot table widget.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXPivotTableWidget.Render(PX.Web.UI.PXDataSource,System.Int32)">
+            <summary>
+            Creates the widget content.
+            </summary>
+        </member>
+        <member name="P:PX.Dashboards.Widgets.PXWidgetBase`2.AdjustHeight">
+            <summary>
+            Widget wrapper has to adjust height by widget height.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXWidgetBase`2.RenderComplete">
+            <summary>
+            Is called after widget added into the controls hierarchy.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXWidgetBase`2.OnCreateDesignerToolBar(PX.Web.UI.PXToolBar)">
+            <summary>
+            Is called after desiner toolbar is created.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXWidgetBase`2.OnCreateToolBar(PX.Web.UI.PXToolBar,PX.Web.UI.PXDataSource)">
+            <summary>
+            Is called after widget toolbar is created.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXWidgetBase`2.OnCreateCaption(System.Web.UI.Control,PX.Web.UI.PXDataSource)">
+            <summary>
+            Is called after widget caption is created.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXWidgetBase`2.RenderSettings(PX.Web.UI.PXDataSource,System.Web.UI.WebControls.WebControl)">
+            <summary>
+            Creates the custom settings controls.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXWidgetBase`2.RenderSettingsComplete(PX.Web.UI.PXDataSource,System.Web.UI.WebControls.WebControl)">
+            <summary>
+            Called after the settings controls is rendered.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXWidgetBase`2.ProcessData(PX.Data.PXGraph)">
+            <summary>
+            Must be used for heavy tasks of asynchronous data loading.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXWidgetBase`2.SetProcessResult(System.Object)">
+            <summary>
+            Sets the widget data calculated by 'ProcessData' method.
+            </summary>
+        </member>
+        <member name="P:PX.Dashboards.Widgets.PXDashboardGrid.AutoSize">
+            <summary>
+            Gets the object that allows you to set the grid auto-size mode properties.
+            </summary>
+        </member>
+        <member name="T:PX.Dashboards.Widgets.PXTableWidget">
+            <summary>
+            Implements the data table widget.
+            </summary>
+        </member>
+        <member name="M:PX.Dashboards.Widgets.PXTableWidget.Table_OnRowDataBound(System.Object,PX.Web.UI.PXGridRowEventArgs)">
+            <summary>
+            Conditional formatting
+            </summary>
+        </member>
+        <member name="T:PX.Dashboards.Widgets.PXWikiWidget">
+            <summary>
+            Implements the wiki widget.
+            </summary>
+        </member>
+    </members>
+</doc>

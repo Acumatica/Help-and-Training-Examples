@@ -1,0 +1,579 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PX.BulkInsert</name>
+    </assembly>
+    <members>
+        <member name="T:PX.BulkInsert.DataCompare.PointExtensionsForCompare">
+            <summary>The class that extends the database maintenance point with the methods for comparing databases.</summary>
+        </member>
+        <member name="M:PX.BulkInsert.DataCompare.PointExtensionsForCompare.AdjustApplyScript(PX.DbServices.Points.DbmsBase.PointDbmsBase,System.Collections.Generic.List{PX.DbServices.Commands.CommandBase},PX.DbServices.Model.Entities.TableHeader,System.Int32,System.Int32[],System.Int32[])">
+            <param name="ptDest">The connection to the database to which delta records will be applied.</param>
+        </member>
+        <member name="M:PX.BulkInsert.DataCompare.PointExtensionsForCompare.CompareAllTables(PX.DbServices.Points.Point,PX.DbServices.Points.Point,System.Nullable{System.Int32},System.Nullable{System.Int32},PX.BulkInsert.DataCompare.TablesColumnsFilter,PX.DbServices.Points.IExecutionObserver,System.String)">
+            <summary>Compares all tables of the source version database to those of the target version database. The method returns the number of tables where errors occurred.</summary>
+            <param name="pt1">The first data source (current implementation of the method requires that the value of the parameter must point to a database).</param>
+            <param name="pt2">The second data source (accepts file system pointer).</param>
+            <param name="cid1">The company identifier from the first data source.</param>
+            <param name="cid2">The company identifier from the second data source.</param>
+            <param name="cf">The filter of identifiers for tables and columns, for example, it can be used when columns contain data known to be different, such as the GUIDs of wiki
+            articles.</param>
+            <param name="observer">The instance of the class implementing the IExecutionObserver interface with execution event callbacks: advance to next table or throw of an exception.</param>
+            <param name="pathForDelta">The path to save delta records in XML format. (If this parameter is not specified, the current directory of the application is used.)</param>
+        </member>
+        <member name="M:PX.BulkInsert.DataCompare.PointExtensionsForCompare.ApplyDelta(PX.DbServices.Points.DbmsBase.PointDbmsBase,System.String,System.Int32,PX.DbServices.Points.IExecutionObserver)">
+            <summary>Applies delta records in XML format to the tables of the specified database. It returns the number of tables where delta application errors occurred.</summary>
+            <param name="ptDest">The connection to the database to which delta records will be applied.</param>
+            <param name="folder">The path to a folder with delta records in XML format (one XML file per table).</param>
+            <param name="cidDest">The identifier of the company whose data will be modified.</param>
+            <param name="observer">The instance of the class implementing the IExecutionObserver interface with execution event callbacks: advance to next table or throw of an exception.</param>
+        </member>
+        <member name="M:PX.BulkInsert.DataCompare.PointExtensionsForCompare.ImportSharedTables(PX.DbServices.Points.DbmsBase.PointDbmsBase,PX.DbServices.Points.FileSystem.PointFileSystem,PX.DbServices.Points.IExecutionObserver)">
+            <param name="ptDest">The connection to the database to which delta records will be applied.</param>
+            <param name="observer">The instance of the class implementing the IExecutionObserver interface with execution event callbacks: advance to next table or throw of an exception.</param>
+        </member>
+        <member name="M:PX.BulkInsert.DataCompare.PointExtensionsForCompare.MakeImportDataTasks(PX.DbServices.Points.DbmsBase.PointDbmsBase,System.Int32,System.Nullable{System.Int32},PX.DbServices.Points.FileSystem.PointFileSystem,System.Nullable{System.Int32},PX.DbServices.Points.IExecutionObserver)">
+            <param name="ptDest">The connection to the database to which delta records will be applied.</param>
+            <param name="cidDest">The identifier of the company whose data will be modified.</param>
+            <param name="observer">The instance of the class implementing the IExecutionObserver interface with execution event callbacks: advance to next table or throw of an exception.</param>
+        </member>
+        <member name="M:PX.BulkInsert.DataCompare.PointExtensionsForCompare.ImportData(PX.DbServices.Points.DbmsBase.PointDbmsBase,System.String,System.Int32,System.Nullable{System.Int32},PX.DbServices.Points.FileSystem.FileFormat,PX.DbServices.Points.IExecutionObserver)">
+            <param name="ptDest">The connection to the database to which delta records will be applied.</param>
+            <param name="folder">The path to a folder with delta records in XML format (one XML file per table).</param>
+            <param name="cidDest">The identifier of the company whose data will be modified.</param>
+            <param name="observer">The instance of the class implementing the IExecutionObserver interface with execution event callbacks: advance to next table or throw of an exception.</param>
+        </member>
+        <member name="M:PX.BulkInsert.DataCompare.PointExtensionsForCompare.MakeExportDataTasks(PX.DbServices.Points.DbmsBase.PointDbmsBase,System.Nullable{System.Int32},PX.DbServices.Points.FileSystem.PointFileSystem,System.Predicate{PX.DbServices.Model.Entities.TableHeader},PX.DbServices.Points.IExecutionObserver)">
+            <param name="observer">The instance of the class implementing the IExecutionObserver interface with execution event callbacks: advance to next table or throw of an exception.</param>
+        </member>
+        <member name="M:PX.BulkInsert.DataCompare.PointExtensionsForCompare.BuildSharedTablesPath(System.String)">
+            <param name="folder">The path to a folder with delta records in XML format (one XML file per table).</param>
+        </member>
+        <member name="M:PX.BulkInsert.DataCompare.PointExtensionsForCompare.ExportDataToXml(PX.DbServices.Points.DbmsBase.PointDbmsBase,System.String,System.Boolean,PX.DbServices.Points.IExecutionObserver)">
+            <param name="folder">The path to a folder with delta records in XML format (one XML file per table).</param>
+            <param name="observer">The instance of the class implementing the IExecutionObserver interface with execution event callbacks: advance to next table or throw of an exception.</param>
+        </member>
+        <member name="M:PX.BulkInsert.DataCompare.PointExtensionsForCompare.ImportDataFromXml(PX.DbServices.Points.DbmsBase.PointDbmsBase,System.String,System.String,PX.DbServices.Points.IExecutionObserver)">
+            <param name="observer">The instance of the class implementing the IExecutionObserver interface with execution event callbacks: advance to next table or throw of an exception.</param>
+        </member>
+        <member name="M:PX.BulkInsert.DataCompare.PointExtensionsForCompare.DropDatabase(PX.DbServices.Points.DbmsBase.PointDbmsBase)">
+            <param name="pt">The data source (current implementation of the method requires that the value of the parameter must point to a database).</param>
+        </member>
+        <member name="M:PX.BulkInsert.DataCompare.PointExtensionsForCompare.CreateDatabase(PX.DbServices.Points.DbmsBase.PointDbmsBase,System.String)">
+            <param name="pt">The data source (current implementation of the method requires that the value of the parameter must point to a database).</param>
+        </member>
+        <member name="T:PX.BulkInsert.DataCompare.TablesComparer">
+            <summary>The class that is used for building the delta of two databases.</summary>
+        </member>
+        <member name="F:PX.BulkInsert.DataCompare.TablesComparer.emptyBytes">
+            <exclude />
+        </member>
+        <member name="F:PX.BulkInsert.DataCompare.TablesComparer.defaultMask">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.DataCompare.TablesComparer.Compare(PX.DbServices.Points.ITableAdapter,PX.DbServices.QueryObjectModel.YaqlCondition,PX.DbServices.Model.DataSet.PxDataTable,System.Int32@,System.Boolean[])">
+            <summary>Compares the specified table of the source version database to that of the target version database. The method returns a sequence of commands used to reconcile
+            the data of a source version table with the data of a target version table. Then the returned sequence can be saved in XML format by using the
+            <code>PX.BulkInsert.DataCompare.PointExtensionsForCompare.SaveToXml</code> method.</summary>
+            <param name="t1">An adapter for a database table of a source version.</param>
+            <param name="t1Filter">A predicate to filter rows with (will be transformed into the WHERE condition when querying the database). For example, this parameter can be used to select
+            data from the specified company.</param>
+            <param name="dt2">Data of a target version database table which is loaded in a memory.</param>
+            <param name="cntRows">The number of read rows of source version database table.</param>
+            <param name="excludeColumnByPosition">An optional array where elements with <em>true</em> values specify the indexes of columns excluded from comparison.</param>
+        </member>
+        <member name="M:PX.BulkInsert.DataCompare.TablesComparer.RowsEqual(System.Object[],System.Object[],System.Collections.Generic.List{PX.DbServices.Model.Entities.TableColumn},System.Collections.Generic.HashSet{System.Int32})">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.DataCompare.TablesComparer.ColumnsEqual(System.Object,System.Object,PX.DbServices.Model.Entities.TableColumn)">
+            <exclude />
+        </member>
+        <member name="T:PX.BulkInsert.DataCompare.TablesComparer.RefereceEqualsComparer">
+            <exclude />
+        </member>
+        <member name="T:PX.BulkInsert.Provider.BatchTransferExecutor">
+            <summary>Is used for creation of snapshots in asynchronous mode.</summary>
+        </member>
+        <member name="F:PX.BulkInsert.Provider.BatchTransferExecutor.RequestStop">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Provider.BatchTransferExecutor.StartAsync(System.Int32)">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Provider.BatchTransferExecutor.Dispose">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Provider.BatchTransferExecutor.Wait">
+            <exclude />
+        </member>
+        <member name="T:PX.BulkInsert.Provider.BatchTransferExecutorSync">
+            <summary>Is used for creation of snapshots in synchronous mode.</summary>
+        </member>
+        <member name="F:PX.BulkInsert.Provider.BatchTransferExecutorSync._syncRoot">
+            <exclude />
+        </member>
+        <member name="F:PX.BulkInsert.Provider.BatchTransferExecutorSync.OperationName">
+            <exclude />
+        </member>
+        <member name="F:PX.BulkInsert.Provider.BatchTransferExecutorSync.Observer">
+            <exclude />
+        </member>
+        <member name="F:PX.BulkInsert.Provider.BatchTransferExecutorSync.Tasks">
+            <exclude />
+        </member>
+        <member name="F:PX.BulkInsert.Provider.BatchTransferExecutorSync.CompletedTasks">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Provider.BatchTransferExecutorSync.#ctor(PX.BulkInsert.Provider.DataTransferObserver,System.String)">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Provider.BatchTransferExecutorSync.fetchAndRunNextTask">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Provider.BatchTransferExecutorSync.StartSync">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Provider.BatchTransferExecutorSync.RunSingleTask(PX.BulkInsert.Provider.TransferTableTask)">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Provider.BatchTransferExecutorSync.RunSingleTaskImpl(PX.BulkInsert.Provider.TransferTableTask)">
+            <exclude />
+        </member>
+        <member name="T:PX.BulkInsert.DataTransfer.DbTableAdapterForSnapshot">
+            <summary>The table adapter for creating database snapshots.</summary>
+        </member>
+        <member name="T:PX.BulkInsert.CompanyDescription">
+            <summary>
+            The class that contains basic information about an Acumatica ERP company, such as company ID, company parents.
+            </summary>
+        </member>
+        <member name="T:PX.BulkInsert.DbmsMaintenance">
+            <summary>The base class for maintenance of a data point.</summary>
+        </member>
+        <member name="M:PX.BulkInsert.DbmsMaintenance.InsertRestartMark(System.Type)">
+            <summary>
+            Inserts a mark for restarting multiple cluster nodes.
+            </summary>
+        </member>
+        <member name="M:PX.BulkInsert.DbmsMaintenance.LogSystemEvent(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Writes a System Event log record, swallowing any exceptions (e.g. if an older version
+            being upgraded has no SystemEvent table yet, or has an earlier version of the table).
+            </summary>
+            <param name="level">Verbosity level.</param>
+            <param name="source">Event source component (what produced the event). Must be on of the predefined string values.
+            See <see cref="!:PX.Logging.Sinks.SystemEventsDbSink.SystemEventCategory"/>, constants named with prefix 'CategoryName_...', except CategoryName_All.</param>
+            <param name="eventId">EventID string constant that unambiguously specifies the event. See <see cref="!:PX.Logging.Sinks.SystemEventsDbSink.SystemEventCategory"/> class for valid
+            constant values.</param>
+            <param name="screenId">Screen "identifier". Can be either canonical screen ID (AA112233) or a URI like "~/...[any_URL_segments_here]/getfile.ashx"</param>
+            <param name="tenant">Tenant name. Specify <see langword="null" /> if there is no tenant to pass.</param>
+            <param name="user">User name. Specify <see langword="null" /> if there is no user to pass.</param>
+            <param name="details">Message text you want the users to see on "System Monitor" screen in "System Events" tab in "Details" column.</param>
+        </member>
+        <member name="T:PX.BulkInsert.MsSqlMaintenance">
+            <summary>The class for maintenance of a Microsoft SQL Server data point.</summary>
+        </member>
+        <member name="T:PX.BulkInsert.MySqlMaintenance">
+            <summary>The class for maintenance of MySQL Server data point.</summary>
+        </member>
+        <member name="T:PX.BulkInsert.Installer.AppUpdates.AttributesFields">
+            <summary>Contains the methods that are used during database update. In the database_update.xml, the batches that are replaced with a method in the library are marked
+            with the --[Method] attributes.</summary>
+        </member>
+        <member name="M:PX.BulkInsert.Installer.DatabaseSetup.DatabasePayloadReader.PrefetchServers(System.Xml.XmlNode)">
+            <summary>Processes the &lt;Servers&gt; section of the ERPDatabaseSetup.adc file. This section is obsolete. It was used to define the database engines. Currently the
+            database engines are hardcoded in the <see cref="T:PX.BulkInsert.Installer.ProviderLocator">ProviderLocator</see> class.</summary>
+        </member>
+        <member name="T:PX.BulkInsert.Installer.ExternalInstallExecutionObserver">
+            <summary>The class that watches the progress of an operation launched by an <see cref="T:PX.BulkInsert.Installer.ExternalInstallation" /> object and handles the errors occurred when the operation is
+            performed.</summary>
+            <remarks>The <see cref="T:PX.BulkInsert.Installer.ExternalInstallation">ExternalInstallation</see> constructor assigns a new instance of this class to the protected <tt>observer</tt>
+            field of the new ExternalInstallation instance.</remarks>
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ExternalInstallExecutionObserver.OnEvent">
+            <summary>A method that is executed if an error occurs during execution of a database operation.</summary>
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ExternalInstallExecutionObserver.#ctor(System.Func{PX.BulkInsert.SqlEvent,PX.BulkInsert.SqlEventReaction})">
+            <summary>Initializes the <see cref="F:PX.BulkInsert.Installer.ExternalInstallExecutionObserver.OnEvent" /> field with the passed method.</summary>
+            <param name="eventsObserver">The method that processes errors during the database operations. If null is passed as the value of the parameter, the errors are ignored. The constructor
+            assigns the value passed as this parameter to the <see cref="F:PX.BulkInsert.Installer.ExternalInstallExecutionObserver.OnEvent">OnEvent</see> field.</param>
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ExternalInstallExecutionObserver.#ctor(System.Func{System.String,System.Double,System.Int32,System.Int32})">
+            <summary>Initializes the <see cref="F:PX.BulkInsert.Installer.ExternalInstallExecutionObserver.OnEvent" /> field with an internal method.</summary>
+            <param name="eventsObserver">The method that processes errors during the database operations.</param>
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ExternalInstallExecutionObserver.Problem(System.Exception)">
+            <summary>Defines which action is performed if an error occurs.</summary>
+            <param name="ex">An error that occurs during the database operation.</param>
+        </member>
+        <member name="T:PX.BulkInsert.Installer.ExternalInstallation">
+            <summary>The class that is used instead of Acumatica ERP Configuration Wizard for a custom installation.</summary>
+        </member>
+        <member name="T:PX.BulkInsert.Installer.ExternalInstallation.OpertaionType">
+            <summary>The enumeration that provides the types of operations over the companies.</summary>
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ExternalInstallation.OpertaionType.Create">
+            <summary>Create a company.</summary>
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ExternalInstallation.OpertaionType.Delete">
+            <summary>Delete the company.</summary>
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ExternalInstallation.OpertaionType.Update">
+            <summary>Update the company.</summary>
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ExternalInstallation.OpertaionType.NoOp">
+            <summary>Perform no operation over the company.</summary>
+        </member>
+        <member name="T:PX.BulkInsert.Installer.ExternalInstallation.CompanyAdminAccount">
+            <summary>The class that describes an administrator of a company. The class is used if a custom administrator is assigned to a new company.</summary>
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ExternalInstallation.CompanyAdminAccount.userName">
+            <summary>The username of the administrator. </summary>
+            <remarks> The value can contain any Unicode characters.
+            The length is less or equal to 64 characters.</remarks>
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ExternalInstallation.CompanyAdminAccount.password">
+            <summary>The password of the administrator.</summary>
+            <remarks>The value can contain any Unicode characters and can be empty.</remarks>
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ExternalInstallation.CompanyAdminAccount.changePassOnLogin">
+            <summary>Indicates (if set to <em>true</em>) that the administrator must change the password during the first login.</summary>
+        </member>
+        <member name="T:PX.BulkInsert.Installer.ExternalInstallation.CompanyOperation">
+            <summary>The structure that describes an operation over the company.</summary>
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ExternalInstallation.CompanyOperation.Operation">
+            <summary>The type of the operation.</summary>
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ExternalInstallation.CompanyOperation.Description">
+            <summary>The description of the company.</summary>
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ExternalInstallation.CompanyOperation.AdminUser">
+            <summary>The administrator of the company.</summary>
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ExternalInstallation.CompanyOperation.DataTypeName">
+            <summary>The name of the company template, which usually matches the name of the folder that contains XML or ADB files with the data of the company.</summary>
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ExternalInstallation.#ctor(PX.BulkInsert.Installer.ConnectionDefinition,System.String,System.Func{PX.BulkInsert.SqlEvent,PX.BulkInsert.SqlEventReaction})">
+            <summary>
+              <para>An ExternalInstallation constructor.</para>
+            </summary>
+            <param name="databaseFolder">The path to the Database folder of an Acumatica ERP installation.</param>
+            <param name="connection">The connection definition, which includes the location of the database instance, the name of the database, username and password to connect to the database,
+            and other parameters.</param>
+            <param name="eventsObserver">A method that processes errors during the database operations. The ExternalInstallation constructor creates an instance of the
+            <see cref="T:PX.BulkInsert.Installer.ExternalInstallExecutionObserver">ExternalInstallExecutionObserver</see> class based on this method. The parameter is null by default, which means that the errors
+            are ignored during processing.</param>
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ExternalInstallation.Run(System.Collections.Generic.List{PX.BulkInsert.Installer.ExternalInstallation.CompanyOperation},System.Boolean)">
+            <summary>Upgrades the database and performs the operations over the companies that are specified by
+            the <see cref="M:PX.BulkInsert.Installer.ExternalInstallation.AddCompanySimplex(System.Int32,System.Boolean,System.String,System.Int32,System.String,System.String)"/> method.
+            If the database does not exist, it is created.</summary>
+            <param name="companyOperations">The list of operations on the companies.</param>
+            <param name="skipDbSchemaUpdate">Indicates (if set to <tt>true</tt>) that the database schema update should be skipped. Default value is <tt>false</tt>.
+            If the parameter is set to <c>true</c>, existing tables are updated to meet the new database structure.
+            If the parameter is set to <c>false</c>, existing tables structure remains. This may lead to incompatibility between the current product and 
+            the database structure if they have different versions.</param>
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ExternalInstallation.Deltas">
+            <summary>The dictionaly of data upgrade deltas.</summary>
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ExternalInstallation.RescanDeltasFolder(System.String)">
+            <summary>Retrieves data upgrade deltas from the specified folder.</summary>
+            <param name="deltasPath">The path to the folder with XML delta files.</param>
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ExternalInstallation.AddCompany(PX.BulkInsert.CompanyDescription,PX.BulkInsert.Installer.ExternalInstallation.CompanyAdminAccount)">
+            <summary>Inserts a company records in the Company table and sets up a custom administrator for the company, if necessary.</summary>
+            <param name="cd">The description of the company.</param>
+            <param name="adminUser">The administrator of the company. The value can be null if you don't need to create the default administrator user.</param>
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ExternalInstallation.DeleteCompany(System.Int32,System.Boolean)">
+            <summary>Deletes the company and its data.</summary>
+            <param name="companyId">The ID of the company to be deleted.</param>
+            <param name="keepSnapshots">Indicates (if set to <em>true</em>) that the snapshots of the company should not be removed from the database.</param>
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ExternalInstallation.CreateDatabase(System.String,System.Int32)">
+            <summary>Creates a database with the specified name.</summary>
+            <param name="dbName">The name of the database.</param>
+            <param name="sizeForAzure">The maximum size of the database, in GB. The parameter is used for Azure databases only. The default, value is 0.</param>
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ExternalInstallation.DeltasPath">
+            <summary>The path to the folder with the XML delta files.</summary>
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ExternalInstallation.#ctor(System.String,System.String,System.String,System.String,System.Func{System.String,System.Double,System.Int32,System.Int32})">
+            <summary>
+              <para>The ExternalIstallation constructor that uses generic types and creates complex types for internal use.</para>
+            </summary>
+            <param name="databaseFolder">The path to the Database folder of an Acumatica ERP installation.</param>
+            <param name="databaseName">The name of the database on the SQL server.</param>
+            <param name="databaseServer">The location of the database server instance.</param>
+            <param name="eventsObserver">A method that processes errors during the database operations. The ExternalInstallation constructor creates an instance of the
+            <see cref="T:PX.BulkInsert.Installer.ExternalInstallExecutionObserver">ExternalInstallExecutionObserver</see> class based on this method. The parameter is null by default, which means that the errors
+            are ignored during processing.</param>
+            <param name="databaseType">The type of the database, which is either <em>MSSqlServer</em> or <em>MySql</em>.</param>
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ExternalInstallation.AddCompanySimplex(System.Int32,System.Boolean,System.String,System.Int32,System.String,System.String)">
+            <summary>
+              <para>Adds a company with the operation that should be performed on the company in the internal list of companies.
+              This list is put to the database during the <see cref="M:PX.BulkInsert.Installer.ExternalInstallation.DatabaseActionSimplex(System.Boolean)"/> method execution.</para>
+            </summary>
+            <param name="companyId">The ID of the company.</param>
+            <param name="readOnly">Indicates (if set to <em>true</em>) that the company is added as read-only.</param>
+            <param name="companyKey">The company key.</param>
+            <param name="parentId">The ID of the parent company.</param>
+            <param name="companyType">The company type.</param>
+            <param name="operation">The operation that should be performed on the company.</param>
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ExternalInstallation.DatabaseActionSimplex(System.Boolean)">
+            <summary>
+            Runs custom upgrade and clears the list of company operations in the end.
+            For more details, see <see cref="M:PX.BulkInsert.Installer.ExternalInstallation.Run(System.Collections.Generic.List{PX.BulkInsert.Installer.ExternalInstallation.CompanyOperation},System.Boolean)"/>.
+            </summary>
+            <param name="skipSchema">Specifies (is set to <c>true</c>) that the database schema update should be skipped.</param>
+        </member>
+        <member name="M:PX.BulkInsert.Installer.PointInstallationExtensions.InitializeDistributedCache(PX.DbServices.Points.DbmsBase.PointDbmsBase,PX.DbServices.Points.ExecutionContext)">
+            <summary>
+            Creates a table for Microsoft.Extensions.Caching.Distributed.IDistributedCache
+            if there is no such table, and truncates it if it already exists.
+            </summary>
+        </member>
+        <member name="T:PX.BulkInsert.Installer.ProviderLocator">
+            <summary>The class that locates database maintenance provider services. Two database engines are hardcorded in the class: Microsoft SQL Server and MySQL Server.</summary>
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ProviderLocator.MSSqlServer">
+            <exclude />
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ProviderLocator.MySql">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ProviderLocator.GetProviderByName(System.String,System.Boolean)">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ProviderLocator.GetProviderByPxDataProviderClassName(System.String)">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ProviderLocator.registerProvider(PX.BulkInsert.Installer.DbmsProviderService,System.Boolean)">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ProviderLocator.EnumerateAll">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ProviderLocator.Clear">
+            <exclude />
+        </member>
+        <member name="T:PX.BulkInsert.Installer.ScriptExecutor">
+            <summary>The class that interpretes the script written in Transact-SQL for the target database (Microsoft SQL or MySQL).</summary>
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ScriptExecutor.PromtAboutExceptions">
+            <exclude />
+        </member>
+        <member name="P:PX.BulkInsert.Installer.ScriptExecutor.HasIgnored">
+            <exclude />
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ScriptExecutor.UpdateProgress">
+            <exclude />
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ScriptExecutor.LogFile">
+            <exclude />
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ScriptExecutor.LoggerAction">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ScriptExecutor.#ctor(PX.DbServices.Points.DbmsBase.PointDbmsBase,System.Action{System.Nullable{System.Single},System.String})">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ScriptExecutor.Execute(System.Collections.Generic.List{PX.BulkInsert.Installer.DatabaseScriptRequest})">
+            <exclude />
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ScriptExecutor.SqlEventHandler">
+            <exclude />
+        </member>
+        <member name="F:PX.BulkInsert.Installer.ScriptExecutor.UpdateID">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ScriptExecutor.Problem(System.Exception)">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ScriptExecutor.Warning(System.Exception)">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ScriptExecutor.AfterSqlExecution(PX.DbServices.Commands.CommandBase,System.Int32,System.String,System.Nullable{System.Int32},System.Double)">
+            <exclude />
+        </member>
+        <member name="M:PX.BulkInsert.Installer.ScriptExecutor.ProgressNormalized(System.String,System.Single)">
+            <exclude />
+        </member>
+        <member name="T:PX.BulkInsert.Installer.SysUpdates.Filters">
+            <summary>Contains the methods that are used during database update. In the database_update.xml, the batches that are replaced with a method in the library are marked
+            with the --[Method] attributes.</summary>
+        </member>
+        <member name="T:PX.BulkInsert.Installer.SysUpdates.Notes">
+            <summary>Contains the methods that are used during database update. In the database_update.xml, the batches that are replaced with a method in the library are marked
+            with the --[Method] attributes.</summary>
+        </member>
+        <member name="T:PX.BulkInsert.Installer.SysUpdates.RmReports">
+            <summary>Contains the methods that are used during database update. In the database_update.xml, the batches that are replaced with a method in the library are marked
+            with the --[Method] attributes.</summary>
+        </member>
+        <member name="T:PX.BulkInsert.ScriptExecutor.SqlExecutor">
+            <summary>
+            The class that executes database scripts.
+            </summary>
+        </member>
+        <member name="M:PX.BulkInsert.ScriptExecutor.ToYaql.SqlDtOptionToSystemDataDbType(Microsoft.Data.Schema.ScriptDom.Sql.SqlDataTypeOption,Microsoft.Data.Schema.ScriptDom.Sql.TSqlFragment)">
+            <summary>Converts Microsoft.Data.Schema.ScriptDom.Sql.SqlDataTypeOption to System.Data.SqlDbType.</summary>
+        </member>
+        <member name="T:PX.BulkInsert.SpecialUpgrade.Dashboards.CardCaptionMigrationFromXml2FieldUpgrader">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:PX.BulkInsert.SpecialUpgrade.Dashboards.CardColorsUpgrader">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:PX.BulkInsert.SpecialUpgrade.UserReports.MFGReportNamespaceUpgrade">
+            <summary>
+            Manufacturing into core changed namespaces, need to update JAMS.AM to PX.Objects.AM for reports
+            </summary>
+        </member>
+        <member name="T:PX.BulkInsert.SpecialUpgrade.UserReports.UserReportUpgrader">
+            <summary>A supplementary interface that you can use to make an Acumatica Framework application or an Acumatica ERP add-on application update customized reports during
+            the update to a newer version of the application or when an Acumatica ERP customization is being published. By using classes that implement this interface, the
+            system updates the XML versions of reports that are stored in the database with the latest changes in data access classes (DACs).</summary>
+            <example>
+              <code title="Example" description="An example of the UserReportUpgrader interface implementation is shown in the following code. You can create this class in any part of your application's project. " lang="CS">
+            using System;
+            using System.Collections.Generic;
+            using System.Linq;
+            using System.Text;
+            using System.Xml;
+             
+            namespace PX.BulkInsert.SpecialUpgrade.UserReports
+            {
+              public class So64101xUpgradeExample : UserReportUpgrader
+              {
+                public int MaxVersionToUpgradeFrom { get { return 20160713; } }
+                public int OrderNumber { get { return 1; } }
+             
+                public XmlElement Upgrade(XmlElement entity)
+                {
+                  //Make sure this is the right report
+                  bool found1 = false;
+                  foreach (XmlNode p in entity.GetElementsByTagName("ReportParameter"))
+                  {
+                    if (p.ChildNodes.OfType&lt;XmlNode&gt;()
+                         .Any(n =&gt; n.Name == "Name" &amp;&amp; n.InnerText == "BONbr"))
+                      found1 = true;
+                  }
+                  if (!found1)
+                    return null;
+             
+                  //Perform the update of the report
+                  ...
+                  entity.SetAttribute("version", "20160713");
+                  return entity;
+                }
+              }
+            }</code>
+            </example>
+        </member>
+        <member name="P:PX.BulkInsert.SpecialUpgrade.UserReports.UserReportUpgrader.MaxVersionToUpgradeFrom">
+            <summary>
+              <para>Specifies the version of the class, which is the date when the class that implements the <code>UserReportUpgrader</code> interface was
+            added.</para>
+            </summary>
+            <remarks>This property is used to identify the classes that can update a report. For example, if the <code>MaxVersionToUpgradeFrom</code> property
+            returns the value 20160713, which corresponds to July 13, 2016, the class that provides this implementation of the <code>UserReportUpgrader</code> interface can be used to update the reports that were created earlier than July 13, 2016.</remarks>
+            <value>You specify the date as an int value with the <code>YYYYMMDD</code> format.</value>
+        </member>
+        <member name="P:PX.BulkInsert.SpecialUpgrade.UserReports.UserReportUpgrader.OrderNumber">
+            <summary>Specifies the order number of the class in the sequence of update classes. You can use this property to specify the order of classes to be used for update 
+            in case when <tt>MaxVersion</tt> values are equal for several implementations of <tt>UserReportUpgrader</tt> interface.
+            </summary>
+        </member>
+        <member name="M:PX.BulkInsert.SpecialUpgrade.UserReports.UserReportUpgrader.Upgrade(System.Xml.Linq.XElement)">
+            <summary>
+              <para>Performs the update of a report. The method is called for a report that was created earlier than the date specified in the <code>MaxVersionToUpgradeFrom</code> property.</para>
+              <para></para>
+            </summary>
+            <param name="entity">
+              <para>A <code>System.XML.XmlElement</code> object that contains a report to be updated.</para>
+            </param>
+            <remarks>
+              <para></para>
+            </remarks>
+            <returns>
+              <para>The method returns a <code>System.XML.XmlElement</code> object that contains an updated report.</para>
+            </returns>
+            <example>
+              <para></para>
+              <code title="Example" description=" An example of the UserReportUpgrader interface implementation is shown in the following code. You can create this class in any part of your application’s project. " lang="CS">
+            using System;
+            using System.Collections.Generic;
+            using System.Linq;
+            using System.Text;
+            using System.Xml;
+             
+            namespace PX.BulkInsert.SpecialUpgrade.UserReports
+            {
+              public class So64101xUpgradeExample : UserReportUpgrader
+              {
+                public int MaxVersionToUpgradeFrom { get { return 20160713; } }
+                public int OrderNumber { get { return 1; } }
+             
+                public XmlElement Upgrade(XmlElement entity)
+                {
+                  //Make sure this is the right report
+                  bool found1 = false;
+                  foreach (XmlNode p in entity.GetElementsByTagName("ReportParameter"))
+                  {
+                    if (p.ChildNodes.OfType&lt;XmlNode&gt;()
+                         .Any(n =&gt; n.Name == "Name" &amp;&amp; n.InnerText == "BONbr"))
+                      found1 = true;
+                  }
+                  if (!found1)
+                    return null;
+             
+                  //Perform the update of the report
+                  ...
+                  entity.SetAttribute("version", "20160713");
+                  return entity;
+                }
+              }
+            }</code>
+            </example>
+        </member>
+        <member name="T:PX.BulkInsert.Utf8StringWriter">
+            <summary>
+            A <see cref="T:System.IO.StringWriter"/> derived class that allows to specify UTF-8 encoding for <see cref="T:System.IO.StringWriter"/>.
+            </summary>
+        </member>
+        <member name="T:PX.BulkInsert.XmlUpgrade.DashboardCardColors">
+            <summary>
+            Merges PXScorecardSettings and PXGaugeSettings to KPIScoreSettings and adds visualization type
+            </summary>
+        </member>
+        <member name="T:PX.BulkInsert.XmlUpgrade.Dashboard_v4">
+            <summary>
+            Merges PXScorecardSettings and PXGaugeSettings to KPIScoreSettings and adds visualization type
+            </summary>
+        </member>
+        <member name="T:PX.BulkInsert.XmlUpgrade.GI_v13">
+            <summary>
+            Switches PadLeft and PadRight functions in formulas (because originally they were mixed up).
+            </summary>
+        </member>
+        <member name="T:PX.BulkInsert.XmlUpgrade.GI_v17">
+            <summary>
+            Manufacturing into core changed namespaces, need to update JAMS to PX.Objects.AM for generic inquiries
+            </summary>
+        </member>
+        <member name="T:PX.BulkInsert.XmlUpgrade.GI_v18">
+            <summary>
+            Support renaming ScreenID field to Link on the GINavigationScreen table
+            </summary>
+        </member>
+    </members>
+</doc>

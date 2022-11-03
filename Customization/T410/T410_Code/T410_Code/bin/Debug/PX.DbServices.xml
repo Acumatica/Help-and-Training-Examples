@@ -1,0 +1,1008 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>PX.DbServices</name>
+  </assembly>
+  <members>
+    <member name="T:PX.DbServices.Commands.CommandBase">
+      <summary>A base class for the commands that are executed by the data points.</summary>
+    </member>
+    <member name="T:PX.DbServices.Messages">
+      <exclude />
+    </member>
+    <member name="T:PX.DbServices.Model.PXLockoutReason">
+      <summary> Defines reasons for a database lockout. </summary>
+    </member>
+    <member name="F:PX.DbServices.Model.PXLockoutReason.DatabaseLock">
+      <summary> Only the host that has done this lock has access to the database. </summary>
+    </member>
+    <member name="F:PX.DbServices.Model.PXLockoutReason.ScheduledLock">
+      <summary> Access denied for all except Administrators. </summary>
+      <remarks> Application lock from "Apply Updates" screen (Schedule Lockout). </remarks>
+    </member>
+    <member name="T:PX.DbServices.Model.DbReports.ObjectInDifferentSchema">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Model.Entities.EntitiesComparer.compareIndices(PX.DbServices.Model.Entities.TableIndex,PX.DbServices.Model.Entities.TableIndex)">
+            			Compares two indices, while matching the position of all columns except the special ones (variable declared above)
+        </member>
+    <member name="M:PX.DbServices.Model.Entities.TableForeignKey.getImplementationOn(PX.DbServices.Model.Entities.TableHeader,PX.DbServices.Model.Entities.TableHeader)">
+      <summary> Get the way a FK should be implemented when parent and referenced table are like parameters passed. </summary>
+      <param name="refTable">Referenced Table</param>
+      <param name="parentTable">Parent Table - the one that normally holds the constraint</param>
+      <returns>Implementation method</returns>
+    </member>
+    <member name="T:PX.DbServices.Model.Entities.TableHeader">
+      <summary>
+            The class that contains basic table information and methods, such as columns, indices, keys.
+            </summary>
+    </member>
+    <member name="M:PX.DbServices.Model.ImportExport.DataLoaderBase.cloneMasked(System.String,System.Int32,System.Collections.Generic.List{PX.DbServices.Model.CompanyHeader},System.Int32[],System.Object[],System.Boolean,System.Collections.Generic.List{PX.DbServices.Model.Entities.TableColumn})">
+      <summary>
+            copy row from parent company if it's not yet copied
+            </summary>
+    </member>
+    <member name="M:PX.DbServices.Model.ImportExport.DataLoaderBase.resetMasked(System.String,System.Int32,System.Collections.Generic.List{PX.DbServices.Model.CompanyHeader},System.String[],System.Object[],System.Boolean)">
+      <summary>
+             reset row to default in parent company
+            </summary>
+    </member>
+    <member name="T:PX.DbServices.Model.ImportExport.Links.TableLinkWeakIfEmpty">
+      <summary>
+            Exports / imports record only if a value of predefined field is null or empty.
+            </summary>
+      <remarks>Common scenario for this type of link is exporting shared entities which have OwnerName / Username field.</remarks>
+    </member>
+    <member name="T:PX.DbServices.Model.ImportExport.Upgrade.XmlEntityUpgrader">
+      <summary>
+        <para>A supplementary interface that you can use to make an Acumatica Framework application or an Acumatica ERP add-on application update entities in XML format
+            (such as generic inquiries saved in XML format) when these entities are imported from XML to the application or when an Acumatica ERP customization is being
+            published. By using classes that implement this interface, before the system imports XML entities to the database, it updates the XML entities with the latest
+            changes in data access classes (DACs).</para>
+      </summary>
+      <remarks>
+        <para>You can find the list of forms for which XML import and export is supported in Acumatica ERP in the <code>/App_Data/XmlExportDefinitions</code> folder of your application. For more information on XML import and export, see <see href="https://help.acumatica.com/(W(114))/Help?ScreenId=ShowWiki&amp;pageid=f33b758e-c242-4812-8205-1e435072336a">Importing and Exporting Data to Excel and XML</see> in the documentation.</para>
+      </remarks>
+    </member>
+    <member name="P:PX.DbServices.Model.ImportExport.Upgrade.XmlEntityUpgrader.MaxVersionToUpgradeFrom">
+      <summary>Specifies the date when the class that implements the <code>XmlEntityUpgrader</code> interface was added.</summary>
+      <remarks>This property is used to identify the classes that can update an entity. For example, if the <code>MaxVersionToUpgradeFrom</code> property
+            returns the value 20160713, which corresponds to July 13, 2016, the class that provides this implementation of the XmlEntityUpgrader interface can be used to
+            update the XML entities that were created earlier than July 13, 2016.</remarks>
+      <value>You specify the date as an int value with the <code>YYYYMMDD</code> format.</value>
+    </member>
+    <member name="P:PX.DbServices.Model.ImportExport.Upgrade.XmlEntityUpgrader.EntityNameToUpgrade">
+      <summary>Specifies the name of the entity that this class can update.</summary>
+      <value>The name of the entity is the same as the file name of the corresponding XML export definition in the <code>App_Data/XmlExportDefinitions</code>/ folder of your application. For example, if your class updates generic inquiries that are imported from XML to
+            the <see href="https://help.acumatica.com/Main?ScreenId=ShowWiki&amp;pageid=5388c653-eac4-4f43-b769-163cd037ab09">Generic
+            Inquiry</see> (SM208000) form, this property would return the string SM208000.</value>
+    </member>
+    <member name="P:PX.DbServices.Model.ImportExport.Upgrade.XmlEntityUpgrader.OrderNumber">
+      <summary>Specifies the order number of the class in the sequence of update classes.</summary>
+      <remarks>You can use this property to specify the order of classes to be used for update.</remarks>
+    </member>
+    <member name="M:PX.DbServices.Model.ImportExport.Upgrade.XmlEntityUpgrader.Upgrade(PX.DbServices.Model.ImportExport.Upgrade.XmlEntityBeingUpgraded)">
+      <summary>
+            Performs the update of an XML entity. The method is called for the entity that has the name specified in the <code>EntityNameToUpgrade</code> property and that was created earlier than the date specified in the <code>MaxVersionToUpgradeFrom</code> property.
+            </summary>
+      <param name="entity">An <see cref="T:PX.DbServices.Model.ImportExport.Upgrade.XmlEntityBeingUpgraded">XmlEntityBeingUpgraded</see> object that contains an entity to be updated.</param>
+      <returns>The method returns a <code>bool</code> value that specifies whether the entity has been updated.</returns>
+    </member>
+    <member name="T:PX.DbServices.Model.ImportExport.Upgrade.XmlEntityBeingUpgraded">
+      <summary>A supplementary class that is used during the update of XML entities that are imported to an Acumatica Framework application or an Acumatica ERP add-on
+            application. The class represents an XML entity to be upgraded.</summary>
+      <remarks>
+        <para>An object of this class is passed to the <see cref="M:PX.DbServices.Model.ImportExport.Upgrade.XmlEntityUpgrader.Upgrade(PX.DbServices.Model.ImportExport.Upgrade.XmlEntityBeingUpgraded)">XMLEntityUpgrader.Upgrade</see> method to update the corresponding entity.</para>
+      </remarks>
+    </member>
+    <member name="F:PX.DbServices.Model.ImportExport.Upgrade.XmlEntityBeingUpgraded.Data">
+      <summary>
+        <para>Contains an entity to be updated in the XML format as a <code>System.Xml.Lynq.XElement</code> object.</para>
+      </summary>
+    </member>
+    <member name="F:PX.DbServices.Model.ImportExport.Upgrade.XmlEntityBeingUpgraded.Template">
+      <summary>
+        <para>Contains an XML export template, which includes the name and version of the database table that corresponds to the entity and describes the relations with
+            related tables, as an object of the <code>PX.DbServices.Model.ImportExport.ExportTemplate</code> class.</para>
+      </summary>
+    </member>
+    <member name="F:PX.DbServices.Model.ImportExport.Upgrade.XmlEntityBeingUpgraded.Layout">
+      <summary>
+        <para>Contains a layout of lines in the XML representation of the entity as an object of the <code>PX.DbServices.Model.Schema.SchemaXmlLayout</code> class.</para>
+      </summary>
+    </member>
+    <member name="T:PX.DbServices.Model.Schema.IDataSchema">
+      <exclude />
+    </member>
+    <member name="T:PX.DbServices.Model.Schema.DataSchema">
+      <summary>The data schema of a point. The schema is a dictionary with cache.</summary>
+    </member>
+    <member name="F:PX.DbServices.Model.Schema.DataSchema.tables">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.DataSchema.#ctor">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.DataSchema.#ctor(PX.DbServices.Model.Schema.IDataSchema)">
+      <exclude />
+    </member>
+    <member name="F:PX.DbServices.Model.Schema.DataSchema.ReturnClonesInsteadOfTables">
+      <exclude />
+    </member>
+    <member name="P:PX.DbServices.Model.Schema.DataSchema.Versions">
+      <exclude />
+    </member>
+    <member name="P:PX.DbServices.Model.Schema.DataSchema.AcquiredOn">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.DataSchema.GetTable(System.String)">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.DataSchema.GetTableNames">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.DataSchema.AddOrUpdate(PX.DbServices.Model.Entities.TableHeader)">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.DataSchema.schemaReadComplete">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.DataSchema.delete(System.String)">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.DataSchema.TableExists(System.String)">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.DataSchema.GetEnumerator">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.DataSchema.ToString">
+      <exclude />
+    </member>
+    <member name="T:PX.DbServices.Model.Schema.SchemaXmlReader">
+      <summary>A class that reads data schema from XML.</summary>
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.SchemaXmlReader.foreignKeyFromXml(System.Xml.Linq.XElement,System.String,System.String)">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.SchemaXmlReader.ReadSchemaXml(System.String,PX.DbServices.Model.DataVersion@)">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.SchemaXmlReader.ReadSchemaXml(System.IO.Stream,PX.DbServices.Model.DataVersion@)">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.SchemaXmlReader.ReadTableFromXml(System.Xml.Linq.XElement)">
+      <exclude />
+    </member>
+    <member name="T:PX.DbServices.Model.Schema.SchemaXmlWriter">
+      <summary>A class that writes data schema to XML.</summary>
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.SchemaXmlWriter.foreignKeyToXml(PX.DbServices.Model.Entities.TableForeignKey)">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.SchemaXmlWriter.TableHeaderToXml(PX.DbServices.Model.Entities.TableHeader)">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Model.Schema.SchemaXmlWriter.WriteXmlHeader(System.Xml.XmlTextWriter,PX.DbServices.Model.DataVersion)">
+      <exclude />
+    </member>
+    <member name="T:PX.DbServices.Model.SoapMappings.EntityMappingBuilder">
+      <summary>A class that builds an XML mapping of a contract-based API endpoint.</summary>
+    </member>
+    <member name="T:PX.DbServices.Points.ActionOnException">
+      <summary>A enumeration that defines the actions that the system performs if errors occur.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.ActionOnException.AbortSilently">
+      <summary>The system stops execution and does not throw any error.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.ActionOnException.AbortRethrow">
+      <summary>The system stops execution and throws the error.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.ActionOnException.RepeatQuery">
+      <summary>The system tries to execute the query again.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.ActionOnException.RepeatCommand">
+      <summary>The system retries to execute the whole command from the beginning.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.ActionOnException.SkipToNextQuery">
+      <summary>The system ignores the query that caused the error and proceeds with the next query.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.ActionOnException.SkipToNextCommand">
+      <summary>The system ignores the whole command and proceeds with the next command.</summary>
+    </member>
+    <member name="T:PX.DbServices.Points.BlackHole.BlackHoleTableAdapter">
+      <exclude />
+    </member>
+    <member name="T:PX.DbServices.Points.BlackHole.PointBlackHole">
+      <exclude />
+    </member>
+    <member name="T:PX.DbServices.Points.DataValidator.PointDataValidator">
+      <summary>The class that provides the methods to validate data in the snapshots. 
+            The class implements the <see cref="T:PX.DbServices.Points.Point">Point</see> interface.</summary>
+    </member>
+    <member name="M:PX.DbServices.Points.DataValidator.PointDataValidator.#ctor(PX.DbServices.Model.Schema.IDataSchema)">
+      <summary>Initialized the <see cref="P:PX.DbServices.Points.DataValidator.PointDataValidator.Schema" /> property with the specified value. </summary>
+      <param name="reference">The schema (table names and information) of the data in the point that should be validated.</param>
+    </member>
+    <member name="P:PX.DbServices.Points.DataValidator.PointDataValidator.AllProblems">
+      <summary>The dictionary of validation errors. In this dictionary, the keys are names of the tables that were validated.</summary>
+    </member>
+    <member name="P:PX.DbServices.Points.DataValidator.PointDataValidator.Schema">
+      <summary>The schema of the data in the point.</summary>
+    </member>
+    <member name="M:PX.DbServices.Points.DataValidator.PointDataValidator.getDataVersions(System.Boolean)">
+      <summary>Retrieves the versions of the data in the point.</summary>
+      <param name="checkDbExists">Indicates (if set to <tt>true</tt>) that the method must check whether the data exists in the point before retrieving versions. 
+            By default, the value is <tt>true</tt>.</param>
+      <returns>Returns the list of data versions. The list may contain two versions if custom version number is defined for a custom Acumatica ERP instance.</returns>
+    </member>
+    <member name="M:PX.DbServices.Points.DataValidator.PointDataValidator.GetTable(System.String,System.IO.FileMode)">
+      <summary>Retrieves the specified table with the related validation data from the point.</summary>
+      <param name="tableName">The name of the table that should be retrieved.</param>
+      <param name="mode">The parameter is not applicable to this implementation.</param>
+    </member>
+    <member name="T:PX.DbServices.Points.DataValidator.ValiadtionIssueType">
+      <summary>The enumeration that defines the types of validation issues.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.DataValidator.ValiadtionIssueType.NullInsertedIntoNotDefaultNotNullColumn">
+      <summary>The null value is inserted in the non-null column without default value.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.DataValidator.ValiadtionIssueType.InvalidDataType">
+      <summary>The data of incorrect type is inserted in the column.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.DataValidator.ValiadtionIssueType.DataWouldBeTruncated">
+      <summary>The inserted data will be truncated.</summary>
+    </member>
+    <member name="T:PX.DbServices.Points.DataValidator.ValidationProblem">
+      <summary>The structure that represents a validation issue.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.DataValidator.ValidationProblem.Type">
+      <summary>The type of the issue.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.DataValidator.ValidationProblem.iParam">
+      <summary>The size of the table column that causes the error.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.DataValidator.ValidationProblem.relatedColumn">
+      <summary>The columns that causes the issue.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.DataValidator.ValidationProblem.relatedRowPk">
+      <exclude />
+    </member>
+    <member name="F:PX.DbServices.Points.DataValidator.ValidationProblem.iRow">
+      <summary>The index of the row in the table that causes the issue.</summary>
+    </member>
+    <member name="T:PX.DbServices.Points.DataValidator.ValidationReport">
+      <summary>The class that represents the list of validation issues (<see cref="T:PX.DbServices.Points.DataValidator.ValidationProblem" />).</summary>
+    </member>
+    <member name="P:PX.DbServices.Points.DataValidator.ValidationReport.Problems">
+      <summary>The list of validation issues.</summary>
+    </member>
+    <member name="P:PX.DbServices.Points.DataValidator.ValidationReport.TotalProblemsCount">
+      <summary>The number of validation issues.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.DataValidator.ValidationReport.MaxProblemsToReport">
+      <summary>The maximum number of validation issues that the list of issues can contain.</summary>
+      <value>Equals to 6.</value>
+    </member>
+    <member name="T:PX.DbServices.Points.DataValidator.ValidatorTableAdapter">
+      <summary>The class that provides methods for validation of data in the table. The class implements the <see cref="T:PX.DbServices.Points.ITableAdapter" /> interface.
+            The class is used in <see cref="T:PX.DbServices.Points.DataValidator.PointDataValidator" />. For instance, it is used for data validation during import of snapshots.</summary>
+    </member>
+    <member name="P:PX.DbServices.Points.DataValidator.ValidatorTableAdapter.Report">
+      <summary>The list of validation issues.</summary>
+    </member>
+    <member name="M:PX.DbServices.Points.DataValidator.ValidatorTableAdapter.#ctor(PX.DbServices.Model.Entities.TableHeader)">
+      <summary>Initializes the <see cref="P:PX.DbServices.Points.DataValidator.ValidatorTableAdapter.Header" /> property with the specified value.</summary>
+      <param name="th">The <see cref="T:PX.DbServices.Model.Entities.TableHeader" /> object that contains information about the table that should be validated.</param>
+    </member>
+    <member name="P:PX.DbServices.Points.DataValidator.ValidatorTableAdapter.AppendMode">
+      <exclude />
+    </member>
+    <member name="P:PX.DbServices.Points.DataValidator.ValidatorTableAdapter.Header">
+      <summary>The list of columns in the table.</summary>
+    </member>
+    <member name="P:PX.DbServices.Points.DataValidator.ValidatorTableAdapter.TableName">
+      <summary>The name of the table.</summary>
+    </member>
+    <member name="P:PX.DbServices.Points.DataValidator.ValidatorTableAdapter.UseNativeImport">
+      <summary>Indicates (if set to <tt>true</tt>) that the native data import is used by the point.</summary>
+    </member>
+    <member name="M:PX.DbServices.Points.DataValidator.ValidatorTableAdapter.ReadRows(PX.DbServices.QueryObjectModel.YaqlCondition,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.IEnumerable{PX.DbServices.QueryObjectModel.YaqlScalar})">
+      <summary>Returns <tt>InvalidOperationException</tt> because the validation table adapter cannot be used to retrieve data rows.</summary>
+      <param name="restriction">The condition for the records that should be retrieved.</param>
+      <param name="requiredValues">The value is <tt>null</tt> by default.</param>
+      <param name="projection">The value is <tt>null</tt> by default.</param>
+    </member>
+    <member name="M:PX.DbServices.Points.DataValidator.ValidatorTableAdapter.SetIncomingDataColumns(System.Collections.Generic.List{PX.DbServices.Model.Entities.TableColumn})">
+      <summary>
+            Compares the specified list of columns with the list of columns in the <see cref="P:PX.DbServices.Points.DataValidator.ValidatorTableAdapter.Header" /> property and throws <tt>InvalidOperationException</tt> if the lists are not
+            identical. The purpose of the method is to check compatitibility between two tables.
+            </summary>
+      <param name="columns">The list of columns.</param>
+    </member>
+    <member name="M:PX.DbServices.Points.DataValidator.ValidatorTableAdapter.WriteRows(System.Collections.Generic.IEnumerable{System.Object[]},System.Boolean,System.Action{System.Int32})">
+      <summary>Validates data in the specified rows. The method does not update data in the table.</summary>
+      <param name="rows">The rows that contain the data to be validated.</param>
+      <param name="exclusiveWrite">The value is <tt>false</tt> by default.</param>
+      <param name="transferObserver">The value is <tt>null</tt> by default.</param>
+    </member>
+    <member name="M:PX.DbServices.Points.DbmsBase.AcumaticaDbKeeperBase.DialectBasedDefaultValue(PX.DbServices.Model.Entities.TableColumn)">
+      <summary>
+            Returns a default value for a column whose type's default value may be interpreted differently by
+            MSSQL and MySQL.
+            </summary>
+      <param name="col">The column object to get the default value for.</param>
+      <returns>
+        <c>null</c> if there is no special default value to return; otherwise - a default value for the column.</returns>
+    </member>
+    <member name="M:PX.DbServices.Points.DbmsBase.AcumaticaDbKeeperBase.DialectBasedTypesEqual(PX.DbServices.Model.Entities.TableColumn,PX.DbServices.Model.Entities.TableColumn)">
+      <summary>
+            Returns the type equality flag based on the SQL dialect interpretation of column types.
+            </summary>
+      <param name="asIs">Existing column parameters.</param>
+      <param name="toBe">New column parameters.</param>
+      <returns>
+        <c>true</c>, if the column types are considered equal for the current SQL dialect; <c>false</c> otherwise.</returns>
+    </member>
+    <member name="T:PX.DbServices.Points.DbmsBase.PointDbmsBase">
+      <summary>
+            The base class for SQL server data points.
+            </summary>
+    </member>
+    <member name="T:PX.DbServices.Points.DbmsBase.SchemaTransformerBase">
+      <summary>
+            Base class for platform-specific database schema transformations
+            </summary>
+    </member>
+    <member name="M:PX.DbServices.Points.DbmsBase.SchemaTransformerBase.AdjustSchema(PX.DbServices.Model.Schema.DataSchema)">
+      <summary>
+            Adjust database schema
+            </summary>
+      <param name="schema">database schema</param>
+    </member>
+    <member name="T:PX.DbServices.Points.DbmsBase.SqlScripterBase">
+      <summary>The base class for the classes that generate SQL valid for the destination database.</summary>
+    </member>
+    <member name="T:PX.DbServices.Points.FileSystem.FileFormat">
+      <summary>The enumeration that describes file formats with which a file system point (<see cref="T:PX.DbServices.Points.FileSystem.PointFileSystem" />) can work.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.FileSystem.FileFormat.Adb">
+      <summary>ADB format.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.FileSystem.FileFormat.Xml">
+      <summary>XML format.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.FileSystem.FileFormat.Csv4Mysql">
+      <summary>CSV format.</summary>
+    </member>
+    <member name="T:PX.DbServices.Points.FileSystem.FileSystemOptions">
+      <summary>The enumeration that describes the configuration options for <see cref="T:PX.DbServices.Points.FileSystem.PointFileSystem" />.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.FileSystem.FileSystemOptions.ForceWriteCompanyIdColumn">
+      <summary>
+            Makes the file system point include the <strong>CompanyID</strong> column in all tables.
+            You may need to skip the <strong>CompanyID</strong> column in all tables, for example, 
+            if you export one company as a snapshot. In this case, explicit <strong>CompanyID</strong> column is not required.
+            </summary>
+    </member>
+    <member name="T:PX.DbServices.Points.FileSystem.FileFormatHandler">
+      <summary>
+            The structure that defines how the files are read from the system and saved to the system.
+            </summary>
+    </member>
+    <member name="F:PX.DbServices.Points.FileSystem.FileFormatHandler.fnCreateReader">
+      <summary>The function that creates a file reader.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.FileSystem.FileFormatHandler.fnCreateWriter">
+      <summary>The function that creates a file writer.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.FileSystem.FileFormatHandler.fnReaderFromStream">
+      <summary>The function that creates a stream reader.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.FileSystem.FileFormatHandler.fnWriterForStream">
+      <summary>The function that creates a stream writer.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.FileSystem.FileFormatHandler.defaultExtension">
+      <summary>The default extension of the files the handler works with.</summary>
+    </member>
+    <member name="P:PX.DbServices.Points.FileSystem.FileFormatHandler.allFilesWithExtension">
+      <summary>The search pattern for the files with which the handler works.</summary>
+      <value>The value of the property is "*."+<see cref="F:PX.DbServices.Points.FileSystem.FileFormatHandler.defaultExtension" />.</value>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.FileFormatHandler.#ctor(System.Func{System.String,PX.DbServices.Points.FileSystem.FileSystemOptions,PX.DbServices.Points.FileSystem.FileReader},System.Func{System.String,PX.DbServices.Points.FileSystem.FileSystemOptions,System.Boolean,System.Boolean,PX.DbServices.Points.FileSystem.FileWriter},System.Func{System.IO.Stream,System.Boolean,PX.DbServices.Points.FileSystem.FileReader},System.Func{System.IO.Stream,System.Boolean,PX.DbServices.Points.FileSystem.FileWriter},System.String)">
+      <summary>Initializes the fields of a new <see cref="T:PX.DbServices.Points.FileSystem.FileFormatHandler" /> object with the specified values.</summary>
+      <param name="fnCreateReader">The function that creates a file reader.</param>
+      <param name="fnCreateWriter">The function that creates a file writer.</param>
+      <param name="fnReaderFromStream">The function that creates a stream reader.</param>
+      <param name="fnWriterForStream">The function that creates a stream writer.</param>
+      <param name="ext">The default extension of the files the handler works with. You specify the extension without a dot.</param>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.FileFormatHandler.IsFoundInFolder(System.String,System.IO.SearchOption)">
+      <summary>Checks whether the specified folder contains the files that satisfies the specified search pattern.</summary>
+      <param name="folderPath">The path to the folder.</param>
+      <param name="searchOption">The search pattern.</param>
+    </member>
+    <member name="T:PX.DbServices.Points.FileSystem.FileReader">
+      <summary>The interface that a reader of specific file type should implement.</summary>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.FileReader.readRow(System.Collections.Generic.List{PX.DbServices.Model.Entities.TableColumn},System.Collections.Generic.Dictionary{System.String,System.Int32})">
+      <summary>Reads a row from the file.</summary>
+      <param name="cols">The list of columns of the table that the file contains.</param>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.FileReader.hasMoreData">
+      <summary>Checks whether the file contains something besides the header.</summary>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.FileReader.hasHeader">
+      <summary>Checks whether the file has a header.</summary>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.FileReader.GetHeader">
+      <summary>Obtains the header of the file.</summary>
+    </member>
+    <member name="T:PX.DbServices.Points.FileSystem.NotExistingFile">
+      <summary>The class that represents a non-existent file. The class implements the <see cref="T:PX.DbServices.Points.FileSystem.FileReader" /> interface.</summary>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.NotExistingFile.Dispose">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.NotExistingFile.readRow(System.Collections.Generic.List{PX.DbServices.Model.Entities.TableColumn},System.Collections.Generic.Dictionary{System.String,System.Int32})">
+      <exclude />
+      <returns>Returns an empty array of objects.</returns>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.NotExistingFile.hasMoreData">
+      <exclude />
+      <returns>Returns <tt>false</tt>.</returns>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.NotExistingFile.hasHeader">
+      <exclude />
+      <returns>Returns <tt>false</tt>.</returns>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.NotExistingFile.GetHeader">
+      <exclude />
+      <returns>Returns the <tt>null</tt> value.</returns>
+    </member>
+    <member name="F:PX.DbServices.Points.FileSystem.NotExistingFile.Instance">
+      <summary>An instance of the <see cref="T:PX.DbServices.Points.FileSystem.NotExistingFile" /> class.</summary>
+    </member>
+    <member name="T:PX.DbServices.Points.FileSystem.FileWriter">
+      <summary>
+            The interface that a writer of specific file type should implement.
+            </summary>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.FileWriter.ensureFileIsCreated">
+      <exclude />
+    </member>
+    <member name="P:PX.DbServices.Points.FileSystem.FileWriter.Header">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.FileWriter.writeSingleRow(System.Object[],System.Collections.Generic.List{PX.DbServices.Model.Entities.TableColumn})">
+      <exclude />
+    </member>
+    <member name="T:PX.DbServices.Points.FileSystem.PointFileSystem">
+      <summary>
+            The point that can work with the files in the file system, such as ADB or XML files. 
+            This point is used to read data from XML and ADB snapshots and write data to these snapshots.
+            The class implements the <see cref="T:PX.DbServices.Points.Point" /> interface.
+            </summary>
+    </member>
+    <member name="F:PX.DbServices.Points.FileSystem.PointFileSystem.SchemaFile">
+      <summary>The name of the schema file.</summary>
+      <value>By default, the name is <em>schema.xml</em>.</value>
+    </member>
+    <member name="P:PX.DbServices.Points.FileSystem.PointFileSystem.Schema">
+      <summary>The schema of the point.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.FileSystem.PointFileSystem.EmptyByteArray">
+      <exclude />
+    </member>
+    <member name="F:PX.DbServices.Points.FileSystem.PointFileSystem.CreateFilesForEmptyTables">
+      <summary>Indicates (if set to <tt>true</tt>) that the files for empty tables are created in the point.</summary>
+      <value>By default, the value is <tt>false</tt>.</value>
+      <remarks>The value is set to <tt>false</tt> by default to keep snapshots as light as possible.</remarks>
+    </member>
+    <member name="F:PX.DbServices.Points.FileSystem.PointFileSystem.folderPath">
+      <summary>The path to the folder of the point.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.FileSystem.PointFileSystem.options">
+      <summary>The configuration options of the point.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.FileSystem.PointFileSystem.formats">
+      <summary>A dictionary with the file formats (ADB, XML, and CSV) and corresponding file format handlers, which define how the files are read from the system and saved to
+            the system.</summary>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.PointFileSystem.GetTable(System.String,System.IO.FileMode)">
+      <summary>Returns a <see cref="T:PX.DbServices.Points.FileSystem.FileTableAdapter" /> object for the specified table name.</summary>
+      <param name="mode">Specifies how the operating system should open a file. By default, the value is <tt>System.IO.FileMode.Open</tt>.</param>
+      <param name="tableName">The table name.</param>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.PointFileSystem.#ctor(System.String,PX.DbServices.Points.FileSystem.FileFormat)">
+      <summary>Initializes a <see cref="T:PX.DbServices.Points.FileSystem.PointFileSystem" /> object for the specified folder and file format.</summary>
+      <param name="folderPath">The path to the folder. If the path is not <tt>null</tt> and there is no such folder in the file system, the folder will be created.</param>
+      <param name="format">The format of the files the point works with. By default, the format is ADB.</param>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.PointFileSystem.SaveSchema">
+      <summary>Saves the schema of the point in the default location, which is the concatination of <see cref="F:PX.DbServices.Points.FileSystem.PointFileSystem.folderPath" /> and <see cref="F:PX.DbServices.Points.FileSystem.PointFileSystem.SchemaFile" />.</summary>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.PointFileSystem.ReadSchemaFromXml(System.String,PX.DbServices.Model.Schema.DataSchema)">
+      <summary>Reads the schema of the point from the specified XML file and, if a schema is provided in the second parameter, updates the specified schema.</summary>
+      <param name="xmlFile">The path to the XML file with the schema of the point.</param>
+      <param name="instanceToUpdate">The schema to be updated with the schema from XML. The parameter is <tt>null</tt> by default.</param>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.PointFileSystem.SaveSchemaToXml(System.String,PX.DbServices.Model.Schema.IDataSchema)">
+      <summary>Saves the schema of the point to a file in XML format.</summary>
+      <param name="fileName">The path to the file to save the schema.</param>
+      <param name="allTables">The schema of the point.</param>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.PointFileSystem.getDataVersions(System.Boolean)">
+      <summary>Retrieves the versions of the data in the point.</summary>
+      <param name="checkDbExists">Indicates (if set to <tt>true</tt>) that the method must check whether the data exists in the point before retrieving versions. By default, the value is
+            <tt>false</tt>.</param>
+      <returns>Returns the list of data versions. The list may contain two versions if custom version number is defined for a custom Acumatica ERP instance.</returns>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.PointFileSystem.fromPointOptions(PX.DbServices.Points.PointOptions)">
+      <summary>Initializes a new <see cref="T:PX.DbServices.Points.FileSystem.PointFileSystem" /> object from the specified <see cref="T:PX.DbServices.Points.PointOptions" /> object.</summary>
+      <param name="arg">The <see cref="T:PX.DbServices.Points.PointOptions" /> object to be used for initialization.</param>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.PointFileSystem.EnumerateFiles(System.Boolean)">
+      <summary>Enumerates the files in the point.</summary>
+      <param name="searchSubFolders">Indicates (if set to <tt>true</tt>) that the files in subfolders should be enumerated as well.</param>
+    </member>
+    <member name="M:PX.DbServices.Points.FileSystem.PointFileSystem.MakeRelativePath(System.String,System.String)">
+      <exclude />
+    </member>
+    <member name="T:PX.DbServices.Points.MsSql.MsSqlScripter">
+      <summary>The class that generates SQL valid for Microsoft SQL Server databases.</summary>
+    </member>
+    <member name="M:PX.DbServices.Points.MySql.AcumaticaDbKeeperMySql.DialectBasedDefaultValue(PX.DbServices.Model.Entities.TableColumn)">
+      <inheritdoc />
+    </member>
+    <member name="M:PX.DbServices.Points.MySql.AcumaticaDbKeeperMySql.DialectBasedTypesEqual(PX.DbServices.Model.Entities.TableColumn,PX.DbServices.Model.Entities.TableColumn)">
+      <inheritdoc />
+    </member>
+    <member name="T:PX.DbServices.Points.MySql.MySqlScripter">
+      <summary>The class that generates SQL valid for MySQL Server databases.</summary>
+    </member>
+    <member name="T:PX.DbServices.Points.Point">
+      <summary>
+            The interface that represents a point, which can be an SQL database, files in the file system, or in-memory data representation.
+            With this interface, the developer can move data between SQL servers, file system (snapshots), or any other data storage
+            in any direction despite specific point implementation.
+            </summary>
+    </member>
+    <member name="P:PX.DbServices.Points.Point.Schema">
+      <summary>The schema of the point, which is a dictionary with cache.</summary>
+    </member>
+    <member name="M:PX.DbServices.Points.Point.getDataVersions(System.Boolean)">
+      <summary>Retrieves the versions of the data in the point.</summary>
+      <param name="checkDbExists">Indicates (if set to <tt>true</tt>) that the method must check whether the data exists in the point before retrieving versions. 
+            By default, the value is <tt>true</tt>.
+            The parameter is not used in the implementations of default Acumatica points.</param>
+      <returns>Returns the list of data versions. The list may contain two versions if custom version number is defined for a custom Acumatica ERP instance.</returns>
+    </member>
+    <member name="M:PX.DbServices.Points.Point.GetTable(System.String,System.IO.FileMode)">
+      <summary>Retrieves the specified table from the point. If the point is a file system, the table is an XML file that has the same name as the database table and
+            describes the database table contents.</summary>
+      <param name="tableName">The name of the table that should be retrieved.</param>
+      <param name="mode">Specifies how the operating system should open a file. By default, the value is <tt>System.IO.FileMode.Open</tt>.
+            The parameter is not used in the implementations of default Acumatica database points.</param>
+    </member>
+    <member name="T:PX.DbServices.Points.ITableAdapter">
+      <summary>The interface that provides methods for performing operations with the table in <see cref="T:PX.DbServices.Points.Point" />.</summary>
+    </member>
+    <member name="P:PX.DbServices.Points.ITableAdapter.UseNativeImport">
+      <summary>Indicates (if set to <tt>true</tt>) that the native data import is used by the point. 
+            Particular implementation of the native and not native import depends on specific <see cref="T:PX.DbServices.Points.Point" />.
+            For details, see <see cref="M:PX.DbServices.Points.DbmsBase.DbmsTableAdapter.WriteRows(System.Collections.Generic.IEnumerable{System.Object[]},System.Boolean,System.Action{System.Int32})" />,
+            <see cref="M:PX.DbServices.Points.MsSql.MsSqlTableAdapter.BulkCopy(System.Collections.Generic.IEnumerable{System.Object[]},System.Boolean,PX.DbServices.Points.ExecutionContext,System.Action{System.Int32})" />, 
+            and <see cref="M:PX.DbServices.Points.MsSql.MsSqlTableAdapter.SqlCopy(System.Collections.Generic.IEnumerable{System.Object[]},System.Boolean,PX.DbServices.Points.ExecutionContext,System.Action{System.Int32})" />.</summary>
+    </member>
+    <member name="M:PX.DbServices.Points.ITableAdapter.ReadRows(PX.DbServices.QueryObjectModel.YaqlCondition,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.IEnumerable{PX.DbServices.QueryObjectModel.YaqlScalar})">
+      <summary>Reads the rows that satisfies the specified conditions from the table of the point.</summary>
+      <param name="restriction">The condition for the records that should be retrieved.</param>
+      <param name="requiredValues">The value is <tt>null</tt> by default.</param>
+      <param name="projection">The value is <tt>null</tt> by default.</param>
+      <example>
+        <code> table.ReadRows(Yaql.column(EntityEndpointColumns.ActionId).eq(actionId).and(CompanyIdFilter)).Select(c =&gt; c.AsDictionary(table.Header.Columns));</code>
+      </example>
+    </member>
+    <member name="M:PX.DbServices.Points.ITableAdapter.WriteRows(System.Collections.Generic.IEnumerable{System.Object[]},System.Boolean,System.Action{System.Int32})">
+      <summary>Writes the rows to the table in the point.</summary>
+      <param name="rows">The rows in native format for the point.</param>
+      <param name="exclusiveWrite">Indicates (if set to <c>true</c>) that another writing processes is not allowed during the current writing process.
+            Particular implementation depends on specific <see cref="T:PX.DbServices.Points.Point" />.
+            The value is <tt>false</tt> by default.</param>
+      <param name="transferObserver">The method that processes the errors occurred during writing. The value is <tt>null</tt> by default.</param>
+      <returns>Returns the number of rows transferred.</returns>
+    </member>
+    <member name="P:PX.DbServices.Points.ITableAdapter.TableName">
+      <summary>The name of the table in the point.</summary>
+    </member>
+    <member name="P:PX.DbServices.Points.ITableAdapter.Header">
+      <summary>The <see cref="T:PX.DbServices.Model.Entities.TableHeader" /> object, which contains information about the table (such as list of columns, indices, keys).</summary>
+    </member>
+    <member name="P:PX.DbServices.Points.ITableAdapter.AppendMode">
+      <summary>
+            Indicates (if set to <c>true</c>) that the new data should be appended to the existing one during writing. Otherwise, existing data is replaced.
+            </summary>
+    </member>
+    <member name="M:PX.DbServices.Points.ITableAdapter.SetIncomingDataColumns(System.Collections.Generic.List{PX.DbServices.Model.Entities.TableColumn})">
+      <summary>Sets the provided columns as the information about the table that is used if no <see cref="P:PX.DbServices.Points.ITableAdapter.Header" /> was provided earlier.
+            Particular implementation depends on specific <see cref="T:PX.DbServices.Points.Point" />.</summary>
+    </member>
+    <member name="T:PX.DbServices.Points.PointType">
+      <summary>The type of the point.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.PointType.MsSql">
+      <summary>The point is Microsoft SQL Server.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.PointType.MySql">
+      <summary>The point is MySQL Server.</summary>
+    </member>
+    <member name="F:PX.DbServices.Points.PointType.File">
+      <summary>The point is the file system.</summary>
+    </member>
+    <member name="T:PX.DbServices.Points.PXDataSet.PointPxDataSet">
+      <summary>
+            The class that represents an in-memory data storage, which is based on <see cref="T:PX.DbServices.Model.DataSet.PxDataTable" />. 
+            (<see cref="T:PX.DbServices.Model.DataSet.PxDataTable" /> is a simplified counterpart of <see cref="T:System.Data.DataSet" />.)
+            </summary>
+    </member>
+    <member name="T:PX.DbServices.QueryObjectModel.YaqlCompanyMask">
+      <summary>A YAQL company mask.</summary>
+    </member>
+    <member name="T:PX.DbServices.QueryObjectModel.YaqlArgument">
+      <summary>The YAQL interface for arguments.</summary>
+    </member>
+    <member name="T:PX.DbServices.QueryObjectModel.YaqlCondition">
+      <summary>The YAQL interface for conditions.</summary>
+    </member>
+    <member name="T:PX.DbServices.QueryObjectModel.YaqlConditionCompanyMask">
+      <summary>The YAQL interface for conditions with company masks.</summary>
+    </member>
+    <member name="T:PX.DbServices.QueryObjectModel.YaqlScalar">
+      <summary>The YAQL interface for scalars.</summary>
+    </member>
+    <member name="T:PX.DbServices.QueryObjectModel.YaqlJoinType">
+      <summary>The enumeration that defines YAQL JOIN types.</summary>
+    </member>
+    <member name="F:PX.DbServices.QueryObjectModel.YaqlJoinType.INNER">
+      <summary>Inner join.</summary>
+    </member>
+    <member name="F:PX.DbServices.QueryObjectModel.YaqlJoinType.LEFT">
+      <summary>Left join.</summary>
+    </member>
+    <member name="F:PX.DbServices.QueryObjectModel.YaqlJoinType.RIGHT">
+      <summary>Right join.</summary>
+    </member>
+    <member name="F:PX.DbServices.QueryObjectModel.YaqlJoinType.CROSS">
+      <summary>Cross join.</summary>
+    </member>
+    <member name="F:PX.DbServices.QueryObjectModel.YaqlJoinType.FULL">
+      <summary>Full join.</summary>
+    </member>
+    <member name="T:PX.DbServices.QueryObjectModel.YaqlJoin">
+      <summary>The YAQL interface for JOINs.</summary>
+    </member>
+    <member name="T:PX.DbServices.QueryObjectModel.YaqlRestrictedQuery">
+      <summary>The YAQL interface for restricted queries.</summary>
+    </member>
+    <member name="T:PX.DbServices.QueryObjectModel.YaqlTable">
+      <summary>The YAQL interface for tables.</summary>
+    </member>
+    <member name="T:PX.DbServices.QueryObjectModel.YaqlColumn">
+      <summary>A YAQL column.</summary>
+    </member>
+    <member name="T:PX.DbServices.QueryObjectModel.YaqlExistsQuery">
+      <summary>The YAQL EXISTS query.</summary>
+    </member>
+    <member name="T:PX.DbServices.QueryObjectModel.YaqlQueryBase">
+      <summary>The base class for a YAQL query.</summary>
+    </member>
+    <member name="T:PX.DbServices.QueryObjectModel.Yaql">
+      <summary>A factory for the most common use cases.</summary>
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.AddedInVersion">
+      <summary>The batch attribute (<see cref="T:PX.DbServices.Scripting.Attributes.BatchAttributeBase" />) that is used to mark every batch in an update 
+            script during the build process.
+            Installer recalculates the hash from the actual script, therefore the presence of that attribute has no effect on the batch execution.
+            A script batch can have multiple MinVersion attributes: One attribute for each major version of Acumatica ERP where the script exists.
+            The MinVersion attribute is parsed from an SQL script that is marked as shown in the following example.
+            <code title="Example" description="" lang="SQL">
+            --[MinVersion(Branch = 6_0X, Version = 6.00.1239, Hash = bd1c35e37d2e764c1d61bd9c450dad01bca84381efe25e9fe86ee7bf6a0f9cd6)]
+            UPDATE Table set Table.Field=1 where Table.Field=0
+            GO
+            </code></summary>
+      <remarks>
+        <para>For details, see <see cref="M:PX.DbServices.Scripting.ScriptBatch.EnsureMinVersionAttribute" />.</para>
+      </remarks>
+    </member>
+    <member name="F:PX.DbServices.Scripting.Attributes.AddedInVersion.hash">
+      <exclude />
+    </member>
+    <member name="P:PX.DbServices.Scripting.Attributes.AddedInVersion.Aliases">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Scripting.Attributes.AddedInVersion.ReadParameters(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+      <summary>
+            Sets the parameters of the current attribute from the provided list.
+            The following parameters are available:
+            <c>MinVersion</c> is a version of the product where the script was introduced.
+            <c>Branch</c> indicates a major Acumatica ERP version. For different major versions, 
+            the script is introduced in different update versions.
+            <c>Hash</c> of the related SQL batch (<see cref="F:PX.DbServices.Scripting.Attributes.AddedInVersion.hash" />). 
+            For details on how the hash is calculated, see <see cref="P:PX.DbServices.Scripting.ScriptBatch.Hash" />.
+            </summary>
+      <param name="parameters">The list of key-value pairs, where the key is the parameter name and the 
+            value is the parameter value.</param>
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.IBatchAttribute">
+      <summary>The interface that batch attributes implement.</summary>
+    </member>
+    <member name="M:PX.DbServices.Scripting.Attributes.IBatchAttribute.appliesToPlatform(PX.DbServices.Scripting.DbmsPlatform)">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Scripting.Attributes.IBatchAttribute.ToAttributeString">
+      <exclude />
+    </member>
+    <member name="P:PX.DbServices.Scripting.Attributes.IBatchAttribute.Aliases">
+      <exclude />
+    </member>
+    <member name="M:PX.DbServices.Scripting.Attributes.PlatformForAttributeReaderWriter.ReadPlatforms(System.String@)">
+      <summary>
+            Reads the platform the attribute can be applied to. 
+            The attribute is applied only if the target platform is the same as the current database engine.
+            </summary>
+      <param name="text">The attribute text. For example, <tt>--[mssql: VmSql]</tt>.</param>
+      <returns>Returns the target database engines or <tt>null</tt> if the target database engine is not specified.</returns>
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.BatchAttributeBase">
+      <summary>The base class for batch attributes.
+            The batch attributes are the attributes that can be applied to the SQL scripts executed 
+            during database upgrade process to control execution flow of those scripts.
+            The batch attributes have <see cref="P:PX.DbServices.Scripting.Attributes.BatchAttributeBase.Aliases">aliases</see> that are used in the database_update.sql file. 
+            When the system reads the database_update.sql file, the <see cref="M:PX.DbServices.Scripting.BatchAttributes.parse(System.String,PX.DbServices.Scripting.PositionInFile)" />
+            method parses the attributes.</summary>
+    </member>
+    <member name="F:PX.DbServices.Scripting.Attributes.BatchAttributeBase.ForPlatform">
+      <summary>
+            Available database platforms for the current attribute. 
+            If the value is <tt>null</tt>, all platforms are considered as applicable.
+            </summary>
+    </member>
+    <member name="P:PX.DbServices.Scripting.Attributes.BatchAttributeBase.Aliases">
+      <summary>
+            The names that can be used in the SQL file to reference the current attribute.
+            </summary>
+    </member>
+    <member name="M:PX.DbServices.Scripting.Attributes.BatchAttributeBase.appliesToPlatform(PX.DbServices.Scripting.DbmsPlatform)">
+      <summary>
+            Checks if the attribute applies to the specified <paramref name="platform" />.
+            If no specific platrorm is defined for the attribute, all platforms are considered as applicable.
+            <see cref="F:PX.DbServices.Scripting.Attributes.BatchAttributeBase.ForPlatform" /></summary>
+      <param name="platform">Current database platform attribute should be checked against.</param>
+      <returns>Returens <tt>true</tt> if the attribute is applicable to the specified platform.</returns>
+    </member>
+    <member name="M:PX.DbServices.Scripting.Attributes.BatchAttributeBase.ReadParameters(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+      <summary>
+            Sets the parameters of the current attribute from the provided list.
+            </summary>
+      <param name="parameters">The list of key-value pairs, where the key is the parameter name and the value is the parameter value.</param>
+    </member>
+    <member name="M:PX.DbServices.Scripting.Attributes.BatchAttributeBase.ToAttributeString">
+      <summary>
+            Converts the current batch attribute to the string that can be placed to the SQL file. 
+            The operation is opposite to <see cref="M:PX.DbServices.Scripting.BatchAttributes.parse(System.String,PX.DbServices.Scripting.PositionInFile)" />.
+            </summary>
+      <returns>Returns the attribute string that can be placed to the SQL file. For example, <code>
+            --[IfExists(Column = LocalizationValue.IDlv)]
+            </code>.</returns>
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.Display">
+      <summary>
+            The batch attribute that represents a comment. 
+            Unlike other batch attributes, this attribute is represented in the SQL file by three dashes, as shown in the following example.
+            <code title="Example" description="" lang="SQL">
+            --- Some comment after 3 dashes
+            UPDATE Table set Table.Field=1 where Table.Field=0
+            GO
+            </code>
+            For details, see <see cref="M:PX.DbServices.Scripting.BatchAttributes.parse(System.String,PX.DbServices.Scripting.PositionInFile)" />.
+            </summary>
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.ExecuteBase">
+      <exclude />
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.ExecuteNative">
+      <summary>
+            The attribute that makes the script batch to be executed against the database without any changes or attempts to parse and interpret it. You
+            can use SQL clauses specific to the target platform.
+            </summary>
+      <example>
+        <code title="Example" description="" lang="SQL">
+            --[mssql: Native]</code>
+      </example>
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.ExecuteOnInterpreter">
+      <summary>The attribute that makes the decorated script batch to be interpreted as T-SQL. A corresponding script for the current database engine will be generated and executed on the database. The number of correctly translated clauses is a limited subset of T-SQL.</summary>
+      <example>
+        <code title="Example" description="" lang="SQL">
+            --[VmSql]</code>
+      </example>
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.SmartExecuteSql">
+      <summary>A replacement for <tt>exec pp_smartExecuteSql('your_code_here')</tt>. The whole batch will be executed once for every company, taking into consideration
+            inter-company visibility mechanisms (companyMasks). Write your code in T-SQL, and it will be passed to the interpreter.</summary>
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.AbortExecution">
+      <summary>The attribute that stops the execution of upgrade scripts after the marked batch. Use
+            this attribute only for debugging.</summary>
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.SkipExecution">
+      <summary>The attribute that makes a script batch to be skipped when the upgrade is being executed on a specific platform.</summary>
+      <example>
+        <code title="Example" description="" lang="SQL">
+            --[mysql: Skip]</code>
+      </example>
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.ExecuteMethod">
+      <summary>The attribute that is uses reflection to find a certain method and call it. This attribute is used when the upgrade step needs to be implemented in C# rather than
+            SQL.</summary>
+      <example>
+        <code title="Example" description="" lang="SQL">
+            --[Method(PX.BulkInsert.Installer.SysUpdates.Notes.ConvertMasterDataToGuid)]</code>
+      </example>
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.FinallyDrop">
+      <summary>
+            The attribute that makes the database drop the index, column, or table specified as this attribute's parameter after the batch is executed. 
+            That is, the interpreter will generate and execute a matching drop index, alter table, or drop table SQL command.
+            </summary>
+    </member>
+    <member name="F:PX.DbServices.Scripting.Attributes.FinallyDrop.Column">
+      <exclude />
+    </member>
+    <member name="F:PX.DbServices.Scripting.Attributes.FinallyDrop.Index">
+      <exclude />
+    </member>
+    <member name="F:PX.DbServices.Scripting.Attributes.FinallyDrop.Table">
+      <exclude />
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.IChecksPointCondition">
+      <exclude />
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.IChecksPointConditionAny">
+      <exclude />
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.IfExistsAttribute">
+      <summary>
+            The attribute that checks the in-memory cache of database schema for the presence of the specified schema object. The decorated batch is executed only if the check
+            returns <tt>true</tt>.</summary>
+      <example>
+        <code title="Example" description="" lang="SQL">
+            --[IfExists(Column = CROpportunity.ProductCntr)]</code>
+        <code title="Example2" description="The script batch annotated with the attribute below will be executed only if the EMailSyncReference.Reference column exists and is nullable." lang="SQL">
+            --[IfExists(Column = "EMailSyncReference.Reference", Nullable = True)]</code>
+      </example>
+    </member>
+    <member name="F:PX.DbServices.Scripting.Attributes.IfExistsAttribute.Column">
+      <exclude />
+    </member>
+    <member name="F:PX.DbServices.Scripting.Attributes.IfExistsAttribute.Index">
+      <exclude />
+    </member>
+    <member name="F:PX.DbServices.Scripting.Attributes.IfExistsAttribute.Table">
+      <exclude />
+    </member>
+    <member name="F:PX.DbServices.Scripting.Attributes.IfExistsAttribute.Nullable">
+      <summary>The field that requires the Column to not only exists but to be also nullable (if set to true) or not nullable (if set to false).</summary>
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.IfNotExistsAttribute">
+      <summary>The attribute checks if the specified schema object does not exist in the in-memory cache of the database schema. The decorated batch is executed only if
+            the check returns <tt>true</tt>.</summary>
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.IfExistsSelectAttribute">
+      <summary>
+            The attribute that performs a query to determine if the table queried with a specified restriction yields any data.</summary>
+      <example>
+        <code title="Example" description="" lang="SQL">
+            --[IfExistsSelect(From = AppSchema, WhereIsNull = DefaultsMissedScripts)]</code>
+      </example>
+    </member>
+    <member name="F:PX.DbServices.Scripting.Attributes.IfExistsSelectAttribute.Table">
+      <exclude />
+    </member>
+    <member name="F:PX.DbServices.Scripting.Attributes.IfExistsSelectAttribute.Condition">
+      <exclude />
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.IfNotExistsSelectAttribute">
+      <summary>This attribute performs a query to determine if the table queried with a specified restriction yields no data.</summary>
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.OldHash">
+      <summary>
+            The attribute that indicates that the script execution should be skipped during database upgrade process 
+            if the <tt>UPScripts</tt> table contains provided hash.
+            This attribute as parsed from the SQL script that is marked as shown in the following example.
+            <code title="Example" description="" lang="SQL">
+            --[OldHash(Hash = 5a0e881a4f122807481d2401042fa0b46cd59fbd2b7baf203fad6c8f998c5f8f)]
+            UPDATE Table set Table.Field=1 where Table.Field=0
+            GO
+            </code></summary>
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.RefreshMetadata">
+      <summary>The attribute that reloads the schema cache from the database into memory. 
+            This is useful when the schema cache gets outdated as a result of many preceeding alter table statements.</summary>
+    </member>
+    <member name="F:PX.DbServices.Scripting.Attributes.RefreshMetadata.FlushMetadata">
+      <exclude />
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.TerminateApp">
+      <exclude />
+    </member>
+    <member name="T:PX.DbServices.Scripting.Attributes.TimeoutMultiplier">
+      <summary>
+            The attribute that specifies the timeout for execution of the script batch. It provides the ability to increase the default timeout for the
+            statements that should be allowed to take longer to complete.
+            </summary>
+      <example>
+        <code title="Example" description="" lang="SQL">
+            --[Timeout(Multiplier=100)]</code>
+      </example>
+    </member>
+    <member name="F:PX.DbServices.Scripting.Attributes.TimeoutMultiplier.Multiplier">
+      <summary>
+            For the decorated batch, the default timeout will be multiplied by the multiplier specified in the execution context and by the value specified in this
+            parameter.
+            </summary>
+    </member>
+    <member name="M:PX.DbServices.Scripting.BatchAttributes.parse(System.String,PX.DbServices.Scripting.PositionInFile)">
+      <summary>
+            Reads the <paramref name="line" /> parameter and returns the batch attribute that corresponds to the provided line.
+            For details, see <see cref="T:PX.DbServices.Scripting.Attributes.BatchAttributeBase" />.
+            </summary>
+      <param name="line">An input string to search for the batch attributes.</param>
+      <param name="pos">The parameter that is used to show the line number in the error message if the method could not parse the attribute.</param>
+      <returns>Returns the batch attribute that corresponds to the provided line if the attribute was found. Otherwise, the method returns <tt>null</tt>.</returns>
+      <example>
+        <code>
+            BatchAttributes.parse("--[MinVersion(Branch = 17.200, Version = 17.200.0076, Hash = f0c76a50d20f7d5f10caafb393089c368b7c050edb67a5e8243c26616ab09c76)]", 98); // return AddedInVersion attribute
+            BatchAttributes.parse("--[IfNotExists(", 98); // throw error
+            BatchAttributes.parse("INSERT INTO [PMTimeActivity] (", 98); // return null
+            </code>
+      </example>
+    </member>
+    <member name="M:PX.DbServices.Scripting.ScriptBatch.SetMinVersionTag">
+      <summary>
+            Can be only one min tag. It required to store previous version need to use OldHash tag
+            </summary>
+    </member>
+    <member name="T:PX.DbServices.DebugUtils">
+      <summary>A supplementary utility for debugging.</summary>
+    </member>
+    <member name="T:PX.DbServices.MultiMap`2">
+      <summary>A supplementary class that is used to collect key-value pairs.</summary>
+    </member>
+    <member name="T:PX.DbServices.Utils.ReflectionUtils">
+      <summary>A supplementary reflection utility.</summary>
+    </member>
+    <member name="T:PX.DbServices.Utils.StringUtils">
+      <summary>A supplementary utility for working with strings.</summary>
+    </member>
+    <member name="T:PX.DbServices.ScriptLogger">
+      <summary>A supplementary utility for script logging.</summary>
+    </member>
+    <member name="T:PX.DbServices.SearcherCaseInsensetive">
+      <summary>A supplementary utility for search.</summary>
+    </member>
+    <member name="T:PX.DbServices.SequentialGuid">
+      <summary>A supplementary utility for GUID generation.</summary>
+    </member>
+    <member name="T:PX.DbServices.StringBuilderExtensions">
+      <summary>A supplementary class that provides methods for building strings.</summary>
+    </member>
+    <member name="T:PX.DbServices.EnumerableExtensions">
+      <summary>A supplementary class that provides methods for working with enumerations.</summary>
+    </member>
+    <member name="T:PX.DbServices.StringExtensions">
+      <summary>A supplementary class that provides methods for working with strings.</summary>
+    </member>
+  </members>
+</doc>
