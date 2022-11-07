@@ -1,3 +1,12 @@
+using System;
+using PX.Data;
+using PX.Data.BQL.Fluent;
+using PX.Data.BQL;
+using PX.Objects.AR;
+using PhoneRepairShop.Workflows;
+using PX.Objects.SO;
+using System.Collections;
+
 namespace PhoneRepairShop
 {
     public class RSSVPaymentPlanInq : PXGraph<RSSVPaymentPlanInq>
@@ -16,6 +25,7 @@ namespace PhoneRepairShop
                         RSSVWorkOrderToPayFilter.serviceID.FromCurrent>>>>.
             View.ReadOnly DetailsView;
 
+        ////////// The added code
         protected virtual IEnumerable detailsView()
         {
             BqlCommand query;
@@ -79,9 +89,79 @@ namespace PhoneRepairShop
                 yield return result;
             }
         }
+        ////////// The end of added code
 
-        ...
+        public PXFilter<RSSVWorkOrderToPayFilter> Filter;
+
+        public PXCancel<RSSVWorkOrderToPayFilter> Cancel;
+
+        public override bool IsDirty
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        protected virtual void _(Events.FieldSelecting<RSSVWorkOrderToPay,
+            RSSVWorkOrderToPay.percentPaid> e)
+        {
+            if (e.Row == null) return;
+            if (e.Row.OrderTotal == 0) return;
+            RSSVWorkOrderToPay order = e.Row;
+            var invoices = SelectFrom<ARInvoice>.
+                Where<ARInvoice.refNbr.IsEqual<@P.AsString>>.View.Select(
+                this, order.InvoiceNbr);
+            if (invoices.Count == 0)
+                return;
+            ARInvoice first = invoices[0];
+            e.ReturnValue = (order.OrderTotal - first.CuryDocBal) /
+                order.OrderTotal * 100;
+        }
+
+        public static RSSVWorkOrderToPay RSSVWorkOrderToPay
+            (SOOrderShipment shipment)
+        {
+            RSSVWorkOrderToPay ret = new RSSVWorkOrderToPay();
+            ret.OrderNbr = shipment.OrderNbr;
+            ret.InvoiceNbr = shipment.InvoiceNbr;
+            return ret;
+        }
     }
 
-    ...
+    [PXHidden]
+    public class RSSVWorkOrderToPayFilter : IBqlTable
+    {
+        #region ServiceID
+        [PXInt()]
+        [PXUIField(DisplayName = "Service")]
+        [PXSelector(
+            typeof(Search<RSSVRepairService.serviceID>),
+            typeof(RSSVRepairService.serviceCD),
+            typeof(RSSVRepairService.description),
+            DescriptionField = typeof(RSSVRepairService.description),
+            SelectorMode = PXSelectorMode.DisplayModeText)]
+        public virtual int? ServiceID { get; set; }
+        public abstract class serviceID :
+            PX.Data.BQL.BqlInt.Field<serviceID>
+        { }
+        #endregion
+
+        #region CustomerID
+        [CustomerActive(DisplayName = "Customer ID")]
+        public virtual int? CustomerID { get; set; }
+        public abstract class customerID :
+            PX.Data.BQL.BqlInt.Field<customerID>
+        { }
+        #endregion
+
+        #region GroupByStatus
+        [PXBool]
+        [PXUIField(DisplayName = "Show Total Amount to Pay")]
+        public bool? GroupByStatus { get; set; }
+        public abstract class groupByStatus :
+            PX.Data.BQL.BqlBool.Field<groupByStatus>
+        { }
+        #endregion
+    }
 }

@@ -2,15 +2,18 @@
 <%@ MasterType VirtualPath="~/MasterPages/FormDetail.master" %>
 
 <asp:Content ID="cont1" ContentPlaceHolderID="phDS" Runat="Server">
+  <%-- The modified code --%>
   <px:PXDataSource ID="ds" runat="server" Visible="True" Width="100%"
         TypeName="PhoneRepairShop.RSSVPaymentPlanInq"
         PrimaryView="Filter"
         >
+  <%-- The end of modified code --%>
     <CallbackCommands>
 
     </CallbackCommands>
   </px:PXDataSource>
 </asp:Content>
+<%-- The added code --%>
 <asp:Content ID="cont2" ContentPlaceHolderID="phF" Runat="Server">
   <px:PXFormView runat="server" ID="CstFormView1" DataSourceID="ds" 
       DataMember="Filter" Width="100%" >
@@ -24,6 +27,7 @@
     </Template>
   </px:PXFormView>
 </asp:Content>
+<%-- The end of added code --%>
 <asp:Content ID="cont3" ContentPlaceHolderID="phG" Runat="Server">
   <px:PXGrid ID="grid" runat="server" DataSourceID="ds" Width="100%" Height="150px" SkinID="Details" AllowAutoHide="false">
     <Levels>
