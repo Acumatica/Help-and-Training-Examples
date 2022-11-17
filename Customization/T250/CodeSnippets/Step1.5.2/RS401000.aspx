@@ -8,9 +8,7 @@
         PrimaryView="Filter"
         >
     <CallbackCommands>
-       
-      
-      
+
     </CallbackCommands>
   </px:PXDataSource>
 </asp:Content>
@@ -30,13 +28,17 @@
   </px:PXFormView>
 </asp:Content>
 <asp:Content ID="cont3" ContentPlaceHolderID="phG" Runat="Server">
-  <px:PXGrid SyncPosition="True" ID="grid" runat="server" DataSourceID="ds" Width="100%" Height="150px" SkinID="Details" AllowAutoHide="false">
+  <%-- The modified code --%>
+  <px:PXGrid ID="grid" runat="server" DataSourceID="ds" Width="100%" Height="150px" SkinID="Details" AllowAutoHide="false" SyncPosition="True">
+  <%-- The end of modified code --%>
     <Levels>
       <px:PXGridLevel DataMember="DetailsView">
           <Columns>
               <px:PXGridColumn DataField="OrderType" Width="70" />
+              <%-- The modified code --%>
               <px:PXGridColumn DataField="OrderNbr" Width="72"
                 LinkCommand="ViewOrder" />
+              <%-- The end of modified code --%>
               <px:PXGridColumn DataField="Status" Width="140" />
               <px:PXGridColumn DataField="InvoiceNbr" Width="72" CommitChanges="True" />
               <px:PXGridColumn DataField="PercentPaid" Width="72" />

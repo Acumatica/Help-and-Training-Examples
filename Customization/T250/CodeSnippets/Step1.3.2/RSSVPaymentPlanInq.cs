@@ -1,11 +1,13 @@
 using System;
 using PX.Data;
-using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
+using PX.Data.BQL;
 using PX.Objects.AR;
 using PhoneRepairShop.Workflows;
+////////// The added code
 using PX.Objects.SO;
 using System.Collections;
+////////// The end of added code
 
 namespace PhoneRepairShop
 {
@@ -25,6 +27,7 @@ namespace PhoneRepairShop
                         RSSVWorkOrderToPayFilter.serviceID.FromCurrent>>>>.
             View.ReadOnly DetailsView;
 
+        ////////// The added code
         protected virtual IEnumerable detailsView()
         {
             foreach (PXResult<RSSVWorkOrderToPay, ARInvoice> order in
@@ -60,6 +63,7 @@ namespace PhoneRepairShop
                 yield return result;
             }
         }
+        ////////// The end of added code
 
         public PXFilter<RSSVWorkOrderToPayFilter> Filter;
 
@@ -78,7 +82,6 @@ namespace PhoneRepairShop
         {
             if (e.Row == null) return;
             if (e.Row.OrderTotal == 0) return;
-
             RSSVWorkOrderToPay order = e.Row;
             var invoices = SelectFrom<ARInvoice>.
                 Where<ARInvoice.refNbr.IsEqual<@P.AsString>>.View.Select(
@@ -90,6 +93,7 @@ namespace PhoneRepairShop
                 order.OrderTotal * 100;
         }
 
+        ////////// The added code
         public static RSSVWorkOrderToPay RSSVWorkOrderToPay
             (SOOrderShipment shipment)
         {
@@ -98,7 +102,33 @@ namespace PhoneRepairShop
             ret.InvoiceNbr = shipment.InvoiceNbr;
             return ret;
         }
+        ////////// The end of added code
     }
 
-    ...
+    [PXHidden]
+    public class RSSVWorkOrderToPayFilter : IBqlTable
+    {
+        #region ServiceID
+        [PXInt()]
+        [PXUIField(DisplayName = "Service")]
+        [PXSelector(
+            typeof(Search<RSSVRepairService.serviceID>),
+            typeof(RSSVRepairService.serviceCD),
+            typeof(RSSVRepairService.description),
+            DescriptionField = typeof(RSSVRepairService.description),
+            SelectorMode = PXSelectorMode.DisplayModeText)]
+        public virtual int? ServiceID { get; set; }
+        public abstract class serviceID :
+            PX.Data.BQL.BqlInt.Field<serviceID>
+        { }
+        #endregion
+
+        #region CustomerID
+        [CustomerActive(DisplayName = "Customer ID")]
+        public virtual int? CustomerID { get; set; }
+        public abstract class customerID :
+            PX.Data.BQL.BqlInt.Field<customerID>
+        { }
+        #endregion
+    }
 }
