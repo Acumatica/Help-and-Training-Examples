@@ -11,14 +11,7 @@ namespace PhoneRepairShop
           PXCache cache, PXFieldUpdatedEventArgs e)
     {
       var row = (RSSVRepairService)e.Row;
-      if (row.WalkInService == true)
-      {
-        row.PreliminaryCheck = false;
-      }
-      else
-      {
-        row.PreliminaryCheck = true;
-      }
+      row.PreliminaryCheck = !(row.WalkInService == true);
     }
 ////////// The end of added code
 

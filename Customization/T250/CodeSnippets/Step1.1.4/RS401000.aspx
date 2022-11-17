@@ -14,6 +14,7 @@
 <asp:Content ID="cont3" ContentPlaceHolderID="phG" Runat="Server">
   <px:PXGrid ID="grid" runat="server" DataSourceID="ds" Width="100%" Height="150px" SkinID="Details" AllowAutoHide="false">
     <Levels>
+      <%-- The added code --%>
       <px:PXGridLevel DataMember="DetailsView">
           <Columns>
               <px:PXGridColumn DataField="OrderNbr" Width="72" />
@@ -24,6 +25,7 @@
               <px:PXGridColumn DataField="ARInvoice__CuryDocBal" Width="100" />
           </Columns>
       </px:PXGridLevel>
+      <%-- The end of added code --%>
     </Levels>
     <AutoSize Container="Window" Enabled="True" MinHeight="150" />
     <ActionBar >

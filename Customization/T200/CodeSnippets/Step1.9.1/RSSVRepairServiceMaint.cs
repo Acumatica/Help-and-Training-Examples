@@ -12,15 +12,7 @@ namespace PhoneRepairShop
     {
       
       var row = (RSSVRepairService)e.Row;
-    
-      if (row.WalkInService == true)
-      {
-        row.PreliminaryCheck = false;
-      }
-      else
-      {
-        row.PreliminaryCheck = true;
-      }
+      row.PreliminaryCheck = !(row.WalkInService == true);
       
     }
 /////////// The added code
@@ -28,16 +20,12 @@ namespace PhoneRepairShop
             RSSVRepairService.preliminaryCheck> e)
     {
         var row = e.Row;
-        if (row.PreliminaryCheck == true)
-        {
-            row.WalkInService = false;
-        }
-        else
-        {
-            row.WalkInService = true;
-        }
+        row.WalkInService = !(row.PreliminaryCheck == true);
     }
 /////////// The end of added code
-     public SelectFrom<RSSVRepairService>.View RepairService;
+    public PXSave<RSSVRepairService> Save;
+    public PXCancel<RSSVRepairService> Cancel;
+	 
+	public SelectFrom<RSSVRepairService>.View RepairService;
   }
 }

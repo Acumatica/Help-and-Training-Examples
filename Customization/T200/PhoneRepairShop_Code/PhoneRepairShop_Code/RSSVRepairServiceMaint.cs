@@ -9,38 +9,20 @@ namespace PhoneRepairShop
 
     protected void _(Events.FieldUpdated<RSSVRepairService, RSSVRepairService.walkInService> e)
     {
-      
-      var row = e.Row;
-    
-      if (row.WalkInService == true)
-      {
-        row.PreliminaryCheck = false;
-      }
-      else
-      {
-        row.PreliminaryCheck = true;
-      }
-      
-    }
-
-    protected void _(Events.FieldUpdated<RSSVRepairService,
-             RSSVRepairService.preliminaryCheck> e)
-        {
-            var row = e.Row;
-            if (row.PreliminaryCheck == true)
-            {
-                row.WalkInService = false;
-            }
-            else
-            {
-                row.WalkInService = true;
-            }
+        var row = e.Row;
+        row.PreliminaryCheck = !(row.WalkInService == true);
         }
 
-        public PXSave<RSSVRepairService> Save;
-    public PXCancel<RSSVRepairService> Cancel;
+    protected void _(Events.FieldUpdated<RSSVRepairService, RSSVRepairService.preliminaryCheck> e)
+    {
+        var row = e.Row;
+        row.WalkInService = !(row.PreliminaryCheck == true);
+        }
 
     public SelectFrom<RSSVRepairService>.View RepairService;
+
+    public PXSave<RSSVRepairService> Save;
+    public PXCancel<RSSVRepairService> Cancel;
 
 
   }
