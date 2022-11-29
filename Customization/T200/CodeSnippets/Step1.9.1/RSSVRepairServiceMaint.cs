@@ -38,6 +38,9 @@ namespace PhoneRepairShop
         }
     }
 /////////// The end of added code
-     public SelectFrom<RSSVRepairService>.View RepairService;
+    public PXSave<RSSVRepairService> Save;
+    public PXCancel<RSSVRepairService> Cancel;
+	 
+	public SelectFrom<RSSVRepairService>.View RepairService;
   }
 }
