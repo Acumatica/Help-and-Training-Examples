@@ -1,0 +1,1443 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PX.Data.BQL.Fluent</name>
+    </assembly>
+    <members>
+        <member name="T:PX.Data.BQL.Fluent.FbqlCommandParser">
+            <summary>
+            Is used by FBQL-commands to build a corresponding BQL-command
+            </summary>
+        </member>
+        <member name="M:PX.Data.BQL.Fluent.FbqlCommandParser.CreateBqlCommand(System.Type,System.Type,System.Type,System.Type,System.Type,System.Type,System.Type)">
+            <summary>
+            Create a BqlCommand that corresponds to the input configuration.
+            </summary>
+            <param name="queryPattern">Pattern of the FBQL query</param>
+            <param name="table">First table</param>
+            <param name="joinArray"><see cref="T:PX.Common.TypeArray"/> of <see cref="T:PX.Data.BQL.Fluent.IFbqlJoin"/>s</param>
+            <param name="unaryCondition"><see cref="T:PX.Data.IBqlUnary"/> implementor</param>
+            <param name="aggregateFunctionArray"><see cref="T:PX.Common.TypeArray"/> of <see cref="T:PX.Data.IBqlFunction"/>s</param>
+            <param name="groupCondition"><see cref="T:PX.Data.IBqlHaving"/> implementor</param>
+            <param name="sortColumnArray"><see cref="T:PX.Common.TypeArray"/> of <see cref="T:PX.Data.IBqlSortColumn"/>s</param>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlJoins.Inner`1">
+            <summary>
+            Defines an inner join with a <typeparamref name="TJoinedTable"/>.
+            </summary>
+            <typeparam name="TJoinedTable">Indicates the table that will be inner-joined</typeparam>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlJoins.Inner`1.On`1">
+            <summary>
+            Declares a joining condition
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlJoins.Inner`1.On`1.SingleTableOnly">
+            <summary>
+            Indicates that only the most left table from a joined projection will be used
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlJoins.Left`1">
+            <summary>
+            Defines an left join with a <typeparamref name="TJoinedTable"/>.
+            </summary>
+            <typeparam name="TJoinedTable">Indicates the table that will be left-joined</typeparam>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlJoins.Left`1.On`1">
+            <summary>
+            Declares a joining condition
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlJoins.Left`1.On`1.SingleTableOnly">
+            <summary>
+            Indicates that only the most left table from a joined projection will be used
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlJoins.Right`1">
+            <summary>
+            Defines an right join with a <typeparamref name="TJoinedTable"/>.
+            </summary>
+            <typeparam name="TJoinedTable">Indicates the table that will be right-joined</typeparam>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlJoins.Right`1.On`1">
+            <summary>
+            Declares a joining condition
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlJoins.Right`1.On`1.SingleTableOnly">
+            <summary>
+            Indicates that only the most left table from a joined projection will be used
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlJoins.Full`1">
+            <summary>
+            Defines an full join with a <typeparamref name="TJoinedTable"/>.
+            </summary>
+            <typeparam name="TJoinedTable">Indicates the table that will be full-joined</typeparam>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlJoins.Full`1.On`1">
+            <summary>
+            Declares a joining condition
+            </summary> 
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlJoins.Full`1.On`1.SingleTableOnly">
+            <summary>
+            Indicates that only the most left table from a joined projection will be used
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlJoins.Cross`1">
+            <summary>
+            Defines an cross join with a <typeparamref name="TJoinedTable"/>.
+            </summary>
+            <typeparam name="TJoinedTable">Indicates the table that will be cross-joined</typeparam>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlJoins.Cross`1.SingleTableOnly">
+            <summary>
+            Indicates that only the most left table from a joined projection will be used
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlJoins.Placeholder`1">
+            <summary>
+            Defines a placeholder join, that should be replaced later with <see cref="T:PX.Data.BQL.BqlTemplate"/> mechanism.
+            </summary>
+            <typeparam name="TPlaceholder">The exact <see cref="T:PX.Data.BQL.BqlPlaceholder"/> that will be used instead of join</typeparam>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.PXViewOf`1">
+            <summary>
+            Defines a data view for retrieving a particular data set from
+            the database and provides the interface to the cache for inserting,
+            updating, and deleting the data records.
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.PXViewOf`1.Readonly">
+            <summary>
+            Enforce readonly-mode for current view
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.PXViewOf`1.BasedOn`1">
+            <summary>
+            Defines a select command (<see cref="T:PX.Data.BQL.Fluent.IFbqlSelect`1"/>) which receives data.
+            </summary>
+            <typeparam name="TCommand"><see cref="T:PX.Data.BQL.Fluent.IFbqlSelect`1"/> which receives data.</typeparam>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.PXViewOf`1.BasedOn`1.WithDragAndDrop`2">
+            <summary>
+            The class that implements the functionality that allows users to drag rows, cut and paste rows, and insert new rows in the middle of the grid.
+            </summary>
+            <typeparam name="TPrimaryTable">The primary DAC in the graph.</typeparam>
+            <typeparam name="TSortedTable">The DAC of the grid rows. Must be the same as <tt>TTable</tt></typeparam>
+            <remarks>This class can be used in a graph for the grid's view.</remarks>
+        </member>
+        <member name="M:PX.Data.BQL.Fluent.PXViewOf`1.BasedOn`1.WithDragAndDrop`2.#ctor(PX.Data.PXGraph)">
+            <exclude />
+        </member>
+        <member name="M:PX.Data.BQL.Fluent.PXViewOf`1.BasedOn`1.WithDragAndDrop`2.#ctor(PX.Data.PXGraph,System.Delegate)">
+            <exclude />
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.PXViewOf`1.BasedOn`1.WithDragAndDrop`2.WithOwnActions">
+            <summary>
+            The class that dynamically generates command names based on TSortedTable
+            </summary>
+        </member>
+        <member name="M:PX.Data.BQL.Fluent.PXViewOf`1.BasedOn`1.WithDragAndDrop`2.WithOwnActions.#ctor(PX.Data.PXGraph)">
+            <exclude />
+        </member>
+        <member name="M:PX.Data.BQL.Fluent.PXViewOf`1.BasedOn`1.WithDragAndDrop`2.WithOwnActions.#ctor(PX.Data.PXGraph,System.Delegate)">
+            <exclude />
+        </member>
+        <member name="F:PX.Data.BQL.Fluent.PXViewOf`1.BasedOn`1.WithDragAndDrop`2.WithOwnActions.PasteLineCommand">
+            <exclude />
+        </member>
+        <member name="F:PX.Data.BQL.Fluent.PXViewOf`1.BasedOn`1.WithDragAndDrop`2.WithOwnActions.ResetOrderCommand">
+            <exclude />
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.PXViewOf`1.BasedOn`1.ReadOnly">
+            <summary>
+            Enforce readonly-mode for current view
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2">
+            <exclude/>
+            <exclude/>
+            <exclude/>
+            <exclude/>
+            <exclude/>
+            <exclude/>
+            <exclude/>
+            <exclude/>
+            <exclude/>
+            <exclude/>
+            <exclude/>
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`1">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`2">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`3">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`4">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`5">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`6">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`7">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`8">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`9">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`10">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`11">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`12">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`13">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`14">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`15">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`16">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`17">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`18">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`19">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`20">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`21">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`22">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`23">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`24">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`25">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`26">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`27">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`28">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`29">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`30">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`31">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.AggregateTo`32">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`1">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`2">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`3">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`4">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`5">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`6">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`7">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`8">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`9">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`10">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`11">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`12">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`13">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`14">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`15">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`16">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`17">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`18">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`19">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`20">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`21">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`22">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`23">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`24">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`25">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`26">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`27">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`28">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`29">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`30">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`31">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.AggregateTo`32">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`1">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`2">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`3">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`4">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`5">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`6">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`7">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`8">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`9">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`10">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`11">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`12">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`13">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`14">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`15">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`16">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`17">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`18">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`19">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`20">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`21">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`22">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`23">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`24">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`25">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`26">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`27">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`28">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`29">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`30">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`31">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.OrderBy`32">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`1">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`2">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`3">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`4">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`5">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`6">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`7">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`8">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`9">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`10">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`11">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`12">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`13">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`14">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`15">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`16">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`17">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`18">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`19">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`20">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`21">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`22">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`23">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`24">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`25">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`26">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`27">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`28">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`29">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`30">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`31">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.Aggregate`1.Having`1.OrderBy`32">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`1">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`2">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`3">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`4">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`5">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`6">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`7">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`8">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`9">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`10">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`11">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`12">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`13">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`14">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`15">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`16">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`17">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`18">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`19">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`20">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`21">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`22">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`23">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`24">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`25">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`26">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`27">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`28">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`29">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`30">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`31">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Where`1.OrderBy`32">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`1">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`2">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`3">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`4">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`5">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`6">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`7">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`8">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`9">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`10">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`11">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`12">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`13">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`14">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`15">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`16">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`17">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`18">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`19">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`20">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`21">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`22">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`23">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`24">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`25">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`26">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`27">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`28">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`29">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`30">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`31">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.OrderBy`32">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`1">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`2">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`3">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`4">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`5">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`6">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`7">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`8">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`9">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`10">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`11">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`12">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`13">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`14">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`15">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`16">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`17">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`18">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`19">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`20">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`21">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`22">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`23">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`24">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`25">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`26">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`27">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`28">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`29">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`30">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`31">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1.Having`1.OrderBy`32">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`1">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`2">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`3">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`4">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`5">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`6">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`7">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`8">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`9">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`10">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`11">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`12">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`13">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`14">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`15">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`16">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`17">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`18">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`19">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`20">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`21">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`22">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`23">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`24">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`25">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`26">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`27">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`28">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`29">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`30">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`31">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromBase`2.OrderBy`32">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3">
+            <exclude/>
+            <exclude/>
+            <exclude/>
+            <exclude/>
+            <exclude/>
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`1">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`2">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`3">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`4">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`5">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`6">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`7">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`8">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`9">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`10">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`11">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`12">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`13">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`14">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`15">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`16">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`17">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`18">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`19">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`20">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`21">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`22">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`23">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`24">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`25">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`26">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`27">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`28">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`29">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`30">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`31">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.AggregateTo`32">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`1">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`2">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`3">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`4">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`5">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`6">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`7">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`8">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`9">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`10">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`11">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`12">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`13">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`14">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`15">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`16">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`17">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`18">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`19">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`20">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`21">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`22">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`23">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`24">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`25">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`26">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`27">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`28">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`29">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`30">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`31">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateBase`3.Where`1.AggregateTo`32">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By">
+            <summary>
+            A <see cref="T:PX.Common.TypeArray"/> of <see cref="T:PX.Data.IBqlSortColumn"/>s.
+            Used in <see cref="T:PX.Data.BQL.Fluent.SelectFromBase`2.Order`1"/> type parameter.
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`1">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`2">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`3">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`4">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`5">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`6">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`7">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`8">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`9">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`10">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`11">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`12">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`13">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`14">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`15">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`16">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`17">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`18">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`19">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`20">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`21">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`22">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`23">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`24">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`25">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`26">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`27">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`28">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`29">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`30">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`31">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.By`32">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To">
+            <summary>
+            A <see cref="T:PX.Common.TypeArray"/> of <see cref="T:PX.Data.IBqlFunction"/>s.
+            Used in <see cref="T:PX.Data.BQL.Fluent.SelectFromBase`2.Aggregate`1"/> type parameter.
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`1">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`2">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`3">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`4">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`5">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`6">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`7">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`8">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`9">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`10">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`11">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`12">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`13">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`14">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`15">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`16">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`17">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`18">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`19">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`20">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`21">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`22">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`23">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`24">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`25">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`26">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`27">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`28">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`29">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`30">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`31">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.To`32">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SearchFor`1">
+            <summary>
+            Declares a search for a certain field
+            </summary>
+            <typeparam name="TField">Searched field</typeparam>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SearchFor`1.In`1">
+            <summary>
+            Declares a Select command in which results a certain field will be searched
+            </summary>
+            <typeparam name="TSelect">Select command in which results a certain field will be searched</typeparam>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlSelect`2.View">
+            <summary>
+            Defines a data view for retrieving a particular data set from
+            the database and provides the interface to the cache for inserting,
+            updating, and deleting the data records.
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlSelect`2.ProcessingView">
+            <summary>
+            	<para>Defines a special data view used on processing webpages, which are intended for mass processing of data records.</para>
+            	<para>The <tt>ProcessingView</tt> type is used to define the data view in a graph bound to a processing webpage. A data view of this type includes
+            definitions of two actions, <tt>Process</tt> and <tt>ProcessAll</tt>, which are added to the graph and are used to invoke the processing. You should set the
+            processing method by invoking one of the <tt>SetProcessDelegate</tt> methods in the constructor of the graph.</para>
+            </summary>
+            <example>
+            The code below shows definition of the graph that contains the
+            processing data view.
+            <code title="" description="" lang="CS">
+            public class ARPaymentsProcessing : PXGraph&lt;ARPaymentsProcessing&gt;
+            {
+            // Definition of the data view to process
+            public SelectFrom&lt;ARPaymentInfo&gt;.ProcessingView ARDocumentList;
+            // The constructor of the graph
+            public ARPaymentsAutoProcessing()
+            {
+            // Specifying the field to mark data records for processing
+            ARDocumentList.SetSelected&lt;ARPaymentInfo.selected&gt;();
+            // Setting the processing method
+            ARDocumentList.SetProcessDelegate(Process);
+            }
+            // The processing method (must be static)
+            public static void Process(List&lt;ARPaymentInfo&gt; products)
+            {
+            ...
+            }
+            ...
+            }</code></example>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFrom`2">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.SelectFromMirror`2">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.FbqlUpdateBase`6">
+            <exclude/>
+        </member>
+        <member name="M:PX.Data.BQL.Fluent.FbqlUpdateBase`6.Update(PX.Data.PXGraph,System.Object[])">
+            <summary>
+            Execute the UPDATE statement.
+            </summary>
+            <returns>The number of updated rows</returns>
+        </member>
+        <member name="M:PX.Data.BQL.Fluent.FbqlUpdateBase`6.GetCommand">
+            <summary>
+            Provides an instance of <see cref="T:PX.Data.IBqlUpdate"/> that corresponds to the current update statement.
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.Update`1.Set`1">
+            <summary>
+            Adds first field assignment.
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateSet`2">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateSet`2.Set`1">
+            <summary>
+            Adds another field assignment.
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateSetMirror`2">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateSetMirror`2.Set`1">
+            <summary>
+            Adds another field assignment.
+            </summary>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.Update`3">
+            <exclude/>
+        </member>
+        <member name="T:PX.Data.BQL.Fluent.UpdateMirror`3">
+            <exclude/>
+        </member>
+    </members>
+</doc>

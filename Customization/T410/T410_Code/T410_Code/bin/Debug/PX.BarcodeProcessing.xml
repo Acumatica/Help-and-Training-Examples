@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PX.BarcodeProcessing</name>
+    </assembly>
+    <members>
+        <member name="M:PX.BarcodeProcessing.BarcodeDrivenStateMachine`2.get_PrimaryItemType(System.Func{System.Type})">
+            <summary>
+            Overrides <see cref="P:PX.Data.PXGraph.PrimaryItemType"/>
+            </summary>
+        </member>
+        <member name="M:PX.BarcodeProcessing.BarcodeDrivenStateMachine`2.get_PrimaryView(System.Func{System.String})">
+            <summary>
+            Overrides <see cref="P:PX.Data.PXGraph.PrimaryView"/>
+            </summary>
+        </member>
+        <member name="M:PX.BarcodeProcessing.BarcodeQtySupport`2.DecorateScanState(PX.BarcodeProcessing.ScanState{`0},System.Func{PX.BarcodeProcessing.ScanState{`0},PX.BarcodeProcessing.ScanState{`0}})">
+            Overrides <see cref="M:PX.BarcodeProcessing.BarcodeDrivenStateMachine`2.DecorateScanState(PX.BarcodeProcessing.ScanState{`0})"/>
+        </member>
+        <member name="M:PX.BarcodeProcessing.BarcodeQtySupport`2.DecorateScanMode(PX.BarcodeProcessing.ScanMode{`0},System.Func{PX.BarcodeProcessing.ScanMode{`0},PX.BarcodeProcessing.ScanMode{`0}})">
+            Overrides <see cref="M:PX.BarcodeProcessing.BarcodeDrivenStateMachine`2.DecorateScanMode(PX.BarcodeProcessing.ScanMode{`0})"/>
+        </member>
+        <member name="M:PX.BarcodeProcessing.BarcodeQtySupport`2.ProcessCustomScan(System.String,System.Func{System.String,System.Nullable{System.Boolean}})">
+            Overrides <see cref="M:PX.BarcodeProcessing.BarcodeDrivenStateMachine`2.ProcessCustomScan(System.String)"/>
+        </member>
+        <member name="M:PX.BarcodeProcessing.CompositeBarcodeSupport`3.ProcessCustomScan(System.String,System.Func{System.String,System.Nullable{System.Boolean}})">
+            Overrides <see cref="M:PX.BarcodeProcessing.BarcodeDrivenStateMachine`2.ProcessCustomScan(System.String)"/>
+        </member>
+        <member name="M:PX.BarcodeProcessing.CompositeBarcodeSupport`3.DecorateScanMode(PX.BarcodeProcessing.ScanMode{`0},System.Func{PX.BarcodeProcessing.ScanMode{`0},PX.BarcodeProcessing.ScanMode{`0}})">
+            Overrides <see cref="M:PX.BarcodeProcessing.BarcodeDrivenStateMachine`2.DecorateScanMode(PX.BarcodeProcessing.ScanMode{`0})"/>
+        </member>
+    </members>
+</doc>

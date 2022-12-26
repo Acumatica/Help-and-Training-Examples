@@ -12,7 +12,7 @@ add screen AP303000 {
     }
   }
   add container "Locations" {
-    add field "locationName"
+    add field "LocationName"
     add field "Active"
   }
 }

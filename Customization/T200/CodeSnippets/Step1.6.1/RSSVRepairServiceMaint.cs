@@ -19,21 +19,5 @@ namespace PhoneRepairShop
     public PXCancel<RSSVRepairService> Cancel;
 
     public SelectFrom<RSSVRepairService>.View RepairService;
-
-    public PXFilter<MasterTable> MasterView;
-    public PXFilter<DetailsTable> DetailsView;
-
-    [Serializable]
-    public class MasterTable : IBqlTable
-    {
-
-    }
-
-    [Serializable]
-    public class DetailsTable : IBqlTable
-    {
-
-    }
-	
   }
 }

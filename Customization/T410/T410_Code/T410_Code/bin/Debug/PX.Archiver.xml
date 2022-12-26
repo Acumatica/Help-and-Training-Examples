@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PX.Archiver</name>
+    </assembly>
+    <members>
+        <member name="M:PX.Archiver.ZipArchiveWrapper.#ctor(System.IO.Stream)">
+            <summary>
+            don't use ZipArchiveMode.Create because it only allows creating new entries
+             </summary>
+        </member>
+    </members>
+</doc>

@@ -1,17 +1,44 @@
-add container "InvoiceSummary" {
-  # fields declaration
-  …
-  add recordAction "Save" {
-    behavior = Save
+add screen SO303000 {
+  add container "InvoiceSummary" {
+    add field "Customer"
+    add field "Date"
+    add field "Type"
+    add field "Status"
+    add field "Description"
+    add field "Amount"
+    add field "Balance"
+    add field "DiscountTotal"
+    add field "VATExemptTotal"
+    add field "VATTaxableTotal"
+    
+    add recordAction "Save" {
+      behavior = Save
+    }
+    add recordAction "Cancel" {
+      behavior = Cancel
+    }
+    add containerAction "Insert" {
+      behavior = Create
+    }
+    add recordAction "Release" {
+      syncLongOperation = true
+      behavior = Record
+    }
   }
-  add recordAction "Cancel" {
-    behavior = Cancel
+  add container "Details" {
+    containerActionsToExpand = 1
+    add field "Branch"
+    add field "OrderNbr"
+    add field "Warehouse"
+    add field "Quantity"
+    add field "UnitPrice"
+    add field "Account"
+    add field "Subaccount"
   }
-  add containerAction "Insert" {
-    behavior = Create
-  }
-  add recordAction "Release" {
-    syncLongOperation = true
-    behavior = Record
+  add container "Taxes" {
+    add field "TaxID"
+    add field "TaxRate"
+    add field "TaxableAmount"
+    add field "TaxAmount"
   }
 }
