@@ -2002,7 +2002,7 @@
 							]
 						},
 						{
-							"name": "Attach a File to a Record Copy",
+							"name": "Attach a File to a Record",
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -2039,7 +2039,7 @@
 							},
 							"response": [
 								{
-									"name": "Attach a File to a Record Copy",
+									"name": "Attach a File to a Record",
 									"originalRequest": {
 										"method": "PUT",
 										"header": [
