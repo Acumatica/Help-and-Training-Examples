@@ -12,6 +12,7 @@ Integration development
 
 Customization of Acumatica ERP
 
+ * [Help](Customization/Help): Examples from the [Acumatica Customization Guide](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=316b14fa-f406-4788-993c-7b043b1c5bd9)
  * [T190](Customization/T190): Source files for the [T190 Quick Start in Customization](https://openuni.acumatica.com/courses/development/t190-development-quick-start-in-customization/) training course
  * [T200](Customization/T200): Examples from the [T200 Maintenance Forms](https://openuni.acumatica.com/courses/development/t200-development-maintenance-forms/) training course
  * [T210](Customization/T210): Examples from the [T210 Customized Forms and Master-Detail Relationship](https://openuni.acumatica.com/courses/development/t210-development-customized-forms-and-master-detail-relationship/) training course
