@@ -1,0 +1,10 @@
+update screen PM301000 {
+  add container "RevenueBudget" {
+    add field "ProjectTask"
+    add field "AccountGroup"
+    add field "Description"
+    add field "OriginalBudgetedQuantity"
+    add field "UnitRate"
+    add field "OriginalBudgetedAmount"  
+  }
+}

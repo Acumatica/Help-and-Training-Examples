@@ -1,8 +1,0 @@
-add screen GI000008 {
-  add container "Result" {
-    add field "CustomerID"
-    add field "InvoiceDate"
-    add field "ReferenceNbrARInvoiceRefNbr"
-    add field "InventoryID"
-  }
-}

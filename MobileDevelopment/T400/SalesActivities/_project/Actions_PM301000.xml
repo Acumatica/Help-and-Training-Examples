@@ -1,0 +1,148 @@
+﻿<Actions ScreenID="PM301000">
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="activate" ActionType="G" After="Last" PlacementInCategory="0" BatchMode="False" MenuFolderType="Processing" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Hold" ActionName="activate" IsFromScheme="True" Value="False" StateActionFieldLineNbr="0" />
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="IsCompleted" ActionName="activate" IsFromScheme="True" Value="False" StateActionFieldLineNbr="1" />
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="IsCancelled" ActionName="activate" IsFromScheme="True" Value="False" StateActionFieldLineNbr="2" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="hold" ActionType="G" After="activate" PlacementInCategory="0" BatchMode="False" MenuFolderType="Processing" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Hold" ActionName="hold" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Approved" ActionName="hold" IsFromScheme="True" Value="False" StateActionFieldLineNbr="1" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="complete" ActionType="G" After="hold" PlacementInCategory="0" BatchMode="False" MenuFolderType="Processing" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="suspend" ActionType="G" After="complete" PlacementInCategory="0" BatchMode="False" MenuFolderType="Processing" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="IsActive" ActionName="suspend" IsFromScheme="True" Value="False" StateActionFieldLineNbr="0" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="cancelProject" ActionType="G" After="suspend" PlacementInCategory="0" BatchMode="False" MenuFolderType="Processing" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="IsActive" ActionName="cancelProject" IsFromScheme="True" Value="False" StateActionFieldLineNbr="0" />
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="IsCancelled" ActionName="cancelProject" IsFromScheme="True" Value="True" StateActionFieldLineNbr="1" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="bill" ActionType="G" After="cancelProject" PlacementInCategory="0" BatchMode="False" MenuFolderType="Billing and Allocations" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="lockCommitments" ActionType="G" After="bill" PlacementInCategory="0" BatchMode="False" MenuFolderType="Commitments" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="unlockCommitments" ActionType="G" After="lockCommitments" PlacementInCategory="0" BatchMode="False" MenuFolderType="Commitments" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="copyProject" ActionType="G" After="unlockCommitments" PlacementInCategory="0" BatchMode="False" MenuFolderType="OtherCategory" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="createTemplate" ActionType="G" After="copyProject" PlacementInCategory="0" BatchMode="False" MenuFolderType="OtherCategory" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="ChangeID" ActionType="G" After="createTemplate" PlacementInCategory="0" BatchMode="False" MenuFolderType="OtherCategory" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="validateAddresses" ActionType="G" After="ChangeID" PlacementInCategory="0" BatchMode="False" MenuFolderType="OtherCategory" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="createChangeOrder" ActionType="G" After="validateAddresses" PlacementInCategory="0" BatchMode="False" MenuFolderType="Change Management" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="runAllocation" ActionType="G" After="createChangeOrder" PlacementInCategory="0" BatchMode="False" MenuFolderType="Billing and Allocations" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="validateBalance" ActionType="G" After="runAllocation" PlacementInCategory="0" BatchMode="False" MenuFolderType="Budget Operations" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="autoBudget" ActionType="G" After="validateBalance" PlacementInCategory="0" BatchMode="False" MenuFolderType="Budget Operations" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="True" IsCustomizedRecursive="False" ActionName="lockBudget" ActionType="G" After="autoBudget" PlacementInCategory="0" BatchMode="False" MenuFolderType="Budget Operations" WindowMode="S" ExposedToMobile="True">
+        <OriginalState IsActive="True" IsSystem="True" IsCustomized="False" ActionName="lockBudget" ActionType="G" After="autoBudget" PlacementInCategory="0" BatchMode="False" MenuFolderType="Budget Operations" WindowMode="S" ExposedToMobile="False" />
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="True" IsCustomizedRecursive="False" ActionName="unlockBudget" ActionType="G" After="lockBudget" PlacementInCategory="0" BatchMode="False" MenuFolderType="Budget Operations" WindowMode="S" ExposedToMobile="True">
+        <OriginalState IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="unlockBudget" ActionType="G" After="lockBudget" PlacementInCategory="0" BatchMode="False" MenuFolderType="Budget Operations" WindowMode="S" ExposedToMobile="False" />
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="laborCostRates" ActionType="G" After="unlockBudget" PlacementInCategory="0" BatchMode="False" MenuFolderType="OtherCategory" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="forecast" ActionType="G" After="laborCostRates" PlacementInCategory="0" BatchMode="False" MenuFolderType="Budget Operations" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="currencyRates" ActionType="G" After="forecast" PlacementInCategory="0" BatchMode="False" MenuFolderType="Report" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="projectBalanceReport" ActionType="G" After="currencyRates" PlacementInCategory="0" BatchMode="False" MenuFolderType="Report" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="productionSummary" ActionType="G" After="projectBalanceReport" PlacementInCategory="0" BatchMode="False" MenuFolderType="OtherCategory" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="costProjection" ActionType="G" After="productionSummary" PlacementInCategory="0" BatchMode="False" MenuFolderType="Budget Operations" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="CreateSrvOrdDocument" ActionType="G" After="costProjection" PlacementInCategory="0" BatchMode="False" MenuFolderType="Services" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="CreateApptDocument" ActionType="G" After="CreateSrvOrdDocument" PlacementInCategory="0" BatchMode="False" MenuFolderType="Services" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="approve" ActionType="G" After="activate" PlacementInCategory="0" AfterInMenu="activate" BatchMode="False" MenuFolderType="Approval" WindowMode="S" HideCondition="c7766c04-d5df-a19b-ae27-4a1d2e1c23f8" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Approved" ActionName="approve" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="IsActive" ActionName="approve" IsFromScheme="True" Value="True" StateActionFieldLineNbr="1" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="reject" ActionType="G" After="approve" PlacementInCategory="0" AfterInMenu="approve" BatchMode="False" MenuFolderType="Approval" WindowMode="S" HideCondition="c7766c04-d5df-a19b-ae27-4a1d2e1c23f8" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Hold" ActionName="reject" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="createChangeRequest" ActionType="G" After="validateAddresses" PlacementInCategory="0" AfterInMenu="validateAddresses" BatchMode="False" MenuFolderType="Change Management" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Actions" CategoryName="Action" Placement="0" LineNbr="0" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Inquiries" CategoryName="Inquiry" Placement="0" After="Action" LineNbr="1" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Processing" CategoryName="Processing" Placement="0" After="Inquiry" LineNbr="2" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Approval" CategoryName="Approval" Placement="0" After="Processing" LineNbr="3" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Billing and Allocations" CategoryName="Billing and Allocations" Placement="0" After="Approval" LineNbr="4" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Budget Operations" CategoryName="Budget Operations" Placement="0" After="Billing and Allocations" LineNbr="5" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Change Management" CategoryName="Change Management" Placement="0" After="Budget Operations" LineNbr="6" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Commitments" CategoryName="Commitments" Placement="0" After="Change Management" LineNbr="7" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Services" CategoryName="Services" Placement="0" After="Commitments" LineNbr="8" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Other" CategoryName="OtherCategory" Placement="0" After="Services" LineNbr="9" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Reports" CategoryName="Report" Placement="0" After="OtherCategory" LineNbr="10" />
+</Actions>

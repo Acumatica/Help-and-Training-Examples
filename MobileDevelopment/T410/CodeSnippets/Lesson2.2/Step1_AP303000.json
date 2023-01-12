@@ -1,0 +1,18 @@
+add screen AP303000 {
+  add container "VendorSummary" {
+    add field "VendorID"
+    add field "VendorStatus"
+    add field "VendorClass"
+    
+    add recordAction "Save" {
+      behavior = Save
+    }
+    add recordAction "Cancel" {
+      behavior = Cancel
+    }
+  }
+  add container "Locations" {
+    add field "LocationName"
+    add field "Active"
+  }
+}

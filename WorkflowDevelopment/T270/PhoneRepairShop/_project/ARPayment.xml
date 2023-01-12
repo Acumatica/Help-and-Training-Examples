@@ -1,0 +1,3 @@
+﻿<Table TableName="ARPayment">
+    <Column TableName="ARPayment" ColumnName="UsrPrepaymentPercent" ColumnType="decimal" AllowNull="True" DecimalPrecision="6" DecimalLength="9" IsNewColumn="True" IsUnicode="True" />
+</Table>

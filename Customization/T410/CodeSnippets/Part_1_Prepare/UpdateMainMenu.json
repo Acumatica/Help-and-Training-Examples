@@ -1,5 +1,0 @@
-update sitemap {
-  add item "SO303000" {
-    displayName = "Invoices"  
-  }
-}

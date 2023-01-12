@@ -1,0 +1,27 @@
+update screen SO301000 {
+  update container "OrderSummary" {
+    update layout "OrderHeader" {
+      add layout "OrderHeaderVATRow" {
+        displayName = "OrderHeaderVATRow"
+        layout = "Inline"
+        add field "VATExemptTotal"
+        add field "VATTaxableTotal"
+      }
+    }
+    
+    update layout "OrderSettingsTab" {
+      update group "BillToInfoGroup" {
+        remove field "AddressesBillToAddress#AddressLine2"
+      }
+    }
+    
+    
+    attachments {
+      imageAdjustmentPreset = Receipt
+    }
+    
+    add recordAction "PrintSalesOrder" {
+      redirect = True
+    }
+  }
+}
