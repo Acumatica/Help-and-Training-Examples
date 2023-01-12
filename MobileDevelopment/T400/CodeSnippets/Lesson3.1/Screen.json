@@ -1,0 +1,3 @@
+add screen DB000012 {
+  type = Dashboard
+}

@@ -1,0 +1,18 @@
+add screen AP303010 {
+  openAs = Form
+  add container "VendorLocationSummary" {
+    add field "Vendor"
+    add field "LocationID" {
+      ForceType = String # to be able to enter new ID
+    }
+    add field "Status"
+    add field "GeneralLocationInfo#LocationName"
+    add field "NoteText"
+    add recordAction "Save" {
+      behavior = Save
+    }
+    add recordAction "Cancel" {
+      behavior = Cancel
+    }
+  }
+}

@@ -1,0 +1,9 @@
+update sitemap {
+  add item "SO303000" {
+    displayName = "Invoices"  
+  }
+    
+  add item "AP303000" {
+    displayName = "Vendors"
+  }  
+}
