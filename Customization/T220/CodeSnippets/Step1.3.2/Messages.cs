@@ -39,7 +39,7 @@ namespace PhoneRepairShop
 
         public const string QuantityCannotBeNegative =
             "The value in the Quantity column cannot be negative.";
-        public const string QuantityToSmall = @"The value in the Quantity column
+        public const string QuantityTooSmall = @"The value in the Quantity column
   has been corrected to the minimum possible value.";
         ////////// The added code
         public const string PriorityTooLow =

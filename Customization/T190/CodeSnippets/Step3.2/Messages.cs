@@ -42,7 +42,7 @@ namespace PhoneRepairShop
         //////////The added code
         public const string QuantityCannotBeNegative =
             "The value in the Quantity column cannot be negative.";
-        public const string QuantityToSmall = 
+        public const string QuantityTooSmall = 
             @"The value in the Quantity column has been corrected to the minimum possible value.";
         //////////The end of added code
     }

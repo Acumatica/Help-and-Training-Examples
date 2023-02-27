@@ -184,7 +184,7 @@ namespace PhoneRepairShop
                     //Raising the ExceptionHandling event for the Quantity field
                     //to attach the exception object to the field
                     e.Cache.RaiseExceptionHandling<RSSVWorkOrderLabor.quantity>(e.Row, e.NewValue,
-                        new PXSetPropertyException(Messages.QuantityToSmall, PXErrorLevel.Warning));
+                        new PXSetPropertyException(Messages.QuantityTooSmall, PXErrorLevel.Warning));
                 }
             }
         }

@@ -146,7 +146,7 @@ namespace PhoneRepairShop_Code.Tests
             fieldState = (PXFieldState)graph.
                 Caches[typeof(RSSVWorkOrderLabor)].
                 GetStateExt<RSSVWorkOrderLabor.quantity>(woLabor);
-            Assert.Equal(PhoneRepairShop.Messages.QuantityToSmall,
+            Assert.Equal(PhoneRepairShop.Messages.QuantityTooSmall,
                 fieldState.Error);
             Assert.Equal(PXErrorLevel.Warning, fieldState.ErrorLevel);
             Assert.Equal(3, woLabor.Quantity);

@@ -290,7 +290,7 @@ namespace PhoneRepairShop
                     //to attach the exception object to the field
                     e.Cache.RaiseExceptionHandling<RSSVWorkOrderLabor.quantity>(
                         e.Row, e.NewValue, new PXSetPropertyException(
-                            Messages.QuantityToSmall, PXErrorLevel.Warning));
+                            Messages.QuantityTooSmall, PXErrorLevel.Warning));
                 }
             }
         }
