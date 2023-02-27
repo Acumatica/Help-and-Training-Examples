@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "051c8a69-4de6-4c7a-99ce-87a492284f0f",
+		"_postman_id": "a9e7f5d4-a585-437c-ae1d-6cf81e3a19d8",
 		"name": "MyStoreIntegration_DataRetrieval",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "10628249"
@@ -11,6 +11,20 @@
 			"item": [
 				{
 					"name": "Lesson 1.2: Requesting a Token Manually",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 2.1: Retrieving the List of Sales Orders with Document and Shipment Details\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -49,12 +63,12 @@
 								},
 								{
 									"key": "client_id",
-									"value": "129C4B81-4F0E-9726-C506-4ABC02F20530@MyStore",
+									"value": "C4590FC0-06A2-1E33-E2B4-E0FA6C871C2C@MyStore",
 									"type": "text"
 								},
 								{
 									"key": "client_secret",
-									"value": "29nhSTSNEPw0mkWmJk1n5g",
+									"value": "k16ylY7JXJgCv2ywvXwgVQ",
 									"type": "text"
 								}
 							]
@@ -203,6 +217,20 @@
 				},
 				{
 					"name": "Lesson 1.3: Signing Out from Acumatica ERP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"postman.setNextRequest(null);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -332,7 +360,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				}
@@ -363,6 +391,24 @@
 			"item": [
 				{
 					"name": "Lesson 2.1: Retrieving the List of Sales Orders with Document and Shipment Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The retrieved list is not empty\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.be.not.empty;\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 2.2: Retrieving the List of Sales Orders in Batches (First Five Records)\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -488,6 +534,24 @@
 				},
 				{
 					"name": "Lesson 2.2: Retrieving the List of Sales Orders in Batches (First Five Records)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The retrieved list has 5 items\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.have.lengthOf(5);\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 2.2: Retrieving the List of Sales Orders in Batches (Next Five Records)\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -623,6 +687,24 @@
 				},
 				{
 					"name": "Lesson 2.2: Retrieving the List of Sales Orders in Batches (Next Five Records)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The retrieved list has 4 items\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.have.lengthOf(4);\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 2.3: Retrieving the List of Payments (Failed Request)\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -756,6 +838,20 @@
 				},
 				{
 					"name": "Lesson 2.3: Retrieving the List of Payments (Failed Request)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 2.3: Retrieving the List of Key Fields of Payments\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -881,6 +977,24 @@
 				},
 				{
 					"name": "Lesson 2.3: Retrieving the List of Key Fields of Payments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The retrieved list has one item\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.have.lengthOf(1);\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 2.3: Retrieving Payments by Key Fields\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -998,6 +1112,24 @@
 				},
 				{
 					"name": "Lesson 2.3: Retrieving Payments by Key Fields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The application history has one item\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.ApplicationHistory).to.have.lengthOf(1);\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 3.1: Retrieving the Stock Item\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1144,6 +1276,24 @@
 			"item": [
 				{
 					"name": "Lesson 3.1: Retrieving the Stock Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The stock item has files\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.files).to.be.not.empty;\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 3.1: Retrieving the File\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1263,6 +1413,23 @@
 				},
 				{
 					"name": "Lesson 3.1: Retrieving the File",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The stock item contains a JPG file\", function (){\r",
+									"    pm.expect(pm.response.text()).to.include(\"Exif\");\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 1.3: Signing Out from Acumatica ERP\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1367,13 +1534,13 @@
 		"type": "oauth2",
 		"oauth2": [
 			{
-				"key": "clientSecret",
-				"value": "29nhSTSNEPw0mkWmJk1n5g",
+				"key": "clientId",
+				"value": "C4590FC0-06A2-1E33-E2B4-E0FA6C871C2C@MyStore",
 				"type": "string"
 			},
 			{
-				"key": "clientId",
-				"value": "129C4B81-4F0E-9726-C506-4ABC02F20530@MyStore",
+				"key": "clientSecret",
+				"value": "k16ylY7JXJgCv2ywvXwgVQ",
 				"type": "string"
 			},
 			{
