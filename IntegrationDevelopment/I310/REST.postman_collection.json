@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "a34ea6b5-43e5-4948-bbc4-9c41665f5e07",
+		"_postman_id": "fe326a2c-22f2-4f71-ab12-75bd19af14eb",
 		"name": "MyBIIntegrationREST",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "23398134"
+		"_exporter_id": "10628249"
 	},
 	"item": [
 		{
@@ -11,6 +11,20 @@
 			"item": [
 				{
 					"name": "Lesson 1.1: Signing In to Acumatica ERP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 2.1: Retrieving the List of Customers with Contacts\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -138,6 +152,20 @@
 				},
 				{
 					"name": "Lesson 1.1: Signing Out from Acumatica ERP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"postman.setNextRequest(null);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -262,6 +290,24 @@
 			"item": [
 				{
 					"name": "Lesson 2.1: Retrieving the List of Customers with Contacts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The retrieved list is not empty\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.be.not.empty;\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 2.2: Retrieving the Quantities of Stock Items\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -277,7 +323,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost/MyStoreInstance/entity/Default/22.200.001/Customer?$expand=MainContact,MainContact/Address&$select=CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,\nMainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode",
+							"raw": "http://localhost/MyStoreInstance/entity/Default/22.200.001/Customer?$expand=MainContact,MainContact/Address&$select=CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -379,6 +425,24 @@
 				},
 				{
 					"name": "Lesson 2.2: Retrieving the Quantities of Stock Items",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The retrieved list is not empty\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Results).to.be.not.empty;\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 3.1: Retrieving the List of Modified Stock Items\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -509,6 +573,24 @@
 			"item": [
 				{
 					"name": "Lesson 3.1: Retrieving the List of Modified Stock Items",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The retrieved list is not empty\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.be.not.empty;\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 1.1: Signing Out from Acumatica ERP\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [

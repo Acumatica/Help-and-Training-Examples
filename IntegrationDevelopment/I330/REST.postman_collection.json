@@ -11,6 +11,20 @@
 			"item": [
 				{
 					"name": "Requesting token manually",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 1.1: Creating a Shipment\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -49,12 +63,12 @@
 								},
 								{
 									"key": "client_id",
-									"value": "2D202760-5D06-B5FA-6C08-3B7152AE8B12@MyStore",
+									"value": "F4F1D612-F323-2F78-4FA6-B4F0713815AD@MyStore",
 									"type": "text"
 								},
 								{
 									"key": "client_secret",
-									"value": "M5y-SaQ9fyH4r4k5VZU2nw",
+									"value": "H3n846G6CgPTjwSHpu6U-Q",
 									"type": "text"
 								}
 							]
@@ -203,6 +217,20 @@
 				},
 				{
 					"name": "Signing out from Acumatica ERP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"postman.setNextRequest(\"null\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -363,6 +391,24 @@
 			"item": [
 				{
 					"name": "Lesson 1.1: Creating a Shipment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The shipment is created for three items\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Details).to.have.lengthOf(3);\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 1.2: Creating a Stock Item with Attributes\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -504,6 +550,24 @@
 				},
 				{
 					"name": "Lesson 1.2: Creating a Stock Item with Attributes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The stock item has two attributes\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Attributes).to.have.lengthOf(2);\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 2.1: Updating a Customer Account\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -650,6 +714,24 @@
 			"item": [
 				{
 					"name": "Lesson 2.1: Updating a Customer Account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Contact Mr. Jack Green...\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.BillingContact.Attention.value).to.eq(\"Mr. Jack Green\");\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 2.2: Retrieving the Sales Order with Details\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -799,6 +881,25 @@
 				},
 				{
 					"name": "Lesson 2.2: Retrieving the Sales Order with Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The sales order has three detail lines\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.have.lengthOf(1);\r",
+									"    pm.expect(jsonResponse[0].Details).to.have.lengthOf(3);\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 2.2: Updating Detail Lines\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -924,6 +1025,24 @@
 				},
 				{
 					"name": "Lesson 2.2: Updating Detail Lines",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The sales order has two detail lines\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Details).to.have.lengthOf(2);\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 3.1: Release from Hold of an Invoice\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1070,6 +1189,24 @@
 			"item": [
 				{
 					"name": "Lesson 3.1: Release from Hold of an Invoice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The sales invoice has the Balanced status\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Status.value).to.equal(\"Balanced\");\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 3.1: Invoking Release of an Invoice\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1191,6 +1328,21 @@
 				},
 				{
 					"name": "Lesson 3.1: Invoking Release of an Invoice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 202\", function () {\r",
+									"    pm.response.to.have.status(202);\r",
+									"});\r",
+									"pm.collectionVariables.set(\"SalesInvoiceStatusUrl\", pm.response.headers.get(\"Location\"));\r",
+									"postman.setNextRequest(\"Lesson 3.1: Retrieving the Status of the Release Operation\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1314,6 +1466,24 @@
 				},
 				{
 					"name": "Lesson 3.1: Retrieving the Status of the Release Operation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code != 204)\r",
+									"{\r",
+									"    postman.setNextRequest(\"Lesson 3.1: Retrieving the Status of the Release Operation\");\r",
+									"}\r",
+									"else\r",
+									"{\r",
+									"    postman.setNextRequest(\"Lesson 3.1: Retrieving the Released Invoice\");\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1329,20 +1499,10 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesInvoice/ReleaseSalesInvoice/status/85e62759-ce29-4caf-b35d-319c35fac5c1",
+							"raw": "https://localhost{{SalesInvoiceStatusUrl}}",
 							"protocol": "https",
 							"host": [
-								"localhost"
-							],
-							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
-								"SalesInvoice",
-								"ReleaseSalesInvoice",
-								"status",
-								"85e62759-ce29-4caf-b35d-319c35fac5c1"
+								"localhost{{SalesInvoiceStatusUrl}}"
 							]
 						}
 					},
@@ -1413,6 +1573,24 @@
 				},
 				{
 					"name": "Lesson 3.1: Retrieving the Released Invoice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The sales invoice has the Open status\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Status.value).to.equal(\"Open\");\r",
+									"});\r",
+									"postman.setNextRequest(\"Lesson 5.1: Adding a Note to a Stock Item\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1682,7 +1860,14 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									""
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"A note is attached\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.note.value).to.equal(\"My note\");\r",
+									"});\r",
+									"postman.setNextRequest(\"Signing out from Acumatica ERP\");"
 								],
 								"type": "text/javascript"
 							}
@@ -1948,13 +2133,13 @@
 		"type": "oauth2",
 		"oauth2": [
 			{
-				"key": "clientSecret",
-				"value": "M5y-SaQ9fyH4r4k5VZU2nw",
+				"key": "clientId",
+				"value": "F4F1D612-F323-2F78-4FA6-B4F0713815AD@MyStore",
 				"type": "string"
 			},
 			{
-				"key": "clientId",
-				"value": "2D202760-5D06-B5FA-6C08-3B7152AE8B12@MyStore",
+				"key": "clientSecret",
+				"value": "H3n846G6CgPTjwSHpu6U-Q",
 				"type": "string"
 			},
 			{
@@ -2027,6 +2212,13 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "SalesInvoiceStatusUrl",
+			"value": "",
+			"type": "string"
 		}
 	]
 }
