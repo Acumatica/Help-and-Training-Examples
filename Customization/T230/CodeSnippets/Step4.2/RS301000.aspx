@@ -29,10 +29,10 @@
 			<px:PXTextEdit runat="server" ID="CstPXTextEdit7" DataField="Description" ></px:PXTextEdit>
 			<px:PXLayoutRule LabelsWidth="S" ControlSize="M" runat="server" ID="CstPXLayoutRule16" StartColumn="True" ></px:PXLayoutRule>
 			<px:PXNumberEdit runat="server" ID="CstPXNumberEdit11" DataField="OrderTotal" ></px:PXNumberEdit>
-			<!-- The added code -->
+			<%-- The added code --%>
 			<px:PXSelector ID="edInvoiceNbr" runat="server" 
 				DataField="InvoiceNbr" Enabled="False" AllowEdit="True" />
-			<!-- The end of added code -->
+			<%-- The end of added code --%>
 		</Template>
 	</px:PXFormView>
 </asp:Content>

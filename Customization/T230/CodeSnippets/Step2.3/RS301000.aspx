@@ -73,7 +73,7 @@
 									<px:PXGridColumn DataField="DefaultPrice" Width="100" ></px:PXGridColumn>
 									<px:PXGridColumn CommitChanges="True" DataField="Quantity" Width="100" ></px:PXGridColumn>
 									<px:PXGridColumn DataField="ExtPrice" Width="100" ></px:PXGridColumn></Columns></px:PXGridLevel></Levels>
-				<!-- The added code -->
+				<%-- The added code --%>
 				<ActionBar>
 					<CustomItems>
 						<px:PXToolBarButton Text="UpdateLaborPrices">
@@ -81,7 +81,7 @@
 						</px:PXToolBarButton>
 					</CustomItems>
 				</ActionBar>
-				<!-- The end of added code -->
+				<%-- The end of added code --%>
 						<AutoSize Enabled="True" ></AutoSize></px:PXGrid></Template>
 			</px:PXTabItem>
 		</Items>
