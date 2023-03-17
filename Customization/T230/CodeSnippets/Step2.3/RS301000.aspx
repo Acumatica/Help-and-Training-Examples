@@ -52,15 +52,15 @@
 									<px:PXTextEdit runat="server" ID="CstPXTextEdit20" DataField="InventoryID_description" ></px:PXTextEdit>
 									<px:PXLayoutRule StartColumn="True" LabelsWidth="S" GroupCaption="Price Info" runat="server" ID="CstPXLayoutRule24" StartGroup="True" ></px:PXLayoutRule>
 									<px:PXNumberEdit runat="server" ID="CstPXNumberEdit19" DataField="BasePrice" ></px:PXNumberEdit></RowTemplate></px:PXGridLevel></Levels>
+						<ActionBar>
+							<CustomItems>
+								<px:PXToolBarButton Text="UpdateItemPrices">
+									<AutoCallBack Command="UpdateItemPrices" Target="ds" />
+								</px:PXToolBarButton>
+							</CustomItems>
+						</ActionBar>
 						<AutoSize Enabled="True" ></AutoSize>
 						<Mode AllowFormEdit="True" InitNewRow="True" ></Mode></px:PXGrid></Template>
-				<ActionBar>
-					<CustomItems>
-						<px:PXToolBarButton Text="UpdateItemPrices">
-							<AutoCallBack Command="UpdateItemPrices" Target="ds" />
-						</px:PXToolBarButton>
-					</CustomItems>
-				</ActionBar>
 			</px:PXTabItem>
 			<px:PXTabItem Text="Labor">
 				<Template>
