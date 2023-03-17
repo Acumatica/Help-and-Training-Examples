@@ -23,7 +23,7 @@ namespace PhoneRepairShop
         #endregion
 
         #region Description
-        [PXDBString(50, IsUnicode = true, InputMask = "")]
+        [PXDBString(50, IsUnicode = true)]
         [PXDefault]
         [PXUIField(DisplayName = "Description")]
         public virtual string Description { get; set; }

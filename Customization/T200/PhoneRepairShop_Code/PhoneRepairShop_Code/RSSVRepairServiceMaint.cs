@@ -4,26 +4,26 @@ using PX.Data.BQL.Fluent;
 
 namespace PhoneRepairShop
 {
-  public class RSSVRepairServiceMaint : PXGraph<RSSVRepairServiceMaint>
-  {
-
-    protected void _(Events.FieldUpdated<RSSVRepairService, RSSVRepairService.walkInService> e)
+    public class RSSVRepairServiceMaint : PXGraph<RSSVRepairServiceMaint>
     {
-        var row = e.Row;
-        row.PreliminaryCheck = !(row.WalkInService == true);
+
+        protected void _(Events.FieldUpdated<RSSVRepairService, 
+            RSSVRepairService.walkInService> e)
+        {    
+            var row = e.Row;
+            row.PreliminaryCheck = !(row.WalkInService == true);
         }
 
-    protected void _(Events.FieldUpdated<RSSVRepairService, RSSVRepairService.preliminaryCheck> e)
-    {
-        var row = e.Row;
-        row.WalkInService = !(row.PreliminaryCheck == true);
+        protected void _(Events.FieldUpdated<RSSVRepairService,
+            RSSVRepairService.preliminaryCheck> e)
+        {
+            var row = e.Row;
+            row.WalkInService = !(row.PreliminaryCheck == true);
         }
 
-    public SelectFrom<RSSVRepairService>.View RepairService;
-
-    public PXSave<RSSVRepairService> Save;
+        public PXSave<RSSVRepairService> Save;
     public PXCancel<RSSVRepairService> Cancel;
 
-
+    public SelectFrom<RSSVRepairService>.View RepairService;
   }
 }
