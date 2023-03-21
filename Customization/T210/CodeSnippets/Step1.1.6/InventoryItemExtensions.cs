@@ -20,7 +20,7 @@ using SelectParentPostClass = PX.Data.BQL.Fluent.SelectFrom<PX.Objects.IN.INPost
 using System.Collections.Generic;
 using System;
 
-namespace PX.Objects.IN
+namespace PhoneRepairShop
 {
     // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
     public sealed class InventoryItemExt : PXCacheExtension<PX.Objects.IN.InventoryItem>

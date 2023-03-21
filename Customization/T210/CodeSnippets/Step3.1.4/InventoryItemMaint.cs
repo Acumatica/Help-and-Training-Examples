@@ -1,8 +1,9 @@
+using PX.Objects.IN;
 using PX.Data;
 using PhoneRepairShop;
 using PX.Data.BQL.Fluent;
 
-namespace PX.Objects.IN
+namespace PhoneRepairShop
 {
     // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
     public class InventoryItemMaint_Extension : PXGraphExtension<PX.Objects.IN.InventoryItemMaint>

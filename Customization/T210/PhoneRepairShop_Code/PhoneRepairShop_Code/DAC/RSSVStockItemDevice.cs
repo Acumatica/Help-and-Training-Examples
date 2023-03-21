@@ -5,7 +5,7 @@ using PX.Objects.IN;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Device Compatible with Stock Item")]
+    [PXCacheName(Messages.RSSVStockItemDevice)]
     public class RSSVStockItemDevice : IBqlTable
     {
         #region InventoryID

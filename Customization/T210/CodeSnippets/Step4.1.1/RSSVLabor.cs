@@ -5,7 +5,7 @@ using PX.Objects.IN;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Repair Labor")]
+    [PXCacheName(Messages.RSSVLabor)]
     public class RSSVLabor : IBqlTable
     {
         #region ServiceID
