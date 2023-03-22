@@ -3,28 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PX.Common;
 
 namespace PhoneRepairShop
 {
-    [PXLocalizable()]
     public static class Messages
     {
         //DAC names
         public const string RSSVDevice = "Serviced Device";
         public const string RSSVRepairService = "Repair Service";
+        ////////// The added code
         public const string RSSVRepairPrice = "Repair Price";
         public const string RSSVRepairItem = "Repair Item";
-        public const string RSSVStockItemDevice = "Device Compatible with Stock Item";
-        public const string RSSVLabor = "Repair Labor";
-        public const string RSSVWarranty = "Warranty";
-
-        //Messages
-        public const string StockItemIncorrectRepairItemType =
-            "This stock item has a repair item type that differs from {0}.";
-        public const string ItemIsStock = "This item is a stock item.";
-        public const string DefaultWarrantyCanNotBeDeleted =
-            "The default warranty cannot be deleted.";
+        ////////// The end of added code
 
         //Complexity of repair
         public const string High = "High";

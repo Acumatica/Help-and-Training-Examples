@@ -17,14 +17,14 @@ namespace PhoneRepairShop
         public const string RSSVRepairItem = "Repair Item";
         public const string RSSVStockItemDevice = "Device Compatible with Stock Item";
         public const string RSSVLabor = "Repair Labor";
+        ////////// The added code
         public const string RSSVWarranty = "Warranty";
+        ////////// The end of added code
 
         //Messages
         public const string StockItemIncorrectRepairItemType =
             "This stock item has a repair item type that differs from {0}.";
         public const string ItemIsStock = "This item is a stock item.";
-        public const string DefaultWarrantyCanNotBeDeleted =
-            "The default warranty cannot be deleted.";
 
         //Complexity of repair
         public const string High = "High";

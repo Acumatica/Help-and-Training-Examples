@@ -6,7 +6,7 @@ using PX.Data.BQL;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Repair Item")]
+    [PXCacheName(Messages.RSSVRepairItem)]
     public class RSSVRepairItem : IBqlTable
     {
         #region ServiceID

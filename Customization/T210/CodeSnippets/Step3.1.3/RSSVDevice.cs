@@ -7,7 +7,7 @@ using PX.Data;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Serviced Device")]
+    [PXCacheName(Messages.RSSVDevice)]
     ////////// The added code
     [PXPrimaryGraph(typeof(RSSVDeviceMaint))]
     ////////// The end of added code

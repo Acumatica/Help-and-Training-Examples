@@ -5,7 +5,7 @@ using PX.Objects.CT;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Warranty")]
+    [PXCacheName(Messages.RSSVWarranty)]
     public class RSSVWarranty : IBqlTable
     {
         #region ServiceID
