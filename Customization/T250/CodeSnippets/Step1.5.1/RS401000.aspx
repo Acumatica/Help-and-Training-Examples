@@ -45,7 +45,7 @@
           <%-- The added code --%>
           <RowTemplate>
             <px:PXSelector ID="edInvoiceNbr" runat="server"
-                DataField="InvoiceNbr" Enabled="False" AllowEdit="True" />
+                DataField="InvoiceNbr" AllowEdit="True" />
           </RowTemplate>
           <%-- The end of added code --%>
       </px:PXGridLevel>

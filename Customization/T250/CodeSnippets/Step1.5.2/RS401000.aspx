@@ -36,7 +36,7 @@
           <Columns>
               <px:PXGridColumn DataField="OrderType" Width="70" />
               <%-- The modified code --%>
-              <px:PXGridColumn DataField="OrderNbr" Width="72"
+              <px:PXGridColumn DataField="OrderNbr"
                 LinkCommand="ViewOrder" />
               <%-- The end of modified code --%>
               <px:PXGridColumn DataField="Status" Width="140" />
