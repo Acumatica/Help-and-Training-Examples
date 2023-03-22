@@ -4,7 +4,6 @@ using PX.Data;
 using PX.Data.BQL.Fluent;
 using PX.Objects.IN;
 using PX.Objects.CT;
-using static PhoneRepairShop.RSSVWarranty;
 
 namespace PhoneRepairShop
 {
