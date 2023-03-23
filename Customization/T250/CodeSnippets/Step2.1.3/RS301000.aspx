@@ -33,7 +33,7 @@
                  StartColumn="True" ControlSize="M" LabelsWidth="S" ></px:PXLayoutRule>
 		<px:PXNumberEdit runat="server" ID="CstPXNumberEdit12" DataField="OrderTotal" ></px:PXNumberEdit>
 		<px:PXSelector ID="edInvoiceNbr" runat="server" 
-			DataField="InvoiceNbr" Enabled="False" AllowEdit="True" /></Template>
+			DataField="InvoiceNbr" AllowEdit="True" /></Template>
 </px:PXFormView>
 </asp:Content>
 <asp:Content ID="cont3" ContentPlaceHolderID="phG" Runat="Server">
@@ -45,10 +45,10 @@
 						<Levels>
 							<px:PXGridLevel DataMember="RepairItems" >
 								<Columns>
-									<px:PXGridColumn DataField="RepairItemType" Width="70" ></px:PXGridColumn>
-									<px:PXGridColumn CommitChanges="True" DataField="InventoryID" Width="70" ></px:PXGridColumn>
-									<px:PXGridColumn DataField="InventoryID_description" Width="280" ></px:PXGridColumn>
-									<px:PXGridColumn DataField="BasePrice" Width="100" ></px:PXGridColumn></Columns>
+									<px:PXGridColumn DataField="RepairItemType" ></px:PXGridColumn>
+									<px:PXGridColumn CommitChanges="True" DataField="InventoryID" ></px:PXGridColumn>
+									<px:PXGridColumn DataField="InventoryID_description" ></px:PXGridColumn>
+									<px:PXGridColumn DataField="BasePrice" ></px:PXGridColumn></Columns>
 								<RowTemplate>
 									<px:PXLayoutRule runat="server" ID="CstPXLayoutRule21" StartRow="True" ></px:PXLayoutRule>
 									<px:PXLayoutRule ControlSize="M" LabelsWidth="SM" runat="server" ID="CstPXLayoutRule26" StartGroup="True" GroupCaption="Repair Item" ></px:PXLayoutRule>
@@ -74,11 +74,11 @@
 						<Levels>
 							<px:PXGridLevel DataMember="Labor" >
 								<Columns>
-									<px:PXGridColumn DataField="InventoryID" Width="70" ></px:PXGridColumn>
-									<px:PXGridColumn DataField="InventoryID_description" Width="280" ></px:PXGridColumn>
-									<px:PXGridColumn DataField="DefaultPrice" Width="100" ></px:PXGridColumn>
-									<px:PXGridColumn CommitChanges="True" DataField="Quantity" Width="100" ></px:PXGridColumn>
-									<px:PXGridColumn DataField="ExtPrice" Width="100" ></px:PXGridColumn></Columns></px:PXGridLevel></Levels>
+									<px:PXGridColumn DataField="InventoryID" ></px:PXGridColumn>
+									<px:PXGridColumn DataField="InventoryID_description" ></px:PXGridColumn>
+									<px:PXGridColumn DataField="DefaultPrice" ></px:PXGridColumn>
+									<px:PXGridColumn CommitChanges="True" DataField="Quantity" ></px:PXGridColumn>
+									<px:PXGridColumn DataField="ExtPrice" ></px:PXGridColumn></Columns></px:PXGridLevel></Levels>
 						<ActionBar>
 							<CustomItems>
 								<px:PXToolBarButton Text="UpdateLaborPrices">
