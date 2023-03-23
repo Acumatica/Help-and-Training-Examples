@@ -34,20 +34,20 @@
     <Levels>
       <px:PXGridLevel DataMember="DetailsView">
           <Columns>
-              <px:PXGridColumn DataField="OrderType" Width="70" />
+              <px:PXGridColumn DataField="OrderType" />
               <%-- The modified code --%>
-              <px:PXGridColumn DataField="OrderNbr" Width="72"
+              <px:PXGridColumn DataField="OrderNbr"
                 LinkCommand="ViewOrder" />
               <%-- The end of modified code --%>
-              <px:PXGridColumn DataField="Status" Width="140" />
-              <px:PXGridColumn DataField="InvoiceNbr" Width="72" CommitChanges="True" />
-              <px:PXGridColumn DataField="PercentPaid" Width="72" />
-              <px:PXGridColumn DataField="ARInvoice__DueDate" Width="72" />
-              <px:PXGridColumn DataField="ARInvoice__CuryDocBal" Width="100" />
+              <px:PXGridColumn DataField="Status" />
+              <px:PXGridColumn DataField="InvoiceNbr" CommitChanges="True" />
+              <px:PXGridColumn DataField="PercentPaid" />
+              <px:PXGridColumn DataField="ARInvoice__DueDate" />
+              <px:PXGridColumn DataField="ARInvoice__CuryDocBal" />
           </Columns>
           <RowTemplate>
             <px:PXSelector ID="edInvoiceNbr" runat="server"
-                DataField="InvoiceNbr" Enabled="False" AllowEdit="True" />
+                DataField="InvoiceNbr" AllowEdit="True" />
           </RowTemplate>
       </px:PXGridLevel>
     </Levels>

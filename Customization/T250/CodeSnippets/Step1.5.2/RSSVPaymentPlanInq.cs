@@ -123,7 +123,7 @@ namespace PhoneRepairShop
                 var graph = PXGraph.CreateInstance<SOOrderEntry>();
                 // set the current property of the graph
                 graph.Document.Current = graph.Document.
-                  Search<RSSVWorkOrder.orderNbr>(order.OrderNbr);
+                  Search<SOOrder.orderNbr>(order.OrderNbr);
                 // if the order is found by its ID,
                 // throw an exception to open the order in a new tab
                 if (graph.Document.Current != null)

@@ -31,14 +31,14 @@
       <px:PXGridLevel DataMember="DetailsView">
           <Columns>
               <%-- The added code --%>
-              <px:PXGridColumn DataField="OrderType" Width="70" />
+              <px:PXGridColumn DataField="OrderType" />
               <%-- The end of added code --%>
-              <px:PXGridColumn DataField="OrderNbr" Width="72" />
-              <px:PXGridColumn DataField="Status" Width="140" />
-              <px:PXGridColumn DataField="InvoiceNbr" Width="72" />
-              <px:PXGridColumn DataField="PercentPaid" Width="72" />
-              <px:PXGridColumn DataField="ARInvoice__DueDate" Width="72" />
-              <px:PXGridColumn DataField="ARInvoice__CuryDocBal" Width="100" />
+              <px:PXGridColumn DataField="OrderNbr" />
+              <px:PXGridColumn DataField="Status" />
+              <px:PXGridColumn DataField="InvoiceNbr" />
+              <px:PXGridColumn DataField="PercentPaid" />
+              <px:PXGridColumn DataField="ARInvoice__DueDate" />
+              <px:PXGridColumn DataField="ARInvoice__CuryDocBal" />
           </Columns>
       </px:PXGridLevel>
     </Levels>
