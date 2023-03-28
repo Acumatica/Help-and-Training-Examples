@@ -21,6 +21,9 @@ namespace PhoneRepairShop
         public const string RSSVWorkOrder = "Repair Work Order";
         public const string RSSVWorkOrderItem = "Repair Item Included in Repair Work Order";
         public const string RSSVWorkOrderLabor = "Work Order Labor";
+        ////////// The added code
+        public const string RSSVSetup = "Repair Work Order Preferences";
+        ////////// The end of added code
 
         //Messages
         public const string StockItemIncorrectRepairItemType =
@@ -41,7 +44,6 @@ namespace PhoneRepairShop
         public const string BackCover = "Back Cover";
         public const string Motherboard = "Motherboard";
 
-        ////////// The added code
         //Work order statuses
         public const string OnHold = "On Hold";
         public const string PendingPayment = "Pending Payment";
@@ -49,6 +51,13 @@ namespace PhoneRepairShop
         public const string Assigned = "Assigned";
         public const string Completed = "Completed";
         public const string Paid = "Paid";
-        ////////// The end of added code
+
+        public const string QuantityCannotBeNegative =
+            "The value in the Quantity column cannot be negative.";
+        public const string QuantityTooSmall = @"The value in the Quantity column
+            has been corrected to the minimum possible value.";
+        public const string PriorityTooLow =
+            @"The priority must be at least Medium for
+ the repair service that requires preliminary check.";
     }
 }

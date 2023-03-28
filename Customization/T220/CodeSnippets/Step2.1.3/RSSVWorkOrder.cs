@@ -1,12 +1,14 @@
 using System;
 using PX.Data;
 using PX.Objects.AR;
+////////// The added code
 using PX.Objects.CS;
+////////// The end of added code
 using PX.TM;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Repair Work Order")]
+    [PXCacheName(Messages.RSSVWorkOrder)]
     public class RSSVWorkOrder : IBqlTable
     {
         #region OrderNbr

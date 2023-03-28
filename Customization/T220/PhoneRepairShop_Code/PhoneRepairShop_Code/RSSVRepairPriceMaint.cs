@@ -42,9 +42,9 @@ namespace PhoneRepairShop
         #endregion
 
         #region Event Handlers
-        //Update price and repair item type when inventory ID of repair item 
-        //is updated.
-        protected void _(Events.FieldUpdated<RSSVRepairItem, 
+        //Update the price and repair item type when the inventory ID of
+        //the repair item is updated.
+        protected void _(Events.FieldUpdated<RSSVRepairItem,
             RSSVRepairItem.inventoryID> e)
         {
             RSSVRepairItem row = e.Row;
