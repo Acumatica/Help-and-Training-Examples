@@ -12,10 +12,10 @@
   </px:PXDataSource>
 </asp:Content>
 <asp:Content ID="cont2" ContentPlaceHolderID="phF" Runat="Server">
+  <%-- The modified code --%>
   <px:PXFormView ID="form" runat="server" DataSourceID="ds"
     DataMember="WorkOrders" Width="100%" Height="" AllowAutoHide="false">
     <Template>
-      <%-- The added code --%>
       <px:PXLayoutRule LabelsWidth="S" ControlSize="SM" ID="PXLayoutRule1"
         runat="server" StartRow="True" />
       <px:PXSelector runat="server" ID="CstPXSelector11" DataField="OrderNbr" />
@@ -39,8 +39,8 @@
       <px:PXNumberEdit runat="server" ID="CstPXNumberEdit12" DataField="OrderTotal" />
       <px:PXTextEdit runat="server" ID="CstPXTextEdit10" DataField="InvoiceNbr" />
     </Template>
-    <%-- The end of added code --%>
   </px:PXFormView>
+  <%-- The end of modified code --%>
 </asp:Content>
 <asp:Content ID="cont3" ContentPlaceHolderID="phG" Runat="Server">
   <px:PXTab ID="tab" runat="server" Width="100%" Height="150px" DataSourceID="ds" AllowAutoHide="false" DataMember="RepairItems">

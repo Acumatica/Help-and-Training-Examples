@@ -2,12 +2,11 @@ using System;
 using PX.Data;
 using PX.Objects.AR;
 using PX.TM;
-using static PX.Data.PXGenericInqGrph;
 
 namespace PhoneRepairShop
 {
     [Serializable]
-    [PXCacheName("RSSVSetup")]
+    [PXCacheName(Messages.RSSVSetup)]
     public class RSSVSetup : IBqlTable
     {
         #region NumberingID
@@ -81,15 +80,14 @@ namespace PhoneRepairShop
 
         #region Tstamp
         [PXDBTimestamp()]
-        [PXUIField(DisplayName = "Tstamp")]
         public virtual byte[] Tstamp { get; set; }
         public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
         #endregion
 
-        #region Noteid
+        #region NoteID
         [PXNote()]
-        public virtual Guid? Noteid { get; set; }
-        public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
+        public virtual Guid? NoteID { get; set; }
+        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
     }
 }

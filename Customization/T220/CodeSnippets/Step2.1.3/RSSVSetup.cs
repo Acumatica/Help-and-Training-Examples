@@ -5,11 +5,10 @@ using PX.TM;
 ////////// The added code
 using PX.Objects.CS;
 ////////// The end of added code
-using static PX.Data.PXGenericInqGrph;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Repair Work Order Preferences")]
+    [PXCacheName(Messages.RSSVSetup)]
     [PXPrimaryGraph(typeof(RSSVSetupMaint))]
     public class RSSVSetup : IBqlTable
     {
@@ -89,15 +88,14 @@ namespace PhoneRepairShop
 
         #region Tstamp
         [PXDBTimestamp()]
-        [PXUIField(DisplayName = "Tstamp")]
         public virtual byte[] Tstamp { get; set; }
         public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
         #endregion
 
-        #region Noteid
+        #region NoteID
         [PXNote()]
-        public virtual Guid? Noteid { get; set; }
-        public abstract class noteid : PX.Data.BQL.BqlGuid.Field<noteid> { }
+        public virtual Guid? NoteID { get; set; }
+        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
     }
 }

@@ -5,7 +5,7 @@ using PX.Objects.IN;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Work Order Labor")]
+    [PXCacheName(Messages.RSSVWorkOrderLabor)]
     public class RSSVWorkOrderLabor : IBqlTable
     {
         #region OrderNbr

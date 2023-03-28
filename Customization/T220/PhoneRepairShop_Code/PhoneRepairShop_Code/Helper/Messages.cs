@@ -7,9 +7,22 @@ using PX.Common;
 
 namespace PhoneRepairShop
 {
-    [PXLocalizable]
+    [PXLocalizable()]
     public static class Messages
     {
+        //DAC names
+        public const string RSSVDevice = "Serviced Device";
+        public const string RSSVRepairService = "Repair Service";
+        public const string RSSVRepairPrice = "Repair Price";
+        public const string RSSVRepairItem = "Repair Item";
+        public const string RSSVStockItemDevice = "Device Compatible with Stock Item";
+        public const string RSSVLabor = "Repair Labor";
+        public const string RSSVWarranty = "Warranty";
+        public const string RSSVWorkOrder = "Repair Work Order";
+        public const string RSSVWorkOrderItem = "Repair Item Included in Repair Work Order";
+        public const string RSSVWorkOrderLabor = "Work Order Labor";
+        public const string RSSVSetup = "Repair Work Order Preferences";
+
         //Complexity of repair and work order priorities
         public const string High = "High";
         public const string Medium = "Medium";

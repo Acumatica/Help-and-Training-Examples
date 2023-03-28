@@ -3,7 +3,7 @@ using PX.Data;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Repair Work Order")]
+    [PXCacheName(Messages.RSSVWorkOrder)]
     public class RSSVWorkOrder : IBqlTable
     {
         #region OrderNbr

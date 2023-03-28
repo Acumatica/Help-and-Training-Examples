@@ -18,9 +18,11 @@ namespace PhoneRepairShop
         public const string RSSVStockItemDevice = "Device Compatible with Stock Item";
         public const string RSSVLabor = "Repair Labor";
         public const string RSSVWarranty = "Warranty";
+        ////////// The added code
         public const string RSSVWorkOrder = "Repair Work Order";
         public const string RSSVWorkOrderItem = "Repair Item Included in Repair Work Order";
         public const string RSSVWorkOrderLabor = "Work Order Labor";
+        ////////// The end of added code
 
         //Messages
         public const string StockItemIncorrectRepairItemType =
@@ -40,15 +42,5 @@ namespace PhoneRepairShop
         public const string ScreenCover = "Screen Cover";
         public const string BackCover = "Back Cover";
         public const string Motherboard = "Motherboard";
-
-        ////////// The added code
-        //Work order statuses
-        public const string OnHold = "On Hold";
-        public const string PendingPayment = "Pending Payment";
-        public const string ReadyForAssignment = "Ready for Assignment";
-        public const string Assigned = "Assigned";
-        public const string Completed = "Completed";
-        public const string Paid = "Paid";
-        ////////// The end of added code
     }
 }
