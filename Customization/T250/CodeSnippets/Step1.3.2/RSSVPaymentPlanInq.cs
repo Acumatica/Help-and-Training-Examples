@@ -30,8 +30,7 @@ namespace PhoneRepairShop
         ////////// The added code
         protected virtual IEnumerable detailsView()
         {
-            foreach (PXResult<RSSVWorkOrderToPay, ARInvoice> order in
-                SelectFrom<RSSVWorkOrderToPay>.InnerJoin<ARInvoice>.
+			var workOrdersQuery = SelectFrom<RSSVWorkOrderToPay>.InnerJoin<ARInvoice>.
                 On<ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
                 Where<RSSVWorkOrderToPay.status.IsNotEqual<
                     RSSVWorkOrderWorkflow.States.paid>.
@@ -41,7 +40,9 @@ namespace PhoneRepairShop
                     And<RSSVWorkOrderToPayFilter.serviceID.FromCurrent.IsNull.
                     Or<RSSVWorkOrderToPay.serviceID.IsEqual<
                         RSSVWorkOrderToPayFilter.serviceID.FromCurrent>>>>.
-                        View.Select(this))
+                        View.ReadOnly.Select(this);
+						
+			foreach (PXResult<RSSVWorkOrderToPay, ARInvoice> order in workOrdersQuery)
             {
                 yield return order;
             }
@@ -51,7 +52,8 @@ namespace PhoneRepairShop
                 Where<RSSVWorkOrderToPayFilter.customerID.FromCurrent.IsNull.
                 Or<SOOrderShipment.customerID.IsEqual<
                     RSSVWorkOrderToPayFilter.customerID.FromCurrent>>>.
-                    View.Select(this);
+                    View.ReadOnly.Select(this);
+					
             foreach (PXResult<SOOrderShipment, ARInvoice> order in sorders)
             {
                 SOOrderShipment soshipment = order;
@@ -88,7 +90,7 @@ namespace PhoneRepairShop
         }
 
         ////////// The added code
-         public static RSSVWorkOrderToPay ToRSSVWorkOrderToPay
+        public static RSSVWorkOrderToPay ToRSSVWorkOrderToPay
             (SOOrderShipment shipment) =>
         new RSSVWorkOrderToPay
             {
