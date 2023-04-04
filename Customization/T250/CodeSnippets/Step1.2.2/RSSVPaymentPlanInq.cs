@@ -28,13 +28,7 @@ namespace PhoneRepairShop
 
         public PXCancel<RSSVWorkOrderToPayFilter> Cancel;
 
-        public override bool IsDirty
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool IsDirty => false;
         ////////// The end of modified code
 
         protected virtual void _(Events.FieldSelecting<RSSVWorkOrderToPay,

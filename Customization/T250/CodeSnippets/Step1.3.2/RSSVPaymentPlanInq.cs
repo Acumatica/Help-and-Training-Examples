@@ -30,33 +30,37 @@ namespace PhoneRepairShop
         ////////// The added code
         protected virtual IEnumerable detailsView()
         {
-            foreach (PXResult<RSSVWorkOrderToPay, ARInvoice> order in
+            var workOrdersQuery = 
                 SelectFrom<RSSVWorkOrderToPay>.InnerJoin<ARInvoice>.
-                On<ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
+                   On<ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
                 Where<RSSVWorkOrderToPay.status.IsNotEqual<
-                    RSSVWorkOrderWorkflow.States.paid>.
-                And<RSSVWorkOrderToPayFilter.customerID.FromCurrent.IsNull.
-                Or<RSSVWorkOrderToPay.customerID.IsEqual<
-                    RSSVWorkOrderToPayFilter.customerID.FromCurrent>>>.
-                    And<RSSVWorkOrderToPayFilter.serviceID.FromCurrent.IsNull.
-                    Or<RSSVWorkOrderToPay.serviceID.IsEqual<
+                     RSSVWorkOrderWorkflow.States.paid>.
+                   And<RSSVWorkOrderToPayFilter.customerID.FromCurrent.IsNull.
+                   Or<RSSVWorkOrderToPay.customerID.IsEqual<
+                       RSSVWorkOrderToPayFilter.customerID.FromCurrent>>>.
+                   And<RSSVWorkOrderToPayFilter.serviceID.FromCurrent.IsNull.
+                   Or<RSSVWorkOrderToPay.serviceID.IsEqual<
                         RSSVWorkOrderToPayFilter.serviceID.FromCurrent>>>>.
-                        View.Select(this))
+                View.ReadOnly.Select(this);
+						
+			foreach (PXResult<RSSVWorkOrderToPay, ARInvoice> order in workOrdersQuery)
             {
                 yield return order;
             }
 
-            var sorders = SelectFrom<SOOrderShipment>.InnerJoin<ARInvoice>.
-                On<ARInvoice.refNbr.IsEqual<SOOrderShipment.invoiceNbr>>.
+            var sorders = 
+                SelectFrom<SOOrderShipment>.InnerJoin<ARInvoice>.
+                  On<ARInvoice.refNbr.IsEqual<SOOrderShipment.invoiceNbr>>.
                 Where<RSSVWorkOrderToPayFilter.customerID.FromCurrent.IsNull.
                 Or<SOOrderShipment.customerID.IsEqual<
                     RSSVWorkOrderToPayFilter.customerID.FromCurrent>>>.
-                    View.Select(this);
+                View.ReadOnly.Select(this);
+					
             foreach (PXResult<SOOrderShipment, ARInvoice> order in sorders)
             {
                 SOOrderShipment soshipment = order;
                 ARInvoice invoice = order;
-                RSSVWorkOrderToPay workOrder = RSSVWorkOrderToPay(soshipment);
+                RSSVWorkOrderToPay workOrder = ToRSSVWorkOrderToPay(soshipment);
                 workOrder.OrderType = OrderTypeConstants.SalesOrder;
                 var result = new PXResult<RSSVWorkOrderToPay, ARInvoice>(
                     workOrder, invoice);
@@ -69,13 +73,7 @@ namespace PhoneRepairShop
 
         public PXCancel<RSSVWorkOrderToPayFilter> Cancel;
 
-        public override bool IsDirty
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool IsDirty => false;
 
         protected virtual void _(Events.FieldSelecting<RSSVWorkOrderToPay,
             RSSVWorkOrderToPay.percentPaid> e)
@@ -94,14 +92,13 @@ namespace PhoneRepairShop
         }
 
         ////////// The added code
-        public static RSSVWorkOrderToPay RSSVWorkOrderToPay
-            (SOOrderShipment shipment)
+        public static RSSVWorkOrderToPay ToRSSVWorkOrderToPay
+            (SOOrderShipment shipment) =>
+        new RSSVWorkOrderToPay
         {
-            RSSVWorkOrderToPay ret = new RSSVWorkOrderToPay();
-            ret.OrderNbr = shipment.OrderNbr;
-            ret.InvoiceNbr = shipment.InvoiceNbr;
-            return ret;
-        }
+            OrderNbr = shipment.OrderNbr,
+            InvoiceNbr = shipment.InvoiceNbr
+        };
         ////////// The end of added code
     }
 

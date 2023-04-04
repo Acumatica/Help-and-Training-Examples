@@ -53,7 +53,7 @@ namespace PhoneRepairShop
             {
                 SOOrderShipment soshipment = order;
                 ARInvoice invoice = order;
-                RSSVWorkOrderToPay workOrder = RSSVWorkOrderToPay(soshipment);
+                RSSVWorkOrderToPay workOrder = ToRSSVWorkOrderToPay(soshipment);
                 workOrder.OrderType = OrderTypeConstants.SalesOrder;
                 var result = new PXResult<RSSVWorkOrderToPay, ARInvoice>(
                     workOrder, invoice);
@@ -65,13 +65,7 @@ namespace PhoneRepairShop
 
         public PXCancel<RSSVWorkOrderToPayFilter> Cancel;
 
-        public override bool IsDirty
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool IsDirty => false;
 
         protected virtual void _(Events.FieldSelecting<RSSVWorkOrderToPay,
             RSSVWorkOrderToPay.percentPaid> e)
@@ -89,14 +83,13 @@ namespace PhoneRepairShop
                 order.OrderTotal * 100;
         }
 
-        public static RSSVWorkOrderToPay RSSVWorkOrderToPay
-            (SOOrderShipment shipment)
-        {
-            RSSVWorkOrderToPay ret = new RSSVWorkOrderToPay();
-            ret.OrderNbr = shipment.OrderNbr;
-            ret.InvoiceNbr = shipment.InvoiceNbr;
-            return ret;
-        }
+         public static RSSVWorkOrderToPay ToRSSVWorkOrderToPay
+            (SOOrderShipment shipment) =>
+        new RSSVWorkOrderToPay
+            {
+                OrderNbr = shipment.OrderNbr,
+                InvoiceNbr = shipment.InvoiceNbr
+            };
     }
 
     [PXHidden]
