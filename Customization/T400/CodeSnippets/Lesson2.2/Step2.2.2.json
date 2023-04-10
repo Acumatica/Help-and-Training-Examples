@@ -1,0 +1,8 @@
+add screen GI000023 {
+  add container "Result" {
+    add field "Name"
+    add field "Subject"
+    add field "Status"
+    add field "Type"
+  }
+}

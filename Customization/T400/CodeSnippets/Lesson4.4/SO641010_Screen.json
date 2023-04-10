@@ -1,0 +1,3 @@
+add screen SO641010 {
+  type = Report
+}
