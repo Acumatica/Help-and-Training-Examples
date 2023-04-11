@@ -2,16 +2,16 @@
     <Actions ScreenID="PM301000">
         <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="activate" ActionType="G" After="Last" PlacementInCategory="0" BatchMode="False" MenuFolderType="Processing" WindowMode="S" ExposedToMobile="False">
             <StateActionFields>
-                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Hold" ActionName="activate" IsFromScheme="True" Value="False" StateActionFieldLineNbr="0" />
-                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="IsCompleted" ActionName="activate" IsFromScheme="True" Value="False" StateActionFieldLineNbr="1" />
-                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="IsCancelled" ActionName="activate" IsFromScheme="True" Value="False" StateActionFieldLineNbr="2" />
+                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="HOLD" ActionName="activate" IsFromScheme="True" Value="False" StateActionFieldLineNbr="0" />
+                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="ISCOMPLETED" ActionName="activate" IsFromScheme="True" Value="False" StateActionFieldLineNbr="1" />
+                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="ISCANCELLED" ActionName="activate" IsFromScheme="True" Value="False" StateActionFieldLineNbr="2" />
             </StateActionFields>
             <StateActionParams />
         </Action>
         <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="hold" ActionType="G" After="activate" PlacementInCategory="0" BatchMode="False" MenuFolderType="Processing" WindowMode="S" ExposedToMobile="False">
             <StateActionFields>
-                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Hold" ActionName="hold" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
-                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Approved" ActionName="hold" IsFromScheme="True" Value="False" StateActionFieldLineNbr="1" />
+                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="HOLD" ActionName="hold" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
+                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="APPROVED" ActionName="hold" IsFromScheme="True" Value="False" StateActionFieldLineNbr="1" />
             </StateActionFields>
             <StateActionParams />
         </Action>
@@ -21,14 +21,14 @@
         </Action>
         <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="suspend" ActionType="G" After="complete" PlacementInCategory="0" BatchMode="False" MenuFolderType="Processing" WindowMode="S" ExposedToMobile="False">
             <StateActionFields>
-                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="IsActive" ActionName="suspend" IsFromScheme="True" Value="False" StateActionFieldLineNbr="0" />
+                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="ISACTIVE" ActionName="suspend" IsFromScheme="True" Value="False" StateActionFieldLineNbr="0" />
             </StateActionFields>
             <StateActionParams />
         </Action>
         <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="cancelProject" ActionType="G" After="suspend" PlacementInCategory="0" BatchMode="False" MenuFolderType="Processing" WindowMode="S" ExposedToMobile="False">
             <StateActionFields>
-                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="IsActive" ActionName="cancelProject" IsFromScheme="True" Value="False" StateActionFieldLineNbr="0" />
-                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="IsCancelled" ActionName="cancelProject" IsFromScheme="True" Value="True" StateActionFieldLineNbr="1" />
+                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="ISACTIVE" ActionName="cancelProject" IsFromScheme="True" Value="False" StateActionFieldLineNbr="0" />
+                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="ISCANCELLED" ActionName="cancelProject" IsFromScheme="True" Value="True" StateActionFieldLineNbr="1" />
             </StateActionFields>
             <StateActionParams />
         </Action>
@@ -120,15 +120,19 @@
         </Action>
         <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="approve" ActionType="G" After="activate" PlacementInCategory="0" AfterInMenu="activate" BatchMode="False" MenuFolderType="Approval" WindowMode="S" HideCondition="c7766c04-d5df-a19b-ae27-4a1d2e1c23f8" ExposedToMobile="False">
             <StateActionFields>
-                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Approved" ActionName="approve" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
-                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="IsActive" ActionName="approve" IsFromScheme="True" Value="True" StateActionFieldLineNbr="1" />
+                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="APPROVED" ActionName="approve" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
+                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="ISACTIVE" ActionName="approve" IsFromScheme="True" Value="True" StateActionFieldLineNbr="1" />
             </StateActionFields>
             <StateActionParams />
         </Action>
         <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="reject" ActionType="G" After="approve" PlacementInCategory="0" AfterInMenu="approve" BatchMode="False" MenuFolderType="Approval" WindowMode="S" HideCondition="c7766c04-d5df-a19b-ae27-4a1d2e1c23f8" ExposedToMobile="False">
             <StateActionFields>
-                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Hold" ActionName="reject" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
+                <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="HOLD" ActionName="reject" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
             </StateActionFields>
+            <StateActionParams />
+        </Action>
+        <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="ReassignApproval" ActionType="G" After="reject" PlacementInCategory="0" BatchMode="False" MenuFolderType="Approval" WindowMode="S" HideCondition="c7766c04-d5df-a19b-ae27-4a1d2e1c23f8" ExposedToMobile="False">
+            <StateActionFields />
             <StateActionParams />
         </Action>
         <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="createChangeRequest" ActionType="G" After="validateAddresses" PlacementInCategory="0" AfterInMenu="validateAddresses" BatchMode="False" MenuFolderType="Change Management" WindowMode="S" ExposedToMobile="False">

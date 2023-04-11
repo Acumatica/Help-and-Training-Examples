@@ -1,1 +1,0 @@
-﻿<MobileSiteMap ScreenID="GI000008" Script="add screen GI000008 {&#xD;&#xA;  add container &quot;Result&quot; {&#xD;&#xA;    add field &quot;CustomerID&quot;&#xD;&#xA;    add field &quot;InvoiceDate&quot;&#xD;&#xA;    add field &quot;ReferenceNbrARInvoiceRefNbr&quot;&#xD;&#xA;    add field &quot;InventoryID&quot;&#xD;&#xA;  }&#xD;&#xA;}" Type="add" />

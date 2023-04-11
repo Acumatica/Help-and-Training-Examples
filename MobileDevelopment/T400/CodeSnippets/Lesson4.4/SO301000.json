@@ -15,7 +15,6 @@ update screen SO301000 {
       }
     }
     
-    
     attachments {
       imageAdjustmentPreset = Receipt
     }

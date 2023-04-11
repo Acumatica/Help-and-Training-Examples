@@ -1,5 +1,0 @@
-update sitemap {
-  add item "GI000023" {
-    displayName = "Sales Activities"
-  }
-}
