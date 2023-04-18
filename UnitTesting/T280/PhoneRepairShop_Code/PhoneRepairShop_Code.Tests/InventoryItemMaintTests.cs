@@ -4,6 +4,7 @@ using PX.Tests.Unit;
 using PX.Objects.IN;
 using Autofac;
 using PX.Objects.CM.Extensions;
+using PhoneRepairShop;
 
 namespace PhoneRepairShop_Code.Tests
 {
