@@ -6,7 +6,7 @@ using PX.Objects.CS;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Repair Work Order Preferences")]
+    [PXCacheName(Messages.RSSVSetup)]
     [PXPrimaryGraph(typeof(RSSVSetupMaint))]
     public class RSSVSetup : IBqlTable
     {
