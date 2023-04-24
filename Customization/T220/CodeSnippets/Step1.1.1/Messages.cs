@@ -20,7 +20,8 @@ namespace PhoneRepairShop
         public const string RSSVWarranty = "Warranty";
         ////////// The added code
         public const string RSSVWorkOrder = "Repair Work Order";
-        public const string RSSVWorkOrderItem = "Repair Item Included in Repair Work Order";
+        public const string RSSVWorkOrderItem = 
+            "Repair Item Included in Repair Work Order";
         public const string RSSVWorkOrderLabor = "Work Order Labor";
         ////////// The end of added code
 

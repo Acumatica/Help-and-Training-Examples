@@ -61,8 +61,10 @@
     <px:PXLayoutRule ControlSize="M" LabelsWidth="SM" runat="server"
       ID="CstPXLayoutRule25" StartGroup="True" GroupCaption="Repair Item" />
     <px:PXDropDown runat="server" ID="CstPXDropDown23" DataField="RepairItemType" />
-    <px:PXSegmentMask runat="server" ID="CstPXSegmentMask21" DataField="InventoryID" />
-    <px:PXTextEdit runat="server" ID="CstPXTextEdit22" DataField="InventoryID_description" />
+    <px:PXSegmentMask runat="server" ID="CstPXSegmentMask21" 
+      DataField="InventoryID" />
+    <px:PXTextEdit runat="server" ID="CstPXTextEdit22" 
+      DataField="InventoryID_description" />
     <px:PXLayoutRule StartColumn="True" LabelsWidth="S" GroupCaption="Price Info"
       runat="server" ID="CstPXLayoutRule24" StartGroup="True" />
     <px:PXNumberEdit runat="server" ID="CstPXNumberEdit20" DataField="BasePrice" />

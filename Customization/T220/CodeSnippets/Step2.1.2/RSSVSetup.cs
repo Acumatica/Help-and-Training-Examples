@@ -5,10 +5,11 @@ using PX.TM;
 
 namespace PhoneRepairShop
 {
-    ////////// The modified code: class attributes
+    ////////// The modified code
     [PXCacheName(Messages.RSSVSetup)]
     [PXPrimaryGraph(typeof(RSSVSetupMaint))]
     public class RSSVSetup : IBqlTable
+    ////////// The end of modified code
     {
         #region NumberingID
         [PXDBString(10, IsUnicode = true, InputMask = "")]

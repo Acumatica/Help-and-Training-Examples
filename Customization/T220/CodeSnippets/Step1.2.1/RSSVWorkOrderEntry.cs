@@ -32,7 +32,8 @@ namespace PhoneRepairShop
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
         {
             if (WorkOrders.Cache.GetStatus(e.Row) != PXEntryStatus.Inserted ||
-                e.Cache.ObjectsEqual<RSSVWorkOrder.serviceID, RSSVWorkOrder.deviceID>(e.Row, e.OldRow))
+                e.Cache.ObjectsEqual<RSSVWorkOrder.serviceID, 
+                    RSSVWorkOrder.deviceID>(e.Row, e.OldRow))
                 return;
 
             if (e.Row.ServiceID == null || e.Row.DeviceID == null ||
@@ -42,8 +43,10 @@ namespace PhoneRepairShop
 
             //Retrieve the default repair items
             var repairItems = SelectFrom<RSSVRepairItem>.
-                Where<RSSVRepairItem.serviceID.IsEqual<RSSVWorkOrder.serviceID.FromCurrent>.
-                    And<RSSVRepairItem.deviceID.IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>>
+                Where<RSSVRepairItem.serviceID.
+                    IsEqual<RSSVWorkOrder.serviceID.FromCurrent>.
+                And<RSSVRepairItem.deviceID.
+                    IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>>
                 .View.Select(this);
             //Insert default repair items
             foreach (RSSVRepairItem item in repairItems)
@@ -57,8 +60,10 @@ namespace PhoneRepairShop
 
             //Retrieve the default labor items
             var laborItems = SelectFrom<RSSVLabor>.
-                Where<RSSVLabor.serviceID.IsEqual<RSSVWorkOrder.serviceID.FromCurrent>.
-                    And<RSSVLabor.deviceID.IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>>
+                Where<RSSVLabor.serviceID.
+                    IsEqual<RSSVWorkOrder.serviceID.FromCurrent>.
+                And<RSSVLabor.deviceID.
+                    IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>>
                 .View.Select(this);
             //Insert the default labor items
             foreach (RSSVLabor item in laborItems)
