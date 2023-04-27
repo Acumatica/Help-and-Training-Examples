@@ -74,7 +74,7 @@ namespace PhoneRepairShop.Workflows
             var context = config.GetScreenConfigurationContext<RSSVWorkOrderEntry,
                 RSSVWorkOrder>();
 			
-            ///////// The added line
+            // Create an instance of the Conditions class
             var conditions = context.Conditions.GetPack<Conditions>();
 
             #region Categories

@@ -66,13 +66,13 @@ namespace PhoneRepairShop.Workflows
               Where<Selector<RSSVWorkOrder.serviceID, RSSVRepairService.prepayment>,
               Equal<False>>>());
         }
-
+		////////// The modified code
         public override void Configure(PXScreenConfiguration config)
         {
             var context = config.GetScreenConfigurationContext<RSSVWorkOrderEntry,
                 RSSVWorkOrder>();
 
-            ////////// The added code
+            // Define the Assign dialog box
             var formAssign = context.Forms.Create("FormAssign", form =>
                 form.Prompt("Assign").WithFields(fields =>
                 {
@@ -81,7 +81,7 @@ namespace PhoneRepairShop.Workflows
                         .IsRequired()
                         .Prompt("Assignee"));
                 }));
-			////////// The end of added code
+		////////// The end of modified code
 
             var conditions = context.Conditions.GetPack<Conditions>();
 
