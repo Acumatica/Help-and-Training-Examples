@@ -92,7 +92,6 @@ add screen SO303000 {
     add field "TaxableAmount"
     add field "TaxAmount"
   }
-    
   add container "AddOrder" {
     type = SelectionActionList
     visible = False
