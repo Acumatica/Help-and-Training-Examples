@@ -130,6 +130,7 @@ namespace PhoneRepairShop.Workflows
                                       .WithConnotation(ActionConnotation.Success));
                               });
                         });
+						////////// The modified code
                         fss.Add<States.pendingPayment>(flowState =>
                         {
                             return flowState
@@ -150,13 +151,13 @@ namespace PhoneRepairShop.Workflows
                                   .IsDuplicatedInToolbar()
                                   .WithConnotation(ActionConnotation.Success));
                               })
-                              ////////// The added code
+							  // Add the OnInvoiceGotPrepaid event handler
                               .WithEventHandlers(handlers =>
                               {
                                   handlers.Add(g => g.OnInvoiceGotPrepaid);
                               });
-                              ////////// The end of added code
                         });
+						////////// The end of modified code
                         fss.Add<States.assigned>(flowState =>
                         {
                             return flowState

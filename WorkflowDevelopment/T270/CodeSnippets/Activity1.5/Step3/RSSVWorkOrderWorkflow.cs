@@ -120,9 +120,9 @@ namespace PhoneRepairShop.Workflows
                               }); ;
                         });
                     })
+					////////// The modified code
                     .WithTransitions(transitions =>
                     {
-                        ////////// The modified code
                         transitions.AddGroupFrom<States.onHold>(ts =>
                         {
                             ts.Add(t => t.To<States.readyForAssignment>()
@@ -132,8 +132,8 @@ namespace PhoneRepairShop.Workflows
                                 .IsTriggeredOn(g => g.ReleaseFromHold)
                                 .When(conditions.RequiresPrepayment));
                         });
-                        ////////// The end of modified code
                     })
+					////////// The end of modified code
                 )
                 .WithCategories(categories =>
                 {

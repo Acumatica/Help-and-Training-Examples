@@ -142,6 +142,7 @@ namespace PhoneRepairShop.Workflows
                                 actions.Add(g => g.PutOnHold, a => a.IsDuplicatedInToolbar());
                               });
                         });
+						////////// The modified code
                         fss.Add<States.assigned>(flowState =>
                         {
                             return flowState
@@ -154,15 +155,15 @@ namespace PhoneRepairShop.Workflows
                                     states.AddField<RSSVWorkOrder.deviceID>(state 
                                       => state.IsDisabled());
                                 })
-                                ////////// The added code
+                            // Add the action to the configuration of the Assigned state
                                 .WithActions(actions =>
                                 {
                                     actions.Add(g => g.Complete, a => a
                                       .IsDuplicatedInToolbar()
                                       .WithConnotation(ActionConnotation.Success));
                                 });
-                                ////////// The end of added code
                         });
+						////////// The end of modified code
                     })
                     .WithTransitions(transitions =>
                     {
