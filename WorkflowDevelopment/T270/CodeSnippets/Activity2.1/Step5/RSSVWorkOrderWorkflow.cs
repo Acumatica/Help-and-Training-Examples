@@ -169,6 +169,7 @@ namespace PhoneRepairShop.Workflows
                                       .WithConnotation(ActionConnotation.Success));
                                 });
                         });
+						////////// The modified code
                         fss.Add<States.completed>(flowState =>
                         {
                             return flowState
@@ -187,13 +188,13 @@ namespace PhoneRepairShop.Workflows
                                     .IsDuplicatedInToolbar()
                                     .WithConnotation(ActionConnotation.Success));
                                 })
-                                ////////// The added code
+                                // Add the OnCloseDocument event handler
                                 .WithEventHandlers(handlers =>
                                 {
                                     handlers.Add(g => g.OnCloseDocument);
                                 });
-                                ////////// The end of added code
                         });
+						////////// The end of modified code
                         fss.Add<States.paid>(flowState =>
                         {
                             return flowState

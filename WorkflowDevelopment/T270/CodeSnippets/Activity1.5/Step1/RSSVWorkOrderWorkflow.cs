@@ -68,7 +68,8 @@ namespace PhoneRepairShop.Workflows
               Equal<False>>>());
         }
 		////////// The end of added code
-
+		
+		////////// The modified code
         public override void Configure(PXScreenConfiguration config)
         {
             var context = config.GetScreenConfigurationContext<RSSVWorkOrderEntry,
@@ -76,7 +77,8 @@ namespace PhoneRepairShop.Workflows
 			
             // Create an instance of the Conditions class
             var conditions = context.Conditions.GetPack<Conditions>();
-
+        ////////// The end of modified code
+		
             #region Categories
             var commonCategories = CommonActionCategories.Get(context);
             var processingCategory = commonCategories.Processing;
