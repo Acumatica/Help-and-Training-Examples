@@ -30,6 +30,26 @@ add screen SO303000 {
       add field "FinancialLinkToGL#Branch"
       add field "FinancialLinkToGL#ARSubaccount"
     }
+    
+    add layout "Other" {
+      layout = Tab
+      add field "VATExemptTotal"
+      add field "VATTaxableTotal"
+    }
+    
+    add layout "Details" {
+      layout = DataTab
+      add containerLink "Details" {
+        control = "ListItem"
+      }
+    }
+    
+    add layout "Taxes" {
+      layout = DataTab
+      add containerLink "Taxes" {
+        control = "ListItem"
+      }
+    }
         
     add recordAction "Save" {
       behavior = Save
@@ -54,6 +74,12 @@ add screen SO303000 {
     add field "UnitPrice"
     add field "Account"
     add field "Subaccount"
+    
+    add containerAction "SelectShipment" {
+      behavior = Void
+      redirect = True
+      redirectToContainer = "AddOrder$List"
+    }
   }
   add container "Taxes" {
     add field "TaxID"
@@ -61,4 +87,20 @@ add screen SO303000 {
     add field "TaxableAmount"
     add field "TaxAmount"
   }
+    
+  add container "AddOrder" {
+    type = SelectionActionList
+    visible = False
+    listActionsToExpand = 1
+    add field "Selected" {
+      special = ListSelection
+    }
+    add field "OrderType"
+    add field "OrderNbr"
+    add field "Location"
+    add listAction "AddShipment" {
+      icon = "system://Check"
+      behavior = Void
+    }
+  }  
 }

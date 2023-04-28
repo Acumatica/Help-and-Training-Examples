@@ -1,0 +1,40 @@
+update screen SO301000 {
+  update container "OrderSummary" {
+    add recordAction "QuickProcess" {
+      redirect = true
+      redirectToDialog = "QuickProcessD"
+    }
+  }
+  add dialog QuickProcessD {
+    add dialogAction "QPOK" {
+      CloseDialog = True
+      DialogResult = OK
+    }
+    openAs = Form
+    add container "ProcessOrder" {
+      includeDialogActions = true
+      add field "WarehouseID"
+      add field "ShipmentDate"
+      add field "CustomDate"
+      add field "ProcessOrderAvailability#GreenStatus"
+      add field "ProcessOrderAvailability#YellowStatus"
+      add field "ProcessOrderAvailability#RedStatus"
+      add field "ProcessOrderAvailability#AvailabilityMessage"
+      add field "ProcessOrderShipping#CreateShipment"
+      add field "ProcessOrderShipping#PrintPickList"
+      add field "ProcessOrderShipping#ConfirmShipment"
+      add field "ProcessOrderShipping#PrintLabels"
+      add field "ProcessOrderShipping#PrintShipmentConfirmation"
+      add field "ProcessOrderShipping#UpdateIN"
+      add field "ProcessOrderInvoicing#PrepareInvoicePrepareInvoiceFromShipment"
+      add field "ProcessOrderInvoicing#PrepareInvoicePrepareInvoice"
+      add field "ProcessOrderInvoicing#PrintInvoice"
+      add field "ProcessOrderInvoicing#EmailInvoice"
+      add field "ProcessOrderInvoicing#ReleaseInvoice"
+      add recordAction "QPOK" {
+        icon = "system://Check"
+        syncLongOperation = True
+      }
+    }    
+  }
+}
