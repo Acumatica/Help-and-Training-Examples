@@ -7,7 +7,7 @@ using PX.Data;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Serviced Device")]
+    [PXCacheName(Messages.RSSVDevice)]
     [PXPrimaryGraph(typeof(RSSVDeviceMaint))]
     public class RSSVDevice : IBqlTable
     {
