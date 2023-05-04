@@ -9,14 +9,16 @@ using PX.Objects.AR;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Invoice and Payment of the Repair Work Order")]
-    [PXProjection(typeof(SelectFrom<PX.Objects.AR.ARInvoice>.
-        InnerJoin<ARAdjust>.On<ARAdjust.adjdRefNbr.IsEqual<ARInvoice.refNbr>.
-            And<ARAdjust.adjdDocType.IsEqual<ARInvoice.docType>>>.
+    [PXCacheName(Messages.RSSVWorkOrderPayment)]
+    [PXProjection(typeof(
+      SelectFrom<ARInvoice>.
+        InnerJoin<ARAdjust>.On<
+          ARAdjust.adjdRefNbr.IsEqual<ARInvoice.refNbr>.
+          And<ARAdjust.adjdDocType.IsEqual<ARInvoice.docType>>>.
         AggregateTo<
-            Max<ARAdjust.adjgDocDate>,
-            GroupBy<ARAdjust.adjdRefNbr>,
-            GroupBy<ARAdjust.adjdDocType>>))]
+          Max<ARAdjust.adjgDocDate>,
+          GroupBy<ARAdjust.adjdRefNbr>,
+          GroupBy<ARAdjust.adjdDocType>>))]
     public class RSSVWorkOrderPayment : IBqlTable
     {
         #region InvoiceNbr
