@@ -8,7 +8,7 @@ using PX.Objects.SO;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Repair Work Order")]
+    [PXCacheName(Messages.RSSVWorkOrder)]
     public class RSSVWorkOrder : IBqlTable
     {
         #region OrderNbr
@@ -224,7 +224,7 @@ namespace PhoneRepairShop
         #endregion
     }
 
-    [PXCacheName("Repair Work Order to Pay")]
+    [PXCacheName(Messages.RSSVWorkOrderToPay)]
     public class RSSVWorkOrderToPay : RSSVWorkOrder
     {
         #region InvoiceNbr
