@@ -150,7 +150,7 @@ namespace PhoneRepairShop
 
         #region GroupByStatus
         [PXBool]
-        [PXUIField(DisplayName = "Show Total Amount to Pay")]
+        [PXUIField(DisplayName = "Show Unpaid Subtotals")]
         public bool? GroupByStatus { get; set; }
         public abstract class groupByStatus :
             PX.Data.BQL.BqlBool.Field<groupByStatus>

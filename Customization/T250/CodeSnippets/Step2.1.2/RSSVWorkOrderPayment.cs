@@ -9,7 +9,7 @@ using PX.Objects.AR;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Invoice and Payment of the Repair Work Order")]
+    [PXCacheName(Messages.RSSVWorkOrderPayment)]
     [PXProjection(typeof(
       SelectFrom<ARInvoice>.
         InnerJoin<ARAdjust>.On<

@@ -7,7 +7,7 @@ using PX.Objects.CS;
 namespace PhoneRepairShop
 {
     [PXPrimaryGraph(typeof(RSSVSetupMaint))]
-    [PXCacheName("Repair Work Order Preferences")]
+    [PXCacheName(Messages.RSSVSetup)]
     public class RSSVSetup : IBqlTable
     {
         #region NumberingID

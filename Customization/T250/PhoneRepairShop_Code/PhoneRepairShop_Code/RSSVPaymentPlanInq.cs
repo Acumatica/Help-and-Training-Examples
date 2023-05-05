@@ -25,7 +25,7 @@ namespace PhoneRepairShop
                         RSSVWorkOrderToPayFilter.serviceID.FromCurrent>>>>.
             View.ReadOnly DetailsView;
 
-        protected virtual IEnumerable detailsView()
+		protected virtual IEnumerable detailsView()
         {
             BqlCommand query;
             var filter = Filter.Current;
@@ -81,7 +81,7 @@ namespace PhoneRepairShop
             {
                 SOOrderShipment soshipment = order;
                 ARInvoice invoice = order;
-                RSSVWorkOrderToPay workOrder = RSSVWorkOrderToPay(soshipment);
+                RSSVWorkOrderToPay workOrder = ToRSSVWorkOrderToPay(soshipment);
                 workOrder.OrderType = OrderTypeConstants.SalesOrder;
                 var result = new PXResult<RSSVWorkOrderToPay, ARInvoice>(
                     workOrder, invoice);
@@ -122,7 +122,7 @@ namespace PhoneRepairShop
                 var graph = PXGraph.CreateInstance<SOOrderEntry>();
                 // set the current property of the graph
                 graph.Document.Current = graph.Document.
-                  Search<RSSVWorkOrder.orderNbr>(order.OrderNbr);
+                  Search<SOOrder.orderNbr>(order.OrderNbr);
                 // if the order is found by its ID,
                 // throw an exception to open the order in a new tab
                 if (graph.Document.Current != null)
@@ -133,13 +133,7 @@ namespace PhoneRepairShop
             }
         }
 
-        public override bool IsDirty
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool IsDirty => false;
 
         protected virtual void _(Events.FieldSelecting<RSSVWorkOrderToPay,
             RSSVWorkOrderToPay.percentPaid> e)
@@ -157,14 +151,13 @@ namespace PhoneRepairShop
                 order.OrderTotal * 100;
         }
 
-        public static RSSVWorkOrderToPay RSSVWorkOrderToPay
-            (SOOrderShipment shipment)
+        public static RSSVWorkOrderToPay ToRSSVWorkOrderToPay
+            (SOOrderShipment shipment) =>
+        new RSSVWorkOrderToPay
         {
-            RSSVWorkOrderToPay ret = new RSSVWorkOrderToPay();
-            ret.OrderNbr = shipment.OrderNbr;
-            ret.InvoiceNbr = shipment.InvoiceNbr;
-            return ret;
-        }
+            OrderNbr = shipment.OrderNbr,
+            InvoiceNbr = shipment.InvoiceNbr
+        };
     }
 
     [PXHidden]
@@ -195,7 +188,7 @@ namespace PhoneRepairShop
 
         #region GroupByStatus
         [PXBool]
-        [PXUIField(DisplayName = "Show Total Amount to Pay")]
+        [PXUIField(DisplayName = "Show Unpaid Subtotals")]
         public bool? GroupByStatus { get; set; }
         public abstract class groupByStatus :
             PX.Data.BQL.BqlBool.Field<groupByStatus>
