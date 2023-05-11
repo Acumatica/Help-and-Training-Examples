@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "fe326a2c-22f2-4f71-ab12-75bd19af14eb",
+		"_postman_id": "fdbf0217-401b-4005-a917-9429f763ef39",
 		"name": "MyBIIntegrationREST",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "10628249"
+		"_exporter_id": "1878971"
 	},
 	"item": [
 		{
@@ -18,6 +18,12 @@
 								"exec": [
 									"pm.test(\"Status code is 204\", function () {\r",
 									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"pm.test(\".ASPXAUTH recieved\", function () {\r",
+									"    pm.expect(pm.cookies.indexOf('.ASPXAUTH')).to.be.not.null;\r",
+									"});\r",
+									"pm.test(\".ASP.NET_SessionId recieved\", function () {\r",
+									"    pm.expect(pm.cookies.indexOf('.ASP.NET_SessionId')).to.be.not.null;\r",
 									"});\r",
 									"postman.setNextRequest(\"Lesson 2.1: Retrieving the List of Customers with Contacts\");"
 								],
@@ -59,7 +65,7 @@
 					},
 					"response": [
 						{
-							"name": "Lesson 1.1: Signing in to Acumatica ERP",
+							"name": "Lesson 1.1: Signing In to Acumatica ERP",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -102,7 +108,15 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "ASP.NET_SessionId=nhonb20fipjpji5pvdf3b5vu; path=/; HttpOnly; SameSite=Lax"
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Mon, 08-May-2023 09:58:24 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": ".ASPXAUTH=58494EB088634D1646ED12FE431617BE0C0EEFE31D92457B76A73EC9975615EEFFA9EA4A78FC800F13D5DB76B40EA61C31A00DEB0FA3A8450D9A2A8BC336DE6F43CD2F74F9528EDBF5CC3C770FEBFAAC20E54FBA10146E657CC6AF4A38BE1AFFB18ECF79846B1B965E689CD8E0584C702DC5F7A2B4475EB01A61CAC9575D7EA753AB43FC; path=/; HttpOnly"
 								},
 								{
 									"key": "Set-Cookie",
@@ -110,43 +124,27 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Sat, 27-Feb-2021 14:10:10 GMT; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Mon, 08-May-2023 09:58:24 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": ".ASPXAUTH=4A3B448F0CA8BB26EBF079A9CC3D4B7B7D585D31D9C416449B9AA06CC45944C9351BCDB7FE4FEE38375E55F2BF960952E9F9167AF0FD2F3C316FA822C276841CCAE0A764AF3070A63E403B453926B5F6BA356B4DBB225A567A9118B7C1D15B600636D124B4108DD5AAEBBA4E8EC15DEEBA90304F; path=/; HttpOnly"
+									"value": ".ASPXAUTH=58494EB088634D1646ED12FE431617BE0C0EEFE31D92457B76A73EC9975615EEFFA9EA4A78FC800F13D5DB76B40EA61C31A00DEB0FA3A8450D9A2A8BC336DE6F43CD2F74F9528EDBF5CC3C770FEBFAAC20E54FBA10146E657CC6AF4A38BE1AFFB18ECF79846B1B965E689CD8E0584C702DC5F7A2B4475EB01A61CAC9575D7EA753AB43FC; path=/; HttpOnly"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "ASP.NET_SessionId=nhonb20fipjpji5pvdf3b5vu; path=/; HttpOnly; SameSite=Lax"
+									"value": "requestid=5BE84C256C58968311EDEB2B5A008C0A; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=82; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Sat, 27-Feb-2021 14:10:10 GMT; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": ".ASPXAUTH=4A3B448F0CA8BB26EBF079A9CC3D4B7B7D585D31D9C416449B9AA06CC45944C9351BCDB7FE4FEE38375E55F2BF960952E9F9167AF0FD2F3C316FA822C276841CCAE0A764AF3070A63E403B453926B5F6BA356B4DBB225A567A9118B7C1D15B600636D124B4108DD5AAEBBA4E8EC15DEEBA90304F; path=/; HttpOnly"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "requestid=C34018A62898D39D11EB76A9FA8E5CC7; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "requeststat=+st:3693+sc:~/entity/auth/login+start:637497726067192587+tg:; path=/"
+									"value": "requeststat=+st:92+sc:~/entity/auth/login+start:638188775048750784+tg:; path=/"
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 24 Feb 2021 14:10:36 GMT"
+									"value": "Fri, 05 May 2023 09:58:24 GMT"
 								}
 							],
 							"cookie": [],
-							"body": ""
+							"body": null
 						}
 					]
 				},
@@ -159,6 +157,12 @@
 								"exec": [
 									"pm.test(\"Status code is 204\", function () {\r",
 									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"pm.test(\".ASPXAUTH not recieved\", function () {\r",
+									"    pm.expect(pm.cookies.indexOf('.ASPXAUTH')).to.be.eql(-1);\r",
+									"});\r",
+									"pm.test(\".ASP.NET_SessionId not recieved\", function () {\r",
+									"    pm.expect(pm.cookies.indexOf('.ASP.NET_SessionId')).to.be.eql(-1);\r",
 									"});\r",
 									"postman.setNextRequest(null);"
 								],
@@ -200,7 +204,7 @@
 					},
 					"response": [
 						{
-							"name": "Lesson 1.1: Signing out from Acumatica ERP",
+							"name": "Lesson 1.1: Signing Out from Acumatica ERP",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -243,23 +247,15 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": ".ASPXAUTH=; expires=Mon, 11-Oct-1999 20:00:00 GMT; path=/; HttpOnly"
+									"value": ".ASPXAUTH=; expires=Mon, 11-Oct-1999 22:00:00 GMT; path=/; HttpOnly"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "ASP.NET_SessionId=; expires=Tue, 18-Feb-2020 13:04:44 GMT; path=/"
+									"value": "ASP.NET_SessionId=; expires=Thu, 05-May-2022 10:04:55 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": ".ASPXAUTH=; expires=Mon, 11-Oct-1999 20:00:00 GMT; path=/; HttpOnly"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "ASP.NET_SessionId=; expires=Tue, 18-Feb-2020 13:04:44 GMT; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
 								},
 								{
 									"key": "Set-Cookie",
@@ -267,19 +263,35 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requestid=C34018A62898D39D11EB71E9DDD6AB04; path=/"
+									"value": ".ASPXAUTH=; expires=Mon, 11-Oct-1999 22:00:00 GMT; path=/; HttpOnly"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requeststat=+st:397+sc:~/entity/auth/logout+start:637492502838083972+tg:; path=/"
+									"value": "ASP.NET_SessionId=; expires=Thu, 05-May-2022 10:04:55 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=5BE84C256C58968311EDEB2C48744022; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requeststat=+st:18+sc:~/entity/auth/logout+start:638188778955019938+tg:; path=/"
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 18 Feb 2021 13:04:44 GMT"
+									"value": "Fri, 05 May 2023 10:04:55 GMT"
 								}
 							],
 							"cookie": [],
-							"body": ""
+							"body": null
 						}
 					]
 				}
@@ -581,11 +593,69 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"pm.test(\"The retrieved list is not empty\", function (){\r",
-									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse).to.be.not.empty;\r",
+									"pm.test(\"Response contains AALEGO500\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"AALEGO500\");\r",
+									"});\r",
+									"pm.test(\"Response does not contain AACOMPUT01\", function () {\r",
+									"    pm.expect(pm.response.text()).to.not.include(\"AACOMPUT01\");\r",
 									"});\r",
 									"postman.setNextRequest(\"Lesson 1.1: Signing Out from Acumatica ERP\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var requestAACOMPUT01 = {\r",
+									"    url: 'http://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem?$select=InventoryID,ItemStatus',\r",
+									"    method: 'PUT',\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: '{\"InventoryID\": {\"value\": \"AACOMPUT01\"},\"ItemStatus\": {\"value\": \"Inactive\"}}'\r",
+									"    },\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    }\r",
+									"};\r",
+									"pm.sendRequest(requestAACOMPUT01,  (error, response) => {\r",
+									"  if (error) {\r",
+									"    console.log(error);\r",
+									"  }\r",
+									"\r",
+									"  pm.test('Response for AACOMPUT01 should be OK to process', () => {\r",
+									"    pm.expect(error).to.equal(null);\r",
+									"    pm.expect(response).to.have.property('code', 200);\r",
+									"    pm.expect(response).to.have.property('status', 'OK');\r",
+									"  });\r",
+									"\r",
+									"var requestAALEGO500 = {\r",
+									"    url: 'http://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem?$select=InventoryID,Description',\r",
+									"    method: 'PUT',\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: '{\"InventoryID\": {\"value\": \"AALEGO500\"},\"Description\": {\"value\": \"Lego, 500 piece set\"}}'\r",
+									"    },\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    }\r",
+									"};\r",
+									"pm.sendRequest(requestAALEGO500, (error, response) => {\r",
+									"  if (error) {\r",
+									"    console.log(error);\r",
+									"  }\r",
+									"\r",
+									"  pm.test('Response for AALEGO500 should be OK to process', () => {\r",
+									"    pm.expect(error).to.equal(null);\r",
+									"    pm.expect(response).to.have.property('code', 200);\r",
+									"    pm.expect(response).to.have.property('status', 'OK');\r",
+									"  });\r",
+									"});\r",
+									"\r",
+									"});\r",
+									"\r",
+									""
 								],
 								"type": "text/javascript"
 							}
