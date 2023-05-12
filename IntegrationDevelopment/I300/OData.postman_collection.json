@@ -40,14 +40,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/MyStoreInstance/OData",
-									"protocol": "http",
+									"raw": "{{EndpointURLv3}}",
 									"host": [
-										"localhost"
-									],
-									"path": [
-										"MyStoreInstance",
-										"OData"
+										"{{EndpointURLv3}}"
 									]
 								}
 							},
@@ -139,14 +134,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/MyStoreInstance/ODatav4/$metadata",
-									"protocol": "http",
+									"raw": "{{EndpointURLv4}}/$metadata",
 									"host": [
-										"localhost"
+										"{{EndpointURLv4}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"ODatav4",
 										"$metadata"
 									]
 								}
@@ -186,14 +178,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/MyStoreInstance/OData/Customer%20Contacts?$format=json",
-									"protocol": "http",
+									"raw": "{{EndpointURLv3}}/Customer%20Contacts?$format=json",
 									"host": [
-										"localhost"
+										"{{EndpointURLv3}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"OData",
 										"Customer%20Contacts"
 									],
 									"query": [
@@ -286,14 +275,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/MyStoreInstance/ODatav4/PX_Objects_AR_Customer?$select=AcctCD,AcctName,CustomerClassID&$expand=ContactByDefBillContactID($select=Email,Phone1),AddressByDefAddressID($select=AddressLine1,AddressLine2,City,State,PostalCode)",
-									"protocol": "http",
+									"raw": "{{EndpointURLv4}}/PX_Objects_AR_Customer?$select=AcctCD,AcctName,CustomerClassID&$expand=ContactByDefBillContactID($select=Email,Phone1),AddressByDefAddressID($select=AddressLine1,AddressLine2,City,State,PostalCode)",
 									"host": [
-										"localhost"
+										"{{EndpointURLv4}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"ODatav4",
 										"PX_Objects_AR_Customer"
 									],
 									"query": [
@@ -407,14 +393,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/MyStoreInstance/OData/Item%20Availability%20Data?$format=json",
-									"protocol": "http",
+									"raw": "{{EndpointURLv3}}/Item%20Availability%20Data?$format=json",
 									"host": [
-										"localhost"
+										"{{EndpointURLv3}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"OData",
 										"Item%20Availability%20Data"
 									],
 									"query": [
@@ -507,14 +490,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/MyStoreInstance/ODatav4/PX_Objects_IN_INSiteStatus?$select=QtyOnHand,QtyAvail&$expand=InventoryItemByInventoryID($select=InventoryCD,Descr),INSiteBySiteID($select=SiteCD)",
-									"protocol": "http",
+									"raw": "{{EndpointURLv4}}/PX_Objects_IN_INSiteStatus?$select=QtyOnHand,QtyAvail&$expand=InventoryItemByInventoryID($select=InventoryCD,Descr),INSiteBySiteID($select=SiteCD)",
 									"host": [
-										"localhost"
+										"{{EndpointURLv4}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"ODatav4",
 										"PX_Objects_IN_INSiteStatus"
 									],
 									"query": [
@@ -658,14 +638,11 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost/MyStoreInstance/OData/$metadata",
-									"protocol": "http",
+									"raw": "{{EndpointURLv3}}/$metadata",
 									"host": [
-										"localhost"
+										"{{EndpointURLv3}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"OData",
 										"$metadata"
 									]
 								}
@@ -867,14 +844,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/MyStoreInstance/OData/Modified%20Stock%20Items?$format=json&$filter=ItemStatus eq 'Active' and LastModifiedOn gt datetime'2022-09-15T00:00:00.000%2B06:00'",
-									"protocol": "http",
+									"raw": "{{EndpointURLv3}}/Modified%20Stock%20Items?$format=json&$filter=ItemStatus eq 'Active' and LastModifiedOn gt datetime'2022-09-15T00:00:00.000%2B06:00'",
 									"host": [
-										"localhost"
+										"{{EndpointURLv3}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"OData",
 										"Modified%20Stock%20Items"
 									],
 									"query": [
@@ -1077,14 +1051,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost/MyStoreInstance/ODatav4/PX_Objects_IN_InventoryItem?$select=InventoryCD,Descr,ItemStatus,LastModifiedDateTime,BaseUnit&$expand=INSiteByDfltSiteID($select=SiteCD),INItemClassByItemClassID($select=ItemClassCD),INSiteStatusCollection($select=QtyOnHand)&$filter=StkItem eq true and ItemStatus eq 'AC' and LastModifiedDateTime gt 2022-09-15T00:00:00%2b03:00",
-									"protocol": "http",
+									"raw": "{{EndpointURLv4}}/PX_Objects_IN_InventoryItem?$select=InventoryCD,Descr,ItemStatus,LastModifiedDateTime,BaseUnit&$expand=INSiteByDfltSiteID($select=SiteCD),INItemClassByItemClassID($select=ItemClassCD),INSiteStatusCollection($select=QtyOnHand)&$filter=StkItem eq true and ItemStatus eq 'AC' and LastModifiedDateTime gt 2022-09-15T00:00:00%2b03:00",
 									"host": [
-										"localhost"
+										"{{EndpointURLv4}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"ODatav4",
 										"PX_Objects_IN_InventoryItem"
 									],
 									"query": [
@@ -1216,6 +1187,28 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseURL",
+			"value": "http://localhost",
+			"type": "string"
+		},
+		{
+			"key": "InstanceURL",
+			"value": "{{BaseURL}}/MyStoreInstance",
+			"type": "string"
+		},
+		{
+			"key": "EndpointURLv3",
+			"value": "{{InstanceURL}}/OData",
+			"type": "string"
+		},
+		{
+			"key": "EndpointURLv4",
+			"value": "{{InstanceURL}}/ODatav4",
+			"type": "string"
 		}
 	]
 }

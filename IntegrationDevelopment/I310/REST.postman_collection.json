@@ -50,13 +50,11 @@
 							"raw": "{\r\n  \"name\": \"admin\",\r\n  \"password\": \"123\",\r\n  \"tenant\": \"MyStore\",\r\n  \"branch\": \"MYSTORE\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost/MyStoreInstance/entity/auth/login",
-							"protocol": "http",
+							"raw": "{{InstanceURL}}/entity/auth/login",
 							"host": [
-								"localhost"
+								"{{InstanceURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
 								"entity",
 								"auth",
 								"login"
@@ -189,13 +187,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost/MyStoreInstance/entity/auth/logout",
-							"protocol": "http",
+							"raw": "{{InstanceURL}}/entity/auth/logout",
 							"host": [
-								"localhost"
+								"{{InstanceURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
 								"entity",
 								"auth",
 								"logout"
@@ -335,16 +331,11 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost/MyStoreInstance/entity/Default/22.200.001/Customer?$expand=MainContact,MainContact/Address&$select=CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode",
-							"protocol": "http",
+							"raw": "{{DefaultEndpointURL}}/Customer?$expand=MainContact,MainContact/Address&$select=CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"Customer"
 							],
 							"query": [
@@ -474,13 +465,11 @@
 							"raw": "{\n\t\n}"
 						},
 						"url": {
-							"raw": "http://localhost/MyStoreInstance/entity/ItemAvailabilityData/0001/ItemAvailabilityDataInquiry?$expand=Results",
-							"protocol": "http",
+							"raw": "{{InstanceURL}}/entity/ItemAvailabilityData/0001/ItemAvailabilityDataInquiry?$expand=Results",
 							"host": [
-								"localhost"
+								"{{InstanceURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
 								"entity",
 								"ItemAvailabilityData",
 								"0001",
@@ -676,16 +665,11 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem?$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2022-09-24T00:00:00.000'&$expand=WarehouseDetails&$select=InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM",
-							"protocol": "http",
+							"raw": "{{DefaultEndpointURL}}/StockItem?$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2022-09-24T00:00:00.000'&$expand=WarehouseDetails&$select=InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"StockItem"
 							],
 							"query": [
@@ -805,6 +789,23 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseURL",
+			"value": "http://localhost",
+			"type": "string"
+		},
+		{
+			"key": "InstanceURL",
+			"value": "{{BaseURL}}/MyStoreInstance",
+			"type": "string"
+		},
+		{
+			"key": "DefaultEndpointURL",
+			"value": "{{InstanceURL}}/entity/Default/22.200.001",
+			"type": "string"
 		}
 	]
 }

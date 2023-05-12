@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "a9e7f5d4-a585-437c-ae1d-6cf81e3a19d8",
+		"_postman_id": "376c106e-6fde-4cb2-aa54-e9c1046c1f71",
 		"name": "MyStoreIntegration_DataRetrieval",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "10628249"
+		"_exporter_id": "1878971"
 	},
 	"item": [
 		{
@@ -19,6 +19,8 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
+									"var responseData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"accessToken\",responseData.token_type + \" \" + responseData.access_token);\r",
 									"postman.setNextRequest(\"Lesson 2.1: Retrieving the List of Sales Orders with Document and Shipment Details\");"
 								],
 								"type": "text/javascript"
@@ -63,24 +65,22 @@
 								},
 								{
 									"key": "client_id",
-									"value": "C4590FC0-06A2-1E33-E2B4-E0FA6C871C2C@MyStore",
+									"value": "FE34CB3A-7B98-F6E4-FCED-0480D54868D5@MyStore",
 									"type": "text"
 								},
 								{
 									"key": "client_secret",
-									"value": "k16ylY7JXJgCv2ywvXwgVQ",
+									"value": "Lmt-ZCYOYMRCvozN7xgtFw",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/identity/connect/token",
-							"protocol": "https",
+							"raw": "{{InstanceURL}}/identity/connect/token",
 							"host": [
-								"localhost"
+								"{{InstanceURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
 								"identity",
 								"connect",
 								"token"
@@ -229,6 +229,15 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -250,13 +259,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost/MyStoreInstance/entity/auth/logout",
-							"protocol": "http",
+							"raw": "{{InstanceURL}}/entity/auth/logout",
 							"host": [
-								"localhost"
+								"{{InstanceURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
 								"entity",
 								"auth",
 								"logout"
@@ -403,7 +410,34 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse).to.be.not.empty;\r",
 									"});\r",
+									"pm.test(\"The first item includes all requested fields\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].OrderType).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].OrderNbr).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].CustomerID).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].CustomerOrder).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Date).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].OrderedQty).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].OrderTotal).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Details[0].InventoryID).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Details[0].OrderQty).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Details[0].UnitPrice).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Shipments[0].InvoiceNbr).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Shipments[0].ShipmentNbr).to.be.not.null;\r",
+									"});\r",
+									"pm.test(\"Response does not contain CurrencyID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.not.include(\"CurrencyID\");\r",
+									"});\r",
 									"postman.setNextRequest(\"Lesson 2.2: Retrieving the List of Sales Orders in Batches (First Five Records)\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
 								],
 								"type": "text/javascript"
 							}
@@ -424,16 +458,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesOrder?$select=OrderNbr,OrderType,CustomerID,CustomerOrder,Details/InventoryID,Details/OrderQty,Details/UnitPrice,Date,OrderedQty,OrderTotal,Shipments/InvoiceNbr,Shipments/ShipmentNbr&$filter=CustomerID eq 'C000000003'&$expand=Details,Shipments",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/SalesOrder?$select=OrderNbr,OrderType,CustomerID,CustomerOrder,Details/InventoryID,Details/OrderQty,Details/UnitPrice,Date,OrderedQty,OrderTotal,Shipments/InvoiceNbr,Shipments/ShipmentNbr&$filter=CustomerID eq 'C000000003'&$expand=Details,Shipments",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"SalesOrder"
 							],
 							"query": [
@@ -550,6 +579,15 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -567,16 +605,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesOrder?$select=OrderNbr,OrderType,CustomerID,OrderTotal&$filter=CustomerID eq 'C000000003'&$top=5",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/SalesOrder?$select=OrderNbr,OrderType,CustomerID,OrderTotal&$filter=CustomerID eq 'C000000003'&$top=5",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"SalesOrder"
 							],
 							"query": [
@@ -703,6 +736,15 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -720,16 +762,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesOrder?$select=OrderNbr,OrderType,CustomerID,OrderTotal&$filter=CustomerID eq 'C000000003'&$top=5&$skip=5",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/SalesOrder?$select=OrderNbr,OrderType,CustomerID,OrderTotal&$filter=CustomerID eq 'C000000003'&$top=5&$skip=5",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"SalesOrder"
 							],
 							"query": [
@@ -846,7 +883,19 @@
 									"pm.test(\"Status code is 500\", function () {\r",
 									"    pm.response.to.have.status(500);\r",
 									"});\r",
+									"pm.test(\"Body contains the exception message\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Optimization cannot be performed\");\r",
+									"});\r",
 									"postman.setNextRequest(\"Lesson 2.3: Retrieving the List of Key Fields of Payments\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
 								],
 								"type": "text/javascript"
 							}
@@ -867,16 +916,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/Payment?$select=ReferenceNbr,Type,Status,ApplicationDate,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr&$filter=Type eq 'Payment' and CustomerID eq 'C000000003'&$expand=ApplicationHistory",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/Payment?$select=ReferenceNbr,Type,Status,ApplicationDate,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr&$filter=Type eq 'Payment' and CustomerID eq 'C000000003'&$expand=ApplicationHistory",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"Payment"
 							],
 							"query": [
@@ -989,7 +1033,22 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse).to.have.lengthOf(1);\r",
 									"});\r",
+									"pm.test(\"The item includes all requested fields\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].CustomerID).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].ReferenceNbr).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Type).to.be.not.null;\r",
+									"});\r",
 									"postman.setNextRequest(\"Lesson 2.3: Retrieving Payments by Key Fields\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
 								],
 								"type": "text/javascript"
 							}
@@ -1010,16 +1069,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/Payment?$select=ReferenceNbr,Type&$filter=Type eq 'Payment' and CustomerID eq 'C000000003'",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/Payment?$select=ReferenceNbr,Type&$filter=Type eq 'Payment' and CustomerID eq 'C000000003'",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"Payment"
 							],
 							"query": [
@@ -1128,6 +1182,15 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -1145,16 +1208,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/Payment/Payment/000001?$select=ReferenceNbr,Type,Status,ApplicationDate,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr&$expand=ApplicationHistory",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/Payment/Payment/000001?$select=ReferenceNbr,Type,Status,ApplicationDate,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr&$expand=ApplicationHistory",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"Payment",
 								"Payment",
 								"000001"
@@ -1288,7 +1346,18 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.files).to.be.not.empty;\r",
 									"});\r",
+									"const jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"fileRef\", jsonData.files[0].href);\r",
 									"postman.setNextRequest(\"Lesson 3.1: Retrieving the File\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
 								],
 								"type": "text/javascript"
 							}
@@ -1309,16 +1378,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem/AAMACHINE1?$select=InventoryID,files&$expand=files",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/StockItem/AAMACHINE1?$select=InventoryID,files&$expand=files",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"StockItem",
 								"AAMACHINE1"
 							],
@@ -1428,6 +1492,15 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -1445,18 +1518,9 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/files/9be45eb7-f97d-400b-96a5-1c4cf82faa96",
-							"protocol": "https",
+							"raw": "{{BaseURL}}{{fileRef}}",
 							"host": [
-								"localhost"
-							],
-							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
-								"files",
-								"9be45eb7-f97d-400b-96a5-1c4cf82faa96"
+								"{{BaseURL}}{{fileRef}}"
 							]
 						}
 					},
@@ -1535,12 +1599,12 @@
 		"oauth2": [
 			{
 				"key": "clientId",
-				"value": "C4590FC0-06A2-1E33-E2B4-E0FA6C871C2C@MyStore",
+				"value": "FE34CB3A-7B98-F6E4-FCED-0480D54868D5@MyStore",
 				"type": "string"
 			},
 			{
 				"key": "clientSecret",
-				"value": "k16ylY7JXJgCv2ywvXwgVQ",
+				"value": "Lmt-ZCYOYMRCvozN7xgtFw",
 				"type": "string"
 			},
 			{
@@ -1613,6 +1677,33 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "fileRef",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "BaseURL",
+			"value": "https://localhost",
+			"type": "string"
+		},
+		{
+			"key": "InstanceURL",
+			"value": "{{BaseURL}}/MyStoreInstance",
+			"type": "string"
+		},
+		{
+			"key": "DefaultEndpointURL",
+			"value": "{{InstanceURL}}/entity/Default/22.200.001",
+			"type": "string"
+		},
+		{
+			"key": "accessToken",
+			"value": "",
+			"type": "string"
 		}
 	]
 }
