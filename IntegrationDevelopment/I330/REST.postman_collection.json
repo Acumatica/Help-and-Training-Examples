@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "1d3cf88c-f029-4e10-b623-32eb39e7743a",
+		"_postman_id": "cbb7dd66-5728-4e9a-a094-600a36f7d8d4",
 		"name": "MyStoreIntegration_DataManipulation",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "10628249"
+		"_exporter_id": "1878971"
 	},
 	"item": [
 		{
@@ -19,6 +19,8 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
+									"var responseData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"accessToken\",responseData.access_token);\r",
 									"postman.setNextRequest(\"Lesson 1.1: Creating a Shipment\");"
 								],
 								"type": "text/javascript"
@@ -63,24 +65,22 @@
 								},
 								{
 									"key": "client_id",
-									"value": "F4F1D612-F323-2F78-4FA6-B4F0713815AD@MyStore",
+									"value": "FE34CB3A-7B98-F6E4-FCED-0480D54868D5@MyStore",
 									"type": "text"
 								},
 								{
 									"key": "client_secret",
-									"value": "H3n846G6CgPTjwSHpu6U-Q",
+									"value": "Lmt-ZCYOYMRCvozN7xgtFw",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/identity/connect/token",
-							"protocol": "https",
+							"raw": "{{InstanceURL}}/identity/connect/token",
 							"host": [
-								"localhost"
+								"{{InstanceURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
 								"identity",
 								"connect",
 								"token"
@@ -229,6 +229,15 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -250,13 +259,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost/MyStoreInstance/entity/auth/logout",
-							"protocol": "http",
+							"raw": "{{InstanceURL}}/entity/auth/logout",
 							"host": [
-								"localhost"
+								"{{InstanceURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
 								"entity",
 								"auth",
 								"logout"
@@ -360,7 +367,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				}
@@ -403,7 +410,20 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Details).to.have.lengthOf(3);\r",
 									"});\r",
+									"pm.test(\"The shipment is on hold\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Status.value).to.eql('On Hold');\r",
+									"});\r",
 									"postman.setNextRequest(\"Lesson 1.2: Creating a Stock Item with Attributes\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -428,16 +448,11 @@
 							"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n    \"ShipmentDate\":{\"value\":\"2022-11-01\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\n\t\t}\n\t]\n}"
 						},
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/Shipment?$select=Type,ShipmentNbr,Status,Details/InventoryID&$expand=Details",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/Shipment?$select=Type,ShipmentNbr,Status,Details/InventoryID&$expand=Details",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"Shipment"
 							],
 							"query": [
@@ -566,6 +581,15 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -587,16 +611,11 @@
 							"raw": "{\n\t\"InventoryID\":{\"value\":\"BASESERV1\"},\n\t\"Description\":{\"value\":\"Baseline level of performance\"},\n\t\"ItemClass\":{\"value\":\"STOCKITEM\"},\n\t\"Attributes\":[\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"Operation System\"},\n\t\t\t\"Value\":{\"value\":\"Windows\"}\n\t\t},\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"SOFTVER\"},\n\t\t\t\"Value\":{\"value\":\"Server 2012 R2\"}\n\t\t}\n\t]\n}"
 						},
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem?$select=InventoryID,Attributes/AttributeDescription,Attributes/Value&$expand=Attributes",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/StockItem?$select=InventoryID,Attributes/AttributeDescription,Attributes/Value&$expand=Attributes",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"StockItem"
 							],
 							"query": [
@@ -722,11 +741,20 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"pm.test(\"Contact Mr. Jack Green...\", function (){\r",
+									"pm.test(\"Billing contact is Mr. Jack Green\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.BillingContact.Attention.value).to.eq(\"Mr. Jack Green\");\r",
 									"});\r",
 									"postman.setNextRequest(\"Lesson 2.2: Retrieving the Sales Order with Details\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -751,16 +779,11 @@
 							"raw": "{\r\n\t\"CustomerClass\":{\"value\":\"INTL\"},\r\n\t\"BillingContactOverride\":{\"value\":true},\r\n\t\"BillingContact\":{\r\n\t\t\"Email\":{\"value\":\"green@jevy-comp.con\"},\r\n\t\t\"Attention\":{\"value\":\"Mr. Jack Green\"},\r\n\t\t\"JobTitle\":{\"value\":\"\"}\r\n\t}\r\n}\r\n"
 						},
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/Customer?$filter=MainContact/Email eq 'info@jevy-comp.con'&$expand=MainContact,BillingContact&$select=CustomerID,CustomerClass,BillingContact/Email",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/Customer?$filter=MainContact/Email eq 'info@jevy-comp.con'&$expand=MainContact,BillingContact&$select=CustomerID,CustomerClass,BillingContact/Email",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"Customer"
 							],
 							"query": [
@@ -893,8 +916,23 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse).to.have.lengthOf(1);\r",
 									"    pm.expect(jsonResponse[0].Details).to.have.lengthOf(3);\r",
+									"    jsonResponse[0].Details.forEach(myFunction);\r",
+									"    function myFunction(item){\r",
+									"        if (item.InventoryID.value === \"CONGRILL\") {pm.collectionVariables.set(\"CONGRILL_detail_ID\",item.id);};\r",
+									"        if (item.InventoryID.value === \"AALEGO500\") {pm.collectionVariables.set(\"AALEGO500_detail_ID\",item.id);}\r",
+									"    }\r",
 									"});\r",
+									"\r",
 									"postman.setNextRequest(\"Lesson 2.2: Updating Detail Lines\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -915,16 +953,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesOrder?$expand=Details&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/SalesOrder?$expand=Details&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"SalesOrder"
 							],
 							"query": [
@@ -1037,7 +1070,27 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Details).to.have.lengthOf(2);\r",
 									"});\r",
+									"pm.test(\"The sales order does not include CONGRILL\", function (){\r",
+									"    pm.expect(pm.response.text()).to.not.include(\"CONGRILL\");\r",
+									"});\r",
+									"pm.test(\"The sales order includes 5 AALEGO500 items\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    jsonResponse.Details.forEach(myFunction);\r",
+									"    function myFunction(item){\r",
+									"        if (item.InventoryID.value === 'AALEGO500') {\r",
+									"            pm.expect(item.OrderQty.value).to.eq(5.0);};\r",
+									"    }\r",
+									"});\r",
 									"postman.setNextRequest(\"Lesson 3.1: Release from Hold of an Invoice\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -1059,19 +1112,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"OrderType\":{\"value\":\"SO\"},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"08731a64-7381-e511-80c0-00155d012302\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"f4a7e172-7381-e511-80c0-00155d012302\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
+							"raw": "{\n\t\"OrderType\":{\"value\":\"SO\"},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"{{CONGRILL_detail_ID}}\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"{{AALEGO500_detail_ID}}\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
 						},
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID&$expand=Details",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID&$expand=Details",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"SalesOrder"
 							],
 							"query": [
@@ -1205,6 +1253,15 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -1226,16 +1283,11 @@
 							"raw": "{\r\n    \"Type\":{\"value\":\"Invoice\"},\r\n    \"ReferenceNbr\":{\"value\":\"INV000046\"},\r\n    \"Hold\":{\"value\":false}\r\n}"
 						},
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesInvoice",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/SalesInvoice",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"SalesInvoice"
 							]
 						}
@@ -1341,6 +1393,15 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -1362,16 +1423,11 @@
 							"raw": "{\r\n\t\"entity\":{\r\n\t\t\"Type\":{\"value\":\"Invoice\"},\r\n\t\t\"ReferenceNbr\":{\"value\":\"INV000046\"}\r\n    }\r\n}"
 						},
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesInvoice/ReleaseSalesInvoice",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/SalesInvoice/ReleaseSalesInvoice",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"SalesInvoice",
 								"ReleaseSalesInvoice"
 							]
@@ -1460,7 +1516,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				},
@@ -1473,12 +1529,22 @@
 								"exec": [
 									"if(pm.response.code != 204)\r",
 									"{\r",
+									"    setTimeout(function(){},10000);\r",
 									"    postman.setNextRequest(\"Lesson 3.1: Retrieving the Status of the Release Operation\");\r",
 									"}\r",
 									"else\r",
 									"{\r",
 									"    postman.setNextRequest(\"Lesson 3.1: Retrieving the Released Invoice\");\r",
 									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -1499,10 +1565,9 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost{{SalesInvoiceStatusUrl}}",
-							"protocol": "https",
+							"raw": "{{BaseURL}}{{SalesInvoiceStatusUrl}}",
 							"host": [
-								"localhost{{SalesInvoiceStatusUrl}}"
+								"{{BaseURL}}{{SalesInvoiceStatusUrl}}"
 							]
 						}
 					},
@@ -1567,7 +1632,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				},
@@ -1589,6 +1654,15 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -1606,16 +1680,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesInvoice/Invoice/INV000046?$select=ReferenceNbr,Type,Status",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/SalesInvoice/Invoice/INV000046?$select=ReferenceNbr,Type,Status",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"SalesInvoice",
 								"Invoice",
 								"INV000046"
@@ -1709,8 +1778,33 @@
 			"item": [
 				{
 					"name": "Lesson 4.1: Registering a Customer Credit Card",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "PUT",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
@@ -1725,19 +1819,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"PaymentMethod\":{\"value\":\"VISA\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"CustomerProfileID\":{\"value\":\"1510928386\"},\n\t\"CashAccount\":{\"value\":\"102050MYST\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"Name\":{\"value\":\"Payment Profile ID\"},\n\t\t\t\"Value\":{\"value\":\"1516403307\"}\n\t\t}\n\t]\n}"
+							"raw": ""
 						},
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/CustomerPaymentMethod?$select=CardAccountNbr,Details/Name&$expand=Details",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/CustomerPaymentMethod?$select=CardAccountNbr,Details/Name&$expand=Details",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"CustomerPaymentMethod"
 							],
 							"query": [
@@ -1871,6 +1960,15 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -1892,16 +1990,11 @@
 							"raw": "{\n\t\"InventoryID\":{\"value\":\"AALEGO500\"},\n\t\"note\": {\"value\": \"My note\"}\n}"
 						},
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem?$select=InventoryID",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/StockItem?$select=InventoryID",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"StockItem"
 							],
 							"query": [
@@ -2011,6 +2104,17 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
 									""
 								],
 								"type": "text/javascript"
@@ -2034,20 +2138,15 @@
 						"body": {
 							"mode": "file",
 							"file": {
-								"src": "/C:/Temp/T2MCRO.jpg"
+								"src": "/C:/Work/Help-and-Training-Examples/IntegrationDevelopment/I330/SourceFiles/T2MCRO.jpg"
 							}
 						},
 						"url": {
-							"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem/AALEGO500/files/T2MCRO.jpg",
-							"protocol": "https",
+							"raw": "{{DefaultEndpointURL}}/StockItem/AALEGO500/files/T2MCRO.jpg",
 							"host": [
-								"localhost"
+								"{{DefaultEndpointURL}}"
 							],
 							"path": [
-								"MyStoreInstance",
-								"entity",
-								"Default",
-								"22.200.001",
 								"StockItem",
 								"AALEGO500",
 								"files",
@@ -2122,7 +2221,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				}
@@ -2219,6 +2318,34 @@
 			"key": "SalesInvoiceStatusUrl",
 			"value": "",
 			"type": "string"
+		},
+		{
+			"key": "BaseURL",
+			"value": "https://localhost",
+			"type": "string"
+		},
+		{
+			"key": "InstanceURL",
+			"value": "{{BaseURL}}/MyStoreInstance",
+			"type": "string"
+		},
+		{
+			"key": "DefaultEndpointURL",
+			"value": "{{InstanceURL}}/entity/Default/22.200.001",
+			"type": "string"
+		},
+		{
+			"key": "accessToken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "CONGRILL_detail_ID",
+			"value": ""
+		},
+		{
+			"key": "AALEGO500_detail_ID",
+			"value": ""
 		}
 	]
 }
