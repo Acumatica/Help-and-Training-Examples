@@ -20,7 +20,7 @@
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"var responseData = pm.response.json();\r",
-									"pm.collectionVariables.set(\"accessToken\",responseData.token_type + \" \" + responseData.access_token);\r",
+									"pm.collectionVariables.set(\"accessToken\",responseData.access_token);\r",
 									"postman.setNextRequest(\"Lesson 2.1: Retrieving the List of Sales Orders with Document and Shipment Details\");"
 								],
 								"type": "text/javascript"
@@ -234,7 +234,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -412,18 +412,18 @@
 									"});\r",
 									"pm.test(\"The first item includes all requested fields\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData[0].OrderType).to.be.not.null;\r",
-									"    pm.expect(jsonData[0].OrderNbr).to.be.not.null;\r",
-									"    pm.expect(jsonData[0].CustomerID).to.be.not.null;\r",
-									"    pm.expect(jsonData[0].CustomerOrder).to.be.not.null;\r",
-									"    pm.expect(jsonData[0].Date).to.be.not.null;\r",
-									"    pm.expect(jsonData[0].OrderedQty).to.be.not.null;\r",
-									"    pm.expect(jsonData[0].OrderTotal).to.be.not.null;\r",
-									"    pm.expect(jsonData[0].Details[0].InventoryID).to.be.not.null;\r",
-									"    pm.expect(jsonData[0].Details[0].OrderQty).to.be.not.null;\r",
-									"    pm.expect(jsonData[0].Details[0].UnitPrice).to.be.not.null;\r",
-									"    pm.expect(jsonData[0].Shipments[0].InvoiceNbr).to.be.not.null;\r",
-									"    pm.expect(jsonData[0].Shipments[0].ShipmentNbr).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].OrderType.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].OrderNbr.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].CustomerID.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].CustomerOrder.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Date.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].OrderedQty.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].OrderTotal.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Details[0].InventoryID.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Details[0].OrderQty.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Details[0].UnitPrice.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Shipments[0].InvoiceNbr.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Shipments[0].ShipmentNbr.value).to.be.not.null;\r",
 									"});\r",
 									"pm.test(\"Response does not contain CurrencyID\", function () {\r",
 									"    pm.expect(pm.response.text()).to.not.include(\"CurrencyID\");\r",
@@ -437,7 +437,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -584,7 +584,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -741,7 +741,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -895,7 +895,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -1035,9 +1035,9 @@
 									"});\r",
 									"pm.test(\"The item includes all requested fields\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData[0].CustomerID).to.be.not.null;\r",
-									"    pm.expect(jsonData[0].ReferenceNbr).to.be.not.null;\r",
-									"    pm.expect(jsonData[0].Type).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].CustomerID.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].ReferenceNbr.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Type.value).to.be.not.null;\r",
 									"});\r",
 									"postman.setNextRequest(\"Lesson 2.3: Retrieving Payments by Key Fields\");"
 								],
@@ -1048,7 +1048,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -1187,7 +1187,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -1357,7 +1357,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -1497,7 +1497,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.request.headers.add({key: 'Authorization', value: pm.collectionVariables.get('accessToken')});"
+									""
 								],
 								"type": "text/javascript"
 							}
