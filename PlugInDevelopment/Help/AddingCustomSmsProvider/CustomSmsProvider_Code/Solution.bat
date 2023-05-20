@@ -1,0 +1,1 @@
+"C:\AcumaticaERP\PhoneRepairShop2023r092\App_Data\Projects\CustomSmsProvider\CustomSmsProvider.sln"

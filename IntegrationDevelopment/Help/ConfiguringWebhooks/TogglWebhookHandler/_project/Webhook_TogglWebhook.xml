@@ -1,0 +1,13 @@
+﻿<Webhook>
+    <data-set>
+        <relations format-version="3" relations-version="20160101" main-table="WebHook" />
+        <layout>
+            <table name="WebHook" />
+        </layout>
+        <data>
+            <WebHook>
+                <row WebHookID="8978784f-3ad6-4103-913e-19c742048a8a" Name="TogglWebhook" Handler="TogglWebhook.TogglWebhookHandler" IsActive="1" IsSystem="0" RequestLogLevel="0" RequestRetainCount="10" NoteID="693bbaaf-fd7a-ed11-8392-586c254ce85b" />
+            </WebHook>
+        </data>
+    </data-set>
+</Webhook>

@@ -1,0 +1,1 @@
+"C:\Trainings\T400_2023R1\App_Data\Projects\T410_code\T410_code.sln"

@@ -1,0 +1,106 @@
+add screen SO303000 {
+  add container "InvoiceSummary" {
+    add layout "InvoiceHeader" {
+      layout = "HeaderSimple"
+      add layout "InvoiceHeaderRow1" {
+        layout = "Inline"
+        add field "Type"
+        add field "Date"
+      }
+      add layout "InvoiceHeaderRow2" {
+        layout = "Inline"
+        add field "Status"
+        add field "Amount"
+      }
+      add layout "InvoiceHeaderRow3" {
+        layout = "Inline"
+        add field "Customer"
+      }
+      add layout "InvoiceHeaderRow4" {
+        layout = "Inline"
+        add field "Description"
+      }
+    }
+    
+    add group "FinancialDetails" {
+      displayName = "Financial Details"
+      collapsable = True
+      collapsed = True
+      add field "FinancialLinkToGL#ARAccount"
+      add field "FinancialLinkToGL#Branch"
+      add field "FinancialLinkToGL#ARSubaccount"
+    }
+    
+    add layout "Other" {
+      layout = Tab
+      add field "VATExemptTotal"
+      add field "VATTaxableTotal"
+    }
+    
+    add layout "Details" {
+      layout = DataTab
+      add containerLink "Details" {
+        control = "ListItem"
+      }
+    }
+    
+    add layout "Taxes" {
+      layout = DataTab
+      add containerLink "Taxes" {
+        control = "ListItem"
+      }
+    }
+        
+    add recordAction "Save" {
+      behavior = Save
+    }
+    add recordAction "Cancel" {
+      behavior = Cancel
+    }
+    add containerAction "Insert" {
+      behavior = Create
+    }
+    add recordAction "Release" {
+      syncLongOperation = true
+      behavior = Record
+    }
+  }
+  add container "Details" {
+    containerActionsToExpand = 1
+    add field "Branch"
+    add field "OrderNbr"
+    add field "Warehouse"
+    add field "Quantity"
+    add field "UnitPrice"
+    add field "Account"
+    add field "Subaccount"
+    
+    add containerAction "SelectShipment" {
+      behavior = Void
+      redirect = True
+      redirectToContainer = "AddOrder$List"
+    }
+  }
+  add container "Taxes" {
+    add field "TaxID"
+    add field "TaxRate"
+    add field "TaxableAmount"
+    add field "TaxAmount"
+  }
+    
+  add container "AddOrder" {
+    type = SelectionActionList
+    visible = False
+    listActionsToExpand = 1
+    add field "Selected" {
+      special = ListSelection
+    }
+    add field "OrderType"
+    add field "OrderNbr"
+    add field "Location"
+    add listAction "AddShipment" {
+      icon = "system://Check"
+      behavior = Void
+    }
+  }  
+}

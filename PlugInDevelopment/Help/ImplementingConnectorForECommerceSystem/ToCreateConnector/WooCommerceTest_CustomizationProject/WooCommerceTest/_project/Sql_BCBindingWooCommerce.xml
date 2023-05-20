@@ -1,0 +1,17 @@
+﻿<Sql TableName="BCBindingWooCommerce" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="BCBindingWooCommerce">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="BindingID" type="Int" />
+  <col name="StoreBaseUrl" type="NVarChar(50)" nullable="true" />
+  <col name="StoreXAuthToken" type="NVarChar(MAX)" nullable="true" />
+  <col name="StoreXAuthClient" type="NVarChar(MAX)" nullable="true" />
+  <col name="StoreAdminUrl" type="NVarChar(200)" nullable="true" />
+  <col name="WooCommerceStoreTimeZone" type="NVarChar(100)" nullable="true" />
+  <col name="WooCommerceDefaultCurrency" type="NVarChar(12)" nullable="true" />
+  <col name="tstamp" type="Timestamp" />
+  <index name="PK_BCBindingWooCommerce" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="BindingID" />
+  </index>
+</table>]]></CDATA>
+</Sql>
