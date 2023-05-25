@@ -80,10 +80,12 @@ namespace PhoneRepairShop.Workflows
 
         #endregion Conditions
 
-        public override void Configure(PXScreenConfiguration config)
+        public sealed override void Configure(PXScreenConfiguration config) => 
+			Configure(config.GetScreenConfigurationContext<RSSVWorkOrderEntry, RSSVWorkOrder>());
+			
+        public static void Configure(WorkflowContext<RSSVWorkOrderEntry, RSSVWorkOrder> context)
         {
 
-            var context = config.GetScreenConfigurationContext<RSSVWorkOrderEntry, RSSVWorkOrder>();
             var conditions = context.Conditions.GetPack<Conditions>();
 
             var commonCategories = CommonActionCategories.Get(context);

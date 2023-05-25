@@ -23,13 +23,13 @@
 		<Levels>
 			<px:PXGridLevel DataMember="WorkOrders">
 			    <Columns>
-				<px:PXGridColumn Type="CheckBox" AllowCheckAll="True" TextAlign="Center" DataField="Selected" Width="60" ></px:PXGridColumn>
-				<px:PXGridColumn DataField="OrderNbr" Width="140" ></px:PXGridColumn>
-				<px:PXGridColumn DataField="Description" Width="220" ></px:PXGridColumn>
-				<px:PXGridColumn DataField="ServiceID" Width="140" ></px:PXGridColumn>
-				<px:PXGridColumn DataField="DeviceID" Width="140" ></px:PXGridColumn>
-				<px:PXGridColumn DataField="Priority" Width="70" ></px:PXGridColumn>
-				<px:PXGridColumn CommitChanges="True" DataField="AssignTo" Width="70" ></px:PXGridColumn>
+				<px:PXGridColumn Type="CheckBox" AllowCheckAll="True" TextAlign="Center" DataField="Selected"></px:PXGridColumn>
+				<px:PXGridColumn DataField="OrderNbr"></px:PXGridColumn>
+				<px:PXGridColumn DataField="Description"></px:PXGridColumn>
+				<px:PXGridColumn DataField="ServiceID"></px:PXGridColumn>
+				<px:PXGridColumn DataField="DeviceID"></px:PXGridColumn>
+				<px:PXGridColumn DataField="Priority"></px:PXGridColumn>
+				<px:PXGridColumn CommitChanges="True" DataField="AssignTo"></px:PXGridColumn>
 				<px:PXGridColumn DataField="NbrOfAssignedOrders" Width="100" ></px:PXGridColumn>
 				<px:PXGridColumn DataField="TimeWithoutAction" Width="100" ></px:PXGridColumn></Columns>
 			
