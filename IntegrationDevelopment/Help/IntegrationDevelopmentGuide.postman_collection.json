@@ -8902,11 +8902,11 @@
 											"pm.test(\"Status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
-											"pm.test(\"One detail is returned\", function (){\r",
+											"pm.test(\"More than one detail is returned\", function (){\r",
 											"    const jsonResponse = pm.response.json();\r",
-											"    pm.expect(jsonResponse.Results).to.has.lengthOf(1);\r",
+											"    pm.expect(jsonResponse.Results).length.to.be.greaterThan(1);\r",
 											"});\r",
-											"postman.setNextRequest(\"\");"
+											"postman.setNextRequest(\"Retrieve the List of Invoices\");"
 										],
 										"type": "text/javascript"
 									}
@@ -9304,6 +9304,24 @@
 						},
 						{
 							"name": "Retrieve the List of Invoices",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"More than one invoice is returned\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse).length.to.be.greaterThan(1);\r",
+											"});\r",
+											"postman.setNextRequest(\"Specify the Tax Zone for an Invoice\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "GET",
 								"header": [
@@ -9319,9 +9337,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{EndpointURL}}Invoice",
+									"raw": "{{EndpointURLU100}}Invoice",
 									"host": [
-										"{{EndpointURL}}Invoice"
+										"{{EndpointURLU100}}Invoice"
 									]
 								},
 								"description": "This example shows the retrieval of invoices, which is described in [Retrieve the List of Invoices](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=8e0137c4-9828-4d02-91b4-b4599d2d61c8)."
@@ -9344,9 +9362,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{EndpointURL}}Invoice",
+											"raw": "{{EndpointURLU100}}Invoice",
 											"host": [
-												"{{EndpointURL}}Invoice"
+												"{{EndpointURLU100}}Invoice"
 											]
 										}
 									},
@@ -9502,6 +9520,28 @@
 						},
 						{
 							"name": "Specify the Tax Zone for an Invoice",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Reference number is 000097\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.ReferenceNbr.value).to.be.eql('000097');\r",
+											"});\r",
+											"pm.test(\"Tax zone is AVALARA\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.custom.CurrentDocument.TaxZoneID.value).to.be.eql('AVALARA');\r",
+											"});\r",
+											"postman.setNextRequest(\"Override Values in the Item Warehouse Details\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -9521,9 +9561,9 @@
 									"raw": "{\r\n    \"id\": \"8deb6bf9-2072-eb11-b83e-00155d408001\",\r\n    \"custom\": {\r\n        \"CurrentDocument\": {\r\n            \"TaxZoneID\": {\r\n                 \"value\": \"AVALARA\"\r\n            },\r\n             \"DontPrint\": {\r\n                \"value\": false\r\n            }\r\n        }\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}Invoice?$custom=CurrentDocument.TaxZoneID,CurrentDocument.DontPrint",
+									"raw": "{{EndpointURLU100}}Invoice?$custom=CurrentDocument.TaxZoneID,CurrentDocument.DontPrint",
 									"host": [
-										"{{EndpointURL}}Invoice"
+										"{{EndpointURLU100}}Invoice"
 									],
 									"query": [
 										{
@@ -9556,9 +9596,9 @@
 											"raw": "{\r\n    \"id\": \"8deb6bf9-2072-eb11-b83e-00155d408001\",\r\n    \"custom\": {\r\n        \"CurrentDocument\": {\r\n            \"TaxZoneID\": {\r\n                 \"value\": \"AVALARA\"\r\n            },\r\n             \"DontPrint\": {\r\n                \"value\": false\r\n            }\r\n        }\r\n    }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}Invoice?$custom=CurrentDocument.TaxZoneID,CurrentDocument.DontPrint",
+											"raw": "{{EndpointURLU100}}Invoice?$custom=CurrentDocument.TaxZoneID,CurrentDocument.DontPrint",
 											"host": [
-												"{{EndpointURL}}Invoice"
+												"{{EndpointURLU100}}Invoice"
 											],
 											"query": [
 												{
@@ -9626,6 +9666,32 @@
 					"item": [
 						{
 							"name": "Override Values in the Item Warehouse Details",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Inventory ID is 000097\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.InventoryID.value).to.be.eql('APPLES');\r",
+											"});\r",
+											"pm.test(\"MaxQty is 2222\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.MaxQty.value).to.be.eql(2222);\r",
+											"});\r",
+											"pm.test(\"ServiceLevel is not 87\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.ServiceLevel.value).to.be.not.eql(87);\r",
+											"});\r",
+											"postman.setNextRequest(\"Create a General Ledger Transaction with a Project Code That Does Not Produce a Project Transaction\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -9645,9 +9711,9 @@
 									"raw": "{\r\n    \"InventoryID\": { \"value\": \"APPLES\" },\r\n    \"OverrideMaxQty\": { \"value\": true },\r\n    \"MaxQty\": { \"value\": 2222 },\r\n    \"OverridePrice\": { \"value\": false },\r\n    \"MSRP\": { \"value\": 600 },\r\n    \"OverrideReorderPoint\": { \"value\": true },\r\n    \"ReorderPoint\": { \"value\": 14 },\r\n    \"ReplenishmentClass\": { \"value\": \"PURCHASE\" },\r\n    \"OverrideReplenishmentSettings\": { \"value\": false },\r\n    \"ReplenishmentMethod\": { \"value\": \"Min./Max.\" },\r\n    \"ReplenishmentSource\": { \"value\": \"Purchase\" },\r\n    \"Seasonality\": { \"value\": \"NONE\" },\r\n    \"OverrideSafetyStock\": { \"value\": true },\r\n    \"SafetyStock\": { \"value\": 244 },\r\n    \"PreferredLocation\": { \"value\": \"MAIN\" },\r\n    \"PreferredVendor\": { \"value\": \"ALLFRUITS\" },\r\n    \"ServiceLevel\": { \"value\": 87 },\r\n    \"WarehouseID\": { \"value\": \"RETAIL\" }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}ItemWarehouse",
+									"raw": "{{EndpointURLU100}}ItemWarehouse",
 									"host": [
-										"{{EndpointURL}}ItemWarehouse"
+										"{{EndpointURLU100}}ItemWarehouse"
 									]
 								},
 								"description": "This example shows how to specify item warehouse details, mark particular fields as overridden, and set new values of these fields. This process is described in [Override Values in the Item Warehouse Details](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=0c8c324e-bc48-4390-a0dc-806cb830a537)."
@@ -9674,9 +9740,9 @@
 											"raw": "{\r\n    \"InventoryID\": { \"value\": \"APPLES\" },\r\n    \"OverrideMaxQty\": { \"value\": true },\r\n    \"MaxQty\": { \"value\": 2222 },\r\n    \"OverridePrice\": { \"value\": false },\r\n    \"MSRP\": { \"value\": 600 },\r\n    \"OverrideReorderPoint\": { \"value\": true },\r\n    \"ReorderPoint\": { \"value\": 14 },\r\n    \"ReplenishmentClass\": { \"value\": \"PURCHASE\" },\r\n    \"OverrideReplenishmentSettings\": { \"value\": false },\r\n    \"ReplenishmentMethod\": { \"value\": \"Min./Max.\" },\r\n    \"ReplenishmentSource\": { \"value\": \"Purchase\" },\r\n    \"Seasonality\": { \"value\": \"NONE\" },\r\n    \"OverrideSafetyStock\": { \"value\": true },\r\n    \"SafetyStock\": { \"value\": 244 },\r\n    \"PreferredLocation\": { \"value\": \"MAIN\" },\r\n    \"PreferredVendor\": { \"value\": \"ALLFRUITS\" },\r\n    \"ServiceLevel\": { \"value\": 87 },\r\n    \"WarehouseID\": { \"value\": \"RETAIL\" }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}ItemWarehouse",
+											"raw": "{{EndpointURLU100}}ItemWarehouse",
 											"host": [
-												"{{EndpointURL}}ItemWarehouse"
+												"{{EndpointURLU100}}ItemWarehouse"
 											]
 										}
 									},
@@ -9738,6 +9804,24 @@
 					"item": [
 						{
 							"name": "Create a General Ledger Transaction with a Project Code That Does Not Produce a Project Transaction",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Transaction has IsNonPM set to true\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.Details[0].IsNonPM.value).to.be.eql(true);\r",
+											"});\r",
+											"postman.setNextRequest(\"Retrieve the List of Ledgers\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -9754,12 +9838,12 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"Module\" : {\"value\" : \"GL\"},\r\n  \"TransactionDate\" : {\"value\" : \"2022-02-15T00:00:00\"},\r\n  \"Description\" : {\"value\" : \"Transaction description\"},\r\n  \"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \"Details\" : [\r\n  \t{\r\n  \t\t\"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \t\t\"Account\" : {\"value\" : \"10200\"},\r\n  \t\t\"CostCode\" : {\"value\" : \"0000\"},\r\n  \t\t\"IsNonPM\" : {\"value\" : true}\r\n  \t}\r\n  ]\r\n}"
+									"raw": "{\r\n  \"Module\" : {\"value\" : \"GL\"},\r\n  \"TransactionDate\" : {\"value\" : \"2022-02-15T00:00:00\"},\r\n  \"Description\" : {\"value\" : \"Transaction description\"},\r\n  \"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \"Details\" : [\r\n  \t{\r\n  \t\t\"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \t\t\"Account\" : {\"value\" : \"10200\"},\r\n  \t\t\"CostCode\" : {\"value\" : \"00000\"},\r\n  \t\t\"IsNonPM\" : {\"value\" : true}\r\n  \t}\r\n  ]\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}JournalTransaction?$expand=Details",
+									"raw": "{{EndpointURLU100}}JournalTransaction?$expand=Details",
 									"host": [
-										"{{EndpointURL}}JournalTransaction"
+										"{{EndpointURLU100}}JournalTransaction"
 									],
 									"query": [
 										{
@@ -9792,9 +9876,9 @@
 											"raw": "{\r\n  \"Module\" : {\"value\" : \"GL\"},\r\n  \"TransactionDate\" : {\"value\" : \"2022-02-15T00:00:00\"},\r\n  \"Description\" : {\"value\" : \"Transaction description\"},\r\n  \"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \"Details\" : [\r\n  \t{\r\n  \t\t\"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \t\t\"Account\" : {\"value\" : \"10200\"},\r\n  \t\t\"CostCode\" : {\"value\" : \"0000\"},\r\n  \t\t\"IsNonPM\" : {\"value\" : true}\r\n  \t}\r\n  ]\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}JournalTransaction?$expand=Details",
+											"raw": "{{EndpointURLU100}}JournalTransaction?$expand=Details",
 											"host": [
-												"{{EndpointURL}}JournalTransaction"
+												"{{EndpointURLU100}}JournalTransaction"
 											],
 											"query": [
 												{
@@ -9993,6 +10077,24 @@
 					"item": [
 						{
 							"name": "Retrieve the List of Ledgers",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Three ledgers are returned\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse).to.has.lengthOf(5);\r",
+											"});\r",
+											"postman.setNextRequest(\"Create a Sales Order from an Opportunity\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "GET",
 								"header": [
@@ -10008,9 +10110,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{EndpointURL}}Ledger?$expand=Branches,Companies&$select=LedgerID,Branches/BranchID,Branches/BranchName,Branches/CompanyName,Companies/Company,Companies/CompanyName",
+									"raw": "{{EndpointURLU100}}Ledger?$expand=Branches,Companies&$select=LedgerID,Branches/BranchID,Branches/BranchName,Branches/CompanyName,Companies/Company,Companies/CompanyName",
 									"host": [
-										"{{EndpointURL}}Ledger"
+										"{{EndpointURLU100}}Ledger"
 									],
 									"query": [
 										{
@@ -10043,9 +10145,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{EndpointURL}}Ledger?$expand=Branches,Companies&$select=LedgerID,Branches/BranchID,Branches/BranchName,Branches/CompanyName,Companies/Company,Companies/CompanyName",
+											"raw": "{{EndpointURLU100}}Ledger?$expand=Branches,Companies&$select=LedgerID,Branches/BranchID,Branches/BranchName,Branches/CompanyName,Companies/Company,Companies/CompanyName",
 											"host": [
-												"{{EndpointURL}}Ledger"
+												"{{EndpointURLU100}}Ledger"
 											],
 											"query": [
 												{
@@ -10101,6 +10203,70 @@
 					"item": [
 						{
 							"name": "Create a Sales Order from an Opportunity",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 202\", function () {\r",
+											"    pm.response.to.have.status(202);\r",
+											"});\r",
+											"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
+											"var requestStatus = {\r",
+											"    url: url,\r",
+											"    method: 'GET',\r",
+											"    header: {\r",
+											"        'Content-Type': 'application/json'\r",
+											"    }\r",
+											"};\r",
+											"myFunction();\r",
+											"function myFunction(){\r",
+											"pm.sendRequest(requestStatus,  (error, response) => {\r",
+											"  if (error) {\r",
+											"    console.log(error);\r",
+											"  }\r",
+											"\r",
+											"  if(response.code != 204)\r",
+											"{\r",
+											"    setTimeout(function(){},100000);\r",
+											"    myFunction();\r",
+											"}\r",
+											"else\r",
+											"{\r",
+											"    var url = pm.collectionVariables.get('EndpointURLU100') + 'Opportunity/000009?$expand=Relations';\r",
+											"var request000009 = {\r",
+											"    url: url,\r",
+											"    method: 'GET',\r",
+											"    header: {\r",
+											"        'Content-Type': 'application/json'\r",
+											"    }\r",
+											"};\r",
+											"pm.sendRequest(request000009,  (error, response) => {\r",
+											"  if (error) {\r",
+											"    console.log(error);\r",
+											"  }\r",
+											"\r",
+											"  pm.test('Response for 000009 should be OK to process', () => {\r",
+											"    pm.expect(error).to.equal(null);\r",
+											"    pm.expect(response).to.have.property('code', 200);\r",
+											"    pm.expect(response).to.have.property('status', 'OK');\r",
+											"  });\r",
+											"  pm.test(\"Opportunity relations include sales order\", function (){\r",
+											"    const jsonResponse = response.json();\r",
+											"    pm.expect(jsonResponse.Relations[1].Type.value).to.be.eql('Sales Order');\r",
+											"});\r",
+											"    postman.setNextRequest(\"Create a Business Account from an Opportunity\");\r",
+											"});\r",
+											"\r",
+											"}\r",
+											"});\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [
@@ -10117,12 +10283,12 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"entity\": { \"id\": \"f8e643f0-2110-e911-9fbe-7c5cf8918e20\" }\r\n}"
+									"raw": "{\r\n    \"entity\":{\r\n        \"OpportunityID\": {\"value\":\"000009\"}\r\n    },\r\n    \"parameters\":{\r\n        \"OrdereType\": {\"value\":\"SO\"},\r\n        \"RecalculatePricesAndDiscounts\": {\"value\":\"false\"}\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}Opportunity/CreateOpportunitySalesOrder",
+									"raw": "{{EndpointURLU100}}Opportunity/CreateOpportunitySalesOrder",
 									"host": [
-										"{{EndpointURL}}Opportunity"
+										"{{EndpointURLU100}}Opportunity"
 									],
 									"path": [
 										"CreateOpportunitySalesOrder"
@@ -10149,12 +10315,12 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"entity\": { \"id\": \"f8e643f0-2110-e911-9fbe-7c5cf8918e20\" }\r\n}"
+											"raw": "{\r\n    \"entity\":{\r\n        \"OpportunityID\": {\"value\":\"000009\"}\r\n    },\r\n    \"parameters\":{\r\n        \"OrdereType\": {\"value\":\"SO\"},\r\n        \"RecalculatePricesAndDiscounts\": {\"value\":\"false\"}\r\n    }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}Opportunity/CreateOpportunitySalesOrder",
+											"raw": "{{EndpointURLU100}}Opportunity/CreateOpportunitySalesOrder",
 											"host": [
-												"{{EndpointURL}}Opportunity"
+												"{{EndpointURLU100}}Opportunity"
 											],
 											"path": [
 												"CreateOpportunitySalesOrder"
@@ -10171,35 +10337,35 @@
 										},
 										{
 											"key": "Location",
-											"value": "/AcumaticaERP/entity/Default/22.200.001/Opportunity/CreateOpportunitySalesOrder/status/edb22d90-8d59-4f4a-a03c-e2fc3e27535e"
+											"value": "/2023R1/entity/Default/22.200.001/Opportunity/CreateOpportunitySalesOrder/status/d3ea2d4a-d853-4b16-b192-b7751850a3d8"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
+											"value": "UserBranch=2; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
+											"value": "UserBranch=2; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=C34018A628985B9E11ED14365F9D3F2F; path=/"
+											"value": "requestid=37C496ACB112D9B911EDFE1B7215CDC8; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requeststat=+st:1296+sc:~/entity/default/22.200.001/opportunity/createopportunitysalesorder+start:637952427293283759+tg:; path=/"
+											"value": "requeststat=+st:809+sc:~/entity/default/22.200.001/opportunity/createopportunitysalesorder+start:638209597359957064+tg:; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Date",
-											"value": "Thu, 04 Aug 2022 20:45:30 GMT"
+											"value": "Mon, 29 May 2023 12:22:16 GMT"
 										},
 										{
 											"key": "Content-Length",
@@ -10207,12 +10373,76 @@
 										}
 									],
 									"cookie": [],
-									"body": ""
+									"body": null
 								}
 							]
 						},
 						{
 							"name": "Create a Business Account from an Opportunity",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 202\", function () {\r",
+											"    pm.response.to.have.status(202);\r",
+											"});\r",
+											"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
+											"var requestStatus = {\r",
+											"    url: url,\r",
+											"    method: 'GET',\r",
+											"    header: {\r",
+											"        'Content-Type': 'application/json'\r",
+											"    }\r",
+											"};\r",
+											"myFunction();\r",
+											"function myFunction(){\r",
+											"pm.sendRequest(requestStatus,  (error, response) => {\r",
+											"  if (error) {\r",
+											"    console.log(error);\r",
+											"  }\r",
+											"\r",
+											"  if(response.code != 204)\r",
+											"{\r",
+											"    setTimeout(function(){},100000);\r",
+											"    myFunction();\r",
+											"}\r",
+											"else\r",
+											"{\r",
+											"    var url = pm.collectionVariables.get('EndpointURLU100') + 'Opportunity/000002?$expand=Relations';\r",
+											"var request000002 = {\r",
+											"    url: url,\r",
+											"    method: 'GET',\r",
+											"    header: {\r",
+											"        'Content-Type': 'application/json'\r",
+											"    }\r",
+											"};\r",
+											"pm.sendRequest(request000002,  (error, response) => {\r",
+											"  if (error) {\r",
+											"    console.log(error);\r",
+											"  }\r",
+											"\r",
+											"  pm.test('Response for 000002 should be OK to process', () => {\r",
+											"    pm.expect(error).to.equal(null);\r",
+											"    pm.expect(response).to.have.property('code', 200);\r",
+											"    pm.expect(response).to.have.property('status', 'OK');\r",
+											"  });\r",
+											"  pm.test(\"Opportunity relations include business account\", function (){\r",
+											"    const jsonResponse = response.json();\r",
+											"    pm.expect(jsonResponse.Relations[0].Type.value).to.be.eql('Business Account');\r",
+											"});\r",
+											"    postman.setNextRequest(\"\");\r",
+											"});\r",
+											"\r",
+											"}\r",
+											"});\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [
@@ -10229,12 +10459,12 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"entity\": { \"id\": \"e11f3abe-2110-e911-9fbe-7c5cf8918e20\",\r\n        \"custom\": {\r\n            \"AccountInfo\": {\r\n                \"BAccountID\": {  \"value\": \"11111\" },\r\n                \"AccountName\": { \"value\": \"asdqwe\" }\r\n            },\r\n            \"ContactInfo\": {\r\n                \"LastName\": { \"value\": \"test\" }\r\n            }\r\n        }\r\n    }\r\n}"
+									"raw": "{\r\n    \"entity\": { \"OpportunityID\": {\"value\":\"000002\"},\r\n        \"custom\": {\r\n            \"AccountInfo\": {\r\n                \"BAccountID\": {  \"value\": \"11111\" },\r\n                \"AccountName\": { \"value\": \"asdqwe\" }\r\n            },\r\n            \"ContactInfo\": {\r\n                \"LastName\": { \"value\": \"test\" }\r\n            }\r\n        }\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}Opportunity/CreateAccountFromOpportunity",
+									"raw": "{{EndpointURLU100}}Opportunity/CreateAccountFromOpportunity",
 									"host": [
-										"{{EndpointURL}}Opportunity"
+										"{{EndpointURLU100}}Opportunity"
 									],
 									"path": [
 										"CreateAccountFromOpportunity"
@@ -10261,12 +10491,12 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"entity\": { \"id\": \"e11f3abe-2110-e911-9fbe-7c5cf8918e20\",\r\n        \"custom\": {\r\n            \"AccountInfo\": {\r\n                \"BAccountID\": {  \"value\": \"11111\" },\r\n                \"AccountName\": { \"value\": \"asdqwe\" }\r\n            },\r\n            \"ContactInfo\": {\r\n                \"LastName\": { \"value\": \"test\" }\r\n            }\r\n        }\r\n    }\r\n}"
+											"raw": "{\r\n    \"entity\": { \"OpportunityID\": {\"value\":\"000002\"},\r\n        \"custom\": {\r\n            \"AccountInfo\": {\r\n                \"BAccountID\": {  \"value\": \"11111\" },\r\n                \"AccountName\": { \"value\": \"asdqwe\" }\r\n            },\r\n            \"ContactInfo\": {\r\n                \"LastName\": { \"value\": \"test\" }\r\n            }\r\n        }\r\n    }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}Opportunity/CreateAccountFromOpportunity",
+											"raw": "{{EndpointURLU100}}Opportunity/CreateAccountFromOpportunity",
 											"host": [
-												"{{EndpointURL}}Opportunity"
+												"{{EndpointURLU100}}Opportunity"
 											],
 											"path": [
 												"CreateAccountFromOpportunity"
@@ -10283,35 +10513,35 @@
 										},
 										{
 											"key": "Location",
-											"value": "/AcumaticaERP/entity/Default/22.200.001/Opportunity/CreateAccountFromOpportunity/status/d79faa9e-5f3f-451b-8f5e-7e3b92ef4234"
+											"value": "/2023R1/entity/Default/22.200.001/Opportunity/CreateAccountFromOpportunity/status/8b4b6616-c55b-4f03-b643-108e9167d5e5"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
+											"value": "UserBranch=2; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
+											"value": "UserBranch=2; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=C34018A628985B9E11ED14366BC8D49D; path=/"
+											"value": "requestid=37C496ACB112D9B911EDFE1C4310700D; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requeststat=+st:763+sc:~/entity/default/22.200.001/opportunity/createaccountfromopportunity+start:637952427497466653+tg:; path=/"
+											"value": "requeststat=+st:567+sc:~/entity/default/22.200.001/opportunity/createaccountfromopportunity+start:638209600866043533+tg:; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Date",
-											"value": "Thu, 04 Aug 2022 20:45:50 GMT"
+											"value": "Mon, 29 May 2023 12:28:07 GMT"
 										},
 										{
 											"key": "Content-Length",
@@ -10319,7 +10549,7 @@
 										}
 									],
 									"cookie": [],
-									"body": ""
+									"body": null
 								}
 							]
 						}
@@ -10350,9 +10580,9 @@
 									"raw": "{\r\n    \"PayGroupID\": {\r\n        \"value\": \"NewGroup\"\r\n    },\r\n    \"PayGroupName\": {\r\n        \"value\": \"New Group Name\"\r\n    },\r\n    \"BenefitExpenseAccount\": {\r\n        \"value\": \"69600\"\r\n    },\r\n    \"BenefitExpenseSub\": {\r\n        \"value\": \"000000\"\r\n    },\r\n    \"BenefitLiabilityAccount\": {\r\n        \"value\": \"20300\"\r\n    },\r\n    \"BenefitLiabilitySub\": {\r\n        \"value\": \"000000\"\r\n    },\r\n    \"DeductionLiabilityAccount\": {\r\n        \"value\": \"20300\"\r\n    },\r\n    \"DeductionLiabilitySub\": {\r\n        \"value\": \"000000\"\r\n    },\r\n    \"EarningsAccount\": {\r\n        \"value\": \"51000\"\r\n    },\r\n    \"EarningsSub\": {\r\n        \"value\": \"000000\"\r\n    },\r\n    \"TaxExpenseAccount\": {\r\n        \"value\": \"65100\"\r\n    },\r\n    \"TaxExpenseSub\": {\r\n        \"value\": \"000000\"\r\n    },\r\n    \"TaxLiabilityAccount\": {\r\n        \"value\": \"20300\"\r\n    },\r\n    \"TaxLiabilitySub\": {\r\n        \"value\": \"000000\"\r\n    },\r\n    \"IsDefault\": {\r\n        \"value\": false\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}PayGroup",
+									"raw": "{{EndpointURLU100}}PayGroup",
 									"host": [
-										"{{EndpointURL}}PayGroup"
+										"{{EndpointURLU100}}PayGroup"
 									]
 								},
 								"description": "This example shows how to create a pay group in Acumatica ERP. This process is described in [Create a Pay Group](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=1ca369ae-12e2-47d8-8a57-9245efe649a8)."
@@ -10379,9 +10609,9 @@
 											"raw": "{\r\n    \"PayGroupID\": {\r\n        \"value\": \"NewGroup\"\r\n    },\r\n    \"PayGroupName\": {\r\n        \"value\": \"New Group Name\"\r\n    },\r\n    \"BenefitExpenseAccount\": {\r\n        \"value\": \"69600\"\r\n    },\r\n    \"BenefitExpenseSub\": {\r\n        \"value\": \"000000\"\r\n    },\r\n    \"BenefitLiabilityAccount\": {\r\n        \"value\": \"20300\"\r\n    },\r\n    \"BenefitLiabilitySub\": {\r\n        \"value\": \"000000\"\r\n    },\r\n    \"DeductionLiabilityAccount\": {\r\n        \"value\": \"20300\"\r\n    },\r\n    \"DeductionLiabilitySub\": {\r\n        \"value\": \"000000\"\r\n    },\r\n    \"EarningsAccount\": {\r\n        \"value\": \"51000\"\r\n    },\r\n    \"EarningsSub\": {\r\n        \"value\": \"000000\"\r\n    },\r\n    \"TaxExpenseAccount\": {\r\n        \"value\": \"65100\"\r\n    },\r\n    \"TaxExpenseSub\": {\r\n        \"value\": \"000000\"\r\n    },\r\n    \"TaxLiabilityAccount\": {\r\n        \"value\": \"20300\"\r\n    },\r\n    \"TaxLiabilitySub\": {\r\n        \"value\": \"000000\"\r\n    },\r\n    \"IsDefault\": {\r\n        \"value\": false\r\n    }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}PayGroup",
+											"raw": "{{EndpointURLU100}}PayGroup",
 											"host": [
-												"{{EndpointURL}}PayGroup"
+												"{{EndpointURLU100}}PayGroup"
 											]
 										}
 									},
