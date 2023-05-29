@@ -6707,7 +6707,7 @@
 											"    const jsonResponse = response.json();\r",
 											"    pm.expect(jsonResponse.Contacts).has.lengthOf(2);\r",
 											"  });\r",
-											"  postman.setNextRequest(\"\");\r",
+											"  postman.setNextRequest(\"Create an Employee\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -7439,6 +7439,28 @@
 					"item": [
 						{
 							"name": "Create a Deduction Code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"The TST deduction code has been created\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.DeductionBenefitCodeID.value).to.be.eql('TST');\r",
+											"});\r",
+											"pm.test(\"Deduction code is active\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.Status.value).to.be.eql('Active');\r",
+											"});\r",
+											"postman.setNextRequest(\"\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -7458,9 +7480,9 @@
 									"raw": "{\r\n    \"DeductionBenefitCodeID\": {\r\n        \"value\": \"TST\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Test deduction\"\r\n    },\r\n    \"ContributionType\": {\r\n        \"value\": \"DED\"\r\n    },\r\n    \"Active\": {\r\n        \"value\": false\r\n    },\r\n    \"AssociatedWith\": {\r\n        \"value\": \"Employee Settings\"\r\n    },\r\n    \"EmployeeDeduction\": {\r\n        \"CalculationMethod\": {\r\n            \"value\": \"GRS\"\r\n        },\r\n        \"Percent\": {\r\n            \"value\": 20\r\n        },\r\n        \"ApplicableEarnings\": {\r\n            \"value\": \"TOT\"\r\n        }\r\n    },\r\n    \"GLAccounts\": {\r\n        \"DeductionLiabilityAccount\": {\r\n            \"value\": \"20000\"\r\n        },\r\n        \"DeductionLiabilitySub\": {\r\n            \"value\": \"000000\"\r\n        }\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}DeductionBenefitCode",
+									"raw": "{{EndpointURLU100}}DeductionBenefitCode",
 									"host": [
-										"{{EndpointURL}}DeductionBenefitCode"
+										"{{EndpointURLU100}}DeductionBenefitCode"
 									]
 								},
 								"description": "This example shows how to create a deduction code in Acumatica ERP. This process is described in [Create a Deduction Code](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a459adbc-562f-421e-8d41-1445e9942452)."
@@ -7487,9 +7509,9 @@
 											"raw": "{\r\n    \"DeductionBenefitCodeID\": {\r\n        \"value\": \"TST\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Test deduction\"\r\n    },\r\n    \"ContributionType\": {\r\n        \"value\": \"DED\"\r\n    },\r\n    \"Active\": {\r\n        \"value\": false\r\n    },\r\n    \"AssociatedWith\": {\r\n        \"value\": \"Employee Settings\"\r\n    },\r\n    \"EmployeeDeduction\": {\r\n        \"CalculationMethod\": {\r\n            \"value\": \"GRS\"\r\n        },\r\n        \"Percent\": {\r\n            \"value\": 20\r\n        },\r\n        \"ApplicableEarnings\": {\r\n            \"value\": \"TOT\"\r\n        }\r\n    },\r\n    \"GLAccounts\": {\r\n        \"DeductionLiabilityAccount\": {\r\n            \"value\": \"20000\"\r\n        },\r\n        \"DeductionLiabilitySub\": {\r\n            \"value\": \"000000\"\r\n        }\r\n    }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}DeductionBenefitCode",
+											"raw": "{{EndpointURLU100}}DeductionBenefitCode",
 											"host": [
-												"{{EndpointURL}}DeductionBenefitCode"
+												"{{EndpointURLU100}}DeductionBenefitCode"
 											]
 										}
 									},
@@ -7663,6 +7685,28 @@
 					"item": [
 						{
 							"name": "Create an Employee",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Employee is Jane Doe\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.EmployeeName.value).to.be.eql('Jane Doe');\r",
+											"});\r",
+											"pm.test(\"Employee is active\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.Status.value).to.be.eql('Active');\r",
+											"});\r",
+											"postman.setNextRequest(\"Retrieve Information about an Employee\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -7679,12 +7723,12 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"Status\": {\"value\": \"Active\"},\r\n    \"EmployeeID\": {\"value\": \"ExampleID\"},\r\n    \"EmployeeName\": {\"value\": \"Doe, Jane\"},\r\n    \"FinancialSettings\":\r\n    {\r\n        \"APAccount\": {\"value\": \"20000\"},\r\n        \"APSubaccount\": {\"value\": \"000000\"},\r\n        \"CashAccount\": {\"value\": \"10200WH\"},\r\n        \"ExpenseAccount\": {\"value\": \"63000\"},\r\n        \"ExpenseSubaccount\": {\"value\": \"000000\"},\r\n        \"PaymentMethod\": {\"value\": \"CHECK\"},\r\n        \"PrepaymentAccount\": {\"value\": \"20000\"},\r\n        \"PrepaymentSubaccount\": {\"value\": \"000000\"},\r\n        \"SalesAccount\": {\"value\": \"40000\"},\r\n        \"SalesSubaccount\": {\"value\": \"000000\"},\r\n        \"TaxZone\": {},\r\n        \"Terms\": {\"value\": \"7D\"}\r\n    },\r\n    \"EmployeeSettings\":\r\n    {\r\n        \"BranchID\": {\"value\": \"HEADOFFICE\"},\r\n        \"Calendar\": {\"value\": \"MAIN\"},\r\n        \"CurrencyID\": {\"value\": \"USD\"},\r\n        \"CurrencyRateTypeID\": {\"value\": \"SPOT\"},\r\n        \"DepartmentID\": {\"value\": \"AFTERSALES\"},\r\n        \"EmployeeClass\": {\"value\": \"EMPHOURLY\"}\r\n    },\r\n    \"ContactInfo\":\r\n    {\r\n        \"LastName\": {\"value\": \"Doe\"}\r\n    }\r\n}"
+									"raw": "{\r\n    \"Status\": {\"value\": \"Active\"},\r\n    \"FinancialSettings\":\r\n    {\r\n        \"APAccount\": {\"value\": \"20000\"},\r\n        \"APSubaccount\": {\"value\": \"000000\"},\r\n        \"CashAccount\": {\"value\": \"10200WH\"},\r\n        \"ExpenseAccount\": {\"value\": \"63000\"},\r\n        \"ExpenseSubaccount\": {\"value\": \"000000\"},\r\n        \"PaymentMethod\": {\"value\": \"CHECK\"},\r\n        \"PrepaymentAccount\": {\"value\": \"20000\"},\r\n        \"PrepaymentSubaccount\": {\"value\": \"000000\"},\r\n        \"SalesAccount\": {\"value\": \"40000\"},\r\n        \"SalesSubaccount\": {\"value\": \"000000\"},\r\n        \"TaxZone\": {},\r\n        \"Terms\": {\"value\": \"7D\"}\r\n    },\r\n    \"EmployeeSettings\":\r\n    {\r\n        \"BranchID\": {\"value\": \"HEADOFFICE\"},\r\n        \"Calendar\": {\"value\": \"MAIN\"},\r\n        \"CurrencyID\": {\"value\": \"USD\"},\r\n        \"CurrencyRateTypeID\": {\"value\": \"SPOT\"},\r\n        \"DepartmentID\": {\"value\": \"AFTERSALES\"},\r\n        \"EmployeeClass\": {\"value\": \"EMPHOURLY\"}\r\n    },\r\n    \"ContactInfo\":\r\n    {\r\n        \"FirstName\": {\"value\": \"Jane\"},\r\n        \"LastName\": {\"value\": \"Doe\"}\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}Employee",
+									"raw": "{{EndpointURLU100}}Employee",
 									"host": [
-										"{{EndpointURL}}Employee"
+										"{{EndpointURLU100}}Employee"
 									]
 								},
 								"description": "This example shows the creation of an employee, which is described in [Create an Employee](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=f04ea88a-8edf-471b-a7d5-6effb76a5cb6)."
@@ -7711,9 +7755,9 @@
 											"raw": "{\r\n    \"Status\": {\"value\": \"Active\"},\r\n    \"EmployeeID\": {\"value\": \"ExampleID\"},\r\n    \"EmployeeName\": {\"value\": \"Doe, Jane\"},\r\n    \"FinancialSettings\":\r\n    {\r\n        \"APAccount\": {\"value\": \"20000\"},\r\n        \"APSubaccount\": {\"value\": \"000000\"},\r\n        \"CashAccount\": {\"value\": \"10200WH\"},\r\n        \"ExpenseAccount\": {\"value\": \"63000\"},\r\n        \"ExpenseSubaccount\": {\"value\": \"000000\"},\r\n        \"PaymentMethod\": {\"value\": \"CHECK\"},\r\n        \"PrepaymentAccount\": {\"value\": \"20000\"},\r\n        \"PrepaymentSubaccount\": {\"value\": \"000000\"},\r\n        \"SalesAccount\": {\"value\": \"40000\"},\r\n        \"SalesSubaccount\": {\"value\": \"000000\"},\r\n        \"TaxZone\": {},\r\n        \"Terms\": {\"value\": \"7D\"}\r\n    },\r\n    \"EmployeeSettings\":\r\n    {\r\n        \"BranchID\": {\"value\": \"HEADOFFICE\"},\r\n        \"Calendar\": {\"value\": \"MAIN\"},\r\n        \"CurrencyID\": {\"value\": \"USD\"},\r\n        \"CurrencyRateTypeID\": {\"value\": \"SPOT\"},\r\n        \"DepartmentID\": {\"value\": \"AFTERSALES\"},\r\n        \"EmployeeClass\": {\"value\": \"EMPHOURLY\"}\r\n    },\r\n    \"ContactInfo\":\r\n    {\r\n        \"LastName\": {\"value\": \"Doe\"}\r\n    }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}Employee",
+											"raw": "{{EndpointURLU100}}Employee",
 											"host": [
-												"{{EndpointURL}}Employee"
+												"{{EndpointURLU100}}Employee"
 											]
 										}
 									},
@@ -7769,6 +7813,28 @@
 						},
 						{
 							"name": "Retrieve Information about an Employee",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"One employee is retrieved\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse).has.lengthOf(1);\r",
+											"  });\r",
+											"pm.test(\"Employee is Pam Brawner\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse[0].EmployeeName.value).to.be.eql('Pam Brawner');\r",
+											"});\r",
+											"postman.setNextRequest(\"Create an Inventory Issue\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "GET",
 								"header": [
@@ -7784,9 +7850,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{EndpointURL}}Employee?$expand=ContactInfo,Delegates,EmployeeSettings,EmploymentHistory,FinancialSettings&$filter=EmployeeID eq 'EP00000001'",
+									"raw": "{{EndpointURLU100}}Employee?$expand=ContactInfo,Delegates,EmployeeSettings,EmploymentHistory,FinancialSettings&$filter=EmployeeID eq 'EP00000001'",
 									"host": [
-										"{{EndpointURL}}Employee"
+										"{{EndpointURLU100}}Employee"
 									],
 									"query": [
 										{
@@ -7819,9 +7885,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{EndpointURL}}Employee?$expand=ContactInfo,Delegates,EmployeeSettings,EmploymentHistory,FinancialSettings&$filter=EmployeeID eq 'EP00000001'",
+											"raw": "{{EndpointURLU100}}Employee?$expand=ContactInfo,Delegates,EmployeeSettings,EmploymentHistory,FinancialSettings&$filter=EmployeeID eq 'EP00000001'",
 											"host": [
-												"{{EndpointURL}}Employee"
+												"{{EndpointURLU100}}Employee"
 											],
 											"query": [
 												{
@@ -8365,6 +8431,28 @@
 					"item": [
 						{
 							"name": "Create an Inventory Issue",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Inventory issue contains one detail line\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.Details).has.lengthOf(1);\r",
+											"  });\r",
+											"pm.test(\"Inventory issue total amount is 4.15\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.TotalAmount.value).to.be.eql(4.15);\r",
+											"});\r",
+											"postman.setNextRequest(\"Create an Inventory Issue\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -8384,9 +8472,9 @@
 									"raw": "{\r\n    \"Date\": {\r\n        \"value\": \"2022-12-02T00:00:00+03:00\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Descr\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"HEADOFFICE\"\r\n            },\r\n            \"ExtCost\": {\r\n                \"value\": 0\r\n            },\r\n            \"ExtPrice\": {\r\n                \"value\": 4.15\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"APJAM08\"\r\n            },\r\n            \"LineNumber\": {\r\n                \"value\": 1\r\n            },\r\n            \"Location\": {\r\n                \"value\": \"MAIN\"\r\n            },\r\n            \"Project\": {\r\n                \"value\": \"X\"\r\n            },\r\n            \"Qty\": {\r\n                \"value\": 1\r\n            },\r\n            \"TranType\": {\r\n                \"value\": \"Issue\"\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 0\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"PIECE\"\r\n            },\r\n            \"Warehouse\": {\r\n                \"value\": \"RETAIL\"\r\n            }\r\n        }\r\n    ],\r\n    \"PostPeriod\": {\r\n        \"value\": \"122022\"\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}InventoryIssue?$expand=Details",
+									"raw": "{{EndpointURLU100}}InventoryIssue?$expand=Details",
 									"host": [
-										"{{EndpointURL}}InventoryIssue"
+										"{{EndpointURLU100}}InventoryIssue"
 									],
 									"query": [
 										{
@@ -8419,9 +8507,9 @@
 											"raw": "{\r\n    \"Date\": {\r\n        \"value\": \"2022-12-02T00:00:00+03:00\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Descr\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"HEADOFFICE\"\r\n            },\r\n            \"ExtCost\": {\r\n                \"value\": 0\r\n            },\r\n            \"ExtPrice\": {\r\n                \"value\": 4.15\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"APJAM08\"\r\n            },\r\n            \"LineNumber\": {\r\n                \"value\": 1\r\n            },\r\n            \"Location\": {\r\n                \"value\": \"MAIN\"\r\n            },\r\n            \"Project\": {\r\n                \"value\": \"X\"\r\n            },\r\n            \"Qty\": {\r\n                \"value\": 1\r\n            },\r\n            \"TranType\": {\r\n                \"value\": \"Issue\"\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 0\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"PIECE\"\r\n            },\r\n            \"Warehouse\": {\r\n                \"value\": \"RETAIL\"\r\n            }\r\n        }\r\n    ],\r\n    \"PostPeriod\": {\r\n        \"value\": \"122022\"\r\n    }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}InventoryIssue?$expand=Details",
+											"raw": "{{EndpointURLU100}}InventoryIssue?$expand=Details",
 											"host": [
-												"{{EndpointURL}}InventoryIssue"
+												"{{EndpointURLU100}}InventoryIssue"
 											],
 											"query": [
 												{
@@ -8483,6 +8571,69 @@
 						},
 						{
 							"name": "Release an Inventory Issue",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 202\", function () {\r",
+											"    pm.response.to.have.status(202);\r",
+											"});\r",
+											"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
+											"var requestStatus = {\r",
+											"    url: url,\r",
+											"    method: 'GET',\r",
+											"    header: {\r",
+											"        'Content-Type': 'application/json'\r",
+											"    }\r",
+											"};\r",
+											"myFunction();\r",
+											"function myFunction(){\r",
+											"pm.sendRequest(requestStatus,  (error, response) => {\r",
+											"  if (error) {\r",
+											"    console.log(error);\r",
+											"  }\r",
+											"\r",
+											"  if(response.code != 204)\r",
+											"{\r",
+											"    setTimeout(function(){},100000);\r",
+											"    myFunction();\r",
+											"}\r",
+											"else\r",
+											"{\r",
+											"    var url = pm.collectionVariables.get('EndpointURLU100') + 'InventoryIssue/000055?$select=Status';\r",
+											"var request000055 = {\r",
+											"    url: url,\r",
+											"    method: 'GET',\r",
+											"    header: {\r",
+											"        'Content-Type': 'application/json'\r",
+											"    }\r",
+											"};\r",
+											"pm.sendRequest(request000055,  (error, response) => {\r",
+											"  if (error) {\r",
+											"    console.log(error);\r",
+											"  }\r",
+											"\r",
+											"  pm.test('Response for 000055 should be OK to process', () => {\r",
+											"    pm.expect(error).to.equal(null);\r",
+											"    pm.expect(response).to.have.property('code', 200);\r",
+											"    pm.expect(response).to.have.property('status', 'OK');\r",
+											"  });\r",
+											"  pm.test(\"Inventory issue should be released\", function (){\r",
+											"    const jsonResponse = response.json();\r",
+											"    pm.expect(jsonResponse.Status.value).to.be.eql('Released');\r",
+											"});\r",
+											"    postman.setNextRequest(\"Retrieve the Available Quantity of an Inventory Item\");\r",
+											"});\r",
+											"}\r",
+											"});\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [
@@ -8502,9 +8653,9 @@
 									"raw": "{\r\n    \"entity\": {\r\n        \"ReferenceNbr\": {\r\n            \"value\": \"000055\"\r\n        }\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}InventoryIssue/ReleaseInventoryIssue",
+									"raw": "{{EndpointURLU100}}InventoryIssue/ReleaseInventoryIssue",
 									"host": [
-										"{{EndpointURL}}InventoryIssue"
+										"{{EndpointURLU100}}InventoryIssue"
 									],
 									"path": [
 										"ReleaseInventoryIssue"
@@ -8534,9 +8685,9 @@
 											"raw": "{\r\n    \"entity\": {\r\n        \"ReferenceNbr\": {\r\n            \"value\": \"000055\"\r\n        }\r\n    }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}InventoryIssue/ReleaseInventoryIssue",
+											"raw": "{{EndpointURLU100}}InventoryIssue/ReleaseInventoryIssue",
 											"host": [
-												"{{EndpointURL}}InventoryIssue"
+												"{{EndpointURLU100}}InventoryIssue"
 											],
 											"path": [
 												"ReleaseInventoryIssue"
@@ -8592,94 +8743,6 @@
 									"body": ""
 								}
 							]
-						},
-						{
-							"name": "Release an Inventory Issue: Get the Operation Status",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{EndpointURL}}InventoryIssue/ReleaseInventoryIssue/status/2dd24788-3f54-4673-a040-bf55b6d04a00",
-									"host": [
-										"{{EndpointURL}}InventoryIssue"
-									],
-									"path": [
-										"ReleaseInventoryIssue",
-										"status",
-										"2dd24788-3f54-4673-a040-bf55b6d04a00"
-									]
-								},
-								"description": "This example shows the retrieval of the status of the release of an inventory issue, which is described in [Release an Inventory Issue](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=9446583c-62d6-4760-a382-fb5f36aac52b)."
-							},
-							"response": [
-								{
-									"name": "Release an Inventory Issue: Get the Operation Status",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{EndpointURL}}InventoryIssue/ReleaseInventoryIssue/status/2dd24788-3f54-4673-a040-bf55b6d04a00",
-											"host": [
-												"{{EndpointURL}}InventoryIssue"
-											],
-											"path": [
-												"ReleaseInventoryIssue",
-												"status",
-												"2dd24788-3f54-4673-a040-bf55b6d04a00"
-											]
-										}
-									},
-									"status": "No Content",
-									"code": 204,
-									"_postman_previewlanguage": "plain",
-									"header": [
-										{
-											"key": "Cache-Control",
-											"value": "private"
-										},
-										{
-											"key": "Location",
-											"value": "/AcumaticaERP/entity/Default/22.200.001/InventoryIssue/346b2cfe-51fd-e811-b817-00155d408001"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Date",
-											"value": "Tue, 29 Nov 2022 19:51:43 GMT"
-										}
-									],
-									"cookie": [],
-									"body": ""
-								}
-							]
 						}
 					],
 					"description": "This folder contains requests that use the [InventoryIssue](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=7a52c24d-f289-442b-919d-89652c581685) entity."
@@ -8689,6 +8752,24 @@
 					"item": [
 						{
 							"name": "Retrieve the Available Quantity of an Inventory Item",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"One detail is returned\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.Results).to.has.lengthOf(1);\r",
+											"});\r",
+											"postman.setNextRequest(\"Get an Inventory Summary\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -8705,12 +8786,12 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"InventoryID\": {\r\n        \"value\": \"APJAM08\"\r\n    },\r\n    \"LastModifiedDateTime\": {\r\n        \"value\": \"6/7/2016\"\r\n    }\r\n}"
+									"raw": "{\r\n    \"InventoryID\": {\r\n        \"value\": \"APJAM08\"\r\n    },\r\n    \"LastModifiedDateTime\": {\r\n        \"value\": \"6/7/2022\"\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}InventoryQuantityAvailable?$expand=Results",
+									"raw": "{{EndpointURLU100}}InventoryQuantityAvailable?$expand=Results",
 									"host": [
-										"{{EndpointURL}}InventoryQuantityAvailable"
+										"{{EndpointURLU100}}InventoryQuantityAvailable"
 									],
 									"query": [
 										{
@@ -8743,9 +8824,9 @@
 											"raw": "{\r\n    \"InventoryID\": {\r\n        \"value\": \"APJAM08\"\r\n    },\r\n    \"LastModifiedDateTime\": {\r\n        \"value\": \"6/7/2016\"\r\n    }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}InventoryQuantityAvailable?$expand=Results",
+											"raw": "{{EndpointURLU100}}InventoryQuantityAvailable?$expand=Results",
 											"host": [
-												"{{EndpointURL}}InventoryQuantityAvailable"
+												"{{EndpointURLU100}}InventoryQuantityAvailable"
 											],
 											"query": [
 												{
@@ -8813,6 +8894,24 @@
 					"item": [
 						{
 							"name": "Get an Inventory Summary",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"One detail is returned\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.Results).to.has.lengthOf(1);\r",
+											"});\r",
+											"postman.setNextRequest(\"\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -8832,9 +8931,9 @@
 									"raw": "{\r\n   \"InventoryID\": { \"value\": \"APJAM08\" }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}InventorySummaryInquiry?$expand=Results",
+									"raw": "{{EndpointURLU100}}InventorySummaryInquiry?$expand=Results",
 									"host": [
-										"{{EndpointURL}}InventorySummaryInquiry"
+										"{{EndpointURLU100}}InventorySummaryInquiry"
 									],
 									"query": [
 										{
@@ -8867,9 +8966,9 @@
 											"raw": "{\r\n   \"InventoryID\": { \"value\": \"APJAM08\" }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}InventorySummaryInquiry?$expand=Results",
+											"raw": "{{EndpointURLU100}}InventorySummaryInquiry?$expand=Results",
 											"host": [
-												"{{EndpointURL}}InventorySummaryInquiry"
+												"{{EndpointURLU100}}InventorySummaryInquiry"
 											],
 											"query": [
 												{
