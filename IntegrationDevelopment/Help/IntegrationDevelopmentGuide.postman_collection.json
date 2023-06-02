@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fe32058c-697c-4431-a7b4-582aa1108f16",
+		"_postman_id": "dda7f633-e9a5-41a4-9c16-5f6206955875",
 		"name": "Integration Development Guide",
 		"description": "This collection contains examples from the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n- Deploy a new Acumatica ERP instance with the U100 dataset and another Acumatica ERP instance with the SalesDemo dataset. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n- Specify the URL of the needed instance in the BaseURL variable of the collection. The EndpointURL variable uses the value from the BaseURL variable and specifies the URL of the Default/22.200.001 endpoint. To run some examples, you will need to change the EndpointURL variable to use the MANUFACTURING/22.200.001 endpoint.\n- To sign in to the instance in the client application, use the tenant name (which you specified when you created the instance) and the HEADOFFICE branch. In some examples, specify the PRODHOLE branch instead.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -8579,6 +8579,7 @@
 											"pm.test(\"Status code is 202\", function () {\r",
 											"    pm.response.to.have.status(202);\r",
 											"});\r",
+											"if (pm.response.code === 202) {\r",
 											"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
 											"var requestStatus = {\r",
 											"    url: url,\r",
@@ -8628,7 +8629,7 @@
 											"}\r",
 											"});\r",
 											"}\r",
-											""
+											"}"
 										],
 										"type": "text/javascript"
 									}
@@ -10211,6 +10212,7 @@
 											"pm.test(\"Status code is 202\", function () {\r",
 											"    pm.response.to.have.status(202);\r",
 											"});\r",
+											"if (pm.response.code === 202) {\r",
 											"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
 											"var requestStatus = {\r",
 											"    url: url,\r",
@@ -10261,7 +10263,7 @@
 											"}\r",
 											"});\r",
 											"}\r",
-											""
+											"}"
 										],
 										"type": "text/javascript"
 									}
@@ -10373,7 +10375,7 @@
 										}
 									],
 									"cookie": [],
-									"body": null
+									"body": ""
 								}
 							]
 						},
@@ -10387,6 +10389,7 @@
 											"pm.test(\"Status code is 202\", function () {\r",
 											"    pm.response.to.have.status(202);\r",
 											"});\r",
+											"if (pm.response.code === 202) {\r",
 											"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
 											"var requestStatus = {\r",
 											"    url: url,\r",
@@ -10431,13 +10434,13 @@
 											"    const jsonResponse = response.json();\r",
 											"    pm.expect(jsonResponse.Relations[0].Type.value).to.be.eql('Business Account');\r",
 											"});\r",
-											"    postman.setNextRequest(\"\");\r",
+											"    postman.setNextRequest(\"Create an Accounts Receivable Payment for an Invoice and a Sales Order\");\r",
 											"});\r",
 											"\r",
 											"}\r",
 											"});\r",
 											"}\r",
-											""
+											"}"
 										],
 										"type": "text/javascript"
 									}
@@ -10549,7 +10552,7 @@
 										}
 									],
 									"cookie": [],
-									"body": null
+									"body": ""
 								}
 							]
 						}
@@ -10672,7 +10675,29 @@
 					"name": "Payment",
 					"item": [
 						{
-							"name": "Create an AR Payment",
+							"name": "Create an Accounts Receivable Payment for an Invoice and a Sales Order",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Payment is applied to one document and one order\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.OrdersToApply).to.has.lengthOf(1);\r",
+											"    pm.expect(jsonResponse.DocumentsToApply).to.has.lengthOf(1);\r",
+											"    pm.collectionVariables.set(\"PaymentRefNbr\", jsonResponse.ReferenceNbr.value);\r",
+											"    pm.collectionVariables.set(\"AppliedToDocuments\", jsonResponse.AppliedToDocuments.value);\r",
+											"    pm.collectionVariables.set(\"AppliedToOrders\", jsonResponse.AppliedToOrders.value);\r",
+											"});\r",
+											"postman.setNextRequest(\"Release an Accounts Receivable Payment\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -10692,9 +10717,15 @@
 									"raw": "{\r\n    \"Branch\": {\r\n        \"value\": \"HEADOFFICE\"\r\n    },\r\n    \"CashAccount\": {\r\n        \"value\": \"10200WH\"\r\n    },\r\n    \"CurrencyID\": {\r\n        \"value\": \"USD\"\r\n    },\r\n    \"CustomerID\": {\r\n        \"value\": \"GOODFOOD\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Creating Payment for different doc types\"\r\n    },\r\n    \"PaymentMethod\": {\r\n        \"value\": \"CHECK\"\r\n    },\r\n    \"Type\": {\r\n        \"value\": \"Payment\"\r\n    },\r\n    \"DocumentsToApply\": [\r\n        {\r\n            \"DocType\": {\r\n                \"value\": \"INV\"\r\n            },\r\n            \"DocLineNbr\": {\r\n                \"value\": \"1\"\r\n            },\r\n            \"ReferenceNbr\": {\r\n                \"value\": \"000002\"\r\n            }\r\n        }\r\n    ],\r\n    \"OrdersToApply\": [\r\n        {\r\n            \"OrderType\": {\r\n                \"value\": \"SO\"\r\n            },\r\n            \"OrderNbr\": {\r\n                \"value\": \"000036\"\r\n            }\r\n        }\r\n    ]\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}Payment",
+									"raw": "{{EndpointURLU100}}Payment?$expand=OrdersToApply,DocumentsToApply",
 									"host": [
-										"{{EndpointURL}}Payment"
+										"{{EndpointURLU100}}Payment"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "OrdersToApply,DocumentsToApply"
+										}
 									]
 								},
 								"description": "This example shows the creation of an AR payment for different document types, which is described in [Create an AR Payment](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b25e527e-8187-485e-9c8e-93aa5c2e8931)."
@@ -10721,9 +10752,15 @@
 											"raw": "{\r\n    \"Branch\": {\r\n        \"value\": \"HEADOFFICE\"\r\n    },\r\n    \"CashAccount\": {\r\n        \"value\": \"10200WH\"\r\n    },\r\n    \"CurrencyID\": {\r\n        \"value\": \"USD\"\r\n    },\r\n    \"CustomerID\": {\r\n        \"value\": \"GOODFOOD\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Creating Payment for different doc types\"\r\n    },\r\n    \"PaymentMethod\": {\r\n        \"value\": \"CHECK\"\r\n    },\r\n    \"Type\": {\r\n        \"value\": \"Payment\"\r\n    },\r\n    \"DocumentsToApply\": [\r\n        {\r\n            \"DocType\": {\r\n                \"value\": \"INV\"\r\n            },\r\n            \"DocLineNbr\": {\r\n                \"value\": \"1\"\r\n            },\r\n            \"ReferenceNbr\": {\r\n                \"value\": \"000002\"\r\n            }\r\n        }\r\n    ],\r\n    \"OrdersToApply\": [\r\n        {\r\n            \"OrderType\": {\r\n                \"value\": \"SO\"\r\n            },\r\n            \"OrderNbr\": {\r\n                \"value\": \"000036\"\r\n            }\r\n        }\r\n    ]\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}Payment",
+											"raw": "{{EndpointURLU100}}Payment?$expand=OrdersToApply,DocumentsToApply",
 											"host": [
-												"{{EndpointURL}}Payment"
+												"{{EndpointURLU100}}Payment"
+											],
+											"query": [
+												{
+													"key": "$expand",
+													"value": "OrdersToApply,DocumentsToApply"
+												}
 											]
 										}
 									},
@@ -10741,44 +10778,143 @@
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
+											"value": "UserBranch=2; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
+											"value": "UserBranch=2; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=C34018A62898809E11ED7C7763977390; path=/"
+											"value": "requestid=37C496ACB112D9B911EE0122699E31C3; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requeststat=+st:6414+sc:~/entity/default/22.200.001/payment+start:638067055742175760+tg:; path=/"
+											"value": "requeststat=+st:63458+sc:~/entity/default/22.200.001/payment+start:638212925817555011+tg:; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Date",
-											"value": "Thu, 15 Dec 2022 12:53:00 GMT"
+											"value": "Fri, 02 Jun 2023 08:50:45 GMT"
 										},
 										{
 											"key": "Content-Length",
-											"value": "1283"
+											"value": "2120"
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"id\": \"91739763-777c-ed11-9e80-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"ApplicationDate\": {\n        \"value\": \"2022-12-15T00:00:00+03:00\"\n    },\n    \"AppliedToDocuments\": {\n        \"value\": 200\n    },\n    \"AppliedToOrders\": {\n        \"value\": 261.05\n    },\n    \"AvailableBalance\": {\n        \"value\": -461.05\n    },\n    \"Branch\": {\n        \"value\": \"HEADOFFICE\"\n    },\n    \"BranchID\": {\n        \"value\": \"HEADOFFICE\"\n    },\n    \"CardAccountNbr\": {},\n    \"CashAccount\": {\n        \"value\": \"10200WH\"\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"CustomerID\": {\n        \"value\": \"GOODFOOD\"\n    },\n    \"CustomerLocationID\": {\n        \"value\": \"MAIN\"\n    },\n    \"Description\": {\n        \"value\": \"Creating Payment for different doc types\"\n    },\n    \"DocumentsToApply\": [],\n    \"ExternalRef\": {},\n    \"Hold\": {\n        \"value\": true\n    },\n    \"IsNewCard\": {\n        \"value\": false\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2022-12-15T15:52:55.233+03:00\"\n    },\n    \"NoteID\": {\n        \"value\": \"91739763-777c-ed11-9e80-9828a61840c3\"\n    },\n    \"OrdersToApply\": [],\n    \"OrigTransaction\": {},\n    \"PaymentAmount\": {\n        \"value\": 0\n    },\n    \"PaymentMethod\": {\n        \"value\": \"CHECK\"\n    },\n    \"PaymentRef\": {\n        \"value\": \"0075\"\n    },\n    \"ProcessingCenterID\": {},\n    \"ReferenceNbr\": {\n        \"value\": \"000077\"\n    },\n    \"SaveCard\": {\n        \"value\": false\n    },\n    \"Status\": {\n        \"value\": \"On Hold\"\n    },\n    \"Type\": {\n        \"value\": \"Payment\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/AcumaticaERP/entity/Default/22.200.001/Payment/91739763-777c-ed11-9e80-9828a61840c3\",\n        \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.Objects.AR.ARPaymentEntry/Document/91739763-777c-ed11-9e80-9828a61840c3/{filename}\"\n    }\n}"
+									"body": "{\n    \"id\": \"9b9fc085-2201-ee11-b9d9-12b1ac96c437\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"ApplicationDate\": {\n        \"value\": \"2023-06-02T00:00:00+00:00\"\n    },\n    \"AppliedToDocuments\": {\n        \"value\": 200\n    },\n    \"AppliedToOrders\": {\n        \"value\": 261.05\n    },\n    \"AvailableBalance\": {\n        \"value\": -461.05\n    },\n    \"Branch\": {\n        \"value\": \"HEADOFFICE\"\n    },\n    \"BranchID\": {\n        \"value\": \"HEADOFFICE\"\n    },\n    \"CardAccountNbr\": {},\n    \"CashAccount\": {\n        \"value\": \"10200WH\"\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"CustomerID\": {\n        \"value\": \"GOODFOOD\"\n    },\n    \"CustomerLocationID\": {\n        \"value\": \"MAIN\"\n    },\n    \"Description\": {\n        \"value\": \"Creating Payment for different doc types\"\n    },\n    \"DocumentsToApply\": [\n        {\n            \"id\": \"9d9fc085-2201-ee11-b9d9-12b1ac96c437\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"AmountPaid\": {\n                \"value\": 200\n            },\n            \"BalanceWriteOff\": {\n                \"value\": 0\n            },\n            \"CashDiscountTaken\": {\n                \"value\": 0\n            },\n            \"CustomerOrder\": {},\n            \"Description\": {\n                \"value\": \"Consulting\"\n            },\n            \"DocLineNbr\": {\n                \"value\": 1\n            },\n            \"DocType\": {\n                \"value\": \"Invoice\"\n            },\n            \"ReferenceNbr\": {\n                \"value\": \"000002\"\n            },\n            \"WriteOffReasonCode\": {\n                \"value\": \"BALWOFF\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/2023R1/entity/Default/22.200.001/files/PX.Objects.AR.ARPaymentEntry/Adjustments/9d9fc085-2201-ee11-b9d9-12b1ac96c437/{filename}\"\n            }\n        }\n    ],\n    \"ExternalRef\": {},\n    \"Hold\": {\n        \"value\": true\n    },\n    \"IsNewCard\": {\n        \"value\": false\n    },\n    \"LastModifiedDateTime\": {\n        \"value\": \"2023-06-02T08:50:33.553+00:00\"\n    },\n    \"NoteID\": {\n        \"value\": \"9b9fc085-2201-ee11-b9d9-12b1ac96c437\"\n    },\n    \"OrdersToApply\": [\n        {\n            \"id\": \"9f9fc085-2201-ee11-b9d9-12b1ac96c437\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"AppliedToOrder\": {\n                \"value\": 261.05\n            },\n            \"OrderNbr\": {\n                \"value\": \"000036\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/2023R1/entity/Default/22.200.001/files/PX.Objects.AR.ARPaymentEntry/SOAdjustments/9f9fc085-2201-ee11-b9d9-12b1ac96c437/{filename}\"\n            }\n        }\n    ],\n    \"OrigTransaction\": {},\n    \"PaymentAmount\": {\n        \"value\": 0\n    },\n    \"PaymentMethod\": {\n        \"value\": \"CHECK\"\n    },\n    \"PaymentRef\": {\n        \"value\": \"0095\"\n    },\n    \"ProcessingCenterID\": {},\n    \"ReferenceNbr\": {\n        \"value\": \"000076\"\n    },\n    \"SaveCard\": {\n        \"value\": false\n    },\n    \"Status\": {\n        \"value\": \"On Hold\"\n    },\n    \"Type\": {\n        \"value\": \"Payment\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/2023R1/entity/Default/22.200.001/Payment/9b9fc085-2201-ee11-b9d9-12b1ac96c437\",\n        \"files:put\": \"/2023R1/entity/Default/22.200.001/files/PX.Objects.AR.ARPaymentEntry/Document/9b9fc085-2201-ee11-b9d9-12b1ac96c437/{filename}\"\n    }\n}"
 								}
 							]
 						},
 						{
-							"name": "Release an AR Payment",
+							"name": "Release an Accounts Receivable Payment",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var paymentRefNbr = pm.collectionVariables.get('PaymentRefNbr');\r",
+											"var paymentAmount = pm.collectionVariables.get('AppliedToDocuments')+pm.collectionVariables.get('AppliedToOrders');\r",
+											"var url = pm.collectionVariables.get('EndpointURLU100') + 'Payment';\r",
+											"var requestRemoveHold = {\r",
+											"    url: url,\r",
+											"    method: 'PUT',\r",
+											"    body: {\r",
+											"        mode: 'raw',\r",
+											"        raw: '{\"Type\": {\"value\": \"Payment\"},\"ReferenceNbr\": {\"value\": \"'+ paymentRefNbr +'\"},\"Hold\" : {\"value\" : \"false\"},\"PaymentAmount\": {\"value\": ' + paymentAmount + '}}'\r",
+											"    },\r",
+											"    header: {\r",
+											"        'Content-Type': 'application/json'\r",
+											"    }\r",
+											"};\r",
+											"pm.sendRequest(requestRemoveHold,  (error, response) => {\r",
+											"  if (error) {\r",
+											"    console.log(error);\r",
+											"  }\r",
+											"\r",
+											"  pm.test('Response for removing from hold should be OK to proceed', () => {\r",
+											"    pm.expect(error).to.equal(null);\r",
+											"    pm.expect(response).to.have.property('code', 200);\r",
+											"    pm.expect(response).to.have.property('status', 'OK');\r",
+											"  });\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 202\", function () {\r",
+											"    pm.response.to.have.status(202);\r",
+											"});\r",
+											"if (pm.response.code === 202) {\r",
+											"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
+											"var requestStatus = {\r",
+											"    url: url,\r",
+											"    method: 'GET',\r",
+											"    header: {\r",
+											"        'Content-Type': 'application/json'\r",
+											"    }\r",
+											"};\r",
+											"myFunction();\r",
+											"function myFunction(){\r",
+											"pm.sendRequest(requestStatus,  (error, response) => {\r",
+											"  if (error) {\r",
+											"    console.log(error);\r",
+											"  }\r",
+											"\r",
+											"  if(response.code != 204)\r",
+											"{\r",
+											"    setTimeout(function(){},100000);\r",
+											"    myFunction();\r",
+											"}\r",
+											"else\r",
+											"{\r",
+											"    var url = pm.collectionVariables.get('EndpointURLU100') + 'Payment/Payment/' + pm.collectionVariables.get('PaymentRefNbr');\r",
+											"var requestPayment = {\r",
+											"    url: url,\r",
+											"    method: 'GET',\r",
+											"    header: {\r",
+											"        'Content-Type': 'application/json'\r",
+											"    }\r",
+											"};\r",
+											"pm.sendRequest(requestPayment,  (error, response) => {\r",
+											"  if (error) {\r",
+											"    console.log(error);\r",
+											"  }\r",
+											"\r",
+											"  pm.test('Response for the payment should be OK to process', () => {\r",
+											"    pm.expect(error).to.equal(null);\r",
+											"    pm.expect(response).to.have.property('code', 200);\r",
+											"    pm.expect(response).to.have.property('status', 'OK');\r",
+											"  });\r",
+											"  pm.test(\"Payment status is Open\", function (){\r",
+											"    const jsonResponse = response.json();\r",
+											"    pm.expect(jsonResponse.Status.value).to.be.eql('Open');\r",
+											"});\r",
+											"    postman.setNextRequest(\"Create a Payment Method\");\r",
+											"    return;\r",
+											"});\r",
+											"\r",
+											"}\r",
+											"});\r",
+											"} \r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [
@@ -10795,12 +10931,12 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"entity\": {\r\n        \"Type\": {\r\n            \"value\": \"Payment\"\r\n        },\r\n        \"ReferenceNbr\": {\r\n            \"value\": \"000077\"\r\n        }\r\n    }\r\n}"
+									"raw": "{\r\n    \"entity\": {\r\n        \"Type\": {\r\n            \"value\": \"Payment\"\r\n        },\r\n        \"ReferenceNbr\": {\r\n            \"value\": \"{{PaymentRefNbr}}\"\r\n        }\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}Payment/Release",
+									"raw": "{{EndpointURLU100}}Payment/Release",
 									"host": [
-										"{{EndpointURL}}Payment"
+										"{{EndpointURLU100}}Payment"
 									],
 									"path": [
 										"Release"
@@ -10882,94 +11018,6 @@
 										{
 											"key": "Content-Length",
 											"value": "0"
-										}
-									],
-									"cookie": [],
-									"body": ""
-								}
-							]
-						},
-						{
-							"name": "Release an AR Payment: Retrieve the Operation Status",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{EndpointURL}}Payment/Release/status/9cb9b262-dac2-4c20-84cf-d897421d73b6",
-									"host": [
-										"{{EndpointURL}}Payment"
-									],
-									"path": [
-										"Release",
-										"status",
-										"9cb9b262-dac2-4c20-84cf-d897421d73b6"
-									]
-								},
-								"description": "This example shows how to get the status of the release an accounts receivable payment in Acumatica ERP. This process is described in [Release an AR Payment](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=709b0321-c44a-4226-a627-3507a93ce1d8)."
-							},
-							"response": [
-								{
-									"name": "Release an AR Payment: Retrieve the Operation Status",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{EndpointURL}}Payment/Release/status/9cb9b262-dac2-4c20-84cf-d897421d73b6",
-											"host": [
-												"{{EndpointURL}}Payment"
-											],
-											"path": [
-												"Release",
-												"status",
-												"9cb9b262-dac2-4c20-84cf-d897421d73b6"
-											]
-										}
-									},
-									"status": "No Content",
-									"code": 204,
-									"_postman_previewlanguage": "plain",
-									"header": [
-										{
-											"key": "Cache-Control",
-											"value": "private"
-										},
-										{
-											"key": "Location",
-											"value": "/AcumaticaERP/entity/Default/22.200.001/Payment/00000000-0000-0000-0000-000000000000"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Date",
-											"value": "Thu, 15 Dec 2022 15:19:33 GMT"
 										}
 									],
 									"cookie": [],
@@ -11103,6 +11151,25 @@
 					"item": [
 						{
 							"name": "Create a Payment Method",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"TST payment method has Cash/Check means of payment\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.PaymentMethodID.value).to.eql('TST');\r",
+											"    pm.expect(jsonResponse.MeansOfPayment.value).to.eql('Cash/Check');\r",
+											"});\r",
+											"postman.setNextRequest(\"Create a Project from a Project Template\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -11122,9 +11189,9 @@
 									"raw": "{\r\n    \"Active\": {\r\n        \"value\": false\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Test Method\"\r\n    },\r\n    \"IntegratedProcessing\": {\r\n        \"value\": false\r\n    },\r\n    \"MeansOfPayment\": {\r\n        \"value\": \"Cash/Check\"\r\n    },\r\n    \"PaymentMethodID\": {\r\n        \"value\": \"TST\"\r\n    },\r\n    \"SettingsForPR\": {\r\n        \"PRProcessing\": {\r\n            \"value\": \"Print Checks\"\r\n        },\r\n        \"Report\": {\r\n            \"value\": \"PR641010\"\r\n        }\r\n    },\r\n    \"UseInPR\": {\r\n        \"value\": true\r\n    },\r\n    \"UseInAP\": {\r\n        \"value\": false\r\n    },\r\n    \"UseInAR\": {\r\n        \"value\": false\r\n    },\r\n    \"RequireRemittanceInformationforCashAccount\": {\r\n        \"value\": false\r\n    },\r\n    \"AllowedCashAccounts\": [\r\n        {\r\n            \"CashAccount\": {\r\n                \"value\": \"10200WH\"\r\n            },\r\n            \"Description\": {\r\n                \"value\": \"Company Checking Account\"\r\n            },\r\n            \"Branch\": {\r\n                \"value\": \"HEADOFFICE\"\r\n            },\r\n            \"APDefault\": {\r\n                \"value\": false\r\n            },\r\n            \"APLastRefNbr\": {\r\n                \"value\": \"3202\"\r\n            },\r\n            \"APSuggestNextNbr\": {\r\n                \"value\": false\r\n            },\r\n            \"UseInPR\": {\r\n                \"value\": true\r\n            }\r\n        }\r\n    ]\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}PaymentMethod?$expand=AllowedCashAccounts",
+									"raw": "{{EndpointURLU100}}PaymentMethod?$expand=AllowedCashAccounts",
 									"host": [
-										"{{EndpointURL}}PaymentMethod"
+										"{{EndpointURLU100}}PaymentMethod"
 									],
 									"query": [
 										{
@@ -11157,9 +11224,9 @@
 											"raw": "{\r\n    \"Active\": {\r\n        \"value\": false\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Test Method\"\r\n    },\r\n    \"IntegratedProcessing\": {\r\n        \"value\": false\r\n    },\r\n    \"MeansOfPayment\": {\r\n        \"value\": \"Cash/Check\"\r\n    },\r\n    \"PaymentMethodID\": {\r\n        \"value\": \"TST\"\r\n    },\r\n    \"SettingsForPR\": {\r\n        \"PRProcessing\": {\r\n            \"value\": \"Print Checks\"\r\n        },\r\n        \"Report\": {\r\n            \"value\": \"PR641010\"\r\n        }\r\n    },\r\n    \"UseInPR\": {\r\n        \"value\": true\r\n    },\r\n    \"UseInAP\": {\r\n        \"value\": false\r\n    },\r\n    \"UseInAR\": {\r\n        \"value\": false\r\n    },\r\n    \"RequireRemittanceInformationforCashAccount\": {\r\n        \"value\": false\r\n    },\r\n    \"AllowedCashAccounts\": [\r\n        {\r\n            \"CashAccount\": {\r\n                \"value\": \"10200WH\"\r\n            },\r\n            \"Description\": {\r\n                \"value\": \"Company Checking Account\"\r\n            },\r\n            \"Branch\": {\r\n                \"value\": \"HEADOFFICE\"\r\n            },\r\n            \"APDefault\": {\r\n                \"value\": false\r\n            },\r\n            \"APLastRefNbr\": {\r\n                \"value\": \"3202\"\r\n            },\r\n            \"APSuggestNextNbr\": {\r\n                \"value\": false\r\n            },\r\n            \"UseInPR\": {\r\n                \"value\": true\r\n            }\r\n        }\r\n    ]\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}PaymentMethod?$expand=AllowedCashAccounts",
+											"raw": "{{EndpointURLU100}}PaymentMethod?$expand=AllowedCashAccounts",
 											"host": [
-												"{{EndpointURL}}PaymentMethod"
+												"{{EndpointURLU100}}PaymentMethod"
 											],
 											"query": [
 												{
@@ -11246,9 +11313,9 @@
 									"raw": "{\r\n    \"NumberOfPeriods\": {\r\n        \"value\": 13\r\n    },\r\n    \"Override\": {\r\n        \"value\": true\r\n    },\r\n    \"PayGroup\": {\r\n        \"value\": \"WEEKLY\"\r\n    },\r\n    \"Year\": {\r\n        \"value\": \"2024\"\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}PayPeriod",
+									"raw": "{{EndpointURLU100}}PayPeriod",
 									"host": [
-										"{{EndpointURL}}PayPeriod"
+										"{{EndpointURLU100}}PayPeriod"
 									]
 								},
 								"description": "This example shows how to create a pay period schedule in Acumatica ERP. This process is described in [Create a Pay Period Schedule](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=cee93670-b4be-4b21-a473-beeb180a20c9)."
@@ -11275,9 +11342,9 @@
 											"raw": "{\r\n    \"NumberOfPeriods\": {\r\n        \"value\": 13\r\n    },\r\n    \"Override\": {\r\n        \"value\": true\r\n    },\r\n    \"PayGroup\": {\r\n        \"value\": \"WEEKLY\"\r\n    },\r\n    \"Year\": {\r\n        \"value\": \"2024\"\r\n    }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}PayPeriod",
+											"raw": "{{EndpointURLU100}}PayPeriod",
 											"host": [
-												"{{EndpointURL}}PayPeriod"
+												"{{EndpointURLU100}}PayPeriod"
 											]
 										}
 									},
@@ -11893,6 +11960,24 @@
 					"item": [
 						{
 							"name": "Create a Project from a Project Template",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Project has TESTPR3 ID\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.ProjectID.value).to.eql('TESTPR3');\r",
+											"});\r",
+											"postman.setNextRequest(\"Make a Project Active\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -11912,9 +11997,9 @@
 									"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"ProjectTemplateID\" : {\"value\" : \"PROGRESS\"},\r\n    \"Customer\" : {\"value\" : \"COFFEESHOP\"},\r\n    \"BillingAndAllocationSettings\" :\r\n    {\r\n        \"BillingRule\" : {\"value\" : \"PROGRESS\"},\r\n        \"BillingPeriod\" : {\"value\" : \"Month\"}\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}Project",
+									"raw": "{{EndpointURLU100}}Project",
 									"host": [
-										"{{EndpointURL}}Project"
+										"{{EndpointURLU100}}Project"
 									]
 								},
 								"description": "This example shows how to create from a project template. This process is described in [Create a Project from a Project Template](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=13f5f5b8-33d1-40d9-83db-3f3dfc5dcba9)."
@@ -11941,9 +12026,9 @@
 											"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"ProjectTemplateID\" : {\"value\" : \"PROGRESS\"},\r\n    \"Customer\" : {\"value\" : \"COFFEESHOP\"},\r\n    \"BillingAndAllocationSettings\" :\r\n    {\r\n        \"BillingRule\" : {\"value\" : \"PROGRESS\"},\r\n        \"BillingPeriod\" : {\"value\" : \"Month\"}\r\n    }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}Project",
+											"raw": "{{EndpointURLU100}}Project",
 											"host": [
-												"{{EndpointURL}}Project"
+												"{{EndpointURLU100}}Project"
 											]
 										}
 									},
@@ -11999,6 +12084,24 @@
 						},
 						{
 							"name": "Make a Project Active",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Project is active\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.Status.value).to.eql('Active');\r",
+											"});\r",
+											"postman.setNextRequest(\"Specify the Next Billing Date for a Project\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -12018,9 +12121,9 @@
 									"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"Hold\" : {\"value\" : false}\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}Project",
+									"raw": "{{EndpointURLU100}}Project",
 									"host": [
-										"{{EndpointURL}}Project"
+										"{{EndpointURLU100}}Project"
 									]
 								},
 								"description": "This example shows how to make a project active. This process is described in [Make a Project Active](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=0d018113-1e33-49f7-be22-8e40db5475c3)."
@@ -12047,9 +12150,9 @@
 											"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"Hold\" : {\"value\" : false}\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}Project",
+											"raw": "{{EndpointURLU100}}Project",
 											"host": [
-												"{{EndpointURL}}Project"
+												"{{EndpointURLU100}}Project"
 											]
 										}
 									},
@@ -12105,6 +12208,24 @@
 						},
 						{
 							"name": "Specify the Next Billing Date for a Project",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Next billing date is not empty\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.BillingAndAllocationSettings.NextBillingDate.value).to.be.not.empty;\r",
+											"});\r",
+											"postman.setNextRequest(\"Retrieve a Project Task\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -12121,12 +12242,18 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"BillingAndAllocationSettings\" : \r\n    {\r\n        \"NextBillingDate\" : {\"value\" : \"2022-02-15\"}\r\n    }\r\n}"
+									"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"BillingAndAllocationSettings\" : \r\n    {\r\n        \"NextBillingDate\" : {\"value\" : \"2023-06-15\"}\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}Project",
+									"raw": "{{EndpointURLU100}}Project?$expand=BillingAndAllocationSettings",
 									"host": [
-										"{{EndpointURL}}Project"
+										"{{EndpointURLU100}}Project"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "BillingAndAllocationSettings"
+										}
 									]
 								},
 								"description": "This example shows how to specify the next billing date for a project. This process is described in [Specify the Next Billing Date for a Project](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=9b596bda-520a-4baf-ab93-687a67f3879e)."
@@ -12150,12 +12277,18 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"BillingAndAllocationSettings\" : \r\n    {\r\n        \"NextBillingDate\" : {\"value\" : \"2022-02-15\"}\r\n    }\r\n}"
+											"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"BillingAndAllocationSettings\" : \r\n    {\r\n        \"NextBillingDate\" : {\"value\" : \"2023-06-15\"}\r\n    }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}Project",
+											"raw": "{{EndpointURLU100}}Project?$expand=BillingAndAllocationSettings",
 											"host": [
-												"{{EndpointURL}}Project"
+												"{{EndpointURLU100}}Project"
+											],
+											"query": [
+												{
+													"key": "$expand",
+													"value": "BillingAndAllocationSettings"
+												}
 											]
 										}
 									},
@@ -12173,39 +12306,39 @@
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
+											"value": "UserBranch=2; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
+											"value": "UserBranch=2; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=C34018A628985B9E11ED143F69EAD166; path=/"
+											"value": "requestid=37C496ACB112D9B911EE014080620093; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requeststat=+st:523+sc:~/entity/default/22.200.001/project+start:637952466120845286+tg:; path=/"
+											"value": "requeststat=+st:369+sc:~/entity/default/22.200.001/project+start:638213055100047393+tg:; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Date",
-											"value": "Thu, 04 Aug 2022 21:50:12 GMT"
+											"value": "Fri, 02 Jun 2023 12:25:10 GMT"
 										},
 										{
 											"key": "Content-Length",
-											"value": "743"
+											"value": "1273"
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"id\": \"577b42dd-3c14-ed11-9e5b-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Assets\": {},\n    \"BillingAndAllocationSettings\": null,\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"Expenses\": {},\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"Income\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2022-08-05T00:50:12.403+03:00\"\n    },\n    \"Liabilities\": {},\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/AcumaticaERP/entity/Default/22.200.001/Project/577b42dd-3c14-ed11-9e5b-9828a61840c3\",\n        \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.Objects.PM.ProjectEntry/Project/577b42dd-3c14-ed11-9e5b-9828a61840c3/{filename}\"\n    }\n}"
+									"body": "{\n    \"id\": \"3059cd77-4001-ee11-b9d9-12b1ac96c437\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Assets\": {},\n    \"BillingAndAllocationSettings\": {\n        \"id\": \"63272d7d-3101-4e50-88aa-d338caa5f0e8\",\n        \"rowNumber\": 1,\n        \"note\": null,\n        \"AllocationRule\": {},\n        \"AutomaticallyReleaseARDocuments\": {\n            \"value\": false\n        },\n        \"BillingPeriod\": {\n            \"value\": \"Month\"\n        },\n        \"BillingRule\": {\n            \"value\": \"PROGRESS\"\n        },\n        \"Branch\": {\n            \"value\": \"SWEETEQUIP\"\n        },\n        \"CreateProFormaOnBilling\": {\n            \"value\": true\n        },\n        \"LastBillingDate\": {},\n        \"NextBillingDate\": {\n            \"value\": \"2023-06-15T00:00:00+00:00\"\n        },\n        \"RateTable\": {},\n        \"Retainage\": {\n            \"value\": 0\n        },\n        \"RunAllocationOnReleaseOfProjectTransactions\": {\n            \"value\": false\n        },\n        \"Terms\": {\n            \"value\": \"30D\"\n        },\n        \"UseTMRevenueBudgetLimits\": {\n            \"value\": false\n        },\n        \"custom\": {}\n    },\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"Expenses\": {},\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"Income\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2023-06-02T12:25:10.32+00:00\"\n    },\n    \"Liabilities\": {},\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/2023R1/entity/Default/22.200.001/Project/3059cd77-4001-ee11-b9d9-12b1ac96c437\",\n        \"files:put\": \"/2023R1/entity/Default/22.200.001/files/PX.Objects.PM.ProjectEntry/Project/3059cd77-4001-ee11-b9d9-12b1ac96c437/{filename}\"\n    }\n}"
 								}
 							]
 						},
@@ -12629,6 +12762,30 @@
 					"item": [
 						{
 							"name": "Retrieve a Project Task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"One project task is returned\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse).to.has.lengthOf(1);\r",
+											"});\r",
+											"pm.test(\"PHASE1 project task is in planning\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse[0].ProjectTaskID.value).to.eql('PHASE1');\r",
+											"    pm.expect(jsonResponse[0].Status.value).to.eql('In Planning');\r",
+											"    pm.collectionVariables.set(\"ProjectTaskID\", jsonResponse[0].id);\r",
+											"});\r",
+											"postman.setNextRequest(\"Activate a Project Task\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "GET",
 								"header": [
@@ -12644,9 +12801,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{EndpointURL}}ProjectTask?$filter=ProjectID%20eq%20'TESTPR3'%20and%20ProjectTaskID%20eq%20'PHASE1'",
+									"raw": "{{EndpointURLU100}}ProjectTask?$filter=ProjectID%20eq%20'TESTPR3'%20and%20ProjectTaskID%20eq%20'PHASE1'",
 									"host": [
-										"{{EndpointURL}}ProjectTask"
+										"{{EndpointURLU100}}ProjectTask"
 									],
 									"query": [
 										{
@@ -12675,9 +12832,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{EndpointURL}}ProjectTask?$filter=ProjectID%20eq%20'TESTPR3'%20and%20ProjectTaskID%20eq%20'PHASE1'",
+											"raw": "{{EndpointURLU100}}ProjectTask?$filter=ProjectID%20eq%20'TESTPR3'%20and%20ProjectTaskID%20eq%20'PHASE1'",
 											"host": [
-												"{{EndpointURL}}ProjectTask"
+												"{{EndpointURLU100}}ProjectTask"
 											],
 											"query": [
 												{
@@ -12723,6 +12880,72 @@
 						},
 						{
 							"name": "Activate a Project Task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 202\", function () {\r",
+											"    pm.response.to.have.status(202);\r",
+											"});\r",
+											"if (pm.response.code === 202) {\r",
+											"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
+											"var requestStatus = {\r",
+											"    url: url,\r",
+											"    method: 'GET',\r",
+											"    header: {\r",
+											"        'Content-Type': 'application/json'\r",
+											"    }\r",
+											"};\r",
+											"myFunction();\r",
+											"function myFunction(){\r",
+											"pm.sendRequest(requestStatus,  (error, response) => {\r",
+											"  if (error) {\r",
+											"    console.log(error);\r",
+											"  }\r",
+											"\r",
+											"  if(response.code != 204)\r",
+											"{\r",
+											"    setTimeout(function(){},100000);\r",
+											"    myFunction();\r",
+											"}\r",
+											"else\r",
+											"{\r",
+											"    var url = pm.collectionVariables.get('EndpointURLU100') + 'ProjectTask';\r",
+											"var requestTask = {\r",
+											"    url: url,\r",
+											"    method: 'GET',\r",
+											"    header: {\r",
+											"        'Content-Type': 'application/json'\r",
+											"    }\r",
+											"};\r",
+											"pm.sendRequest(requestTask,  (error, response) => {\r",
+											"  if (error) {\r",
+											"    console.log(error);\r",
+											"  }\r",
+											"\r",
+											"  pm.test('Response for task retrieval should be OK to proceed', () => {\r",
+											"    pm.expect(error).to.equal(null);\r",
+											"    pm.expect(response).to.have.property('code', 200);\r",
+											"    pm.expect(response).to.have.property('status', 'OK');\r",
+											"  });\r",
+											"  pm.test(\"Project task status is Active\", function (){\r",
+											"    const jsonResponse = response.json();\r",
+											"    pm.expect(jsonResponse.Status.value).to.be.eql('Active');\r",
+											"});\r",
+											"    postman.setNextRequest(\"Specify the Progress of a Project Task\");\r",
+											"    return;\r",
+											"});\r",
+											"\r",
+											"}\r",
+											"});\r",
+											"} \r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [
@@ -12739,12 +12962,12 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"entity\":\r\n    {\r\n        \"id\": \"5d7b42dd-3c14-ed11-9e5b-9828a61840c3\"\r\n    },\r\n    \"parameters\": {}\r\n}"
+									"raw": "{\r\n    \"entity\":\r\n    {\r\n        \"id\": {{ProjectTaskID}}\r\n    },\r\n    \"parameters\": {}\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}ProjectTask/Activate",
+									"raw": "{{EndpointURLU100}}ProjectTask/Activate",
 									"host": [
-										"{{EndpointURL}}ProjectTask"
+										"{{EndpointURLU100}}ProjectTask"
 									],
 									"path": [
 										"Activate"
@@ -12774,9 +12997,9 @@
 											"raw": "{\r\n    \"entity\":\r\n    {\r\n        \"id\": \"5d7b42dd-3c14-ed11-9e5b-9828a61840c3\"\r\n    },\r\n    \"parameters\": {}\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}ProjectTask/Activate",
+											"raw": "{{EndpointURLU100}}ProjectTask/Activate",
 											"host": [
-												"{{EndpointURL}}ProjectTask"
+												"{{EndpointURLU100}}ProjectTask"
 											],
 											"path": [
 												"Activate"
@@ -20777,90 +21000,20 @@
 											"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"BillingAndAllocationSettings\" : \r\n    {\r\n        \"NextBillingDate\" : {\"value\" : \"2022-09-15\"}\r\n    }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}Project",
+											"raw": "{{EndpointURLU100}}Project?$expand=BillingAndAllocationSettings",
 											"host": [
-												"{{EndpointURL}}Project"
+												"{{EndpointURLU100}}Project"
+											],
+											"query": [
+												{
+													"key": "$expand",
+													"value": "BillingAndAllocationSettings"
+												}
 											]
 										},
 										"description": "This example shows how to specify the next billing date for a project, which is described in [Creation of a Pro Forma Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=c95b64df-eb41-44c5-9c9c-96f664e35335)."
 									},
-									"response": [
-										{
-											"name": "Creation of a Pro Forma Invoice: 3 Specify the Next Billing Date for the Project",
-											"originalRequest": {
-												"method": "PUT",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/json",
-														"type": "text"
-													},
-													{
-														"key": "Content-Type",
-														"value": "application/json",
-														"type": "text"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"BillingAndAllocationSettings\" : \r\n    {\r\n        \"NextBillingDate\" : {\"value\" : \"2022-09-15\"}\r\n    }\r\n}"
-												},
-												"url": {
-													"raw": "{{EndpointURL}}Project",
-													"host": [
-														"{{EndpointURL}}Project"
-													]
-												}
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Cache-Control",
-													"value": "private"
-												},
-												{
-													"key": "Content-Type",
-													"value": "application/json; charset=utf-8"
-												},
-												{
-													"key": "Set-Cookie",
-													"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-												},
-												{
-													"key": "Set-Cookie",
-													"value": "UserBranch=2; path=/"
-												},
-												{
-													"key": "Set-Cookie",
-													"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-												},
-												{
-													"key": "Set-Cookie",
-													"value": "UserBranch=2; path=/"
-												},
-												{
-													"key": "Set-Cookie",
-													"value": "requestid=C34018A62898639E11ED21931578923B; path=/"
-												},
-												{
-													"key": "Set-Cookie",
-													"value": "requeststat=+st:1011+sc:~/entity/default/22.200.001/project+start:637967119132485819+tg:; path=/"
-												},
-												{
-													"key": "Date",
-													"value": "Sun, 21 Aug 2022 20:51:54 GMT"
-												},
-												{
-													"key": "Content-Length",
-													"value": "742"
-												}
-											],
-											"cookie": [],
-											"body": "{\n    \"id\": \"f09569b5-9221-ed11-9e63-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Assets\": {},\n    \"BillingAndAllocationSettings\": null,\n    \"Customer\": {\n        \"value\": \"COFFEESHOP\"\n    },\n    \"Description\": {\n        \"value\": \"A juicer with the installation and training\"\n    },\n    \"Expenses\": {},\n    \"ExternalRefNbr\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"Income\": {},\n    \"LastModifiedDateTime\": {\n        \"value\": \"2022-08-21T23:51:54.18+03:00\"\n    },\n    \"Liabilities\": {},\n    \"ProjectID\": {\n        \"value\": \"TESTPR3\"\n    },\n    \"ProjectTemplateID\": {\n        \"value\": \"PROGRESS\"\n    },\n    \"Status\": {\n        \"value\": \"Active\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/AcumaticaERP/entity/Default/22.200.001/Project/f09569b5-9221-ed11-9e63-9828a61840c3\",\n        \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.Objects.PM.ProjectEntry/Project/f09569b5-9221-ed11-9e63-9828a61840c3/{filename}\"\n    }\n}"
-										}
-									]
+									"response": []
 								},
 								{
 									"name": "Creation of a Pro Forma Invoice: 4 Retrieve a Project Task",
@@ -21678,7 +21831,12 @@
 									"script": {
 										"type": "text/javascript",
 										"exec": [
-											""
+											"postman.setNextRequest(\"Create an Account Group\");",
+											"postman.setNextRequest(\"Add an Account to an Account Group\");",
+											"postman.setNextRequest(\"Specify the Default Account of an Account Group\");",
+											"postman.setNextRequest(\"Retrieve the List of Accounts in a Group\");",
+											"postman.setNextRequest(\"Remove an Account from a Group\");",
+											"postman.setNextRequest(\"\");"
 										]
 									}
 								},
@@ -29266,6 +29424,22 @@
 		},
 		{
 			"key": "leadEntityID",
+			"value": ""
+		},
+		{
+			"key": "PaymentRefNbr",
+			"value": ""
+		},
+		{
+			"key": "AppliedToDocuments",
+			"value": ""
+		},
+		{
+			"key": "AppliedToOrders",
+			"value": ""
+		},
+		{
+			"key": "ProjectTaskID",
 			"value": ""
 		}
 	]
