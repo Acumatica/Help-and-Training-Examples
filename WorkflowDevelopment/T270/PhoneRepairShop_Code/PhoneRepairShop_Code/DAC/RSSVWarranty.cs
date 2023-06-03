@@ -5,7 +5,7 @@ using PX.Objects.CT;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Warranty")]
+    [PXCacheName(Messages.RSSVWarranty)]
     public class RSSVWarranty : IBqlTable
     {
         #region ServiceID
@@ -43,13 +43,15 @@ namespace PhoneRepairShop
         [PXUIField(DisplayName = "Default Warranty")]
         [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
         public virtual bool? DefaultWarranty { get; set; }
-        public abstract class defaultWarranty : PX.Data.BQL.BqlBool.Field<defaultWarranty> { }
+        public abstract class defaultWarranty :
+            PX.Data.BQL.BqlBool.Field<defaultWarranty>
+        { }
         #endregion
 
         #region ContractDuration
         [PXInt(MinValue = 1, MaxValue = 1000)]
         [PXUIField(DisplayName = "Duration", Enabled = false)]
-        [PXFormula(typeof(Selector<RSSVWarranty.contractID, ContractTemplate.duration>))]
+        [PXFormula(typeof(ContractTemplate.duration.FromSelectorOf<RSSVWarranty.contractID>))]
         public virtual int? ContractDuration { get; set; }
         public abstract class contractDuration : PX.Data.BQL.BqlInt.Field<contractDuration> { }
         #endregion
@@ -58,7 +60,7 @@ namespace PhoneRepairShop
         [PXString(1, IsFixed = true)]
         [PXUIField(DisplayName = "Duration Unit", Enabled = false)]
         [Contract.durationType.List]
-        [PXFormula(typeof(Selector<RSSVWarranty.contractID, ContractTemplate.durationType>))]
+        [PXFormula(typeof(ContractTemplate.durationType.FromSelectorOf<RSSVWarranty.contractID>))]
         public virtual string ContractDurationType { get; set; }
         public abstract class contractDurationType : PX.Data.BQL.BqlString.Field<contractDurationType> { }
         #endregion
@@ -67,7 +69,7 @@ namespace PhoneRepairShop
         [PXString(1, IsFixed = true)]
         [PXUIField(DisplayName = "Contract Type", Enabled = false)]
         [Contract.type.List]
-        [PXFormula(typeof(Selector<RSSVWarranty.contractID, ContractTemplate.type>))]
+        [PXFormula(typeof(ContractTemplate.type.FromSelectorOf<RSSVWarranty.contractID>))]
         public virtual string ContractType { get; set; }
         public abstract class contractType : PX.Data.BQL.BqlString.Field<contractType> { }
         #endregion

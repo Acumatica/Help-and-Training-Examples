@@ -23,17 +23,15 @@ namespace PhoneRepairShop
         }
         #endregion
 
-        public override void Configure(PXScreenConfiguration config)
+        public sealed override void Configure(PXScreenConfiguration config)
         {
-            Configure(config.GetScreenConfigurationContext<SOInvoiceEntry, ARInvoice>());
+            Configure(config.GetScreenConfigurationContext<SOInvoiceEntry, 
+                                                           ARInvoice>());
         }
 
-        protected virtual void Configure(WorkflowContext<SOInvoiceEntry,
-            ARInvoice> context)
+        protected static void Configure(WorkflowContext<SOInvoiceEntry,
+                                                        ARInvoice> context)
         {
-            var conditions = context.Conditions.GetPack<Conditions>();
-
-
             var repairCategory = context.Categories.CreateNew(
                 ActionCategories.RepairCategoryID,
                 category => category.DisplayName(
@@ -45,10 +43,9 @@ namespace PhoneRepairShop
 
             var approveDiscount = context.ActionDefinitions
                 .CreateNew(ApproveDiscount, a => a
-                  .DisplayName("Approve Discount")
-                  .IsDisabledWhen(conditions.DiscountEmpty));
+                    .DisplayName("Approve Discount"));
 
-           
+            var conditions = context.Conditions.GetPack<Conditions>();
 
             context.UpdateScreenConfigurationFor(screen => screen
                 .UpdateDefaultFlow(flow =>
@@ -73,8 +70,8 @@ namespace PhoneRepairShop
                                             .WithActions(actions =>
                                             {
                                                 actions.Add(approveDiscount, a => a
-                                                    .IsDuplicatedInToolbar()
-                                                    .WithConnotation(ActionConnotation.Success));
+                                                  .IsDuplicatedInToolbar()
+                                                  .WithConnotation(ActionConnotation.Success));
                                             });
                                     });
                                 });
@@ -87,24 +84,25 @@ namespace PhoneRepairShop
                                 ts.Add(t => t
                                     .ToNext()
                                     .IsTriggeredOn(approveDiscount)
-                                    .WithFieldAssignments(fass => fass
-                                      .Add<ARInvoice.discDate>(f => f.SetFromToday())));
+                                    .WithFieldAssignments(fass =>
+                                        fass.Add<ARInvoice.discDate>(f => f.SetFromToday())));
                             });
-                        });
+                        });                     
                 })
                 .WithCategories(categories =>
                 {
                     categories.Add(repairCategory);
                 })
-                .WithFieldStates(fs =>
-                {
-                    fs.Add<ARInvoice.status>(state =>
-                        state.SetComboValue(ARDocStatus_Postponed.Postponed, "Postponed"));
-                })
                 .WithActions(actions =>
                 {
                     actions.Add(viewOrder);
                     actions.Add(approveDiscount);
+                })
+                .WithFieldStates(fs =>
+                {
+                    fs.Add<ARInvoice.status>(state =>
+                        state.SetComboValue(ARDocStatus_Postponed
+                          .Postponed, "Postponed"));
                 })
             );
         }
