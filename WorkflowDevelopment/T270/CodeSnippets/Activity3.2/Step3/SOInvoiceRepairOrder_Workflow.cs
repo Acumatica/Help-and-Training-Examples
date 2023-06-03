@@ -11,16 +11,17 @@ namespace PhoneRepairShop
         SOInvoiceEntry>
     {
         ////////// The added code
-		public const string ApproveDiscount = "Approve Discount";
+        public const string ApproveDiscount = "Approve Discount";
         ////////// The end of added code
 		
-        public override void Configure(PXScreenConfiguration config)
+        public sealed override void Configure(PXScreenConfiguration config)
         {
-            Configure(config.GetScreenConfigurationContext<SOInvoiceEntry, ARInvoice>());
+            Configure(config.GetScreenConfigurationContext<SOInvoiceEntry, 
+                                                           ARInvoice>());
         }
 
-        protected virtual void Configure(WorkflowContext<SOInvoiceEntry,
-            ARInvoice> context)
+        protected static void Configure(WorkflowContext<SOInvoiceEntry,
+                                                        ARInvoice> context)
         {
             var repairCategory = context.Categories.CreateNew(
                 ActionCategories.RepairCategoryID,

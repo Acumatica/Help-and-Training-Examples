@@ -3,7 +3,7 @@ using PX.Data.WorkflowAPI;
 using static PX.Data.WorkflowAPI.BoundedTo<PhoneRepairShop.RSSVWorkOrderEntry,
   PhoneRepairShop.RSSVWorkOrder>;
 
-namespace PhoneRepairShop.Workflows
+namespace PhoneRepairShop
 {
     // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
     public class RSSVWorkOrderWorkflow :
@@ -56,13 +56,19 @@ namespace PhoneRepairShop.Workflows
         #endregion
 
         ////////// The added code
-        public override void Configure(PXScreenConfiguration config)
+        public sealed override void Configure (PXScreenConfiguration config)
         {
-            var context = config.GetScreenConfigurationContext<RSSVWorkOrderEntry,
-                RSSVWorkOrder>();
+            Configure(config.GetScreenConfigurationContext<RSSVWorkOrderEntry,
+                RSSVWorkOrder>());
+        }
+
+        protected static void Configure(WorkflowContext<RSSVWorkOrderEntry, 
+                                                        RSSVWorkOrder> context)
+        {
             context.AddScreenConfigurationFor(screen => screen
                 .StateIdentifierIs<RSSVWorkOrder.status>()
-                .AddDefaultFlow(flow => ...));
+                .AddDefaultFlow(flow => ...)
+            );
         }
 		////////// The end of added code
     }

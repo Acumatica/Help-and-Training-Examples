@@ -10,13 +10,14 @@ namespace PhoneRepairShop
     public class SOInvoiceOrder_Workflow : PXGraphExtension<SOInvoiceEntry_Workflow,
         SOInvoiceEntry>
     {
-        public override void Configure(PXScreenConfiguration config)
+        public sealed override void Configure(PXScreenConfiguration config)
         {
-            Configure(config.GetScreenConfigurationContext<SOInvoiceEntry, ARInvoice>());
+            Configure(config.GetScreenConfigurationContext<SOInvoiceEntry, 
+                                                           ARInvoice>());
         }
 
-        protected virtual void Configure(WorkflowContext<SOInvoiceEntry,
-            ARInvoice> context)
+        protected static void Configure(WorkflowContext<SOInvoiceEntry,
+                                                        ARInvoice> context)
         {
             var repairCategory = context.Categories.CreateNew(
                 ActionCategories.RepairCategoryID,
@@ -49,12 +50,12 @@ namespace PhoneRepairShop
                     actions.Add(viewOrder);
                 })
                 ////////// The added code
-				.WithFieldStates(fs =>
-				{
-					fs.Add<ARInvoice.status>(state =>
-						state.SetComboValue(ARDocStatus_Postponed
-						  .Postponed, "Postponed"));
-				})
+                .WithFieldStates(fs =>
+                {
+                    fs.Add<ARInvoice.status>(state =>
+                        state.SetComboValue(ARDocStatus_Postponed
+                          .Postponed, "Postponed"));
+                })
                 ////////// The end of added code
             );
         }
