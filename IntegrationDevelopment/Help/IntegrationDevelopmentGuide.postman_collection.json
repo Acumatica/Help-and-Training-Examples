@@ -11754,6 +11754,47 @@
 					"item": [
 						{
 							"name": "Send a Pro Forma Invoice by Email",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 202\", function () {\r",
+											"    pm.response.to.have.status(202);\r",
+											"});\r",
+											"if (pm.response.code === 202) {\r",
+											"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
+											"var requestStatus = {\r",
+											"    url: url,\r",
+											"    method: 'GET',\r",
+											"    header: {\r",
+											"        'Content-Type': 'application/json'\r",
+											"    }\r",
+											"};\r",
+											"myFunction();\r",
+											"function myFunction(){\r",
+											"pm.sendRequest(requestStatus,  (error, response) => {\r",
+											"  if (error) {\r",
+											"    console.log(error);\r",
+											"  }\r",
+											"\r",
+											"  if(response.code != 204)\r",
+											"{\r",
+											"    setTimeout(function(){},100000);\r",
+											"    myFunction();\r",
+											"}\r",
+											"else\r",
+											"{   \r",
+											"    postman.setNextRequest(\"Create a Purchase Order\");\r",
+											"}\r",
+											"});\r",
+											"} \r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [
@@ -11773,9 +11814,9 @@
 									"raw": "{\r\n  \"entity\" : {\r\n    \"RefNbr\": {\r\n        \"value\": \"000018\"\r\n    }\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}ProFormaInvoice/EmailProFormaInvoice",
+									"raw": "{{EndpointURLU100}}ProFormaInvoice/EmailProFormaInvoice",
 									"host": [
-										"{{EndpointURL}}ProFormaInvoice"
+										"{{EndpointURLU100}}ProFormaInvoice"
 									],
 									"path": [
 										"EmailProFormaInvoice"
@@ -11805,9 +11846,9 @@
 											"raw": "{\r\n  \"entity\" : {\r\n    \"RefNbr\": {\r\n        \"value\": \"000018\"\r\n    }\r\n  }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}ProFormaInvoice/EmailProFormaInvoice",
+											"raw": "{{EndpointURLU100}}ProFormaInvoice/EmailProFormaInvoice",
 											"host": [
-												"{{EndpointURL}}ProFormaInvoice"
+												"{{EndpointURLU100}}ProFormaInvoice"
 											],
 											"path": [
 												"EmailProFormaInvoice"
@@ -11857,94 +11898,6 @@
 										{
 											"key": "Content-Length",
 											"value": "0"
-										}
-									],
-									"cookie": [],
-									"body": ""
-								}
-							]
-						},
-						{
-							"name": "Send a Pro Forma Invoice by Email: Get the Email Sending Operation Status",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{EndpointURL}}ProFormaInvoice/EmailProFormaInvoice/status/64f6f165-ae17-49b8-bd0c-9cc0dbfb4f1a",
-									"host": [
-										"{{EndpointURL}}ProFormaInvoice"
-									],
-									"path": [
-										"EmailProFormaInvoice",
-										"status",
-										"64f6f165-ae17-49b8-bd0c-9cc0dbfb4f1a"
-									]
-								},
-								"description": "This example shows how to check the status of the operation of sending a pro forma invoice by email. This process is described in [Send a Pro Forma Invoice by Email](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a6a0d09a-e695-4b25-a639-2cea565613f8)."
-							},
-							"response": [
-								{
-									"name": "Send a Pro Forma Invoice by Email: Get the Email Sending Operation Status",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{EndpointURL}}ProFormaInvoice/EmailProFormaInvoice/status/64f6f165-ae17-49b8-bd0c-9cc0dbfb4f1a",
-											"host": [
-												"{{EndpointURL}}ProFormaInvoice"
-											],
-											"path": [
-												"EmailProFormaInvoice",
-												"status",
-												"64f6f165-ae17-49b8-bd0c-9cc0dbfb4f1a"
-											]
-										}
-									},
-									"status": "No Content",
-									"code": 204,
-									"_postman_previewlanguage": "plain",
-									"header": [
-										{
-											"key": "Cache-Control",
-											"value": "private"
-										},
-										{
-											"key": "Location",
-											"value": "/AcumaticaERP/entity/Default/22.200.001/ProFormaInvoice/d8522274-3f14-ed11-9e5b-9828a61840c3"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Date",
-											"value": "Thu, 04 Aug 2022 21:53:40 GMT"
 										}
 									],
 									"cookie": [],
@@ -12344,6 +12297,48 @@
 						},
 						{
 							"name": "Invoke Project Billing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 202\", function () {\r",
+											"    pm.response.to.have.status(202);\r",
+											"});\r",
+											"if (pm.response.code === 202) {\r",
+											"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
+											"var requestStatus = {\r",
+											"    url: url,\r",
+											"    method: 'GET',\r",
+											"    header: {\r",
+											"        'Content-Type': 'application/json'\r",
+											"    }\r",
+											"};\r",
+											"myFunction();\r",
+											"function myFunction(){\r",
+											"pm.sendRequest(requestStatus,  (error, response) => {\r",
+											"  if (error) {\r",
+											"    console.log(error);\r",
+											"  }\r",
+											"\r",
+											"  if(response.code != 204)\r",
+											"{\r",
+											"    setTimeout(function(){},100000);\r",
+											"    myFunction();\r",
+											"}\r",
+											"else\r",
+											"{   \r",
+											"    postman.setNextRequest(\"Retrieve the List of Pro Forma Invoices of a Project\");\r",
+											"    return;\r",
+											"}\r",
+											"});\r",
+											"} \r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [
@@ -12455,95 +12450,30 @@
 							]
 						},
 						{
-							"name": "Invoke Project Billing: Monitor the Operation Status Copy",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{EndpointURL}}Project/RunProjectBilling/status/78d2ce8e-ea82-4204-8ccc-822c99d61635",
-									"host": [
-										"{{EndpointURL}}Project"
-									],
-									"path": [
-										"RunProjectBilling",
-										"status",
-										"78d2ce8e-ea82-4204-8ccc-822c99d61635"
-									]
-								},
-								"description": "This example shows how to monitor the operation of the invocation of project billing. This process is described in [Invoke Project Billing](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b814f256-d720-4926-bb96-25e8808a7f49)."
-							},
-							"response": [
-								{
-									"name": "Invoke Project Billing: Monitor the Operation Status Copy",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{EndpointURL}}Project/RunProjectBilling/status/78d2ce8e-ea82-4204-8ccc-822c99d61635",
-											"host": [
-												"{{EndpointURL}}Project"
-											],
-											"path": [
-												"RunProjectBilling",
-												"status",
-												"78d2ce8e-ea82-4204-8ccc-822c99d61635"
-											]
-										}
-									},
-									"status": "No Content",
-									"code": 204,
-									"_postman_previewlanguage": "plain",
-									"header": [
-										{
-											"key": "Cache-Control",
-											"value": "private"
-										},
-										{
-											"key": "Location",
-											"value": "/AcumaticaERP/entity/Default/22.200.001/Project/577b42dd-3c14-ed11-9e5b-9828a61840c3"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-										},
-										{
-											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
-										},
-										{
-											"key": "Date",
-											"value": "Thu, 04 Aug 2022 21:50:55 GMT"
-										}
-									],
-									"cookie": [],
-									"body": ""
-								}
-							]
-						},
-						{
 							"name": "Retrieve the List of Pro Forma Invoices of a Project",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"One pro forma invoice is returned\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.Invoices).to.has.lengthOf(1);\r",
+											"});\r",
+											"pm.test(\"Invoice total is 725\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.Invoices[0].InvoiceTotal.value).to.eql(725);\r",
+											"    pm.collectionVariables.set('proFormaReferenceNbr', jsonResponse.Invoices[0].ProFormaReferenceNbr.value);\r",
+											"});\r",
+											"postman.setNextRequest(\"Send a Pro Forma Invoice by Email\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "GET",
 								"header": [
@@ -12559,9 +12489,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{EndpointURL}}Project/TESTPR3?$expand=Invoices",
+									"raw": "{{EndpointURLU100}}Project/TESTPR3?$expand=Invoices",
 									"host": [
-										"{{EndpointURL}}Project"
+										"{{EndpointURLU100}}Project"
 									],
 									"path": [
 										"TESTPR3"
@@ -12593,9 +12523,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{EndpointURL}}Project/TESTPR3?$expand=Invoices",
+											"raw": "{{EndpointURLU100}}Project/TESTPR3?$expand=Invoices",
 											"host": [
-												"{{EndpointURL}}Project"
+												"{{EndpointURLU100}}Project"
 											],
 											"path": [
 												"TESTPR3"
@@ -13170,6 +13100,28 @@
 					"item": [
 						{
 							"name": "Create a Purchase Order",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"One detail line is included\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.Details).to.has.lengthOf(1);\r",
+											"});\r",
+											"pm.test(\"Order total is 2.29\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.OrderTotal.value).to.eql(2.29);\r",
+											"});\r",
+											"postman.setNextRequest(\"Create a Purchase Order with Tax Details Overridden\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -13189,9 +13141,9 @@
 									"raw": "{\r\n    \"VendorID\": { \"value\": \"GOODFRUITS\" },\r\n    \"Location\": { \"value\": \"MAIN\" },\r\n    \"Details\": [\r\n        {\r\n            \"BranchID\": { \"value\": \"HEADOFFICE\" },\r\n            \"InventoryID\": { \"value\": \"APPLES\" },\r\n            \"OrderQty\": { \"value\": 1 },\r\n            \"WarehouseID\": { \"value\": \"WHOLESALE\" },\r\n            \"UOM\": { \"value\": \"LB\" }\r\n        }\r\n    ],\r\n    \"Hold\": { \"value\": false }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}PurchaseOrder?$expand=Details",
+									"raw": "{{EndpointURLU100}}PurchaseOrder?$expand=Details",
 									"host": [
-										"{{EndpointURL}}PurchaseOrder"
+										"{{EndpointURLU100}}PurchaseOrder"
 									],
 									"query": [
 										{
@@ -13224,9 +13176,9 @@
 											"raw": "{\r\n    \"VendorID\": { \"value\": \"GOODFRUITS\" },\r\n    \"Location\": { \"value\": \"MAIN\" },\r\n    \"Details\": [\r\n        {\r\n            \"BranchID\": { \"value\": \"HEADOFFICE\" },\r\n            \"InventoryID\": { \"value\": \"APPLES\" },\r\n            \"OrderQty\": { \"value\": 1 },\r\n            \"WarehouseID\": { \"value\": \"WHOLESALE\" },\r\n            \"UOM\": { \"value\": \"LB\" }\r\n        }\r\n    ],\r\n    \"Hold\": { \"value\": false }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}PurchaseOrder?$expand=Details",
+											"raw": "{{EndpointURLU100}}PurchaseOrder?$expand=Details",
 											"host": [
-												"{{EndpointURL}}PurchaseOrder"
+												"{{EndpointURLU100}}PurchaseOrder"
 											],
 											"query": [
 												{
@@ -13288,6 +13240,32 @@
 						},
 						{
 							"name": "Create a Purchase Order with Tax Details Overridden",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"One detail line is included\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.Details).to.has.lengthOf(1);\r",
+											"});\r",
+											"pm.test(\"One tax detail line is included\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.TaxDetails).to.has.lengthOf(1);\r",
+											"});\r",
+											"pm.test(\"Tax rate is 8.875\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.TaxDetails[0].TaxRate.value).to.eql(8.875);\r",
+											"});\r",
+											"postman.setNextRequest(\"\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -13307,9 +13285,9 @@
 									"raw": "{\r\n    \"Branch\": { \"value\": \"HEADOFFICE\" },\r\n    \"Details\": [\r\n        {\r\n            \"BranchID\": { \"value\": \"HEADOFFICE\" },\r\n            \"InventoryID\": { \"value\": \"APPLES\" },\r\n            \"LineType\": { \"value\": \"Goods for IN\" },\r\n            \"OrderQty\": { \"value\": 20 },\r\n            \"OrderType\": { \"value\": \"RO\" },\r\n            \"TaxCategory\": { \"value\": \"TAXABLE\" },\r\n            \"UnitCost\": { \"value\": 2.29 },\r\n            \"UOM\": { \"value\": \"LB\" },\r\n            \"WarehouseID\": { \"value\": \"WHOLESALE\" }\r\n        }\r\n    ],\r\n    \"Hold\": { \"value\": true },\r\n    \"IsTaxValid\":  { \"value\": true },\r\n    \"Location\": { \"value\": \"MAIN\" },\r\n    \"TaxDetails\": [\r\n        {\r\n            \"TaxableAmount\": { \"value\": 45.8 },\r\n            \"TaxAmount\": { \"value\": 0 },\r\n            \"TaxID\": { \"value\": \"NYSTATETAX\" },\r\n            \"TaxRate\": { \"value\": 0 }\r\n        }\r\n    ],\r\n    \"Terms\": { \"value\": \"30D\" },\r\n    \"Type\": { \"value\": \"Normal\" },\r\n    \"VendorID\": { \"value\": \"ALLFRUITS\" },\r\n    \"VendorTaxZone\": { \"value\": \"NYZONE\" }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}PurchaseOrder?$expand=Details,TaxDetails",
+									"raw": "{{EndpointURLU100}}PurchaseOrder?$expand=Details,TaxDetails",
 									"host": [
-										"{{EndpointURL}}PurchaseOrder"
+										"{{EndpointURLU100}}PurchaseOrder"
 									],
 									"query": [
 										{
@@ -13342,9 +13320,9 @@
 											"raw": "{\r\n    \"Branch\": { \"value\": \"HEADOFFICE\" },\r\n    \"Details\": [\r\n        {\r\n            \"BranchID\": { \"value\": \"HEADOFFICE\" },\r\n            \"InventoryID\": { \"value\": \"APPLES\" },\r\n            \"LineType\": { \"value\": \"Goods for IN\" },\r\n            \"OrderQty\": { \"value\": 20 },\r\n            \"OrderType\": { \"value\": \"RO\" },\r\n            \"TaxCategory\": { \"value\": \"TAXABLE\" },\r\n            \"UnitCost\": { \"value\": 2.29 },\r\n            \"UOM\": { \"value\": \"LB\" },\r\n            \"WarehouseID\": { \"value\": \"WHOLESALE\" }\r\n        }\r\n    ],\r\n    \"Hold\": { \"value\": true },\r\n    \"IsTaxValid\":  { \"value\": true },\r\n    \"Location\": { \"value\": \"MAIN\" },\r\n    \"TaxDetails\": [\r\n        {\r\n            \"TaxableAmount\": { \"value\": 45.8 },\r\n            \"TaxAmount\": { \"value\": 0 },\r\n            \"TaxID\": { \"value\": \"NYSTATETAX\" },\r\n            \"TaxRate\": { \"value\": 0 }\r\n        }\r\n    ],\r\n    \"Terms\": { \"value\": \"30D\" },\r\n    \"Type\": { \"value\": \"Normal\" },\r\n    \"VendorID\": { \"value\": \"ALLFRUITS\" },\r\n    \"VendorTaxZone\": { \"value\": \"NYZONE\" }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}PurchaseOrder?$expand=Details,TaxDetails",
+											"raw": "{{EndpointURLU100}}PurchaseOrder?$expand=Details,TaxDetails",
 											"host": [
-												"{{EndpointURL}}PurchaseOrder"
+												"{{EndpointURLU100}}PurchaseOrder"
 											],
 											"query": [
 												{
@@ -29438,6 +29416,10 @@
 		},
 		{
 			"key": "ProjectTaskID",
+			"value": ""
+		},
+		{
+			"key": "proFormaReferenceNbr",
 			"value": ""
 		}
 	]
