@@ -12363,9 +12363,9 @@
 									"raw": "{\r\n  \"entity\" : {\r\n    \"ProjectID\": {\r\n        \"value\": \"TESTPR3\"\r\n    }\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}Project/RunProjectBilling",
+									"raw": "{{EndpointURLU100}}Project/RunProjectBilling",
 									"host": [
-										"{{EndpointURL}}Project"
+										"{{EndpointURLU100}}Project"
 									],
 									"path": [
 										"RunProjectBilling"
@@ -12395,9 +12395,9 @@
 											"raw": "{\r\n  \"entity\" : {\r\n    \"ProjectID\": {\r\n        \"value\": \"TESTPR3\"\r\n    }\r\n  }\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}Project/RunProjectBilling",
+											"raw": "{{EndpointURLU100}}Project/RunProjectBilling",
 											"host": [
-												"{{EndpointURL}}Project"
+												"{{EndpointURLU100}}Project"
 											],
 											"path": [
 												"RunProjectBilling"
@@ -12650,6 +12650,24 @@
 					"item": [
 						{
 							"name": "Specify the Progress of a Project Task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"PHASE1 project task is in planning\", function (){\r",
+											"    const jsonResponse = pm.response.json();\r",
+											"    pm.expect(jsonResponse.Completed.value).to.eql(25);\r",
+											"});\r",
+											"postman.setNextRequest(\"Invoke Project Billing\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -12669,9 +12687,9 @@
 									"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"InventoryID\" : {\"value\" : \"<N/A>\"},\r\n  \"Completed\" : {\"value\" : 25},\r\n  \"PendingInvoiceAmount\" : {\"value\" : 725}\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL}}ProjectBudget",
+									"raw": "{{EndpointURLU100}}ProjectBudget",
 									"host": [
-										"{{EndpointURL}}ProjectBudget"
+										"{{EndpointURLU100}}ProjectBudget"
 									]
 								},
 								"description": "This example shows how to specify the progress of a project task, which is described in [Specify the Progress of a Project Task](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=06e096c8-c83d-4392-9a90-b83a9acfbc8e)."
@@ -12698,9 +12716,9 @@
 											"raw": "{\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\"},\r\n  \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n  \"InventoryID\" : {\"value\" : \"<N/A>\"},\r\n  \"Completed\" : {\"value\" : 25},\r\n  \"PendingInvoiceAmount\" : {\"value\" : 725}\r\n}"
 										},
 										"url": {
-											"raw": "{{EndpointURL}}ProjectBudget",
+											"raw": "{{EndpointURLU100}}ProjectBudget",
 											"host": [
-												"{{EndpointURL}}ProjectBudget"
+												"{{EndpointURLU100}}ProjectBudget"
 											]
 										}
 									},
@@ -12778,7 +12796,6 @@
 											"    const jsonResponse = pm.response.json();\r",
 											"    pm.expect(jsonResponse[0].ProjectTaskID.value).to.eql('PHASE1');\r",
 											"    pm.expect(jsonResponse[0].Status.value).to.eql('In Planning');\r",
-											"    pm.collectionVariables.set(\"ProjectTaskID\", jsonResponse[0].id);\r",
 											"});\r",
 											"postman.setNextRequest(\"Activate a Project Task\");"
 										],
@@ -12885,33 +12902,11 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 202\", function () {\r",
-											"    pm.response.to.have.status(202);\r",
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
 											"});\r",
-											"if (pm.response.code === 202) {\r",
-											"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
-											"var requestStatus = {\r",
-											"    url: url,\r",
-											"    method: 'GET',\r",
-											"    header: {\r",
-											"        'Content-Type': 'application/json'\r",
-											"    }\r",
-											"};\r",
-											"myFunction();\r",
-											"function myFunction(){\r",
-											"pm.sendRequest(requestStatus,  (error, response) => {\r",
-											"  if (error) {\r",
-											"    console.log(error);\r",
-											"  }\r",
 											"\r",
-											"  if(response.code != 204)\r",
-											"{\r",
-											"    setTimeout(function(){},100000);\r",
-											"    myFunction();\r",
-											"}\r",
-											"else\r",
-											"{\r",
-											"    var url = pm.collectionVariables.get('EndpointURLU100') + 'ProjectTask';\r",
+											"    var url = pm.collectionVariables.get('EndpointURLU100') + \"ProjectTask?$filter=ProjectID%20eq%20'TESTPR3'%20and%20ProjectTaskID%20eq%20'PHASE1'\";\r",
 											"var requestTask = {\r",
 											"    url: url,\r",
 											"    method: 'GET',\r",
@@ -12931,16 +12926,11 @@
 											"  });\r",
 											"  pm.test(\"Project task status is Active\", function (){\r",
 											"    const jsonResponse = response.json();\r",
-											"    pm.expect(jsonResponse.Status.value).to.be.eql('Active');\r",
+											"    pm.expect(jsonResponse[0].Status.value).to.be.eql('Active');\r",
 											"});\r",
 											"    postman.setNextRequest(\"Specify the Progress of a Project Task\");\r",
-											"    return;\r",
 											"});\r",
-											"\r",
-											"}\r",
-											"});\r",
-											"} \r",
-											"}"
+											""
 										],
 										"type": "text/javascript"
 									}
@@ -12962,7 +12952,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"entity\":\r\n    {\r\n        \"id\": {{ProjectTaskID}}\r\n    },\r\n    \"parameters\": {}\r\n}"
+									"raw": "{\r\n    \"entity\":\r\n    {\r\n        \"ProjectID\": {\r\n            \"value\": \"TESTPR3\"\r\n        },\r\n        \"ProjectTaskID\": {\r\n            \"value\": \"PHASE1\"\r\n        }\r\n    },\r\n    \"parameters\": {}\r\n}"
 								},
 								"url": {
 									"raw": "{{EndpointURLU100}}ProjectTask/Activate",
@@ -12994,7 +12984,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"entity\":\r\n    {\r\n        \"id\": \"5d7b42dd-3c14-ed11-9e5b-9828a61840c3\"\r\n    },\r\n    \"parameters\": {}\r\n}"
+											"raw": "{\r\n    \"entity\":\r\n    {\r\n        \"ProjectID\": {\r\n            \"value\": \"TESTPR3\"\r\n        },\r\n        \"ProjectTaskID\": {\r\n            \"value\": \"PHASE1\"\r\n        }\r\n    },\r\n    \"parameters\": {}\r\n}"
 										},
 										"url": {
 											"raw": "{{EndpointURLU100}}ProjectTask/Activate",
@@ -13016,39 +13006,47 @@
 										},
 										{
 											"key": "Location",
-											"value": "/AcumaticaERP/entity/Default/22.200.001/ProjectTask/5d7b42dd-3c14-ed11-9e5b-9828a61840c3"
+											"value": "/2023R1/entity/Default/22.200.001/ProjectTask/3659cd77-4001-ee11-b9d9-12b1ac96c437"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+											"value": ".ASPXAUTH=3EA35DC1A9F9858EF279C00438C5DDD8D90F277C2C7BF717C5313D9CB5FBE59F45939D34A8B44BEA7AD9B81D1F948F7C4ADD5DC9E7C874D327373237854D6511E024C18E3106045E1C4400CE79D054ABE772811168E5453B902373C0E4FB1FEC84EA44F0EAC45A48107B14CBD0467090AD4A98158D63BE2EF7213B2CEC79EAC112D58ECDCAB85FE2A27643408834289ECA8F4008; path=/; secure; HttpOnly; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+											"value": "UserBranch=2; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "UserBranch=2; path=/"
+											"value": ".ASPXAUTH=3EA35DC1A9F9858EF279C00438C5DDD8D90F277C2C7BF717C5313D9CB5FBE59F45939D34A8B44BEA7AD9B81D1F948F7C4ADD5DC9E7C874D327373237854D6511E024C18E3106045E1C4400CE79D054ABE772811168E5453B902373C0E4FB1FEC84EA44F0EAC45A48107B14CBD0467090AD4A98158D63BE2EF7213B2CEC79EAC112D58ECDCAB85FE2A27643408834289ECA8F4008; path=/; secure; HttpOnly; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requestid=C34018A628985B9E11ED143D5C60D4A4; path=/"
+											"value": "Locale=TimeZone=GMTM0500G&Culture=en-US; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Set-Cookie",
-											"value": "requeststat=+st:381+sc:~/entity/default/22.200.001/projecttask/activate+start:637952457303763748+tg:; path=/"
+											"value": "UserBranch=2; path=/; secure; SameSite=None"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requestid=37C496ACB112D9B911EE038EB8E54A7B; path=/; secure; SameSite=None"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "requeststat=+st:417+sc:~/entity/default/22.200.001/projecttask/activate+start:638215590027337979+tg:; path=/; secure; SameSite=None"
 										},
 										{
 											"key": "Date",
-											"value": "Thu, 04 Aug 2022 21:35:30 GMT"
+											"value": "Mon, 05 Jun 2023 10:50:03 GMT"
 										}
 									],
 									"cookie": [],
-									"body": ""
+									"body": null
 								}
 							]
 						}
