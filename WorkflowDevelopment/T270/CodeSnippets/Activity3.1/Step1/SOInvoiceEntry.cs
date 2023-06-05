@@ -1,9 +1,9 @@
-using PhoneRepairShop;
 using PX.Data;
 using PX.Objects.AR;
 using System.Collections;
+using PX.Objects.SO;
 
-namespace PX.Objects.SO
+namespace PhoneRepairShop
 {
     public class SOInvoiceEntry_Extension : PXGraphExtension<SOInvoiceEntry>
     {

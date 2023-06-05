@@ -6,7 +6,7 @@ using PX.Objects.Common;
 using static PX.Data.WorkflowAPI.BoundedTo<PhoneRepairShop.RSSVWorkOrderEntry,
   PhoneRepairShop.RSSVWorkOrder>;
 
-namespace PhoneRepairShop.Workflows
+namespace PhoneRepairShop
 {
     // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
     public class RSSVWorkOrderWorkflow :
@@ -72,11 +72,14 @@ namespace PhoneRepairShop.Workflows
               Where<RSSVWorkOrder.invoiceNbr.IsNotNull>>());
         }
 
-        public override void Configure(PXScreenConfiguration config)
+        public sealed override void Configure (PXScreenConfiguration config)
         {
-            var context = config.GetScreenConfigurationContext<RSSVWorkOrderEntry,
-                RSSVWorkOrder>();
+            Configure(config.GetScreenConfigurationContext<RSSVWorkOrderEntry,
+                RSSVWorkOrder>());
+        }
 
+        protected static void Configure(WorkflowContext<RSSVWorkOrderEntry, RSSVWorkOrder> context)
+        {
             var formAssign = context.Forms.Create("FormAssign", form =>
                 form.Prompt("Assign").WithFields(fields =>
                 {
@@ -106,8 +109,8 @@ namespace PhoneRepairShop.Workflows
                             .WithActions(actions =>
                             {
                                 actions.Add(g => g.ReleaseFromHold, a => a
-                                  .IsDuplicatedInToolbar()
-                                  .WithConnotation(ActionConnotation.Success));
+                                .IsDuplicatedInToolbar()
+                                .WithConnotation(ActionConnotation.Success));
                             });
                         });
                         fss.Add<States.readyForAssignment>(flowState =>
@@ -115,12 +118,12 @@ namespace PhoneRepairShop.Workflows
                             return flowState
                               .WithFieldStates(states =>
                               {
-                                states.AddField<RSSVWorkOrder.customerID>(state
-                                  => state.IsDisabled());
-                                states.AddField<RSSVWorkOrder.serviceID>(state
-                                  => state.IsDisabled());
-                                states.AddField<RSSVWorkOrder.deviceID>(state 
-                                  => state.IsDisabled());
+                                  states.AddField<RSSVWorkOrder.customerID>(state
+                                    => state.IsDisabled());
+                                  states.AddField<RSSVWorkOrder.serviceID>(state
+                                    => state.IsDisabled());
+                                  states.AddField<RSSVWorkOrder.deviceID>(state
+                                    => state.IsDisabled());
                               })
                               .WithActions(actions =>
                               {
@@ -130,30 +133,34 @@ namespace PhoneRepairShop.Workflows
                                       .WithConnotation(ActionConnotation.Success));
                               });
                         });
+                        ////////// The modified code
                         fss.Add<States.pendingPayment>(flowState =>
                         {
                             return flowState
                               .WithFieldStates(states =>
                               {
-                                states.AddField<RSSVWorkOrder.customerID>(state 
-                                  => state.IsDisabled());
-                                states.AddField<RSSVWorkOrder.serviceID>(state 
-                                  => state.IsDisabled());
-                                states.AddField<RSSVWorkOrder.deviceID>(state 
-                                  => state.IsDisabled());
+                                  states.AddField<RSSVWorkOrder.customerID>(state
+                                    => state.IsDisabled());
+                                  states.AddField<RSSVWorkOrder.serviceID>(state
+                                    => state.IsDisabled());
+                                  states.AddField<RSSVWorkOrder.deviceID>(state
+                                    => state.IsDisabled());
                               })
                               .WithActions(actions =>
                               {
-                                actions.Add(g => g.PutOnHold, a => a.IsDuplicatedInToolbar());
-                                actions.Add(g => g.CreateInvoiceAction, a => a
-                                  .IsDuplicatedInToolbar()
-                                  .WithConnotation(ActionConnotation.Success));
+                                  actions.Add(g => g.PutOnHold,
+                                    a => a.IsDuplicatedInToolbar());
+                                  actions.Add(g => g.CreateInvoiceAction, a => a
+                                    .IsDuplicatedInToolbar()
+                                    .WithConnotation(ActionConnotation.Success));
                               })
+                              // Add the OnInvoiceGotPrepaid event handler
                               .WithEventHandlers(handlers =>
                               {
                                   handlers.Add(g => g.OnInvoiceGotPrepaid);
                               });
                         });
+                        ////////// The end of modified code
                         fss.Add<States.assigned>(flowState =>
                         {
                             return flowState
@@ -229,8 +236,10 @@ namespace PhoneRepairShop.Workflows
                         transitions.AddGroupFrom<States.pendingPayment>(ts =>
                         {
                             ts.Add(t => t.To<States.onHold>().IsTriggeredOn(g => g.PutOnHold));
+                            ////////// The added code
                             ts.Add(t => t.To<States.readyForAssignment>()
                               .IsTriggeredOn(g => g.OnInvoiceGotPrepaid));
+                            ////////// The end of added code
                         });
                         transitions.AddGroupFrom<States.assigned>(ts =>
                         {
@@ -247,7 +256,7 @@ namespace PhoneRepairShop.Workflows
                 {
                     categories.Add(processingCategory);
                 })
-                .WithActions(actions => 
+                .WithActions(actions =>
                 {
                     actions.Add(g => g.ReleaseFromHold, c => c
                       .WithCategory(processingCategory));
@@ -257,8 +266,8 @@ namespace PhoneRepairShop.Workflows
                       .WithCategory(processingCategory)
                       .WithForm(formAssign)
                       .WithFieldAssignments(fields => {
-                      fields.Add<RSSVWorkOrder.assignee>(f =>
-                        f.SetFromFormField(formAssign, "Assignee"));
+                          fields.Add<RSSVWorkOrder.assignee>(f =>
+                            f.SetFromFormField(formAssign, "Assignee"));
                       }));
                     actions.Add(g => g.Complete, c => c
                       .WithCategory(processingCategory, Placement.Last)

@@ -7,9 +7,9 @@ using PX.Data.WorkflowAPI;
 
 namespace PhoneRepairShop
 {
-    [PXCacheName("Repair Work Order")]
+    [PXCacheName(Messages.RSSVWorkOrder)]
     public class RSSVWorkOrder : IBqlTable
-  {
+    {
         #region OrderNbr
         [PXDBString(15, IsKey = true, IsUnicode = true, InputMask = ">CCCCCCCCCCCCCCC")]
         [PXDefault(PersistingCheck = PXPersistingCheck.NullOrBlank)]

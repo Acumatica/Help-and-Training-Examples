@@ -56,33 +56,15 @@ namespace PhoneRepairShop
         }
         #endregion
 
-		////////// The added code
-        public class Conditions : Condition.Pack
-        {
-            public Condition RequiresPrepayment => GetOrCreate(b => b.FromBql<
-              Where<Selector<RSSVWorkOrder.serviceID, RSSVRepairService.prepayment>,
-              Equal<True>>>());
-
-            public Condition DoesNotRequirePrepayment => GetOrCreate(b => b.FromBql<
-              Where<Selector<RSSVWorkOrder.serviceID, RSSVRepairService.prepayment>,
-              Equal<False>>>());
-        }
-		////////// The end of added code
-		
         public sealed override void Configure (PXScreenConfiguration config)
         {
             Configure(config.GetScreenConfigurationContext<RSSVWorkOrderEntry,
                                                            RSSVWorkOrder>());
         }
 
-        ////////// The modified code
         protected static void Configure(WorkflowContext<RSSVWorkOrderEntry, 
                                                         RSSVWorkOrder> context)
         {
-            // Create an instance of the Conditions class
-            var conditions = context.Conditions.GetPack<Conditions>();
-            ////////// The end of modified code
-		
             #region Categories
             var commonCategories = CommonActionCategories.Get(context);
             var processingCategory = commonCategories.Processing;
@@ -119,12 +101,14 @@ namespace PhoneRepairShop
                             }); ;
                         });
                     })
+					////////// The added code
                     .WithTransitions(transitions =>
                     {
                         transitions.Add(t => t.From<States.onHold>()
                               .To<States.readyForAssignment>()
                               .IsTriggeredOn(g => g.ReleaseFromHold));
                     }))
+					////////// The end of added code
                 .WithCategories(categories =>
                 {
                     categories.Add(processingCategory);
