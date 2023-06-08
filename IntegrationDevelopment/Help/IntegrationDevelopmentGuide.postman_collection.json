@@ -15962,7 +15962,7 @@
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
 									"//Set the next request\r",
-									"postman.setNextRequest(\"\");\r",
+									"postman.setNextRequest(\"Create a Sales Order with the Unit of Measure Specified\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -16557,6 +16557,52 @@
 				},
 				{
 					"name": "Create a Sales Order with the Unit of Measure Specified",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"One detail line is included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Details).to.has.lengthOf(1);\r",
+									"});\r",
+									"pm.test(\"Detail's UOM is PIECE\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Details[0].UOM.value).to.eql('PIECE');\r",
+									"});\r",
+									"pm.test(\"Order total is 9.04\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.OrderTotal.value).to.eql(9.04);\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"//Set the next request\r",
+									"postman.setNextRequest(\"\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -17581,6 +17627,96 @@
 				},
 				{
 					"name": "Create a Shipment from a Sales Order",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 202\", function () {\r",
+									"    pm.response.to.have.status(202);\r",
+									"});\r",
+									"//Check the status of the operation\r",
+									"if (pm.response.code === 202) {\r",
+									"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
+									"var requestStatus = {\r",
+									"    url: url,\r",
+									"    method: 'GET',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    }\r",
+									"};\r",
+									"myFunction();\r",
+									"function myFunction(){\r",
+									"pm.sendRequest(requestStatus,  (error, response) => {\r",
+									"  if (error) {\r",
+									"    console.log(error);\r",
+									"  }\r",
+									"\r",
+									"  if(response.code != 204)\r",
+									"{\r",
+									"    setTimeout(function(){},100000);\r",
+									"    myFunction();\r",
+									"}\r",
+									"else\r",
+									"{\r",
+									"    var url = pm.collectionVariables.get('EndpointURL') + 'SalesOrder/42bb9a17-a402-e911-b818-00155d408001?$expand=Shipments';\r",
+									"var requestSalesOrder = {\r",
+									"    url: url,\r",
+									"    method: 'GET',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    }\r",
+									"};\r",
+									"pm.sendRequest(requestSalesOrder,  (error, response) => {\r",
+									"  if (error) {\r",
+									"    console.log(error);\r",
+									"  }\r",
+									"\r",
+									"  pm.test('Response for the sales order should be OK to process', () => {\r",
+									"    pm.expect(error).to.equal(null);\r",
+									"    pm.expect(response).to.have.property('code', 200);\r",
+									"    pm.expect(response).to.have.property('status', 'OK');\r",
+									"  });\r",
+									"  pm.test(\"Sales order status is Shipping\", function (){\r",
+									"    const jsonResponse = response.json();\r",
+									"    pm.expect(jsonResponse.Status.value).to.be.eql('Shipping');\r",
+									"    });\r",
+									"  pm.test(\"One shipment is included\", function (){\r",
+									"    const jsonResponse = response.json();\r",
+									"    pm.expect(jsonResponse.Shipments).to.has.lengthOf(1);\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"//Set the next request\r",
+									"    postman.setNextRequest(\"Insert Lines with Allocations (with Location) to a PO Receipt\");\r",
+									"    return;\r",
+									"});\r",
+									"\r",
+									"}\r",
+									"});\r",
+									"} \r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -17597,7 +17733,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"entity\":{\r\n      \"id\": \"6b2e479a-0815-ed11-9e5c-9828a61840c3\"\r\n  },\r\n  \"parameters\": {\r\n        \"ShipmentDate\": { \"value\": \"2022-08-20T00:00:00+03:00\" },\r\n        \"WarehouseID\": { \"value\": \"WHOLESALE\" }\r\n  }\r\n}"
+							"raw": "{\r\n  \"entity\":{\r\n      \"id\":\"42bb9a17-a402-e911-b818-00155d408001\"\r\n  },\r\n  \"parameters\": {\r\n        \"ShipmentDate\": { \"value\": \"2023-08-20T00:00:00+03:00\" },\r\n        \"WarehouseID\": { \"value\": \"RETAIL\" }\r\n  }\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}SalesOrder/SalesOrderCreateShipment",
