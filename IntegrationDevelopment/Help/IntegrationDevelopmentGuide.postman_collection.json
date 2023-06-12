@@ -14261,11 +14261,11 @@
 									"});\r",
 									"pm.test(\"One detail line is included\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.Details).to.has.lengthOf(1);\r",
+									"    pm.expect(jsonResponse.Details).to.have.lengthOf(1);\r",
 									"});\r",
 									"pm.test(\"One tax detail line is included\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.TaxDetails).to.has.lengthOf(1);\r",
+									"    pm.expect(jsonResponse.TaxDetails).to.have.lengthOf(1);\r",
 									"});\r",
 									"pm.test(\"Tax rate is 8.875\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
@@ -16596,7 +16596,7 @@
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
 									"//Set the next request\r",
-									"postman.setNextRequest(\"\");\r",
+									"postman.setNextRequest(\"Create a Shipment from a Sales Order\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -17704,7 +17704,7 @@
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
 									"//Set the next request\r",
-									"    postman.setNextRequest(\"Insert Lines with Allocations (with Location) to a PO Receipt\");\r",
+									"    postman.setNextRequest(\"Create a Shipment from a Sales Order\");\r",
 									"    return;\r",
 									"});\r",
 									"\r",
@@ -17829,6 +17829,96 @@
 				},
 				{
 					"name": "Create a Receipt for a Sales Order of the RM Type",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 202\", function () {\r",
+									"    pm.response.to.have.status(202);\r",
+									"});\r",
+									"//Check the status of the operation\r",
+									"if (pm.response.code === 202) {\r",
+									"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
+									"var requestStatus = {\r",
+									"    url: url,\r",
+									"    method: 'GET',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    }\r",
+									"};\r",
+									"myFunction();\r",
+									"function myFunction(){\r",
+									"pm.sendRequest(requestStatus,  (error, response) => {\r",
+									"  if (error) {\r",
+									"    console.log(error);\r",
+									"  }\r",
+									"\r",
+									"  if(response.code != 204)\r",
+									"{\r",
+									"    setTimeout(function(){},100000);\r",
+									"    myFunction();\r",
+									"}\r",
+									"else\r",
+									"{\r",
+									"    var url = pm.collectionVariables.get('EndpointURL') + 'SalesOrder/RM/000127?$expand=Shipments';\r",
+									"var requestSalesOrder = {\r",
+									"    url: url,\r",
+									"    method: 'GET',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    }\r",
+									"};\r",
+									"pm.sendRequest(requestSalesOrder,  (error, response) => {\r",
+									"  if (error) {\r",
+									"    console.log(error);\r",
+									"  }\r",
+									"\r",
+									"  pm.test('Response for the sales order should be OK to process', () => {\r",
+									"    pm.expect(error).to.equal(null);\r",
+									"    pm.expect(response).to.have.property('code', 200);\r",
+									"    pm.expect(response).to.have.property('status', 'OK');\r",
+									"  });\r",
+									"  pm.test(\"Sales order status is Shipping\", function (){\r",
+									"    const jsonResponse = response.json();\r",
+									"    pm.expect(jsonResponse.Status.value).to.be.eql('Shipping');\r",
+									"    });\r",
+									"  pm.test(\"One shipment is included\", function (){\r",
+									"    const jsonResponse = response.json();\r",
+									"    pm.expect(jsonResponse.Shipments).to.has.lengthOf(1);\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"//Set the next request\r",
+									"    postman.setNextRequest(\"Insert Lines with Allocations (with Location) to a PO Receipt\");\r",
+									"    return;\r",
+									"});\r",
+									"\r",
+									"}\r",
+									"});\r",
+									"} \r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -17941,6 +18031,52 @@
 				},
 				{
 					"name": "Create a Return Order for Invoices",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Two detail lines are included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Details).to.has.lengthOf(2);\r",
+									"});\r",
+									"pm.test(\"Order type is RC\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.OrderType.value).to.eql('RC');\r",
+									"});\r",
+									"pm.test(\"Order total is 317.04\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.OrderTotal.value).to.eql(317.04);\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"//Set the next request\r",
+									"postman.setNextRequest(\"Create a Sales Order with Tax Parameters Overridden\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -18059,6 +18195,52 @@
 				},
 				{
 					"name": "Create a Sales Order with Tax Parameters Overridden",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"One detail line is included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Details).to.has.lengthOf(1);\r",
+									"});\r",
+									"pm.test(\"One tax detail line is included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.TaxDetails).to.has.lengthOf(1);\r",
+									"});\r",
+									"pm.test(\"Tax total is 0.5\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.TaxTotal.value).to.eql(0.5);\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"//Set the next request\r",
+									"postman.setNextRequest(\"Retrieve a Service Order\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -18419,6 +18601,48 @@
 			"item": [
 				{
 					"name": "Retrieve a Service Order",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"One service order is included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.has.lengthOf(1);\r",
+									"});\r",
+									"pm.test(\"Service order number is 000019\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse[0].ServiceOrderNbr.value).to.eql('000019');\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"//Set the next request\r",
+									"postman.setNextRequest(\"Read the Tracking Number from a Shipment\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -18637,6 +18861,52 @@
 				},
 				{
 					"name": "Read the Tracking Number from a Shipment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"One shipment is included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.has.lengthOf(1);\r",
+									"});\r",
+									"pm.test(\"One package is included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse[0].Packages).to.has.lengthOf(1);\r",
+									"});\r",
+									"pm.test(\"Tracking number is 398305336614\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse[0].Packages[0].TrackingNbr.value).to.eql('398305336614');\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"//Set the next request\r",
+									"postman.setNextRequest(\"\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -18751,6 +19021,97 @@
 				},
 				{
 					"name": "Write the Tracking Number to a Shipment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//U100 sign-in data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"var requestSignIn = {\r",
+									"    url: url + 'entity/auth/login',\r",
+									"    method: 'POST',\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: '{ \"name\":\"'+username+'\", \"password\":\"'+password+'\", \"tenant\":\"'+tenant+'\", \"branch\": \"HEADOFFICE\"}'\r",
+									"    },\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    }\r",
+									"};\r",
+									"//Data for adding a package to the shipment\r",
+									"var url2 = pm.collectionVariables.get('EndpointURL') + 'Shipment?$expand=Packages';\r",
+									"var requestAddPackage = {\r",
+									"    url: url2,\r",
+									"    method: 'PUT',\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: '{\"ShipmentNbr\": { \"value\": \"000058\"},\"Type\": {\"value\": \"Shipment\"},\"Packages\": [{\"BoxID\": {\"value\": \"SMALL\"}}]}'},\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    }\r",
+									"};\r",
+									"//Sign in to the tenant with U100 data and add a package to the shipment\r",
+									"pm.sendRequest(requestSignIn,  (error, response) => {\r",
+									"  if (error) {\r",
+									"    console.log(error);\r",
+									"  }\r",
+									"\r",
+									"  pm.test('Response for sing in should be 204 to process', () => {\r",
+									"    pm.expect(error).to.equal(null);\r",
+									"    pm.expect(response).to.have.property('code', 204);\r",
+									"    pm.expect(response).to.have.property('status', 'No Content');\r",
+									"  });\r",
+									"  \r",
+									"  pm.sendRequest(requestAddPackage,  (error, response) => {\r",
+									"  if (error) {\r",
+									"    console.log(error);\r",
+									"  }\r",
+									"\r",
+									"  pm.test('Response for adding package should be OK to process', () => {\r",
+									"    pm.expect(error).to.equal(null);\r",
+									"    pm.expect(response).to.have.property('code', 200);\r",
+									"    pm.expect(response).to.have.property('status', 'OK');\r",
+									"    const jsonResponse = response.json();\r",
+									"    pm.collectionVariables.set('shipmentID', jsonResponse.id);\r",
+									"    pm.collectionVariables.set('packageID', jsonResponse.Packages[0].id);\r",
+									"  });\r",
+									"\r",
+									"});\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"One package is included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Packages).to.have.lengthOf(1);\r",
+									"});\r",
+									"pm.test(\"Tracking number is 398305336619\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Packages[0].TrackingNbr.value).to.eql('398305336619');\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -18767,7 +19128,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"5d79d031-8763-ea11-b82d-00155d408001\",\r\n    \"Packages\": [\r\n        {\r\n            \"id\": \"25cd0b58-e11f-ed11-9e63-9828a61840c3\",\r\n            \"TrackingNbr\": { \"value\": \"398305336619\" }\r\n        }\r\n    ]\r\n}"
+							"raw": "{\r\n    \"id\": \"{{shipmentID}}\",\r\n    \"Packages\": [\r\n        {\r\n            \"id\": \"{{packageID}}\",\r\n            \"TrackingNbr\": { \"value\": \"398305336619\" }\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}Shipment?$expand=Packages&$select=Packages/TrackingNbr",
@@ -19217,6 +19578,42 @@
 				},
 				{
 					"name": "Retrieve Stock Items with Attributes",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Three attributes are included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Attributes).to.have.lengthOf(3);\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -19317,6 +19714,42 @@
 				},
 				{
 					"name": "Retrieve Unit Conversion Rules from a Stock Item",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Two UOM conventions are included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.UOMConversions).to.have.lengthOf(2);\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -19417,6 +19850,50 @@
 				},
 				{
 					"name": "Retrieve Stock Items with Prices and Quantities by Warehouse",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Not empty list is returned\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.be.not.empty;\r",
+									"});\r",
+									"pm.test(\"Default price is not null\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse[0].DefaultPrice.value).to.be.not.null;\r",
+									"});\r",
+									"pm.test(\"QtyOnHand is not null\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse[0].WarehouseDetails[0].QtyOnHand.value).to.be.not.null;\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -19839,6 +20316,46 @@
 			"item": [
 				{
 					"name": "Update a Tax Category",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Tax category is TAXABLE\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.TaxCategoryID.value).to.be.eql('TAXABLE');\r",
+									"});\r",
+									"pm.test(\"ExcludeListedTaxes is true\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.ExcludeListedTaxes.value).to.be.eql(true);\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -19951,6 +20468,46 @@
 			"item": [
 				{
 					"name": "Read Employee Time Activities",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Not empty list is returned\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.be.not.empty;\r",
+									"});\r",
+									"pm.test(\"TimeSpent is not null\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse[0].TimeSpent.value).to.be.not.null;\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -20033,6 +20590,46 @@
 				},
 				{
 					"name": "Write Employee Time Activities",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = 'gibbs';\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Employee is EP00000026\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Employee.value).to.be.eql('EP00000026');\r",
+									"});\r",
+									"pm.test(\"TimeSpent is 01:30\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.TimeSpent.value).to.be.eql('01:30');\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -20049,7 +20646,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"Summary\" : {\"value\" : \"Time entry summary\"},\r\n  \"Date\" : {\"value\" : \"2020-08-17T05:50:43.233\" },\r\n  \"Employee\" : {\"value\" : \"EP00000002\" },\r\n  \"ProjectID\" : {\"value\" : \"TOMYUM1\" },\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\" },\r\n  \"CostCode\" : {\"value\" : \"00-000\" },\r\n  \"EarningType\" : {\"value\" : \"RG\" },\r\n  \"TimeSpent\" : {\"value\" : \"01:30\" },\r\n  \"BillableTime\" : {\"value\" : \"00:30\" }\r\n}"
+							"raw": "{\r\n  \"Summary\" : {\"value\" : \"Time entry summary\"},\r\n  \"Date\" : {\"value\" : \"2022-08-17T05:50:43.233\" },\r\n  \"Employee\" : {\"value\" : \"EP00000026\" },\r\n  \"ProjectID\" : {\"value\" : \"TOMYUM1\" },\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\" },\r\n  \"CostCode\" : {\"value\" : \"00-000\" },\r\n  \"EarningType\" : {\"value\" : \"RG\" },\r\n  \"TimeSpent\" : {\"value\" : \"01:30\" },\r\n  \"BillableTime\" : {\"value\" : \"00:30\" }\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}TimeEntry",
@@ -30772,7 +31369,7 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					"let singOutFunction = (pm, url) => { ",
+					"let singOutFunction = (pm, url, nextRequest) => { ",
 					"var requestSignOut = {",
 					"    url: url + 'entity/auth/logout',",
 					"    method: 'POST',",
@@ -30791,6 +31388,10 @@
 					"    pm.expect(response).to.have.property('code', 204);",
 					"    pm.expect(response).to.have.property('status', 'No Content');",
 					"  });",
+					"",
+					"  //Set the next request",
+					"  postman.setNextRequest(nextRequest);",
+					"",
 					"});",
 					"",
 					" };",
@@ -30865,6 +31466,14 @@
 		},
 		{
 			"key": "purchaseReceiptID",
+			"value": ""
+		},
+		{
+			"key": "shipmentID",
+			"value": ""
+		},
+		{
+			"key": "packageID",
 			"value": ""
 		}
 	]
