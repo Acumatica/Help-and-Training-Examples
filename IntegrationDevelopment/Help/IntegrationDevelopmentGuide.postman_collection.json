@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "dda7f633-e9a5-41a4-9c16-5f6206955875",
 		"name": "REST API Examples (Integration Development Guide)",
-		"description": "This collection contains examples from the [REST API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n- Deploy a new Acumatica ERP instance with three tenants that are based on the U100, SalesDemo, and T100 datasets. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n- Specify the base URL of the site in the BaseURL variable of the collection.\n- Specify the instance URL in the InstanceURL variable of the collection.\n- Make sure the URL of the Default/22.200.001 endpoint is in the EndpointURL variable.\n- Make sure the URL of the MANUFACTURING/22.200.001 endpoint is in the ManufacturingEndpointURL variable.\n- Specify the tenant name, username, and password to access the tenant with the U100 data in the TenantU100, UsernameU100, and PasswordU100 variables.\n    \n\nOther variables are used by particular requests and are specified during execution of other requests as follows:\n\n- caseEntityID is specified by Create a Case and is used by Create an Activity that is Linked to a Case.\n- customerEntityID is specified by Create a Customer and is used by Create an Activity that is Linked to a Customer.\n- leadEntityID is specified by Create a Lead and is used by Create an Activity that is Linked to a Lead.\n- paymentRefNbr, appliedToDocuments, appliedToOrders are specified by Create an Accounts Receivable Payment for an Invoice and a Sales Order and is used by Release an Accounts Receivable Payment.\n- proFormaReferenceNbr is specified by Retrieve the List of Pro Forma Invoices of a Project and is used by Send a Pro Forma Invoice by Email.\n- purchaseReceiptID is specified by Create a Purchase Receipt and is used by Release a Purchase Receipt.",
+		"description": "This collection contains examples from the [REST API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n- Deploy a new Acumatica ERP instance with three tenants that are based on the U100, SalesDemo, and T100 datasets. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n- Specify the base URL of the site in the BaseURL variable of the collection.\n- Specify the instance URL in the InstanceURL variable of the collection.\n- Make sure the URL of the Default/22.200.001 endpoint is in the EndpointURL variable.\n- Make sure the URL of the MANUFACTURING/22.200.001 endpoint is in the ManufacturingEndpointURL variable.\n- Specify the tenant name, branch, username, and password to access the tenant with the U100 data in the TenantU100, BranchU100, UsernameU100, and PasswordU100 variables.\n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the TenantT100, BranchT100, UsernameT100, and PasswordT100 variables.\n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the TenantSalesDemo, BranchSalesDemo, UsernameSalesDemo, and PasswordSalesDemo variables.\n    \n\nOther variables are used by particular requests and are specified during execution of other requests as follows:\n\n- caseEntityID is specified by Create a Case and is used by Create an Activity that is Linked to a Case.\n- customerEntityID is specified by Create a Customer and is used by Create an Activity that is Linked to a Customer.\n- leadEntityID is specified by Create a Lead and is used by Create an Activity that is Linked to a Lead.\n- paymentRefNbr, appliedToDocuments, appliedToOrders are specified by Create an Accounts Receivable Payment for an Invoice and a Sales Order and is used by Release an Accounts Receivable Payment.\n- proFormaReferenceNbr is specified by Retrieve the List of Pro Forma Invoices of a Project and is used by Send a Pro Forma Invoice by Email.\n- purchaseReceiptID is specified by Create a Purchase Receipt and is used by Release a Purchase Receipt.\n- shipmentID and packageID are specified by and used in Write the Tracking Number to a Shipment.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
 	},
@@ -3588,7 +3588,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100');\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -3735,7 +3736,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -3877,7 +3879,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -4029,7 +4032,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -4193,7 +4197,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -4340,7 +4345,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -4491,7 +4497,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -4637,7 +4644,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -4782,7 +4790,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -4941,7 +4950,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -5114,7 +5124,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -5964,7 +5975,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -6113,7 +6125,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -6271,7 +6284,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -6445,7 +6459,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -6616,7 +6631,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -6777,7 +6793,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -6951,7 +6968,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -7110,7 +7128,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -7261,7 +7280,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -7410,7 +7430,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -7511,6 +7532,50 @@
 				},
 				{
 					"name": "Update a Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Customer ID is C000000003\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.CustomerID.value).to.eql('C000000003');\r",
+									"});\r",
+									"pm.test(\"Customer class is INTL\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.CustomerClass.value).to.eql('INTL');\r",
+									"});\r",
+									"pm.test(\"Billing contact email is green@jevy-comp.con\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.BillingContact.Email.value).to.eql('green@jevy-comp.con');\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -7787,7 +7852,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -7932,7 +7998,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -8198,7 +8265,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -8346,7 +8414,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -8984,7 +9053,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -9186,7 +9256,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -9342,7 +9413,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -9504,7 +9576,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -9934,7 +10007,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -10174,7 +10248,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -10344,7 +10419,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -10494,7 +10570,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -10657,7 +10734,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -10807,7 +10885,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -11000,7 +11079,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -11197,7 +11277,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -11469,7 +11550,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -11599,38 +11681,42 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"//Sign in to the tenant with U100 data\r",
+									"//Data for sign-in to the tenant with U100 data\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
-									"//Remove hold\r",
-									"var paymentRefNbr = pm.collectionVariables.get('paymentRefNbr');\r",
-									"var paymentAmount = pm.collectionVariables.get('appliedToDocuments')+pm.collectionVariables.get('appliedToOrders');\r",
-									"var url = pm.collectionVariables.get('EndpointURL') + 'Payment';\r",
-									"var requestRemoveHold = {\r",
-									"    url: url,\r",
-									"    method: 'PUT',\r",
-									"    body: {\r",
-									"        mode: 'raw',\r",
-									"        raw: '{\"Type\": {\"value\": \"Payment\"},\"ReferenceNbr\": {\"value\": \"'+ paymentRefNbr +'\"},\"Hold\" : {\"value\" : \"false\"},\"PaymentAmount\": {\"value\": ' + paymentAmount + '}}'\r",
-									"    },\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"//Request to remove hold\r",
+									"var callback = (pm, error, response) => {\r",
+									"    var paymentRefNbr = pm.collectionVariables.get('paymentRefNbr');\r",
+									"    var paymentAmount = pm.collectionVariables.get('appliedToDocuments')+pm.collectionVariables.get('appliedToOrders');\r",
+									"    var url = pm.collectionVariables.get('EndpointURL') + 'Payment';\r",
+									"    var requestRemoveHold = {\r",
+									"        url: url,\r",
+									"        method: 'PUT',\r",
+									"        body: {\r",
+									"            mode: 'raw',\r",
+									"            raw: '{\"Type\": {\"value\": \"Payment\"},\"ReferenceNbr\": {\"value\": \"'+ paymentRefNbr +'\"},\"Hold\" : {\"value\" : \"false\"},\"PaymentAmount\": {\"value\": ' + paymentAmount + '}}'\r",
+									"        },\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        }\r",
+									"    };\r",
+									"    pm.sendRequest(requestRemoveHold,  (error, response) => {\r",
+									"    if (error) {\r",
+									"        console.log(error);\r",
 									"    }\r",
-									"};\r",
-									"pm.sendRequest(requestRemoveHold,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
 									"\r",
-									"  pm.test('Response for removing from hold should be OK to proceed', () => {\r",
-									"    pm.expect(error).to.equal(null);\r",
-									"    pm.expect(response).to.have.property('code', 200);\r",
-									"    pm.expect(response).to.have.property('status', 'OK');\r",
-									"  });\r",
-									"});"
+									"    pm.test('Response for removing from hold should be OK to proceed', () => {\r",
+									"        pm.expect(error).to.equal(null);\r",
+									"        pm.expect(response).to.have.property('code', 200);\r",
+									"        pm.expect(response).to.have.property('status', 'OK');\r",
+									"    });\r",
+									"    });\r",
+									"}\r",
+									"//Sign in and remove hold\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password, callback)"
 								],
 								"type": "text/javascript"
 							}
@@ -11817,6 +11903,50 @@
 				},
 				{
 					"name": "Retrieve Payments One by One",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Payment is 000001\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.ReferenceNbr.value).to.eql('000001');\r",
+									"});\r",
+									"pm.test(\"Document type is Payment\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Type.value).to.eql('Payment');\r",
+									"});\r",
+									"pm.test(\"Payment is applied to invoice\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.ApplicationHistory[0].DisplayDocType.value).to.eql('Invoice');\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -11832,106 +11962,28 @@
 							}
 						],
 						"url": {
-							"raw": "{{EndpointURL3}}Payment/Credit%20Memo/000068?$expand=ApplicationHistory&$filter=Type eq 'Payment' and CustomerID eq 'C000000003'&$select=ReferenceNbr,Type,Status,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr,ApplicationDate",
+							"raw": "{{EndpointURL}}Payment/Payment/000001?$select=ReferenceNbr,Type,Status,ApplicationDate,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr&$expand=ApplicationHistory",
 							"host": [
-								"{{EndpointURL3}}Payment"
+								"{{EndpointURL}}Payment"
 							],
 							"path": [
-								"Credit%20Memo",
-								"000068"
+								"Payment",
+								"000001"
 							],
 							"query": [
 								{
+									"key": "$select",
+									"value": "ReferenceNbr,Type,Status,ApplicationDate,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr"
+								},
+								{
 									"key": "$expand",
 									"value": "ApplicationHistory"
-								},
-								{
-									"key": "$filter",
-									"value": "Type eq 'Payment' and CustomerID eq 'C000000003'"
-								},
-								{
-									"key": "$select",
-									"value": "ReferenceNbr,Type,Status,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr,ApplicationDate"
 								}
 							]
 						},
 						"description": "This example shows the retrieval of a payment, which is described in [Retrieve Payments One by One](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=02e2a96b-d432-463c-9131-303065dbfa4e)."
 					},
-					"response": [
-						{
-							"name": "Retrieve Payments One by One",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{EndpointURL3}}Payment/Credit%20Memo/000068?$expand=ApplicationHistory&$filter=Type eq 'Payment' and CustomerID eq 'C000000003'&$select=ReferenceNbr,Type,Status,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr,ApplicationDate",
-									"host": [
-										"{{EndpointURL3}}Payment"
-									],
-									"path": [
-										"Credit%20Memo",
-										"000068"
-									],
-									"query": [
-										{
-											"key": "$expand",
-											"value": "ApplicationHistory"
-										},
-										{
-											"key": "$filter",
-											"value": "Type eq 'Payment' and CustomerID eq 'C000000003'"
-										},
-										{
-											"key": "$select",
-											"value": "ReferenceNbr,Type,Status,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr,ApplicationDate"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Cache-Control",
-									"value": "private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "UserBranch=77; path=/"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 16 Nov 2022 22:11:40 GMT"
-								},
-								{
-									"key": "Content-Length",
-									"value": "707"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"f141db06-68fc-e811-b817-00155d408001\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"ApplicationDate\": {\n        \"value\": \"2023-12-10T00:00:00+03:00\"\n    },\n    \"ApplicationHistory\": [\n        {\n            \"id\": \"600e5607-5487-4eb3-b470-470849509f1a\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"DisplayDocType\": {\n                \"value\": \"Invoice\"\n            },\n            \"DisplayRefNbr\": {\n                \"value\": \"INV000045\"\n            },\n            \"custom\": {}\n        }\n    ],\n    \"CustomerID\": {\n        \"value\": \"C000000003\"\n    },\n    \"ReferenceNbr\": {\n        \"value\": \"000001\"\n    },\n    \"Status\": {\n        \"value\": \"Closed\"\n    },\n    \"Type\": {\n        \"value\": \"Payment\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/AcumaticaT100/entity/Default/22.200.001/Payment/f141db06-68fc-e811-b817-00155d408001\",\n        \"files:put\": \"/AcumaticaT100/entity/Default/22.200.001/files/PX.Objects.AR.ARPaymentEntry/Document/f141db06-68fc-e811-b817-00155d408001/{filename}\"\n    }\n}"
-						}
-					]
+					"response": []
 				}
 			],
 			"description": "This folder contains requests that use the [Payment](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=1e75e399-acaa-4490-aa99-7005906d4ff2) entity."
@@ -11973,7 +12025,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -12618,7 +12671,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -12774,7 +12828,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -12918,7 +12973,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -13062,7 +13118,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -13242,7 +13299,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -13397,7 +13455,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -13541,7 +13600,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -13696,7 +13756,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -13849,7 +13910,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -14125,7 +14187,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -14289,7 +14352,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -14430,7 +14494,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -14592,7 +14657,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -14753,7 +14819,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -14918,7 +14985,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -15078,7 +15146,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -15238,7 +15307,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -15398,7 +15468,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -15506,7 +15577,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
 								"type": "text/javascript"
@@ -15700,7 +15772,43 @@
 			"name": "SalesInvoice",
 			"item": [
 				{
-					"name": "Release a Sales Invoice: Release the Invoice from Hold",
+					"name": "Remove a Sales Invoice from Hold",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The sales invoice has the Balanced status\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Status.value).to.equal(\"Balanced\");\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Invoke Release of an Invoice\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -15720,9 +15828,9 @@
 							"raw": "{\r\n    \"Type\": {\"value\": \"Invoice\"},\r\n    \"ReferenceNbr\": {\"value\": \"INV000046\"},\r\n    \"Hold\": {\"value\":false}\r\n}"
 						},
 						"url": {
-							"raw": "{{EndpointURL3}}SalesInvoice",
+							"raw": "{{EndpointURL}}SalesInvoice",
 							"host": [
-								"{{EndpointURL3}}SalesInvoice"
+								"{{EndpointURL}}SalesInvoice"
 							]
 						},
 						"description": "This example shows how to release a sales invoice from hold. This process is described in [Release a Sales Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=059b3f37-ba97-4c37-8fdd-6e2e5c292b10)."
@@ -15814,63 +15922,102 @@
 					]
 				},
 				{
-					"name": "Release a Sales Invoice",
+					"name": "Invoke Release of an Invoice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 202\", function () {\r",
+									"    pm.response.to.have.status(202);\r",
+									"});\r",
+									"pm.collectionVariables.set(\"SalesInvoiceStatusUrl\", pm.response.headers.get(\"Location\"));\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the Status of the Release Operation\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"entity\":{\r\n        \"Type\": {\"value\": \"Invoice\"},\r\n        \"ReferenceNbr\": {\"value\": \"INV000046\"}\r\n        }\r\n}"
+							"raw": "{\r\n\t\"entity\":{\r\n\t\t\"Type\":{\"value\":\"Invoice\"},\r\n\t\t\"ReferenceNbr\":{\"value\":\"INV000046\"}\r\n    }\r\n}"
 						},
 						"url": {
-							"raw": "{{EndpointURL3}}SalesInvoice/ReleaseSalesInvoice",
+							"raw": "{{EndpointURL}}/SalesInvoice/ReleaseSalesInvoice",
 							"host": [
-								"{{EndpointURL3}}SalesInvoice"
+								"{{EndpointURL}}"
 							],
 							"path": [
+								"SalesInvoice",
 								"ReleaseSalesInvoice"
 							]
-						},
-						"description": "This example shows how to invoke the release operation for a sales invoice. This process is described in [Release a Sales Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=059b3f37-ba97-4c37-8fdd-6e2e5c292b10)."
+						}
 					},
 					"response": [
 						{
-							"name": "Release a Sales Invoice",
+							"name": "Lesson 3.1: Invoking Release of an Invoice",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
 									{
 										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"value": "application/json"
 									},
 									{
 										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"value": "application/json"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"entity\":{\r\n        \"Type\": {\"value\": \"Invoice\"},\r\n        \"ReferenceNbr\": {\"value\": \"INV000046\"}\r\n        }\r\n}"
+									"raw": "{\r\n\t\"entity\":{\r\n\t\t\"Type\":{\"value\":\"Invoice\"},\r\n\t\t\"ReferenceNbr\":{\"value\":\"INV000046\"}\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL3}}SalesInvoice/ReleaseSalesInvoice",
+									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesInvoice/ReleaseSalesInvoice",
+									"protocol": "https",
 									"host": [
-										"{{EndpointURL3}}SalesInvoice"
+										"localhost"
 									],
 									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"22.200.001",
+										"SalesInvoice",
 										"ReleaseSalesInvoice"
 									]
 								}
@@ -15885,35 +16032,35 @@
 								},
 								{
 									"key": "Location",
-									"value": "/AcumaticaT100/entity/Default/22.200.001/SalesInvoice/ReleaseSalesInvoice/status/f84addec-dddd-4ec7-be5d-07a943263351"
+									"value": "/MyStoreInstance/entity/Default/22.200.001/SalesInvoice/ReleaseSalesInvoice/status/85e62759-ce29-4caf-b35d-319c35fac5c1"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 23-Sep-2022 21:34:44 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=77; path=/"
+									"value": "UserBranch=82; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 23-Sep-2022 21:34:44 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=77; path=/"
+									"value": "UserBranch=82; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requestid=C34018A628987E9E11ED65A82B86086E; path=/"
+									"value": "requestid=C34018A628986A9E11ED392C0A6280E3; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requeststat=+st:1821+sc:~/entity/default/22.200.001/salesinvoice/releasesalesinvoice+start:638041976487468782+tg:; path=/"
+									"value": "requeststat=+st:3060+sc:~/entity/default/22.200.001/salesinvoice/releasesalesinvoice+start:637993064843925347+tg:; path=/"
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 16 Nov 2022 12:14:10 GMT"
+									"value": "Tue, 20 Sep 2022 21:34:47 GMT"
 								},
 								{
 									"key": "Content-Length",
@@ -15922,6 +16069,274 @@
 							],
 							"cookie": [],
 							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Retrieve the Status of the Release Operation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code != 204)\r",
+									"{\r",
+									"    setTimeout(function(){},10000);\r",
+									"    postman.setNextRequest(\"Retrieve the Status of the Release Operation\");\r",
+									"}\r",
+									"else\r",
+									"{\r",
+									"    //Sign out and set next request\r",
+									"    var url = pm.collectionVariables.get('InstanceURL');\r",
+									"    pm.acuFunc.singOutFunction(pm, url, \"Check the Status of the Sales Invoice\");\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}{{SalesInvoiceStatusUrl}}",
+							"host": [
+								"{{BaseURL}}{{SalesInvoiceStatusUrl}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Lesson 3.1: Retrieving the Status of the Release Operation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesInvoice/ReleaseSalesInvoice/status/85e62759-ce29-4caf-b35d-319c35fac5c1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"22.200.001",
+										"SalesInvoice",
+										"ReleaseSalesInvoice",
+										"status",
+										"85e62759-ce29-4caf-b35d-319c35fac5c1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Location",
+									"value": "/MyStoreInstance/entity/Default/22.200.001/SalesInvoice/5157ccca-3204-e911-b818-00155d408001"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 23-Sep-2022 21:38:45 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Sep 2022 21:38:45 GMT"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Check the Status of the Sales Invoice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The sales invoice has the Open status\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Status.value).to.equal(\"Open\");\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{EndpointURL}}/SalesInvoice/Invoice/INV000046?$select=ReferenceNbr,Type,Status",
+							"host": [
+								"{{EndpointURL}}"
+							],
+							"path": [
+								"SalesInvoice",
+								"Invoice",
+								"INV000046"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ReferenceNbr,Type,Status"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Lesson 3.1: Retrieving the Released Invoice",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesInvoice/Invoice/INV000046?$select=ReferenceNbr,Type,Status",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"22.200.001",
+										"SalesInvoice",
+										"Invoice",
+										"INV000046"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "ReferenceNbr,Type,Status"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 23-Sep-2022 21:59:51 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Sep 2022 21:59:54 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "443"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"5157ccca-3204-e911-b818-00155d408001\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"ReferenceNbr\": {\n        \"value\": \"INV000046\"\n    },\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"Type\": {\n        \"value\": \"Invoice\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/MyStoreInstance/entity/Default/22.200.001/SalesInvoice/5157ccca-3204-e911-b818-00155d408001\",\n        \"files:put\": \"/MyStoreInstance/entity/Default/22.200.001/files/PX.Objects.SO.SOInvoiceEntry/Document/5157ccca-3204-e911-b818-00155d408001/{filename}\"\n    }\n}"
 						}
 					]
 				},
@@ -15937,7 +16352,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -16329,6 +16745,60 @@
 			"item": [
 				{
 					"name": "Retrieve a List of Sales Orders with Details and Related Shipments",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The retrieved list is not empty\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.be.not.empty;\r",
+									"});\r",
+									"pm.test(\"The first item includes all requested fields\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].OrderType.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].OrderNbr.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].CustomerID.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].CustomerOrder.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Date.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].OrderedQty.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].OrderTotal.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Details[0].InventoryID.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Details[0].OrderQty.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Details[0].UnitPrice.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Shipments[0].InvoiceNbr.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Shipments[0].ShipmentNbr.value).to.be.not.null;\r",
+									"});\r",
+									"pm.test(\"Response does not contain CurrencyID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.not.include(\"CurrencyID\");\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -16344,9 +16814,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{EndpointURL3}}SalesOrder?$expand=Details,Shipments&$filter=CustomerID eq 'C000000003'&$select=OrderNbr,OrderType,CustomerID,CustomerOrder,Details/InventoryID,Details/OrderQty,Details/UnitPrice,Date,OrderedQty,OrderTotal,Shipments/InvoiceNbr,Shipments/ShipmentNbr",
+							"raw": "{{EndpointURL}}SalesOrder?$expand=Details,Shipments&$filter=CustomerID eq 'C000000003'&$select=OrderNbr,OrderType,CustomerID,CustomerOrder,Details/InventoryID,Details/OrderQty,Details/UnitPrice,Date,OrderedQty,OrderTotal,Shipments/InvoiceNbr,Shipments/ShipmentNbr",
 							"host": [
-								"{{EndpointURL3}}SalesOrder"
+								"{{EndpointURL}}SalesOrder"
 							],
 							"query": [
 								{
@@ -16383,9 +16853,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{EndpointURL3}}SalesOrder?$expand=Details,Shipments&$filter=CustomerID eq 'C000000003'&$select=OrderNbr,OrderType,CustomerID,CustomerOrder,Details/InventoryID,Details/OrderQty,Details/UnitPrice,Date,OrderedQty,OrderTotal,Shipments/InvoiceNbr,Shipments/ShipmentNbr",
+									"raw": "{{EndpointURL}}SalesOrder?$expand=Details,Shipments&$filter=CustomerID eq 'C000000003'&$select=OrderNbr,OrderType,CustomerID,CustomerOrder,Details/InventoryID,Details/OrderQty,Details/UnitPrice,Date,OrderedQty,OrderTotal,Shipments/InvoiceNbr,Shipments/ShipmentNbr",
 									"host": [
-										"{{EndpointURL3}}SalesOrder"
+										"{{EndpointURL}}SalesOrder"
 									],
 									"query": [
 										{
@@ -16439,6 +16909,42 @@
 				},
 				{
 					"name": "Retrieve a List of Sales Orders in Batches",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The retrieved list has 4 items\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.have.lengthOf(4);\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -16454,9 +16960,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{EndpointURL3}}SalesOrder?$filter=CustomerID eq 'C000000003'&$select=OrderNbr,OrderType,CustomerID,OrderTotal&$top=5&$skip=5",
+							"raw": "{{EndpointURL}}SalesOrder?$filter=CustomerID eq 'C000000003'&$select=OrderNbr,OrderType,CustomerID,OrderTotal&$top=5&$skip=5",
 							"host": [
-								"{{EndpointURL3}}SalesOrder"
+								"{{EndpointURL}}SalesOrder"
 							],
 							"query": [
 								{
@@ -16497,9 +17003,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{EndpointURL3}}SalesOrder?$filter=CustomerID eq 'C000000003'&$select=OrderNbr,OrderType,CustomerID,OrderTotal&$top=5&$skip=5",
+									"raw": "{{EndpointURL}}SalesOrder?$filter=CustomerID eq 'C000000003'&$select=OrderNbr,OrderType,CustomerID,OrderTotal&$top=5&$skip=5",
 									"host": [
-										"{{EndpointURL3}}SalesOrder"
+										"{{EndpointURL}}SalesOrder"
 									],
 									"query": [
 										{
@@ -16567,7 +17073,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -16721,6 +17228,51 @@
 				},
 				{
 					"name": "Create a Sales Order with a Credit Card Payment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with SalesDemo data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameSalesDemo');\r",
+									"var password = pm.collectionVariables.get('PasswordSalesDemo');\r",
+									"var tenant = pm.collectionVariables.get('TenantSalesDemo');\r",
+									"var branch = pm.collectionVariables.get('BranchSalesDemo'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"One payment line is included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments).to.has.lengthOf(1);\r",
+									"});\r",
+									"pm.test(\"Payment method is VISATOK\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.PaymentMethod.value).to.eql('CCAUTHNET');\r",
+									"});\r",
+									"pm.test(\"Order total is 980\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.OrderTotal.value).to.eql(980);\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url,'');\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -16737,17 +17289,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2020-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"VISATOK\"},\r\n            \"PaymentRef\": {\"value\": \"ABC CreditCard\"}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2020-05-10T00:00:00\"}\r\n}"
+							"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2020-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"CCAUTHNET\"},\r\n            \"PaymentRef\": {\"value\": \"ABC CreditCard\"}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2020-05-10T00:00:00\"}\r\n}"
 						},
 						"url": {
-							"raw": "{{EndpointURL2}}SalesOrder?$expand=Details",
+							"raw": "{{EndpointURL}}SalesOrder?$expand=Details,Payments",
 							"host": [
-								"{{EndpointURL2}}SalesOrder"
+								"{{EndpointURL}}SalesOrder"
 							],
 							"query": [
 								{
 									"key": "$expand",
-									"value": "Details"
+									"value": "Details,Payments"
 								}
 							]
 						},
@@ -16772,17 +17324,17 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2020-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"VISATOK\"},\r\n            \"PaymentRef\": {\"value\": \"ABC CreditCard\"}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2020-05-10T00:00:00\"}\r\n}"
+									"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2020-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"CCAUTHNET\"},\r\n            \"PaymentRef\": {\"value\": \"ABC CreditCard\"}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2020-05-10T00:00:00\"}\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL2}}SalesOrder?$expand=Details",
+									"raw": "{{EndpointURL}}SalesOrder?$expand=Details,Payments",
 									"host": [
-										"{{EndpointURL2}}SalesOrder"
+										"{{EndpointURL}}SalesOrder"
 									],
 									"query": [
 										{
 											"key": "$expand",
-											"value": "Details"
+											"value": "Details,Payments"
 										}
 									]
 								}
@@ -16801,39 +17353,39 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "Locale=TimeZone=GMTM0800A&Culture=en-US; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=16; path=/"
+									"value": "UserBranch=16; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "Locale=TimeZone=GMTM0800A&Culture=en-US; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=16; path=/"
+									"value": "UserBranch=16; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requestid=C34018A628985C9E11ED1673DEB21FE9; path=/"
+									"value": "requestid=37C496ACB112D9B911EE09DEFB80755B; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requeststat=+st:48187+sc:~/entity/default/22.200.001/salesorder+start:637954890517746384+tg:; path=/"
+									"value": "requeststat=+st:24748+sc:~/entity/default/22.200.001/salesorder+start:638222531816038319+tg:; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 07 Aug 2022 17:11:40 GMT"
+									"value": "Tue, 13 Jun 2023 11:40:06 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "5544"
+									"value": "6639"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"e52fe3f7-7316-ed11-9e5c-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Approved\": {\n        \"value\": true\n    },\n    \"BaseCurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"BillToAddressOverride\": {\n        \"value\": false\n    },\n    \"BillToContactOverride\": {\n        \"value\": false\n    },\n    \"CashAccount\": {\n        \"value\": \"10600\"\n    },\n    \"ContactID\": {\n        \"value\": \"100053\"\n    },\n    \"ControlTotal\": {\n        \"value\": 980\n    },\n    \"CreatedDate\": {\n        \"value\": \"2022-08-07T20:11:33.31+03:00\"\n    },\n    \"CreditHold\": {\n        \"value\": false\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"CurrencyRate\": {\n        \"value\": 1\n    },\n    \"CurrencyRateTypeID\": {\n        \"value\": \"SPOT\"\n    },\n    \"CustomerID\": {\n        \"value\": \"WIDGETCC\"\n    },\n    \"CustomerOrder\": {},\n    \"Date\": {\n        \"value\": \"2020-05-10T00:00:00+03:00\"\n    },\n    \"Description\": {\n        \"value\": \"Internal CC Payment\"\n    },\n    \"DestinationWarehouseID\": {},\n    \"Details\": [\n        {\n            \"id\": \"eb2fe3f7-7316-ed11-9e5c-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Account\": {\n                \"value\": \"40000\"\n            },\n            \"AlternateID\": {},\n            \"Amount\": {\n                \"value\": 490\n            },\n            \"AutoCreateIssue\": {\n                \"value\": false\n            },\n            \"AverageCost\": {\n                \"value\": 250\n            },\n            \"Branch\": {\n                \"value\": \"PRODWHOLE\"\n            },\n            \"CalculateDiscountsOnImport\": {},\n            \"Commissionable\": {\n                \"value\": true\n            },\n            \"Completed\": {\n                \"value\": false\n            },\n            \"CustomerOrderNbr\": {},\n            \"DiscountAmount\": {\n                \"value\": 10\n            },\n            \"DiscountCode\": {},\n            \"DiscountedUnitPrice\": {\n                \"value\": 500\n            },\n            \"DiscountPercent\": {\n                \"value\": 0\n            },\n            \"ExtendedPrice\": {\n                \"value\": 500\n            },\n            \"FreeItem\": {\n                \"value\": false\n            },\n            \"InventoryID\": {\n                \"value\": \"AACOMPUT01\"\n            },\n            \"InvoiceLineNbr\": {},\n            \"InvoiceNbr\": {},\n            \"InvoiceType\": {},\n            \"LastModifiedDate\": {\n                \"value\": \"08/07/2022 20:11:33\"\n            },\n            \"LineDescription\": {\n                \"value\": \"Acer Laptop Computer\"\n            },\n            \"LineNbr\": {\n                \"value\": 1\n            },\n            \"LineType\": {\n                \"value\": \"Goods for Inventory\"\n            },\n            \"Location\": {},\n            \"LotSerialNbr\": {},\n            \"ManualDiscount\": {\n                \"value\": false\n            },\n            \"ManualPrice\": {\n                \"value\": true\n            },\n            \"MarkForPO\": {\n                \"value\": false\n            },\n            \"NoteID\": {\n                \"value\": \"eb2fe3f7-7316-ed11-9e5c-9828a61840c3\"\n            },\n            \"OpenQty\": {\n                \"value\": 1\n            },\n            \"Operation\": {\n                \"value\": \"Issue\"\n            },\n            \"OrderQty\": {\n                \"value\": 1\n            },\n            \"OvershipThreshold\": {\n                \"value\": 100\n            },\n            \"POSource\": {},\n            \"ProjectTask\": {},\n            \"PurchaseWarehouse\": {},\n            \"QtyOnShipments\": {\n                \"value\": 0\n            },\n            \"ReasonCode\": {},\n            \"RequestedOn\": {\n                \"value\": \"2020-05-10T00:00:00+03:00\"\n            },\n            \"SalespersonID\": {\n                \"value\": \"SP0009\"\n            },\n            \"SchedOrderDate\": {\n                \"value\": \"2022-08-07T00:00:00+03:00\"\n            },\n            \"ShipOn\": {\n                \"value\": \"2020-05-10T00:00:00+03:00\"\n            },\n            \"ShippingRule\": {\n                \"value\": \"Back Order Allowed\"\n            },\n            \"ShipToLocation\": {\n                \"value\": \"MAIN\"\n            },\n            \"TaxCategory\": {\n                \"value\": \"EXEMPT\"\n            },\n            \"TaxZone\": {},\n            \"UnbilledAmount\": {\n                \"value\": 490\n            },\n            \"UndershipThreshold\": {\n                \"value\": 100\n            },\n            \"UnitCost\": {\n                \"value\": 250\n            },\n            \"UnitPrice\": {\n                \"value\": 500\n            },\n            \"UOM\": {\n                \"value\": \"EA\"\n            },\n            \"VendorID\": {},\n            \"WarehouseID\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/SalesDemo/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/eb2fe3f7-7316-ed11-9e5c-9828a61840c3/{filename}\"\n            }\n        },\n        {\n            \"id\": \"ec2fe3f7-7316-ed11-9e5c-9828a61840c3\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"Account\": {\n                \"value\": \"40000\"\n            },\n            \"AlternateID\": {},\n            \"Amount\": {\n                \"value\": 490\n            },\n            \"AutoCreateIssue\": {\n                \"value\": false\n            },\n            \"AverageCost\": {\n                \"value\": 50.72\n            },\n            \"Branch\": {\n                \"value\": \"PRODWHOLE\"\n            },\n            \"CalculateDiscountsOnImport\": {},\n            \"Commissionable\": {\n                \"value\": true\n            },\n            \"Completed\": {\n                \"value\": false\n            },\n            \"CustomerOrderNbr\": {},\n            \"DiscountAmount\": {\n                \"value\": 10\n            },\n            \"DiscountCode\": {},\n            \"DiscountedUnitPrice\": {\n                \"value\": 50\n            },\n            \"DiscountPercent\": {\n                \"value\": 0\n            },\n            \"ExtendedPrice\": {\n                \"value\": 500\n            },\n            \"FreeItem\": {\n                \"value\": false\n            },\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"InvoiceLineNbr\": {},\n            \"InvoiceNbr\": {},\n            \"InvoiceType\": {},\n            \"LastModifiedDate\": {\n                \"value\": \"08/07/2022 20:11:33\"\n            },\n            \"LineDescription\": {\n                \"value\": \"Lego 500 piece set\"\n            },\n            \"LineNbr\": {\n                \"value\": 3\n            },\n            \"LineType\": {\n                \"value\": \"Goods for Inventory\"\n            },\n            \"Location\": {},\n            \"LotSerialNbr\": {},\n            \"ManualDiscount\": {\n                \"value\": false\n            },\n            \"ManualPrice\": {\n                \"value\": true\n            },\n            \"MarkForPO\": {\n                \"value\": false\n            },\n            \"NoteID\": {\n                \"value\": \"ec2fe3f7-7316-ed11-9e5c-9828a61840c3\"\n            },\n            \"OpenQty\": {\n                \"value\": 50\n            },\n            \"Operation\": {\n                \"value\": \"Issue\"\n            },\n            \"OrderQty\": {\n                \"value\": 50\n            },\n            \"OvershipThreshold\": {\n                \"value\": 100\n            },\n            \"POSource\": {},\n            \"ProjectTask\": {},\n            \"PurchaseWarehouse\": {},\n            \"QtyOnShipments\": {\n                \"value\": 0\n            },\n            \"ReasonCode\": {},\n            \"RequestedOn\": {\n                \"value\": \"2020-05-10T00:00:00+03:00\"\n            },\n            \"SalespersonID\": {\n                \"value\": \"SP0009\"\n            },\n            \"SchedOrderDate\": {\n                \"value\": \"2022-08-07T00:00:00+03:00\"\n            },\n            \"ShipOn\": {\n                \"value\": \"2020-05-10T00:00:00+03:00\"\n            },\n            \"ShippingRule\": {\n                \"value\": \"Back Order Allowed\"\n            },\n            \"ShipToLocation\": {\n                \"value\": \"MAIN\"\n            },\n            \"TaxCategory\": {\n                \"value\": \"TAXABLE\"\n            },\n            \"TaxZone\": {},\n            \"UnbilledAmount\": {\n                \"value\": 490\n            },\n            \"UndershipThreshold\": {\n                \"value\": 100\n            },\n            \"UnitCost\": {\n                \"value\": 50.72\n            },\n            \"UnitPrice\": {\n                \"value\": 50\n            },\n            \"UOM\": {\n                \"value\": \"EA\"\n            },\n            \"VendorID\": {},\n            \"WarehouseID\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/SalesDemo/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/ec2fe3f7-7316-ed11-9e5c-9828a61840c3/{filename}\"\n            }\n        }\n    ],\n    \"DisableAutomaticDiscountUpdate\": {\n        \"value\": false\n    },\n    \"EffectiveDate\": {\n        \"value\": \"2020-05-10T00:00:00+03:00\"\n    },\n    \"ExternalRef\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"IsTaxValid\": {\n        \"value\": false\n    },\n    \"LastModified\": {\n        \"value\": \"2022-08-07T20:11:33.31+03:00\"\n    },\n    \"LocationID\": {\n        \"value\": \"MAIN\"\n    },\n    \"NoteID\": {\n        \"value\": \"e52fe3f7-7316-ed11-9e5c-9828a61840c3\"\n    },\n    \"OrderedQty\": {\n        \"value\": 51\n    },\n    \"OrderNbr\": {\n        \"value\": \"SO006769\"\n    },\n    \"OrderTotal\": {\n        \"value\": 980\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"PaymentMethod\": {\n        \"value\": \"VISATOK\"\n    },\n    \"PaymentRef\": {},\n    \"Payments\": [],\n    \"PreferredWarehouseID\": {},\n    \"Project\": {\n        \"value\": \"X\"\n    },\n    \"ReciprocalRate\": {\n        \"value\": 1\n    },\n    \"RequestedOn\": {\n        \"value\": \"2020-05-10T00:00:00+03:00\"\n    },\n    \"ShipToAddressOverride\": {\n        \"value\": false\n    },\n    \"ShipToContactOverride\": {\n        \"value\": false\n    },\n    \"ShipVia\": {},\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"TaxTotal\": {\n        \"value\": 0\n    },\n    \"VATExemptTotal\": {\n        \"value\": 0\n    },\n    \"VATTaxableTotal\": {\n        \"value\": 0\n    },\n    \"WillCall\": {\n        \"value\": true\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/SalesDemo/entity/Default/22.200.001/SalesOrder/e52fe3f7-7316-ed11-9e5c-9828a61840c3\",\n        \"files:put\": \"/SalesDemo/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Document/e52fe3f7-7316-ed11-9e5c-9828a61840c3/{filename}\"\n    }\n}"
+							"body": "{\n    \"id\": \"bb26ed04-df09-ee11-b9d9-12b1ac96c437\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Approved\": {\n        \"value\": true\n    },\n    \"BaseCurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"BillToAddressOverride\": {\n        \"value\": false\n    },\n    \"BillToContactOverride\": {\n        \"value\": false\n    },\n    \"CashAccount\": {\n        \"value\": \"10600\"\n    },\n    \"ContactID\": {\n        \"value\": \"100053\"\n    },\n    \"ControlTotal\": {\n        \"value\": 980\n    },\n    \"CreatedDate\": {\n        \"value\": \"2023-06-13T11:40:02.447+00:00\"\n    },\n    \"CreditHold\": {\n        \"value\": false\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"CurrencyRate\": {\n        \"value\": 1\n    },\n    \"CurrencyRateTypeID\": {\n        \"value\": \"SPOT\"\n    },\n    \"CustomerID\": {\n        \"value\": \"WIDGETCC\"\n    },\n    \"CustomerOrder\": {},\n    \"Date\": {\n        \"value\": \"2020-05-10T00:00:00+00:00\"\n    },\n    \"Description\": {\n        \"value\": \"Internal CC Payment\"\n    },\n    \"DestinationWarehouseID\": {},\n    \"Details\": [\n        {\n            \"id\": \"c126ed04-df09-ee11-b9d9-12b1ac96c437\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Account\": {\n                \"value\": \"40000\"\n            },\n            \"AlternateID\": {},\n            \"Amount\": {\n                \"value\": 490\n            },\n            \"AutoCreateIssue\": {\n                \"value\": false\n            },\n            \"AverageCost\": {\n                \"value\": 250\n            },\n            \"Branch\": {\n                \"value\": \"PRODWHOLE\"\n            },\n            \"CalculateDiscountsOnImport\": {},\n            \"Commissionable\": {\n                \"value\": true\n            },\n            \"Completed\": {\n                \"value\": false\n            },\n            \"CustomerOrderNbr\": {},\n            \"DiscountAmount\": {\n                \"value\": 10\n            },\n            \"DiscountCode\": {},\n            \"DiscountedUnitPrice\": {\n                \"value\": 500\n            },\n            \"DiscountPercent\": {\n                \"value\": 0\n            },\n            \"ExtendedPrice\": {\n                \"value\": 500\n            },\n            \"FreeItem\": {\n                \"value\": false\n            },\n            \"InventoryID\": {\n                \"value\": \"AACOMPUT01\"\n            },\n            \"InvoiceLineNbr\": {},\n            \"InvoiceNbr\": {},\n            \"InvoiceType\": {},\n            \"LastModifiedDate\": {\n                \"value\": \"06/13/2023 11:40:02\"\n            },\n            \"LineDescription\": {\n                \"value\": \"Acer Laptop Computer\"\n            },\n            \"LineNbr\": {\n                \"value\": 1\n            },\n            \"LineType\": {\n                \"value\": \"Goods for Inventory\"\n            },\n            \"Location\": {},\n            \"LotSerialNbr\": {},\n            \"ManualDiscount\": {\n                \"value\": false\n            },\n            \"ManualPrice\": {\n                \"value\": true\n            },\n            \"MarkForPO\": {\n                \"value\": false\n            },\n            \"NoteID\": {\n                \"value\": \"c126ed04-df09-ee11-b9d9-12b1ac96c437\"\n            },\n            \"OpenQty\": {\n                \"value\": 1\n            },\n            \"Operation\": {\n                \"value\": \"Issue\"\n            },\n            \"OrderQty\": {\n                \"value\": 1\n            },\n            \"OvershipThreshold\": {\n                \"value\": 100\n            },\n            \"POSource\": {},\n            \"ProjectTask\": {},\n            \"PurchaseWarehouse\": {},\n            \"QtyOnShipments\": {\n                \"value\": 0\n            },\n            \"ReasonCode\": {},\n            \"RequestedOn\": {\n                \"value\": \"2020-05-10T00:00:00+00:00\"\n            },\n            \"SalespersonID\": {\n                \"value\": \"SP0009\"\n            },\n            \"SchedOrderDate\": {\n                \"value\": \"2023-06-13T00:00:00+00:00\"\n            },\n            \"ShipOn\": {\n                \"value\": \"2020-05-10T00:00:00+00:00\"\n            },\n            \"ShippingRule\": {\n                \"value\": \"Back Order Allowed\"\n            },\n            \"ShipToLocation\": {\n                \"value\": \"MAIN\"\n            },\n            \"TaxCategory\": {\n                \"value\": \"EXEMPT\"\n            },\n            \"TaxZone\": {},\n            \"UnbilledAmount\": {\n                \"value\": 490\n            },\n            \"UndershipThreshold\": {\n                \"value\": 100\n            },\n            \"UnitCost\": {\n                \"value\": 250\n            },\n            \"UnitPrice\": {\n                \"value\": 500\n            },\n            \"UOM\": {\n                \"value\": \"EA\"\n            },\n            \"VendorID\": {},\n            \"WarehouseID\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/c126ed04-df09-ee11-b9d9-12b1ac96c437/{filename}\"\n            }\n        },\n        {\n            \"id\": \"c226ed04-df09-ee11-b9d9-12b1ac96c437\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"Account\": {\n                \"value\": \"40000\"\n            },\n            \"AlternateID\": {},\n            \"Amount\": {\n                \"value\": 490\n            },\n            \"AutoCreateIssue\": {\n                \"value\": false\n            },\n            \"AverageCost\": {\n                \"value\": 50\n            },\n            \"Branch\": {\n                \"value\": \"PRODWHOLE\"\n            },\n            \"CalculateDiscountsOnImport\": {},\n            \"Commissionable\": {\n                \"value\": true\n            },\n            \"Completed\": {\n                \"value\": false\n            },\n            \"CustomerOrderNbr\": {},\n            \"DiscountAmount\": {\n                \"value\": 10\n            },\n            \"DiscountCode\": {},\n            \"DiscountedUnitPrice\": {\n                \"value\": 50\n            },\n            \"DiscountPercent\": {\n                \"value\": 0\n            },\n            \"ExtendedPrice\": {\n                \"value\": 500\n            },\n            \"FreeItem\": {\n                \"value\": false\n            },\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"InvoiceLineNbr\": {},\n            \"InvoiceNbr\": {},\n            \"InvoiceType\": {},\n            \"LastModifiedDate\": {\n                \"value\": \"06/13/2023 11:40:02\"\n            },\n            \"LineDescription\": {\n                \"value\": \"Lego 500 piece set\"\n            },\n            \"LineNbr\": {\n                \"value\": 3\n            },\n            \"LineType\": {\n                \"value\": \"Goods for Inventory\"\n            },\n            \"Location\": {},\n            \"LotSerialNbr\": {},\n            \"ManualDiscount\": {\n                \"value\": false\n            },\n            \"ManualPrice\": {\n                \"value\": true\n            },\n            \"MarkForPO\": {\n                \"value\": false\n            },\n            \"NoteID\": {\n                \"value\": \"c226ed04-df09-ee11-b9d9-12b1ac96c437\"\n            },\n            \"OpenQty\": {\n                \"value\": 50\n            },\n            \"Operation\": {\n                \"value\": \"Issue\"\n            },\n            \"OrderQty\": {\n                \"value\": 50\n            },\n            \"OvershipThreshold\": {\n                \"value\": 100\n            },\n            \"POSource\": {},\n            \"ProjectTask\": {},\n            \"PurchaseWarehouse\": {},\n            \"QtyOnShipments\": {\n                \"value\": 0\n            },\n            \"ReasonCode\": {},\n            \"RequestedOn\": {\n                \"value\": \"2020-05-10T00:00:00+00:00\"\n            },\n            \"SalespersonID\": {\n                \"value\": \"SP0009\"\n            },\n            \"SchedOrderDate\": {\n                \"value\": \"2023-06-13T00:00:00+00:00\"\n            },\n            \"ShipOn\": {\n                \"value\": \"2020-05-10T00:00:00+00:00\"\n            },\n            \"ShippingRule\": {\n                \"value\": \"Back Order Allowed\"\n            },\n            \"ShipToLocation\": {\n                \"value\": \"MAIN\"\n            },\n            \"TaxCategory\": {\n                \"value\": \"TAXABLE\"\n            },\n            \"TaxZone\": {},\n            \"UnbilledAmount\": {\n                \"value\": 490\n            },\n            \"UndershipThreshold\": {\n                \"value\": 100\n            },\n            \"UnitCost\": {\n                \"value\": 50\n            },\n            \"UnitPrice\": {\n                \"value\": 50\n            },\n            \"UOM\": {\n                \"value\": \"EA\"\n            },\n            \"VendorID\": {},\n            \"WarehouseID\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/c226ed04-df09-ee11-b9d9-12b1ac96c437/{filename}\"\n            }\n        }\n    ],\n    \"DisableAutomaticDiscountUpdate\": {\n        \"value\": false\n    },\n    \"DisableAutomaticTaxCalculation\": {\n        \"value\": false\n    },\n    \"EffectiveDate\": {\n        \"value\": \"2020-05-10T00:00:00+00:00\"\n    },\n    \"ExternalRef\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"IsTaxValid\": {\n        \"value\": false\n    },\n    \"LastModified\": {\n        \"value\": \"2023-06-13T11:40:02.447+00:00\"\n    },\n    \"LocationID\": {\n        \"value\": \"MAIN\"\n    },\n    \"NoteID\": {\n        \"value\": \"bb26ed04-df09-ee11-b9d9-12b1ac96c437\"\n    },\n    \"OrderedQty\": {\n        \"value\": 51\n    },\n    \"OrderNbr\": {\n        \"value\": \"SO007463\"\n    },\n    \"OrderTotal\": {\n        \"value\": 980\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"PaymentMethod\": {\n        \"value\": \"CCAUTHNET\"\n    },\n    \"PaymentRef\": {},\n    \"Payments\": [\n        {\n            \"id\": \"c726ed04-df09-ee11-b9d9-12b1ac96c437\",\n            \"rowNumber\": 1,\n            \"note\": {\n                \"value\": \"\"\n            },\n            \"ApplicationDate\": {\n                \"value\": \"2020-08-10T00:00:00+00:00\"\n            },\n            \"AppliedToOrder\": {\n                \"value\": 480\n            },\n            \"Authorize\": {},\n            \"Balance\": {\n                \"value\": 500\n            },\n            \"Capture\": {},\n            \"CardAccountNbr\": {\n                \"value\": \"2336\"\n            },\n            \"CashAccount\": {\n                \"value\": \"10600\"\n            },\n            \"Currency\": {\n                \"value\": \"USD\"\n            },\n            \"Description\": {},\n            \"DocType\": {\n                \"value\": \"Payment\"\n            },\n            \"ExternalRef\": {},\n            \"Hold\": {\n                \"value\": false\n            },\n            \"LastModifiedDateTime\": {\n                \"value\": \"2023-06-13T11:40:04.477+00:00\"\n            },\n            \"NoteID\": {\n                \"value\": \"c726ed04-df09-ee11-b9d9-12b1ac96c437\"\n            },\n            \"OrigTransactionNbr\": {},\n            \"PaymentAmount\": {\n                \"value\": 980\n            },\n            \"PaymentMethod\": {\n                \"value\": \"CCAUTHNET\"\n            },\n            \"PaymentRef\": {\n                \"value\": \"ABC CreditCard\"\n            },\n            \"ProcessingCenterID\": {},\n            \"ReferenceNbr\": {\n                \"value\": \"004480\"\n            },\n            \"Refund\": {},\n            \"SaveCard\": {},\n            \"Status\": {\n                \"value\": \"Pending Processing\"\n            },\n            \"TransferredtoInvoice\": {\n                \"value\": 0\n            },\n            \"ValidateCCRefundOrigTransaction\": {\n                \"value\": true\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Adjustments/c726ed04-df09-ee11-b9d9-12b1ac96c437/{filename}\"\n            }\n        }\n    ],\n    \"PreferredWarehouseID\": {},\n    \"Project\": {\n        \"value\": \"X\"\n    },\n    \"ReciprocalRate\": {\n        \"value\": 1\n    },\n    \"RequestedOn\": {\n        \"value\": \"2020-05-10T00:00:00+00:00\"\n    },\n    \"ShipToAddressOverride\": {\n        \"value\": false\n    },\n    \"ShipToContactOverride\": {\n        \"value\": false\n    },\n    \"ShipVia\": {},\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"TaxTotal\": {\n        \"value\": 0\n    },\n    \"VATExemptTotal\": {\n        \"value\": 0\n    },\n    \"VATTaxableTotal\": {\n        \"value\": 0\n    },\n    \"WillCall\": {\n        \"value\": true\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/demodata/entity/Default/22.200.001/SalesOrder/bb26ed04-df09-ee11-b9d9-12b1ac96c437\",\n        \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Document/bb26ed04-df09-ee11-b9d9-12b1ac96c437/{filename}\"\n    }\n}"
 						}
 					]
 				},
@@ -17637,7 +18189,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -17839,7 +18392,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -18041,7 +18595,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -18205,7 +18760,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -18611,7 +19167,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -18871,7 +19428,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -19031,57 +19589,38 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"var requestSignIn = {\r",
-									"    url: url + 'entity/auth/login',\r",
-									"    method: 'POST',\r",
-									"    body: {\r",
-									"        mode: 'raw',\r",
-									"        raw: '{ \"name\":\"'+username+'\", \"password\":\"'+password+'\", \"tenant\":\"'+tenant+'\", \"branch\": \"HEADOFFICE\"}'\r",
-									"    },\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
-									"    }\r",
+									"var branch = pm.collectionVariables.get('BranchU100');\r",
+									"//Request to add a package\r",
+									"var callback = (pm, error, response) => {\r",
+									"    var url2 = pm.collectionVariables.get('EndpointURL') + 'Shipment?$expand=Packages';\r",
+									"    var requestAddPackage = {\r",
+									"        url: url2,\r",
+									"        method: 'PUT',\r",
+									"        body: {\r",
+									"            mode: 'raw',\r",
+									"            raw: '{\"ShipmentNbr\": { \"value\": \"000058\"},\"Type\": {\"value\": \"Shipment\"},\"Packages\": [{\"BoxID\": {\"value\": \"SMALL\"}}]}'},\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        }\r",
+									"    };\r",
+									"\r",
+									"    pm.sendRequest(requestAddPackage,  (error, response) => {\r",
+									"        if (error) {\r",
+									"            console.log(error);\r",
+									"        }\r",
+									"\r",
+									"        pm.test('Response for adding package should be OK to process', () => {\r",
+									"            pm.expect(error).to.equal(null);\r",
+									"            pm.expect(response).to.have.property('code', 200);\r",
+									"            pm.expect(response).to.have.property('status', 'OK');\r",
+									"            const jsonResponse = response.json();\r",
+									"            pm.collectionVariables.set('shipmentID', jsonResponse.id);\r",
+									"            pm.collectionVariables.set('packageID', jsonResponse.Packages[0].id);\r",
+									"        });\r",
+									"    });\r",
 									"};\r",
-									"//Data for adding a package to the shipment\r",
-									"var url2 = pm.collectionVariables.get('EndpointURL') + 'Shipment?$expand=Packages';\r",
-									"var requestAddPackage = {\r",
-									"    url: url2,\r",
-									"    method: 'PUT',\r",
-									"    body: {\r",
-									"        mode: 'raw',\r",
-									"        raw: '{\"ShipmentNbr\": { \"value\": \"000058\"},\"Type\": {\"value\": \"Shipment\"},\"Packages\": [{\"BoxID\": {\"value\": \"SMALL\"}}]}'},\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
-									"    }\r",
-									"};\r",
-									"//Sign in to the tenant with U100 data and add a package to the shipment\r",
-									"pm.sendRequest(requestSignIn,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
-									"\r",
-									"  pm.test('Response for sing in should be 204 to process', () => {\r",
-									"    pm.expect(error).to.equal(null);\r",
-									"    pm.expect(response).to.have.property('code', 204);\r",
-									"    pm.expect(response).to.have.property('status', 'No Content');\r",
-									"  });\r",
-									"  \r",
-									"  pm.sendRequest(requestAddPackage,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
-									"\r",
-									"  pm.test('Response for adding package should be OK to process', () => {\r",
-									"    pm.expect(error).to.equal(null);\r",
-									"    pm.expect(response).to.have.property('code', 200);\r",
-									"    pm.expect(response).to.have.property('status', 'OK');\r",
-									"    const jsonResponse = response.json();\r",
-									"    pm.collectionVariables.set('shipmentID', jsonResponse.id);\r",
-									"    pm.collectionVariables.set('packageID', jsonResponse.Packages[0].id);\r",
-									"  });\r",
-									"\r",
-									"});\r",
-									"});"
+									"//Sign in and add a package to the shipment\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password, callback);"
 								],
 								"type": "text/javascript"
 							}
@@ -19588,7 +20127,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -19724,7 +20264,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -19860,7 +20401,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -20326,7 +20868,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -20478,7 +21021,8 @@
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -20600,7 +21144,8 @@
 									"var username = 'gibbs';\r",
 									"var password = pm.collectionVariables.get('PasswordU100');\r",
 									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, username, password)"
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
 								"type": "text/javascript"
 							}
@@ -20736,6 +21281,47 @@
 				},
 				{
 					"name": "Search for Time Entries by Date",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = 'gibbs';\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Not empty list is returned\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.be.not.empty;\r",
+									"});\r",
+									"pm.test(\"TimeSpent is 01:30\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse[0].TimeSpent.value).to.be.eql('01:30');\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -20758,14 +21344,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{EndpointURL}}TimeEntry?$filter=cf.DateTime(f='Items.Date') ge datetimeoffset'2020-08-17' and cf.DateTime(f='Items.Date') le datetimeoffset'2020-08-18T23%3A59%3A59.999%2B04%3A00'&$select=Date,ProjectID,TimeSpent,BillableTime",
+							"raw": "{{EndpointURL}}TimeEntry?$filter=cf.DateTime(f='Items.Date') ge datetimeoffset'2022-08-17' and cf.DateTime(f='Items.Date') le datetimeoffset'2022-08-18T23%3A59%3A59.999%2B04%3A00'&$select=Date,ProjectID,TimeSpent,BillableTime",
 							"host": [
 								"{{EndpointURL}}TimeEntry"
 							],
 							"query": [
 								{
 									"key": "$filter",
-									"value": "cf.DateTime(f='Items.Date') ge datetimeoffset'2020-08-17' and cf.DateTime(f='Items.Date') le datetimeoffset'2020-08-18T23%3A59%3A59.999%2B04%3A00'"
+									"value": "cf.DateTime(f='Items.Date') ge datetimeoffset'2022-08-17' and cf.DateTime(f='Items.Date') le datetimeoffset'2022-08-18T23%3A59%3A59.999%2B04%3A00'"
 								},
 								{
 									"key": "$select",
@@ -20855,6 +21441,47 @@
 			"item": [
 				{
 					"name": "Retrieve the List of Vendors",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Not empty list is returned\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.be.not.empty;\r",
+									"});\r",
+									"pm.test(\"CashAccount is 10200TG\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse[0].CashAccount.value).to.eql('10200TG');\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -20949,6 +21576,47 @@
 				},
 				{
 					"name": "Create a Vendor",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"VendorID is TESTVENDOR\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.VendorID.value).to.eql('TESTVENDOR');\r",
+									"});\r",
+									"pm.test(\"Vendor class is SUBCON\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.VendorClass.value).to.eql('SUBCON');\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -21061,6 +21729,47 @@
 			"item": [
 				{
 					"name": "Create a Work Calendar",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"WorkCalendarID is TST\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.WorkCalendarID.value).to.eql('TST');\r",
+									"});\r",
+									"pm.test(\"TimeZone is (GMT-08:00) Pacific Time (US & Canada)\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.TimeZone.value).to.eql('(GMT-08:00) Pacific Time (US & Canada)');\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -21173,6 +21882,47 @@
 			"item": [
 				{
 					"name": "Create a Work Location",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"WorkLocationID is DELLEVUE\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.WorkLocationID.value).to.eql('DELLEVUE');\r",
+									"});\r",
+									"pm.test(\"City is Bellevue\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.AddressInfo.City.value).to.eql('Bellevue');\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -21192,9 +21942,15 @@
 							"raw": "{\r\n    \"Active\": {\r\n        \"value\": true\r\n    },\r\n    \"WorkLocationID\": {\r\n        \"value\": \"DELLEVUE\"\r\n    },\r\n    \"WorkLocationName\": {\r\n        \"value\": \"New address location\"\r\n    },\r\n    \"AddressInfo\": {\r\n        \"AddressLine1\": {\r\n            \"value\": \"1st Browny St.\"\r\n        },\r\n        \"AddressLine2\": {\r\n            \"value\": \"Suite 200\"\r\n        },\r\n        \"City\": {\r\n            \"value\": \"Bellevue\"\r\n        },\r\n        \"Country\": {\r\n            \"value\": \"US\"\r\n        },\r\n        \"PostalCode\": {\r\n            \"value\": \"98004\"\r\n        },\r\n        \"State\": {\r\n            \"value\": \"WA\"\r\n        }\r\n    }\r\n}"
 						},
 						"url": {
-							"raw": "{{EndpointURL}}WorkLocation",
+							"raw": "{{EndpointURL}}WorkLocation?$expand=AddressInfo",
 							"host": [
 								"{{EndpointURL}}WorkLocation"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "AddressInfo"
+								}
 							]
 						},
 						"description": "This example shows how to create a work location. This process is described in [Create a Work Location](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=3afa8a81-839e-403e-85b3-d19a60a02328)."
@@ -31330,13 +32086,13 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					"let singInFunction = (pm, url, tenant, username, password) => { ",
+					"let singInFunction = (pm, url, tenant, branch, username, password, callback) => { ",
 					"var requestSignIn = {",
 					"    url: url + 'entity/auth/login',",
 					"    method: 'POST',",
 					"    body: {",
 					"        mode: 'raw',",
-					"        raw: '{ \"name\":\"'+username+'\", \"password\":\"'+password+'\", \"tenant\":\"'+tenant+'\", \"branch\": \"HEADOFFICE\"}'",
+					"        raw: '{ \"name\":\"'+username+'\", \"password\":\"'+password+'\", \"tenant\":\"'+tenant+'\", \"branch\": \"'+branch+'\"}'",
 					"    },",
 					"    header: {",
 					"        'Content-Type': 'application/json'",
@@ -31353,6 +32109,10 @@
 					"    pm.expect(response).to.have.property('code', 204);",
 					"    pm.expect(response).to.have.property('status', 'No Content');",
 					"  });",
+					"",
+					"  if (callback) {",
+					"      callback(pm, error, response);",
+					"  }",
 					"",
 					"});",
 					"",
@@ -31423,7 +32183,12 @@
 		},
 		{
 			"key": "TenantU100",
-			"value": "MyTenant",
+			"value": "U100",
+			"type": "string"
+		},
+		{
+			"key": "BranchU100",
+			"value": "HEADOFFICE",
 			"type": "string"
 		},
 		{
@@ -31433,6 +32198,46 @@
 		},
 		{
 			"key": "PasswordU100",
+			"value": "123",
+			"type": "string"
+		},
+		{
+			"key": "TenantT100",
+			"value": "T100",
+			"type": "string"
+		},
+		{
+			"key": "BranchT100",
+			"value": "MYSTORE",
+			"type": "string"
+		},
+		{
+			"key": "UsernameT100",
+			"value": "admin",
+			"type": "string"
+		},
+		{
+			"key": "PasswordT100",
+			"value": "123",
+			"type": "string"
+		},
+		{
+			"key": "TenantSalesDemo",
+			"value": "SalesDemo",
+			"type": "string"
+		},
+		{
+			"key": "BranchSalesDemo",
+			"value": "PRODWHOLE",
+			"type": "string"
+		},
+		{
+			"key": "UsernameSalesDemo",
+			"value": "admin",
+			"type": "string"
+		},
+		{
+			"key": "PasswordSalesDemo",
 			"value": "123",
 			"type": "string"
 		},
@@ -31474,6 +32279,10 @@
 		},
 		{
 			"key": "packageID",
+			"value": ""
+		},
+		{
+			"key": "SalesInvoiceStatusUrl",
 			"value": ""
 		}
 	]
