@@ -17254,15 +17254,23 @@
 									"});\r",
 									"pm.test(\"One payment line is included\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.Payments).to.has.lengthOf(1);\r",
+									"    pm.expect(jsonResponse.Payments).to.have.lengthOf(1);\r",
 									"});\r",
-									"pm.test(\"Payment method is VISATOK\", function (){\r",
+									"pm.test(\"Payment method is CCAUTHNET\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.PaymentMethod.value).to.eql('CCAUTHNET');\r",
 									"});\r",
 									"pm.test(\"Order total is 980\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.OrderTotal.value).to.eql(980);\r",
+									"});\r",
+									"pm.test(\"Status is Pending Processing\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments[0].Status.value).to.be.eql('Pending Processing');\r",
+									"});\r",
+									"pm.test(\"PaymentRef is empty\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments[0].PaymentRef).to.be.empty;\r",
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -17289,7 +17297,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2020-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"CCAUTHNET\"},\r\n            \"PaymentRef\": {\"value\": \"ABC CreditCard\"}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2020-05-10T00:00:00\"}\r\n}"
+							"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2020-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"CCAUTHNET\"}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2020-05-10T00:00:00\"}\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}SalesOrder?$expand=Details,Payments",
@@ -17324,7 +17332,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2020-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"CCAUTHNET\"},\r\n            \"PaymentRef\": {\"value\": \"ABC CreditCard\"}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2020-05-10T00:00:00\"}\r\n}"
+									"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2020-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"CCAUTHNET\"}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2020-05-10T00:00:00\"}\r\n}"
 								},
 								"url": {
 									"raw": "{{EndpointURL}}SalesOrder?$expand=Details,Payments",
@@ -17369,28 +17377,81 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requestid=37C496ACB112D9B911EE09DEFB80755B; path=/; secure; SameSite=None"
+									"value": "requestid=37C496ACB112D9B911EE0B71E03ABE8F; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requeststat=+st:24748+sc:~/entity/default/22.200.001/salesorder+start:638222531816038319+tg:; path=/; secure; SameSite=None"
+									"value": "requeststat=+st:1783+sc:~/entity/default/22.200.001/salesorder+start:638224262231086831+tg:; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 13 Jun 2023 11:40:06 GMT"
+									"value": "Thu, 15 Jun 2023 11:43:44 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "6639"
+									"value": "6613"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"bb26ed04-df09-ee11-b9d9-12b1ac96c437\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Approved\": {\n        \"value\": true\n    },\n    \"BaseCurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"BillToAddressOverride\": {\n        \"value\": false\n    },\n    \"BillToContactOverride\": {\n        \"value\": false\n    },\n    \"CashAccount\": {\n        \"value\": \"10600\"\n    },\n    \"ContactID\": {\n        \"value\": \"100053\"\n    },\n    \"ControlTotal\": {\n        \"value\": 980\n    },\n    \"CreatedDate\": {\n        \"value\": \"2023-06-13T11:40:02.447+00:00\"\n    },\n    \"CreditHold\": {\n        \"value\": false\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"CurrencyRate\": {\n        \"value\": 1\n    },\n    \"CurrencyRateTypeID\": {\n        \"value\": \"SPOT\"\n    },\n    \"CustomerID\": {\n        \"value\": \"WIDGETCC\"\n    },\n    \"CustomerOrder\": {},\n    \"Date\": {\n        \"value\": \"2020-05-10T00:00:00+00:00\"\n    },\n    \"Description\": {\n        \"value\": \"Internal CC Payment\"\n    },\n    \"DestinationWarehouseID\": {},\n    \"Details\": [\n        {\n            \"id\": \"c126ed04-df09-ee11-b9d9-12b1ac96c437\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Account\": {\n                \"value\": \"40000\"\n            },\n            \"AlternateID\": {},\n            \"Amount\": {\n                \"value\": 490\n            },\n            \"AutoCreateIssue\": {\n                \"value\": false\n            },\n            \"AverageCost\": {\n                \"value\": 250\n            },\n            \"Branch\": {\n                \"value\": \"PRODWHOLE\"\n            },\n            \"CalculateDiscountsOnImport\": {},\n            \"Commissionable\": {\n                \"value\": true\n            },\n            \"Completed\": {\n                \"value\": false\n            },\n            \"CustomerOrderNbr\": {},\n            \"DiscountAmount\": {\n                \"value\": 10\n            },\n            \"DiscountCode\": {},\n            \"DiscountedUnitPrice\": {\n                \"value\": 500\n            },\n            \"DiscountPercent\": {\n                \"value\": 0\n            },\n            \"ExtendedPrice\": {\n                \"value\": 500\n            },\n            \"FreeItem\": {\n                \"value\": false\n            },\n            \"InventoryID\": {\n                \"value\": \"AACOMPUT01\"\n            },\n            \"InvoiceLineNbr\": {},\n            \"InvoiceNbr\": {},\n            \"InvoiceType\": {},\n            \"LastModifiedDate\": {\n                \"value\": \"06/13/2023 11:40:02\"\n            },\n            \"LineDescription\": {\n                \"value\": \"Acer Laptop Computer\"\n            },\n            \"LineNbr\": {\n                \"value\": 1\n            },\n            \"LineType\": {\n                \"value\": \"Goods for Inventory\"\n            },\n            \"Location\": {},\n            \"LotSerialNbr\": {},\n            \"ManualDiscount\": {\n                \"value\": false\n            },\n            \"ManualPrice\": {\n                \"value\": true\n            },\n            \"MarkForPO\": {\n                \"value\": false\n            },\n            \"NoteID\": {\n                \"value\": \"c126ed04-df09-ee11-b9d9-12b1ac96c437\"\n            },\n            \"OpenQty\": {\n                \"value\": 1\n            },\n            \"Operation\": {\n                \"value\": \"Issue\"\n            },\n            \"OrderQty\": {\n                \"value\": 1\n            },\n            \"OvershipThreshold\": {\n                \"value\": 100\n            },\n            \"POSource\": {},\n            \"ProjectTask\": {},\n            \"PurchaseWarehouse\": {},\n            \"QtyOnShipments\": {\n                \"value\": 0\n            },\n            \"ReasonCode\": {},\n            \"RequestedOn\": {\n                \"value\": \"2020-05-10T00:00:00+00:00\"\n            },\n            \"SalespersonID\": {\n                \"value\": \"SP0009\"\n            },\n            \"SchedOrderDate\": {\n                \"value\": \"2023-06-13T00:00:00+00:00\"\n            },\n            \"ShipOn\": {\n                \"value\": \"2020-05-10T00:00:00+00:00\"\n            },\n            \"ShippingRule\": {\n                \"value\": \"Back Order Allowed\"\n            },\n            \"ShipToLocation\": {\n                \"value\": \"MAIN\"\n            },\n            \"TaxCategory\": {\n                \"value\": \"EXEMPT\"\n            },\n            \"TaxZone\": {},\n            \"UnbilledAmount\": {\n                \"value\": 490\n            },\n            \"UndershipThreshold\": {\n                \"value\": 100\n            },\n            \"UnitCost\": {\n                \"value\": 250\n            },\n            \"UnitPrice\": {\n                \"value\": 500\n            },\n            \"UOM\": {\n                \"value\": \"EA\"\n            },\n            \"VendorID\": {},\n            \"WarehouseID\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/c126ed04-df09-ee11-b9d9-12b1ac96c437/{filename}\"\n            }\n        },\n        {\n            \"id\": \"c226ed04-df09-ee11-b9d9-12b1ac96c437\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"Account\": {\n                \"value\": \"40000\"\n            },\n            \"AlternateID\": {},\n            \"Amount\": {\n                \"value\": 490\n            },\n            \"AutoCreateIssue\": {\n                \"value\": false\n            },\n            \"AverageCost\": {\n                \"value\": 50\n            },\n            \"Branch\": {\n                \"value\": \"PRODWHOLE\"\n            },\n            \"CalculateDiscountsOnImport\": {},\n            \"Commissionable\": {\n                \"value\": true\n            },\n            \"Completed\": {\n                \"value\": false\n            },\n            \"CustomerOrderNbr\": {},\n            \"DiscountAmount\": {\n                \"value\": 10\n            },\n            \"DiscountCode\": {},\n            \"DiscountedUnitPrice\": {\n                \"value\": 50\n            },\n            \"DiscountPercent\": {\n                \"value\": 0\n            },\n            \"ExtendedPrice\": {\n                \"value\": 500\n            },\n            \"FreeItem\": {\n                \"value\": false\n            },\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"InvoiceLineNbr\": {},\n            \"InvoiceNbr\": {},\n            \"InvoiceType\": {},\n            \"LastModifiedDate\": {\n                \"value\": \"06/13/2023 11:40:02\"\n            },\n            \"LineDescription\": {\n                \"value\": \"Lego 500 piece set\"\n            },\n            \"LineNbr\": {\n                \"value\": 3\n            },\n            \"LineType\": {\n                \"value\": \"Goods for Inventory\"\n            },\n            \"Location\": {},\n            \"LotSerialNbr\": {},\n            \"ManualDiscount\": {\n                \"value\": false\n            },\n            \"ManualPrice\": {\n                \"value\": true\n            },\n            \"MarkForPO\": {\n                \"value\": false\n            },\n            \"NoteID\": {\n                \"value\": \"c226ed04-df09-ee11-b9d9-12b1ac96c437\"\n            },\n            \"OpenQty\": {\n                \"value\": 50\n            },\n            \"Operation\": {\n                \"value\": \"Issue\"\n            },\n            \"OrderQty\": {\n                \"value\": 50\n            },\n            \"OvershipThreshold\": {\n                \"value\": 100\n            },\n            \"POSource\": {},\n            \"ProjectTask\": {},\n            \"PurchaseWarehouse\": {},\n            \"QtyOnShipments\": {\n                \"value\": 0\n            },\n            \"ReasonCode\": {},\n            \"RequestedOn\": {\n                \"value\": \"2020-05-10T00:00:00+00:00\"\n            },\n            \"SalespersonID\": {\n                \"value\": \"SP0009\"\n            },\n            \"SchedOrderDate\": {\n                \"value\": \"2023-06-13T00:00:00+00:00\"\n            },\n            \"ShipOn\": {\n                \"value\": \"2020-05-10T00:00:00+00:00\"\n            },\n            \"ShippingRule\": {\n                \"value\": \"Back Order Allowed\"\n            },\n            \"ShipToLocation\": {\n                \"value\": \"MAIN\"\n            },\n            \"TaxCategory\": {\n                \"value\": \"TAXABLE\"\n            },\n            \"TaxZone\": {},\n            \"UnbilledAmount\": {\n                \"value\": 490\n            },\n            \"UndershipThreshold\": {\n                \"value\": 100\n            },\n            \"UnitCost\": {\n                \"value\": 50\n            },\n            \"UnitPrice\": {\n                \"value\": 50\n            },\n            \"UOM\": {\n                \"value\": \"EA\"\n            },\n            \"VendorID\": {},\n            \"WarehouseID\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/c226ed04-df09-ee11-b9d9-12b1ac96c437/{filename}\"\n            }\n        }\n    ],\n    \"DisableAutomaticDiscountUpdate\": {\n        \"value\": false\n    },\n    \"DisableAutomaticTaxCalculation\": {\n        \"value\": false\n    },\n    \"EffectiveDate\": {\n        \"value\": \"2020-05-10T00:00:00+00:00\"\n    },\n    \"ExternalRef\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"IsTaxValid\": {\n        \"value\": false\n    },\n    \"LastModified\": {\n        \"value\": \"2023-06-13T11:40:02.447+00:00\"\n    },\n    \"LocationID\": {\n        \"value\": \"MAIN\"\n    },\n    \"NoteID\": {\n        \"value\": \"bb26ed04-df09-ee11-b9d9-12b1ac96c437\"\n    },\n    \"OrderedQty\": {\n        \"value\": 51\n    },\n    \"OrderNbr\": {\n        \"value\": \"SO007463\"\n    },\n    \"OrderTotal\": {\n        \"value\": 980\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"PaymentMethod\": {\n        \"value\": \"CCAUTHNET\"\n    },\n    \"PaymentRef\": {},\n    \"Payments\": [\n        {\n            \"id\": \"c726ed04-df09-ee11-b9d9-12b1ac96c437\",\n            \"rowNumber\": 1,\n            \"note\": {\n                \"value\": \"\"\n            },\n            \"ApplicationDate\": {\n                \"value\": \"2020-08-10T00:00:00+00:00\"\n            },\n            \"AppliedToOrder\": {\n                \"value\": 480\n            },\n            \"Authorize\": {},\n            \"Balance\": {\n                \"value\": 500\n            },\n            \"Capture\": {},\n            \"CardAccountNbr\": {\n                \"value\": \"2336\"\n            },\n            \"CashAccount\": {\n                \"value\": \"10600\"\n            },\n            \"Currency\": {\n                \"value\": \"USD\"\n            },\n            \"Description\": {},\n            \"DocType\": {\n                \"value\": \"Payment\"\n            },\n            \"ExternalRef\": {},\n            \"Hold\": {\n                \"value\": false\n            },\n            \"LastModifiedDateTime\": {\n                \"value\": \"2023-06-13T11:40:04.477+00:00\"\n            },\n            \"NoteID\": {\n                \"value\": \"c726ed04-df09-ee11-b9d9-12b1ac96c437\"\n            },\n            \"OrigTransactionNbr\": {},\n            \"PaymentAmount\": {\n                \"value\": 980\n            },\n            \"PaymentMethod\": {\n                \"value\": \"CCAUTHNET\"\n            },\n            \"PaymentRef\": {\n                \"value\": \"ABC CreditCard\"\n            },\n            \"ProcessingCenterID\": {},\n            \"ReferenceNbr\": {\n                \"value\": \"004480\"\n            },\n            \"Refund\": {},\n            \"SaveCard\": {},\n            \"Status\": {\n                \"value\": \"Pending Processing\"\n            },\n            \"TransferredtoInvoice\": {\n                \"value\": 0\n            },\n            \"ValidateCCRefundOrigTransaction\": {\n                \"value\": true\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Adjustments/c726ed04-df09-ee11-b9d9-12b1ac96c437/{filename}\"\n            }\n        }\n    ],\n    \"PreferredWarehouseID\": {},\n    \"Project\": {\n        \"value\": \"X\"\n    },\n    \"ReciprocalRate\": {\n        \"value\": 1\n    },\n    \"RequestedOn\": {\n        \"value\": \"2020-05-10T00:00:00+00:00\"\n    },\n    \"ShipToAddressOverride\": {\n        \"value\": false\n    },\n    \"ShipToContactOverride\": {\n        \"value\": false\n    },\n    \"ShipVia\": {},\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"TaxTotal\": {\n        \"value\": 0\n    },\n    \"VATExemptTotal\": {\n        \"value\": 0\n    },\n    \"VATTaxableTotal\": {\n        \"value\": 0\n    },\n    \"WillCall\": {\n        \"value\": true\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/demodata/entity/Default/22.200.001/SalesOrder/bb26ed04-df09-ee11-b9d9-12b1ac96c437\",\n        \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Document/bb26ed04-df09-ee11-b9d9-12b1ac96c437/{filename}\"\n    }\n}"
+							"body": "{\n    \"id\": \"90be3ae0-710b-ee11-b9d9-12b1ac96c437\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Approved\": {\n        \"value\": true\n    },\n    \"BaseCurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"BillToAddressOverride\": {\n        \"value\": false\n    },\n    \"BillToContactOverride\": {\n        \"value\": false\n    },\n    \"CashAccount\": {\n        \"value\": \"10600\"\n    },\n    \"ContactID\": {\n        \"value\": \"100053\"\n    },\n    \"ControlTotal\": {\n        \"value\": 980\n    },\n    \"CreatedDate\": {\n        \"value\": \"2023-06-15T11:43:44.22+00:00\"\n    },\n    \"CreditHold\": {\n        \"value\": false\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"CurrencyRate\": {\n        \"value\": 1\n    },\n    \"CurrencyRateTypeID\": {\n        \"value\": \"SPOT\"\n    },\n    \"CustomerID\": {\n        \"value\": \"WIDGETCC\"\n    },\n    \"CustomerOrder\": {},\n    \"Date\": {\n        \"value\": \"2020-05-10T00:00:00+00:00\"\n    },\n    \"Description\": {\n        \"value\": \"Internal CC Payment\"\n    },\n    \"DestinationWarehouseID\": {},\n    \"Details\": [\n        {\n            \"id\": \"96be3ae0-710b-ee11-b9d9-12b1ac96c437\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Account\": {\n                \"value\": \"40000\"\n            },\n            \"AlternateID\": {},\n            \"Amount\": {\n                \"value\": 490\n            },\n            \"AutoCreateIssue\": {\n                \"value\": false\n            },\n            \"AverageCost\": {\n                \"value\": 250\n            },\n            \"Branch\": {\n                \"value\": \"PRODWHOLE\"\n            },\n            \"CalculateDiscountsOnImport\": {},\n            \"Commissionable\": {\n                \"value\": true\n            },\n            \"Completed\": {\n                \"value\": false\n            },\n            \"CustomerOrderNbr\": {},\n            \"DiscountAmount\": {\n                \"value\": 10\n            },\n            \"DiscountCode\": {},\n            \"DiscountedUnitPrice\": {\n                \"value\": 500\n            },\n            \"DiscountPercent\": {\n                \"value\": 0\n            },\n            \"ExtendedPrice\": {\n                \"value\": 500\n            },\n            \"FreeItem\": {\n                \"value\": false\n            },\n            \"InventoryID\": {\n                \"value\": \"AACOMPUT01\"\n            },\n            \"InvoiceLineNbr\": {},\n            \"InvoiceNbr\": {},\n            \"InvoiceType\": {},\n            \"LastModifiedDate\": {\n                \"value\": \"06/15/2023 11:43:44\"\n            },\n            \"LineDescription\": {\n                \"value\": \"Acer Laptop Computer\"\n            },\n            \"LineNbr\": {\n                \"value\": 1\n            },\n            \"LineType\": {\n                \"value\": \"Goods for Inventory\"\n            },\n            \"Location\": {},\n            \"LotSerialNbr\": {},\n            \"ManualDiscount\": {\n                \"value\": false\n            },\n            \"ManualPrice\": {\n                \"value\": true\n            },\n            \"MarkForPO\": {\n                \"value\": false\n            },\n            \"NoteID\": {\n                \"value\": \"96be3ae0-710b-ee11-b9d9-12b1ac96c437\"\n            },\n            \"OpenQty\": {\n                \"value\": 1\n            },\n            \"Operation\": {\n                \"value\": \"Issue\"\n            },\n            \"OrderQty\": {\n                \"value\": 1\n            },\n            \"OvershipThreshold\": {\n                \"value\": 100\n            },\n            \"POSource\": {},\n            \"ProjectTask\": {},\n            \"PurchaseWarehouse\": {},\n            \"QtyOnShipments\": {\n                \"value\": 0\n            },\n            \"ReasonCode\": {},\n            \"RequestedOn\": {\n                \"value\": \"2020-05-10T00:00:00+00:00\"\n            },\n            \"SalespersonID\": {\n                \"value\": \"SP0009\"\n            },\n            \"SchedOrderDate\": {\n                \"value\": \"2023-06-15T00:00:00+00:00\"\n            },\n            \"ShipOn\": {\n                \"value\": \"2020-05-10T00:00:00+00:00\"\n            },\n            \"ShippingRule\": {\n                \"value\": \"Back Order Allowed\"\n            },\n            \"ShipToLocation\": {\n                \"value\": \"MAIN\"\n            },\n            \"TaxCategory\": {\n                \"value\": \"EXEMPT\"\n            },\n            \"TaxZone\": {},\n            \"UnbilledAmount\": {\n                \"value\": 490\n            },\n            \"UndershipThreshold\": {\n                \"value\": 100\n            },\n            \"UnitCost\": {\n                \"value\": 250\n            },\n            \"UnitPrice\": {\n                \"value\": 500\n            },\n            \"UOM\": {\n                \"value\": \"EA\"\n            },\n            \"VendorID\": {},\n            \"WarehouseID\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/96be3ae0-710b-ee11-b9d9-12b1ac96c437/{filename}\"\n            }\n        },\n        {\n            \"id\": \"97be3ae0-710b-ee11-b9d9-12b1ac96c437\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"Account\": {\n                \"value\": \"40000\"\n            },\n            \"AlternateID\": {},\n            \"Amount\": {\n                \"value\": 490\n            },\n            \"AutoCreateIssue\": {\n                \"value\": false\n            },\n            \"AverageCost\": {\n                \"value\": 50\n            },\n            \"Branch\": {\n                \"value\": \"PRODWHOLE\"\n            },\n            \"CalculateDiscountsOnImport\": {},\n            \"Commissionable\": {\n                \"value\": true\n            },\n            \"Completed\": {\n                \"value\": false\n            },\n            \"CustomerOrderNbr\": {},\n            \"DiscountAmount\": {\n                \"value\": 10\n            },\n            \"DiscountCode\": {},\n            \"DiscountedUnitPrice\": {\n                \"value\": 50\n            },\n            \"DiscountPercent\": {\n                \"value\": 0\n            },\n            \"ExtendedPrice\": {\n                \"value\": 500\n            },\n            \"FreeItem\": {\n                \"value\": false\n            },\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"InvoiceLineNbr\": {},\n            \"InvoiceNbr\": {},\n            \"InvoiceType\": {},\n            \"LastModifiedDate\": {\n                \"value\": \"06/15/2023 11:43:44\"\n            },\n            \"LineDescription\": {\n                \"value\": \"Lego 500 piece set\"\n            },\n            \"LineNbr\": {\n                \"value\": 3\n            },\n            \"LineType\": {\n                \"value\": \"Goods for Inventory\"\n            },\n            \"Location\": {},\n            \"LotSerialNbr\": {},\n            \"ManualDiscount\": {\n                \"value\": false\n            },\n            \"ManualPrice\": {\n                \"value\": true\n            },\n            \"MarkForPO\": {\n                \"value\": false\n            },\n            \"NoteID\": {\n                \"value\": \"97be3ae0-710b-ee11-b9d9-12b1ac96c437\"\n            },\n            \"OpenQty\": {\n                \"value\": 50\n            },\n            \"Operation\": {\n                \"value\": \"Issue\"\n            },\n            \"OrderQty\": {\n                \"value\": 50\n            },\n            \"OvershipThreshold\": {\n                \"value\": 100\n            },\n            \"POSource\": {},\n            \"ProjectTask\": {},\n            \"PurchaseWarehouse\": {},\n            \"QtyOnShipments\": {\n                \"value\": 0\n            },\n            \"ReasonCode\": {},\n            \"RequestedOn\": {\n                \"value\": \"2020-05-10T00:00:00+00:00\"\n            },\n            \"SalespersonID\": {\n                \"value\": \"SP0009\"\n            },\n            \"SchedOrderDate\": {\n                \"value\": \"2023-06-15T00:00:00+00:00\"\n            },\n            \"ShipOn\": {\n                \"value\": \"2020-05-10T00:00:00+00:00\"\n            },\n            \"ShippingRule\": {\n                \"value\": \"Back Order Allowed\"\n            },\n            \"ShipToLocation\": {\n                \"value\": \"MAIN\"\n            },\n            \"TaxCategory\": {\n                \"value\": \"TAXABLE\"\n            },\n            \"TaxZone\": {},\n            \"UnbilledAmount\": {\n                \"value\": 490\n            },\n            \"UndershipThreshold\": {\n                \"value\": 100\n            },\n            \"UnitCost\": {\n                \"value\": 50\n            },\n            \"UnitPrice\": {\n                \"value\": 50\n            },\n            \"UOM\": {\n                \"value\": \"EA\"\n            },\n            \"VendorID\": {},\n            \"WarehouseID\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/97be3ae0-710b-ee11-b9d9-12b1ac96c437/{filename}\"\n            }\n        }\n    ],\n    \"DisableAutomaticDiscountUpdate\": {\n        \"value\": false\n    },\n    \"DisableAutomaticTaxCalculation\": {\n        \"value\": false\n    },\n    \"EffectiveDate\": {\n        \"value\": \"2020-05-10T00:00:00+00:00\"\n    },\n    \"ExternalRef\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"IsTaxValid\": {\n        \"value\": false\n    },\n    \"LastModified\": {\n        \"value\": \"2023-06-15T11:43:44.22+00:00\"\n    },\n    \"LocationID\": {\n        \"value\": \"MAIN\"\n    },\n    \"NoteID\": {\n        \"value\": \"90be3ae0-710b-ee11-b9d9-12b1ac96c437\"\n    },\n    \"OrderedQty\": {\n        \"value\": 51\n    },\n    \"OrderNbr\": {\n        \"value\": \"SO007469\"\n    },\n    \"OrderTotal\": {\n        \"value\": 980\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"PaymentMethod\": {\n        \"value\": \"CCAUTHNET\"\n    },\n    \"PaymentRef\": {},\n    \"Payments\": [\n        {\n            \"id\": \"9cbe3ae0-710b-ee11-b9d9-12b1ac96c437\",\n            \"rowNumber\": 1,\n            \"note\": {\n                \"value\": \"\"\n            },\n            \"ApplicationDate\": {\n                \"value\": \"2020-08-10T00:00:00+00:00\"\n            },\n            \"AppliedToOrder\": {\n                \"value\": 480\n            },\n            \"Authorize\": {},\n            \"Balance\": {\n                \"value\": 500\n            },\n            \"Capture\": {},\n            \"CardAccountNbr\": {\n                \"value\": \"2336\"\n            },\n            \"CashAccount\": {\n                \"value\": \"10600\"\n            },\n            \"Currency\": {\n                \"value\": \"USD\"\n            },\n            \"Description\": {},\n            \"DocType\": {\n                \"value\": \"Payment\"\n            },\n            \"ExternalRef\": {},\n            \"Hold\": {\n                \"value\": false\n            },\n            \"LastModifiedDateTime\": {\n                \"value\": \"2023-06-15T11:43:44.737+00:00\"\n            },\n            \"NoteID\": {\n                \"value\": \"9cbe3ae0-710b-ee11-b9d9-12b1ac96c437\"\n            },\n            \"OrigTransactionNbr\": {},\n            \"PaymentAmount\": {\n                \"value\": 980\n            },\n            \"PaymentMethod\": {\n                \"value\": \"CCAUTHNET\"\n            },\n            \"PaymentRef\": {},\n            \"ProcessingCenterID\": {},\n            \"ReferenceNbr\": {\n                \"value\": \"004486\"\n            },\n            \"Refund\": {},\n            \"SaveCard\": {},\n            \"Status\": {\n                \"value\": \"Pending Processing\"\n            },\n            \"TransferredtoInvoice\": {\n                \"value\": 0\n            },\n            \"ValidateCCRefundOrigTransaction\": {\n                \"value\": true\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Adjustments/9cbe3ae0-710b-ee11-b9d9-12b1ac96c437/{filename}\"\n            }\n        }\n    ],\n    \"PreferredWarehouseID\": {},\n    \"Project\": {\n        \"value\": \"X\"\n    },\n    \"ReciprocalRate\": {\n        \"value\": 1\n    },\n    \"RequestedOn\": {\n        \"value\": \"2020-05-10T00:00:00+00:00\"\n    },\n    \"ShipToAddressOverride\": {\n        \"value\": false\n    },\n    \"ShipToContactOverride\": {\n        \"value\": false\n    },\n    \"ShipVia\": {},\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"TaxTotal\": {\n        \"value\": 0\n    },\n    \"VATExemptTotal\": {\n        \"value\": 0\n    },\n    \"VATTaxableTotal\": {\n        \"value\": 0\n    },\n    \"WillCall\": {\n        \"value\": true\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/demodata/entity/Default/22.200.001/SalesOrder/90be3ae0-710b-ee11-b9d9-12b1ac96c437\",\n        \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Document/90be3ae0-710b-ee11-b9d9-12b1ac96c437/{filename}\"\n    }\n}"
 						}
 					]
 				},
 				{
 					"name": "Create a Sales Order with a Captured Credit Card Payment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with SalesDemo data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameSalesDemo');\r",
+									"var password = pm.collectionVariables.get('PasswordSalesDemo');\r",
+									"var tenant = pm.collectionVariables.get('TenantSalesDemo');\r",
+									"var branch = pm.collectionVariables.get('BranchSalesDemo'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"One payment line is included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments).to.have.lengthOf(1);\r",
+									"});\r",
+									"pm.test(\"Payment method is CCAUTHNET\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.PaymentMethod.value).to.eql('CCAUTHNET');\r",
+									"});\r",
+									"pm.test(\"Order total is 980\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.OrderTotal.value).to.eql(980);\r",
+									"});\r",
+									"pm.test(\"Status is Open\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments[0].Status.value).to.be.eql('Open');\r",
+									"});\r",
+									"pm.test(\"PaymentRef is not empty\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments[0].PaymentRef.value).to.be.not.empty;\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url,'');\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -17407,12 +17468,18 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2020-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment (Capture)\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"VISATOK\"},\r\n            \"PaymentRef\": {\"value\": \"ABC CreditCard\"},\r\n            \"Capture\": {\"value\": true}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2020-05-10T00:00:00\"}\r\n}"
+							"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2022-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment (Capture)\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2022-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"CCAUTHNET\"},\r\n            \"Capture\": {\"value\": true}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2022-05-10T00:00:00\"}\r\n}"
 						},
 						"url": {
-							"raw": "{{EndpointURL2}}SalesOrder",
+							"raw": "{{EndpointURL}}SalesOrder?$expand=Payments",
 							"host": [
-								"{{EndpointURL2}}SalesOrder"
+								"{{EndpointURL}}SalesOrder"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Payments"
+								}
 							]
 						},
 						"description": "This example shows the creation of a sales order with a captured credit card payment, which is described in [Create a Sales Order with a Captured Credit Card Payment](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=d5fd790b-af98-40ae-a008-a92950400305)."
@@ -17436,12 +17503,18 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2020-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment (Capture)\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"VISATOK\"},\r\n            \"PaymentRef\": {\"value\": \"ABC CreditCard\"},\r\n            \"Capture\": {\"value\": true}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2020-05-10T00:00:00\"}\r\n}"
+									"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2022-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment (Capture)\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2022-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"CCAUTHNET\"},\r\n            \"PaymentRef\": {\"value\": \"ABC CreditCard\"},\r\n            \"Capture\": {\"value\": true}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2022-05-10T00:00:00\"}\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL2}}SalesOrder",
+									"raw": "{{EndpointURL}}SalesOrder?$expand=Payments",
 									"host": [
-										"{{EndpointURL2}}SalesOrder"
+										"{{EndpointURL}}SalesOrder"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Payments"
+										}
 									]
 								}
 							},
@@ -17459,52 +17532,97 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": ".ASPXAUTH=024D38EAB397B2CCADC72CA46D1A8EA111DC457127CACDC65ED64DF24EC42E92CE82E997536FF481C3F352EF5723AF47D1B4E652BA498FE3BCAE2F6AC38638FC65ABED7E411B35772A1B81673FE4C57581627DC004CA75A4A6DAB3CEA68CD672FDC015F2FE8C799F790E5CD1C83C0ED0E7E0E01AEE28380D4AF09938BEB39BFA76CB3BCF; path=/; HttpOnly"
+									"value": "Locale=TimeZone=GMTM0800A&Culture=en-US; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "UserBranch=16; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=16; path=/"
+									"value": "Locale=TimeZone=GMTM0800A&Culture=en-US; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": ".ASPXAUTH=024D38EAB397B2CCADC72CA46D1A8EA111DC457127CACDC65ED64DF24EC42E92CE82E997536FF481C3F352EF5723AF47D1B4E652BA498FE3BCAE2F6AC38638FC65ABED7E411B35772A1B81673FE4C57581627DC004CA75A4A6DAB3CEA68CD672FDC015F2FE8C799F790E5CD1C83C0ED0E7E0E01AEE28380D4AF09938BEB39BFA76CB3BCF; path=/; HttpOnly"
+									"value": "UserBranch=16; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "requestid=37C496ACB112D9B911EE0B71FDA28530; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=16; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "requestid=C34018A628985C9E11ED167C08ADC396; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "requeststat=+st:18902+sc:~/entity/default/22.200.001/salesorder+start:637954925505714710+tg:; path=/"
+									"value": "requeststat=+st:3976+sc:~/entity/default/22.200.001/salesorder+start:638224262723800763+tg:; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 07 Aug 2022 18:09:29 GMT"
+									"value": "Thu, 15 Jun 2023 11:44:36 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "1818"
+									"value": "2953"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"97c3ad08-7c16-ed11-9e5c-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Approved\": {\n        \"value\": true\n    },\n    \"BaseCurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"BillToAddressOverride\": {\n        \"value\": false\n    },\n    \"BillToContactOverride\": {\n        \"value\": false\n    },\n    \"CashAccount\": {\n        \"value\": \"10600\"\n    },\n    \"ContactID\": {\n        \"value\": \"100053\"\n    },\n    \"ControlTotal\": {\n        \"value\": 980\n    },\n    \"CreatedDate\": {\n        \"value\": \"2022-08-07T21:09:14.483+03:00\"\n    },\n    \"CreditHold\": {\n        \"value\": false\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"CurrencyRate\": {\n        \"value\": 1\n    },\n    \"CurrencyRateTypeID\": {},\n    \"CustomerID\": {\n        \"value\": \"WIDGETCC\"\n    },\n    \"CustomerOrder\": {},\n    \"Date\": {\n        \"value\": \"2020-05-10T00:00:00+03:00\"\n    },\n    \"Description\": {\n        \"value\": \"Internal CC Payment (Capture)\"\n    },\n    \"DestinationWarehouseID\": {},\n    \"Details\": [],\n    \"DisableAutomaticDiscountUpdate\": {\n        \"value\": false\n    },\n    \"EffectiveDate\": {\n        \"value\": \"2013-01-01T00:00:00+04:00\"\n    },\n    \"ExternalRef\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"IsTaxValid\": {},\n    \"LastModified\": {\n        \"value\": \"2022-08-07T21:09:17.273+03:00\"\n    },\n    \"LocationID\": {\n        \"value\": \"MAIN\"\n    },\n    \"NoteID\": {\n        \"value\": \"97c3ad08-7c16-ed11-9e5c-9828a61840c3\"\n    },\n    \"OrderedQty\": {\n        \"value\": 51\n    },\n    \"OrderNbr\": {\n        \"value\": \"SO006770\"\n    },\n    \"OrderTotal\": {\n        \"value\": 980\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"PaymentMethod\": {\n        \"value\": \"VISATOK\"\n    },\n    \"PaymentRef\": {},\n    \"Payments\": [],\n    \"PreferredWarehouseID\": {},\n    \"Project\": {\n        \"value\": \"X\"\n    },\n    \"ReciprocalRate\": {\n        \"value\": 1\n    },\n    \"RequestedOn\": {\n        \"value\": \"2020-05-10T00:00:00+03:00\"\n    },\n    \"ShipToAddressOverride\": {\n        \"value\": false\n    },\n    \"ShipToContactOverride\": {\n        \"value\": false\n    },\n    \"ShipVia\": {},\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"TaxTotal\": {\n        \"value\": 0\n    },\n    \"VATExemptTotal\": {\n        \"value\": 0\n    },\n    \"VATTaxableTotal\": {\n        \"value\": 0\n    },\n    \"WillCall\": {\n        \"value\": true\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/SalesDemo/entity/Default/22.200.001/SalesOrder/97c3ad08-7c16-ed11-9e5c-9828a61840c3\",\n        \"files:put\": \"/SalesDemo/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Document/97c3ad08-7c16-ed11-9e5c-9828a61840c3/{filename}\"\n    }\n}"
+							"body": "{\n    \"id\": \"3185a2fd-710b-ee11-b9d9-12b1ac96c437\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Approved\": {\n        \"value\": true\n    },\n    \"BaseCurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"BillToAddressOverride\": {\n        \"value\": false\n    },\n    \"BillToContactOverride\": {\n        \"value\": false\n    },\n    \"CashAccount\": {\n        \"value\": \"10600\"\n    },\n    \"ContactID\": {\n        \"value\": \"100053\"\n    },\n    \"ControlTotal\": {\n        \"value\": 980\n    },\n    \"CreatedDate\": {\n        \"value\": \"2023-06-15T11:44:33.43+00:00\"\n    },\n    \"CreditHold\": {\n        \"value\": false\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"CurrencyRate\": {\n        \"value\": 1\n    },\n    \"CurrencyRateTypeID\": {},\n    \"CustomerID\": {\n        \"value\": \"WIDGETCC\"\n    },\n    \"CustomerOrder\": {},\n    \"Date\": {\n        \"value\": \"2022-05-10T00:00:00+00:00\"\n    },\n    \"Description\": {\n        \"value\": \"Internal CC Payment (Capture)\"\n    },\n    \"DestinationWarehouseID\": {},\n    \"Details\": [],\n    \"DisableAutomaticDiscountUpdate\": {\n        \"value\": false\n    },\n    \"DisableAutomaticTaxCalculation\": {\n        \"value\": false\n    },\n    \"EffectiveDate\": {\n        \"value\": \"2013-01-01T00:00:00+00:00\"\n    },\n    \"ExternalRef\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"IsTaxValid\": {},\n    \"LastModified\": {\n        \"value\": \"2023-06-15T11:44:35.71+00:00\"\n    },\n    \"LocationID\": {\n        \"value\": \"MAIN\"\n    },\n    \"NoteID\": {\n        \"value\": \"3185a2fd-710b-ee11-b9d9-12b1ac96c437\"\n    },\n    \"OrderedQty\": {\n        \"value\": 51\n    },\n    \"OrderNbr\": {\n        \"value\": \"SO007470\"\n    },\n    \"OrderTotal\": {\n        \"value\": 980\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"PaymentMethod\": {\n        \"value\": \"CCAUTHNET\"\n    },\n    \"PaymentRef\": {},\n    \"Payments\": [\n        {\n            \"id\": \"3e85a2fd-710b-ee11-b9d9-12b1ac96c437\",\n            \"rowNumber\": 1,\n            \"note\": {\n                \"value\": \"\"\n            },\n            \"ApplicationDate\": {\n                \"value\": \"2023-06-15T00:00:00+00:00\"\n            },\n            \"AppliedToOrder\": {\n                \"value\": 480\n            },\n            \"Authorize\": {},\n            \"Balance\": {\n                \"value\": 500\n            },\n            \"Capture\": {},\n            \"CardAccountNbr\": {\n                \"value\": \"2336\"\n            },\n            \"CashAccount\": {\n                \"value\": \"10600\"\n            },\n            \"Currency\": {\n                \"value\": \"USD\"\n            },\n            \"Description\": {\n                \"value\": \"Internal CC Payment (Capture)\"\n            },\n            \"DocType\": {\n                \"value\": \"Payment\"\n            },\n            \"ExternalRef\": {},\n            \"Hold\": {\n                \"value\": false\n            },\n            \"LastModifiedDateTime\": {\n                \"value\": \"2023-06-15T11:44:35.71+00:00\"\n            },\n            \"NoteID\": {\n                \"value\": \"3e85a2fd-710b-ee11-b9d9-12b1ac96c437\"\n            },\n            \"OrigTransactionNbr\": {},\n            \"PaymentAmount\": {\n                \"value\": 980\n            },\n            \"PaymentMethod\": {\n                \"value\": \"CCAUTHNET\"\n            },\n            \"PaymentRef\": {\n                \"value\": \"60220565279\"\n            },\n            \"ProcessingCenterID\": {\n                \"value\": \"AUTHNETAPI\"\n            },\n            \"ReferenceNbr\": {\n                \"value\": \"004487\"\n            },\n            \"Refund\": {},\n            \"SaveCard\": {},\n            \"Status\": {\n                \"value\": \"Open\"\n            },\n            \"TransferredtoInvoice\": {\n                \"value\": 0\n            },\n            \"ValidateCCRefundOrigTransaction\": {\n                \"value\": true\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Adjustments/3e85a2fd-710b-ee11-b9d9-12b1ac96c437/{filename}\"\n            }\n        }\n    ],\n    \"PreferredWarehouseID\": {},\n    \"Project\": {\n        \"value\": \"X\"\n    },\n    \"ReciprocalRate\": {\n        \"value\": 1\n    },\n    \"RequestedOn\": {\n        \"value\": \"2022-05-10T00:00:00+00:00\"\n    },\n    \"ShipToAddressOverride\": {\n        \"value\": false\n    },\n    \"ShipToContactOverride\": {\n        \"value\": false\n    },\n    \"ShipVia\": {},\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"TaxTotal\": {\n        \"value\": 0\n    },\n    \"VATExemptTotal\": {\n        \"value\": 0\n    },\n    \"VATTaxableTotal\": {\n        \"value\": 0\n    },\n    \"WillCall\": {\n        \"value\": true\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/demodata/entity/Default/22.200.001/SalesOrder/3185a2fd-710b-ee11-b9d9-12b1ac96c437\",\n        \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Document/3185a2fd-710b-ee11-b9d9-12b1ac96c437/{filename}\"\n    }\n}"
 						}
 					]
 				},
 				{
 					"name": "Create a Sales Order with an Authorized Credit Card Payment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with SalesDemo data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameSalesDemo');\r",
+									"var password = pm.collectionVariables.get('PasswordSalesDemo');\r",
+									"var tenant = pm.collectionVariables.get('TenantSalesDemo');\r",
+									"var branch = pm.collectionVariables.get('BranchSalesDemo'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"One payment line is included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments).to.have.lengthOf(1);\r",
+									"});\r",
+									"pm.test(\"Payment method is CCAUTHNET\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.PaymentMethod.value).to.eql('CCAUTHNET');\r",
+									"});\r",
+									"pm.test(\"Order total is 980\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.OrderTotal.value).to.eql(980);\r",
+									"});\r",
+									"pm.test(\"Status is Pending Processing\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments[0].Status.value).to.be.eql('Pending Processing');\r",
+									"});\r",
+									"pm.test(\"PaymentRef is not empty\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments[0].PaymentRef.value).to.be.not.empty;\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url,'');\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -17521,12 +17639,18 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2020-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment (Capture)\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"VISATOK\"},\r\n            \"PaymentRef\": {\"value\": \"ABC CreditCard\"},\r\n            \"Capture\": {\"value\": true}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2020-05-10T00:00:00\"}\r\n}"
+							"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2022-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment (Capture)\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2022-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"CCAUTHNET\"},\r\n            \"Authorize\": {\"value\": true}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2022-05-10T00:00:00\"}\r\n}"
 						},
 						"url": {
-							"raw": "{{EndpointURL2}}SalesOrder",
+							"raw": "{{EndpointURL}}SalesOrder?$expand=Payments",
 							"host": [
-								"{{EndpointURL2}}SalesOrder"
+								"{{EndpointURL}}SalesOrder"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Payments"
+								}
 							]
 						},
 						"description": "This example shows the creation of a sales order with an authorized credit card payment, which is described in [Create a Sales Order with an Authorized Credit Card Payment](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=d76d89fe-4a65-4a40-98ad-d456edcf3e53)."
@@ -17550,12 +17674,18 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2020-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment (Capture)\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"VISATOK\"},\r\n            \"PaymentRef\": {\"value\": \"ABC CreditCard\"},\r\n            \"Capture\": {\"value\": true}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2020-05-10T00:00:00\"}\r\n}"
+									"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2022-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"Internal CC Payment (Capture)\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2022-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"CCAUTHNET\"},\r\n            \"Authorize\": {\"value\": true}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2022-05-10T00:00:00\"}\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL2}}SalesOrder",
+									"raw": "{{EndpointURL}}SalesOrder?$expand=Payments",
 									"host": [
-										"{{EndpointURL2}}SalesOrder"
+										"{{EndpointURL}}SalesOrder"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Payments"
+										}
 									]
 								}
 							},
@@ -17573,44 +17703,97 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "Locale=TimeZone=GMTM0800A&Culture=en-US; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=16; path=/"
+									"value": "UserBranch=16; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "Locale=TimeZone=GMTM0800A&Culture=en-US; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=16; path=/"
+									"value": "UserBranch=16; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requestid=C34018A628985C9E11ED167CD7CCC760; path=/"
+									"value": "requestid=37C496ACB112D9B911EE0B721AF7E751; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requeststat=+st:7268+sc:~/entity/default/22.200.001/salesorder+start:637954928980631008+tg:; path=/"
+									"value": "requeststat=+st:3452+sc:~/entity/default/22.200.001/salesorder+start:638224263217821065+tg:; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 07 Aug 2022 18:15:05 GMT"
+									"value": "Thu, 15 Jun 2023 11:45:25 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "1817"
+									"value": "2970"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"61c7ccd7-7c16-ed11-9e5c-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Approved\": {\n        \"value\": true\n    },\n    \"BaseCurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"BillToAddressOverride\": {\n        \"value\": false\n    },\n    \"BillToContactOverride\": {\n        \"value\": false\n    },\n    \"CashAccount\": {\n        \"value\": \"10600\"\n    },\n    \"ContactID\": {\n        \"value\": \"100053\"\n    },\n    \"ControlTotal\": {\n        \"value\": 980\n    },\n    \"CreatedDate\": {\n        \"value\": \"2022-08-07T21:15:02.597+03:00\"\n    },\n    \"CreditHold\": {\n        \"value\": false\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"CurrencyRate\": {\n        \"value\": 1\n    },\n    \"CurrencyRateTypeID\": {},\n    \"CustomerID\": {\n        \"value\": \"WIDGETCC\"\n    },\n    \"CustomerOrder\": {},\n    \"Date\": {\n        \"value\": \"2020-05-10T00:00:00+03:00\"\n    },\n    \"Description\": {\n        \"value\": \"Internal CC Payment (Capture)\"\n    },\n    \"DestinationWarehouseID\": {},\n    \"Details\": [],\n    \"DisableAutomaticDiscountUpdate\": {\n        \"value\": false\n    },\n    \"EffectiveDate\": {\n        \"value\": \"2013-01-01T00:00:00+04:00\"\n    },\n    \"ExternalRef\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"IsTaxValid\": {},\n    \"LastModified\": {\n        \"value\": \"2022-08-07T21:15:03.49+03:00\"\n    },\n    \"LocationID\": {\n        \"value\": \"MAIN\"\n    },\n    \"NoteID\": {\n        \"value\": \"61c7ccd7-7c16-ed11-9e5c-9828a61840c3\"\n    },\n    \"OrderedQty\": {\n        \"value\": 51\n    },\n    \"OrderNbr\": {\n        \"value\": \"SO006771\"\n    },\n    \"OrderTotal\": {\n        \"value\": 980\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"PaymentMethod\": {\n        \"value\": \"VISATOK\"\n    },\n    \"PaymentRef\": {},\n    \"Payments\": [],\n    \"PreferredWarehouseID\": {},\n    \"Project\": {\n        \"value\": \"X\"\n    },\n    \"ReciprocalRate\": {\n        \"value\": 1\n    },\n    \"RequestedOn\": {\n        \"value\": \"2020-05-10T00:00:00+03:00\"\n    },\n    \"ShipToAddressOverride\": {\n        \"value\": false\n    },\n    \"ShipToContactOverride\": {\n        \"value\": false\n    },\n    \"ShipVia\": {},\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"TaxTotal\": {\n        \"value\": 0\n    },\n    \"VATExemptTotal\": {\n        \"value\": 0\n    },\n    \"VATTaxableTotal\": {\n        \"value\": 0\n    },\n    \"WillCall\": {\n        \"value\": true\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/SalesDemo/entity/Default/22.200.001/SalesOrder/61c7ccd7-7c16-ed11-9e5c-9828a61840c3\",\n        \"files:put\": \"/SalesDemo/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Document/61c7ccd7-7c16-ed11-9e5c-9828a61840c3/{filename}\"\n    }\n}"
+							"body": "{\n    \"id\": \"52e7f71a-720b-ee11-b9d9-12b1ac96c437\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Approved\": {\n        \"value\": true\n    },\n    \"BaseCurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"BillToAddressOverride\": {\n        \"value\": false\n    },\n    \"BillToContactOverride\": {\n        \"value\": false\n    },\n    \"CashAccount\": {\n        \"value\": \"10600\"\n    },\n    \"ContactID\": {\n        \"value\": \"100053\"\n    },\n    \"ControlTotal\": {\n        \"value\": 980\n    },\n    \"CreatedDate\": {\n        \"value\": \"2023-06-15T11:45:23.093+00:00\"\n    },\n    \"CreditHold\": {\n        \"value\": false\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"CurrencyRate\": {\n        \"value\": 1\n    },\n    \"CurrencyRateTypeID\": {},\n    \"CustomerID\": {\n        \"value\": \"WIDGETCC\"\n    },\n    \"CustomerOrder\": {},\n    \"Date\": {\n        \"value\": \"2022-05-10T00:00:00+00:00\"\n    },\n    \"Description\": {\n        \"value\": \"Internal CC Payment (Capture)\"\n    },\n    \"DestinationWarehouseID\": {},\n    \"Details\": [],\n    \"DisableAutomaticDiscountUpdate\": {\n        \"value\": false\n    },\n    \"DisableAutomaticTaxCalculation\": {\n        \"value\": false\n    },\n    \"EffectiveDate\": {\n        \"value\": \"2013-01-01T00:00:00+00:00\"\n    },\n    \"ExternalRef\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"IsTaxValid\": {},\n    \"LastModified\": {\n        \"value\": \"2023-06-15T11:45:24.533+00:00\"\n    },\n    \"LocationID\": {\n        \"value\": \"MAIN\"\n    },\n    \"NoteID\": {\n        \"value\": \"52e7f71a-720b-ee11-b9d9-12b1ac96c437\"\n    },\n    \"OrderedQty\": {\n        \"value\": 51\n    },\n    \"OrderNbr\": {\n        \"value\": \"SO007471\"\n    },\n    \"OrderTotal\": {\n        \"value\": 980\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"PaymentMethod\": {\n        \"value\": \"CCAUTHNET\"\n    },\n    \"PaymentRef\": {},\n    \"Payments\": [\n        {\n            \"id\": \"5fe7f71a-720b-ee11-b9d9-12b1ac96c437\",\n            \"rowNumber\": 1,\n            \"note\": {\n                \"value\": \"\"\n            },\n            \"ApplicationDate\": {\n                \"value\": \"2023-06-15T00:00:00+00:00\"\n            },\n            \"AppliedToOrder\": {\n                \"value\": 480\n            },\n            \"Authorize\": {},\n            \"Balance\": {\n                \"value\": 500\n            },\n            \"Capture\": {},\n            \"CardAccountNbr\": {\n                \"value\": \"2336\"\n            },\n            \"CashAccount\": {\n                \"value\": \"10600\"\n            },\n            \"Currency\": {\n                \"value\": \"USD\"\n            },\n            \"Description\": {\n                \"value\": \"Internal CC Payment (Capture)\"\n            },\n            \"DocType\": {\n                \"value\": \"Payment\"\n            },\n            \"ExternalRef\": {},\n            \"Hold\": {\n                \"value\": false\n            },\n            \"LastModifiedDateTime\": {\n                \"value\": \"2023-06-15T11:45:24.517+00:00\"\n            },\n            \"NoteID\": {\n                \"value\": \"5fe7f71a-720b-ee11-b9d9-12b1ac96c437\"\n            },\n            \"OrigTransactionNbr\": {},\n            \"PaymentAmount\": {\n                \"value\": 980\n            },\n            \"PaymentMethod\": {\n                \"value\": \"CCAUTHNET\"\n            },\n            \"PaymentRef\": {\n                \"value\": \"60220565338\"\n            },\n            \"ProcessingCenterID\": {\n                \"value\": \"AUTHNETAPI\"\n            },\n            \"ReferenceNbr\": {\n                \"value\": \"004488\"\n            },\n            \"Refund\": {},\n            \"SaveCard\": {},\n            \"Status\": {\n                \"value\": \"Pending Processing\"\n            },\n            \"TransferredtoInvoice\": {\n                \"value\": 0\n            },\n            \"ValidateCCRefundOrigTransaction\": {\n                \"value\": true\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Adjustments/5fe7f71a-720b-ee11-b9d9-12b1ac96c437/{filename}\"\n            }\n        }\n    ],\n    \"PreferredWarehouseID\": {},\n    \"Project\": {\n        \"value\": \"X\"\n    },\n    \"ReciprocalRate\": {\n        \"value\": 1\n    },\n    \"RequestedOn\": {\n        \"value\": \"2022-05-10T00:00:00+00:00\"\n    },\n    \"ShipToAddressOverride\": {\n        \"value\": false\n    },\n    \"ShipToContactOverride\": {\n        \"value\": false\n    },\n    \"ShipVia\": {},\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"TaxTotal\": {\n        \"value\": 0\n    },\n    \"VATExemptTotal\": {\n        \"value\": 0\n    },\n    \"VATTaxableTotal\": {\n        \"value\": 0\n    },\n    \"WillCall\": {\n        \"value\": true\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/demodata/entity/Default/22.200.001/SalesOrder/52e7f71a-720b-ee11-b9d9-12b1ac96c437\",\n        \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Document/52e7f71a-720b-ee11-b9d9-12b1ac96c437/{filename}\"\n    }\n}"
 						}
 					]
 				},
 				{
 					"name": "Create a Sales Order with an External Credit Card Payment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with SalesDemo data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameSalesDemo');\r",
+									"var password = pm.collectionVariables.get('PasswordSalesDemo');\r",
+									"var tenant = pm.collectionVariables.get('TenantSalesDemo');\r",
+									"var branch = pm.collectionVariables.get('BranchSalesDemo'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"One payment line is included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments).to.have.lengthOf(1);\r",
+									"});\r",
+									"pm.test(\"Payment method is CCAUTHNET\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.PaymentMethod.value).to.eql('CCAUTHNET');\r",
+									"});\r",
+									"pm.test(\"Order total is 980\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.OrderTotal.value).to.eql(980);\r",
+									"});\r",
+									"pm.test(\"Status is Pending Processing\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments[0].Status.value).to.be.eql('Pending Processing');\r",
+									"});\r",
+									"pm.test(\"PaymentRef is not empty\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments[0].PaymentRef.value).to.be.not.empty;\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url,'');\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -17627,93 +17810,27 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2020-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"External CC payment\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"CreditCardTransactionInfo\": [\r\n                {\r\n                    \"NeedValidation\": {\"value\": true},\r\n                    \"TranDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n                    \"TranNbr\": {\"value\": \"40050474170\"},\r\n                    \"TranType\": {\"value\": \"AUT\"}\r\n                }\r\n            ],\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"VISATOK\"},\r\n            \"PaymentRef\": {\"value\": \"ABC CreditCard\"}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2020-05-10T00:00:00\"}\r\n}"
+							"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2022-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"External CC payment\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2022-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"CreditCardTransactionInfo\": [\r\n                {\r\n                    \"NeedValidation\": {\"value\": true},\r\n                    \"TranDate\": {\"value\": \"2022-08-11T00:00:00+03:00\"},\r\n                    \"TranNbr\": {\"value\": \"40050474170\"},\r\n                    \"TranType\": {\"value\": \"AUT\"}\r\n                }\r\n            ],\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"CCAUTHNET\"}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2022-05-10T00:00:00\"}\r\n}"
 						},
 						"url": {
-							"raw": "{{EndpointURL2}}SalesOrder",
+							"raw": "{{EndpointURL}}SalesOrder?$expand=Payments/CreditCardTransactionInfo&$select=Payments.CreditCardTransactionInfo.TranNbr",
 							"host": [
-								"{{EndpointURL2}}SalesOrder"
+								"{{EndpointURL}}SalesOrder"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Payments/CreditCardTransactionInfo"
+								},
+								{
+									"key": "$select",
+									"value": "Payments.CreditCardTransactionInfo.TranNbr"
+								}
 							]
 						},
 						"description": "This example shows the creation of a sales order with an external credit card payment, which is described in [Create a Sales Order with an External Credit Card Payment](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=125d6a9c-c92b-4cb9-862b-424a60208edb)."
 					},
-					"response": [
-						{
-							"name": "Create a Sales Order with an External Credit Card Payment",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2020-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"External CC payment\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"CreditCardTransactionInfo\": [\r\n                {\r\n                    \"NeedValidation\": {\"value\": true},\r\n                    \"TranDate\": {\"value\": \"2020-08-11T00:00:00+03:00\"},\r\n                    \"TranNbr\": {\"value\": \"40050474170\"},\r\n                    \"TranType\": {\"value\": \"AUT\"}\r\n                }\r\n            ],\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"VISATOK\"},\r\n            \"PaymentRef\": {\"value\": \"ABC CreditCard\"}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2020-05-10T00:00:00\"}\r\n}"
-								},
-								"url": {
-									"raw": "{{EndpointURL2}}SalesOrder",
-									"host": [
-										"{{EndpointURL2}}SalesOrder"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Cache-Control",
-									"value": "private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "UserBranch=16; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "UserBranch=16; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "requestid=C34018A628985C9E11ED167CEBA5C8E5; path=/"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "requeststat=+st:3188+sc:~/entity/default/22.200.001/salesorder+start:637954929313619813+tg:; path=/"
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 07 Aug 2022 18:15:34 GMT"
-								},
-								{
-									"key": "Content-Length",
-									"value": "2078"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"e6c8a5eb-7c16-ed11-9e5c-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Approved\": {\n        \"value\": true\n    },\n    \"BaseCurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"BillToAddressOverride\": {\n        \"value\": false\n    },\n    \"BillToContactOverride\": {\n        \"value\": false\n    },\n    \"CashAccount\": {\n        \"value\": \"10600\"\n    },\n    \"ContactID\": {\n        \"value\": \"100053\"\n    },\n    \"ControlTotal\": {\n        \"value\": 980\n    },\n    \"CreatedDate\": {\n        \"value\": \"2022-08-07T21:15:31.963+03:00\"\n    },\n    \"CreditHold\": {\n        \"value\": false\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"CurrencyRate\": {\n        \"value\": 1\n    },\n    \"CurrencyRateTypeID\": {},\n    \"CustomerID\": {\n        \"value\": \"WIDGETCC\"\n    },\n    \"CustomerOrder\": {},\n    \"Date\": {\n        \"value\": \"2020-05-10T00:00:00+03:00\"\n    },\n    \"Description\": {\n        \"value\": \"External CC payment\"\n    },\n    \"DestinationWarehouseID\": {},\n    \"Details\": [],\n    \"DisableAutomaticDiscountUpdate\": {\n        \"value\": false\n    },\n    \"EffectiveDate\": {\n        \"value\": \"2013-01-01T00:00:00+04:00\"\n    },\n    \"ExternalRef\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"IsTaxValid\": {\n        \"value\": false\n    },\n    \"LastModified\": {\n        \"value\": \"2022-08-07T21:15:31.963+03:00\"\n    },\n    \"LocationID\": {\n        \"value\": \"MAIN\"\n    },\n    \"NoteID\": {\n        \"value\": \"e6c8a5eb-7c16-ed11-9e5c-9828a61840c3\"\n    },\n    \"OrderedQty\": {\n        \"value\": 51\n    },\n    \"OrderNbr\": {\n        \"value\": \"SO006772\"\n    },\n    \"OrderTotal\": {\n        \"value\": 980\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"PaymentMethod\": {\n        \"value\": \"VISATOK\"\n    },\n    \"PaymentRef\": {},\n    \"Payments\": [\n        {\n            \"id\": \"f3c8a5eb-7c16-ed11-9e5c-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": {\n                \"value\": \"\"\n            },\n            \"CreditCardTransactionInfo\": [],\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/SalesDemo/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Adjustments/f3c8a5eb-7c16-ed11-9e5c-9828a61840c3/{filename}\"\n            }\n        }\n    ],\n    \"PreferredWarehouseID\": {},\n    \"Project\": {\n        \"value\": \"X\"\n    },\n    \"ReciprocalRate\": {\n        \"value\": 1\n    },\n    \"RequestedOn\": {\n        \"value\": \"2020-05-10T00:00:00+03:00\"\n    },\n    \"ShipToAddressOverride\": {\n        \"value\": false\n    },\n    \"ShipToContactOverride\": {\n        \"value\": false\n    },\n    \"ShipVia\": {},\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"TaxTotal\": {\n        \"value\": 0\n    },\n    \"VATExemptTotal\": {\n        \"value\": 0\n    },\n    \"VATTaxableTotal\": {\n        \"value\": 0\n    },\n    \"WillCall\": {\n        \"value\": true\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/SalesDemo/entity/Default/22.200.001/SalesOrder/e6c8a5eb-7c16-ed11-9e5c-9828a61840c3\",\n        \"files:put\": \"/SalesDemo/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Document/e6c8a5eb-7c16-ed11-9e5c-9828a61840c3/{filename}\"\n    }\n}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "Apply Discounts to a Sales Order",
@@ -17825,6 +17942,59 @@
 				},
 				{
 					"name": "Create a Return for Credit Without Validation of the Card Refund Against the Original Transaction",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with SalesDemo data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameSalesDemo');\r",
+									"var password = pm.collectionVariables.get('PasswordSalesDemo');\r",
+									"var tenant = pm.collectionVariables.get('TenantSalesDemo');\r",
+									"var branch = pm.collectionVariables.get('BranchSalesDemo'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"One payment line is included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments).to.have.lengthOf(1);\r",
+									"});\r",
+									"pm.test(\"Payment method is CCAUTHNET\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.PaymentMethod.value).to.eql('CCAUTHNET');\r",
+									"});\r",
+									"pm.test(\"Order total is 2500\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.OrderTotal.value).to.eql(2500);\r",
+									"});\r",
+									"pm.test(\"Status is Pending Processing\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments[0].Status.value).to.be.eql('Pending Processing');\r",
+									"});\r",
+									"pm.test(\"PaymentRef is not empty\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments[0].PaymentRef.value).to.be.not.empty;\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url,'');\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -17841,12 +18011,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"CurrencyID\": {\r\n        \"value\": \"USD\"\r\n    },\r\n    \"CustomerID\": {\r\n        \"value\": \"WIDGETCC\"\r\n    },\r\n    \"Date\": {\r\n        \"value\": \"2022-08-19T00:00:00+03:00\"\r\n    },\r\n    \"Hold\": {\r\n                \"value\": false\r\n            },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"PRODWHOLE\"\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"AACOMPUT01\"\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 5.000000\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 500.000000\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"EA\"\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"WHOLESALE\"\r\n            }\r\n         }\r\n    ],\r\n    \"OrderType\": {\r\n        \"value\": \"RC\"\r\n    },\r\n    \"PaymentMethod\": {\r\n        \"value\": \"VISATOK\"\r\n    },\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\r\n                \"value\": \"2021-08-19T00:00:00+03:00\"\r\n            },\r\n            \"AppliedToOrder\": {\r\n                \"value\": 40.0000\r\n            },\r\n            \"CardAccountNbr\": {\r\n                \"value\": \"VISATOK:****-****-****-1111\"\r\n            },\r\n            \"CashAccount\": {\r\n                \"value\": \"10600\"\r\n            },\r\n            \"Currency\": {\r\n                \"value\": \"USD\"\r\n            },\r\n            \"DocType\": {\r\n                \"value\": \"Customer Refund\"\r\n            },\r\n            \"Hold\": {\r\n                \"value\": false\r\n            },\r\n            \"OrigTransactionNbr\": {\r\n                \"value\": \"60165234282\"\r\n            },\r\n            \"PaymentAmount\": {\r\n                \"value\": 40.0000\r\n            },\r\n            \"PaymentMethod\": {\r\n                \"value\": \"VISATOK\"\r\n            },\r\n            \"PaymentRef\": {\r\n                \"value\": \"601704533664\"\r\n            },\r\n            \"ProcessingCenterID\": {\r\n                \"value\": \"AUTHNETAPI\"\r\n            },\r\n            \"Refund\": {\r\n                \"value\": true\r\n            },\r\n            \"ValidateCCRefundOrigTransaction\": {\r\n                \"value\": false\r\n            }\r\n        }\r\n    ]\r\n}"
+							"raw": "{\r\n    \"CurrencyID\": {\r\n        \"value\": \"USD\"\r\n    },\r\n    \"CustomerID\": {\r\n        \"value\": \"WIDGETCC\"\r\n    },\r\n    \"Date\": {\r\n        \"value\": \"2022-08-19T00:00:00+03:00\"\r\n    },\r\n    \"Hold\": {\r\n                \"value\": false\r\n            },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"PRODWHOLE\"\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"AACOMPUT01\"\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 5.000000\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 500.000000\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"EA\"\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"WHOLESALE\"\r\n            }\r\n         }\r\n    ],\r\n    \"OrderType\": {\r\n        \"value\": \"RC\"\r\n    },\r\n    \"PaymentMethod\": {\r\n        \"value\": \"CCAUTHNET\"\r\n    },\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\r\n                \"value\": \"2021-08-19T00:00:00+03:00\"\r\n            },\r\n            \"AppliedToOrder\": {\r\n                \"value\": 40.0000\r\n            },\r\n            \"CardAccountNbr\": {\r\n                \"value\": \"VISA:****-****-****-1111\"\r\n            },\r\n            \"CashAccount\": {\r\n                \"value\": \"10600\"\r\n            },\r\n            \"Currency\": {\r\n                \"value\": \"USD\"\r\n            },\r\n            \"DocType\": {\r\n                \"value\": \"Refund\"\r\n            },\r\n            \"Hold\": {\r\n                \"value\": false\r\n            },\r\n            \"OrigTransactionNbr\": {\r\n                \"value\": \"60165234282\"\r\n            },\r\n            \"PaymentAmount\": {\r\n                \"value\": 40.0000\r\n            },\r\n            \"PaymentMethod\": {\r\n                \"value\": \"CCAUTHNET\"\r\n            },\r\n            \"PaymentRef\": {\r\n                \"value\": \"601704533664\"\r\n            },\r\n            \"ProcessingCenterID\": {\r\n                \"value\": \"AUTHNETAPI\"\r\n            },\r\n            \"Refund\": {\r\n                \"value\": true\r\n            },\r\n            \"ValidateCCRefundOrigTransaction\": {\r\n                \"value\": false\r\n            }\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
-							"raw": "{{EndpointURL2}}SalesOrder?$expand=Details,Payments",
+							"raw": "{{EndpointURL}}SalesOrder?$expand=Details,Payments",
 							"host": [
-								"{{EndpointURL2}}SalesOrder"
+								"{{EndpointURL}}SalesOrder"
 							],
 							"query": [
 								{
@@ -17876,12 +18046,12 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"CurrencyID\": {\r\n        \"value\": \"USD\"\r\n    },\r\n    \"CustomerID\": {\r\n        \"value\": \"WIDGETCC\"\r\n    },\r\n    \"Date\": {\r\n        \"value\": \"2022-08-19T00:00:00+03:00\"\r\n    },\r\n    \"Hold\": {\r\n                \"value\": false\r\n            },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"PRODWHOLE\"\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"AACOMPUT01\"\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 5.000000\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 500.000000\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"EA\"\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"WHOLESALE\"\r\n            }\r\n         }\r\n    ],\r\n    \"OrderType\": {\r\n        \"value\": \"RC\"\r\n    },\r\n    \"PaymentMethod\": {\r\n        \"value\": \"VISATOK\"\r\n    },\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\r\n                \"value\": \"2021-08-19T00:00:00+03:00\"\r\n            },\r\n            \"AppliedToOrder\": {\r\n                \"value\": 40.0000\r\n            },\r\n            \"CardAccountNbr\": {\r\n                \"value\": \"VISATOK:****-****-****-1111\"\r\n            },\r\n            \"CashAccount\": {\r\n                \"value\": \"10600\"\r\n            },\r\n            \"Currency\": {\r\n                \"value\": \"USD\"\r\n            },\r\n            \"DocType\": {\r\n                \"value\": \"Customer Refund\"\r\n            },\r\n            \"Hold\": {\r\n                \"value\": false\r\n            },\r\n            \"OrigTransactionNbr\": {\r\n                \"value\": \"60165234282\"\r\n            },\r\n            \"PaymentAmount\": {\r\n                \"value\": 40.0000\r\n            },\r\n            \"PaymentMethod\": {\r\n                \"value\": \"VISATOK\"\r\n            },\r\n            \"PaymentRef\": {\r\n                \"value\": \"601704533664\"\r\n            },\r\n            \"ProcessingCenterID\": {\r\n                \"value\": \"AUTHNETAPI\"\r\n            },\r\n            \"Refund\": {\r\n                \"value\": true\r\n            },\r\n            \"ValidateCCRefundOrigTransaction\": {\r\n                \"value\": false\r\n            }\r\n        }\r\n    ]\r\n}"
+									"raw": "{\r\n    \"CurrencyID\": {\r\n        \"value\": \"USD\"\r\n    },\r\n    \"CustomerID\": {\r\n        \"value\": \"WIDGETCC\"\r\n    },\r\n    \"Date\": {\r\n        \"value\": \"2022-08-19T00:00:00+03:00\"\r\n    },\r\n    \"Hold\": {\r\n                \"value\": false\r\n            },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"PRODWHOLE\"\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"AACOMPUT01\"\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 5.000000\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 500.000000\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"EA\"\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"WHOLESALE\"\r\n            }\r\n         }\r\n    ],\r\n    \"OrderType\": {\r\n        \"value\": \"RC\"\r\n    },\r\n    \"PaymentMethod\": {\r\n        \"value\": \"CCAUTHNET\"\r\n    },\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\r\n                \"value\": \"2021-08-19T00:00:00+03:00\"\r\n            },\r\n            \"AppliedToOrder\": {\r\n                \"value\": 40.0000\r\n            },\r\n            \"CardAccountNbr\": {\r\n                \"value\": \"VISA:****-****-****-1111\"\r\n            },\r\n            \"CashAccount\": {\r\n                \"value\": \"10600\"\r\n            },\r\n            \"Currency\": {\r\n                \"value\": \"USD\"\r\n            },\r\n            \"DocType\": {\r\n                \"value\": \"Refund\"\r\n            },\r\n            \"Hold\": {\r\n                \"value\": false\r\n            },\r\n            \"OrigTransactionNbr\": {\r\n                \"value\": \"60165234282\"\r\n            },\r\n            \"PaymentAmount\": {\r\n                \"value\": 40.0000\r\n            },\r\n            \"PaymentMethod\": {\r\n                \"value\": \"CCAUTHNET\"\r\n            },\r\n            \"PaymentRef\": {\r\n                \"value\": \"601704533664\"\r\n            },\r\n            \"ProcessingCenterID\": {\r\n                \"value\": \"AUTHNETAPI\"\r\n            },\r\n            \"Refund\": {\r\n                \"value\": true\r\n            },\r\n            \"ValidateCCRefundOrigTransaction\": {\r\n                \"value\": false\r\n            }\r\n        }\r\n    ]\r\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL2}}SalesOrder?$expand=Details,Payments",
+									"raw": "{{EndpointURL}}SalesOrder?$expand=Details,Payments",
 									"host": [
-										"{{EndpointURL2}}SalesOrder"
+										"{{EndpointURL}}SalesOrder"
 									],
 									"query": [
 										{
@@ -17905,62 +18075,106 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "Locale=TimeZone=GMTM0800A&Culture=en-US; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=16; path=/"
+									"value": "UserBranch=16; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "Locale=TimeZone=GMTM0800A&Culture=en-US; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=16; path=/"
+									"value": "UserBranch=16; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requestid=C34018A62898639E11ED1F3924946C7F; path=/"
+									"value": "requestid=37C496ACB112D9B911EE0B98E5E9262D; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requeststat=+st:1430+sc:~/entity/default/22.200.001/salesorder+start:637964533815657215+tg:; path=/"
+									"value": "requeststat=+st:2197+sc:~/entity/default/22.200.001/salesorder+start:638224429829657988+tg:; path=/; secure; SameSite=None"
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 18 Aug 2022 21:03:02 GMT"
+									"value": "Thu, 15 Jun 2023 16:23:05 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "4722"
+									"value": "4750"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"806c9424-391f-ed11-9e63-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Approved\": {\n        \"value\": true\n    },\n    \"BaseCurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"BillToAddressOverride\": {\n        \"value\": false\n    },\n    \"BillToContactOverride\": {\n        \"value\": false\n    },\n    \"CashAccount\": {\n        \"value\": \"10600\"\n    },\n    \"ContactID\": {\n        \"value\": \"100053\"\n    },\n    \"ControlTotal\": {\n        \"value\": 2500\n    },\n    \"CreatedDate\": {\n        \"value\": \"2022-08-19T00:03:02.13+03:00\"\n    },\n    \"CreditHold\": {\n        \"value\": false\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"CurrencyRate\": {\n        \"value\": 1\n    },\n    \"CurrencyRateTypeID\": {\n        \"value\": \"SPOT\"\n    },\n    \"CustomerID\": {\n        \"value\": \"WIDGETCC\"\n    },\n    \"CustomerOrder\": {},\n    \"Date\": {\n        \"value\": \"2022-08-19T00:00:00+03:00\"\n    },\n    \"Description\": {},\n    \"DestinationWarehouseID\": {},\n    \"Details\": [\n        {\n            \"id\": \"866c9424-391f-ed11-9e63-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Account\": {\n                \"value\": \"40000\"\n            },\n            \"AlternateID\": {},\n            \"Amount\": {\n                \"value\": 2500\n            },\n            \"AutoCreateIssue\": {\n                \"value\": false\n            },\n            \"AverageCost\": {\n                \"value\": 250\n            },\n            \"Branch\": {\n                \"value\": \"PRODWHOLE\"\n            },\n            \"CalculateDiscountsOnImport\": {},\n            \"Commissionable\": {\n                \"value\": true\n            },\n            \"Completed\": {\n                \"value\": false\n            },\n            \"CustomerOrderNbr\": {},\n            \"DiscountAmount\": {\n                \"value\": 0\n            },\n            \"DiscountCode\": {},\n            \"DiscountedUnitPrice\": {\n                \"value\": 500\n            },\n            \"DiscountPercent\": {\n                \"value\": 0\n            },\n            \"ExtendedPrice\": {\n                \"value\": 2500\n            },\n            \"FreeItem\": {\n                \"value\": false\n            },\n            \"InventoryID\": {\n                \"value\": \"AACOMPUT01\"\n            },\n            \"InvoiceLineNbr\": {},\n            \"InvoiceNbr\": {},\n            \"InvoiceType\": {},\n            \"LastModifiedDate\": {\n                \"value\": \"08/19/2022 00:03:02\"\n            },\n            \"LineDescription\": {\n                \"value\": \"Acer Laptop Computer\"\n            },\n            \"LineNbr\": {\n                \"value\": 1\n            },\n            \"LineType\": {\n                \"value\": \"Goods for Inventory\"\n            },\n            \"Location\": {},\n            \"LotSerialNbr\": {},\n            \"ManualDiscount\": {\n                \"value\": false\n            },\n            \"ManualPrice\": {\n                \"value\": true\n            },\n            \"MarkForPO\": {\n                \"value\": false\n            },\n            \"NoteID\": {\n                \"value\": \"866c9424-391f-ed11-9e63-9828a61840c3\"\n            },\n            \"OpenQty\": {\n                \"value\": 5\n            },\n            \"Operation\": {\n                \"value\": \"Receipt\"\n            },\n            \"OrderQty\": {\n                \"value\": 5\n            },\n            \"OvershipThreshold\": {\n                \"value\": 100\n            },\n            \"POSource\": {},\n            \"ProjectTask\": {},\n            \"PurchaseWarehouse\": {},\n            \"QtyOnShipments\": {\n                \"value\": 0\n            },\n            \"ReasonCode\": {},\n            \"RequestedOn\": {\n                \"value\": \"2022-08-19T00:00:00+03:00\"\n            },\n            \"SalespersonID\": {\n                \"value\": \"SP0009\"\n            },\n            \"SchedOrderDate\": {\n                \"value\": \"2022-08-19T00:00:00+03:00\"\n            },\n            \"ShipOn\": {\n                \"value\": \"2022-08-19T00:00:00+03:00\"\n            },\n            \"ShippingRule\": {\n                \"value\": \"Back Order Allowed\"\n            },\n            \"ShipToLocation\": {\n                \"value\": \"MAIN\"\n            },\n            \"TaxCategory\": {\n                \"value\": \"EXEMPT\"\n            },\n            \"TaxZone\": {},\n            \"UnbilledAmount\": {\n                \"value\": 2500\n            },\n            \"UndershipThreshold\": {\n                \"value\": 100\n            },\n            \"UnitCost\": {\n                \"value\": 250\n            },\n            \"UnitPrice\": {\n                \"value\": 500\n            },\n            \"UOM\": {\n                \"value\": \"EA\"\n            },\n            \"VendorID\": {},\n            \"WarehouseID\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/SalesDemo/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/866c9424-391f-ed11-9e63-9828a61840c3/{filename}\"\n            }\n        }\n    ],\n    \"DisableAutomaticDiscountUpdate\": {\n        \"value\": false\n    },\n    \"EffectiveDate\": {\n        \"value\": \"2022-08-19T00:00:00+03:00\"\n    },\n    \"ExternalRef\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"IsTaxValid\": {\n        \"value\": false\n    },\n    \"LastModified\": {\n        \"value\": \"2022-08-19T00:03:02.13+03:00\"\n    },\n    \"LocationID\": {\n        \"value\": \"MAIN\"\n    },\n    \"NoteID\": {\n        \"value\": \"806c9424-391f-ed11-9e63-9828a61840c3\"\n    },\n    \"OrderedQty\": {\n        \"value\": 5\n    },\n    \"OrderNbr\": {\n        \"value\": \"AR010731\"\n    },\n    \"OrderTotal\": {\n        \"value\": 2500\n    },\n    \"OrderType\": {\n        \"value\": \"RC\"\n    },\n    \"PaymentMethod\": {\n        \"value\": \"VISATOK\"\n    },\n    \"PaymentRef\": {},\n    \"Payments\": [\n        {\n            \"id\": \"8b6c9424-391f-ed11-9e63-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": {\n                \"value\": \"\"\n            },\n            \"ApplicationDate\": {\n                \"value\": \"2021-08-19T00:00:00+03:00\"\n            },\n            \"AppliedToOrder\": {\n                \"value\": 40\n            },\n            \"Authorize\": {},\n            \"Balance\": {\n                \"value\": 0\n            },\n            \"Capture\": {},\n            \"CardAccountNbr\": {\n                \"value\": \"2329\"\n            },\n            \"CashAccount\": {\n                \"value\": \"10600\"\n            },\n            \"Currency\": {\n                \"value\": \"USD\"\n            },\n            \"Description\": {},\n            \"DocType\": {\n                \"value\": \"Customer Refund\"\n            },\n            \"ExternalRef\": {},\n            \"Hold\": {\n                \"value\": false\n            },\n            \"LastModifiedDateTime\": {\n                \"value\": \"2022-08-19T00:03:02.62+03:00\"\n            },\n            \"NoteID\": {\n                \"value\": \"8b6c9424-391f-ed11-9e63-9828a61840c3\"\n            },\n            \"OrigTransactionNbr\": {},\n            \"PaymentAmount\": {\n                \"value\": 40\n            },\n            \"PaymentMethod\": {\n                \"value\": \"VISATOK\"\n            },\n            \"PaymentRef\": {\n                \"value\": \"601704533664\"\n            },\n            \"ProcessingCenterID\": {\n                \"value\": \"AUTHNETAPI\"\n            },\n            \"ReferenceNbr\": {\n                \"value\": \"003944\"\n            },\n            \"Refund\": {},\n            \"SaveCard\": {},\n            \"Status\": {\n                \"value\": \"Pending Processing\"\n            },\n            \"TransferredtoInvoice\": {\n                \"value\": 0\n            },\n            \"ValidateCCRefundOrigTransaction\": {\n                \"value\": false\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/SalesDemo/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Adjustments/8b6c9424-391f-ed11-9e63-9828a61840c3/{filename}\"\n            }\n        }\n    ],\n    \"PreferredWarehouseID\": {},\n    \"Project\": {\n        \"value\": \"X\"\n    },\n    \"ReciprocalRate\": {\n        \"value\": 1\n    },\n    \"RequestedOn\": {\n        \"value\": \"2022-08-19T00:00:00+03:00\"\n    },\n    \"ShipToAddressOverride\": {\n        \"value\": false\n    },\n    \"ShipToContactOverride\": {\n        \"value\": false\n    },\n    \"ShipVia\": {},\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"TaxTotal\": {\n        \"value\": 0\n    },\n    \"VATExemptTotal\": {\n        \"value\": 0\n    },\n    \"VATTaxableTotal\": {\n        \"value\": 0\n    },\n    \"WillCall\": {\n        \"value\": true\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/SalesDemo/entity/Default/22.200.001/SalesOrder/806c9424-391f-ed11-9e63-9828a61840c3\",\n        \"files:put\": \"/SalesDemo/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Document/806c9424-391f-ed11-9e63-9828a61840c3/{filename}\"\n    }\n}"
+							"body": "{\n    \"id\": \"2e26e9e5-980b-ee11-b9d9-12b1ac96c437\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Approved\": {\n        \"value\": true\n    },\n    \"BaseCurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"BillToAddressOverride\": {\n        \"value\": false\n    },\n    \"BillToContactOverride\": {\n        \"value\": false\n    },\n    \"CashAccount\": {\n        \"value\": \"10600\"\n    },\n    \"ContactID\": {\n        \"value\": \"100053\"\n    },\n    \"ControlTotal\": {\n        \"value\": 2500\n    },\n    \"CreatedDate\": {\n        \"value\": \"2023-06-15T16:23:03.963+00:00\"\n    },\n    \"CreditHold\": {\n        \"value\": false\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"CurrencyRate\": {\n        \"value\": 1\n    },\n    \"CurrencyRateTypeID\": {\n        \"value\": \"SPOT\"\n    },\n    \"CustomerID\": {\n        \"value\": \"WIDGETCC\"\n    },\n    \"CustomerOrder\": {},\n    \"Date\": {\n        \"value\": \"2022-08-18T00:00:00+00:00\"\n    },\n    \"Description\": {},\n    \"DestinationWarehouseID\": {},\n    \"Details\": [\n        {\n            \"id\": \"3426e9e5-980b-ee11-b9d9-12b1ac96c437\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Account\": {\n                \"value\": \"40000\"\n            },\n            \"AlternateID\": {},\n            \"Amount\": {\n                \"value\": 2500\n            },\n            \"AutoCreateIssue\": {\n                \"value\": false\n            },\n            \"AverageCost\": {\n                \"value\": 250\n            },\n            \"Branch\": {\n                \"value\": \"PRODWHOLE\"\n            },\n            \"CalculateDiscountsOnImport\": {},\n            \"Commissionable\": {\n                \"value\": true\n            },\n            \"Completed\": {\n                \"value\": false\n            },\n            \"CustomerOrderNbr\": {},\n            \"DiscountAmount\": {\n                \"value\": 0\n            },\n            \"DiscountCode\": {},\n            \"DiscountedUnitPrice\": {\n                \"value\": 500\n            },\n            \"DiscountPercent\": {\n                \"value\": 0\n            },\n            \"ExtendedPrice\": {\n                \"value\": 2500\n            },\n            \"FreeItem\": {\n                \"value\": false\n            },\n            \"InventoryID\": {\n                \"value\": \"AACOMPUT01\"\n            },\n            \"InvoiceLineNbr\": {},\n            \"InvoiceNbr\": {},\n            \"InvoiceType\": {},\n            \"LastModifiedDate\": {\n                \"value\": \"06/15/2023 16:23:03\"\n            },\n            \"LineDescription\": {\n                \"value\": \"Acer Laptop Computer\"\n            },\n            \"LineNbr\": {\n                \"value\": 1\n            },\n            \"LineType\": {\n                \"value\": \"Goods for Inventory\"\n            },\n            \"Location\": {},\n            \"LotSerialNbr\": {},\n            \"ManualDiscount\": {\n                \"value\": false\n            },\n            \"ManualPrice\": {\n                \"value\": true\n            },\n            \"MarkForPO\": {\n                \"value\": false\n            },\n            \"NoteID\": {\n                \"value\": \"3426e9e5-980b-ee11-b9d9-12b1ac96c437\"\n            },\n            \"OpenQty\": {\n                \"value\": 5\n            },\n            \"Operation\": {\n                \"value\": \"Receipt\"\n            },\n            \"OrderQty\": {\n                \"value\": 5\n            },\n            \"OvershipThreshold\": {\n                \"value\": 100\n            },\n            \"POSource\": {},\n            \"ProjectTask\": {},\n            \"PurchaseWarehouse\": {},\n            \"QtyOnShipments\": {\n                \"value\": 0\n            },\n            \"ReasonCode\": {},\n            \"RequestedOn\": {\n                \"value\": \"2023-06-15T00:00:00+00:00\"\n            },\n            \"SalespersonID\": {\n                \"value\": \"SP0009\"\n            },\n            \"SchedOrderDate\": {\n                \"value\": \"2023-06-15T00:00:00+00:00\"\n            },\n            \"ShipOn\": {\n                \"value\": \"2023-06-15T00:00:00+00:00\"\n            },\n            \"ShippingRule\": {\n                \"value\": \"Back Order Allowed\"\n            },\n            \"ShipToLocation\": {\n                \"value\": \"MAIN\"\n            },\n            \"TaxCategory\": {\n                \"value\": \"EXEMPT\"\n            },\n            \"TaxZone\": {},\n            \"UnbilledAmount\": {\n                \"value\": 2500\n            },\n            \"UndershipThreshold\": {\n                \"value\": 100\n            },\n            \"UnitCost\": {\n                \"value\": 250\n            },\n            \"UnitPrice\": {\n                \"value\": 500\n            },\n            \"UOM\": {\n                \"value\": \"EA\"\n            },\n            \"VendorID\": {},\n            \"WarehouseID\": {\n                \"value\": \"WHOLESALE\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/3426e9e5-980b-ee11-b9d9-12b1ac96c437/{filename}\"\n            }\n        }\n    ],\n    \"DisableAutomaticDiscountUpdate\": {\n        \"value\": false\n    },\n    \"DisableAutomaticTaxCalculation\": {\n        \"value\": false\n    },\n    \"EffectiveDate\": {\n        \"value\": \"2022-08-18T00:00:00+00:00\"\n    },\n    \"ExternalRef\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"IsTaxValid\": {\n        \"value\": false\n    },\n    \"LastModified\": {\n        \"value\": \"2023-06-15T16:23:03.963+00:00\"\n    },\n    \"LocationID\": {\n        \"value\": \"MAIN\"\n    },\n    \"NoteID\": {\n        \"value\": \"2e26e9e5-980b-ee11-b9d9-12b1ac96c437\"\n    },\n    \"OrderedQty\": {\n        \"value\": 5\n    },\n    \"OrderNbr\": {\n        \"value\": \"AR012033\"\n    },\n    \"OrderTotal\": {\n        \"value\": 2500\n    },\n    \"OrderType\": {\n        \"value\": \"RC\"\n    },\n    \"PaymentMethod\": {\n        \"value\": \"CCAUTHNET\"\n    },\n    \"PaymentRef\": {},\n    \"Payments\": [\n        {\n            \"id\": \"3926e9e5-980b-ee11-b9d9-12b1ac96c437\",\n            \"rowNumber\": 1,\n            \"note\": {\n                \"value\": \"\"\n            },\n            \"ApplicationDate\": {\n                \"value\": \"2021-08-18T00:00:00+00:00\"\n            },\n            \"AppliedToOrder\": {\n                \"value\": 40\n            },\n            \"Authorize\": {},\n            \"Balance\": {\n                \"value\": 0\n            },\n            \"Capture\": {},\n            \"CardAccountNbr\": {},\n            \"CashAccount\": {\n                \"value\": \"10600\"\n            },\n            \"Currency\": {\n                \"value\": \"USD\"\n            },\n            \"Description\": {},\n            \"DocType\": {\n                \"value\": \"Refund\"\n            },\n            \"ExternalRef\": {},\n            \"Hold\": {\n                \"value\": false\n            },\n            \"LastModifiedDateTime\": {\n                \"value\": \"2023-06-15T16:23:04.54+00:00\"\n            },\n            \"NoteID\": {\n                \"value\": \"3926e9e5-980b-ee11-b9d9-12b1ac96c437\"\n            },\n            \"OrigTransactionNbr\": {},\n            \"PaymentAmount\": {\n                \"value\": 40\n            },\n            \"PaymentMethod\": {\n                \"value\": \"CCAUTHNET\"\n            },\n            \"PaymentRef\": {\n                \"value\": \"601704533664\"\n            },\n            \"ProcessingCenterID\": {\n                \"value\": \"AUTHNETAPI\"\n            },\n            \"ReferenceNbr\": {\n                \"value\": \"004490\"\n            },\n            \"Refund\": {},\n            \"SaveCard\": {},\n            \"Status\": {\n                \"value\": \"Pending Processing\"\n            },\n            \"TransferredtoInvoice\": {\n                \"value\": 0\n            },\n            \"ValidateCCRefundOrigTransaction\": {\n                \"value\": false\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Adjustments/3926e9e5-980b-ee11-b9d9-12b1ac96c437/{filename}\"\n            }\n        }\n    ],\n    \"PreferredWarehouseID\": {},\n    \"Project\": {\n        \"value\": \"X\"\n    },\n    \"ReciprocalRate\": {\n        \"value\": 1\n    },\n    \"RequestedOn\": {\n        \"value\": \"2023-06-15T00:00:00+00:00\"\n    },\n    \"ShipToAddressOverride\": {\n        \"value\": false\n    },\n    \"ShipToContactOverride\": {\n        \"value\": false\n    },\n    \"ShipVia\": {},\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"TaxTotal\": {\n        \"value\": 0\n    },\n    \"VATExemptTotal\": {\n        \"value\": 0\n    },\n    \"VATTaxableTotal\": {\n        \"value\": 0\n    },\n    \"WillCall\": {\n        \"value\": true\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/demodata/entity/Default/22.200.001/SalesOrder/2e26e9e5-980b-ee11-b9d9-12b1ac96c437\",\n        \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Document/2e26e9e5-980b-ee11-b9d9-12b1ac96c437/{filename}\"\n    }\n}"
 						}
 					]
 				},
 				{
-					"name": "Update the Detail Lines of a Sales Order: Get the Sales Order for Update",
+					"name": "Retrieve the Sales Order with Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The sales order has three detail lines\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.have.lengthOf(1);\r",
+									"    pm.expect(jsonResponse[0].Details).to.have.lengthOf(3);\r",
+									"    jsonResponse[0].Details.forEach(myFunction);\r",
+									"    function myFunction(item){\r",
+									"        if (item.InventoryID.value === \"CONGRILL\") {pm.collectionVariables.set(\"CONGRILL_detail_ID\",item.id);};\r",
+									"        if (item.InventoryID.value === \"AALEGO500\") {pm.collectionVariables.set(\"AALEGO500_detail_ID\",item.id);}\r",
+									"    }\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Update the Detail Lines of a Sales Order\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"url": {
-							"raw": "{{EndpointURL3}}SalesOrder?$expand=Details&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'",
+							"raw": "{{EndpointURL}}/SalesOrder?$expand=Details&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
 							"host": [
-								"{{EndpointURL3}}SalesOrder"
+								"{{EndpointURL}}"
+							],
+							"path": [
+								"SalesOrder"
 							],
 							"query": [
 								{
@@ -17968,38 +18182,45 @@
 									"value": "Details"
 								},
 								{
-									"key": "$select",
-									"value": "OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID"
-								},
-								{
 									"key": "$filter",
 									"value": "OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'"
+								},
+								{
+									"key": "$select",
+									"value": "OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID"
 								}
 							]
-						},
-						"description": "This example shows how to retrieve the sales order whose customer order code is SO248-563-06, which is described in [Update the Detail Lines of a Sales Order](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a91733a5-2f47-435d-b4c9-c08282630532)."
+						}
 					},
 					"response": [
 						{
-							"name": "Update the Detail Lines of a Sales Order: Get the Sales Order for Update",
+							"name": "Lesson 2.2: Retrieving the Sales Order with Details",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
 									{
 										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"value": "application/json"
 									},
 									{
 										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"value": "application/json"
 									}
 								],
 								"url": {
-									"raw": "{{EndpointURL3}}SalesOrder?$expand=Details&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'",
+									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesOrder?$expand=Details&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
+									"protocol": "https",
 									"host": [
-										"{{EndpointURL3}}SalesOrder"
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"22.200.001",
+										"SalesOrder"
 									],
 									"query": [
 										{
@@ -18007,12 +18228,12 @@
 											"value": "Details"
 										},
 										{
-											"key": "$select",
-											"value": "OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID"
-										},
-										{
 											"key": "$filter",
 											"value": "OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'"
+										},
+										{
+											"key": "$select",
+											"value": "OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID"
 										}
 									]
 								}
@@ -18031,28 +18252,74 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 23-Sep-2022 20:41:21 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=77; path=/"
+									"value": "UserBranch=82; path=/"
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 16 Nov 2022 22:19:46 GMT"
+									"value": "Tue, 20 Sep 2022 20:41:35 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "1095"
+									"value": "1423"
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"id\": \"7313e950-7381-e511-80c0-00155d012302\",\n        \"rowNumber\": 1,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO248-563-06\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"f4a7e172-7381-e511-80c0-00155d012302\",\n                \"rowNumber\": 1,\n                \"note\": {\n                    \"value\": \"\"\n                },\n                \"InventoryID\": {\n                    \"value\": \"AALEGO500\"\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {},\n                \"_links\": {\n                    \"files:put\": \"/AcumaticaT100/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/f4a7e172-7381-e511-80c0-00155d012302/{filename}\"\n                }\n            },\n            {\n                \"id\": \"091b0d7f-7381-e511-80c0-00155d012302\",\n                \"rowNumber\": 2,\n                \"note\": {\n                    \"value\": \"\"\n                },\n                \"InventoryID\": {\n                    \"value\": \"CONTABLE1\"\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {},\n                \"_links\": {\n                    \"files:put\": \"/AcumaticaT100/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/091b0d7f-7381-e511-80c0-00155d012302/{filename}\"\n                }\n            }\n        ],\n        \"OrderNbr\": {\n            \"value\": \"000003\"\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"_links\": {\n            \"self\": \"/AcumaticaT100/entity/Default/22.200.001/SalesOrder/7313e950-7381-e511-80c0-00155d012302\",\n            \"files:put\": \"/AcumaticaT100/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Document/7313e950-7381-e511-80c0-00155d012302/{filename}\"\n        }\n    }\n]"
+							"body": "[\n    {\n        \"id\": \"7313e950-7381-e511-80c0-00155d012302\",\n        \"rowNumber\": 1,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"CustomerOrder\": {\n            \"value\": \"SO248-563-06\"\n        },\n        \"Details\": [\n            {\n                \"id\": \"08731a64-7381-e511-80c0-00155d012302\",\n                \"rowNumber\": 1,\n                \"note\": {\n                    \"value\": \"\"\n                },\n                \"InventoryID\": {\n                    \"value\": \"CONGRILL\"\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {},\n                \"_links\": {\n                    \"files:put\": \"/MyStoreInstance/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/08731a64-7381-e511-80c0-00155d012302/{filename}\"\n                }\n            },\n            {\n                \"id\": \"f4a7e172-7381-e511-80c0-00155d012302\",\n                \"rowNumber\": 2,\n                \"note\": {\n                    \"value\": \"\"\n                },\n                \"InventoryID\": {\n                    \"value\": \"AALEGO500\"\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {},\n                \"_links\": {\n                    \"files:put\": \"/MyStoreInstance/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/f4a7e172-7381-e511-80c0-00155d012302/{filename}\"\n                }\n            },\n            {\n                \"id\": \"091b0d7f-7381-e511-80c0-00155d012302\",\n                \"rowNumber\": 3,\n                \"note\": {\n                    \"value\": \"\"\n                },\n                \"InventoryID\": {\n                    \"value\": \"CONTABLE1\"\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {},\n                \"_links\": {\n                    \"files:put\": \"/MyStoreInstance/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/091b0d7f-7381-e511-80c0-00155d012302/{filename}\"\n                }\n            }\n        ],\n        \"OrderNbr\": {\n            \"value\": \"000003\"\n        },\n        \"OrderType\": {\n            \"value\": \"SO\"\n        },\n        \"custom\": {},\n        \"_links\": {\n            \"self\": \"/MyStoreInstance/entity/Default/22.200.001/SalesOrder/7313e950-7381-e511-80c0-00155d012302\",\n            \"files:put\": \"/MyStoreInstance/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Document/7313e950-7381-e511-80c0-00155d012302/{filename}\"\n        }\n    }\n]"
 						}
 					]
 				},
 				{
 					"name": "Update the Detail Lines of a Sales Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The sales order has two detail lines\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Details).to.have.lengthOf(2);\r",
+									"});\r",
+									"pm.test(\"The sales order does not include CONGRILL\", function (){\r",
+									"    pm.expect(pm.response.text()).to.not.include(\"CONGRILL\");\r",
+									"});\r",
+									"pm.test(\"The sales order includes 5 AALEGO500 items\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    jsonResponse.Details.forEach(myFunction);\r",
+									"    function myFunction(item){\r",
+									"        if (item.InventoryID.value === 'AALEGO500') {\r",
+									"            pm.expect(item.OrderQty.value).to.eq(5.0);};\r",
+									"    }\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Update the Detail Lines of a Sales Order\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -18069,29 +18336,31 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n \"OrderType\":{\"value\":\"SO\"},\r\n \"OrderNbr\":{\"value\":\"000003\"},\r\n \"Hold\":{\"value\":false},\r\n \"Details\":[\r\n  {\r\n   \"id\":\"08731a64-7381-e511-80c0-00155d012302\",\r\n   \"delete\":true\r\n  },\r\n  {\r\n   \"id\":\"f4a7e172-7381-e511-80c0-00155d012302\",\r\n   \"OrderQty\":{\"value\":5}\r\n  }\r\n ]\r\n}"
+							"raw": "{\n\t\"OrderType\":{\"value\":\"SO\"},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"{{CONGRILL_detail_ID}}\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"{{AALEGO500_detail_ID}}\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
 						},
 						"url": {
-							"raw": "{{EndpointURL3}}SalesOrder?$expand=Details&$select=OrderType,OrderNbr,Details/OrderQty,Details/InventoryID,OrderedQty,OrderTotal",
+							"raw": "{{EndpointURL}}/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID&$expand=Details",
 							"host": [
-								"{{EndpointURL3}}SalesOrder"
+								"{{EndpointURL}}"
+							],
+							"path": [
+								"SalesOrder"
 							],
 							"query": [
 								{
-									"key": "$expand",
-									"value": "Details"
+									"key": "$select",
+									"value": "OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID"
 								},
 								{
-									"key": "$select",
-									"value": "OrderType,OrderNbr,Details/OrderQty,Details/InventoryID,OrderedQty,OrderTotal"
+									"key": "$expand",
+									"value": "Details"
 								}
 							]
-						},
-						"description": "This example shows how to update the sales order whose customer order code is SO248-563-06, which is described in [Update the Detail Lines of a Sales Order](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a91733a5-2f47-435d-b4c9-c08282630532)."
+						}
 					},
 					"response": [
 						{
-							"name": "Update the Detail Lines of a Sales Order",
+							"name": "Lesson 2.2: Updating Detail Lines",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [
@@ -18108,21 +18377,29 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n \"OrderType\":{\"value\":\"SO\"},\r\n \"OrderNbr\":{\"value\":\"000003\"},\r\n \"Hold\":{\"value\":false},\r\n \"Details\":[\r\n  {\r\n   \"id\":\"08731a64-7381-e511-80c0-00155d012302\",\r\n   \"delete\":true\r\n  },\r\n  {\r\n   \"id\":\"f4a7e172-7381-e511-80c0-00155d012302\",\r\n   \"OrderQty\":{\"value\":5}\r\n  }\r\n ]\r\n}"
+									"raw": "{\n\t\"OrderType\":{\"value\":\"SO\"},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"08731a64-7381-e511-80c0-00155d012302\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"f4a7e172-7381-e511-80c0-00155d012302\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL3}}SalesOrder?$expand=Details&$select=OrderType,OrderNbr,Details/OrderQty,Details/InventoryID,OrderedQty,OrderTotal",
+									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID&$expand=Details",
+									"protocol": "https",
 									"host": [
-										"{{EndpointURL3}}SalesOrder"
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"22.200.001",
+										"SalesOrder"
 									],
 									"query": [
 										{
-											"key": "$expand",
-											"value": "Details"
+											"key": "$select",
+											"value": "OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID"
 										},
 										{
-											"key": "$select",
-											"value": "OrderType,OrderNbr,Details/OrderQty,Details/InventoryID,OrderedQty,OrderTotal"
+											"key": "$expand",
+											"value": "Details"
 										}
 									]
 								}
@@ -18141,39 +18418,39 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 23-Sep-2022 21:29:52 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=77; path=/"
+									"value": "UserBranch=82; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 23-Sep-2022 21:29:52 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=77; path=/"
+									"value": "UserBranch=82; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requestid=C34018A628987E9E11ED653DC369D477; path=/"
+									"value": "requestid=C34018A628986A9E11ED392B5C15A8D2; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requeststat=+st:4194+sc:~/entity/default/22.200.001/salesorder+start:638041519474256631+tg:; path=/"
+									"value": "requeststat=+st:5276+sc:~/entity/default/22.200.001/salesorder+start:637993061919653714+tg:; path=/"
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 15 Nov 2022 23:32:31 GMT"
+									"value": "Tue, 20 Sep 2022 21:29:57 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "1110"
+									"value": "1118"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"7313e950-7381-e511-80c0-00155d012302\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"f4a7e172-7381-e511-80c0-00155d012302\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"OrderQty\": {\n                \"value\": 5\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/AcumaticaT100/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/f4a7e172-7381-e511-80c0-00155d012302/{filename}\"\n            }\n        },\n        {\n            \"id\": \"091b0d7f-7381-e511-80c0-00155d012302\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"CONTABLE1\"\n            },\n            \"OrderQty\": {\n                \"value\": 2\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/AcumaticaT100/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/091b0d7f-7381-e511-80c0-00155d012302/{filename}\"\n            }\n        }\n    ],\n    \"Hold\": {\n        \"value\": false\n    },\n    \"OrderedQty\": {\n        \"value\": 7\n    },\n    \"OrderNbr\": {\n        \"value\": \"000003\"\n    },\n    \"OrderTotal\": {\n        \"value\": 295\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/AcumaticaT100/entity/Default/22.200.001/SalesOrder/7313e950-7381-e511-80c0-00155d012302\",\n        \"files:put\": \"/AcumaticaT100/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Document/7313e950-7381-e511-80c0-00155d012302/{filename}\"\n    }\n}"
+							"body": "{\n    \"id\": \"7313e950-7381-e511-80c0-00155d012302\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"f4a7e172-7381-e511-80c0-00155d012302\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"OrderQty\": {\n                \"value\": 5\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/MyStoreInstance/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/f4a7e172-7381-e511-80c0-00155d012302/{filename}\"\n            }\n        },\n        {\n            \"id\": \"091b0d7f-7381-e511-80c0-00155d012302\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"CONTABLE1\"\n            },\n            \"OrderQty\": {\n                \"value\": 2\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/MyStoreInstance/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Transactions/091b0d7f-7381-e511-80c0-00155d012302/{filename}\"\n            }\n        }\n    ],\n    \"Hold\": {\n        \"value\": false\n    },\n    \"OrderedQty\": {\n        \"value\": 7\n    },\n    \"OrderNbr\": {\n        \"value\": \"000003\"\n    },\n    \"OrderTotal\": {\n        \"value\": 295\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/MyStoreInstance/entity/Default/22.200.001/SalesOrder/7313e950-7381-e511-80c0-00155d012302\",\n        \"files:put\": \"/MyStoreInstance/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Document/7313e950-7381-e511-80c0-00155d012302/{filename}\"\n    }\n}"
 						}
 					]
 				},
@@ -20007,26 +20284,121 @@
 			"item": [
 				{
 					"name": "Retrieve the List of Modified Stock Items",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response contains AALEGO500\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"AALEGO500\");\r",
+									"});\r",
+									"pm.test(\"Response does not contain AACOMPUT01\", function () {\r",
+									"    pm.expect(pm.response.text()).to.not.include(\"AACOMPUT01\");\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Data for sign-in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"//Modification of stock items before request\r",
+									"var callback = (pm, error, response) => {\r",
+									"    var endpointurl = pm.collectionVariables.get('EndpointURL');\r",
+									"    var requestAACOMPUT01 = {\r",
+									"        url: endpointurl+'StockItem?$select=InventoryID,ItemStatus',\r",
+									"        method: 'PUT',\r",
+									"        body: {\r",
+									"            mode: 'raw',\r",
+									"            raw: '{\"InventoryID\": {\"value\": \"AACOMPUT01\"},\"ItemStatus\": {\"value\": \"Inactive\"}}'\r",
+									"        },\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        }\r",
+									"    };\r",
+									"    pm.sendRequest(requestAACOMPUT01,  (error, response) => {\r",
+									"        if (error) {\r",
+									"            console.log(error);\r",
+									"        }\r",
+									"\r",
+									"        pm.test('Response for AACOMPUT01 should be OK to process', () => {\r",
+									"            pm.expect(error).to.equal(null);\r",
+									"            pm.expect(response).to.have.property('code', 200);\r",
+									"            pm.expect(response).to.have.property('status', 'OK');\r",
+									"        });\r",
+									"\r",
+									"        var requestAALEGO500 = {\r",
+									"            url: endpointurl+'StockItem?$select=InventoryID,Description',\r",
+									"            method: 'PUT',\r",
+									"            body: {\r",
+									"                mode: 'raw',\r",
+									"                raw: '{\"InventoryID\": {\"value\": \"AALEGO500\"},\"Description\": {\"value\": \"Lego, 500 piece set\"}}'\r",
+									"            },\r",
+									"            header: {\r",
+									"                'Content-Type': 'application/json'\r",
+									"            }\r",
+									"        };\r",
+									"        pm.sendRequest(requestAALEGO500, (error, response) => {\r",
+									"            if (error) {\r",
+									"                console.log(error);\r",
+									"            }\r",
+									"\r",
+									"            pm.test('Response for AALEGO500 should be OK to process', () => {\r",
+									"                pm.expect(error).to.equal(null);\r",
+									"                pm.expect(response).to.have.property('code', 200);\r",
+									"                pm.expect(response).to.have.property('status', 'OK');\r",
+									"            });\r",
+									"        });\r",
+									"    });\r",
+									"}\r",
+									"//Sign in and modify stock items\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password, callback)\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"url": {
-							"raw": "{{EndpointURL3}}StockItem?$expand=WarehouseDetails&$select=InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM&$filter=LastModified gt datetimeoffset'2022-11-14T00:00:00.000'",
+							"raw": "{{EndpointURL}}/StockItem?$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2022-09-24T00:00:00.000'&$expand=WarehouseDetails&$select=InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM",
 							"host": [
-								"{{EndpointURL3}}StockItem"
+								"{{EndpointURL}}"
+							],
+							"path": [
+								"StockItem"
 							],
 							"query": [
+								{
+									"key": "$filter",
+									"value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2022-09-24T00:00:00.000'"
+								},
 								{
 									"key": "$expand",
 									"value": "WarehouseDetails"
@@ -20034,38 +20406,45 @@
 								{
 									"key": "$select",
 									"value": "InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM"
-								},
-								{
-									"key": "$filter",
-									"value": "LastModified gt datetimeoffset'2022-11-14T00:00:00.000'"
 								}
 							]
-						},
-						"description": "This example shows the retrieval of stock items with attributes, which is described in [Retrieve Stock Items with Attributes](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=48756ad4-c99e-42e3-9cff-14e9e199b310)."
+						}
 					},
 					"response": [
 						{
-							"name": "Retrieve the List of Modified Stock Items",
+							"name": "Lesson 3.1: Retrieving the List of Modified Stock Items",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
 									{
 										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"value": "application/json"
 									},
 									{
 										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"value": "application/json"
 									}
 								],
 								"url": {
-									"raw": "{{EndpointURL3}}StockItem?$expand=WarehouseDetails&$select=InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM&$filter=LastModified gt datetimeoffset'2022-11-14T00:00:00.000'",
+									"raw": "http://localhost/MyStoreInstance/entity/Default/20.200.001/StockItem?$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2022-09-24T00:00:00.000'&$expand=WarehouseDetails&$select=InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM",
+									"protocol": "http",
 									"host": [
-										"{{EndpointURL3}}StockItem"
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"20.200.001",
+										"StockItem"
 									],
 									"query": [
+										{
+											"key": "$filter",
+											"value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2022-09-24T00:00:00.000'"
+										},
 										{
 											"key": "$expand",
 											"value": "WarehouseDetails"
@@ -20073,10 +20452,6 @@
 										{
 											"key": "$select",
 											"value": "InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM"
-										},
-										{
-											"key": "$filter",
-											"value": "LastModified gt datetimeoffset'2022-11-14T00:00:00.000'"
 										}
 									]
 								}
@@ -20099,19 +20474,19 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=77; path=/"
+									"value": "UserBranch=82; path=/"
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 14 Nov 2022 22:29:04 GMT"
+									"value": "Tue, 23 Feb 2021 21:06:52 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "896"
+									"value": "504"
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"id\": \"cae53ce0-1614-e511-9b82-c86000dddf0b\",\n        \"rowNumber\": 1,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"BaseUOM\": {\n            \"value\": \"PIECE\"\n        },\n        \"Description\": {\n            \"value\": \"LEGO, 500 piece set\"\n        },\n        \"InventoryID\": {\n            \"value\": \"AALEGO500\"\n        },\n        \"ItemClass\": {\n            \"value\": \"STOCKITEM\"\n        },\n        \"LastModified\": {\n            \"value\": \"2022-11-15T01:28:49.403+03:00\"\n        },\n        \"WarehouseDetails\": [\n            {\n                \"id\": \"80f56719-6e81-e511-80c0-00155d012302\",\n                \"rowNumber\": 1,\n                \"note\": {\n                    \"value\": \"\"\n                },\n                \"QtyOnHand\": {\n                    \"value\": 1999\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {},\n                \"_links\": {\n                    \"files:put\": \"/AcumaticaT100/entity/Default/22.200.001/files/PX.Objects.IN.InventoryItemMaint/itemsiterecords/80f56719-6e81-e511-80c0-00155d012302/{filename}\"\n                }\n            }\n        ],\n        \"custom\": {},\n        \"_links\": {\n            \"self\": \"/AcumaticaT100/entity/Default/22.200.001/StockItem/cae53ce0-1614-e511-9b82-c86000dddf0b\",\n            \"files:put\": \"/AcumaticaT100/entity/Default/22.200.001/files/PX.Objects.IN.InventoryItemMaint/Item/cae53ce0-1614-e511-9b82-c86000dddf0b/{filename}\"\n        }\n    }\n]"
+							"body": "[\n    {\n        \"id\": \"cae53ce0-1614-e511-9b82-c86000dddf0b\",\n        \"rowNumber\": 1,\n        \"note\": {\n            \"value\": \"\"\n        },\n        \"BaseUOM\": {\n            \"value\": \"PIECE\"\n        },\n        \"Description\": {\n            \"value\": \"Lego, 500 piece set\"\n        },\n        \"InventoryID\": {\n            \"value\": \"AALEGO500\"\n        },\n        \"ItemClass\": {\n            \"value\": \"STOCKITEM\"\n        },\n        \"ItemStatus\": {\n            \"value\": \"Active\"\n        },\n        \"LastModified\": {\n            \"value\": \"2021-02-24T00:06:10.347+03:00\"\n        },\n        \"WarehouseDetails\": [\n            {\n                \"id\": \"80f56719-6e81-e511-80c0-00155d012302\",\n                \"rowNumber\": 1,\n                \"note\": {\n                    \"value\": \"\"\n                },\n                \"QtyOnHand\": {\n                    \"value\": 1999\n                },\n                \"WarehouseID\": {\n                    \"value\": \"MAIN\"\n                },\n                \"custom\": {}\n            }\n        ],\n        \"custom\": {}\n    }\n]"
 						}
 					]
 				},
@@ -20545,27 +20920,65 @@
 					]
 				},
 				{
-					"name": "Retrieve the Attachments of a Stock Item",
+					"name": "Retrieve the List of Attachments of a Stock Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The stock item has files\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.files).to.be.not.empty;\r",
+									"});\r",
+									"const jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"fileRef\", jsonData.files[0].href);\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the File Attached to a Stock Item\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"url": {
-							"raw": "{{EndpointURL3}}StockItem/AAMACHINE1?$select=InventoryID,files&$expand=files",
+							"raw": "{{EndpointURL}}/StockItem/AAMACHINE1?$select=InventoryID,files&$expand=files",
 							"host": [
-								"{{EndpointURL3}}StockItem"
+								"{{EndpointURL}}"
 							],
 							"path": [
+								"StockItem",
 								"AAMACHINE1"
 							],
 							"query": [
@@ -20578,32 +20991,37 @@
 									"value": "files"
 								}
 							]
-						},
-						"description": "This example shows the retrieval of the URL of the attachment of a stock item, which is described in [Retrieve the Attachments of a Stock Item](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=1dbebf78-72af-41c0-be5a-e771f2e5dda7)."
+						}
 					},
 					"response": [
 						{
-							"name": "Retrieve the Attachments of a Stock Item",
+							"name": "Lesson 3.1: Retrieving the Stock Item",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
 									{
 										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"value": "application/json"
 									},
 									{
 										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"value": "application/json"
 									}
 								],
 								"url": {
-									"raw": "{{EndpointURL3}}StockItem/AAMACHINE1?$select=InventoryID,files&$expand=files",
+									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem/AAMACHINE1?$select=InventoryID,files&$expand=files",
+									"protocol": "https",
 									"host": [
-										"{{EndpointURL3}}StockItem"
+										"localhost"
 									],
 									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"22.200.001",
+										"StockItem",
 										"AAMACHINE1"
 									],
 									"query": [
@@ -20632,76 +21050,112 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Thu, 22-Sep-2022 12:47:43 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=77; path=/"
+									"value": "UserBranch=82; path=/"
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 15 Nov 2022 21:35:57 GMT"
+									"value": "Mon, 19 Sep 2022 12:47:48 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "582"
+									"value": "588"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"2acd2eed-1614-e511-9b82-c86000dddf0b\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"InventoryID\": {\n        \"value\": \"AAMACHINE1\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/AcumaticaT100/entity/Default/22.200.001/StockItem/2acd2eed-1614-e511-9b82-c86000dddf0b\",\n        \"files:put\": \"/AcumaticaT100/entity/Default/22.200.001/files/PX.Objects.IN.InventoryItemMaint/Item/2acd2eed-1614-e511-9b82-c86000dddf0b/{filename}\"\n    },\n    \"files\": [\n        {\n            \"id\": \"9be45eb7-f97d-400b-96a5-1c4cf82faa96\",\n            \"filename\": \"Stock Items (AAMACHINE1)\\\\T2MCRO.jpg\",\n            \"href\": \"/AcumaticaT100/entity/Default/22.200.001/files/9be45eb7-f97d-400b-96a5-1c4cf82faa96\"\n        }\n    ]\n}"
+							"body": "{\n    \"id\": \"2acd2eed-1614-e511-9b82-c86000dddf0b\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"InventoryID\": {\n        \"value\": \"AAMACHINE1\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/MyStoreInstance/entity/Default/22.200.001/StockItem/2acd2eed-1614-e511-9b82-c86000dddf0b\",\n        \"files:put\": \"/MyStoreInstance/entity/Default/22.200.001/files/PX.Objects.IN.InventoryItemMaint/Item/2acd2eed-1614-e511-9b82-c86000dddf0b/{filename}\"\n    },\n    \"files\": [\n        {\n            \"id\": \"9be45eb7-f97d-400b-96a5-1c4cf82faa96\",\n            \"filename\": \"Stock Items (AAMACHINE1)\\\\T2MCRO.jpg\",\n            \"href\": \"/MyStoreInstance/entity/Default/22.200.001/files/9be45eb7-f97d-400b-96a5-1c4cf82faa96\"\n        }\n    ]\n}"
 						}
 					]
 				},
 				{
-					"name": "Retrieve the Attachments of a Stock Item: Getting the File",
+					"name": "Retrieve the File Attached to a Stock Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The stock item contains a JPG file\", function (){\r",
+									"    pm.expect(pm.response.text()).to.include(\"Exif\");\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"url": {
-							"raw": "{{EndpointURL3}}files/9be45eb7-f97d-400b-96a5-1c4cf82faa96",
+							"raw": "{{BaseURL}}{{fileRef}}",
 							"host": [
-								"{{EndpointURL3}}files"
-							],
-							"path": [
-								"9be45eb7-f97d-400b-96a5-1c4cf82faa96"
+								"{{BaseURL}}{{fileRef}}"
 							]
-						},
-						"description": "This example shows the retrieval of the file attached to a stock item, which is described in [Retrieve the Attachments of a Stock Item](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=1dbebf78-72af-41c0-be5a-e771f2e5dda7)."
+						}
 					},
 					"response": [
 						{
-							"name": "Retrieve the Attachments of a Stock Item: Getting the File",
+							"name": "Lesson 3.1: Retrieving the File",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
 									{
 										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"value": "application/json"
 									},
 									{
 										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"value": "application/json"
 									}
 								],
 								"url": {
-									"raw": "{{EndpointURL3}}files/9be45eb7-f97d-400b-96a5-1c4cf82faa96",
+									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/files/9be45eb7-f97d-400b-96a5-1c4cf82faa96",
+									"protocol": "https",
 									"host": [
-										"{{EndpointURL3}}files"
+										"localhost"
 									],
 									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"22.200.001",
+										"files",
 										"9be45eb7-f97d-400b-96a5-1c4cf82faa96"
 									]
 								}
@@ -20723,8 +21177,16 @@
 									"value": "application/octet-stream"
 								},
 								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Thu, 22-Sep-2022 12:49:17 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
 									"key": "Date",
-									"value": "Tue, 15 Nov 2022 21:37:11 GMT"
+									"value": "Mon, 19 Sep 2022 12:49:17 GMT"
 								}
 							],
 							"cookie": [],
@@ -20734,6 +21196,41 @@
 				},
 				{
 					"name": "Add a Note to a Stock Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"A note is attached\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.note.value).to.equal(\"My note\");\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -20750,12 +21247,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n \"note\": {\"value\": \"My note\"}\r\n}"
+							"raw": "{\n\t\"InventoryID\":{\"value\":\"AALEGO500\"},\n\t\"note\": {\"value\": \"My note\"}\n}"
 						},
 						"url": {
-							"raw": "{{EndpointURL3}}StockItem?$select=InventoryID",
+							"raw": "{{EndpointURL}}/StockItem?$select=InventoryID",
 							"host": [
-								"{{EndpointURL3}}StockItem"
+								"{{EndpointURL}}"
+							],
+							"path": [
+								"StockItem"
 							],
 							"query": [
 								{
@@ -20763,12 +21263,11 @@
 									"value": "InventoryID"
 								}
 							]
-						},
-						"description": "This example shows the adding of a note to a stock item, which is described in [Add a Note to a Stock Item](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=1018ddb6-686c-4a39-819c-2aea70eb8dfe)."
+						}
 					},
 					"response": [
 						{
-							"name": "Add a Note to a Stock Item",
+							"name": "Lesson 5.1: Adding a Note to a Stock Item",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [
@@ -20785,12 +21284,20 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n \"note\": {\"value\": \"My note\"}\r\n}"
+									"raw": "{\n\t\"InventoryID\":{\"value\":\"AALEGO500\"},\n\t\"note\": {\"value\": \"My note\"}\n}"
 								},
 								"url": {
-									"raw": "{{EndpointURL3}}StockItem?$select=InventoryID",
+									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem?$select=InventoryID",
+									"protocol": "https",
 									"host": [
-										"{{EndpointURL3}}StockItem"
+										"localhost"
+									],
+									"path": [
+										"MyStoreInstance",
+										"entity",
+										"Default",
+										"22.200.001",
+										"StockItem"
 									],
 									"query": [
 										{
@@ -20814,39 +21321,39 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 23-Sep-2022 21:52:50 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=77; path=/"
+									"value": "UserBranch=82; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=TimeZone=GMTP0300M&Culture=en-US; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 23-Sep-2022 21:52:50 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "UserBranch=77; path=/"
+									"value": "UserBranch=82; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requestid=C34018A628987E9E11ED65B1C077746F; path=/"
+									"value": "requestid=C34018A628986A9E11ED392E91FE6CD8; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requeststat=+st:1563+sc:~/entity/default/22.200.001/stockitem+start:638042017733780994+tg:; path=/"
+									"value": "requeststat=+st:1309+sc:~/entity/default/22.200.001/stockitem+start:637993075709002584+tg:; path=/"
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 16 Nov 2022 13:22:54 GMT"
+									"value": "Tue, 20 Sep 2022 21:52:52 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "389"
+									"value": "393"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"cae53ce0-1614-e511-9b82-c86000dddf0b\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"My note\"\n    },\n    \"InventoryID\": {\n        \"value\": \"AALEGO500\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/AcumaticaT100/entity/Default/22.200.001/StockItem/cae53ce0-1614-e511-9b82-c86000dddf0b\",\n        \"files:put\": \"/AcumaticaT100/entity/Default/22.200.001/files/PX.Objects.IN.InventoryItemMaint/Item/cae53ce0-1614-e511-9b82-c86000dddf0b/{filename}\"\n    }\n}"
+							"body": "{\n    \"id\": \"cae53ce0-1614-e511-9b82-c86000dddf0b\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"My note\"\n    },\n    \"InventoryID\": {\n        \"value\": \"AALEGO500\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/MyStoreInstance/entity/Default/22.200.001/StockItem/cae53ce0-1614-e511-9b82-c86000dddf0b\",\n        \"files:put\": \"/MyStoreInstance/entity/Default/22.200.001/files/PX.Objects.IN.InventoryItemMaint/Item/cae53ce0-1614-e511-9b82-c86000dddf0b/{filename}\"\n    }\n}"
 						}
 					]
 				}
@@ -32283,6 +32790,18 @@
 		},
 		{
 			"key": "SalesInvoiceStatusUrl",
+			"value": ""
+		},
+		{
+			"key": "CONGRILL_detail_ID",
+			"value": ""
+		},
+		{
+			"key": "AALEGO500_detail_ID",
+			"value": ""
+		},
+		{
+			"key": "fileRef",
 			"value": ""
 		}
 	]
