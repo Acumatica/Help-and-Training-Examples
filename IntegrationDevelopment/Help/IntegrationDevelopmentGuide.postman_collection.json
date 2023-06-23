@@ -26,7 +26,7 @@
 									"pm.test(\".ASP.NET_SessionId recieved\", function () {\r",
 									"    pm.expect(pm.cookies.indexOf('.ASP.NET_SessionId')).to.be.not.null;\r",
 									"});\r",
-									"postman.setNextRequest(\"Create an Account Group\");"
+									"postman.setNextRequest(\"Sign Out from the Service\");"
 								],
 								"type": "text/javascript"
 							}
@@ -162,7 +162,7 @@
 									"pm.test(\"Status code is 204\", function () {\r",
 									"    pm.response.to.have.status(204);\r",
 									"});\r",
-									"postman.setNextRequest(\"\");"
+									"postman.setNextRequest(\"Create a Record\");"
 								],
 								"type": "text/javascript"
 							}
@@ -460,7 +460,7 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve a Record by Key Fields\");"
 								],
 								"type": "text/javascript"
 							}
@@ -635,7 +635,7 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve a Record by ID\");"
 								],
 								"type": "text/javascript"
 							}
@@ -785,7 +785,7 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve Records by Conditions\");"
 								],
 								"type": "text/javascript"
 							}
@@ -980,7 +980,7 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve Data from an Inquiry Form\");"
 								],
 								"type": "text/javascript"
 							}
@@ -1130,7 +1130,7 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Records in Batches\");"
 								],
 								"type": "text/javascript"
 							}
@@ -1285,7 +1285,7 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve Records with Attributes\");"
 								],
 								"type": "text/javascript"
 							}
@@ -1436,7 +1436,7 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Operate with Archived Records\");"
 								],
 								"type": "text/javascript"
 							}
@@ -1579,7 +1579,7 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Remove a Record by Key Fields\");"
 								],
 								"type": "text/javascript"
 							}
@@ -1723,7 +1723,7 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Remove a Record by ID\");"
 								],
 								"type": "text/javascript"
 							}
@@ -1859,7 +1859,7 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Execute an Action That Is Present in an Endpoint\");"
 								],
 								"type": "text/javascript"
 							}
@@ -2024,7 +2024,7 @@
 									"    });\r",
 									"    //Sign out and set the next request\r",
 									"    var url = pm.collectionVariables.get('InstanceURL');\r",
-									"    pm.acuFunc.singOutFunction(pm, url, '');\r",
+									"    pm.acuFunc.singOutFunction(pm, url, 'Execute an Action That Is Present in an Endpoint (Example 2)');\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2191,7 +2191,7 @@
 									"\r",
 									"    //Sign out and set the next request\r",
 									"    var url = pm.collectionVariables.get('InstanceURL');\r",
-									"    pm.acuFunc.singOutFunction(pm, url, '');\r",
+									"    pm.acuFunc.singOutFunction(pm, url, 'Execute a Custom Action');\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2361,7 +2361,7 @@
 									"    });\r",
 									"    //Sign out and set the next request\r",
 									"    var url = pm.collectionVariables.get('InstanceURL');\r",
-									"    pm.acuFunc.singOutFunction(pm, url, '');\r",
+									"    pm.acuFunc.singOutFunction(pm, url, 'Narrow the List of Records on a Processing Form');\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2700,7 +2700,7 @@
 									"            {\r",
 									"                //Sign out\r",
 									"                var url = pm.collectionVariables.get('InstanceURL');\r",
-									"                pm.acuFunc.singOutFunction(pm, url, '');\r",
+									"                pm.acuFunc.singOutFunction(pm, url, 'Execute a Processing Action for All Filtered Records');\r",
 									"            }\r",
 									"        });\r",
 									"    };\r",
@@ -2908,7 +2908,7 @@
 									"            {\r",
 									"                //Sign out\r",
 									"                var url = pm.collectionVariables.get('InstanceURL');\r",
-									"                pm.acuFunc.singOutFunction(pm, url, '');\r",
+									"                pm.acuFunc.singOutFunction(pm, url, 'Retrieve a File Attached to a Record');\r",
 									"            }\r",
 									"        });\r",
 									"    };\r",
@@ -3091,7 +3091,7 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Attach a File to a Record\");"
 								],
 								"type": "text/javascript"
 							}
@@ -3244,7 +3244,7 @@
 									"});\r",
 									"//Sign out and set next request \r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the Schema of Custom Fields\");"
 								],
 								"type": "text/javascript"
 							}
@@ -3383,7 +3383,7 @@
 									"\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Change the Business Date or Current Branch\");"
 								],
 								"type": "text/javascript"
 							}
@@ -4054,7 +4054,7 @@
 									"\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the Acumatica ERP Version and the List of Endpoints\");"
 								],
 								"type": "text/javascript"
 							}
@@ -4223,7 +4223,7 @@
 									"\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Create an Account Group\");"
 								],
 								"type": "text/javascript"
 							}
@@ -4376,11 +4376,9 @@
 									"    pm.expect(response).to.have.property('status', 'OK');\r",
 									"  });\r",
 									"  \r",
-									"  //Sign out\r",
+									"  //Sign out and set the next request\r",
 									"  var url = pm.collectionVariables.get('InstanceURL');\r",
-									"  pm.acuFunc.singOutFunction(pm, url);\r",
-									"  //Set the next request\r",
-									"  postman.setNextRequest(\"Specify the Default Account of an Account Group\");\r",
+									"  pm.acuFunc.singOutFunction(pm, url, \"Specify the Default Account of an Account Group\");\r",
 									"});\r",
 									""
 								],
@@ -4665,11 +4663,9 @@
 									"    pm.expect(jsonResponse.AccountCD.value).to.eql('40010');\r",
 									"    pm.expect(jsonResponse.AccountGroup).to.be.empty;\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Get General Ledger Transactions for Some Period\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Get General Ledger Transactions for Some Period\");\r",
 									"\r",
 									""
 								],
@@ -4818,11 +4814,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Results).to.be.not.empty;\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create a Case\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Case\");\r",
 									"\r",
 									""
 								],
@@ -4983,11 +4977,10 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.AccountGroupID.value).to.eql('ACCG02');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Add an Account to an Account Group\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Add an Account to an Account Group\");\r",
+									"\r",
 									"\r",
 									""
 								],
@@ -5131,11 +5124,9 @@
 									"    pm.expect(jsonResponse.AccountGroupID.value).to.eql('ACCG02');\r",
 									"    pm.expect(jsonResponse.DefaultAccountID.value).to.eql('40000');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Retrieve the List of Accounts in a Group\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Accounts in a Group\");\r",
 									"\r",
 									""
 								],
@@ -5284,11 +5275,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.RelatedEntityType.value).to.eql('PX.Objects.CR.CRCase');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Link a Case to Another Case\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Link a Case to Another Case\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -5430,11 +5419,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.RelatedEntityType.value).to.eql('PX.Objects.AR.Customer');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Retrieve the List of Customers with Contacts\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Customers with Contacts\");\r",
 									"\r",
 									""
 								],
@@ -5577,12 +5564,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.RelatedEntityType.value).to.eql('PX.Objects.CR.CRLead');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create a Bill for Particular Lines of a Purchase Order\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Bill for Particular Lines of a Purchase Order\");"
 								],
 								"type": "text/javascript"
 							}
@@ -5739,7 +5723,7 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'');\r",
+									"pm.acuFunc.singOutFunction(pm, url,'Create a Bill for Particular Lines of a Purchase Receipt');\r",
 									""
 								],
 								"type": "text/javascript"
@@ -5909,11 +5893,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Details[0].Qty.value).to.eql(15);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Retrieve the List of Business Accounts\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Bill of Material\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -6442,7 +6424,7 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'');\r",
+									"pm.acuFunc.singOutFunction(pm, url,'Retrieve the Bills of Material');\r",
 									""
 								],
 								"type": "text/javascript"
@@ -6597,7 +6579,7 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'');\r",
+									"pm.acuFunc.singOutFunction(pm, url,\"Retrieve the Details of Bill of Material's Operations\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -6731,7 +6713,7 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'');\r",
+									"pm.acuFunc.singOutFunction(pm, url,'Retrieve the List of Business Accounts');\r",
 									""
 								],
 								"type": "text/javascript"
@@ -6845,11 +6827,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse[0].Activities).to.be.not.empty;\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Retrieve the Companies' Structure\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the Companies' Structure\");\r",
 									"\r",
 									""
 								],
@@ -6995,11 +6975,9 @@
 									"    pm.expect(jsonResponse.ContactDisplayName.value).to.eql('Beverly Hail');\r",
 									"    pm.collectionVariables.set('caseEntityID', jsonResponse.id);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create an Activity that is Linked to a Case\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Create an Activity that is Linked to a Case\");\r",
 									"\r",
 									""
 								],
@@ -7154,11 +7132,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.RelatedCases[0].CaseID.value).to.eql('000004');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create a Customer\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Customer\");\r",
 									"\r",
 									""
 								],
@@ -7330,11 +7306,9 @@
 									"pm.test(\"One of the branches is HEADOFFICE\", function (){\r",
 									"    pm.expect(pm.response.text()).to.include(\"HEADOFFICE\");\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create a Contact with Attributes\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Contact with Attributes\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -7506,7 +7480,7 @@
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
 									"//Set the next request\r",
-									"postman.setNextRequest(\"Activate a Contact\");\r",
+									"postman.setNextRequest(\"Deactivate a Contact\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -7664,11 +7638,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Status.value).to.be.eql('Inactive');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Retrieve the List of Contacts\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Contacts\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -7838,11 +7810,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse[0].Opportunities).to.be.not.empty;\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Link Multiple Contacts to a Customer\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Link Multiple Contacts to a Customer\");\r",
 									"\r",
 									""
 								],
@@ -7999,11 +7969,9 @@
 									"    const jsonResponse = response.json();\r",
 									"    pm.expect(jsonResponse.Contacts).has.lengthOf(2);\r",
 									"  });\r",
-									"  //Sign out\r",
+									"  //Sign out and set the next request\r",
 									"  var url = pm.collectionVariables.get('InstanceURL');\r",
-									"  pm.acuFunc.singOutFunction(pm, url);\r",
-									"  //Set the next request\r",
-									"  postman.setNextRequest(\"Create an Employee\");\r",
+									"  pm.acuFunc.singOutFunction(pm, url, \"Create an Employee\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -8152,11 +8120,9 @@
 									"    pm.expect(jsonResponse.CustomerID.value).to.eql('CUST01');\r",
 									"    pm.collectionVariables.set('customerEntityID', jsonResponse.id);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Retrieve the List of Customers with Contacts\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Create an Activity that is Linked to a Customer\");"
 								],
 								"type": "text/javascript"
 							}
@@ -8302,11 +8268,9 @@
 									"    pm.expect(jsonResponse[0].MainContact).to.be.not.empty;\r",
 									"    pm.expect(jsonResponse[0].MainContact.Address).to.be.not.empty;\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Retrieve the Shipping Contact of a Customer\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Update a Customer\");"
 								],
 								"type": "text/javascript"
 							}
@@ -8445,7 +8409,7 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the Shipping Contact of a Customer\");"
 								],
 								"type": "text/javascript"
 							}
@@ -8724,11 +8688,9 @@
 									"    pm.expect(jsonResponse[0].CustomerID.value).to.eql('ABAKERY');\r",
 									"    pm.expect(jsonResponse[0].ShippingContact).to.be.not.empty;\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create a Lead\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Lead\");"
 								],
 								"type": "text/javascript"
 							}
@@ -9137,11 +9099,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Status.value).to.be.eql('Active');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Retrieve Information about an Employee\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve Information about an Employee\");"
 								],
 								"type": "text/javascript"
 							}
@@ -9286,11 +9246,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse[0].EmployeeName.value).to.be.eql('Pam Brawner');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create an Inventory Issue\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Create an Inventory Issue\");"
 								],
 								"type": "text/javascript"
 							}
@@ -9925,11 +9883,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.TotalAmount.value).to.be.eql(4.15);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create an Inventory Issue\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Release an Inventory Issue\");"
 								],
 								"type": "text/javascript"
 							}
@@ -10123,11 +10079,9 @@
 									"    const jsonResponse = response.json();\r",
 									"    pm.expect(jsonResponse.Status.value).to.be.eql('Released');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"    postman.setNextRequest(\"Retrieve the Available Quantity of an Inventory Item\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the Available Quantity of an Inventory Item\");\r",
 									"});\r",
 									"}\r",
 									"});\r",
@@ -10285,11 +10239,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Results).to.has.lengthOf(1);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Get an Inventory Summary\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Get an Inventory Summary\");"
 								],
 								"type": "text/javascript"
 							}
@@ -10448,11 +10400,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Results).length.to.be.greaterThan(1);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Retrieve the List of Invoices\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Invoices\");"
 								],
 								"type": "text/javascript"
 							}
@@ -10879,11 +10829,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse).length.to.be.greaterThan(1);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Specify the Tax Zone for an Invoice\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Specify the Tax Zone for an Invoice\");"
 								],
 								"type": "text/javascript"
 							}
@@ -11120,11 +11068,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.custom.CurrentDocument.TaxZoneID.value).to.be.eql('AVALARA');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Override Values in the Item Warehouse Details\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Override Values in the Item Warehouse Details\");"
 								],
 								"type": "text/javascript"
 							}
@@ -11291,11 +11237,10 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.ServiceLevel.value).to.be.not.eql(87);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create a General Ledger Transaction with a Project Code That Does Not Produce a Project Transaction\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a General Ledger Transaction with a Project Code That Does Not Produce a Project Transaction\");\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -11442,11 +11387,10 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Details[0].IsNonPM.value).to.be.eql(true);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Retrieve the List of Ledgers\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Ledgers\");\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -11606,11 +11550,9 @@
 									"    pm.expect(jsonResponse.Email.value).to.eql('brent.edds.test27@avantehs.com');\r",
 									"    pm.collectionVariables.set('leadEntityID', jsonResponse.id);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create an Activity that is Linked to a Lead\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Create an Activity that is Linked to a Lead\");"
 								],
 								"type": "text/javascript"
 							}
@@ -11757,11 +11699,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse).to.has.lengthOf(5);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create a Sales Order from an Opportunity\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Sales Order from an Opportunity\");"
 								],
 								"type": "text/javascript"
 							}
@@ -11945,11 +11885,9 @@
 									"    const jsonResponse = response.json();\r",
 									"    pm.expect(jsonResponse.Relations[1].Type.value).to.be.eql('Sales Order');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"    postman.setNextRequest(\"Create a Business Account from an Opportunity\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Business Account from an Opportunity\");\r",
 									"});\r",
 									"\r",
 									"}\r",
@@ -12143,11 +12081,9 @@
 									"    const jsonResponse = response.json();\r",
 									"    pm.expect(jsonResponse.Relations[0].Type.value).to.be.eql('Business Account');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"    postman.setNextRequest(\"Create an Accounts Receivable Payment for an Invoice and a Sales Order\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Create an Accounts Receivable Payment for an Invoice and a Sales Order\");\r",
 									"});\r",
 									"\r",
 									"}\r",
@@ -12422,11 +12358,9 @@
 									"    pm.collectionVariables.set(\"appliedToDocuments\", jsonResponse.AppliedToDocuments.value);\r",
 									"    pm.collectionVariables.set(\"appliedToOrders\", jsonResponse.AppliedToOrders.value);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Release an Accounts Receivable Payment\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Release an Accounts Receivable Payment\");"
 								],
 								"type": "text/javascript"
 							}
@@ -12664,12 +12598,9 @@
 									"    const jsonResponse = response.json();\r",
 									"    pm.expect(jsonResponse.Status.value).to.be.eql('Open');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"    postman.setNextRequest(\"Create a Payment Method\");\r",
-									"    return;\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Payment Method\");\r",
 									"});\r",
 									"\r",
 									"}\r",
@@ -12897,11 +12828,9 @@
 									"    pm.expect(jsonResponse.PaymentMethodID.value).to.eql('TST');\r",
 									"    pm.expect(jsonResponse.MeansOfPayment.value).to.eql('Cash/Check');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create a Project from a Project Template\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Project from a Project Template\");"
 								],
 								"type": "text/javascript"
 							}
@@ -13539,11 +13468,9 @@
 									"}\r",
 									"else\r",
 									"{   \r",
-									"    //Sign out\r",
+									"    //Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"    postman.setNextRequest(\"Create a Purchase Order\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Purchase Order\");\r",
 									"}\r",
 									"});\r",
 									"} \r",
@@ -13700,11 +13627,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.ProjectID.value).to.eql('TESTPR3');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Make a Project Active\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Make a Project Active\");"
 								],
 								"type": "text/javascript"
 							}
@@ -13845,11 +13770,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Status.value).to.eql('Active');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Specify the Next Billing Date for a Project\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Specify the Next Billing Date for a Project\");"
 								],
 								"type": "text/javascript"
 							}
@@ -13990,11 +13913,10 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.BillingAndAllocationSettings.NextBillingDate.value).to.be.not.empty;\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Retrieve a Project Task\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve a Project Task\");\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -14166,12 +14088,9 @@
 									"}\r",
 									"else\r",
 									"{   \r",
-									"    //Sign out\r",
+									"    //Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"    postman.setNextRequest(\"Retrieve the List of Pro Forma Invoices of a Project\");\r",
-									"    return;\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Pro Forma Invoices of a Project\");\r",
 									"}\r",
 									"});\r",
 									"} \r",
@@ -14327,11 +14246,9 @@
 									"    pm.expect(jsonResponse.Invoices[0].InvoiceTotal.value).to.eql(725);\r",
 									"    pm.collectionVariables.set('proFormaReferenceNbr', jsonResponse.Invoices[0].ProFormaReferenceNbr.value);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Send a Pro Forma Invoice by Email\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Send a Pro Forma Invoice by Email\");"
 								],
 								"type": "text/javascript"
 							}
@@ -14472,11 +14389,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Completed.value).to.eql(25);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Invoke Project Billing\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Invoke Project Billing\");"
 								],
 								"type": "text/javascript"
 							}
@@ -14628,11 +14543,9 @@
 									"    pm.expect(jsonResponse[0].ProjectTaskID.value).to.eql('PHASE1');\r",
 									"    pm.expect(jsonResponse[0].Status.value).to.eql('In Planning');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Activate a Project Task\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Activate a Project Task\");"
 								],
 								"type": "text/javascript"
 							}
@@ -14780,11 +14693,9 @@
 									"    const jsonResponse = response.json();\r",
 									"    pm.expect(jsonResponse[0].Status.value).to.be.eql('Active');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"    postman.setNextRequest(\"Specify the Progress of a Project Task\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Specify the Progress of a Project Task\");\r",
 									"});\r",
 									""
 								],
@@ -15059,11 +14970,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.OrderTotal.value).to.eql(2.29);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create a Purchase Order with Tax Details Overridden\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Purchase Order with Tax Details Overridden\");"
 								],
 								"type": "text/javascript"
 							}
@@ -15224,11 +15133,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.TaxDetails[0].TaxRate.value).to.eql(8.875);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Purchase Receipt\");"
 								],
 								"type": "text/javascript"
 							}
@@ -15408,11 +15315,9 @@
 									"    pm.expect(jsonResponse.TotalCost.value).to.eql(492.40);\r",
 									"    pm.collectionVariables.set('purchaseReceiptID',jsonResponse.id);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Release a Purchase Receipt\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Release a Purchase Receipt\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -15570,12 +15475,9 @@
 									"    pm.expect(jsonResponse.Details[0].Allocations).to.has.lengthOf(2);\r",
 									"    pm.expect(jsonResponse.Details[1].Allocations).to.has.lengthOf(2);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create a Purchase Return from a Purchase Receipt Record\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Purchase Return from a Purchase Receipt Record\");"
 								],
 								"type": "text/javascript"
 							}
@@ -15897,11 +15799,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.TotalCost.value).to.eql(240.5);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create a Purchase Return from a Purchase Receipt\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Purchase Return from a Purchase Receipt\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -16058,12 +15958,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.TotalCost.value).to.eql(118.4);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create a Purchase Return for Particular Items\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Purchase Return for Particular Items\");"
 								],
 								"type": "text/javascript"
 							}
@@ -16219,11 +16116,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.TotalCost.value).to.eql(3);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Create a Credit Memo\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Remove a Sales Invoice from Hold\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -16528,12 +16423,9 @@
 									"    const jsonResponse = response.json();\r",
 									"    pm.expect(jsonResponse.Status.value).to.be.eql('Released');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"    postman.setNextRequest(\"Insert Lines with Allocations (with Location) to a PO Receipt\");\r",
-									"    return;\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Insert Lines with Allocations (with Location) to a PO Receipt\");\r",
 									"});\r",
 									"\r",
 									"}\r",
@@ -17103,7 +16995,7 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Credit Memo\");"
 								],
 								"type": "text/javascript"
 							}
@@ -17268,7 +17160,7 @@
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
 									"//Set the next request\r",
-									"postman.setNextRequest(\"Create a Sales Order with the Unit of Measure Specified\");\r",
+									"postman.setNextRequest(\"Retrieve a List of Sales Orders with Details and Related Shipments\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -17683,7 +17575,7 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve a List of Sales Orders in Batches\");"
 								],
 								"type": "text/javascript"
 							}
@@ -17829,7 +17721,7 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Sales Order with the Unit of Measure Specified\");"
 								],
 								"type": "text/javascript"
 							}
@@ -17991,7 +17883,7 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, '');\r",
+									"pm.acuFunc.singOutFunction(pm, url, 'Create a Sales Order with a Credit Card Payment');\r",
 									""
 								],
 								"type": "text/javascript"
@@ -18162,7 +18054,7 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'');\r",
+									"pm.acuFunc.singOutFunction(pm, url,'Create a Sales Order with a Captured Credit Card Payment');\r",
 									""
 								],
 								"type": "text/javascript"
@@ -18333,7 +18225,7 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'');\r",
+									"pm.acuFunc.singOutFunction(pm, url,'Create a Sales Order with an Authorized Credit Card Payment');\r",
 									""
 								],
 								"type": "text/javascript"
@@ -18504,7 +18396,7 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'');\r",
+									"pm.acuFunc.singOutFunction(pm, url,'Create a Sales Order with an External Credit Card Payment');\r",
 									""
 								],
 								"type": "text/javascript"
@@ -18675,7 +18567,7 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'');\r",
+									"pm.acuFunc.singOutFunction(pm, url,'Create a Return for Credit Without Validation of the Card Refund Against the Original Transaction');\r",
 									""
 								],
 								"type": "text/javascript"
@@ -18876,7 +18768,7 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'');\r",
+									"pm.acuFunc.singOutFunction(pm, url,'Retrieve the Sales Order with Details');\r",
 									""
 								],
 								"type": "text/javascript"
@@ -19187,7 +19079,7 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Update the Detail Lines of a Sales Order\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Shipment from a Sales Order\");"
 								],
 								"type": "text/javascript"
 							}
@@ -19422,7 +19314,7 @@
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
 									"//Set the next request\r",
-									"    postman.setNextRequest(\"Create a Shipment from a Sales Order\");\r",
+									"    postman.setNextRequest(\"Create a Return Order for Invoices\");\r",
 									"    return;\r",
 									"});\r",
 									"\r",
@@ -19951,11 +19843,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.TaxTotal.value).to.eql(0.5);\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Retrieve a Service Order\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve a Service Order\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -20354,11 +20244,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse[0].ServiceOrderNbr.value).to.eql('000019');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"Read the Tracking Number from a Shipment\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Read the Tracking Number from a Shipment\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -20619,11 +20507,9 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse[0].Packages[0].TrackingNbr.value).to.eql('398305336614');\r",
 									"});\r",
-									"//Sign out\r",
+									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"postman.setNextRequest(\"\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Write the Tracking Number to a Shipment\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -20808,7 +20694,7 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Modified Stock Items\");\r",
 									"\r",
 									""
 								],
@@ -21188,7 +21074,7 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve Stock Items with Attributes\");"
 								],
 								"type": "text/javascript"
 							}
@@ -21410,7 +21296,7 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve Unit Conversion Rules from a Stock Item\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -21547,7 +21433,7 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve Stock Items with Prices and Quantities by Warehouse\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -21692,7 +21578,7 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Attachments of a Stock Item\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -21973,7 +21859,7 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Add a Note to a Stock Item\");"
 								],
 								"type": "text/javascript"
 							}
@@ -22098,7 +21984,7 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url, \"Update a Tax Category\");"
 								],
 								"type": "text/javascript"
 							}
@@ -22287,7 +22173,7 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Read Employee Time Activities\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -22440,7 +22326,7 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Write Employee Time Activities\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -22563,7 +22449,7 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Search for Time Entries by Date\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -22710,7 +22596,7 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Vendors\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -22870,7 +22756,7 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Vendor\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -23005,7 +22891,7 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
+									"pm.acuFunc.singOutFunction(pm, url, \"Create a Work Calendar\");\r",
 									""
 								],
 								"type": "text/javascript"
