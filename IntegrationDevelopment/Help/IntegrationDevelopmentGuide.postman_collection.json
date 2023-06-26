@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "dda7f633-e9a5-41a4-9c16-5f6206955875",
 		"name": "REST API Examples (Integration Development Guide)",
-		"description": "This collection contains examples from the [REST API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n- Deploy a new Acumatica ERP instance with three tenants that are based on the U100, SalesDemo, and T100 datasets. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n- Specify the base URL of the site in the BaseURL variable of the collection.\n- Specify the instance URL in the InstanceURL variable of the collection.\n- Make sure the URL of the Default/22.200.001 endpoint is in the EndpointURL variable.\n- Make sure the URL of the MANUFACTURING/22.200.001 endpoint is in the ManufacturingEndpointURL variable.\n- Specify the tenant name, branch, username, and password to access the tenant with the U100 data in the TenantU100, BranchU100, UsernameU100, and PasswordU100 variables.\n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the TenantT100, BranchT100, UsernameT100, and PasswordT100 variables.\n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the TenantSalesDemo, BranchSalesDemo, UsernameSalesDemo, and PasswordSalesDemo variables.\n    \n\nOther variables are used by particular requests and are specified during execution of other requests. You do not need to feel their values manually.",
+		"description": "This collection contains examples from the [REST API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n- Deploy a new Acumatica ERP instance with three tenants that are based on the U100, SalesDemo, and T100 datasets. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n- Specify the base URL of the site in the _BaseURL_ variable of the collection.\n- Specify the instance URL in the _InstanceURL_ variable of the collection.\n- Make sure the URL of the Default/22.200.001 endpoint is in the _EndpointURL_ variable.\n- Specify the URL of the instance with the manufacturing functionality configured in the _ManufacturingInstanceURL_ variable of the collection.\n- Make sure the URL of the MANUFACTURING/22.200.001 endpoint is in the _ManufacturingEndpointURL_ variable.\n- Specify the tenant name, branch, username, and password to access the tenant with the U100 data in the _TenantU100_, _BranchU100_, _UsernameU100_, and _PasswordU100_ variables.\n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantT100_, _BranchT100_, _UsernameT100_, and _PasswordT100_ variables.\n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantSalesDemo_, _BranchSalesDemo_, _UsernameSalesDemo_, and _PasswordSalesDemo_ variables.\n    \n\nOther variables are used by particular requests and are specified during execution of other requests. You do not need to feel their values manually.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
 	},
@@ -313,7 +313,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Update a Record\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Update a Record\");"
 								],
 								"type": "text/javascript"
 							}
@@ -460,7 +461,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve a Record by Key Fields\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve a Record by Key Fields\");"
 								],
 								"type": "text/javascript"
 							}
@@ -635,7 +637,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve a Record by ID\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve a Record by ID\");"
 								],
 								"type": "text/javascript"
 							}
@@ -785,7 +788,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve Records by Conditions\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve Records by Conditions\");"
 								],
 								"type": "text/javascript"
 							}
@@ -980,7 +984,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve Data from an Inquiry Form\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve Data from an Inquiry Form\");"
 								],
 								"type": "text/javascript"
 							}
@@ -1130,7 +1135,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Records in Batches\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve the List of Records in Batches\");"
 								],
 								"type": "text/javascript"
 							}
@@ -1285,7 +1291,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve Records with Attributes\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve Records with Attributes\");"
 								],
 								"type": "text/javascript"
 							}
@@ -1436,7 +1443,8 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Operate with Archived Records\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Operate with Archived Records\");"
 								],
 								"type": "text/javascript"
 							}
@@ -1579,7 +1587,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Remove a Record by Key Fields\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Remove a Record by Key Fields\");"
 								],
 								"type": "text/javascript"
 							}
@@ -1723,7 +1732,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Remove a Record by ID\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Remove a Record by ID\");"
 								],
 								"type": "text/javascript"
 							}
@@ -1859,7 +1869,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Execute an Action That Is Present in an Endpoint\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Execute an Action That Is Present in an Endpoint\");"
 								],
 								"type": "text/javascript"
 							}
@@ -1916,17 +1927,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "https://localhost/AcumaticaERP/entity/Default/22.200.001/SalesOrder/e59cc6da-cc6c-ea11-b82d-00155d408001",
-									"protocol": "https",
+									"raw": "{{EndpointURL}}SalesOrder/e59cc6da-cc6c-ea11-b82d-00155d408001",
 									"host": [
-										"localhost"
+										"{{EndpointURL}}SalesOrder"
 									],
 									"path": [
-										"AcumaticaERP",
-										"entity",
-										"Default",
-										"22.200.001",
-										"SalesOrder",
 										"e59cc6da-cc6c-ea11-b82d-00155d408001"
 									]
 								}
@@ -2024,8 +2029,9 @@
 									"    });\r",
 									"    //Sign out and set the next request\r",
 									"    var url = pm.collectionVariables.get('InstanceURL');\r",
-									"    pm.acuFunc.singOutFunction(pm, url, 'Execute an Action That Is Present in an Endpoint (Example 2)');\r",
-									"});"
+									"    pm.acuFunc.singOutFunction(pm, url);\r",
+									"});\r",
+									"postman.setNextRequest('Execute an Action That Is Present in an Endpoint (Example 2)');"
 								],
 								"type": "text/javascript"
 							}
@@ -2082,17 +2088,11 @@
 									"raw": "{ \n \"entity\" :\n {\n  \"OrderType\" : {\"value\" : \"SO\"}, \n  \"OrderNbr\" : {\"value\" : \"000001\"} \n },\n \"parameters\" : \n {}\n}"
 								},
 								"url": {
-									"raw": "https://localhost/AcumaticaERP/entity/Default/22.200.001/SalesOrder/ReopenSalesOrder",
-									"protocol": "https",
+									"raw": "{{EndpointURL}}SalesOrder/ReopenSalesOrder",
 									"host": [
-										"localhost"
+										"{{EndpointURL}}SalesOrder"
 									],
 									"path": [
-										"AcumaticaERP",
-										"entity",
-										"Default",
-										"22.200.001",
-										"SalesOrder",
 										"ReopenSalesOrder"
 									]
 								}
@@ -2178,21 +2178,22 @@
 									"        'Content-Type': 'application/json'\r",
 									"    }\r",
 									"};\r",
-									"pm.sendRequest(requestBAccount,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
+									"pm.sendRequest(requestBAccount, (error, response) => {\r",
+									"    if (error) {\r",
+									"        console.log(error);\r",
+									"    }\r",
 									"\r",
-									"  pm.test('Response for the business account should be OK to process', () => {\r",
-									"    pm.expect(error).to.equal(null);\r",
-									"    pm.expect(response).to.have.property('code', 200);\r",
-									"    pm.expect(response).to.have.property('status', 'OK');\r",
-									"  });\r",
+									"    pm.test('Response for the business account should be OK to process', () => {\r",
+									"        pm.expect(error).to.equal(null);\r",
+									"        pm.expect(response).to.have.property('code', 200);\r",
+									"        pm.expect(response).to.have.property('status', 'OK');\r",
+									"    });\r",
 									"\r",
 									"    //Sign out and set the next request\r",
 									"    var url = pm.collectionVariables.get('InstanceURL');\r",
-									"    pm.acuFunc.singOutFunction(pm, url, 'Execute a Custom Action');\r",
-									"});"
+									"    pm.acuFunc.singOutFunction(pm, url);\r",
+									"});\r",
+									"postman.setNextRequest('Execute a Custom Action');"
 								],
 								"type": "text/javascript"
 							}
@@ -2249,17 +2250,11 @@
 									"raw": "{\n  \"entity\" : {\n    \"BusinessAccountID\": { \"value\": \"CANDYY\" }\n  },\n  \"parameters\" : {\n    \"BusinessAccountID\": { \"value\": \"CANDYYY\" }\n  }\n}"
 								},
 								"url": {
-									"raw": "https://localhost/AcumaticaERP/entity/Default/22.200.001/BusinessAccount/ChangeBusinessAccountID",
-									"protocol": "https",
+									"raw": "{{EndpointURL}}BusinessAccount/ChangeBusinessAccountID",
 									"host": [
-										"localhost"
+										"{{EndpointURL}}BusinessAccount"
 									],
 									"path": [
-										"AcumaticaERP",
-										"entity",
-										"Default",
-										"22.200.001",
-										"BusinessAccount",
 										"ChangeBusinessAccountID"
 									]
 								}
@@ -2345,24 +2340,25 @@
 									"        'Content-Type': 'application/json'\r",
 									"    }\r",
 									"};\r",
-									"pm.sendRequest(requestCase,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
+									"pm.sendRequest(requestCase, (error, response) => {\r",
+									"    if (error) {\r",
+									"        console.log(error);\r",
+									"    }\r",
 									"\r",
-									"  pm.test('Response for the case should be OK to process', () => {\r",
-									"    pm.expect(error).to.equal(null);\r",
-									"    pm.expect(response).to.have.property('code', 200);\r",
-									"    pm.expect(response).to.have.property('status', 'OK');\r",
-									"  });\r",
-									"  pm.test(\"Case status is Closed\", function (){\r",
-									"    const jsonResponse = response.json();\r",
-									"    pm.expect(jsonResponse.Status.value).to.be.eql('Closed');\r",
+									"    pm.test('Response for the case should be OK to process', () => {\r",
+									"        pm.expect(error).to.equal(null);\r",
+									"        pm.expect(response).to.have.property('code', 200);\r",
+									"        pm.expect(response).to.have.property('status', 'OK');\r",
+									"    });\r",
+									"    pm.test(\"Case status is Closed\", function () {\r",
+									"        const jsonResponse = response.json();\r",
+									"        pm.expect(jsonResponse.Status.value).to.be.eql('Closed');\r",
 									"    });\r",
 									"    //Sign out and set the next request\r",
 									"    var url = pm.collectionVariables.get('InstanceURL');\r",
-									"    pm.acuFunc.singOutFunction(pm, url, 'Narrow the List of Records on a Processing Form');\r",
-									"});"
+									"    pm.acuFunc.singOutFunction(pm, url);\r",
+									"});\r",
+									"postman.setNextRequest('Narrow the List of Records on a Processing Form');"
 								],
 								"type": "text/javascript"
 							}
@@ -2419,17 +2415,11 @@
 									"raw": "{\r\n    \"entity\": {\r\n        \"id\": \"6781fe19-9aa6-eb11-b846-00155d408001\"\r\n    },\r\n    \"parameters\": {\r\n        \"custom\": {\r\n            \"FilterPreview\": {\r\n                \"Reason\": {\r\n                    \"type\" : \"CustomStringField\", \r\n                    \"value\" : \"Abandoned\"\r\n                }\r\n            }\r\n        }\r\n    }    \r\n}"
 								},
 								"url": {
-									"raw": "https://localhost/AcumaticaERP/entity/Default/22.200.001/Case/Close",
-									"protocol": "https",
+									"raw": "{{EndpointURL}}Case/Close",
 									"host": [
-										"localhost"
+										"{{EndpointURL}}Case"
 									],
 									"path": [
-										"AcumaticaERP",
-										"entity",
-										"Default",
-										"22.200.001",
-										"Case",
 										"Close"
 									]
 								}
@@ -2521,8 +2511,7 @@
 									"});\r",
 									"//Do not sign out before the next request \r",
 									"//because these requests should be executed in one session\r",
-									"postman.setNextRequest(\"Execute a Processing Action for Selected Records\");\r",
-									""
+									"postman.setNextRequest(\"Execute a Processing Action for Selected Records\");"
 								],
 								"type": "text/javascript"
 							}
@@ -2582,17 +2571,9 @@
 									"raw": "{\r\n    \"AssignedToMe\": {\"value\": true},\r\n    \"Type\": {\"value\": \"All\"}\r\n}"
 								},
 								"url": {
-									"raw": "https://localhost/AcumaticaERP/entity/Default/22.200.001/EmailProcessing?$expand=Result",
-									"protocol": "https",
+									"raw": "{{EndpointURL}}EmailProcessing?$expand=Result",
 									"host": [
-										"localhost"
-									],
-									"path": [
-										"AcumaticaERP",
-										"entity",
-										"Default",
-										"22.200.001",
-										"EmailProcessing"
+										"{{EndpointURL}}EmailProcessing"
 									],
 									"query": [
 										{
@@ -2700,12 +2681,12 @@
 									"            {\r",
 									"                //Sign out\r",
 									"                var url = pm.collectionVariables.get('InstanceURL');\r",
-									"                pm.acuFunc.singOutFunction(pm, url, 'Execute a Processing Action for All Filtered Records');\r",
+									"                pm.acuFunc.singOutFunction(pm, url);\r",
 									"            }\r",
 									"        });\r",
 									"    };\r",
 									"}\r",
-									""
+									"postman.setNextRequest('Execute a Processing Action for All Filtered Records');"
 								],
 								"type": "text/javascript"
 							}
@@ -2762,17 +2743,11 @@
 									"raw": "{\r\n    \"Entity\": {\r\n        \"id\": \"5cfd60d5-c5d6-4ac9-aa03-06ac083ce329\",\r\n        \"rowNumber\": 1,\r\n        \"note\": null,\r\n        \"Account\": {},\r\n        \"AccountEmailAccountID\": {},\r\n        \"AssignedToMe\": {\r\n            \"value\": true\r\n        },\r\n        \"AssignedToOwner\": {},\r\n        \"IncludeFailed\": {\r\n            \"value\": false\r\n        },\r\n        \"Result\": [\r\n            {\r\n                \"id\": \"8f5174a5-b312-ea11-b826-00155d408001\",\r\n                \"rowNumber\": 1,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": true },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T14:59:30.693+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"angelo@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/8f5174a5-b312-ea11-b826-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"4d57b6f3-b312-ea11-b826-00155d408001\",\r\n                \"rowNumber\": 2,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T14:59:36.15+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"perkins@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/4d57b6f3-b312-ea11-b826-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"7ce06f44-b412-ea11-b826-00155d408001\",\r\n                \"rowNumber\": 3,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T14:59:41.54+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"rollins@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/7ce06f44-b412-ea11-b826-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"707ad571-b412-ea11-b826-00155d408001\",\r\n                \"rowNumber\": 4,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T14:59:46.867+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"hardin@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/707ad571-b412-ea11-b826-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"b180b6aa-b412-ea11-b826-00155d408001\",\r\n                \"rowNumber\": 5,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T14:59:52.203+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"barber@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/b180b6aa-b412-ea11-b826-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"6c1dc5ec-b412-ea11-b826-00155d408001\",\r\n                \"rowNumber\": 6,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T14:59:57.547+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"sauer@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/6c1dc5ec-b412-ea11-b826-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"a9b06f3d-b712-ea11-b826-00155d408001\",\r\n                \"rowNumber\": 7,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:00:02.857+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"rueb@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/a9b06f3d-b712-ea11-b826-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"c0db71af-4217-ea11-b827-00155d408001\",\r\n                \"rowNumber\": 8,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:00:08.187+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"gibbs@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/c0db71af-4217-ea11-b827-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"4e3e14c0-4217-ea11-b827-00155d408001\",\r\n                \"rowNumber\": 9,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:00:13.497+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"System Password Changed\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"gibbs@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/4e3e14c0-4217-ea11-b827-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"c02be358-5117-ea11-b827-00155d408001\",\r\n                \"rowNumber\": 10,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:00:18.783+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"gibbs@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/c02be358-5117-ea11-b827-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"be2a8ac7-956a-ea11-b82d-00155d408001\",\r\n                \"rowNumber\": 11,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:00:24.283+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"lam@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/be2a8ac7-956a-ea11-b82d-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"54432e87-3bdd-ea11-b832-00155d408001\",\r\n                \"rowNumber\": 12,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:00:29.623+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"cruz@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/54432e87-3bdd-ea11-b832-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"5c1c37c2-3bdd-ea11-b832-00155d408001\",\r\n                \"rowNumber\": 13,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:00:34.897+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"burrows@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/5c1c37c2-3bdd-ea11-b832-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"65b0e2e0-3bdd-ea11-b832-00155d408001\",\r\n                \"rowNumber\": 14,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:00:43.253+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"peters@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/65b0e2e0-3bdd-ea11-b832-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"c836c82e-640d-eb11-b835-00155d408001\",\r\n                \"rowNumber\": 15,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:00:48.577+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"rains@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/c836c82e-640d-eb11-b835-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"100face5-1412-eb11-b835-00155d408001\",\r\n                \"rowNumber\": 16,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {\r\n                    \"value\": \"100103\"\r\n                },\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:00:53.84+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"reece@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/100face5-1412-eb11-b835-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"33829dc6-1512-eb11-b835-00155d408001\",\r\n                \"rowNumber\": 17,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {\r\n                    \"value\": \"35\"\r\n                },\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:00:59.17+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"SweetLife Head Office and Wholesale Center Purchase Order #000026 is now available\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"sale@allfrm.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/33829dc6-1512-eb11-b835-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"34da06b5-9712-eb11-b835-00155d408001\",\r\n                \"rowNumber\": 18,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:01:04.527+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"simpson@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/34da06b5-9712-eb11-b835-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"6c13170d-7c14-eb11-b836-00155d408001\",\r\n                \"rowNumber\": 19,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:01:09.86+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"ewatson@toadgreen.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/6c13170d-7c14-eb11-b836-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"1e777949-7c14-eb11-b836-00155d408001\",\r\n                \"rowNumber\": 20,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:01:15.207+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"rthompson@toadgreen.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/1e777949-7c14-eb11-b836-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"9fa9d406-f214-eb11-b836-00155d408001\",\r\n                \"rowNumber\": 21,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:01:20.51+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"wendell@toadgreen.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/9fa9d406-f214-eb11-b836-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"dd379930-f214-eb11-b836-00155d408001\",\r\n                \"rowNumber\": 22,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:01:25.813+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"jjasper@toadgreen.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/dd379930-f214-eb11-b836-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"cb6ebd23-f314-eb11-b836-00155d408001\",\r\n                \"rowNumber\": 23,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:01:31.163+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"jwagner@toadgreen.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/cb6ebd23-f314-eb11-b836-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"e2355848-f314-eb11-b836-00155d408001\",\r\n                \"rowNumber\": 24,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:01:36.533+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"smith@toadgreen.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/e2355848-f314-eb11-b836-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"4a2c7f48-f414-eb11-b836-00155d408001\",\r\n                \"rowNumber\": 25,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:01:41.85+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"bsanchez@toadgreen.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/4a2c7f48-f414-eb11-b836-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"e4ece3bf-f614-eb11-b836-00155d408001\",\r\n                \"rowNumber\": 26,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:01:47.2+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"epsmith@toadgreen.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/e4ece3bf-f614-eb11-b836-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"fa3749b6-3c39-eb11-b839-00155d408001\",\r\n                \"rowNumber\": 27,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:01:52.533+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"garcia@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/fa3749b6-3c39-eb11-b839-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"6154709f-3d39-eb11-b839-00155d408001\",\r\n                \"rowNumber\": 28,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:01:57.933+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"jeff.vega@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/6154709f-3d39-eb11-b839-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"9a0e1ff6-2572-eb11-b83e-00155d408001\",\r\n                \"rowNumber\": 29,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {\r\n                    \"value\": \"100103\"\r\n                },\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:02:03.293+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Password Recovery\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"gibbs@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/9a0e1ff6-2572-eb11-b83e-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"79345280-397b-eb11-b841-00155d408001\",\r\n                \"rowNumber\": 30,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:02:08.837+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"blevy@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/79345280-397b-eb11-b841-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"d5c2eec8-397b-eb11-b841-00155d408001\",\r\n                \"rowNumber\": 31,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:02:14.123+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company2 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"bshook@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/d5c2eec8-397b-eb11-b841-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"038b3bf7-b492-eb11-b844-00155d408001\",\r\n                \"rowNumber\": 32,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:02:19.43+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"jstevens@sweetlife.example.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/038b3bf7-b492-eb11-b844-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"8540ad49-9aa6-eb11-b846-00155d408001\",\r\n                \"rowNumber\": 33,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"SweetLife Support\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"Jeffrey Vega\\\" <support@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {\r\n                    \"value\": \"100204\"\r\n                },\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:02:36.163+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"[Case #000011] Which vegetables can be juiced by using JUICER10?\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"\\\"Beverly Hail\\\" <beverly.abakery@example.com>\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/8540ad49-9aa6-eb11-b846-00155d408001/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"d78cc53a-c57d-ec11-b872-00155d408a02\",\r\n                \"rowNumber\": 34,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-01-25T12:57:41.19+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"mdavis@sweetequip.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/d78cc53a-c57d-ec11-b872-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"05f7430b-c77d-ec11-b872-00155d408a02\",\r\n                \"rowNumber\": 35,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-01-25T13:10:48.337+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"System Password Changed\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"mdavis@sweetequip.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/05f7430b-c77d-ec11-b872-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"6e3c46b5-318f-ec11-b873-00155d408a02\",\r\n                \"rowNumber\": 36,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"Kimberly Gibbs\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {\r\n                    \"value\": \"100103\"\r\n                },\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-02-16T17:07:12.973+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"pwoods@toadgreen.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/6e3c46b5-318f-ec11-b873-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"356dcad6-318f-ec11-b873-00155d408a02\",\r\n                \"rowNumber\": 37,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"Kimberly Gibbs\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {\r\n                    \"value\": \"100103\"\r\n                },\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-02-16T17:08:07.573+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"System Password Changed\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"pwoods@toadgreen.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/356dcad6-318f-ec11-b873-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"450d1636-69f1-ec11-b87e-00155d408a02\",\r\n                \"rowNumber\": 38,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-06-21T16:51:27.803+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"System Password Changed\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"esmith@sweetequip.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/450d1636-69f1-ec11-b87e-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"743edd66-69f1-ec11-b87e-00155d408a02\",\r\n                \"rowNumber\": 39,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-06-21T16:52:42.743+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"System Password Changed\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"rmartinez@sweetequip.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/743edd66-69f1-ec11-b87e-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"94aaf777-69f1-ec11-b87e-00155d408a02\",\r\n                \"rowNumber\": 40,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-06-21T16:53:10.057+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"System Password Changed\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"lcole@sweetequip.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/94aaf777-69f1-ec11-b87e-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"d5300ccc-4dfa-ec11-b87f-00155d408a02\",\r\n                \"rowNumber\": 41,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"Kimberly Gibbs\\\" <system@sweetlife.example.com>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {\r\n                    \"value\": \"100103\"\r\n                },\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-07-03T00:27:47.01+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"hgimmet@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/d5300ccc-4dfa-ec11-b87f-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"da6e9d06-4efa-ec11-b87f-00155d408a02\",\r\n                \"rowNumber\": 42,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"Kimberly Gibbs\\\" <system@sweetlife.example.com>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {\r\n                    \"value\": \"100103\"\r\n                },\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-07-03T00:29:23.7+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"jhanson@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/da6e9d06-4efa-ec11-b87f-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"076b4734-4efa-ec11-b87f-00155d408a02\",\r\n                \"rowNumber\": 43,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"Kimberly Gibbs\\\" <system@sweetlife.example.com>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {\r\n                    \"value\": \"100103\"\r\n                },\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-07-03T00:30:46.843+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"vpanger@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/076b4734-4efa-ec11-b87f-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"73623564-4efa-ec11-b87f-00155d408a02\",\r\n                \"rowNumber\": 44,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"Kimberly Gibbs\\\" <system@sweetlife.example.com>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {\r\n                    \"value\": \"100103\"\r\n                },\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-07-03T00:32:00.743+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"dsantana@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/73623564-4efa-ec11-b87f-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"4eadc0a4-4efa-ec11-b87f-00155d408a02\",\r\n                \"rowNumber\": 45,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"Kimberly Gibbs\\\" <system@sweetlife.example.com>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {\r\n                    \"value\": \"100103\"\r\n                },\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-07-03T00:33:49.143+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"sotterbean@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/4eadc0a4-4efa-ec11-b87f-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"ee584bc8-4efa-ec11-b87f-00155d408a02\",\r\n                \"rowNumber\": 46,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"Kimberly Gibbs\\\" <system@sweetlife.example.com>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {\r\n                    \"value\": \"100103\"\r\n                },\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-07-03T00:34:48.527+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"awinston@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/ee584bc8-4efa-ec11-b87f-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"a2c3bfe1-4efa-ec11-b87f-00155d408a02\",\r\n                \"rowNumber\": 47,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"Kimberly Gibbs\\\" <system@sweetlife.example.com>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {\r\n                    \"value\": \"100103\"\r\n                },\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-07-03T00:35:40.237+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"jkinlear@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/a2c3bfe1-4efa-ec11-b87f-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"7d132407-4ffa-ec11-b87f-00155d408a02\",\r\n                \"rowNumber\": 48,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"Kimberly Gibbs\\\" <system@sweetlife.example.com>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {\r\n                    \"value\": \"100103\"\r\n                },\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-07-03T00:36:33.897+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"asanchez@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/7d132407-4ffa-ec11-b87f-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"dda93e21-4ffa-ec11-b87f-00155d408a02\",\r\n                \"rowNumber\": 49,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"Kimberly Gibbs\\\" <system@sweetlife.example.com>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {\r\n                    \"value\": \"100103\"\r\n                },\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-07-03T00:37:26.86+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"pfarrall@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/dda93e21-4ffa-ec11-b87f-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"dc416a41-4ffa-ec11-b87f-00155d408a02\",\r\n                \"rowNumber\": 50,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"Kimberly Gibbs\\\" <system@sweetlife.example.com>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {\r\n                    \"value\": \"100103\"\r\n                },\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-07-03T00:38:11.76+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"treinstein@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/dc416a41-4ffa-ec11-b87f-00155d408a02/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"887634e9-3dd1-ec11-8366-06bb90512dba\",\r\n                \"rowNumber\": 51,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-05-11T18:23:28.313+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"cfrank@sweetequip.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/887634e9-3dd1-ec11-8366-06bb90512dba/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"7e44a4da-3ed1-ec11-8366-06bb90512dba\",\r\n                \"rowNumber\": 52,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-05-11T18:30:12.633+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"esmith@sweetequip.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/7e44a4da-3ed1-ec11-8366-06bb90512dba/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"2c9196a4-3fd1-ec11-8366-06bb90512dba\",\r\n                \"rowNumber\": 53,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-05-11T18:35:51.093+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"lcole@sweetequip.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/2c9196a4-3fd1-ec11-8366-06bb90512dba/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"0e36b450-40d1-ec11-8366-06bb90512dba\",\r\n                \"rowNumber\": 54,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-05-11T18:40:40.053+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"rmartinez@sweetequip.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/0e36b450-40d1-ec11-8366-06bb90512dba/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"de44198d-752e-ed11-836a-06bb90512dba\",\r\n                \"rowNumber\": 55,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.example.com>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2022-09-07T09:26:03.53+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"m.parker@sweetlife.example.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/de44198d-752e-ed11-836a-06bb90512dba/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"087a61e1-0531-ed11-836a-06bb90512dba\",\r\n                \"rowNumber\": 56,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.example.com>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2022-09-10T15:44:15.303+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"mmyers@sweetequip.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/087a61e1-0531-ed11-836a-06bb90512dba/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"a8dff443-054a-ed11-836c-06bb90512dba\",\r\n                \"rowNumber\": 57,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.example.com>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2022-10-12T11:12:12.16+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the U100 system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"ecarver@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/a8dff443-054a-ed11-836c-06bb90512dba/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"97982163-054a-ed11-836c-06bb90512dba\",\r\n                \"rowNumber\": 58,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.example.com>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2022-10-12T11:13:41.48+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"System Password Changed\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"ecarver@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/97982163-054a-ed11-836c-06bb90512dba/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"6bbd4390-0210-e911-9fbe-7c5cf8918e20\",\r\n                \"rowNumber\": 59,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:02:25.02+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"jcarrey@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/6bbd4390-0210-e911-9fbe-7c5cf8918e20/{filename}\"\r\n                }\r\n            },\r\n            {\r\n                \"id\": \"b4f6cca4-0210-e911-9fbe-7c5cf8918e20\",\r\n                \"rowNumber\": 60,\r\n                \"note\": {\r\n                    \"value\": \"\"\r\n                },\r\n                \"EmailAccount\": {\r\n                    \"value\": \"System\"\r\n                },\r\n                \"From\": {\r\n                    \"value\": \"\\\"System\\\" <system@sweetlife.con>\"\r\n                },\r\n                \"MailStatus\": {\r\n                    \"value\": \"Pending Processing\"\r\n                },\r\n                \"Owner\": {},\r\n                \"Selected\": { \"value\": false },\r\n                \"StartDate\": {\r\n                    \"value\": \"2023-12-03T15:02:30.333+03:00\"\r\n                },\r\n                \"Subject\": {\r\n                    \"value\": \"Welcome to the Company system\"\r\n                },\r\n                \"To\": {\r\n                    \"value\": \"aknorr@sweetlife.com\"\r\n                },\r\n                \"custom\": {},\r\n                \"_links\": {\r\n                    \"files:put\": \"/AcumaticaERP/entity/Default/22.200.001/files/PX.SM.EmailProcessingMaint/FilteredItems/b4f6cca4-0210-e911-9fbe-7c5cf8918e20/{filename}\"\r\n                }\r\n            }\r\n        ],\r\n        \"Type\": {\r\n            \"value\": \"All\"\r\n        },\r\n        \"custom\": {}\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "https://localhost/AcumaticaERP/entity/Default/22.200.001/EmailProcessing/ProcessEmailProcessing",
-									"protocol": "https",
+									"raw": "{{EndpointURL}}EmailProcessing/ProcessEmailProcessing",
 									"host": [
-										"localhost"
+										"{{EndpointURL}}EmailProcessing"
 									],
 									"path": [
-										"AcumaticaERP",
-										"entity",
-										"Default",
-										"22.200.001",
-										"EmailProcessing",
 										"ProcessEmailProcessing"
 									]
 								}
@@ -2908,12 +2883,12 @@
 									"            {\r",
 									"                //Sign out\r",
 									"                var url = pm.collectionVariables.get('InstanceURL');\r",
-									"                pm.acuFunc.singOutFunction(pm, url, 'Retrieve a File Attached to a Record');\r",
+									"                pm.acuFunc.singOutFunction(pm, url);\r",
 									"            }\r",
 									"        });\r",
 									"    };\r",
 									"}\r",
-									""
+									"postman.setNextRequest('Retrieve a File Attached to a Record');"
 								],
 								"type": "text/javascript"
 							}
@@ -2970,17 +2945,11 @@
 									"raw": "{\r\n    \"Entity\": {\"id\": \"e269bafb-a6c0-4463-a3ad-e8b3eab203d4\"}\r\n}"
 								},
 								"url": {
-									"raw": "https://localhost/AcumaticaERP/entity/Default/22.200.001/EmailProcessing/ProcessAllEmailProcessing",
-									"protocol": "https",
+									"raw": "{{EndpointURL}}EmailProcessing/ProcessAllEmailProcessing",
 									"host": [
-										"localhost"
+										"{{EndpointURL}}EmailProcessing"
 									],
 									"path": [
-										"AcumaticaERP",
-										"entity",
-										"Default",
-										"22.200.001",
-										"EmailProcessing",
 										"ProcessAllEmailProcessing"
 									]
 								}
@@ -3091,7 +3060,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Attach a File to a Record\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Attach a File to a Record\");"
 								],
 								"type": "text/javascript"
 							}
@@ -3146,17 +3116,11 @@
 									}
 								],
 								"url": {
-									"raw": "https://localhost/AcumaticaERP/entity/Default/22.200.001/files/e77c0c80-2296-4ef9-9588-877692933f31",
-									"protocol": "https",
+									"raw": "{{EndpointURL}}files/e77c0c80-2296-4ef9-9588-877692933f31",
 									"host": [
-										"localhost"
+										"{{EndpointURL}}files"
 									],
 									"path": [
-										"AcumaticaERP",
-										"entity",
-										"Default",
-										"22.200.001",
-										"files",
 										"e77c0c80-2296-4ef9-9588-877692933f31"
 									]
 								}
@@ -3244,7 +3208,8 @@
 									"});\r",
 									"//Sign out and set next request \r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the Schema of Custom Fields\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve the Schema of Custom Fields\");"
 								],
 								"type": "text/javascript"
 							}
@@ -3302,17 +3267,11 @@
 									}
 								},
 								"url": {
-									"raw": "https://localhost/AcumaticaERP/entity/Default/22.200.001/files/PX.Objects.IN.InventoryItemMaint/Item/a0f8594a-7de2-e811-b816-00155d408001/T2MCRO.jpg",
-									"protocol": "https",
+									"raw": "{{EndpointURL}}files/PX.Objects.IN.InventoryItemMaint/Item/a0f8594a-7de2-e811-b816-00155d408001/T2MCRO.jpg",
 									"host": [
-										"localhost"
+										"{{EndpointURL}}files"
 									],
 									"path": [
-										"AcumaticaERP",
-										"entity",
-										"Default",
-										"22.200.001",
-										"files",
 										"PX.Objects.IN.InventoryItemMaint",
 										"Item",
 										"a0f8594a-7de2-e811-b816-00155d408001",
@@ -3383,7 +3342,8 @@
 									"\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Change the Business Date or Current Branch\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Change the Business Date or Current Branch\");"
 								],
 								"type": "text/javascript"
 							}
@@ -4054,7 +4014,8 @@
 									"\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the Acumatica ERP Version and the List of Endpoints\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve the Acumatica ERP Version and the List of Endpoints\");"
 								],
 								"type": "text/javascript"
 							}
@@ -4223,7 +4184,8 @@
 									"\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create an Account Group\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create an Account Group\");"
 								],
 								"type": "text/javascript"
 							}
@@ -4378,9 +4340,9 @@
 									"  \r",
 									"  //Sign out and set the next request\r",
 									"  var url = pm.collectionVariables.get('InstanceURL');\r",
-									"  pm.acuFunc.singOutFunction(pm, url, \"Specify the Default Account of an Account Group\");\r",
+									"  pm.acuFunc.singOutFunction(pm, url);\r",
 									"});\r",
-									""
+									"postman.setNextRequest(\"Specify the Default Account of an Account Group\");"
 								],
 								"type": "text/javascript"
 							}
@@ -4526,7 +4488,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Remove an Account from a Group\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Remove an Account from a Group\");"
 								],
 								"type": "text/javascript"
 							}
@@ -4665,9 +4628,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Get General Ledger Transactions for Some Period\");\r",
-									"\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Get General Ledger Transactions for Some Period\");"
 								],
 								"type": "text/javascript"
 							}
@@ -4816,7 +4778,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Case\");\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Case\");\r",
 									"\r",
 									""
 								],
@@ -4979,7 +4942,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Add an Account to an Account Group\");\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Add an Account to an Account Group\");\r",
 									"\r",
 									"\r",
 									""
@@ -5126,8 +5090,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Accounts in a Group\");\r",
-									"\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve the List of Accounts in a Group\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -5277,8 +5241,8 @@
 									"});\r",
 									"//Sign out and the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Link a Case to Another Case\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Link a Case to Another Case\");"
 								],
 								"type": "text/javascript"
 							}
@@ -5421,8 +5385,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Customers with Contacts\");\r",
-									"\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve the List of Customers with Contacts\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -5566,7 +5530,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Bill for Particular Lines of a Purchase Order\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Bill for Particular Lines of a Purchase Order\");"
 								],
 								"type": "text/javascript"
 							}
@@ -5723,7 +5688,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'Create a Bill for Particular Lines of a Purchase Receipt');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest('Create a Bill for Particular Lines of a Purchase Receipt');\r",
 									""
 								],
 								"type": "text/javascript"
@@ -5895,7 +5861,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Bill of Material\");\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Bill of Material\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -6424,8 +6391,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'Retrieve the Bills of Material');\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest('Retrieve the Bills of Material');"
 								],
 								"type": "text/javascript"
 							}
@@ -6579,8 +6546,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,\"Retrieve the Details of Bill of Material's Operations\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve the Details of Bill of Material's Operations\");"
 								],
 								"type": "text/javascript"
 							}
@@ -6713,8 +6680,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'Retrieve the List of Business Accounts');\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest('Retrieve the List of Business Accounts');"
 								],
 								"type": "text/javascript"
 							}
@@ -6829,8 +6796,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the Companies' Structure\");\r",
-									"\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve the Companies' Structure\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -6977,8 +6944,8 @@
 									"});\r",
 									"//Sign out and the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create an Activity that is Linked to a Case\");\r",
-									"\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create an Activity that is Linked to a Case\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -7134,8 +7101,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Customer\");\r",
-									"\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Customer\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -7308,8 +7275,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Contact with Attributes\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Contact with Attributes\");"
 								],
 								"type": "text/javascript"
 							}
@@ -7480,8 +7447,7 @@
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
 									"//Set the next request\r",
-									"postman.setNextRequest(\"Deactivate a Contact\");\r",
-									""
+									"postman.setNextRequest(\"Deactivate a Contact\");"
 								],
 								"type": "text/javascript"
 							}
@@ -7640,8 +7606,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Contacts\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve the List of Contacts\");"
 								],
 								"type": "text/javascript"
 							}
@@ -7812,8 +7778,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Link Multiple Contacts to a Customer\");\r",
-									"\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Link Multiple Contacts to a Customer\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -7971,8 +7937,9 @@
 									"  });\r",
 									"  //Sign out and set the next request\r",
 									"  var url = pm.collectionVariables.get('InstanceURL');\r",
-									"  pm.acuFunc.singOutFunction(pm, url, \"Create an Employee\");\r",
-									"});"
+									"  pm.acuFunc.singOutFunction(pm, url);\r",
+									"});\r",
+									"postman.setNextRequest(\"Create an Employee\");"
 								],
 								"type": "text/javascript"
 							}
@@ -8122,7 +8089,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create an Activity that is Linked to a Customer\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create an Activity that is Linked to a Customer\");"
 								],
 								"type": "text/javascript"
 							}
@@ -8270,7 +8238,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Update a Customer\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Update a Customer\");"
 								],
 								"type": "text/javascript"
 							}
@@ -8409,7 +8378,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the Shipping Contact of a Customer\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve the Shipping Contact of a Customer\");"
 								],
 								"type": "text/javascript"
 							}
@@ -8690,7 +8660,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Lead\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Lead\");"
 								],
 								"type": "text/javascript"
 							}
@@ -8825,7 +8796,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
+									"/* pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"pm.test(\"The TST deduction code has been created\", function (){\r",
@@ -8836,7 +8807,7 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Status.value).to.be.eql('Active');\r",
 									"});\r",
-									"postman.setNextRequest(\"\");"
+									"postman.setNextRequest(\"\");*/"
 								],
 								"type": "text/javascript"
 							}
@@ -9101,7 +9072,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve Information about an Employee\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve Information about an Employee\");"
 								],
 								"type": "text/javascript"
 							}
@@ -9248,7 +9220,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create an Inventory Issue\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create an Inventory Issue\");"
 								],
 								"type": "text/javascript"
 							}
@@ -9885,7 +9858,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Release an Inventory Issue\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Release an Inventory Issue\");"
 								],
 								"type": "text/javascript"
 							}
@@ -10036,57 +10010,58 @@
 									"});\r",
 									"if (pm.response.code === 202) {\r",
 									"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
-									"var requestStatus = {\r",
-									"    url: url,\r",
-									"    method: 'GET',\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
-									"    }\r",
-									"};\r",
-									"myFunction();\r",
-									"function myFunction(){\r",
-									"pm.sendRequest(requestStatus,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
-									"\r",
-									"  if(response.code != 204)\r",
-									"{\r",
-									"    setTimeout(function(){},100000);\r",
+									"    var requestStatus = {\r",
+									"        url: url,\r",
+									"        method: 'GET',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        }\r",
+									"    };\r",
 									"    myFunction();\r",
-									"}\r",
-									"else\r",
-									"{\r",
-									"    var url = pm.collectionVariables.get('EndpointURL') + 'InventoryIssue/000055?$select=Status';\r",
-									"var request000055 = {\r",
-									"    url: url,\r",
-									"    method: 'GET',\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
-									"    }\r",
-									"};\r",
-									"pm.sendRequest(request000055,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
+									"    function myFunction(){\r",
+									"        pm.sendRequest(requestStatus,  (error, response) => {\r",
+									"            if (error) {\r",
+									"                console.log(error);\r",
+									"            }\r",
 									"\r",
-									"  pm.test('Response for 000055 should be OK to process', () => {\r",
-									"    pm.expect(error).to.equal(null);\r",
-									"    pm.expect(response).to.have.property('code', 200);\r",
-									"    pm.expect(response).to.have.property('status', 'OK');\r",
-									"  });\r",
-									"  pm.test(\"Inventory issue should be released\", function (){\r",
-									"    const jsonResponse = response.json();\r",
-									"    pm.expect(jsonResponse.Status.value).to.be.eql('Released');\r",
-									"});\r",
-									"//Sign out and set the next request\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the Available Quantity of an Inventory Item\");\r",
-									"});\r",
+									"            if(response.code != 204)\r",
+									"            {\r",
+									"                setTimeout(function(){},100000);\r",
+									"                myFunction();\r",
+									"            }\r",
+									"            else\r",
+									"            {\r",
+									"                var url = pm.collectionVariables.get('EndpointURL') + 'InventoryIssue/000055?$select=Status';\r",
+									"                var request000055 = {\r",
+									"                    url: url,\r",
+									"                    method: 'GET',\r",
+									"                    header: {\r",
+									"                        'Content-Type': 'application/json'\r",
+									"                    }\r",
+									"                };\r",
+									"                pm.sendRequest(request000055,  (error, response) => {\r",
+									"                    if (error) {\r",
+									"                        console.log(error);\r",
+									"                    }\r",
+									"\r",
+									"                    pm.test('Response for 000055 should be OK to process', () => {\r",
+									"                        pm.expect(error).to.equal(null);\r",
+									"                        pm.expect(response).to.have.property('code', 200);\r",
+									"                        pm.expect(response).to.have.property('status', 'OK');\r",
+									"                    });\r",
+									"                    pm.test(\"Inventory issue should be released\", function (){\r",
+									"                        const jsonResponse = response.json();\r",
+									"                        pm.expect(jsonResponse.Status.value).to.be.eql('Released');\r",
+									"                    });\r",
+									"                    //Sign out and set the next request\r",
+									"                    var url = pm.collectionVariables.get('InstanceURL');\r",
+									"                    pm.acuFunc.singOutFunction(pm, url);\r",
+									"                });\r",
+									"            }\r",
+									"        });\r",
+									"    }\r",
 									"}\r",
-									"});\r",
-									"}\r",
-									"}"
+									"postman.setNextRequest(\"Retrieve the Available Quantity of an Inventory Item\");"
 								],
 								"type": "text/javascript"
 							}
@@ -10241,7 +10216,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Get an Inventory Summary\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Get an Inventory Summary\");"
 								],
 								"type": "text/javascript"
 							}
@@ -10402,7 +10378,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Invoices\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve the List of Invoices\");"
 								],
 								"type": "text/javascript"
 							}
@@ -10831,7 +10808,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Specify the Tax Zone for an Invoice\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Specify the Tax Zone for an Invoice\");"
 								],
 								"type": "text/javascript"
 							}
@@ -11070,7 +11048,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Override Values in the Item Warehouse Details\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Override Values in the Item Warehouse Details\");"
 								],
 								"type": "text/javascript"
 							}
@@ -11239,7 +11218,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a General Ledger Transaction with a Project Code That Does Not Produce a Project Transaction\");\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a General Ledger Transaction with a Project Code That Does Not Produce a Project Transaction\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -11389,8 +11369,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Ledgers\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve the List of Ledgers\");"
 								],
 								"type": "text/javascript"
 							}
@@ -11552,7 +11532,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create an Activity that is Linked to a Lead\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create an Activity that is Linked to a Lead\");"
 								],
 								"type": "text/javascript"
 							}
@@ -11701,7 +11682,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Sales Order from an Opportunity\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Sales Order from an Opportunity\");"
 								],
 								"type": "text/javascript"
 							}
@@ -11842,58 +11824,58 @@
 									"});\r",
 									"if (pm.response.code === 202) {\r",
 									"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
-									"var requestStatus = {\r",
-									"    url: url,\r",
-									"    method: 'GET',\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
-									"    }\r",
-									"};\r",
-									"myFunction();\r",
-									"function myFunction(){\r",
-									"pm.sendRequest(requestStatus,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
-									"\r",
-									"  if(response.code != 204)\r",
-									"{\r",
-									"    setTimeout(function(){},100000);\r",
+									"    var requestStatus = {\r",
+									"        url: url,\r",
+									"        method: 'GET',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        }\r",
+									"    };\r",
 									"    myFunction();\r",
-									"}\r",
-									"else\r",
-									"{\r",
-									"    var url = pm.collectionVariables.get('EndpointURL') + 'Opportunity/000009?$expand=Relations';\r",
-									"var request000009 = {\r",
-									"    url: url,\r",
-									"    method: 'GET',\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
+									"    function myFunction(){\r",
+									"        pm.sendRequest(requestStatus,  (error, response) => {\r",
+									"            if (error) {\r",
+									"                console.log(error);\r",
+									"            }\r",
+									"\r",
+									"            if(response.code != 204)\r",
+									"            {\r",
+									"                setTimeout(function(){},100000);\r",
+									"                myFunction();\r",
+									"            }\r",
+									"            else\r",
+									"            {\r",
+									"                var url = pm.collectionVariables.get('EndpointURL') + 'Opportunity/000009?$expand=Relations';\r",
+									"                var request000009 = {\r",
+									"                    url: url,\r",
+									"                    method: 'GET',\r",
+									"                    header: {\r",
+									"                        'Content-Type': 'application/json'\r",
+									"                    }\r",
+									"                };\r",
+									"                pm.sendRequest(request000009,  (error, response) => {\r",
+									"                    if (error) {\r",
+									"                        console.log(error);\r",
+									"                    }\r",
+									"\r",
+									"                    pm.test('Response for 000009 should be OK to process', () => {\r",
+									"                        pm.expect(error).to.equal(null);\r",
+									"                        pm.expect(response).to.have.property('code', 200);\r",
+									"                        pm.expect(response).to.have.property('status', 'OK');\r",
+									"                    });\r",
+									"                    pm.test(\"Opportunity relations include sales order\", function (){\r",
+									"                        const jsonResponse = response.json();\r",
+									"                        pm.expect(jsonResponse.Relations[1].Type.value).to.be.eql('Sales Order');\r",
+									"                    });\r",
+									"                    //Sign out and set the next request\r",
+									"                    var url = pm.collectionVariables.get('InstanceURL');\r",
+									"                    pm.acuFunc.singOutFunction(pm, url);\r",
+									"                });\r",
+									"            }\r",
+									"        });\r",
 									"    }\r",
-									"};\r",
-									"pm.sendRequest(request000009,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
-									"\r",
-									"  pm.test('Response for 000009 should be OK to process', () => {\r",
-									"    pm.expect(error).to.equal(null);\r",
-									"    pm.expect(response).to.have.property('code', 200);\r",
-									"    pm.expect(response).to.have.property('status', 'OK');\r",
-									"  });\r",
-									"  pm.test(\"Opportunity relations include sales order\", function (){\r",
-									"    const jsonResponse = response.json();\r",
-									"    pm.expect(jsonResponse.Relations[1].Type.value).to.be.eql('Sales Order');\r",
-									"});\r",
-									"//Sign out and set the next request\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Business Account from an Opportunity\");\r",
-									"});\r",
-									"\r",
 									"}\r",
-									"});\r",
-									"}\r",
-									"}"
+									"postman.setNextRequest(\"Create a Business Account from an Opportunity\");"
 								],
 								"type": "text/javascript"
 							}
@@ -12038,58 +12020,58 @@
 									"});\r",
 									"if (pm.response.code === 202) {\r",
 									"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
-									"var requestStatus = {\r",
-									"    url: url,\r",
-									"    method: 'GET',\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
-									"    }\r",
-									"};\r",
-									"myFunction();\r",
-									"function myFunction(){\r",
-									"pm.sendRequest(requestStatus,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
-									"\r",
-									"  if(response.code != 204)\r",
-									"{\r",
-									"    setTimeout(function(){},100000);\r",
+									"    var requestStatus = {\r",
+									"        url: url,\r",
+									"        method: 'GET',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        }\r",
+									"    };\r",
 									"    myFunction();\r",
-									"}\r",
-									"else\r",
-									"{\r",
-									"    var url = pm.collectionVariables.get('EndpointURL') + 'Opportunity/000002?$expand=Relations';\r",
-									"var request000002 = {\r",
-									"    url: url,\r",
-									"    method: 'GET',\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
+									"    function myFunction(){\r",
+									"        pm.sendRequest(requestStatus,  (error, response) => {\r",
+									"            if (error) {\r",
+									"                console.log(error);\r",
+									"            }\r",
+									"\r",
+									"            if(response.code != 204)\r",
+									"            {\r",
+									"                setTimeout(function(){},100000);\r",
+									"                myFunction();\r",
+									"            }\r",
+									"            else\r",
+									"            {\r",
+									"                var url = pm.collectionVariables.get('EndpointURL') + 'Opportunity/000002?$expand=Relations';\r",
+									"                var request000002 = {\r",
+									"                    url: url,\r",
+									"                    method: 'GET',\r",
+									"                    header: {\r",
+									"                        'Content-Type': 'application/json'\r",
+									"                    }\r",
+									"                };\r",
+									"                pm.sendRequest(request000002,  (error, response) => {\r",
+									"                    if (error) {\r",
+									"                        console.log(error);\r",
+									"                    }\r",
+									"\r",
+									"                    pm.test('Response for 000002 should be OK to process', () => {\r",
+									"                        pm.expect(error).to.equal(null);\r",
+									"                        pm.expect(response).to.have.property('code', 200);\r",
+									"                        pm.expect(response).to.have.property('status', 'OK');\r",
+									"                    });\r",
+									"                    pm.test(\"Opportunity relations include business account\", function (){\r",
+									"                        const jsonResponse = response.json();\r",
+									"                        pm.expect(jsonResponse.Relations[0].Type.value).to.be.eql('Business Account');\r",
+									"                    });\r",
+									"                    //Sign out and set the next request\r",
+									"                    var url = pm.collectionVariables.get('InstanceURL');\r",
+									"                    pm.acuFunc.singOutFunction(pm, url);\r",
+									"                });\r",
+									"            }\r",
+									"        });\r",
 									"    }\r",
-									"};\r",
-									"pm.sendRequest(request000002,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
-									"\r",
-									"  pm.test('Response for 000002 should be OK to process', () => {\r",
-									"    pm.expect(error).to.equal(null);\r",
-									"    pm.expect(response).to.have.property('code', 200);\r",
-									"    pm.expect(response).to.have.property('status', 'OK');\r",
-									"  });\r",
-									"  pm.test(\"Opportunity relations include business account\", function (){\r",
-									"    const jsonResponse = response.json();\r",
-									"    pm.expect(jsonResponse.Relations[0].Type.value).to.be.eql('Business Account');\r",
-									"});\r",
-									"//Sign out and set the next request\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create an Accounts Receivable Payment for an Invoice and a Sales Order\");\r",
-									"});\r",
-									"\r",
 									"}\r",
-									"});\r",
-									"}\r",
-									"}"
+									"postman.setNextRequest(\"Create an Accounts Receivable Payment for an Invoice and a Sales Order\");"
 								],
 								"type": "text/javascript"
 							}
@@ -12360,7 +12342,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Release an Accounts Receivable Payment\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Release an Accounts Receivable Payment\");"
 								],
 								"type": "text/javascript"
 							}
@@ -12555,58 +12538,58 @@
 									"});\r",
 									"if (pm.response.code === 202) {\r",
 									"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
-									"var requestStatus = {\r",
-									"    url: url,\r",
-									"    method: 'GET',\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
-									"    }\r",
-									"};\r",
-									"myFunction();\r",
-									"function myFunction(){\r",
-									"pm.sendRequest(requestStatus,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
-									"\r",
-									"  if(response.code != 204)\r",
-									"{\r",
-									"    setTimeout(function(){},100000);\r",
+									"    var requestStatus = {\r",
+									"        url: url,\r",
+									"        method: 'GET',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        }\r",
+									"    };\r",
 									"    myFunction();\r",
-									"}\r",
-									"else\r",
-									"{\r",
-									"    var url = pm.collectionVariables.get('EndpointURL') + 'Payment/Payment/' + pm.collectionVariables.get('PaymentRefNbr');\r",
-									"var requestPayment = {\r",
-									"    url: url,\r",
-									"    method: 'GET',\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
-									"    }\r",
-									"};\r",
-									"pm.sendRequest(requestPayment,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
+									"    function myFunction(){\r",
+									"        pm.sendRequest(requestStatus,  (error, response) => {\r",
+									"            if (error) {\r",
+									"                console.log(error);\r",
+									"            }\r",
 									"\r",
-									"  pm.test('Response for the payment should be OK to process', () => {\r",
-									"    pm.expect(error).to.equal(null);\r",
-									"    pm.expect(response).to.have.property('code', 200);\r",
-									"    pm.expect(response).to.have.property('status', 'OK');\r",
-									"  });\r",
-									"  pm.test(\"Payment status is Open\", function (){\r",
-									"    const jsonResponse = response.json();\r",
-									"    pm.expect(jsonResponse.Status.value).to.be.eql('Open');\r",
-									"});\r",
-									"//Sign out and set the next request\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Payment Method\");\r",
-									"});\r",
+									"            if(response.code != 204)\r",
+									"            {\r",
+									"                setTimeout(function(){},100000);\r",
+									"                myFunction();\r",
+									"            }\r",
+									"            else\r",
+									"            {\r",
+									"                var url = pm.collectionVariables.get('EndpointURL') + 'Payment/Payment/' + pm.collectionVariables.get('PaymentRefNbr');\r",
+									"                var requestPayment = {\r",
+									"                    url: url,\r",
+									"                    method: 'GET',\r",
+									"                    header: {\r",
+									"                        'Content-Type': 'application/json'\r",
+									"                    }\r",
+									"                };\r",
+									"                pm.sendRequest(requestPayment,  (error, response) => {\r",
+									"                    if (error) {\r",
+									"                        console.log(error);\r",
+									"                    }\r",
 									"\r",
+									"                    pm.test('Response for the payment should be OK to process', () => {\r",
+									"                        pm.expect(error).to.equal(null);\r",
+									"                        pm.expect(response).to.have.property('code', 200);\r",
+									"                        pm.expect(response).to.have.property('status', 'OK');\r",
+									"                    });\r",
+									"                    pm.test(\"Payment status is Open\", function (){\r",
+									"                        const jsonResponse = response.json();\r",
+									"                        pm.expect(jsonResponse.Status.value).to.be.eql('Open');\r",
+									"                    });\r",
+									"                    //Sign out and set the next request\r",
+									"                    var url = pm.collectionVariables.get('InstanceURL');\r",
+									"                    pm.acuFunc.singOutFunction(pm, url);\r",
+									"                });\r",
+									"            }\r",
+									"        });\r",
+									"    } \r",
 									"}\r",
-									"});\r",
-									"} \r",
-									"}"
+									"postman.setNextRequest(\"Retrieve Payments One by One\");"
 								],
 								"type": "text/javascript"
 							}
@@ -12762,7 +12745,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Payment Method\");"
 								],
 								"type": "text/javascript"
 							}
@@ -12830,7 +12814,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Project from a Project Template\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Project from a Project Template\");"
 								],
 								"type": "text/javascript"
 							}
@@ -13447,34 +13432,35 @@
 									"});\r",
 									"if (pm.response.code === 202) {\r",
 									"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
-									"var requestStatus = {\r",
-									"    url: url,\r",
-									"    method: 'GET',\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
-									"    }\r",
-									"};\r",
-									"myFunction();\r",
-									"function myFunction(){\r",
-									"pm.sendRequest(requestStatus,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
-									"\r",
-									"  if(response.code != 204)\r",
-									"{\r",
-									"    setTimeout(function(){},100000);\r",
+									"    var requestStatus = {\r",
+									"        url: url,\r",
+									"        method: 'GET',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        }\r",
+									"    };\r",
 									"    myFunction();\r",
+									"    function myFunction(){\r",
+									"        pm.sendRequest(requestStatus,  (error, response) => {\r",
+									"            if (error) {\r",
+									"                console.log(error);\r",
+									"            }\r",
+									"\r",
+									"            if(response.code != 204)\r",
+									"            {\r",
+									"                setTimeout(function(){},100000);\r",
+									"                myFunction();\r",
+									"            }\r",
+									"            else\r",
+									"            {   \r",
+									"                //Sign out and set the next request\r",
+									"                var url = pm.collectionVariables.get('InstanceURL');\r",
+									"                pm.acuFunc.singOutFunction(pm, url);\r",
+									"            }\r",
+									"        });\r",
+									"    } \r",
 									"}\r",
-									"else\r",
-									"{   \r",
-									"    //Sign out and set the next request\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Purchase Order\");\r",
-									"}\r",
-									"});\r",
-									"} \r",
-									"}"
+									"postman.setNextRequest(\"Create a Purchase Order\");"
 								],
 								"type": "text/javascript"
 							}
@@ -13629,7 +13615,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Make a Project Active\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Make a Project Active\");"
 								],
 								"type": "text/javascript"
 							}
@@ -13772,7 +13759,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Specify the Next Billing Date for a Project\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Specify the Next Billing Date for a Project\");"
 								],
 								"type": "text/javascript"
 							}
@@ -13915,8 +13903,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve a Project Task\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve a Project Task\");"
 								],
 								"type": "text/javascript"
 							}
@@ -14067,34 +14055,35 @@
 									"});\r",
 									"if (pm.response.code === 202) {\r",
 									"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
-									"var requestStatus = {\r",
-									"    url: url,\r",
-									"    method: 'GET',\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
-									"    }\r",
-									"};\r",
-									"myFunction();\r",
-									"function myFunction(){\r",
-									"pm.sendRequest(requestStatus,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
-									"\r",
-									"  if(response.code != 204)\r",
-									"{\r",
-									"    setTimeout(function(){},100000);\r",
+									"    var requestStatus = {\r",
+									"        url: url,\r",
+									"        method: 'GET',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        }\r",
+									"    };\r",
 									"    myFunction();\r",
+									"    function myFunction(){\r",
+									"        pm.sendRequest(requestStatus,  (error, response) => {\r",
+									"            if (error) {\r",
+									"                console.log(error);\r",
+									"            }\r",
+									"\r",
+									"            if(response.code != 204)\r",
+									"            {\r",
+									"                setTimeout(function(){},100000);\r",
+									"                myFunction();\r",
+									"            }\r",
+									"            else\r",
+									"            {   \r",
+									"                //Sign out and set the next request\r",
+									"                var url = pm.collectionVariables.get('InstanceURL');\r",
+									"                pm.acuFunc.singOutFunction(pm, url);\r",
+									"            }\r",
+									"        });\r",
+									"    } \r",
 									"}\r",
-									"else\r",
-									"{   \r",
-									"    //Sign out and set the next request\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Pro Forma Invoices of a Project\");\r",
-									"}\r",
-									"});\r",
-									"} \r",
-									"}"
+									"postman.setNextRequest(\"Retrieve the List of Pro Forma Invoices of a Project\");"
 								],
 								"type": "text/javascript"
 							}
@@ -14248,7 +14237,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Send a Pro Forma Invoice by Email\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Send a Pro Forma Invoice by Email\");"
 								],
 								"type": "text/javascript"
 							}
@@ -14391,7 +14381,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Invoke Project Billing\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Invoke Project Billing\");"
 								],
 								"type": "text/javascript"
 							}
@@ -14545,7 +14536,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Activate a Project Task\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Activate a Project Task\");"
 								],
 								"type": "text/javascript"
 							}
@@ -14695,9 +14687,9 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Specify the Progress of a Project Task\");\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
 									"});\r",
-									""
+									"postman.setNextRequest(\"Specify the Progress of a Project Task\");"
 								],
 								"type": "text/javascript"
 							}
@@ -14972,7 +14964,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Purchase Order with Tax Details Overridden\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Purchase Order with Tax Details Overridden\");"
 								],
 								"type": "text/javascript"
 							}
@@ -15135,7 +15128,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Purchase Receipt\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Purchase Receipt\");"
 								],
 								"type": "text/javascript"
 							}
@@ -15317,8 +15311,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Release a Purchase Receipt\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Release a Purchase Receipt\");"
 								],
 								"type": "text/javascript"
 							}
@@ -15477,7 +15471,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Purchase Return from a Purchase Receipt Record\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Purchase Return from a Purchase Receipt Record\");"
 								],
 								"type": "text/javascript"
 							}
@@ -15621,7 +15616,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"//Test the result\r",
+									"/*//Test the result\r",
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
@@ -15642,7 +15637,7 @@
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
 									"//Set the next request\r",
-									"postman.setNextRequest(\"\");\r",
+									"postman.setNextRequest(\"\");*/\r",
 									""
 								],
 								"type": "text/javascript"
@@ -15801,8 +15796,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Purchase Return from a Purchase Receipt\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Purchase Return from a Purchase Receipt\");"
 								],
 								"type": "text/javascript"
 							}
@@ -15960,7 +15955,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Purchase Return for Particular Items\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Purchase Return for Particular Items\");"
 								],
 								"type": "text/javascript"
 							}
@@ -16118,8 +16114,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Remove a Sales Invoice from Hold\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Remove a Sales Invoice from Hold\");"
 								],
 								"type": "text/javascript"
 							}
@@ -16380,58 +16376,58 @@
 									"//Check the status of the operation\r",
 									"if (pm.response.code === 202) {\r",
 									"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
-									"var requestStatus = {\r",
-									"    url: url,\r",
-									"    method: 'GET',\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
-									"    }\r",
-									"};\r",
-									"myFunction();\r",
-									"function myFunction(){\r",
-									"pm.sendRequest(requestStatus,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
-									"\r",
-									"  if(response.code != 204)\r",
-									"{\r",
-									"    setTimeout(function(){},100000);\r",
+									"    var requestStatus = {\r",
+									"        url: url,\r",
+									"        method: 'GET',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        }\r",
+									"    };\r",
 									"    myFunction();\r",
-									"}\r",
-									"else\r",
-									"{\r",
-									"    var url = pm.collectionVariables.get('EndpointURL') + 'PurchaseReceipt/' + pm.collectionVariables.get('purchaseReceiptID');\r",
-									"var requestPurchaseReceipt = {\r",
-									"    url: url,\r",
-									"    method: 'GET',\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
-									"    }\r",
-									"};\r",
-									"pm.sendRequest(requestPurchaseReceipt,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
+									"    function myFunction(){\r",
+									"        pm.sendRequest(requestStatus,  (error, response) => {\r",
+									"            if (error) {\r",
+									"                console.log(error);\r",
+									"            }\r",
 									"\r",
-									"  pm.test('Response for the purchase receipt should be OK to process', () => {\r",
-									"    pm.expect(error).to.equal(null);\r",
-									"    pm.expect(response).to.have.property('code', 200);\r",
-									"    pm.expect(response).to.have.property('status', 'OK');\r",
-									"  });\r",
-									"  pm.test(\"Purchase receipt status is Released\", function (){\r",
-									"    const jsonResponse = response.json();\r",
-									"    pm.expect(jsonResponse.Status.value).to.be.eql('Released');\r",
-									"});\r",
-									"//Sign out and set the next request\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Insert Lines with Allocations (with Location) to a PO Receipt\");\r",
-									"});\r",
+									"            if(response.code != 204)\r",
+									"            {\r",
+									"                setTimeout(function(){},100000);\r",
+									"                myFunction();\r",
+									"            }\r",
+									"            else\r",
+									"            {\r",
+									"                var url = pm.collectionVariables.get('EndpointURL') + 'PurchaseReceipt/' + pm.collectionVariables.get('purchaseReceiptID');\r",
+									"                var requestPurchaseReceipt = {\r",
+									"                    url: url,\r",
+									"                    method: 'GET',\r",
+									"                    header: {\r",
+									"                        'Content-Type': 'application/json'\r",
+									"                    }\r",
+									"                };\r",
+									"                pm.sendRequest(requestPurchaseReceipt,  (error, response) => {\r",
+									"                    if (error) {\r",
+									"                        console.log(error);\r",
+									"                    }\r",
 									"\r",
+									"                    pm.test('Response for the purchase receipt should be OK to process', () => {\r",
+									"                        pm.expect(error).to.equal(null);\r",
+									"                        pm.expect(response).to.have.property('code', 200);\r",
+									"                        pm.expect(response).to.have.property('status', 'OK');\r",
+									"                    });\r",
+									"                    pm.test(\"Purchase receipt status is Released\", function (){\r",
+									"                        const jsonResponse = response.json();\r",
+									"                        pm.expect(jsonResponse.Status.value).to.be.eql('Released');\r",
+									"                    });\r",
+									"                    //Sign out and set the next request\r",
+									"                    var url = pm.collectionVariables.get('InstanceURL');\r",
+									"                    pm.acuFunc.singOutFunction(pm, url);\r",
+									"                });\r",
+									"            }\r",
+									"        });\r",
+									"    } \r",
 									"}\r",
-									"});\r",
-									"} \r",
-									"}"
+									"postman.setNextRequest(\"Insert Lines with Allocations (with Location) to a PO Receipt\");"
 								],
 								"type": "text/javascript"
 							}
@@ -16585,7 +16581,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Invoke Release of an Invoice\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Invoke Release of an Invoice\");"
 								],
 								"type": "text/javascript"
 							}
@@ -16717,7 +16714,8 @@
 									"pm.collectionVariables.set(\"SalesInvoiceStatusUrl\", pm.response.headers.get(\"Location\"));\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the Status of the Release Operation\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve the Status of the Release Operation\");"
 								],
 								"type": "text/javascript"
 							}
@@ -16870,7 +16868,8 @@
 									"{\r",
 									"    //Sign out and set next request\r",
 									"    var url = pm.collectionVariables.get('InstanceURL');\r",
-									"    pm.acuFunc.singOutFunction(pm, url, \"Check the Status of the Sales Invoice\");\r",
+									"    pm.acuFunc.singOutFunction(pm, url);\r",
+									"    postman.setNextRequest(\"Check the Status of the Sales Invoice\");\r",
 									"}"
 								],
 								"type": "text/javascript"
@@ -16995,7 +16994,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Credit Memo\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Credit Memo\");"
 								],
 								"type": "text/javascript"
 							}
@@ -17575,7 +17575,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve a List of Sales Orders in Batches\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve a List of Sales Orders in Batches\");"
 								],
 								"type": "text/javascript"
 							}
@@ -17721,7 +17722,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Sales Order with the Unit of Measure Specified\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Sales Order with the Unit of Measure Specified\");"
 								],
 								"type": "text/javascript"
 							}
@@ -17883,8 +17885,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, 'Create a Sales Order with a Credit Card Payment');\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest('Create a Sales Order with a Credit Card Payment');"
 								],
 								"type": "text/javascript"
 							}
@@ -18054,8 +18056,8 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'Create a Sales Order with a Captured Credit Card Payment');\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest('Create a Sales Order with a Captured Credit Card Payment');"
 								],
 								"type": "text/javascript"
 							}
@@ -18225,8 +18227,8 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'Create a Sales Order with an Authorized Credit Card Payment');\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest('Create a Sales Order with an Authorized Credit Card Payment');"
 								],
 								"type": "text/javascript"
 							}
@@ -18396,8 +18398,8 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'Create a Sales Order with an External Credit Card Payment');\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest('Create a Sales Order with an External Credit Card Payment');"
 								],
 								"type": "text/javascript"
 							}
@@ -18567,8 +18569,8 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'Create a Return for Credit Without Validation of the Card Refund Against the Original Transaction');\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest('Create a Return for Credit Without Validation of the Card Refund Against the Original Transaction')"
 								],
 								"type": "text/javascript"
 							}
@@ -18768,8 +18770,8 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url,'Retrieve the Sales Order with Details');\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest('Retrieve the Sales Order with Details');"
 								],
 								"type": "text/javascript"
 							}
@@ -18913,7 +18915,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Update the Detail Lines of a Sales Order\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Update the Detail Lines of a Sales Order\");"
 								],
 								"type": "text/javascript"
 							}
@@ -19079,7 +19082,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Shipment from a Sales Order\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Shipment from a Sales Order\");"
 								],
 								"type": "text/javascript"
 							}
@@ -19263,65 +19267,63 @@
 									"//Check the status of the operation\r",
 									"if (pm.response.code === 202) {\r",
 									"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
-									"var requestStatus = {\r",
-									"    url: url,\r",
-									"    method: 'GET',\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
-									"    }\r",
-									"};\r",
-									"myFunction();\r",
-									"function myFunction(){\r",
-									"pm.sendRequest(requestStatus,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
-									"\r",
-									"  if(response.code != 204)\r",
-									"{\r",
-									"    setTimeout(function(){},100000);\r",
+									"    var requestStatus = {\r",
+									"        url: url,\r",
+									"        method: 'GET',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        }\r",
+									"    };\r",
 									"    myFunction();\r",
-									"}\r",
-									"else\r",
-									"{\r",
-									"    var url = pm.collectionVariables.get('EndpointURL') + 'SalesOrder/42bb9a17-a402-e911-b818-00155d408001?$expand=Shipments';\r",
-									"var requestSalesOrder = {\r",
-									"    url: url,\r",
-									"    method: 'GET',\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
-									"    }\r",
-									"};\r",
-									"pm.sendRequest(requestSalesOrder,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
+									"    function myFunction(){\r",
+									"        pm.sendRequest(requestStatus,  (error, response) => {\r",
+									"            if (error) {\r",
+									"                console.log(error);\r",
+									"            }\r",
 									"\r",
-									"  pm.test('Response for the sales order should be OK to process', () => {\r",
-									"    pm.expect(error).to.equal(null);\r",
-									"    pm.expect(response).to.have.property('code', 200);\r",
-									"    pm.expect(response).to.have.property('status', 'OK');\r",
-									"  });\r",
-									"  pm.test(\"Sales order status is Shipping\", function (){\r",
-									"    const jsonResponse = response.json();\r",
-									"    pm.expect(jsonResponse.Status.value).to.be.eql('Shipping');\r",
-									"    });\r",
-									"  pm.test(\"One shipment is included\", function (){\r",
-									"    const jsonResponse = response.json();\r",
-									"    pm.expect(jsonResponse.Shipments).to.has.lengthOf(1);\r",
-									"});\r",
-									"//Sign out\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"            if(response.code != 204)\r",
+									"            {\r",
+									"                setTimeout(function(){},100000);\r",
+									"                myFunction();\r",
+									"            }\r",
+									"            else\r",
+									"            {\r",
+									"                var url = pm.collectionVariables.get('EndpointURL') + 'SalesOrder/42bb9a17-a402-e911-b818-00155d408001?$expand=Shipments';\r",
+									"                var requestSalesOrder = {\r",
+									"                    url: url,\r",
+									"                    method: 'GET',\r",
+									"                    header: {\r",
+									"                        'Content-Type': 'application/json'\r",
+									"                    }\r",
+									"                };\r",
+									"                pm.sendRequest(requestSalesOrder,  (error, response) => {\r",
+									"                    if (error) {\r",
+									"                        console.log(error);\r",
+									"                    }\r",
+									"\r",
+									"                    pm.test('Response for the sales order should be OK to process', () => {\r",
+									"                        pm.expect(error).to.equal(null);\r",
+									"                        pm.expect(response).to.have.property('code', 200);\r",
+									"                        pm.expect(response).to.have.property('status', 'OK');\r",
+									"                    });\r",
+									"                    pm.test(\"Sales order status is Shipping\", function (){\r",
+									"                        const jsonResponse = response.json();\r",
+									"                        pm.expect(jsonResponse.Status.value).to.be.eql('Shipping');\r",
+									"                        });\r",
+									"                    pm.test(\"One shipment is included\", function (){\r",
+									"                        const jsonResponse = response.json();\r",
+									"                        pm.expect(jsonResponse.Shipments).to.has.lengthOf(1);\r",
+									"                    });\r",
+									"                    //Sign out\r",
+									"                    var url = pm.collectionVariables.get('InstanceURL');\r",
+									"                    pm.acuFunc.singOutFunction(pm, url);\r",
+									"                });\r",
+									"            }\r",
+									"        });\r",
+									"    } \r",
+									"}\r",
 									"//Set the next request\r",
-									"    postman.setNextRequest(\"Create a Return Order for Invoices\");\r",
-									"    return;\r",
-									"});\r",
-									"\r",
-									"}\r",
-									"});\r",
-									"} \r",
-									"}"
+									"postman.setNextRequest(\"Create a Return Order for Invoices\");"
 								],
 								"type": "text/javascript"
 							}
@@ -19466,65 +19468,63 @@
 									"//Check the status of the operation\r",
 									"if (pm.response.code === 202) {\r",
 									"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
-									"var requestStatus = {\r",
-									"    url: url,\r",
-									"    method: 'GET',\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
-									"    }\r",
-									"};\r",
-									"myFunction();\r",
-									"function myFunction(){\r",
-									"pm.sendRequest(requestStatus,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
-									"\r",
-									"  if(response.code != 204)\r",
-									"{\r",
-									"    setTimeout(function(){},100000);\r",
+									"    var requestStatus = {\r",
+									"        url: url,\r",
+									"        method: 'GET',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        }\r",
+									"    };\r",
 									"    myFunction();\r",
-									"}\r",
-									"else\r",
-									"{\r",
-									"    var url = pm.collectionVariables.get('EndpointURL') + 'SalesOrder/RM/000127?$expand=Shipments';\r",
-									"var requestSalesOrder = {\r",
-									"    url: url,\r",
-									"    method: 'GET',\r",
-									"    header: {\r",
-									"        'Content-Type': 'application/json'\r",
-									"    }\r",
-									"};\r",
-									"pm.sendRequest(requestSalesOrder,  (error, response) => {\r",
-									"  if (error) {\r",
-									"    console.log(error);\r",
-									"  }\r",
+									"    function myFunction(){\r",
+									"        pm.sendRequest(requestStatus,  (error, response) => {\r",
+									"            if (error) {\r",
+									"                console.log(error);\r",
+									"            }\r",
 									"\r",
-									"  pm.test('Response for the sales order should be OK to process', () => {\r",
-									"    pm.expect(error).to.equal(null);\r",
-									"    pm.expect(response).to.have.property('code', 200);\r",
-									"    pm.expect(response).to.have.property('status', 'OK');\r",
-									"  });\r",
-									"  pm.test(\"Sales order status is Shipping\", function (){\r",
-									"    const jsonResponse = response.json();\r",
-									"    pm.expect(jsonResponse.Status.value).to.be.eql('Shipping');\r",
-									"    });\r",
-									"  pm.test(\"One shipment is included\", function (){\r",
-									"    const jsonResponse = response.json();\r",
-									"    pm.expect(jsonResponse.Shipments).to.has.lengthOf(1);\r",
-									"});\r",
-									"//Sign out\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"            if(response.code != 204)\r",
+									"            {\r",
+									"                setTimeout(function(){},100000);\r",
+									"                myFunction();\r",
+									"            }\r",
+									"            else\r",
+									"            {\r",
+									"                var url = pm.collectionVariables.get('EndpointURL') + 'SalesOrder/RM/000127?$expand=Shipments';\r",
+									"                var requestSalesOrder = {\r",
+									"                    url: url,\r",
+									"                    method: 'GET',\r",
+									"                    header: {\r",
+									"                        'Content-Type': 'application/json'\r",
+									"                    }\r",
+									"                };\r",
+									"                pm.sendRequest(requestSalesOrder,  (error, response) => {\r",
+									"                    if (error) {\r",
+									"                        console.log(error);\r",
+									"                    }\r",
+									"\r",
+									"                    pm.test('Response for the sales order should be OK to process', () => {\r",
+									"                        pm.expect(error).to.equal(null);\r",
+									"                        pm.expect(response).to.have.property('code', 200);\r",
+									"                        pm.expect(response).to.have.property('status', 'OK');\r",
+									"                    });\r",
+									"                    pm.test(\"Sales order status is Shipping\", function (){\r",
+									"                        const jsonResponse = response.json();\r",
+									"                        pm.expect(jsonResponse.Status.value).to.be.eql('Shipping');\r",
+									"                    });\r",
+									"                    pm.test(\"One shipment is included\", function (){\r",
+									"                        const jsonResponse = response.json();\r",
+									"                        pm.expect(jsonResponse.Shipments).to.has.lengthOf(1);\r",
+									"                    });\r",
+									"                    //Sign out\r",
+									"                    var url = pm.collectionVariables.get('InstanceURL');\r",
+									"                    pm.acuFunc.singOutFunction(pm, url);\r",
+									"                });\r",
+									"            }\r",
+									"        });\r",
+									"    } \r",
+									"}\r",
 									"//Set the next request\r",
-									"    postman.setNextRequest(\"Insert Lines with Allocations (with Location) to a PO Receipt\");\r",
-									"    return;\r",
-									"});\r",
-									"\r",
-									"}\r",
-									"});\r",
-									"} \r",
-									"}"
+									"postman.setNextRequest(\"Insert Lines with Allocations (with Location) to a PO Receipt\");"
 								],
 								"type": "text/javascript"
 							}
@@ -19845,8 +19845,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve a Service Order\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve a Service Order\");"
 								],
 								"type": "text/javascript"
 							}
@@ -20246,8 +20246,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Read the Tracking Number from a Shipment\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Read the Tracking Number from a Shipment\");"
 								],
 								"type": "text/javascript"
 							}
@@ -20509,8 +20509,8 @@
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Write the Tracking Number to a Shipment\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Write the Tracking Number to a Shipment\");"
 								],
 								"type": "text/javascript"
 							}
@@ -20694,8 +20694,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Modified Stock Items\");\r",
-									"\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve the List of Modified Stock Items\");\r",
 									""
 								],
 								"type": "text/javascript"
@@ -21074,7 +21074,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve Stock Items with Attributes\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve Stock Items with Attributes\");"
 								],
 								"type": "text/javascript"
 							}
@@ -21296,8 +21297,8 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve Unit Conversion Rules from a Stock Item\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve Unit Conversion Rules from a Stock Item\");"
 								],
 								"type": "text/javascript"
 							}
@@ -21433,8 +21434,8 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve Stock Items with Prices and Quantities by Warehouse\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve Stock Items with Prices and Quantities by Warehouse\");"
 								],
 								"type": "text/javascript"
 							}
@@ -21578,8 +21579,8 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Attachments of a Stock Item\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve the List of Attachments of a Stock Item\");"
 								],
 								"type": "text/javascript"
 							}
@@ -21711,7 +21712,8 @@
 									"pm.collectionVariables.set(\"fileRef\", jsonData.files[0].href);\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the File Attached to a Stock Item\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve the File Attached to a Stock Item\");"
 								],
 								"type": "text/javascript"
 							}
@@ -21859,7 +21861,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Add a Note to a Stock Item\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Add a Note to a Stock Item\");"
 								],
 								"type": "text/javascript"
 							}
@@ -21984,7 +21987,8 @@
 									"});\r",
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Update a Tax Category\");"
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Update a Tax Category\");"
 								],
 								"type": "text/javascript"
 							}
@@ -22173,8 +22177,8 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Read Employee Time Activities\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Read Employee Time Activities\");"
 								],
 								"type": "text/javascript"
 							}
@@ -22326,8 +22330,8 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Write Employee Time Activities\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Write Employee Time Activities\");"
 								],
 								"type": "text/javascript"
 							}
@@ -22449,8 +22453,8 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Search for Time Entries by Date\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Search for Time Entries by Date\");"
 								],
 								"type": "text/javascript"
 							}
@@ -22596,8 +22600,8 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Retrieve the List of Vendors\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Retrieve the List of Vendors\");"
 								],
 								"type": "text/javascript"
 							}
@@ -22756,8 +22760,8 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Vendor\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Vendor\");"
 								],
 								"type": "text/javascript"
 							}
@@ -22891,8 +22895,8 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"Create a Work Calendar\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"Create a Work Calendar\");"
 								],
 								"type": "text/javascript"
 							}
@@ -23044,8 +23048,8 @@
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url, \"\");\r",
-									""
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"postman.setNextRequest(\"\");"
 								],
 								"type": "text/javascript"
 							}
@@ -33410,32 +33414,27 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					"let singOutFunction = (pm, url, nextRequest) => { ",
-					"var requestSignOut = {",
-					"    url: url + 'entity/auth/logout',",
-					"    method: 'POST',",
-					"    header: {",
-					"        'Content-Type': 'application/json'",
-					"    }",
+					"let singOutFunction = (pm, url) => { ",
+					"    var requestSignOut = {",
+					"        url: url + 'entity/auth/logout',",
+					"        method: 'POST',",
+					"        header: {",
+					"            'Content-Type': 'application/json'",
+					"        }",
+					"    };",
+					"",
+					"    pm.sendRequest(requestSignOut,  (error, response) => {",
+					"        if (error) {",
+					"            console.log(error);",
+					"        }",
+					"",
+					"        pm.test('Response for sing out should be 204 to process', () => {",
+					"            pm.expect(error).to.equal(null);",
+					"            pm.expect(response).to.have.property('code', 204);",
+					"            pm.expect(response).to.have.property('status', 'No Content');",
+					"        });",
+					"    });",
 					"};",
-					"",
-					"pm.sendRequest(requestSignOut,  (error, response) => {",
-					"  if (error) {",
-					"    console.log(error);",
-					"  }",
-					"",
-					"  pm.test('Response for sing out should be 204 to process', () => {",
-					"    pm.expect(error).to.equal(null);",
-					"    pm.expect(response).to.have.property('code', 204);",
-					"    pm.expect(response).to.have.property('status', 'No Content');",
-					"  });",
-					"",
-					"  //Set the next request",
-					"  postman.setNextRequest(nextRequest);",
-					"",
-					"});",
-					"",
-					" };",
 					"",
 					"let pmProto = Object.getPrototypeOf(pm);",
 					"pmProto.acuFunc = { singOutFunction };"
