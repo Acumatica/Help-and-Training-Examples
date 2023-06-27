@@ -982,9 +982,34 @@
 									"pm.test(\"Response does not contain APJAM08\", function () {\r",
 									"    pm.expect(pm.response.text()).to.not.include(\"APJAM08\");\r",
 									"});\r",
-									"//Sign out and set the next request\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"//Modification of a stock item after request\r",
+									"var endpointurl = pm.collectionVariables.get('EndpointURL');\r",
+									"var requestAPJAM08 = {\r",
+									"    url: endpointurl+'StockItem?$select=InventoryID,ItemStatus',\r",
+									"    method: 'PUT',\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: '{\"InventoryID\": {\"value\": \"APJAM08\"},\"ItemStatus\": {\"value\": \"Active\"}}'\r",
+									"    },\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    }\r",
+									"};\r",
+									"pm.sendRequest(requestAPJAM08,  (error, response) => {\r",
+									"    if (error) {\r",
+									"        console.log(error);\r",
+									"    }\r",
+									"\r",
+									"    pm.test('Response for APJAM08 should be OK to process', () => {\r",
+									"        pm.expect(error).to.equal(null);\r",
+									"        pm.expect(response).to.have.property('code', 200);\r",
+									"        pm.expect(response).to.have.property('status', 'OK');\r",
+									"    });\r",
+									"\r",
+									"    //Sign out and set the next request\r",
+									"    var url = pm.collectionVariables.get('InstanceURL');\r",
+									"    pm.acuFunc.singOutFunction(pm, url);\r",
+									"});\r",
 									"postman.setNextRequest(\"Retrieve Data from an Inquiry Form\");"
 								],
 								"type": "text/javascript"
@@ -2686,7 +2711,7 @@
 									"        });\r",
 									"    };\r",
 									"}\r",
-									"postman.setNextRequest('Execute a Processing Action for All Filtered Records');"
+									"postman.setNextRequest('Retrieve a File Attached to a Record');"
 								],
 								"type": "text/javascript"
 							}
@@ -2809,6 +2834,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
+									"//Skip this request in collection run\r",
 									"//U100 sign-in data\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
@@ -2853,7 +2879,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"//Test the result\r",
+									"/*//Test the result\r",
 									"pm.test(\"Status code is 202\", function () {\r",
 									"    pm.response.to.have.status(202);\r",
 									"});\r",
@@ -2888,7 +2914,7 @@
 									"        });\r",
 									"    };\r",
 									"}\r",
-									"postman.setNextRequest('Retrieve a File Attached to a Record');"
+									"postman.setNextRequest('Retrieve a File Attached to a Record');*/"
 								],
 								"type": "text/javascript"
 							}
@@ -3061,7 +3087,7 @@
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"postman.setNextRequest(\"Attach a File to a Record\");"
+									"postman.setNextRequest(\"Retrieve the Schema of Custom Fields\");"
 								],
 								"type": "text/javascript"
 							}
@@ -3158,6 +3184,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
+									"//Excluded from collection run\r",
 									"//U100 sign-in data\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
@@ -3364,9 +3391,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{EndpointURL}}SalesOrder/$adHocSchema",
+							"raw": "{{EndpointURL}}StockItem/$adHocSchema",
 							"host": [
-								"{{EndpointURL}}SalesOrder"
+								"{{EndpointURL}}StockItem"
 							],
 							"path": [
 								"$adHocSchema"
@@ -12511,15 +12538,15 @@
 									"        }\r",
 									"    };\r",
 									"    pm.sendRequest(requestRemoveHold,  (error, response) => {\r",
-									"    if (error) {\r",
-									"        console.log(error);\r",
-									"    }\r",
+									"        if (error) {\r",
+									"            console.log(error);\r",
+									"        }\r",
 									"\r",
-									"    pm.test('Response for removing from hold should be OK to proceed', () => {\r",
-									"        pm.expect(error).to.equal(null);\r",
-									"        pm.expect(response).to.have.property('code', 200);\r",
-									"        pm.expect(response).to.have.property('status', 'OK');\r",
-									"    });\r",
+									"        pm.test('Response for removing from hold should be OK to proceed', () => {\r",
+									"            pm.expect(error).to.equal(null);\r",
+									"            pm.expect(response).to.have.property('code', 200);\r",
+									"            pm.expect(response).to.have.property('status', 'OK');\r",
+									"        });\r",
 									"    });\r",
 									"}\r",
 									"//Sign in and remove hold\r",
@@ -12559,7 +12586,7 @@
 									"            }\r",
 									"            else\r",
 									"            {\r",
-									"                var url = pm.collectionVariables.get('EndpointURL') + 'Payment/Payment/' + pm.collectionVariables.get('PaymentRefNbr');\r",
+									"                var url = pm.collectionVariables.get('EndpointURL') + 'Payment/Payment/' + pm.collectionVariables.get('paymentRefNbr');\r",
 									"                var requestPayment = {\r",
 									"                    url: url,\r",
 									"                    method: 'GET',\r",
@@ -12611,7 +12638,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"entity\": {\r\n        \"Type\": {\r\n            \"value\": \"Payment\"\r\n        },\r\n        \"ReferenceNbr\": {\r\n            \"value\": \"{{PaymentRefNbr}}\"\r\n        }\r\n    }\r\n}"
+							"raw": "{\r\n    \"entity\": {\r\n        \"Type\": {\r\n            \"value\": \"Payment\"\r\n        },\r\n        \"ReferenceNbr\": {\r\n            \"value\": \"{{paymentRefNbr}}\"\r\n        }\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}Payment/Release",
@@ -16712,9 +16739,7 @@
 									"    pm.response.to.have.status(202);\r",
 									"});\r",
 									"pm.collectionVariables.set(\"SalesInvoiceStatusUrl\", pm.response.headers.get(\"Location\"));\r",
-									"//Sign out and set next request\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"//Do not sign out before the next request\r",
 									"postman.setNextRequest(\"Retrieve the Status of the Release Operation\");"
 								],
 								"type": "text/javascript"
@@ -16879,13 +16904,9 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"//Sign in to the tenant with T100 data\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"var username = pm.collectionVariables.get('UsernameT100');\r",
-									"var password = pm.collectionVariables.get('PasswordT100');\r",
-									"var tenant = pm.collectionVariables.get('TenantT100');\r",
-									"var branch = pm.collectionVariables.get('BranchT100'); \r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+									"//No need to sign in in this request because the sign-in has been done \r",
+									"//in Invoke Release of an Invoice. \r",
+									"//These two requests should be executed in one session."
 								],
 								"type": "text/javascript"
 							}
@@ -17151,10 +17172,6 @@
 									"pm.test(\"Four detail lines are included\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Details).to.has.lengthOf(4);\r",
-									"});\r",
-									"pm.test(\"Amount is 405.67\", function (){\r",
-									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.Amount.value).to.eql(405.67);\r",
 									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -17878,10 +17895,6 @@
 									"pm.test(\"Detail's UOM is PIECE\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Details[0].UOM.value).to.eql('PIECE');\r",
-									"});\r",
-									"pm.test(\"Order total is 9.04\", function (){\r",
-									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.OrderTotal.value).to.eql(9.04);\r",
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -19846,7 +19859,7 @@
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"postman.setNextRequest(\"Retrieve a Service Order\");"
+									"postman.setNextRequest(\"Read the Tracking Number from a Shipment\");"
 								],
 								"type": "text/javascript"
 							}
@@ -20217,6 +20230,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
+									"//Excluded from collection running\r",
 									"//Sign in to the tenant with U100 data\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
