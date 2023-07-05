@@ -11872,7 +11872,7 @@
 									"            }\r",
 									"            else\r",
 									"            {\r",
-									"                var url = pm.collectionVariables.get('EndpointURL') + 'Opportunity/000009?$expand=Relations';\r",
+									"                var url = pm.collectionVariables.get('EndpointURL') + 'Opportunity/000011?$expand=Relations';\r",
 									"                var request000009 = {\r",
 									"                    url: url,\r",
 									"                    method: 'GET',\r",
@@ -11940,7 +11940,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"entity\":{\r\n        \"OpportunityID\": {\"value\":\"000009\"}\r\n    },\r\n    \"parameters\":{\r\n        \"OrdereType\": {\"value\":\"SO\"},\r\n        \"RecalculatePricesAndDiscounts\": {\"value\":\"false\"}\r\n    }\r\n}"
+							"raw": "{\r\n    \"entity\":{\r\n        \"OpportunityID\": {\"value\":\"000011\"}\r\n    },\r\n    \"parameters\":{\r\n        \"OrdereType\": {\"value\":\"SO\"},\r\n        \"RecalculatePricesAndDiscounts\": {\"value\":\"false\"}\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}Opportunity/CreateOpportunitySalesOrder",
@@ -18608,24 +18608,102 @@
 							"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2022-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"External CC payment\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2022-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"CreditCardTransactionInfo\": [\r\n                {\r\n                    \"NeedValidation\": {\"value\": true},\r\n                    \"TranDate\": {\"value\": \"2022-08-11T00:00:00+03:00\"},\r\n                    \"TranNbr\": {\"value\": \"40050474170\"},\r\n                    \"TranType\": {\"value\": \"AUT\"}\r\n                }\r\n            ],\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"CCAUTHNET\"}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2022-05-10T00:00:00\"}\r\n}"
 						},
 						"url": {
-							"raw": "{{EndpointURL}}SalesOrder?$expand=Payments/CreditCardTransactionInfo&$select=Payments.CreditCardTransactionInfo.TranNbr",
+							"raw": "{{EndpointURL}}SalesOrder?$expand=Payments",
 							"host": [
 								"{{EndpointURL}}SalesOrder"
 							],
 							"query": [
 								{
 									"key": "$expand",
-									"value": "Payments/CreditCardTransactionInfo"
-								},
-								{
-									"key": "$select",
-									"value": "Payments.CreditCardTransactionInfo.TranNbr"
+									"value": "Payments"
 								}
 							]
 						},
 						"description": "This example shows the creation of a sales order with an external credit card payment, which is described in [Create a Sales Order with an External Credit Card Payment](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=125d6a9c-c92b-4cb9-862b-424a60208edb)."
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Create a Sales Order with an External Credit Card Payment",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2022-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"External CC payment\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2022-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"CreditCardTransactionInfo\": [\r\n                {\r\n                    \"NeedValidation\": {\"value\": true},\r\n                    \"TranDate\": {\"value\": \"2022-08-11T00:00:00+03:00\"},\r\n                    \"TranNbr\": {\"value\": \"40050474170\"},\r\n                    \"TranType\": {\"value\": \"AUT\"}\r\n                }\r\n            ],\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"CCAUTHNET\"}\r\n        }\r\n    ],\r\n    \"RequestedOn\": {\"value\": \"2022-05-10T00:00:00\"}\r\n}"
+								},
+								"url": {
+									"raw": "{{EndpointURL}}SalesOrder?$expand=Payments",
+									"host": [
+										"{{EndpointURL}}SalesOrder"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "Payments"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=TimeZone=GMTM0800A&Culture=en-US; path=/; secure; SameSite=None"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=16; path=/; secure; SameSite=None"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=TimeZone=GMTM0800A&Culture=en-US; path=/; secure; SameSite=None"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=16; path=/; secure; SameSite=None"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requestid=37C496ACB112D9B911EE1B19EB06E93A; path=/; secure; SameSite=None"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "requeststat=+st:2730+sc:~/entity/default/22.200.001/salesorder+start:638241476713638969+tg:; path=/; secure; SameSite=None"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Jul 2023 09:54:34 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2945"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"3be906eb-191b-ee11-b9d9-12b1ac96c437\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"Approved\": {\n        \"value\": true\n    },\n    \"BaseCurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"BillToAddressOverride\": {\n        \"value\": false\n    },\n    \"BillToContactOverride\": {\n        \"value\": false\n    },\n    \"CashAccount\": {\n        \"value\": \"10600\"\n    },\n    \"ContactID\": {\n        \"value\": \"100053\"\n    },\n    \"ControlTotal\": {\n        \"value\": 980\n    },\n    \"CreatedDate\": {\n        \"value\": \"2023-07-05T09:54:32.667+00:00\"\n    },\n    \"CreditHold\": {\n        \"value\": false\n    },\n    \"CurrencyID\": {\n        \"value\": \"USD\"\n    },\n    \"CurrencyRate\": {\n        \"value\": 1\n    },\n    \"CurrencyRateTypeID\": {\n        \"value\": \"SPOT\"\n    },\n    \"CustomerID\": {\n        \"value\": \"WIDGETCC\"\n    },\n    \"CustomerOrder\": {},\n    \"Date\": {\n        \"value\": \"2022-05-10T00:00:00+00:00\"\n    },\n    \"Description\": {\n        \"value\": \"External CC payment\"\n    },\n    \"DestinationWarehouseID\": {},\n    \"Details\": [],\n    \"DisableAutomaticDiscountUpdate\": {\n        \"value\": false\n    },\n    \"DisableAutomaticTaxCalculation\": {\n        \"value\": false\n    },\n    \"EffectiveDate\": {\n        \"value\": \"2022-05-10T00:00:00+00:00\"\n    },\n    \"ExternalRef\": {},\n    \"Hold\": {\n        \"value\": false\n    },\n    \"IsTaxValid\": {\n        \"value\": false\n    },\n    \"LastModified\": {\n        \"value\": \"2023-07-05T09:54:32.667+00:00\"\n    },\n    \"LocationID\": {\n        \"value\": \"MAIN\"\n    },\n    \"NoteID\": {\n        \"value\": \"3be906eb-191b-ee11-b9d9-12b1ac96c437\"\n    },\n    \"OrderedQty\": {\n        \"value\": 51\n    },\n    \"OrderNbr\": {\n        \"value\": \"SO007468\"\n    },\n    \"OrderTotal\": {\n        \"value\": 980\n    },\n    \"OrderType\": {\n        \"value\": \"SO\"\n    },\n    \"PaymentMethod\": {\n        \"value\": \"CCAUTHNET\"\n    },\n    \"PaymentRef\": {},\n    \"Payments\": [\n        {\n            \"id\": \"48e906eb-191b-ee11-b9d9-12b1ac96c437\",\n            \"rowNumber\": 1,\n            \"note\": {\n                \"value\": \"\"\n            },\n            \"ApplicationDate\": {\n                \"value\": \"2022-08-10T00:00:00+00:00\"\n            },\n            \"AppliedToOrder\": {\n                \"value\": 480\n            },\n            \"Authorize\": {},\n            \"Balance\": {\n                \"value\": 500\n            },\n            \"Capture\": {},\n            \"CardAccountNbr\": {\n                \"value\": \"2336\"\n            },\n            \"CashAccount\": {\n                \"value\": \"10600\"\n            },\n            \"CreditCardTransactionInfo\": [],\n            \"Currency\": {\n                \"value\": \"USD\"\n            },\n            \"Description\": {},\n            \"DocType\": {\n                \"value\": \"Payment\"\n            },\n            \"ExternalRef\": {},\n            \"Hold\": {\n                \"value\": false\n            },\n            \"LastModifiedDateTime\": {\n                \"value\": \"2023-07-05T09:54:33.417+00:00\"\n            },\n            \"NoteID\": {\n                \"value\": \"48e906eb-191b-ee11-b9d9-12b1ac96c437\"\n            },\n            \"OrigTransactionNbr\": {},\n            \"PaymentAmount\": {\n                \"value\": 980\n            },\n            \"PaymentMethod\": {\n                \"value\": \"CCAUTHNET\"\n            },\n            \"PaymentRef\": {\n                \"value\": \"40050474170\"\n            },\n            \"ProcessingCenterID\": {\n                \"value\": \"AUTHNETAPI\"\n            },\n            \"ReferenceNbr\": {\n                \"value\": \"004486\"\n            },\n            \"Refund\": {},\n            \"SaveCard\": {},\n            \"Status\": {\n                \"value\": \"Pending Processing\"\n            },\n            \"TransferredtoInvoice\": {\n                \"value\": 0\n            },\n            \"ValidateCCRefundOrigTransaction\": {\n                \"value\": true\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Adjustments/48e906eb-191b-ee11-b9d9-12b1ac96c437/{filename}\"\n            }\n        }\n    ],\n    \"PreferredWarehouseID\": {},\n    \"Project\": {\n        \"value\": \"X\"\n    },\n    \"ReciprocalRate\": {\n        \"value\": 1\n    },\n    \"RequestedOn\": {\n        \"value\": \"2022-05-10T00:00:00+00:00\"\n    },\n    \"ShipToAddressOverride\": {\n        \"value\": false\n    },\n    \"ShipToContactOverride\": {\n        \"value\": false\n    },\n    \"ShipVia\": {},\n    \"Status\": {\n        \"value\": \"Open\"\n    },\n    \"TaxTotal\": {\n        \"value\": 0\n    },\n    \"VATExemptTotal\": {\n        \"value\": 0\n    },\n    \"VATTaxableTotal\": {\n        \"value\": 0\n    },\n    \"WillCall\": {\n        \"value\": true\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/demodata/entity/Default/22.200.001/SalesOrder/3be906eb-191b-ee11-b9d9-12b1ac96c437\",\n        \"files:put\": \"/demodata/entity/Default/22.200.001/files/PX.Objects.SO.SOOrderEntry/Document/3be906eb-191b-ee11-b9d9-12b1ac96c437/{filename}\"\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Apply Discounts to a Sales Order",
