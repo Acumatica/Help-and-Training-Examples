@@ -51,12 +51,10 @@ namespace PhoneRepairShop
 
         public const string QuantityCannotBeNegative =
             "The value in the Quantity column cannot be negative.";
-        public const string QuantityTooSmall = @"The value in the Quantity column
-  has been corrected to the minimum possible value.";
+        public const string QuantityTooSmall = "The value in the Quantity column has been corrected to the minimum possible value.";
         ////////// The added code
         public const string PriorityTooLow =
-            @"The priority must be at least Medium for
- the repair service that requires preliminary check.";
+            "The priority must be at least Medium for the repair service that requires preliminary check.";
         ////////// The end of added code
     }
 }
