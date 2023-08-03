@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f98f3023-da6e-4b8b-b9b3-1e60c75dbbf7",
+		"_postman_id": "a95a8b11-6bdd-4f47-a61e-94d31ee10d19",
 		"name": "REST API Examples (Integration Development Guide)",
 		"description": "This collection contains examples from the [REST API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n- Deploy a new Acumatica ERP instance with three tenants that are based on the U100, SalesDemo, and T100 datasets. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n- Specify the base URL of the site in the _BaseURL_ variable of the collection.\n- Specify the instance URL in the _InstanceURL_ variable of the collection.\n- Make sure the URL of the Default/22.200.001 endpoint is in the _EndpointURL_ variable.\n- Specify the URL of the instance with the manufacturing functionality configured in the _ManufacturingInstanceURL_ variable of the collection.\n- Make sure the URL of the MANUFACTURING/22.200.001 endpoint is in the _ManufacturingEndpointURL_ variable.\n- Specify the tenant name, branch, username, and password to access the tenant with the U100 data in the _TenantU100_, _BranchU100_, _UsernameU100_, and _PasswordU100_ variables.\n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantT100_, _BranchT100_, _UsernameT100_, and _PasswordT100_ variables.\n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantSalesDemo_, _BranchSalesDemo_, _UsernameSalesDemo_, and _PasswordSalesDemo_ variables.\n    \n\nOther variables are used by particular requests and are specified during execution of other requests. You do not need to feel their values manually.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -6475,10 +6475,32 @@
 									"            }\r",
 									"            else\r",
 									"            {   \r",
+									"                var url = pm.collectionVariables.get('EndpointURL') + \"Bill?$filter=cf.String(f='CurrentDocument.OrigRefNbr') eq '000072'\";\r",
+									"                var requestBill = {\r",
+									"                    url: url,\r",
+									"                    method: 'GET',\r",
+									"                    header: {\r",
+									"                        'Content-Type': 'application/json'\r",
+									"                    }\r",
+									"                };\r",
+									"                pm.sendRequest(requestBill,  (error, response) => {\r",
+									"                    if (error) {\r",
+									"                        console.log(error);\r",
+									"                    }\r",
 									"\r",
-									"                //Sign out\r",
-									"                var url = pm.collectionVariables.get('InstanceURL');\r",
-									"                pm.acuFunc.singOutFunction(pm, url);\r",
+									"                    pm.test('Response for the bill should be OK to process', () => {\r",
+									"                        pm.expect(error).to.equal(null);\r",
+									"                        pm.expect(response).to.have.property('code', 200);\r",
+									"                        pm.expect(response).to.have.property('status', 'OK');\r",
+									"                    });\r",
+									"                    pm.test(\"Bill status is On Hold\", function (){\r",
+									"                        const jsonResponse = response.json();\r",
+									"                        pm.expect(jsonResponse[0].Status.value).to.be.eql('On Hold');\r",
+									"                    });\r",
+									"                    //Sign out and set the next request\r",
+									"                    var url = pm.collectionVariables.get('InstanceURL');\r",
+									"                    pm.acuFunc.singOutFunction(pm, url);\r",
+									"                });\r",
 									"            }\r",
 									"        });\r",
 									"    } \r",
@@ -6601,7 +6623,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				}
