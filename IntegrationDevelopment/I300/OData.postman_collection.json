@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2c09d85e-4d69-4863-8481-26685d3591c9",
+		"_postman_id": "342b5310-3782-4443-83e0-7f89434c5cb2",
 		"name": "MyBIIntegrationOData",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
@@ -53,14 +53,9 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "http://localhost/MyStoreInstance/OData",
-											"protocol": "http",
+											"raw": "{{EndpointURLv3}}",
 											"host": [
-												"localhost"
-											],
-											"path": [
-												"MyStoreInstance",
-												"OData"
+												"{{EndpointURLv3}}"
 											]
 										}
 									},
@@ -200,14 +195,11 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "http://localhost/MyStoreInstance/OData/Customer%20Contacts?$format=json",
-											"protocol": "http",
+											"raw": "{{EndpointURLv3}}/Customer%20Contacts?$format=json",
 											"host": [
-												"localhost"
+												"{{EndpointURLv3}}"
 											],
 											"path": [
-												"MyStoreInstance",
-												"OData",
 												"Customer%20Contacts"
 											],
 											"query": [
@@ -301,14 +293,11 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "http://localhost/MyStoreInstance/ODatav4/PX_Objects_AR_Customer?$select=AcctCD,AcctName,CustomerClassID&$expand=ContactByDefBillContactID($select=Email,Phone1),AddressByDefAddressID($select=AddressLine1,AddressLine2,City,State,PostalCode)",
-											"protocol": "http",
+											"raw": "{{EndpointURLv4}}/PX_Objects_AR_Customer?$select=AcctCD,AcctName,CustomerClassID&$expand=ContactByDefBillContactID($select=Email,Phone1),AddressByDefAddressID($select=AddressLine1,AddressLine2,City,State,PostalCode)",
 											"host": [
-												"localhost"
+												"{{EndpointURLv4}}"
 											],
 											"path": [
-												"MyStoreInstance",
-												"ODatav4",
 												"PX_Objects_AR_Customer"
 											],
 											"query": [
@@ -415,14 +404,11 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "http://localhost/MyStoreInstance/OData/Item%20Availability%20Data?$format=json",
-											"protocol": "http",
+											"raw": "{{EndpointURLv3}}/Item%20Availability%20Data?$format=json",
 											"host": [
-												"localhost"
+												"{{EndpointURLv3}}"
 											],
 											"path": [
-												"MyStoreInstance",
-												"OData",
 												"Item%20Availability%20Data"
 											],
 											"query": [
@@ -516,14 +502,11 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "http://localhost/MyStoreInstance/ODatav4/PX_Objects_IN_INSiteStatus?$select=QtyOnHand,QtyAvail&$expand=InventoryItemByInventoryID($select=InventoryCD,Descr),INSiteBySiteID($select=SiteCD)",
-											"protocol": "http",
+											"raw": "{{EndpointURLv4}}/PX_Objects_IN_INSiteStatus?$select=QtyOnHand,QtyAvail&$expand=InventoryItemByInventoryID($select=InventoryCD,Descr),INSiteBySiteID($select=SiteCD)",
 											"host": [
-												"localhost"
+												"{{EndpointURLv4}}"
 											],
 											"path": [
-												"MyStoreInstance",
-												"ODatav4",
 												"PX_Objects_IN_INSiteStatus"
 											],
 											"query": [
@@ -665,14 +648,11 @@
 											}
 										],
 										"url": {
-											"raw": "http://localhost/MyStoreInstance/OData/$metadata",
-											"protocol": "http",
+											"raw": "{{EndpointURLv3}}/$metadata",
 											"host": [
-												"localhost"
+												"{{EndpointURLv3}}"
 											],
 											"path": [
-												"MyStoreInstance",
-												"OData",
 												"$metadata"
 											]
 										}
@@ -744,7 +724,7 @@
 									"script": {
 										"exec": [
 											"var requestSignIn = {\r",
-											"    url: 'http://localhost/MyStoreInstance/entity/auth/login',\r",
+											"    url: pm.variables.replaceIn('{{InstanceURL}}/entity/auth/login'),\r",
 											"    method: 'POST',\r",
 											"    body: {\r",
 											"        mode: 'raw',\r",
@@ -767,7 +747,7 @@
 											"  });\r",
 											"\r",
 											"var requestAACOMPUT01 = {\r",
-											"    url: 'http://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem?$select=InventoryID,ItemStatus',\r",
+											"    url: pm.variables.replaceIn('{{InstanceURL}}/entity/Default/23.200.001/StockItem?$select=InventoryID,ItemStatus'),\r",
 											"    method: 'PUT',\r",
 											"    body: {\r",
 											"        mode: 'raw',\r",
@@ -789,7 +769,7 @@
 											"  });\r",
 											"\r",
 											"var requestAALEGO500 = {\r",
-											"    url: 'http://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem?$select=InventoryID,Description',\r",
+											"    url: pm.variables.replaceIn('{{InstanceURL}}/entity/Default/23.200.001/StockItem?$select=InventoryID,Description'),\r",
 											"    method: 'PUT',\r",
 											"    body: {\r",
 											"        mode: 'raw',\r",
@@ -811,7 +791,7 @@
 											"  });\r",
 											"\r",
 											"var requestSignOut = {\r",
-											"    url: 'http://localhost/MyStoreInstance/entity/auth/logout',\r",
+											"    url: pm.variables.replaceIn('{{InstanceURL}}/entity/auth/logout'),\r",
 											"    method: 'POST',\r",
 											"    header: {\r",
 											"        'Content-Type': 'application/json'\r",
@@ -870,14 +850,11 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "http://localhost/MyStoreInstance/OData/Modified%20Stock%20Items?$format=json&$filter=ItemStatus eq 'Active' and LastModifiedOn gt datetime'2022-09-15T00:00:00.000%2B06:00'",
-											"protocol": "http",
+											"raw": "{{EndpointURLv3}}/Modified%20Stock%20Items?$format=json&$filter=ItemStatus eq 'Active' and LastModifiedOn gt datetime'2022-09-15T00:00:00.000%2B06:00'",
 											"host": [
-												"localhost"
+												"{{EndpointURLv3}}"
 											],
 											"path": [
-												"MyStoreInstance",
-												"OData",
 												"Modified%20Stock%20Items"
 											],
 											"query": [
@@ -951,7 +928,7 @@
 									"script": {
 										"exec": [
 											"var requestSignIn = {\r",
-											"    url: 'http://localhost/MyStoreInstance/entity/auth/login',\r",
+											"    url: pm.variables.replaceIn('{{InstanceURL}}/entity/auth/login'),\r",
 											"    method: 'POST',\r",
 											"    body: {\r",
 											"        mode: 'raw',\r",
@@ -974,7 +951,7 @@
 											"  });\r",
 											"\r",
 											"var requestAACOMPUT01 = {\r",
-											"    url: 'http://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem?$select=InventoryID,ItemStatus',\r",
+											"    url: pm.variables.replaceIn('{{InstanceURL}}/entity/Default/22.200.001/StockItem?$select=InventoryID,ItemStatus'),\r",
 											"    method: 'PUT',\r",
 											"    body: {\r",
 											"        mode: 'raw',\r",
@@ -996,7 +973,7 @@
 											"  });\r",
 											"\r",
 											"var requestAALEGO500 = {\r",
-											"    url: 'http://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem?$select=InventoryID,Description',\r",
+											"    url: pm.variables.replaceIn('{{InstanceURL}}/entity/Default/22.200.001/StockItem?$select=InventoryID,Description'),\r",
 											"    method: 'PUT',\r",
 											"    body: {\r",
 											"        mode: 'raw',\r",
@@ -1018,7 +995,7 @@
 											"  });\r",
 											"\r",
 											"var requestSignOut = {\r",
-											"    url: 'http://localhost/MyStoreInstance/entity/auth/logout',\r",
+											"    url: pm.variables.replaceIn('{{InstanceURL}}/entity/auth/logout'),\r",
 											"    method: 'POST',\r",
 											"    header: {\r",
 											"        'Content-Type': 'application/json'\r",
@@ -1081,14 +1058,11 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "http://localhost/MyStoreInstance/ODatav4/PX_Objects_IN_InventoryItem?$select=InventoryCD,Descr,ItemStatus,LastModifiedDateTime,BaseUnit&$expand=INSiteByDfltSiteID($select=SiteCD),INItemClassByItemClassID($select=ItemClassCD),INSiteStatusCollection($select=QtyOnHand)&$filter=StkItem eq true and ItemStatus eq 'AC' and LastModifiedDateTime gt 2022-09-15T00:00:00%2b03:00",
-											"protocol": "http",
+											"raw": "{{EndpointURLv4}}/PX_Objects_IN_InventoryItem?$select=InventoryCD,Descr,ItemStatus,LastModifiedDateTime,BaseUnit&$expand=INSiteByDfltSiteID($select=SiteCD),INItemClassByItemClassID($select=ItemClassCD),INSiteStatusCollection($select=QtyOnHand)&$filter=StkItem eq true and ItemStatus eq 'AC' and LastModifiedDateTime gt 2022-09-15T00:00:00%2b03:00",
 											"host": [
-												"localhost"
+												"{{EndpointURLv4}}"
 											],
 											"path": [
-												"MyStoreInstance",
-												"ODatav4",
 												"PX_Objects_IN_InventoryItem"
 											],
 											"query": [
@@ -1159,12 +1133,12 @@
 		"basic": [
 			{
 				"key": "password",
-				"value": "123",
+				"value": "{{Password}}",
 				"type": "string"
 			},
 			{
 				"key": "username",
-				"value": "admin",
+				"value": "{{Username}}",
 				"type": "string"
 			}
 		]
@@ -1208,6 +1182,16 @@
 		{
 			"key": "EndpointURLv4",
 			"value": "{{InstanceURL}}/ODatav4",
+			"type": "string"
+		},
+		{
+			"key": "Username",
+			"value": "admin",
+			"type": "string"
+		},
+		{
+			"key": "Password",
+			"value": "123",
 			"type": "string"
 		}
 	]

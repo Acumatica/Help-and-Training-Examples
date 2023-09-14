@@ -50,12 +50,12 @@
 								},
 								{
 									"key": "username",
-									"value": "admin",
+									"value": "{{Username}}",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "123",
+									"value": "{{Password}}",
 									"type": "text"
 								},
 								{
@@ -65,12 +65,12 @@
 								},
 								{
 									"key": "client_id",
-									"value": "FE34CB3A-7B98-F6E4-FCED-0480D54868D5@MyStore",
+									"value": "{{ClientID}}",
 									"type": "text"
 								},
 								{
 									"key": "client_secret",
-									"value": "Lmt-ZCYOYMRCvozN7xgtFw",
+									"value": "{{ClientSecret}}",
 									"type": "text"
 								}
 							]
@@ -136,13 +136,11 @@
 									]
 								},
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/identity/connect/token",
-									"protocol": "https",
+									"raw": "{{InstanceURL}}/identity/connect/token",
 									"host": [
-										"localhost"
+										"{{InstanceURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
 										"identity",
 										"connect",
 										"token"
@@ -292,13 +290,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "http://localhost/MyStoreInstance/entity/auth/logout",
-									"protocol": "http",
+									"raw": "{{InstanceURL}}/entity/auth/logout",
 									"host": [
-										"localhost"
+										"{{InstanceURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
 										"entity",
 										"auth",
 										"logout"
@@ -499,16 +495,11 @@
 									}
 								],
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesOrder?$select=OrderNbr,OrderType,CustomerID,CustomerOrder,Details/InventoryID,Details/OrderQty,Details/UnitPrice,Date,OrderedQty,OrderTotal,Shipments/InvoiceNbr,Shipments/ShipmentNbr&$filter=CustomerID eq 'C000000003'&$expand=Details,Shipments",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/SalesOrder?$select=OrderNbr,OrderType,CustomerID,CustomerOrder,Details/InventoryID,Details/OrderQty,Details/UnitPrice,Date,OrderedQty,OrderTotal,Shipments/InvoiceNbr,Shipments/ShipmentNbr&$filter=CustomerID eq 'C000000003'&$expand=Details,Shipments",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"SalesOrder"
 									],
 									"query": [
@@ -651,16 +642,11 @@
 									}
 								],
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesOrder?$select=OrderNbr,OrderType,CustomerID,OrderTotal&$filter=CustomerID eq 'C000000003'&$top=5",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/SalesOrder?$select=OrderNbr,OrderType,CustomerID,OrderTotal&$filter=CustomerID eq 'C000000003'&$top=5",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"SalesOrder"
 									],
 									"query": [
@@ -673,13 +659,13 @@
 											"value": "CustomerID eq 'C000000003'"
 										},
 										{
-											"key": "$top",
-											"value": "5"
-										},
-										{
 											"key": "",
 											"value": "",
 											"disabled": true
+										},
+										{
+											"key": "$top",
+											"value": "5"
 										}
 									]
 								}
@@ -807,16 +793,11 @@
 									}
 								],
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesOrder?$select=OrderNbr,OrderType,CustomerID,OrderTotal&$filter=CustomerID eq 'C000000003'&$top=5&$skip=5",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/SalesOrder?$select=OrderNbr,OrderType,CustomerID,OrderTotal&$filter=CustomerID eq 'C000000003'&$top=5&$skip=5",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"SalesOrder"
 									],
 									"query": [
@@ -957,16 +938,11 @@
 									}
 								],
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/Payment?$select=ReferenceNbr,Type,Status,ApplicationDate,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr&$filter=Type eq 'Payment' and CustomerID eq 'C000000003'&$expand=ApplicationHistory",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/Payment?$select=ReferenceNbr,Type,Status,ApplicationDate,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr&$filter=Type eq 'Payment' and CustomerID eq 'C000000003'&$expand=ApplicationHistory",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"Payment"
 									],
 									"query": [
@@ -1106,16 +1082,11 @@
 									}
 								],
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/Payment?$select=ReferenceNbr,Type&$filter=Type eq 'Payment' and CustomerID eq 'C000000003'",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/Payment?$select=ReferenceNbr,Type&$filter=Type eq 'Payment' and CustomerID eq 'C000000003'",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"Payment"
 									],
 									"query": [
@@ -1247,16 +1218,11 @@
 									}
 								],
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/Payment/Payment/000001?$select=ReferenceNbr,Type,Status,ApplicationDate,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr&$expand=ApplicationHistory",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/Payment/Payment/000001?$select=ReferenceNbr,Type,Status,ApplicationDate,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr&$expand=ApplicationHistory",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"Payment",
 										"Payment",
 										"000001"
@@ -1416,16 +1382,11 @@
 									}
 								],
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem/AAMACHINE1?$select=InventoryID,files&$expand=files",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/StockItem/AAMACHINE1?$select=InventoryID,files&$expand=files",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"StockItem",
 										"AAMACHINE1"
 									],
@@ -1542,18 +1503,9 @@
 									}
 								],
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/files/9be45eb7-f97d-400b-96a5-1c4cf82faa96",
-									"protocol": "https",
+									"raw": "{{BaseURL}}{{fileRef}}",
 									"host": [
-										"localhost"
-									],
-									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
-										"files",
-										"9be45eb7-f97d-400b-96a5-1c4cf82faa96"
+										"{{BaseURL}}{{fileRef}}"
 									]
 								}
 							},
@@ -1598,28 +1550,33 @@
 		"type": "oauth2",
 		"oauth2": [
 			{
+				"key": "password",
+				"value": "{{Password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{Username}}",
+				"type": "string"
+			},
+			{
 				"key": "clientId",
-				"value": "FE34CB3A-7B98-F6E4-FCED-0480D54868D5@MyStore",
+				"value": "{{ClientID}}",
 				"type": "string"
 			},
 			{
 				"key": "clientSecret",
-				"value": "Lmt-ZCYOYMRCvozN7xgtFw",
+				"value": "{{ClientSecret}}",
 				"type": "string"
 			},
 			{
-				"key": "password",
-				"value": "123",
+				"key": "accessTokenUrl",
+				"value": "{{InstanceURL}}/identity/connect/token",
 				"type": "string"
 			},
 			{
 				"key": "tokenName",
 				"value": "MyStoreIntegration",
-				"type": "string"
-			},
-			{
-				"key": "username",
-				"value": "admin",
 				"type": "string"
 			},
 			{
@@ -1635,11 +1592,6 @@
 			{
 				"key": "client_authentication",
 				"value": "body",
-				"type": "string"
-			},
-			{
-				"key": "accessTokenUrl",
-				"value": "https://localhost/MyStoreInstance/identity/connect/token",
 				"type": "string"
 			},
 			{
@@ -1681,11 +1633,6 @@
 	],
 	"variable": [
 		{
-			"key": "fileRef",
-			"value": "",
-			"type": "string"
-		},
-		{
 			"key": "BaseURL",
 			"value": "https://localhost",
 			"type": "string"
@@ -1697,7 +1644,29 @@
 		},
 		{
 			"key": "DefaultEndpointURL",
-			"value": "{{InstanceURL}}/entity/Default/22.200.001",
+			"value": "{{InstanceURL}}/entity/Default/23.200.001",
+			"type": "string"
+		},
+		{
+			"key": "ClientID",
+			"value": "FE34CB3A-7B98-F6E4-FCED-0480D54868D5@MyStore"
+		},
+		{
+			"key": "ClientSecret",
+			"value": "Lmt-ZCYOYMRCvozN7xgtFw"
+		},
+		{
+			"key": "Username",
+			"value": "admin"
+		},
+		{
+			"key": "Password",
+			"value": "123",
+			"type": "string"
+		},
+		{
+			"key": "fileRef",
+			"value": "",
 			"type": "string"
 		},
 		{

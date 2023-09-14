@@ -50,12 +50,12 @@
 								},
 								{
 									"key": "username",
-									"value": "admin",
+									"value": "{{Username}}",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "123",
+									"value": "{{Password}}",
 									"type": "text"
 								},
 								{
@@ -65,12 +65,12 @@
 								},
 								{
 									"key": "client_id",
-									"value": "FE34CB3A-7B98-F6E4-FCED-0480D54868D5@MyStore",
+									"value": "{{ClientID}}",
 									"type": "text"
 								},
 								{
 									"key": "client_secret",
-									"value": "Lmt-ZCYOYMRCvozN7xgtFw",
+									"value": "{{ClientSecret}}",
 									"type": "text"
 								}
 							]
@@ -136,13 +136,11 @@
 									]
 								},
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/identity/connect/token",
-									"protocol": "https",
+									"raw": "{{InstanceURL}}/identity/connect/token",
 									"host": [
-										"localhost"
+										"{{InstanceURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
 										"identity",
 										"connect",
 										"token"
@@ -292,13 +290,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "http://localhost/MyStoreInstance/entity/auth/logout",
-									"protocol": "http",
+									"raw": "{{InstanceURL}}/entity/auth/logout",
 									"host": [
-										"localhost"
+										"{{InstanceURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
 										"entity",
 										"auth",
 										"logout"
@@ -489,16 +485,11 @@
 									"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n    \"ShipmentDate\":{\"value\":\"2022-11-01\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\n\t\t}\n\t]\n}"
 								},
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/Shipment?$select=Type,ShipmentNbr,Status,Details/InventoryID&$expand=Details",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/Shipment?$select=Type,ShipmentNbr,Status,Details/InventoryID&$expand=Details",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"Shipment"
 									],
 									"query": [
@@ -652,16 +643,11 @@
 									"raw": "{\n\t\"InventoryID\":{\"value\":\"BASESERV1\"},\n\t\"Description\":{\"value\":\"Baseline level of performance\"},\n\t\"ItemClass\":{\"value\":\"STOCKITEM\"},\n\t\"Attributes\":[\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"Operation System\"},\n\t\t\t\"Value\":{\"value\":\"Windows\"}\n\t\t},\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"SOFTVER\"},\n\t\t\t\"Value\":{\"value\":\"Server 2012 R2\"}\n\t\t}\n\t]\n}"
 								},
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem?$select=InventoryID,Attributes/AttributeDescription,Attributes/Value&$expand=Attributes",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/StockItem?$select=InventoryID,Attributes/AttributeDescription,Attributes/Value&$expand=Attributes",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"StockItem"
 									],
 									"query": [
@@ -824,16 +810,11 @@
 									"raw": "{\r\n\t\"CustomerClass\":{\"value\":\"INTL\"},\r\n\t\"BillingContactOverride\":{\"value\":true},\r\n\t\"BillingContact\":{\r\n\t\t\"Email\":{\"value\":\"green@jevy-comp.con\"},\r\n\t\t\"Attention\":{\"value\":\"Mr. Jack Green\"},\r\n\t\t\"JobTitle\":{\"value\":\"\"}\r\n\t}\r\n}\r\n"
 								},
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/Customer?$filter=MainContact/Email eq 'info@jevy-comp.con'&$expand=MainContact,BillingContact&$select=CustomerID,CustomerClass,BillingContact/Email",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/Customer?$filter=MainContact/Email eq 'info@jevy-comp.con'&$expand=MainContact,BillingContact&$select=CustomerID,CustomerClass,BillingContact/Email",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"Customer"
 									],
 									"query": [
@@ -994,16 +975,11 @@
 									}
 								],
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesOrder?$expand=Details&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/SalesOrder?$expand=Details&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"SalesOrder"
 									],
 									"query": [
@@ -1156,16 +1132,11 @@
 									"raw": "{\n\t\"OrderType\":{\"value\":\"SO\"},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"08731a64-7381-e511-80c0-00155d012302\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"f4a7e172-7381-e511-80c0-00155d012302\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
 								},
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID&$expand=Details",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID&$expand=Details",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"SalesOrder"
 									],
 									"query": [
@@ -1314,16 +1285,11 @@
 									"raw": "{\r\n    \"Type\":{\"value\":\"Invoice\"},\r\n    \"ReferenceNbr\":{\"value\":\"INV000046\"},\r\n    \"Hold\":{\"value\":false}\r\n}"
 								},
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesInvoice",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/SalesInvoice",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"SalesInvoice"
 									]
 								}
@@ -1455,16 +1421,11 @@
 									"raw": "{\r\n\t\"entity\":{\r\n\t\t\"Type\":{\"value\":\"Invoice\"},\r\n\t\t\"ReferenceNbr\":{\"value\":\"INV000046\"}\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesInvoice/ReleaseSalesInvoice",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/SalesInvoice/ReleaseSalesInvoice",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"SalesInvoice",
 										"ReleaseSalesInvoice"
 									]
@@ -1589,20 +1550,9 @@
 									}
 								],
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesInvoice/ReleaseSalesInvoice/status/85e62759-ce29-4caf-b35d-319c35fac5c1",
-									"protocol": "https",
+									"raw": "{{BaseURL}}{{SalesInvoiceStatusUrl}}",
 									"host": [
-										"localhost"
-									],
-									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
-										"SalesInvoice",
-										"ReleaseSalesInvoice",
-										"status",
-										"85e62759-ce29-4caf-b35d-319c35fac5c1"
+										"{{BaseURL}}{{SalesInvoiceStatusUrl}}"
 									]
 								}
 							},
@@ -1715,16 +1665,11 @@
 									}
 								],
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/SalesInvoice/Invoice/INV000046?$select=ReferenceNbr,Type,Status",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/SalesInvoice/Invoice/INV000046?$select=ReferenceNbr,Type,Status",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"SalesInvoice",
 										"Invoice",
 										"INV000046"
@@ -1863,16 +1808,11 @@
 									"raw": "{\n\t\"PaymentMethod\":{\"value\":\"VISA\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"CustomerProfileID\":{\"value\":\"1510928386\"},\n\t\"CashAccount\":{\"value\":\"102050MYST\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"Name\":{\"value\":\"Payment Profile ID\"},\n\t\t\t\"Value\":{\"value\":\"1516403307\"}\n\t\t}\n\t]\n}"
 								},
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/CustomerPaymentMethod?$select=CardAccountNbr,Details/Name&$expand=Details",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/CustomerPaymentMethod?$select=CardAccountNbr,Details/Name&$expand=Details",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"CustomerPaymentMethod"
 									],
 									"query": [
@@ -2027,16 +1967,11 @@
 									"raw": "{\n\t\"InventoryID\":{\"value\":\"AALEGO500\"},\n\t\"note\": {\"value\": \"My note\"}\n}"
 								},
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem?$select=InventoryID",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/StockItem?$select=InventoryID",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"StockItem"
 									],
 									"query": [
@@ -2178,16 +2113,11 @@
 									}
 								},
 								"url": {
-									"raw": "https://localhost/MyStoreInstance/entity/Default/22.200.001/StockItem/AALEGO500/files/T2MCRO.jpg",
-									"protocol": "https",
+									"raw": "{{DefaultEndpointURL}}/StockItem/AALEGO500/files/T2MCRO.jpg",
 									"host": [
-										"localhost"
+										"{{DefaultEndpointURL}}"
 									],
 									"path": [
-										"MyStoreInstance",
-										"entity",
-										"Default",
-										"22.200.001",
 										"StockItem",
 										"AALEGO500",
 										"files",
@@ -2232,28 +2162,33 @@
 		"type": "oauth2",
 		"oauth2": [
 			{
-				"key": "clientId",
-				"value": "F4F1D612-F323-2F78-4FA6-B4F0713815AD@MyStore",
+				"key": "clientSecret",
+				"value": "{{ClientSecret}}",
 				"type": "string"
 			},
 			{
-				"key": "clientSecret",
-				"value": "H3n846G6CgPTjwSHpu6U-Q",
+				"key": "clientId",
+				"value": "{{ClientID}}",
 				"type": "string"
 			},
 			{
 				"key": "password",
-				"value": "123",
+				"value": "{{Password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{Username}}",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "{{InstanceURL}}/identity/connect/token",
 				"type": "string"
 			},
 			{
 				"key": "tokenName",
 				"value": "MyStoreIntegration",
-				"type": "string"
-			},
-			{
-				"key": "username",
-				"value": "admin",
 				"type": "string"
 			},
 			{
@@ -2269,11 +2204,6 @@
 			{
 				"key": "client_authentication",
 				"value": "body",
-				"type": "string"
-			},
-			{
-				"key": "accessTokenUrl",
-				"value": "https://localhost/MyStoreInstance/identity/connect/token",
 				"type": "string"
 			},
 			{
@@ -2315,11 +2245,6 @@
 	],
 	"variable": [
 		{
-			"key": "SalesInvoiceStatusUrl",
-			"value": "",
-			"type": "string"
-		},
-		{
 			"key": "BaseURL",
 			"value": "https://localhost",
 			"type": "string"
@@ -2331,7 +2256,29 @@
 		},
 		{
 			"key": "DefaultEndpointURL",
-			"value": "{{InstanceURL}}/entity/Default/22.200.001",
+			"value": "{{InstanceURL}}/entity/Default/23.200.001",
+			"type": "string"
+		},
+		{
+			"key": "Username",
+			"value": "admin"
+		},
+		{
+			"key": "Password",
+			"value": "123",
+			"type": "string"
+		},
+		{
+			"key": "ClientID",
+			"value": "F4F1D612-F323-2F78-4FA6-B4F0713815AD@MyStore"
+		},
+		{
+			"key": "ClientSecret",
+			"value": "H3n846G6CgPTjwSHpu6U-Q"
+		},
+		{
+			"key": "SalesInvoiceStatusUrl",
+			"value": "",
 			"type": "string"
 		},
 		{
