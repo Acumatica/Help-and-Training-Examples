@@ -1,15 +1,13 @@
 using System;
-using System.Collections;
 using PX.Data;
+using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
 using PX.Objects.IN;
-using PX.Data.BQL;
-using PX.Data.WorkflowAPI;
-using PX.Objects.AR;
 
 namespace PhoneRepairShop
 {
-    public class RSSVWorkOrderEntry : PXGraph<RSSVWorkOrderEntry, RSSVWorkOrder>
+    public class RSSVWorkOrderEntry : PXGraph<RSSVWorkOrderEntry,
+        RSSVWorkOrder>
     {
         #region Views
 
@@ -19,48 +17,28 @@ namespace PhoneRepairShop
         //The view for the Repair Items tab
         public SelectFrom<RSSVWorkOrderItem>.
             Where<RSSVWorkOrderItem.orderNbr.
-            IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
+                IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
             RepairItems;
 
         //The view for the Labor tab
         public SelectFrom<RSSVWorkOrderLabor>.
             Where<RSSVWorkOrderLabor.orderNbr.
-            IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
+                IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
             Labor;
 
         //The view for the auto-numbering of records
         public PXSetup<RSSVSetup> AutoNumSetup;
-
         #endregion
 
-        #region Constructors
-
-        //The graph constructor
+        #region Graph constructor
         public RSSVWorkOrderEntry()
         {
             RSSVSetup setup = AutoNumSetup.Current;
         }
-
-
         #endregion
-
-
-
+		
+		////////// The added code
         #region Actions
-
-        public PXAction<RSSVWorkOrder> PutOnHold;
-        [PXButton, PXUIField(DisplayName = "Hold",
-          MapEnableRights = PXCacheRights.Select,
-          MapViewRights = PXCacheRights.Select)]
-        protected virtual IEnumerable putOnHold(PXAdapter adapter) => adapter.Get();
-
-        public PXAction<RSSVWorkOrder> ReleaseFromHold;
-        [PXButton, PXUIField(DisplayName = "Remove Hold",
-          MapEnableRights = PXCacheRights.Select,
-          MapViewRights = PXCacheRights.Select)]
-        protected virtual IEnumerable releaseFromHold(PXAdapter adapter) => adapter.Get();
-
-        ////////// The added code
         public PXAction<RSSVWorkOrder> AssignToMe;
         [PXButton]
         [PXUIField(DisplayName = "Assign to Me", Enabled = true)]
@@ -78,10 +56,10 @@ namespace PhoneRepairShop
             // Trigger the Save action to save changes in the database.
             Actions.PressSave();
         }
-        ////////// The end of added code
         #endregion
-
-        #region Event Handlers 
+        ////////// The end of added code
+		
+        #region Events
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
         {
@@ -128,13 +106,15 @@ namespace PhoneRepairShop
         }
 
         //Update price and repair item type when inventory ID of repair item is updated.
-        protected void _(Events.FieldUpdated<RSSVWorkOrderItem, RSSVWorkOrderItem.inventoryID> e)
+        protected void _(Events.FieldUpdated<RSSVWorkOrderItem,
+            RSSVWorkOrderItem.inventoryID> e)
         {
             RSSVWorkOrderItem row = e.Row;
             if (row.InventoryID != null && row.RepairItemType == null)
             {
                 //Use the PXSelector attribute to select the stock item.
-                InventoryItem item = PXSelectorAttribute.Select<RSSVWorkOrderItem.inventoryID>(e.Cache, row) as InventoryItem;
+                InventoryItem item = PXSelectorAttribute.Select<
+                    RSSVWorkOrderItem.inventoryID>(e.Cache, row) as InventoryItem;
                 //Copy the repair item type from the stock item to the row.
                 InventoryItemExt itemExt = item.GetExtension<InventoryItemExt>();
                 row.RepairItemType = itemExt.UsrRepairItemType;
@@ -155,18 +135,19 @@ namespace PhoneRepairShop
             e.NewValue = curySettings.BasePrice;
         }
 
-
         //Validate that Quantity is greater than or equal to 0 and
         //correct the value to the default if the value is less than the default.
         protected virtual void _(Events.FieldVerifying<RSSVWorkOrderLabor,
-          RSSVWorkOrderLabor.quantity> e)
+            RSSVWorkOrderLabor.quantity> e)
         {
             if (e.Row == null || e.NewValue == null) return;
 
             if ((decimal)e.NewValue < 0)
             {
-                //Throwing an exception to cancel the assignment of the new value to the field
-                throw new PXSetPropertyException(Messages.QuantityCannotBeNegative);
+                //Throwing an exception to cancel the assignment
+                //of the new value to the field
+                throw new PXSetPropertyException(
+                    Messages.QuantityCannotBeNegative);
             }
 
             var workOrder = WorkOrders.Current;
@@ -177,19 +158,20 @@ namespace PhoneRepairShop
                     Where<RSSVLabor.serviceID.IsEqual<@P.AsInt>.
                         And<RSSVLabor.deviceID.IsEqual<@P.AsInt>>.
                         And<RSSVLabor.inventoryID.IsEqual<@P.AsInt>>>
-                    .View.Select(this, workOrder.ServiceID, workOrder.DeviceID, e.Row.InventoryID);
+                    .View.Select(this, workOrder.ServiceID, workOrder.DeviceID,
+                    e.Row.InventoryID);
                 if (labor != null && (decimal)e.NewValue < labor.Quantity)
                 {
                     //Correcting the LineQty value
                     e.NewValue = labor.Quantity;
                     //Raising the ExceptionHandling event for the Quantity field
                     //to attach the exception object to the field
-                    e.Cache.RaiseExceptionHandling<RSSVWorkOrderLabor.quantity>(e.Row, e.NewValue,
-                        new PXSetPropertyException(Messages.QuantityTooSmall, PXErrorLevel.Warning));
+                    e.Cache.RaiseExceptionHandling<RSSVWorkOrderLabor.quantity>(
+                        e.Row, e.NewValue, new PXSetPropertyException(
+                            Messages.QuantityTooSmall, PXErrorLevel.Warning));
                 }
             }
         }
-
 
         //Display an error if the priority is too low for the selected service
         protected virtual void _(Events.RowUpdating<RSSVWorkOrder> e)
@@ -212,8 +194,8 @@ namespace PhoneRepairShop
                     if (service != null && service.PreliminaryCheck == true)
                     {
                         //Display the error for the Priority field
-                        WorkOrders.Cache.RaiseExceptionHandling<RSSVWorkOrder.priority>(row,
-                            originalRow.Priority,
+                        WorkOrders.Cache.RaiseExceptionHandling<
+                            RSSVWorkOrder.priority>(row, originalRow.Priority,
                             new PXSetPropertyException(Messages.PriorityTooLow));
 
                         //Assign the proper priority
@@ -222,39 +204,6 @@ namespace PhoneRepairShop
                 }
             }
         }
-        #endregion
-
-        #region Workflow Implementation
-        //Event handler for a workflow event
-        public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument;
-
-        public PXAction<RSSVWorkOrder> Assign;
-        [PXButton]
-        [PXUIField(DisplayName = "Assign", Enabled = false)]
-        protected virtual void assign()
-        {
-            // Get the current order from the cache.
-            RSSVWorkOrder row = WorkOrders.Current;
-
-            // If an Assignee has not been specified,
-            // change the Assignee box value to the default employee value.
-            if (row.Assignee == null)
-                row.Assignee = AutoNumSetup.Current.DefaultEmployee;
-
-            // Change the order status to Assigned.
-            // row.Status = WorkOrderStatusConstants.Assigned;
-
-            // Update the data record in the cache.
-            WorkOrders.Update(row);
-
-            // Trigger the Save action to save changes in the database.
-            Actions.PressSave();
-        }
-
-        public PXAction<RSSVWorkOrder> Complete;
-        [PXButton]
-        [PXUIField(DisplayName = "Complete", Enabled = false)]
-        protected virtual IEnumerable complete(PXAdapter adapter) => adapter.Get();
         #endregion
     }
 }
