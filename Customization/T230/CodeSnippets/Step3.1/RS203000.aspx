@@ -35,19 +35,23 @@
 									<px:PXGridColumn CommitChanges="True" DataField="InventoryID" Width="70" ></px:PXGridColumn>
 									<px:PXGridColumn DataField="InventoryID_description" Width="280" ></px:PXGridColumn>
 									<px:PXGridColumn CommitChanges="True" DataField="BasePrice" Width="100" ></px:PXGridColumn>
-									<px:PXGridColumn CommitChanges="True" Type="CheckBox" DataField="IsDefault" Width="80" ></px:PXGridColumn>
-									<px:PXGridColumn Type="CheckBox" DataField="IsPriceValidated" Width="100" >
+	                                <%-- The added code --%>
+                                    <px:PXGridColumn Type="CheckBox" DataField="IsPriceValidated" Width="100" >
                                     </px:PXGridColumn>
-								</Columns>
+	                                <%-- The end of added code --%>
+									<px:PXGridColumn CommitChanges="True" Type="CheckBox" DataField="IsDefault" Width="80" ></px:PXGridColumn></Columns>
 								<RowTemplate>
-									<px:PXSegmentMask runat="server" ID="CstPXSegmentMask6" DataField="InventoryID" AutoRefresh="True" ></px:PXSegmentMask></RowTemplate></px:PXGridLevel></Levels>
-						<ActionBar>
+									<px:PXSegmentMask runat="server" ID="CstPXSegmentMask6" DataField="InventoryID" AutoRefresh="True" ></px:PXSegmentMask></RowTemplate></px:PXGridLevel>
+						</Levels>
+						<%-- The added code --%>
+                        <ActionBar>
                             <CustomItems>
                                 <px:PXToolBarButton Text="ValidateItemPrices">
                                     <AutoCallBack Command="ValidateItemPrices" Target="ds" />
                                 </px:PXToolBarButton>
                             </CustomItems>
                         </ActionBar>
+						<%-- The end of added code --%>
 						<AutoSize Enabled="True" ></AutoSize>
 						<Mode InitNewRow="True" ></Mode></px:PXGrid></Template>
 			</px:PXTabItem>

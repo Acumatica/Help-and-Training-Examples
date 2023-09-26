@@ -109,7 +109,7 @@ namespace PhoneRepairShop
         public abstract class basePrice : 
             PX.Data.BQL.BqlDecimal.Field<basePrice> { }
         #endregion
-
+        ////////// The added code
         #region IsPriceValidated
         [PXDBBool]
         [PXDefault(false)]
@@ -117,7 +117,7 @@ namespace PhoneRepairShop
         public virtual bool? IsPriceValidated { get; set; }
         public abstract class isPriceValidated : PX.Data.BQL.BqlBool.Field<isPriceValidated> { }
         #endregion
-
+        ////////// The end of added code
         #region CreatedDateTime
         [PXDBCreatedDateTime()]
         public virtual DateTime? CreatedDateTime { get; set; }
