@@ -111,7 +111,7 @@ namespace PhoneRepairShop
         #endregion
 
         #region IsPriceValidated
-        [PXDBBool()]
+        [PXDBBool]
         [PXDefault(false)]
         [PXUIField(DisplayName = "Price Validated", Enabled = false)]
         public virtual bool? IsPriceValidated { get; set; }

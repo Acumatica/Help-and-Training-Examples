@@ -36,7 +36,7 @@
 									<px:PXGridColumn DataField="InventoryID_description" Width="280" ></px:PXGridColumn>
 									<px:PXGridColumn CommitChanges="True" DataField="BasePrice" Width="100" ></px:PXGridColumn>
 	                                <%-- The added code --%>
-                                    <px:PXGridColumn CommitChanges="True" Type="CheckBox" DataField="IsPriceValidated" Width="100" >
+                                    <px:PXGridColumn Type="CheckBox" DataField="IsPriceValidated" Width="100" >
                                     </px:PXGridColumn>
 	                                <%-- The end of added code --%>
 									<px:PXGridColumn CommitChanges="True" Type="CheckBox" DataField="IsDefault" Width="80" ></px:PXGridColumn></Columns>
