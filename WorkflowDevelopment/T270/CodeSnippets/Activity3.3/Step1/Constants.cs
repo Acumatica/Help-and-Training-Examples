@@ -41,7 +41,7 @@ namespace PhoneRepairShop
         public const string Completed = "CM";
         public const string Paid = "PD";
     }
-
+    //////////// The added code
     //Constants for the repair work order types
     public static class WorkOrderTypeConstants
     {
@@ -49,5 +49,5 @@ namespace PhoneRepairShop
         public const string Standard = "ST";
         public const string Awaiting = "AW";
     }
-
+	////////// The end of added code
 }

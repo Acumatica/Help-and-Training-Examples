@@ -3,6 +3,7 @@ using PX.Data.BQL.Fluent;
 using PX.Data.WorkflowAPI;
 using PX.Objects.AR;
 using PX.Objects.Common;
+using static PhoneRepairShop.RSSVWorkOrder;
 using static PX.Data.WorkflowAPI.BoundedTo<PhoneRepairShop.RSSVWorkOrderEntry,
   PhoneRepairShop.RSSVWorkOrder>;
 
@@ -298,6 +299,116 @@ namespace PhoneRepairShop
                         .IsEqual<ARRegister.refNbr.FromCurrent>>>());
                 })
             );
+        }
+
+        // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
+        public class RSSVWorkOrderWorkflow_Extension :
+        PXGraphExtension<RSSVWorkOrderWorkflow, RSSVWorkOrderEntry>
+        {
+            #region Constants 
+            public static class OrderTypes
+            {
+                public const string Simple = WorkOrderTypeConstants.Simple;
+                public const string Standard = WorkOrderTypeConstants.Standard;
+                public const string Awaiting = WorkOrderTypeConstants.Awaiting;
+
+                public class simple : PX.Data.BQL.BqlString.Constant<simple>
+                {
+                    public simple() : base(Simple) { }
+                }
+
+                public class standard : PX.Data.BQL.BqlString.Constant<standard>
+                {
+                    public standard() : base(Standard) { }
+                }
+
+                public class awaiting : PX.Data.BQL.BqlString.Constant<awaiting>
+                {
+                    public awaiting() : base(Awaiting) { }
+                }
+            }
+            #endregion
+
+            public sealed override void Configure(PXScreenConfiguration config)
+            {
+                Configure(config.GetScreenConfigurationContext<RSSVWorkOrderEntry,
+                                                               RSSVWorkOrder>());
+            }
+
+            protected static void Configure(WorkflowContext<RSSVWorkOrderEntry,
+                                                             RSSVWorkOrder> context)
+            {
+                context.UpdateScreenConfigurationFor(screen => screen
+                        .FlowTypeIdentifierIs<RSSVWorkOrder_Extension.usrOrderType>()
+                        .WithFlows(flows => flows
+                          .Add<OrderTypes.simple>(flow => flow
+                          .WithFlowStates(states =>
+                          {
+                              states.Add<RSSVWorkOrderWorkflow.States.onHold>(flowState =>
+                              {
+                                  return flowState
+                                    .IsInitial()
+                                    .WithActions(actions =>
+                                    {
+                                        actions.Add(g => g.Complete, a => a
+                                        .IsDuplicatedInToolbar()
+                                        .WithConnotation(ActionConnotation.Success));
+                                    });
+                              });
+                              states.Add<RSSVWorkOrderWorkflow.States.completed>(flowState =>
+                              {
+                                  return flowState
+                                      .WithFieldStates(fieldstates =>
+                                      {
+                                          fieldstates.AddField<RSSVWorkOrder.customerID>(state =>
+                                              state.IsDisabled());
+                                          fieldstates.AddField<RSSVWorkOrder.serviceID>(state =>
+                                              state.IsDisabled());
+                                          fieldstates.AddField<RSSVWorkOrder.deviceID>(state =>
+                                              state.IsDisabled());
+                                      })
+                                      .WithActions(actions =>
+                                      {
+                                          actions.Add(g => g.CreateInvoiceAction, a => a
+                                          .IsDuplicatedInToolbar()
+                                          .WithConnotation(ActionConnotation.Success));
+                                      })
+                                      .WithEventHandlers(handlers =>
+                                      {
+                                          handlers.Add(g => g.OnCloseDocument);
+                                      });
+                              });
+                              states.Add<RSSVWorkOrderWorkflow.States.paid>(flowState =>
+                              {
+                                  return flowState
+                                      .WithFieldStates(fieldstates =>
+                                      {
+                                          fieldstates.AddField<RSSVWorkOrder.customerID>(state =>
+                                              state.IsDisabled());
+                                          fieldstates.AddField<RSSVWorkOrder.serviceID>(state =>
+                                              state.IsDisabled());
+                                          fieldstates.AddField<RSSVWorkOrder.deviceID>(state =>
+                                              state.IsDisabled());
+                                      });
+                              });
+                          })
+                          .WithTransitions(transitions =>
+                          {
+                              transitions.AddGroupFrom<RSSVWorkOrderWorkflow.States.onHold>(ts =>
+                              {
+                                  ts.Add(t => t.To<RSSVWorkOrderWorkflow.States.completed>().IsTriggeredOn(g =>
+                                        g.Complete));
+                              });
+                              transitions.AddGroupFrom<RSSVWorkOrderWorkflow.States.completed>(ts =>
+                              {
+                                  ts.Add(t => t.To<RSSVWorkOrderWorkflow.States.paid>().IsTriggeredOn(g =>
+                                             g.OnCloseDocument));
+                              });
+                          })
+                        ))
+                       );
+                        
+            }
         }
     }
 }
