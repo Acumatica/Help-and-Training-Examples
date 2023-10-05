@@ -16,28 +16,28 @@
     DataMember="WorkOrders" Width="100%" Height="" AllowAutoHide="false">
     <Template>
       <px:PXLayoutRule LabelsWidth="S" ControlSize="SM" ID="PXLayoutRule1"
-        runat="server" StartRow="True" />
-      <px:PXSelector runat="server" ID="CstPXSelector11" DataField="OrderNbr" />
-      <px:PXDropDown runat="server" ID="CstPXDropDown15" DataField="Status" />
+        runat="server" StartRow="True" ></px:PXLayoutRule>
+	<px:PXDropDown runat="server" ID="CstPXDropDown26" DataField="UsrOrderType" />
+      <px:PXSelector runat="server" ID="CstPXSelector11" DataField="OrderNbr" ></px:PXSelector>
+      <px:PXDropDown runat="server" ID="CstPXDropDown15" DataField="Status" ></px:PXDropDown>
       <px:PXDateTimeEdit runat="server" ID="CstPXDateTimeEdit7"
-        DataField="DateCreated" />
+        DataField="DateCreated" ></px:PXDateTimeEdit>
       <px:PXDateTimeEdit runat="server" ID="CstPXDateTimeEdit6"
-        DataField="DateCompleted" />
+        DataField="DateCompleted" ></px:PXDateTimeEdit>
       <px:PXDropDown CommitChanges="True" runat="server" ID="CstPXDropDown13" DataField="Priority" ></px:PXDropDown>
       <px:PXLayoutRule LabelsWidth="S" runat="server" ID="CstPXLayoutRule16"
-        StartColumn="True" ControlSize="XM" />
+        StartColumn="True" ControlSize="XM" ></px:PXLayoutRule>
       <px:PXSegmentMask CommitChanges="True" runat="server"
-        ID="CstPXSegmentMask5" DataField="CustomerID" />
-      <px:PXSelector CommitChanges="True" runat="server" ID="CstPXSelector14" DataField="ServiceID" />
-      <px:PXSelector CommitChanges="True" runat="server" ID="CstPXSelector9" DataField="DeviceID" />
-      <px:PXSelector runat="server" ID="CstPXSelector4" DataField="Assignee" />
-      <px:PXLayoutRule ColumnSpan="2" runat="server" ID="CstLayoutRule18" />
-      <px:PXTextEdit runat="server" ID="CstPXTextEdit8" DataField="Description" />
+        ID="CstPXSegmentMask5" DataField="CustomerID" ></px:PXSegmentMask>
+      <px:PXSelector CommitChanges="True" runat="server" ID="CstPXSelector14" DataField="ServiceID" ></px:PXSelector>
+      <px:PXSelector CommitChanges="True" runat="server" ID="CstPXSelector9" DataField="DeviceID" ></px:PXSelector>
+      <px:PXSelector runat="server" ID="CstPXSelector4" DataField="Assignee" ></px:PXSelector>
+      <px:PXLayoutRule ColumnSpan="2" runat="server" ID="CstLayoutRule18" ></px:PXLayoutRule>
+      <px:PXTextEdit runat="server" ID="CstPXTextEdit8" DataField="Description" ></px:PXTextEdit>
       <px:PXLayoutRule LabelsWidth="S" runat="server" ID="CstPXLayoutRule17"
-        StartColumn="True" ControlSize="M" />
-      <px:PXNumberEdit runat="server" ID="CstPXNumberEdit12" DataField="OrderTotal" />
-      <px:PXTextEdit runat="server" ID="CstPXTextEdit10" DataField="InvoiceNbr" />
-    </Template>
+        StartColumn="True" ControlSize="M" ></px:PXLayoutRule>
+      <px:PXNumberEdit runat="server" ID="CstPXNumberEdit12" DataField="OrderTotal" ></px:PXNumberEdit>
+      <px:PXTextEdit runat="server" ID="CstPXTextEdit10" DataField="InvoiceNbr" ></px:PXTextEdit></Template>
   </px:PXFormView>
 </asp:Content>
 <asp:Content ID="cont3" ContentPlaceHolderID="phG" Runat="Server">
