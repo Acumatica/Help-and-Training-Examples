@@ -44,21 +44,24 @@ namespace PhoneRepairShop
             View DefaultWarranty;
         #endregion
 
-        private static void ValidatePrices(RSSVRepairPrice repairPriceItem)
+
+		 private static void ValidatePrices(RSSVRepairPrice repairPriceItem)
         {
             // Create an instance of the RSSVRepairPriceMaint graph and set the Current property of its RepairPrices view.
             var priceMaint = PXGraph.CreateInstance<RSSVRepairPriceMaint>();
-            priceMaint.RepairPrices.Current = priceMaint.RepairPrices.Search<RSSVRepairPrice.serviceID, RSSVRepairPrice.deviceID> (repairPriceItem.ServiceID, repairPriceItem.DeviceID);
+            priceMaint.RepairPrices.Current = priceMaint.RepairPrices.
+             Search<RSSVRepairPrice.serviceID, RSSVRepairPrice.deviceID>
+             (repairPriceItem.ServiceID, repairPriceItem.DeviceID);
 
             // Set a delay to mimic connecting to an external service to validate the 
-            // repair item prices.
+			// repair item prices.
             // In a real world scenario, you would connect to an actual external service and 
-            // make an API request to validate the prices for the repair items.
+			// make an API request to validate the prices for the repair items.
             Thread.Sleep(3000);
 
             // Update the Price Validated field for each repair item on the Repair Items tab:
             // Here we are assuming that the validation was successful from the external service 
-            // and are setting IsPriceValidated to true for each repair item.     
+			// and are setting IsPriceValidated to true for each repair item.     
             foreach (RSSVRepairItem item in priceMaint.RepairItems.Select())
             {
                 // Set IsPriceValidated to true for each repair item.
@@ -68,8 +71,8 @@ namespace PhoneRepairShop
             }
             // Trigger the Save action to save the changes stored in the cache to the database.
             priceMaint.Actions.PressSave();
-        }
-
+			
+		////////// The added code
         #region Actions
         public PXAction<RSSVRepairPrice> ValidateItemPrices;
         [PXButton(DisplayOnMainToolbar = false, CommitChanges = true)]
@@ -94,7 +97,8 @@ namespace PhoneRepairShop
             return list;
         }
         #endregion
-
+		////////// The end of added code
+		
         #region Event Handlers
         //Update the price and repair item type when the inventory ID of
         //the repair item is updated.
