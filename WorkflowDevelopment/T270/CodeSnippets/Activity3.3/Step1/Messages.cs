@@ -57,11 +57,11 @@ namespace PhoneRepairShop
             @"The priority must be at least Medium for 
             the repair service that requires preliminary check.";
 
-        
+		//////////// The added code
         //Work order types 
         public const string Simple = "Simple";
         public const string Standard = "Standard";
         public const string Awaiting = "Awaiting Delivery";
-
+		////////// The end of added code
     }
 }
