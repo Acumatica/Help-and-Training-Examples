@@ -441,7 +441,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n    \"ShipmentDate\":{\"value\":\"2022-11-01\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\n\t\t}\n\t]\n}"
+							"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n    \"ShipmentDate\":{\"value\":\"2023-11-01\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\n\t\t}\n\t]\n}"
 						},
 						"url": {
 							"raw": "{{DefaultEndpointURL}}/Shipment?$select=Type,ShipmentNbr,Status,Details/InventoryID&$expand=Details",
@@ -482,7 +482,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n    \"ShipmentDate\":{\"value\":\"2022-11-01\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\n\t\t}\n\t]\n}"
+									"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n    \"ShipmentDate\":{\"value\":\"2023-11-01\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\n\t\t}\n\t]\n}"
 								},
 								"url": {
 									"raw": "{{DefaultEndpointURL}}/Shipment?$select=Type,ShipmentNbr,Status,Details/InventoryID&$expand=Details",
@@ -518,7 +518,7 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 23-Sep-2022 20:25:47 GMT; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Sat, 21-Oct-2023 08:33:21 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
@@ -526,7 +526,7 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 23-Sep-2022 20:25:47 GMT; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Sat, 21-Oct-2023 08:33:21 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
@@ -534,15 +534,15 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requestid=C34018A628986A9E11ED392268CD5469; path=/"
+									"value": "requestid=5BE84C256C58A88311EE6D90FE930C8E; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requeststat=+st:29361+sc:~/entity/default/22.200.001/shipment+start:637993023478311657+tg:; path=/"
+									"value": "requeststat=+st:4801+sc:~/entity/default/23.200.001/shipment+start:638332148018832142+tg:; path=/"
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 20 Sep 2022 20:26:17 GMT"
+									"value": "Wed, 18 Oct 2023 08:33:26 GMT"
 								},
 								{
 									"key": "Content-Length",
@@ -550,7 +550,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"a2ee6870-2239-ed11-9e6a-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"CustomerID\": {\n        \"value\": \"C000000003\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"bfb0c477-2239-ed11-9e6a-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000004\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/MyStoreInstance/entity/Default/22.200.001/files/PX.Objects.SO.SOShipmentEntry/Transactions/bfb0c477-2239-ed11-9e6a-9828a61840c3/{filename}\"\n            }\n        },\n        {\n            \"id\": \"c0b0c477-2239-ed11-9e6a-9828a61840c3\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"CONGRILL\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000004\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/MyStoreInstance/entity/Default/22.200.001/files/PX.Objects.SO.SOShipmentEntry/Transactions/c0b0c477-2239-ed11-9e6a-9828a61840c3/{filename}\"\n            }\n        },\n        {\n            \"id\": \"c2b0c477-2239-ed11-9e6a-9828a61840c3\",\n            \"rowNumber\": 3,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"AAMACHINE1\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000006\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/MyStoreInstance/entity/Default/22.200.001/files/PX.Objects.SO.SOShipmentEntry/Transactions/c2b0c477-2239-ed11-9e6a-9828a61840c3/{filename}\"\n            }\n        }\n    ],\n    \"ShipmentDate\": {\n        \"value\": \"2022-11-01T00:00:00+03:00\"\n    },\n    \"ShipmentNbr\": {\n        \"value\": \"000008\"\n    },\n    \"Status\": {\n        \"value\": \"On Hold\"\n    },\n    \"Type\": {\n        \"value\": \"Shipment\"\n    },\n    \"WarehouseID\": {\n        \"value\": \"MAIN\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/MyStoreInstance/entity/Default/22.200.001/Shipment/a2ee6870-2239-ed11-9e6a-9828a61840c3\",\n        \"files:put\": \"/MyStoreInstance/entity/Default/22.200.001/files/PX.Objects.SO.SOShipmentEntry/Document/a2ee6870-2239-ed11-9e6a-9828a61840c3/{filename}\"\n    }\n}"
+							"body": "{\n    \"id\": \"8f0c93fe-906d-ee11-83a8-586c254ce85b\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"\"\n    },\n    \"CustomerID\": {\n        \"value\": \"C000000003\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"940c93fe-906d-ee11-83a8-586c254ce85b\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"AALEGO500\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000004\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/MyStoreInstance/entity/Default/23.200.001/files/PX.Objects.SO.SOShipmentEntry/Transactions/940c93fe-906d-ee11-83a8-586c254ce85b/{filename}\"\n            }\n        },\n        {\n            \"id\": \"950c93fe-906d-ee11-83a8-586c254ce85b\",\n            \"rowNumber\": 2,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"CONGRILL\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000004\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/MyStoreInstance/entity/Default/23.200.001/files/PX.Objects.SO.SOShipmentEntry/Transactions/950c93fe-906d-ee11-83a8-586c254ce85b/{filename}\"\n            }\n        },\n        {\n            \"id\": \"970c93fe-906d-ee11-83a8-586c254ce85b\",\n            \"rowNumber\": 3,\n            \"note\": null,\n            \"InventoryID\": {\n                \"value\": \"AAMACHINE1\"\n            },\n            \"OrderNbr\": {\n                \"value\": \"000006\"\n            },\n            \"OrderType\": {\n                \"value\": \"SO\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/MyStoreInstance/entity/Default/23.200.001/files/PX.Objects.SO.SOShipmentEntry/Transactions/970c93fe-906d-ee11-83a8-586c254ce85b/{filename}\"\n            }\n        }\n    ],\n    \"ShipmentDate\": {\n        \"value\": \"2023-11-01T00:00:00+01:00\"\n    },\n    \"ShipmentNbr\": {\n        \"value\": \"000008\"\n    },\n    \"Status\": {\n        \"value\": \"On Hold\"\n    },\n    \"Type\": {\n        \"value\": \"Shipment\"\n    },\n    \"WarehouseID\": {\n        \"value\": \"MAIN\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/MyStoreInstance/entity/Default/23.200.001/Shipment/8f0c93fe-906d-ee11-83a8-586c254ce85b\",\n        \"files:put\": \"/MyStoreInstance/entity/Default/23.200.001/files/PX.Objects.SO.SOShipmentEntry/Document/8f0c93fe-906d-ee11-83a8-586c254ce85b/{filename}\"\n    }\n}"
 						}
 					]
 				},
@@ -1207,7 +1207,7 @@
 			"name": "Part 3: Execution of Actions",
 			"item": [
 				{
-					"name": "Lesson 3.1: Release from Hold of an Invoice",
+					"name": "Lesson 3.1: Releasing from Hold of an Invoice",
 					"event": [
 						{
 							"listen": "test",
@@ -1265,7 +1265,7 @@
 					},
 					"response": [
 						{
-							"name": "Lesson 3.1: Release from Hold of an Invoice",
+							"name": "Lesson 3.1: Releasing from Hold of an Invoice",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [
@@ -1412,13 +1412,19 @@
 									},
 									{
 										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n\t\"entity\":{\r\n\t\t\"Type\":{\"value\":\"Invoice\"},\r\n\t\t\"ReferenceNbr\":{\"value\":\"INV000046\"}\r\n    }\r\n}"
+									"raw": "{\r\n\t\"entity\":{\r\n\t\t\"Type\":{\"value\":\"Invoice\"},\r\n\t\t\"ReferenceNbr\":{\"value\":\"INV000046\"}\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
 								},
 								"url": {
 									"raw": "{{DefaultEndpointURL}}/SalesInvoice/ReleaseSalesInvoice",
@@ -1441,7 +1447,7 @@
 								},
 								{
 									"key": "Location",
-									"value": "/MyStoreInstance/entity/Default/22.200.001/SalesInvoice/ReleaseSalesInvoice/status/85e62759-ce29-4caf-b35d-319c35fac5c1"
+									"value": "/MyStoreInstance/entity/Default/23.200.001/SalesInvoice/ReleaseSalesInvoice/status/85e62759-ce29-4caf-b35d-319c35fac5c1"
 								},
 								{
 									"key": "Set-Cookie",
@@ -1465,7 +1471,7 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requeststat=+st:3060+sc:~/entity/default/22.200.001/salesinvoice/releasesalesinvoice+start:637993064843925347+tg:; path=/"
+									"value": "requeststat=+st:3060+sc:~/entity/default/23.200.001/salesinvoice/releasesalesinvoice+start:637993064843925347+tg:; path=/"
 								},
 								{
 									"key": "Date",
@@ -1745,11 +1751,8 @@
 							}
 						}
 					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "Accept",
@@ -1764,7 +1767,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\r\n\t\"PaymentMethod\":{\"value\":\"VISA\"},\r\n\t\"CustomerID\":{\"value\":\"C000000003\"},\r\n\t\"CustomerProfileID\":{\"value\":\"37100472\"},\r\n\t\"CashAccount\":{\"value\":\"102050MYST\"},\r\n\t\"Details\":[\r\n\t\t{\r\n\t\t\t\"Name\":{\"value\":\"Payment Profile ID\"},\r\n\t\t\t\"Value\":{\"value\":\"911169122\"}\r\n\t\t}\r\n\t]\r\n}"
 						},
 						"url": {
 							"raw": "{{DefaultEndpointURL}}/CustomerPaymentMethod?$select=CardAccountNbr,Details/Name&$expand=Details",
@@ -1805,7 +1808,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"PaymentMethod\":{\"value\":\"VISA\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"CustomerProfileID\":{\"value\":\"1510928386\"},\n\t\"CashAccount\":{\"value\":\"102050MYST\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"Name\":{\"value\":\"Payment Profile ID\"},\n\t\t\t\"Value\":{\"value\":\"1516403307\"}\n\t\t}\n\t]\n}"
+									"raw": "{\r\n\t\"PaymentMethod\":{\"value\":\"VISA\"},\r\n\t\"CustomerID\":{\"value\":\"C000000003\"},\r\n\t\"CustomerProfileID\":{\"value\":\"37100472\"},\r\n\t\"CashAccount\":{\"value\":\"102050MYST\"},\r\n\t\"Details\":[\r\n\t\t{\r\n\t\t\t\"Name\":{\"value\":\"Payment Profile ID\"},\r\n\t\t\t\"Value\":{\"value\":\"911169122\"}\r\n\t\t}\r\n\t]\r\n}"
 								},
 								"url": {
 									"raw": "{{DefaultEndpointURL}}/CustomerPaymentMethod?$select=CardAccountNbr,Details/Name&$expand=Details",
@@ -1841,7 +1844,7 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 23-Sep-2022 21:49:53 GMT; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Sat, 21-Oct-2023 11:28:03 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
@@ -1849,7 +1852,7 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 23-Sep-2022 21:49:53 GMT; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Sat, 21-Oct-2023 11:28:03 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
@@ -1857,23 +1860,23 @@
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requestid=C34018A628986A9E11ED392E27EB37EC; path=/"
+									"value": "requestid=5BE84C256C58A88311EE6DA9661374DA; path=/"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "requeststat=+st:4040+sc:~/entity/default/22.200.001/customerpaymentmethod+start:637993073929358956+tg:; path=/"
+									"value": "requeststat=+st:1760+sc:~/entity/default/23.200.001/customerpaymentmethod+start:638332252834515802+tg:; path=/"
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 20 Sep 2022 21:49:56 GMT"
+									"value": "Wed, 18 Oct 2023 11:28:05 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "905"
+									"value": "902"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"f137eb27-2e39-ed11-9e6a-9828a61840c3\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"CardAccountNbr\": {\n        \"value\": \"Visa:****-****-****-0027\"\n    },\n    \"CashAccount\": {\n        \"value\": \"102050MYST\"\n    },\n    \"CustomerID\": {\n        \"value\": \"C000000003\"\n    },\n    \"CustomerProfileID\": {\n        \"value\": \"1510928386\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"f437eb27-2e39-ed11-9e6a-9828a61840c3\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Name\": {\n                \"value\": \"CCPID\"\n            },\n            \"Value\": {\n                \"value\": \"1516403307\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/MyStoreInstance/entity/Default/22.200.001/files/PX.Objects.AR.CustomerPaymentMethodMaint/Details/f437eb27-2e39-ed11-9e6a-9828a61840c3/{filename}\"\n            }\n        }\n    ],\n    \"PaymentMethod\": {\n        \"value\": \"VISA\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/MyStoreInstance/entity/Default/22.200.001/CustomerPaymentMethod/f137eb27-2e39-ed11-9e6a-9828a61840c3\",\n        \"files:put\": \"/MyStoreInstance/entity/Default/22.200.001/files/PX.Objects.AR.CustomerPaymentMethodMaint/CustomerPaymentMethod/f137eb27-2e39-ed11-9e6a-9828a61840c3/{filename}\"\n    }\n}"
+							"body": "{\n    \"id\": \"dd741366-a96d-ee11-83a8-586c254ce85b\",\n    \"rowNumber\": 1,\n    \"note\": null,\n    \"CardAccountNbr\": {\n        \"value\": \"Visa:****-****-****-0027\"\n    },\n    \"CashAccount\": {\n        \"value\": \"102050MYST\"\n    },\n    \"CustomerID\": {\n        \"value\": \"C000000003\"\n    },\n    \"CustomerProfileID\": {\n        \"value\": \"37100472\"\n    },\n    \"Details\": [\n        {\n            \"id\": \"e0741366-a96d-ee11-83a8-586c254ce85b\",\n            \"rowNumber\": 1,\n            \"note\": null,\n            \"Name\": {\n                \"value\": \"CCPID\"\n            },\n            \"Value\": {\n                \"value\": \"911169122\"\n            },\n            \"custom\": {},\n            \"_links\": {\n                \"files:put\": \"/MyStoreInstance/entity/Default/23.200.001/files/PX.Objects.AR.CustomerPaymentMethodMaint/Details/e0741366-a96d-ee11-83a8-586c254ce85b/{filename}\"\n            }\n        }\n    ],\n    \"PaymentMethod\": {\n        \"value\": \"VISA\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/MyStoreInstance/entity/Default/23.200.001/CustomerPaymentMethod/dd741366-a96d-ee11-83a8-586c254ce85b\",\n        \"files:put\": \"/MyStoreInstance/entity/Default/23.200.001/files/PX.Objects.AR.CustomerPaymentMethodMaint/CustomerPaymentMethod/dd741366-a96d-ee11-83a8-586c254ce85b/{filename}\"\n    }\n}"
 						}
 					]
 				}
@@ -2033,7 +2036,148 @@
 					]
 				},
 				{
-					"name": "Lesson 5.2: Attaching a File to a Stock Item",
+					"name": "Lesson 5.2: Getting the Put Files URL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"const jsonResponse = pm.response.json();\r",
+									"const fileRef = jsonResponse._links['files:put'];\r",
+									"pm.collectionVariables.set('StockItemFileUrl', fileRef.replace('{filename}','T2MCRO.jpg'));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": ""
+							}
+						},
+						"url": {
+							"raw": "{{DefaultEndpointURL}}/StockItem/AALEGO500?$select=InventoryID",
+							"host": [
+								"{{DefaultEndpointURL}}"
+							],
+							"path": [
+								"StockItem",
+								"AALEGO500"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "InventoryID"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Lesson 5.2: Getting the Put Files URL",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "file",
+									"file": {
+										"src": ""
+									}
+								},
+								"url": {
+									"raw": "{{DefaultEndpointURL}}/StockItem/AALEGO500?$select=InventoryID",
+									"host": [
+										"{{DefaultEndpointURL}}"
+									],
+									"path": [
+										"StockItem",
+										"AALEGO500"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "InventoryID"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Sat, 21-Oct-2023 12:14:16 GMT; path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "UserBranch=82; path=/"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Oct 2023 12:14:16 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "393"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"cae53ce0-1614-e511-9b82-c86000dddf0b\",\n    \"rowNumber\": 1,\n    \"note\": {\n        \"value\": \"My note\"\n    },\n    \"InventoryID\": {\n        \"value\": \"AALEGO500\"\n    },\n    \"custom\": {},\n    \"_links\": {\n        \"self\": \"/MyStoreInstance/entity/Default/23.200.001/StockItem/cae53ce0-1614-e511-9b82-c86000dddf0b\",\n        \"files:put\": \"/MyStoreInstance/entity/Default/23.200.001/files/PX.Objects.IN.InventoryItemMaint/Item/cae53ce0-1614-e511-9b82-c86000dddf0b/{filename}\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Lesson 5.2: Attaching the File",
 					"event": [
 						{
 							"listen": "test",
@@ -2066,7 +2210,7 @@
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
+								"value": "application/octet-stream",
 								"type": "text"
 							}
 						],
@@ -2077,21 +2221,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{DefaultEndpointURL}}/StockItem/AALEGO500/files/T2MCRO.jpg",
+							"raw": "{{BaseURL}}{{StockItemFileUrl}}",
 							"host": [
-								"{{DefaultEndpointURL}}"
-							],
-							"path": [
-								"StockItem",
-								"AALEGO500",
-								"files",
-								"T2MCRO.jpg"
+								"{{BaseURL}}{{StockItemFileUrl}}"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Lesson 5.2: Attaching a File to a Stock Item",
+							"name": "Lesson 5.2: Attaching the File",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [
@@ -2102,26 +2240,20 @@
 									},
 									{
 										"key": "Content-Type",
-										"value": "application/json",
+										"value": "application/octet-stream",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "file",
 									"file": {
-										"src": "/C:/Temp/T2MCRO.jpg"
+										"src": "/C:/Work/Help-and-Training-Examples/IntegrationDevelopment/I330/SourceFiles/T2MCRO.jpg"
 									}
 								},
 								"url": {
-									"raw": "{{DefaultEndpointURL}}/StockItem/AALEGO500/files/T2MCRO.jpg",
+									"raw": "{{BaseURL}}{{StockItemFileUrl}}",
 									"host": [
-										"{{DefaultEndpointURL}}"
-									],
-									"path": [
-										"StockItem",
-										"AALEGO500",
-										"files",
-										"T2MCRO.jpg"
+										"{{BaseURL}}{{StockItemFileUrl}}"
 									]
 								}
 							},
@@ -2135,11 +2267,11 @@
 								},
 								{
 									"key": "Location",
-									"value": "/MyStoreInstance/entity/Default/22.200.001/files/377ad08f-4951-4567-a0d0-4fbd864a9a9f"
+									"value": "/MyStoreInstance/entity/Default/23.200.001/files/d614f0cd-d9ba-4563-a764-0a6dd5109243"
 								},
 								{
 									"key": "Set-Cookie",
-									"value": "Locale=Culture=en-US&TimeZone=GMTP0300M; expires=Fri, 23-Sep-2022 21:54:45 GMT; path=/"
+									"value": "Locale=Culture=en-US&TimeZone=GMTM0500G; expires=Sat, 21-Oct-2023 12:37:03 GMT; path=/"
 								},
 								{
 									"key": "Set-Cookie",
@@ -2147,11 +2279,11 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 20 Sep 2022 21:54:47 GMT"
+									"value": "Wed, 18 Oct 2023 12:37:03 GMT"
 								}
 							],
 							"cookie": [],
-							"body": ""
+							"body": null
 						}
 					]
 				}
@@ -2292,6 +2424,10 @@
 		},
 		{
 			"key": "AALEGO500_detail_ID",
+			"value": ""
+		},
+		{
+			"key": "StockItemFileUrl",
 			"value": ""
 		}
 	]
