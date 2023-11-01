@@ -71,7 +71,7 @@ namespace PhoneRepairShop
             }
             // Trigger the Save action to save the changes stored in the cache to the database.
             priceMaint.Actions.PressSave();
-			
+	 }
 		////////// The added code
         #region Actions
         public PXAction<RSSVRepairPrice> ValidateItemPrices;
