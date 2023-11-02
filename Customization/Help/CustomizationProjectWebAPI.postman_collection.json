@@ -1219,7 +1219,7 @@
 	"variable": [
 		{
 			"key": "BaseURL",
-			"value": "https://localhost/AcumaticaERP/\n",
+			"value": "https://localhost/AcumaticaERP/",
 			"type": "string"
 		},
 		{
