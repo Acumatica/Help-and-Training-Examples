@@ -1596,7 +1596,7 @@
 			},
 			{
 				"key": "accessToken",
-				"value": "1c229352046ddbf2da3f53ec3572c83e",
+				"value": "{{accessToken}}",
 				"type": "string"
 			},
 			{
