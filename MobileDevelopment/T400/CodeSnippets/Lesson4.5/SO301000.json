@@ -4,8 +4,8 @@ update screen SO301000 {
       add layout "OrderHeaderVATRow" {
         displayName = "OrderHeaderVATRow"
         layout = "Inline"
-        add field "VATExemptTotal"
-        add field "VATTaxableTotal"
+        add field "TotalsVATTotals#VATExempt"
+        add field "TotalsVATTotals#VATTaxable"
       }
     }
     
