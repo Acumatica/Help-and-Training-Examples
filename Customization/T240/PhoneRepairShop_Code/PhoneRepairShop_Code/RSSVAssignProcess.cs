@@ -1,9 +1,9 @@
 using System;
 using PX.Data;
-using PhoneRepairShop.Workflows;
+using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
 using PX.TM;
-using PX.Data.BQL;
+using static PX.Objects.SO.SOPickingJobProcess.ProcessAction;
 
 namespace PhoneRepairShop
 {
@@ -30,7 +30,7 @@ namespace PhoneRepairShop
            ProcessingView.
            FilteredBy<RSSVWorkOrderToAssignFilter> WorkOrders;
 
-
+        ////////// The modified code
         public RSSVAssignProcess()
         {
             WorkOrders.SetProcessCaption("Assign");
@@ -38,12 +38,13 @@ namespace PhoneRepairShop
             PXUIFieldAttribute.SetEnabled<RSSVWorkOrder.assignTo>(
                 WorkOrders.Cache, null, true);
         }
+        ////////// The end of modified code
 
         protected virtual void _(Events.RowSelected<
             RSSVWorkOrderToAssignFilter> e)
         {
             WorkOrders.SetProcessWorkflowAction<RSSVWorkOrderEntry>(
-                g => g.Assign);
+            g => g.Assign);
         }
 
         [PXMergeAttributes(Method = MergeMethod.Append)]
@@ -56,7 +57,7 @@ namespace PhoneRepairShop
             OrderBy<RSSVEmployeeWorkOrderQty.nbrOfAssignedOrders.Asc,
                 RSSVEmployeeWorkOrderQty.lastModifiedDateTime.Asc>.
             SearchFor<OwnerAttribute.Owner.contactID>))]
-        protected virtual void _(
+                protected virtual void _(
             Events.CacheAttached<RSSVWorkOrder.defaultAssignee> e)
         { }
 
@@ -103,21 +104,21 @@ namespace PhoneRepairShop
             [PXString(1, IsFixed = true)]
             [PXUIField(DisplayName = "Priority")]
             [PXStringList(
-                new string[]
-                {
-                    WorkOrderPriorityConstants.High,
-                    WorkOrderPriorityConstants.Medium,
-                    WorkOrderPriorityConstants.Low
-                },
-                new string[]
-                {
-                    Messages.High,
-                    Messages.Medium,
-                    Messages.Low
-                })]
+            new string[]
+            {
+                WorkOrderPriorityConstants.High,
+                WorkOrderPriorityConstants.Medium,
+                WorkOrderPriorityConstants.Low
+            },
+            new string[]
+            {
+                Messages.High,
+                Messages.Medium,
+                Messages.Low
+            })]
             public virtual string Priority { get; set; }
             public abstract class priority :
-                PX.Data.BQL.BqlString.Field<priority>
+            PX.Data.BQL.BqlString.Field<priority>
             { }
             #endregion
 
@@ -127,7 +128,7 @@ namespace PhoneRepairShop
             [PXUIField(DisplayName = "Minimum Number of Days Unassigned")]
             public virtual int? TimeWithoutAction { get; set; }
             public abstract class timeWithoutAction :
-                PX.Data.BQL.BqlInt.Field<timeWithoutAction>
+            PX.Data.BQL.BqlInt.Field<timeWithoutAction>
             { }
             #endregion
 
@@ -141,7 +142,7 @@ namespace PhoneRepairShop
                 DescriptionField = typeof(RSSVRepairService.description))]
             public virtual int? ServiceID { get; set; }
             public abstract class serviceID :
-                PX.Data.BQL.BqlInt.Field<serviceID>
+            PX.Data.BQL.BqlInt.Field<serviceID>
             { }
             #endregion
         }

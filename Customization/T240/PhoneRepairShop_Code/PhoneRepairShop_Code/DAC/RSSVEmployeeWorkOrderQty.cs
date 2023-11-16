@@ -3,10 +3,12 @@ using PX.Data;
 
 namespace PhoneRepairShop
 {
+    ////////// The modified code
     [PXHidden]
     [RSSVEmployeeWorkOrderQtyAccumulator]
     public class RSSVEmployeeWorkOrderQty : IBqlTable
     {
+    ////////// The end of modified code
         #region UserID
         [PXDBInt(IsKey = true)]
         public virtual int? UserID { get; set; }
@@ -27,7 +29,7 @@ namespace PhoneRepairShop
         { }
         #endregion
     }
-
+    ////////// The added code
     public class RSSVEmployeeWorkOrderQtyAccumulator :
         PXAccumulatorAttribute
     {
@@ -47,7 +49,7 @@ namespace PhoneRepairShop
                 // Add the restriction for the value of 
                 // RSSVEmployeeWorkOrderQty.NbrOfAssignedOrders.
                 columns.AppendException(
-                    Messages.ExceedingMaximumNumberOfAssingedWorkOrders,
+                    Messages.ExceedingMaximumNumberOfAssignedWorkOrders,
                 new PXAccumulatorRestriction<
                     RSSVEmployeeWorkOrderQty.nbrOfAssignedOrders>(
                     PXComp.LE, 10));
@@ -59,4 +61,5 @@ namespace PhoneRepairShop
             return true;
         }
     }
+    ////////// The end of added code
 }

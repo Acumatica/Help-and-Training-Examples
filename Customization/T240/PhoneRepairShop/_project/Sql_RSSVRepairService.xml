@@ -20,6 +20,10 @@
     <col name="CompanyID" />
     <col name="ServiceID" />
   </index>
+  <index name="RSSVRepairService_NoteID" unique="true">
+    <col name="NoteID" />
+    <col name="CompanyID" />
+  </index>
   <index name="RSSVRepairService_ServiceCD_Uindex" unique="true">
     <col name="CompanyID" />
     <col name="ServiceCD" />
