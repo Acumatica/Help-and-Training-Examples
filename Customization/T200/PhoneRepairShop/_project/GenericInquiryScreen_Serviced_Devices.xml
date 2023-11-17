@@ -153,6 +153,7 @@
                             <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="2040" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4">
                                 <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                             </MUIScreen>
+                            <RolesInGraph Rolename="*" ApplicationName="/" Accessrights="0" />
                         </row>
                     </SiteMap>
                     <SiteMap linkname="to1Screen">
@@ -160,6 +161,7 @@
                             <MUIScreen IsPortal="0" WorkspaceID="50c02d7b-09e8-4b51-8ccd-0703de679116" Order="20" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
                                 <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                             </MUIScreen>
+                            <RolesInGraph Rolename="*" ApplicationName="/" Accessrights="0" />
                         </row>
                     </SiteMap>
                 </row>

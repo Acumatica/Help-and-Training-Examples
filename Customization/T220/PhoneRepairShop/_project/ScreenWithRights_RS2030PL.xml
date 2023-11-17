@@ -1,0 +1,27 @@
+﻿<ScreenWithRights AccessRightsMergeRule="ApplyAndKeep">
+    <data-set>
+        <relations format-version="3" relations-version="20190730" main-table="SiteMap">
+            <link from="RolesInCache (ScreenID)" to="SiteMap (ScreenID)" />
+            <link from="RolesInGraph (ScreenID)" to="SiteMap (ScreenID)" />
+            <link from="RolesInMember (ScreenID)" to="SiteMap (ScreenID)" />
+            <link from="Roles (Rolename, ApplicationName)" to="RolesInCache (Rolename, ApplicationName)" type="FromMaster" updateable="False" />
+            <link from="Roles (Rolename, ApplicationName)" to="RolesInGraph (Rolename, ApplicationName)" type="FromMaster" updateable="False" />
+            <link from="Roles (Rolename, ApplicationName)" to="RolesInMember (Rolename, ApplicationName)" type="FromMaster" updateable="False" />
+        </relations>
+        <layout>
+            <table name="SiteMap">
+                <table name="RolesInCache" uplink="(ScreenID) = (ScreenID)" />
+                <table name="RolesInGraph" uplink="(ScreenID) = (ScreenID)" />
+                <table name="RolesInMember" uplink="(ScreenID) = (ScreenID)" />
+            </table>
+            <table name="Roles" />
+        </layout>
+        <data>
+            <SiteMap>
+                <row Position="1113" Title="Services and Prices" Url="~/GenericInquiry/GenericInquiry.aspx?id=134b2979-46f9-452f-ad39-57b3be8e4958" ScreenID="RS2030PL" NodeID="8fe7ce11-4d65-4281-9dd0-643e5fc38f88" ParentID="12167736-ae7e-46ab-8a8c-dd4b86217519">
+                    <RolesInGraph Rolename="*" ApplicationName="/" Accessrights="0" />
+                </row>
+            </SiteMap>
+        </data>
+    </data-set>
+</ScreenWithRights>
