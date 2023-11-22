@@ -10,7 +10,7 @@ namespace PhoneRepairShop
     [PXLocalizable]
     public static class Messages
     {
-		//DAC names
+        //DAC names
         public const string RSSVDevice = "Serviced Device";
         public const string RSSVRepairService = "Repair Service";
         public const string RSSVRepairPrice = "Repair Price";
@@ -22,9 +22,9 @@ namespace PhoneRepairShop
         public const string RSSVWorkOrderItem = "Repair Item Included in Repair Work Order";
         public const string RSSVWorkOrderLabor = "Work Order Labor";
         public const string RSSVSetup = "Repair Work Order Preferences";
-		public const string RSSVWorkOrderToPay = "Repair Work Order to Pay";
-		public const string RSSVWorkOrderPayment = "Invoice and Payment of the Repair Work Order";
-		
+        public const string RSSVWorkOrderToPay = "Repair Work Order to Pay";
+        public const string RSSVWorkOrderPayment = "Invoice and Payment of the Repair Work Order";
+
         //Complexity of repair and work order priorities
         public const string High = "High";
         public const string Medium = "Medium";

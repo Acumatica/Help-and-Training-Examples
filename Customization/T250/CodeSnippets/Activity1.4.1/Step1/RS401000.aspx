@@ -35,7 +35,7 @@
       <px:PXGridLevel DataMember="DetailsView">
           <Columns>
               <px:PXGridColumn DataField="OrderType" />
-              <px:PXGridColumn DataField="OrderNbr"  />
+              <px:PXGridColumn DataField="OrderNbr" />
               <px:PXGridColumn DataField="Status" />
               <px:PXGridColumn DataField="InvoiceNbr" />
               <px:PXGridColumn DataField="PercentPaid" />

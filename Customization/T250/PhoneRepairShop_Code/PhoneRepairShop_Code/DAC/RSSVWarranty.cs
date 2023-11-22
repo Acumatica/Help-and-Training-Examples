@@ -43,7 +43,9 @@ namespace PhoneRepairShop
         [PXUIField(DisplayName = "Default Warranty")]
         [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
         public virtual bool? DefaultWarranty { get; set; }
-        public abstract class defaultWarranty : PX.Data.BQL.BqlBool.Field<defaultWarranty> { }
+        public abstract class defaultWarranty :
+            PX.Data.BQL.BqlBool.Field<defaultWarranty>
+        { }
         #endregion
 
         #region ContractDuration
