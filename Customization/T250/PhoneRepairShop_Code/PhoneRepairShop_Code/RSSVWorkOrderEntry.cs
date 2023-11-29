@@ -1,13 +1,13 @@
 using System;
+using System.Collections;
 using PX.Data;
 using PX.Data.BQL.Fluent;
 using PX.Objects.IN;
 using PX.Data.BQL;
-using PX.Data.WorkflowAPI;
-using PX.Objects.SO;
 using PX.Objects.AR;
-using System.Collections;
 using System.Collections.Generic;
+using PX.Objects.SO;
+using PX.Data.WorkflowAPI;
 
 namespace PhoneRepairShop
 {
@@ -33,10 +33,12 @@ namespace PhoneRepairShop
         //The view for the auto-numbering of records
         public PXSetup<RSSVSetup> AutoNumSetup;
 
+        ////////// The added code
         public SelectFrom<RSSVWorkOrderPayment>.
             Where<RSSVWorkOrderPayment.invoiceNbr.IsEqual<
                 RSSVWorkOrder.invoiceNbr.FromCurrent>>.
             View Payments;
+        ////////// The end of added code
 
         #endregion
 
@@ -48,167 +50,10 @@ namespace PhoneRepairShop
             RSSVSetup setup = AutoNumSetup.Current;
         }
 
-
-        #endregion
-
-
-
-        #region Actions
-
-        public PXAction<RSSVWorkOrder> PutOnHold;
-        [PXButton, PXUIField(DisplayName = "Hold",
-          MapEnableRights = PXCacheRights.Select,
-          MapViewRights = PXCacheRights.Select)]
-        protected virtual IEnumerable putOnHold(PXAdapter adapter) => adapter.Get();
-
-        public PXAction<RSSVWorkOrder> ReleaseFromHold;
-        [PXButton, PXUIField(DisplayName = "Remove Hold",
-          MapEnableRights = PXCacheRights.Select,
-          MapViewRights = PXCacheRights.Select)]
-        protected virtual IEnumerable releaseFromHold(PXAdapter adapter) => adapter.Get();
-
-
-        public PXAction<RSSVWorkOrder> AssignToMe;
-        [PXButton]
-        [PXUIField(DisplayName = "Assign to Me", Enabled = true)]
-        protected virtual void assignToMe()
-        {
-            // Get the current order from the cache.
-            RSSVWorkOrder row = WorkOrders.Current;
-
-            // Assign the contact ID associated with the current user
-            row.Assignee = PXAccess.GetContactID();
-
-            // Update the data record in the cache.
-            WorkOrders.Update(row);
-
-            // Trigger the Save action to save changes in the database.
-            Actions.PressSave();
-        }
-
-
-        public PXAction<RSSVWorkOrder> UpdateItemPrices;
-        [PXButton(DisplayOnMainToolbar = false)]
-        [PXUIField(DisplayName = "Update Prices", Enabled = true)]
-        protected virtual void updateItemPrices()
-        {
-            var order = WorkOrders.Current;
-            if (order.ServiceID == null || order.DeviceID == null) return;
-            var repairItems = RepairItems.Select();
-            foreach (RSSVWorkOrderItem item in repairItems)
-            {
-                RSSVRepairItem origItem = SelectFrom<RSSVRepairItem>.
-                        Where<RSSVRepairItem.inventoryID.IsEqual<@P.AsInt>>.View.
-                        Select(this, item.InventoryID);
-                if (origItem != null)
-                {
-                    item.BasePrice = origItem.BasePrice;
-                    RepairItems.Update(item);
-                }
-            }
-            Actions.PressSave();
-        }
-
-        public PXAction<RSSVWorkOrder> UpdateLaborPrices;
-        [PXButton(DisplayOnMainToolbar = false)]
-        [PXUIField(DisplayName = "Update Prices", Enabled = true)]
-        protected virtual void updateLaborPrices()
-        {
-            var order = WorkOrders.Current;
-            if (order.ServiceID == null || order.DeviceID == null) return;
-            var laborItems = Labor.Select();
-            foreach (RSSVWorkOrderLabor labor in laborItems)
-            {
-                RSSVLabor origItem = SelectFrom<RSSVLabor>.
-                    Where<RSSVLabor.inventoryID.IsEqual<@P.AsInt>>.View.
-                    Select(this, labor.InventoryID);
-                if (origItem != null)
-                {
-                    labor.DefaultPrice = origItem.DefaultPrice;
-                    Labor.Update(labor);
-                }
-            }
-            Actions.PressSave();
-        }
-
-        private static void CreateInvoice(RSSVWorkOrder workOrder)
-        {
-            using (var ts = new PXTransactionScope())
-            {
-                // Create an instance of the SOInvoiceEntry graph.
-                var invoiceEntry = PXGraph.CreateInstance<SOInvoiceEntry>();
-                // Initialize the summary of the invoice.
-                var doc = new ARInvoice()
-                {
-                    DocType = ARDocType.Invoice
-                };
-                doc = invoiceEntry.Document.Insert(doc);
-                doc.CustomerID = workOrder.CustomerID;
-                invoiceEntry.Document.Update(doc);
-
-                // Create an instance of the RSSVWorkOrderEntry graph.
-                var workOrderEntry = PXGraph.CreateInstance<RSSVWorkOrderEntry>();
-                workOrderEntry.WorkOrders.Current = workOrder;
-
-                // Add the lines associated with the repair items
-                // (from the Repair Items tab).
-                foreach (RSSVWorkOrderItem line in workOrderEntry.RepairItems.Select())
-                {
-                    var repairTran = invoiceEntry.Transactions.Insert();
-                    repairTran.InventoryID = line.InventoryID;
-                    repairTran.Qty = 1;
-                    repairTran.CuryUnitPrice = line.BasePrice;
-                    invoiceEntry.Transactions.Update(repairTran);
-                }
-                // Add the lines associated with labor (from the Labor tab).
-                foreach (RSSVWorkOrderLabor line in workOrderEntry.Labor.Select())
-                {
-                    var laborTran = invoiceEntry.Transactions.Insert();
-                    laborTran.InventoryID = line.InventoryID;
-                    laborTran.Qty = line.Quantity;
-                    laborTran.CuryUnitPrice = line.DefaultPrice;
-                    laborTran.CuryExtPrice = line.ExtPrice;
-                    invoiceEntry.Transactions.Update(laborTran);
-                }
-
-                // Save the invoice to the database.
-                invoiceEntry.Actions.PressSave();
-
-                // Assign the generated invoice number and save the changes.
-                workOrder.InvoiceNbr = invoiceEntry.Document.Current.RefNbr;
-                workOrderEntry.WorkOrders.Update(workOrder);
-                workOrderEntry.Actions.PressSave();
-
-                ts.Complete();
-            }
-        }
-
-        public PXAction<RSSVWorkOrder> CreateInvoiceAction;
-        [PXButton]
-        [PXUIField(DisplayName = "Create Invoice", Enabled = true)]
-        protected virtual IEnumerable createInvoiceAction(PXAdapter adapter)
-        {
-            // Populate a local list variable.
-            List<RSSVWorkOrder> list = new List<RSSVWorkOrder>();
-            foreach (RSSVWorkOrder order in adapter.Get<RSSVWorkOrder>())
-            {
-                list.Add(order);
-            }
-
-            // Trigger the Save action to save changes in the database.
-            Actions.PressSave();
-
-            var workOrder = WorkOrders.Current;
-            PXLongOperation.StartOperation(this, delegate () {
-                CreateInvoice(workOrder);
-            });
-
-            // Return the local list variable.
-            return list;
-        }
         #endregion
 
         #region Event Handlers 
+
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
         {
@@ -317,7 +162,6 @@ namespace PhoneRepairShop
             }
         }
 
-
         //Display an error if the priority is too low for the selected service
         protected virtual void _(Events.RowUpdating<RSSVWorkOrder> e)
         {
@@ -349,59 +193,114 @@ namespace PhoneRepairShop
                 }
             }
         }
-
-
-        // Manage visibility and availability of the actions.
-        protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
-        {
-            RSSVWorkOrder row = e.Row;
-            if (row == null) return;
-            AssignToMe.SetEnabled((row.Status == WorkOrderStatusConstants.ReadyForAssignment ||
-                row.Status == WorkOrderStatusConstants.OnHold) &&
-                WorkOrders.Cache.GetStatus(row) != PXEntryStatus.Inserted);
-            AssignToMe.SetVisible(row.Assignee != PXAccess.GetContactID());
-
-            UpdateItemPrices.SetEnabled(WorkOrders.Current.InvoiceNbr == null);
-            UpdateLaborPrices.SetEnabled(WorkOrders.Current.InvoiceNbr == null);
-
-            CreateInvoiceAction.SetVisible(
-                WorkOrders.Current.Status == WorkOrderStatusConstants.Completed);
-            CreateInvoiceAction.SetEnabled(WorkOrders.Current.InvoiceNbr == null &&
-                WorkOrders.Current.Status == WorkOrderStatusConstants.Completed);
-        }
         #endregion
 
-        #region Workflow Implementation
-        //Event handler for a workflow event
-        public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument;
+        #region Actions
+        public PXAction<RSSVWorkOrder> ReleaseFromHold;
+        [PXButton(), PXUIField(DisplayName = "Remove Hold",
+          MapEnableRights = PXCacheRights.Select,
+          MapViewRights = PXCacheRights.Select)]
+        protected virtual IEnumerable releaseFromHold(PXAdapter adapter)
+           => adapter.Get();
+
+        public PXAction<RSSVWorkOrder> PutOnHold;
+        [PXButton, PXUIField(DisplayName = "Hold",
+          MapEnableRights = PXCacheRights.Select,
+          MapViewRights = PXCacheRights.Select)]
+        protected virtual IEnumerable putOnHold(PXAdapter adapter) => adapter.Get();
 
         public PXAction<RSSVWorkOrder> Assign;
         [PXButton]
         [PXUIField(DisplayName = "Assign", Enabled = false)]
-        protected virtual void assign()
-        {
-            // Get the current order from the cache.
-            RSSVWorkOrder row = WorkOrders.Current;
-
-            // If an Assignee has not been specified,
-            // change the Assignee box value to the default employee value.
-            if (row.Assignee == null)
-                row.Assignee = AutoNumSetup.Current.DefaultEmployee;
-
-            // Change the order status to Assigned.
-            // row.Status = WorkOrderStatusConstants.Assigned;
-
-            // Update the data record in the cache.
-            WorkOrders.Update(row);
-
-            // Trigger the Save action to save changes in the database.
-            Actions.PressSave();
-        }
+        protected virtual IEnumerable assign(PXAdapter adapter) => adapter.Get();
 
         public PXAction<RSSVWorkOrder> Complete;
         [PXButton]
         [PXUIField(DisplayName = "Complete", Enabled = false)]
         protected virtual IEnumerable complete(PXAdapter adapter) => adapter.Get();
+
+
+        private static void CreateInvoice(RSSVWorkOrder workOrder)
+        {
+            using (var ts = new PXTransactionScope())
+            {
+                // Create an instance of the SOInvoiceEntry graph.
+                var invoiceEntry = PXGraph.CreateInstance<SOInvoiceEntry>();
+                // Initialize the summary of the invoice.
+                var doc = new ARInvoice()
+                {
+                    DocType = ARDocType.Invoice
+                };
+                doc = invoiceEntry.Document.Insert(doc);
+                doc.CustomerID = workOrder.CustomerID;
+                invoiceEntry.Document.Update(doc);
+
+                // Create an instance of the RSSVWorkOrderEntry graph.
+                var workOrderEntry = PXGraph.CreateInstance<RSSVWorkOrderEntry>();
+                workOrderEntry.WorkOrders.Current = workOrder;
+
+                // Add the lines associated with the repair items
+                // (from the Repair Items tab).
+                foreach (RSSVWorkOrderItem line in workOrderEntry.RepairItems.Select())
+                {
+                    var repairTran = invoiceEntry.Transactions.Insert();
+                    repairTran.InventoryID = line.InventoryID;
+                    repairTran.Qty = 1;
+                    repairTran.CuryUnitPrice = line.BasePrice;
+                    invoiceEntry.Transactions.Update(repairTran);
+                }
+                // Add the lines associated with labor (from the Labor tab).
+                foreach (RSSVWorkOrderLabor line in workOrderEntry.Labor.Select())
+                {
+                    var laborTran = invoiceEntry.Transactions.Insert();
+                    laborTran.InventoryID = line.InventoryID;
+                    laborTran.Qty = line.Quantity;
+                    laborTran.CuryUnitPrice = line.DefaultPrice;
+                    laborTran.CuryExtPrice = line.ExtPrice;
+                    invoiceEntry.Transactions.Update(laborTran);
+                }
+
+                // Save the invoice to the database.
+                invoiceEntry.Actions.PressSave();
+
+                // Assign the generated invoice number and save the changes.
+                workOrder.InvoiceNbr = invoiceEntry.Document.Current.RefNbr;
+                workOrderEntry.WorkOrders.Update(workOrder);
+                workOrderEntry.Actions.PressSave();
+
+                ts.Complete();
+            }
+        }
+
+        public PXAction<RSSVWorkOrder> CreateInvoiceAction;
+        [PXButton]
+        [PXUIField(DisplayName = "Create Invoice", Enabled = true)]
+        protected virtual IEnumerable createInvoiceAction(PXAdapter adapter)
+        {
+            // Populate a local list variable.
+            List<RSSVWorkOrder> list = new List<RSSVWorkOrder>();
+            foreach (RSSVWorkOrder order in adapter.Get<RSSVWorkOrder>())
+            {
+                list.Add(order);
+            }
+
+            // Trigger the Save action to save changes in the database.
+            Actions.PressSave();
+
+            var workOrder = WorkOrders.Current;
+            PXLongOperation.StartOperation(this, delegate () {
+                CreateInvoice(workOrder);
+            });
+
+            // Return the local list variable.
+            return list;
+        }
+        #endregion
+
+        #region Workflow Event Handlers 
+        public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument;
+
+        public PXWorkflowEventHandler<RSSVWorkOrder, ARRegister> OnInvoiceGotPrepaid;
         #endregion
     }
 }

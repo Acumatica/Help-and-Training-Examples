@@ -3,7 +3,6 @@ using PX.Data;
 using PX.Data.BQL.Fluent;
 using PX.Data.BQL;
 using PX.Objects.AR;
-using PhoneRepairShop.Workflows;
 using PX.Objects.SO;
 using System.Collections;
 
@@ -25,7 +24,7 @@ namespace PhoneRepairShop
                         RSSVWorkOrderToPayFilter.serviceID.FromCurrent>>>>.
             View.ReadOnly DetailsView;
 
-		protected virtual IEnumerable detailsView()
+        protected virtual IEnumerable detailsView()
         {
             BqlCommand query;
             var filter = Filter.Current;
@@ -93,6 +92,7 @@ namespace PhoneRepairShop
 
         public PXCancel<RSSVWorkOrderToPayFilter> Cancel;
 
+        ////////// The added code
         public PXAction<RSSVWorkOrderToPay> ViewOrder;
         [PXButton(DisplayOnMainToolbar = false)]
         [PXUIField]
@@ -132,6 +132,7 @@ namespace PhoneRepairShop
                 }
             }
         }
+        ////////// The end of added code
 
         public override bool IsDirty => false;
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +23,8 @@ namespace PhoneRepairShop
         public const string RSSVWorkOrderLabor = "Work Order Labor";
         public const string RSSVSetup = "Repair Work Order Preferences";
         public const string RSSVWorkOrderToPay = "Repair Work Order to Pay";
+        public const string RSSVWorkOrderPayment = 
+            "Invoice and Payment of the Repair Work Order";
 
         //Complexity of repair and work order priorities
         public const string High = "High";
@@ -64,10 +66,8 @@ namespace PhoneRepairShop
         public const string Standard = "Standard";
         public const string Awaiting = "Awaiting Delivery";
 
-        ////////// The added code
         // Order types
         public const string SalesOrder = "SO";
         public const string WorkOrder = "WO";
-        ////////// The end of added code
     }
 }

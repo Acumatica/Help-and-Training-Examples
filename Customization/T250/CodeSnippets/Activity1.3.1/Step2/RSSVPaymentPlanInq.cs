@@ -3,7 +3,6 @@ using PX.Data;
 using PX.Data.BQL.Fluent;
 using PX.Data.BQL;
 using PX.Objects.AR;
-using PhoneRepairShop.Workflows;
 ////////// The added code
 using PX.Objects.SO;
 using System.Collections;
@@ -30,7 +29,7 @@ namespace PhoneRepairShop
         ////////// The added code
         protected virtual IEnumerable detailsView()
         {
-            var workOrdersQuery = 
+            var workOrdersQuery =
                 SelectFrom<RSSVWorkOrderToPay>.InnerJoin<ARInvoice>.
                    On<ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
                 Where<RSSVWorkOrderToPay.status.IsNotEqual<
@@ -42,20 +41,20 @@ namespace PhoneRepairShop
                    Or<RSSVWorkOrderToPay.serviceID.IsEqual<
                         RSSVWorkOrderToPayFilter.serviceID.FromCurrent>>>>.
                 View.ReadOnly.Select(this);
-						
-			foreach (PXResult<RSSVWorkOrderToPay, ARInvoice> order in workOrdersQuery)
+
+            foreach (PXResult<RSSVWorkOrderToPay, ARInvoice> order in workOrdersQuery)
             {
                 yield return order;
             }
 
-            var sorders = 
+            var sorders =
                 SelectFrom<SOOrderShipment>.InnerJoin<ARInvoice>.
                   On<ARInvoice.refNbr.IsEqual<SOOrderShipment.invoiceNbr>>.
                 Where<RSSVWorkOrderToPayFilter.customerID.FromCurrent.IsNull.
                 Or<SOOrderShipment.customerID.IsEqual<
                     RSSVWorkOrderToPayFilter.customerID.FromCurrent>>>.
                 View.ReadOnly.Select(this);
-					
+
             foreach (PXResult<SOOrderShipment, ARInvoice> order in sorders)
             {
                 SOOrderShipment soshipment = order;

@@ -3,9 +3,6 @@ using PX.Data;
 using PX.Data.BQL.Fluent;
 using PX.Data.BQL;
 using PX.Objects.AR;
-////////// The added code
-using PhoneRepairShop.Workflows;
-////////// The end of added code
 
 namespace PhoneRepairShop
 {

@@ -42,6 +42,14 @@ namespace PhoneRepairShop
         public const string Paid = "PD";
     }
 
+    //Constants for the repair work order types
+    public static class WorkOrderTypeConstants
+    {
+        public const string Simple = "SP";
+        public const string Standard = "ST";
+        public const string Awaiting = "AW";
+    }
+
     ////////// The added code
     public static class OrderTypeConstants
     {

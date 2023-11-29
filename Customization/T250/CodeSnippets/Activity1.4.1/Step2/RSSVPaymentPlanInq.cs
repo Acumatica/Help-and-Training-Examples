@@ -3,7 +3,6 @@ using PX.Data;
 using PX.Data.BQL.Fluent;
 using PX.Data.BQL;
 using PX.Objects.AR;
-using PhoneRepairShop.Workflows;
 using PX.Objects.SO;
 using System.Collections;
 
@@ -116,10 +115,10 @@ namespace PhoneRepairShop
         public static RSSVWorkOrderToPay ToRSSVWorkOrderToPay
             (SOOrderShipment shipment) =>
         new RSSVWorkOrderToPay
-            {
-                OrderNbr = shipment.OrderNbr,
-                InvoiceNbr = shipment.InvoiceNbr
-            };
+        {
+            OrderNbr = shipment.OrderNbr,
+            InvoiceNbr = shipment.InvoiceNbr
+        };
     }
 
     [PXHidden]

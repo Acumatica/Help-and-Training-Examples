@@ -3,8 +3,7 @@ using PX.Data;
 using PX.Objects.AR;
 using PX.TM;
 using PX.Objects.CS;
-using PX.Data.BQL.Fluent;
-using PX.Objects.SO;
+using PX.Data.WorkflowAPI;
 
 namespace PhoneRepairShop
 {
@@ -122,9 +121,7 @@ namespace PhoneRepairShop
         [PXDBInt()]
         [PXDefault(0)]
         public virtual int? RepairItemLineCntr { get; set; }
-        public abstract class repairItemLineCntr :
-          PX.Data.BQL.BqlInt.Field<repairItemLineCntr>
-        { }
+        public abstract class repairItemLineCntr : PX.Data.BQL.BqlInt.Field<repairItemLineCntr> { }
         #endregion
 
         #region Assignee
@@ -157,8 +154,6 @@ namespace PhoneRepairShop
         #region InvoiceNbr
         [PXDBString(15, IsUnicode = true)]
         [PXUIField(DisplayName = "Invoice Nbr.", Enabled = false)]
-        [PXSelector(typeof(SearchFor<SOInvoice.refNbr>.
-            Where<SOInvoice.docType.IsEqual<ARDocType.invoice>>))]
         public virtual string InvoiceNbr { get; set; }
         public abstract class invoiceNbr : PX.Data.BQL.BqlString.Field<invoiceNbr> { }
         #endregion
@@ -222,6 +217,38 @@ namespace PhoneRepairShop
         public virtual Guid? NoteID { get; set; }
         public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
+
+        public class MyEvents : PXEntityEvent<ARRegister>.Container<MyEvents>
+        {
+            public PXEntityEvent<ARRegister> InvoiceGotPrepaid;
+        }
+
+        // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
+        public sealed class RSSVWorkOrder_Extension : PXCacheExtension<RSSVWorkOrder>
+        {
+            #region Status
+            [PXDBString(2, IsFixed = true)]
+            [PXDefault(WorkOrderTypeConstants.Standard,
+              PersistingCheck = PXPersistingCheck.Nothing)]
+            [PXUIField(DisplayName = "Order Type")]
+            [PXStringList(
+              new string[]
+              {
+                  WorkOrderTypeConstants.Simple,
+                  WorkOrderTypeConstants.Standard,
+                  WorkOrderTypeConstants.Awaiting
+              },
+              new string[]
+              {
+                  Messages.Simple,
+                  Messages.Standard,
+                  Messages.Awaiting
+              })]
+            public string UsrOrderType { get; set; }
+            public abstract class usrOrderType : PX.Data.BQL.BqlString.Field<usrOrderType> { }
+            #endregion
+        }
+
     }
 
     ////////// The added code
