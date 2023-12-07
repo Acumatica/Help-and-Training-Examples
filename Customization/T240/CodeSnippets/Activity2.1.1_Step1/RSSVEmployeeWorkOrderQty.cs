@@ -4,7 +4,7 @@ using PX.Data;
 namespace PhoneRepairShop
 {
     [PXHidden]
-    public class RSSVEmployeeWorkOrderQty : IBqlTable
+    public class RSSVEmployeeWorkOrderQty : PXBqlTable, IBqlTable
     {
         #region UserID
         [PXDBInt(IsKey = true)]

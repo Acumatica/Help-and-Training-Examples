@@ -10,7 +10,7 @@ namespace PhoneRepairShop
 {
     [PXCacheName(Messages.RSSVSetup)]
     [PXPrimaryGraph(typeof(RSSVSetupMaint))]
-    public class RSSVSetup : IBqlTable
+    public class RSSVSetup : PXBqlTable, IBqlTable
     {
         #region NumberingID
         ////////// The modified code

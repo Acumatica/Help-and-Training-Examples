@@ -9,7 +9,7 @@ using PX.Objects.SO;
 namespace PhoneRepairShop
 {
     [PXCacheName(Messages.RSSVWorkOrder)]
-    public class RSSVWorkOrder : IBqlTable
+    public class RSSVWorkOrder : PXBqlTable, IBqlTable
     {
         #region OrderNbr
         [PXDBString(15, IsKey = true, IsUnicode = true,

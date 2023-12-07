@@ -29,7 +29,7 @@ namespace PhoneRepairShop
         }
         ////////// The added code
         [PXHidden]
-        public class RSSVWorkOrderToAssignFilter : IBqlTable
+        public class RSSVWorkOrderToAssignFilter : PXBqlTable, IBqlTable
         {
             #region Priority
             [PXString(1, IsFixed = true)]

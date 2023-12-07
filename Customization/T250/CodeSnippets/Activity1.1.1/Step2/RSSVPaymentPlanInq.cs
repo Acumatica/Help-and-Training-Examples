@@ -12,13 +12,13 @@ namespace PhoneRepairShop
     {
 
         [Serializable]
-        public class MasterTable : IBqlTable
+        public class MasterTable : PXBqlTable, IBqlTable
         {
 
         }
 
         [Serializable]
-        public class DetailsTable : IBqlTable
+        public class DetailsTable : PXBqlTable, IBqlTable
         {
 
         }

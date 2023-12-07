@@ -48,7 +48,7 @@ namespace PhoneRepairShop
     }
 
     [PXHidden]
-    public class RSSVWorkOrderToPayFilter : IBqlTable
+    public class RSSVWorkOrderToPayFilter : PXBqlTable, IBqlTable
     {
         #region ServiceID
         [PXInt()]

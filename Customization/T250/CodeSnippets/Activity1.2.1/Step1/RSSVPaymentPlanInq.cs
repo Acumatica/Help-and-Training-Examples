@@ -35,7 +35,7 @@ namespace PhoneRepairShop
 
     ////////// The added code
     [PXHidden]
-    public class RSSVWorkOrderToPayFilter : IBqlTable
+    public class RSSVWorkOrderToPayFilter : PXBqlTable, IBqlTable
     {
         #region ServiceID
         [PXInt()]

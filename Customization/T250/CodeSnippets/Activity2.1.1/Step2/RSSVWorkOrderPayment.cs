@@ -19,7 +19,7 @@ namespace PhoneRepairShop
           Max<ARAdjust.adjgDocDate>,
           GroupBy<ARAdjust.adjdRefNbr>,
           GroupBy<ARAdjust.adjdDocType>>))]
-    public class RSSVWorkOrderPayment : IBqlTable
+    public class RSSVWorkOrderPayment : PXBqlTable, IBqlTable
     {
         #region InvoiceNbr
         [PXDBString(15, IsUnicode = true, IsKey = true, InputMask = "",

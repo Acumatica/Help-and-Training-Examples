@@ -8,7 +8,7 @@ namespace PhoneRepairShop
 {
     [PXPrimaryGraph(typeof(RSSVSetupMaint))]
     [PXCacheName(Messages.RSSVSetup)]
-    public class RSSVSetup : IBqlTable
+    public class RSSVSetup : PXBqlTable, IBqlTable
     {
         #region NumberingID
         [PXDBString(10, IsUnicode = true)]

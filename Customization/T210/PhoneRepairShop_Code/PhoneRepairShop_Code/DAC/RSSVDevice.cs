@@ -9,7 +9,7 @@ namespace PhoneRepairShop
 {
     [PXCacheName(Messages.RSSVDevice)]
     [PXPrimaryGraph(typeof(RSSVDeviceMaint))]
-    public class RSSVDevice : IBqlTable
+    public class RSSVDevice : PXBqlTable, IBqlTable
     {
         #region DeviceID
         [PXDBIdentity]

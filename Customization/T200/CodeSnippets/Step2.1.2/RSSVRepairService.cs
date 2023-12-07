@@ -5,7 +5,7 @@ namespace PhoneRepairShop
 {
   ////////// The modified code
   [PXCacheName(Messages.RSSVRepairService)]
-  public class RSSVRepairService : IBqlTable
+  public class RSSVRepairService : PXBqlTable, IBqlTable
   ////////// The end of modified code
   {
     #region ServiceID

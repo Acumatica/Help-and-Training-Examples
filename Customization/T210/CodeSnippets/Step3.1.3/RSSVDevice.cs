@@ -11,7 +11,7 @@ namespace PhoneRepairShop
     ////////// The added code
     [PXPrimaryGraph(typeof(RSSVDeviceMaint))]
     ////////// The end of added code
-    public class RSSVDevice : IBqlTable
+    public class RSSVDevice : PXBqlTable, IBqlTable
     {
         #region DeviceID
         [PXDBIdentity]

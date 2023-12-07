@@ -5,7 +5,7 @@ using System;
 namespace PhoneRepairShop
 {
 	[PXCacheName(Messages.RSSVDevice)]
-	public class RSSVDevice : IBqlTable
+	public class RSSVDevice : PXBqlTable, IBqlTable
 	{
 		#region DeviceID
 		public abstract class deviceID : BqlInt.Field<deviceID> { }

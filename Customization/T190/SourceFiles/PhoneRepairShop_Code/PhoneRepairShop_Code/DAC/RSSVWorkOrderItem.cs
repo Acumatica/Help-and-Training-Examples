@@ -7,7 +7,7 @@ using PX.Objects.IN;
 namespace PhoneRepairShop
 {
     [PXCacheName(Messages.RSSVWorkOrderItem)]
-    public class RSSVWorkOrderItem : IBqlTable
+    public class RSSVWorkOrderItem : PXBqlTable, IBqlTable
     {
         #region OrderNbr
         [PXDBString(15, IsKey = true, IsUnicode = true, InputMask = "")]

@@ -6,7 +6,7 @@ namespace PhoneRepairShop
     ////////// The modified code
     [PXHidden]
     [RSSVEmployeeWorkOrderQtyAccumulator]
-    public class RSSVEmployeeWorkOrderQty : IBqlTable
+    public class RSSVEmployeeWorkOrderQty : PXBqlTable, IBqlTable
     {
     ////////// The end of modified code
         #region UserID

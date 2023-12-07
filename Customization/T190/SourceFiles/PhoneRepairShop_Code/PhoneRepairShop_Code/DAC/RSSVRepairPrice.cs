@@ -4,7 +4,7 @@ using PX.Data;
 namespace PhoneRepairShop
 {
     [PXCacheName(Messages.RSSVRepairPrice)]
-    public class RSSVRepairPrice : IBqlTable
+    public class RSSVRepairPrice : PXBqlTable, IBqlTable
     {
         #region ServiceID
         [PXDBInt(IsKey = true)]

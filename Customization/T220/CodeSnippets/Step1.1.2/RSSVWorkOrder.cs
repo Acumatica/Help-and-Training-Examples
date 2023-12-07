@@ -8,7 +8,7 @@ using PX.TM;
 namespace PhoneRepairShop
 {
     [PXCacheName(Messages.RSSVWorkOrder)]
-    public class RSSVWorkOrder : IBqlTable
+    public class RSSVWorkOrder : PXBqlTable, IBqlTable
     {
         ////////// The modified code
         #region OrderNbr

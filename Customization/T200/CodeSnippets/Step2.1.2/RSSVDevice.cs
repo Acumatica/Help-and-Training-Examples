@@ -3,7 +3,7 @@
 namespace PhoneRepairShop
 {
     [PXCacheName(Messages.RSSVDevice)]
-    public class RSSVDevice : IBqlTable
+    public class RSSVDevice : PXBqlTable, IBqlTable
     {
 
     }
