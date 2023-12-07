@@ -7,10 +7,10 @@ using PX.Common;
 
 namespace PhoneRepairShop
 {
-    [PXLocalizable]
+    [PXLocalizable()]
     public static class Messages
     {
-		//DAC names
+        //DAC names
         public const string RSSVDevice = "Serviced Device";
         public const string RSSVRepairService = "Repair Service";
         public const string RSSVRepairPrice = "Repair Price";
@@ -22,9 +22,10 @@ namespace PhoneRepairShop
         public const string RSSVWorkOrderItem = "Repair Item Included in Repair Work Order";
         public const string RSSVWorkOrderLabor = "Work Order Labor";
         public const string RSSVSetup = "Repair Work Order Preferences";
-		public const string RSSVWorkOrderToPay = "Repair Work Order to Pay";
-		public const string RSSVWorkOrderPayment = "Invoice and Payment of the Repair Work Order";
-		
+        public const string RSSVWorkOrderToPay = "Repair Work Order to Pay";
+        public const string RSSVWorkOrderPayment = 
+            "Invoice and Payment of the Repair Work Order";
+
         //Complexity of repair and work order priorities
         public const string High = "High";
         public const string Medium = "Medium";
@@ -58,6 +59,12 @@ namespace PhoneRepairShop
         public const string PriorityTooLow =
             @"The priority must be at least Medium for 
             the repair service that requires preliminary check.";
+
+        
+        //Work order types 
+        public const string Simple = "Simple";
+        public const string Standard = "Standard";
+        public const string Awaiting = "Awaiting Delivery";
 
         // Order types
         public const string SalesOrder = "SO";

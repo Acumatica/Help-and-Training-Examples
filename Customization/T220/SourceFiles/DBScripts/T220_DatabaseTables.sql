@@ -1,4 +1,4 @@
-USE [PhoneRepairShop]
+USE [SmartFix_T220]
 GO
 
 /****** Object:  Table [dbo].[RSSVWorkOrder]    Script Date: 25.04.2019 10:11:09 ******/

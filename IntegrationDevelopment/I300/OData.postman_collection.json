@@ -28,8 +28,8 @@
 											"pm.test(\".ASP.NET_SessionId recieved\", function () {\r",
 											"    pm.expect(pm.cookies.indexOf('.ASP.NET_SessionId')).to.be.not.null;\r",
 											"});\r",
-											"pm.test(\"Response contains Modified%20Stock%20Items\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Modified%20Stock%20Items\");\r",
+											"pm.test(\"Response contains Modified Stock Items\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Modified Stock Items\");\r",
 											"});"
 										],
 										"type": "text/javascript"
