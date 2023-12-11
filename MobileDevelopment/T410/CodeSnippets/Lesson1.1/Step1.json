@@ -7,9 +7,9 @@ add screen SO303000 {
     add field "Description"
     add field "Amount"
     add field "Balance"
-    add field "DiscountTotal"
-    add field "VATExemptTotal"
-    add field "VATTaxableTotal"
+    add field "DocumentDiscounts"
+    add field "FreightTotal"
+    add field "TaxTotal"
   }
   add container "Details" {
     containerActionsToExpand = 1
