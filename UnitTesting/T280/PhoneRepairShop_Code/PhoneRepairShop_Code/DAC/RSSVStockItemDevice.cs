@@ -6,7 +6,7 @@ using PX.Objects.IN;
 namespace PhoneRepairShop
 {
     [PXCacheName(Messages.RSSVStockItemDevice)]
-    public class RSSVStockItemDevice : IBqlTable
+    public class RSSVStockItemDevice : PXBqlTable, IBqlTable
     {
         #region InventoryID
         [PXDBInt(IsKey = true)]

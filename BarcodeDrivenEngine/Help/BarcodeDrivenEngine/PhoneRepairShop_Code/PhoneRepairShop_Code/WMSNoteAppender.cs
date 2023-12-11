@@ -9,7 +9,7 @@ namespace PhoneRepairShopWMS
 {
     public abstract class WMSNoteAppender<TDocument, TScanBasis, TScanGraph> : 
         PXGraphExtension<TScanBasis, TScanGraph>
-    where TDocument : class, IBqlTable, new()
+    where TDocument : class, PXBqlTable, IBqlTable, new()
     where TScanBasis : BarcodeDrivenStateMachine<TScanBasis, TScanGraph>
     where TScanGraph : PXGraph, new() 
     {

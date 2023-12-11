@@ -8,7 +8,7 @@ using PX.Data;
 namespace PhoneRepairShop
 {
     [PXCacheName("Serviced Device")]
-    public class RSSVDevice : IBqlTable
+    public class RSSVDevice : PXBqlTable, IBqlTable
     {
         #region DeviceID
         [PXDBIdentity]

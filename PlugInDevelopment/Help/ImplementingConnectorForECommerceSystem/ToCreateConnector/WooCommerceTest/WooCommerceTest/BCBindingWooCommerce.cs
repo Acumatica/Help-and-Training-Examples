@@ -5,7 +5,7 @@ using PX.Data.ReferentialIntegrity.Attributes;
 namespace WooCommerceTest
 {
     [PXCacheName("WooCommerce Settings")]
-    public class BCBindingWooCommerce : IBqlTable
+    public class BCBindingWooCommerce : PXBqlTable, IBqlTable
     {
         public class PK : PrimaryKeyOf<BCBindingWooCommerce>.By<BCBindingWooCommerce.bindingID>
         {

@@ -4,7 +4,7 @@ using PX.Data;
 namespace PhoneRepairShop
 {
 	[PXCacheName("Repair Service")]
-	public class RSSVRepairService : IBqlTable
+	public class RSSVRepairService : PXBqlTable, IBqlTable
 	{
 		#region ServiceID
 		[PXDBIdentity]
