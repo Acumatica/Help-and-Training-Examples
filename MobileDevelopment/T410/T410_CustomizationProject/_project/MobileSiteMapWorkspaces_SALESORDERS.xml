@@ -47,9 +47,8 @@
         <data>
             <MobileSiteMapWorkspaces>
                 <row MobileWorkspaceID="637d98d7-ea24-44c3-989e-db1fe6995399" Name="SALESORDERS" DisplayName="Sales Orders" Icon="pen_frame" IsActive="1" Owner="" SortOrder="50" NoteID="04b8f5f1-7b6c-457f-9a47-c3792f828699">
-                    <MobileSiteMapWorkspaceItems ItemID="SO303000" ItemType="SimpleScreen" IsActive="1" SortOrder="20" Owner="" NoteID="289037ef-c8cf-ed11-839c-f077c39590e2" />
+                    <MobileSiteMapWorkspaceItems ItemID="SO303000" ItemType="SimpleScreen" IsActive="1" SortOrder="10" Owner="" NoteID="1d134bb7-7c92-ee11-8c50-10f60ad9cbae" />
                     <MobileSiteMapWorkspaceItems ItemID="SalesOrders" ItemType="HubFolder" IsActive="1" SortOrder="0" Owner="" NoteID="a07ed236-e4a4-4796-88a7-a6a4cb809610" />
-                    <MobileSiteMapWorkspaceItems ItemID="GI400001" ItemType="FilterListScreen" IsActive="1" SortOrder="10" Owner="" NoteID="657c8f3c-c1cc-ed11-839c-f077c39590e2" />
                 </row>
             </MobileSiteMapWorkspaces>
         </data>
