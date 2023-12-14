@@ -64,5 +64,10 @@ namespace PhoneRepairShop
             will lead to exceeding of the maximum number of assigned work orders, 
             which is 10.";
         ////////// The end of added code
+
+        //Work order types 
+        public const string Simple = "Simple";
+        public const string Standard = "Standard";
+        public const string Awaiting = "Awaiting Delivery";
     }
 }
