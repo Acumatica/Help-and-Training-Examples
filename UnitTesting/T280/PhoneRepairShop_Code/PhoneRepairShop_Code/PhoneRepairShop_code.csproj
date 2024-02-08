@@ -3,7 +3,7 @@
     <RootNamespace>PhoneRepairShop_Code</RootNamespace>
     <TargetFramework>net48</TargetFramework>
     <WarningLevel>3</WarningLevel>
-    <OurDir>bin\$(Configuration)\</OurDir>
+    <OutDir>bin\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
