@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "53b819ce-8d6d-4750-9379-92302061c772",
+		"_postman_id": "174a7a29-a3df-4c34-be16-ab67200c171f",
 		"name": "MyBIIntegrationOData",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
@@ -629,7 +629,8 @@
 											"    method: 'POST',\r",
 											"    body: {\r",
 											"        mode: 'raw',\r",
-											"        raw: '{ \"name\": \"admin\", \"password\": \"123\", \"tenant\": \"MyStore\", \"branch\": \"MYSTORE\"}'\r",
+											"        raw: pm.variables.replaceIn(\r",
+											"            '{ \"name\": \"{{Username}}\", \"password\": \"{{Password}}\", \"tenant\": \"{{Tenant}}\", \"branch\": \"{{Branch}}\"}')\r",
 											"    },\r",
 											"    header: {\r",
 											"        'Content-Type': 'application/json'\r",
@@ -838,7 +839,8 @@
 											"    method: 'POST',\r",
 											"    body: {\r",
 											"        mode: 'raw',\r",
-											"        raw: '{ \"name\": \"admin\", \"password\": \"123\", \"tenant\": \"MyStore\", \"branch\": \"MYSTORE\"}'\r",
+											"        raw: pm.variables.replaceIn(\r",
+											"            '{ \"name\": \"{{Username}}\", \"password\": \"{{Password}}\", \"tenant\": \"{{Tenant}}\", \"branch\": \"{{Branch}}\"}')\r",
 											"    },\r",
 											"    header: {\r",
 											"        'Content-Type': 'application/json'\r",
@@ -1082,12 +1084,12 @@
 		},
 		{
 			"key": "EndpointURLv3",
-			"value": "{{InstanceURL}}/OData",
+			"value": "{{InstanceURL}}/OData/{{Tenant}}",
 			"type": "string"
 		},
 		{
 			"key": "EndpointURLv4",
-			"value": "{{InstanceURL}}/ODatav4",
+			"value": "{{InstanceURL}}/ODatav4/{{Tenant}}",
 			"type": "string"
 		},
 		{
@@ -1098,6 +1100,16 @@
 		{
 			"key": "Password",
 			"value": "123",
+			"type": "string"
+		},
+		{
+			"key": "Tenant",
+			"value": "MyCompany",
+			"type": "string"
+		},
+		{
+			"key": "Branch",
+			"value": "MYSTORE",
 			"type": "string"
 		}
 	]
