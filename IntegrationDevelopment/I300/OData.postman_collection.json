@@ -1104,7 +1104,7 @@
 		},
 		{
 			"key": "Tenant",
-			"value": "MyCompany",
+			"value": "MyStore",
 			"type": "string"
 		},
 		{
