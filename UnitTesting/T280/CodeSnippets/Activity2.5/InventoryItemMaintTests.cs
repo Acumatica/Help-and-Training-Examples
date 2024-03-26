@@ -2,8 +2,11 @@
 using PX.Data;
 using PX.Tests.Unit;
 using PX.Objects.IN;
+using PhoneRepairShop;
+//////////The added code
 using Autofac;
 using PX.Objects.CM.Extensions;
+//////////The end of added code
 
 namespace PhoneRepairShop_Code.Tests
 {
@@ -35,11 +38,13 @@ namespace PhoneRepairShop_Code.Tests
             Assert.True(enabled == fieldState.Enabled);
         }
 
+        //////////The added code
         protected override void RegisterServices(ContainerBuilder builder)
         {
             base.RegisterServices(builder);
             builder.RegisterType<PX.Objects.Unit.CurrencyServiceMock>().
                 As<IPXCurrencyService>();
         }
+        //////////The end of added code
     }
 }
