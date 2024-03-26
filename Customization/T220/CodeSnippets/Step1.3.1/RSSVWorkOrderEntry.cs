@@ -118,7 +118,7 @@ namespace PhoneRepairShop
             {
                 //Throwing an exception to cancel the assignment
                 //of the new value to the field
-                throw new PXSetPropertyException(
+                throw new PXSetPropertyException(e.Row,
                     Messages.QuantityCannotBeNegative);
             }
 
@@ -139,7 +139,7 @@ namespace PhoneRepairShop
                     //Raising the ExceptionHandling event for the Quantity field
                     //to attach the exception object to the field
                     e.Cache.RaiseExceptionHandling<RSSVWorkOrderLabor.quantity>(
-                        e.Row, e.NewValue, new PXSetPropertyException(
+                        e.Row, e.NewValue, new PXSetPropertyException(e.Row,
                             Messages.QuantityTooSmall, PXErrorLevel.Warning));
                 }
             }
