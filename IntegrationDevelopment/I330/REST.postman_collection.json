@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cbb7dd66-5728-4e9a-a094-600a36f7d8d4",
+		"_postman_id": "a8445add-a740-48c8-b5dc-505b6686c976",
 		"name": "MyStoreIntegration_DataManipulation",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
@@ -1057,9 +1057,10 @@
 									"            pm.expect(item.OrderQty.value).to.eq(5.0);};\r",
 									"    }\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 3.1: Release from Hold of an Invoice\");"
+									"postman.setNextRequest(\"Lesson 3.1: Releasing from Hold of an Invoice\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -1068,7 +1069,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -2119,12 +2121,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "file",
-									"file": {
-										"src": ""
-									}
-								},
 								"url": {
 									"raw": "{{DefaultEndpointURL}}/StockItem/AALEGO500?$select=InventoryID",
 									"host": [
@@ -2187,7 +2183,8 @@
 									"    pm.response.to.have.status(204);\r",
 									"});"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -2196,7 +2193,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -2283,7 +2281,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				}

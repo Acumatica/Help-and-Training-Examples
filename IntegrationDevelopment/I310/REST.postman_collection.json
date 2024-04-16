@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fdbf0217-401b-4005-a917-9429f763ef39",
+		"_postman_id": "68eea0b0-60a5-4120-978a-cadf5ef94604",
 		"name": "MyBIIntegrationREST",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
@@ -27,7 +27,8 @@
 									"});\r",
 									"postman.setNextRequest(\"Lesson 2.1: Retrieving the List of Customers with Contacts\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -47,7 +48,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"admin\",\r\n  \"password\": \"123\",\r\n  \"tenant\": \"MyStore\",\r\n  \"branch\": \"MYSTORE\"\r\n}"
+							"raw": "{\r\n  \"name\": \"{{Username}}\",\r\n  \"password\": \"{{Password}}\",\r\n  \"tenant\": \"{{Tenant}}\",\r\n  \"branch\": \"{{Branch}}\"\r\n}"
 						},
 						"url": {
 							"raw": "{{InstanceURL}}/entity/auth/login",
@@ -140,7 +141,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				},
@@ -283,7 +284,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				}
@@ -802,6 +803,26 @@
 		{
 			"key": "DefaultEndpointURL",
 			"value": "{{InstanceURL}}/entity/Default/23.200.001",
+			"type": "string"
+		},
+		{
+			"key": "Username",
+			"value": "admin",
+			"type": "string"
+		},
+		{
+			"key": "Password",
+			"value": "123",
+			"type": "string"
+		},
+		{
+			"key": "Tenant",
+			"value": "MyCompany",
+			"type": "string"
+		},
+		{
+			"key": "Branch",
+			"value": "MYSTORE",
 			"type": "string"
 		}
 	]
