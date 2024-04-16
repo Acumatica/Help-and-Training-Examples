@@ -36,18 +36,17 @@
 									<px:PXGridColumn DataField="InventoryID_description" Width="280" ></px:PXGridColumn>
 									<px:PXGridColumn CommitChanges="True" DataField="BasePrice" Width="100" ></px:PXGridColumn>
 									<px:PXGridColumn CommitChanges="True" Type="CheckBox" DataField="IsDefault" Width="80" ></px:PXGridColumn>
-									<px:PXGridColumn Type="CheckBox" DataField="IsPriceValidated" Width="100" >
-                                    </px:PXGridColumn>
-								</Columns>
+                                                                        <px:PXGridColumn Type="CheckBox" DataField="IsPriceValidated" Width="100" ></px:PXGridColumn>
+                                                                </Columns>
 								<RowTemplate>
 									<px:PXSegmentMask runat="server" ID="CstPXSegmentMask6" DataField="InventoryID" AutoRefresh="True" ></px:PXSegmentMask></RowTemplate></px:PXGridLevel></Levels>
-						<ActionBar>
-                            <CustomItems>
-                                <px:PXToolBarButton Text="ValidateItemPrices">
-                                    <AutoCallBack Command="ValidateItemPrices" Target="ds" />
-                                </px:PXToolBarButton>
-                            </CustomItems>
-                        </ActionBar>
+            <ActionBar>
+                <CustomItems>
+                    <px:PXToolBarButton Text="ValidateItemPrices">
+                        <AutoCallBack Command="ValidateItemPrices" Target="ds" />
+                    </px:PXToolBarButton>
+                </CustomItems>
+            </ActionBar>
 						<AutoSize Enabled="True" ></AutoSize>
 						<Mode InitNewRow="True" ></Mode></px:PXGrid></Template>
 			</px:PXTabItem>

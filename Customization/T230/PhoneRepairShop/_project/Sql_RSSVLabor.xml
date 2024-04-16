@@ -15,6 +15,10 @@
   <col name="LastModifiedDateTime" type="DateTime" />
   <col name="tstamp" type="Timestamp" />
   <col name="NoteID" type="UniqueIdentifier" nullable="true" />
+  <index name="RSSVLabor_NoteID" unique="true">
+    <col name="NoteID" />
+    <col name="CompanyID" />
+  </index>
   <index name="RSSVLabor_PK" clustered="true" primary="true" unique="true">
     <col name="CompanyID" />
     <col name="ServiceID" />
