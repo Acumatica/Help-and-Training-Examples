@@ -18,6 +18,10 @@
     <col name="CompanyID" />
     <col name="DeviceCD" />
   </index>
+  <index name="RSSVDevice_NoteID" unique="true">
+    <col name="NoteID" />
+    <col name="CompanyID" />
+  </index>
   <index name="RSSVDevice_PK" clustered="true" primary="true" unique="true">
     <col name="CompanyID" />
     <col name="DeviceID" />

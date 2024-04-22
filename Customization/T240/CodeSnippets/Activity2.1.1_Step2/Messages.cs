@@ -65,11 +65,9 @@ namespace PhoneRepairShop
             which is 10.";
         ////////// The end of added code
 
-
         //Work order types 
         public const string Simple = "Simple";
         public const string Standard = "Standard";
         public const string Awaiting = "Awaiting Delivery";
-
     }
 }

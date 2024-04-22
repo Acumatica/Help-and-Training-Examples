@@ -66,11 +66,9 @@ namespace PhoneRepairShop
         public const string ReportRS601000Title = "Assigned Work Orders";
         ////////// The end of added code
 
-
         //Work order types 
         public const string Simple = "Simple";
         public const string Standard = "Standard";
         public const string Awaiting = "Awaiting Delivery";
-
     }
 }

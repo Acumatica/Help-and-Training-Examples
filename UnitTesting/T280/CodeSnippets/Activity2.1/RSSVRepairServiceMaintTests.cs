@@ -7,6 +7,7 @@ namespace PhoneRepairShop_Code.Tests
 {
     public class RSSVRepairServiceMaintTests : TestBase
     {
+        //////////The added code
         [Fact]
         public void PreliminaryCheckAndWalkInServiceFlags_AreOpposite()
         {
@@ -38,5 +39,6 @@ namespace PhoneRepairShop_Code.Tests
             graph.Caches[typeof(RSSVRepairService)].Update(repairService);
             Assert.False(repairService.WalkInService);
         }
+        //////////The end of added code
     }
 }

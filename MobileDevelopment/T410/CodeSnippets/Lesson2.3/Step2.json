@@ -9,6 +9,7 @@ update screen SO301000 {
     add dialogAction "QPOK" {
       CloseDialog = True
       DialogResult = OK
+      DisplayName = "OK"
     }
     openAs = Form
     add container "ProcessOrder" {
