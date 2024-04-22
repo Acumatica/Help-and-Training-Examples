@@ -177,7 +177,6 @@ namespace PhoneRepairShop
         { }
         #endregion
         ////////// The end of added code
-
         #region CreatedDateTime
         [PXDBCreatedDateTime()]
         public virtual DateTime? CreatedDateTime { get; set; }
@@ -268,6 +267,5 @@ namespace PhoneRepairShop
             public abstract class usrOrderType : PX.Data.BQL.BqlString.Field<usrOrderType> { }
             #endregion
         }
-
     }
 }

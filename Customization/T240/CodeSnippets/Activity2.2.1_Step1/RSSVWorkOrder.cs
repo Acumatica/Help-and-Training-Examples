@@ -176,7 +176,7 @@ namespace PhoneRepairShop
         PX.Data.BQL.BqlInt.Field<timeWithoutAction>
         { }
         #endregion
-        ////////// The added code
+        ///////// The added code
         #region DefaultAssignee
         [PXInt]
         [PXUIField(DisplayName = "Default Assignee")]
@@ -284,6 +284,5 @@ namespace PhoneRepairShop
             public abstract class usrOrderType : PX.Data.BQL.BqlString.Field<usrOrderType> { }
             #endregion
         }
-
     }
 }
