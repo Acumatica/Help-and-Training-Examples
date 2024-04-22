@@ -3,7 +3,6 @@ using PX.Data;
 using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
 using PX.TM;
-using static PX.Objects.SO.SOPickingJobProcess.ProcessAction;
 
 namespace PhoneRepairShop
 {
@@ -57,7 +56,7 @@ namespace PhoneRepairShop
             OrderBy<RSSVEmployeeWorkOrderQty.nbrOfAssignedOrders.Asc,
                 RSSVEmployeeWorkOrderQty.lastModifiedDateTime.Asc>.
             SearchFor<OwnerAttribute.Owner.contactID>))]
-                protected virtual void _(
+        protected virtual void _(
             Events.CacheAttached<RSSVWorkOrder.defaultAssignee> e)
         { }
 

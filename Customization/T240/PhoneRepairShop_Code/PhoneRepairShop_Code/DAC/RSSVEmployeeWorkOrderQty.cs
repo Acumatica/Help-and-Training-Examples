@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using PX.Data;
 
 namespace PhoneRepairShop
@@ -8,7 +8,7 @@ namespace PhoneRepairShop
     [RSSVEmployeeWorkOrderQtyAccumulator]
     public class RSSVEmployeeWorkOrderQty : PXBqlTable, IBqlTable
     {
-    ////////// The end of modified code
+        ////////// The end of modified code
         #region UserID
         [PXDBInt(IsKey = true)]
         public virtual int? UserID { get; set; }

@@ -1,7 +1,6 @@
 using System;
 using PX.Data;
 using PX.Data.BQL.Fluent;
-using static PX.Objects.SO.SOPickingJobProcess.ProcessAction;
 
 namespace PhoneRepairShop
 {

@@ -7,10 +7,10 @@ using PX.Common;
 
 namespace PhoneRepairShop
 {
-    [PXLocalizable]
+    [PXLocalizable()]
     public static class Messages
     {
-		//DAC names
+        //DAC names
         public const string RSSVDevice = "Serviced Device";
         public const string RSSVRepairService = "Repair Service";
         public const string RSSVRepairPrice = "Repair Price";
@@ -22,7 +22,7 @@ namespace PhoneRepairShop
         public const string RSSVWorkOrderItem = "Repair Item Included in Repair Work Order";
         public const string RSSVWorkOrderLabor = "Work Order Labor";
         public const string RSSVSetup = "Repair Work Order Preferences";
-		
+
         //Complexity of repair and work order priorities
         public const string High = "High";
         public const string Medium = "Medium";
@@ -64,5 +64,12 @@ namespace PhoneRepairShop
             will lead to exceeding of the maximum number of assigned work orders, 
             which is 10.";
         ////////// The end of added code
+
+
+        //Work order types 
+        public const string Simple = "Simple";
+        public const string Standard = "Standard";
+        public const string Awaiting = "Awaiting Delivery";
+
     }
 }

@@ -8,7 +8,6 @@ using PX.Objects.AR;
 using System.Collections.Generic;
 using PX.Objects.SO;
 using PX.Data.WorkflowAPI;
-using static PX.Objects.SO.SOPickingJobProcess.ProcessAction;
 
 namespace PhoneRepairShop
 {
@@ -279,16 +278,15 @@ namespace PhoneRepairShop
                                                     Messages.ReportRS601000Title);
             }
             ////////// The end of added code
-
         }
 
         public PXAction<RSSVWorkOrder> Assign;
-        // Replace the PXButton attribute with the PXProcessButton attribute 
+        // Use the PXProcessButton attribute instead of the PXButton attribute 
         // to indicate that the action will be used on the processing form.
         [PXProcessButton]
         [PXUIField(DisplayName = "Assign", Enabled = false)]
-        // Change the signature of the action handler so that 
-        // it returns IEnumerable. 
+        // Use the signature of the action handler that 
+        // returns IEnumerable. 
         protected virtual IEnumerable assign(PXAdapter adapter)
         {
             bool isMassProcess = adapter.MassProcess;
@@ -331,6 +329,7 @@ namespace PhoneRepairShop
             Actions.PressSave();
             return adapter.Get();
         }
+
 
         private static void CreateInvoice(RSSVWorkOrder workOrder)
         {

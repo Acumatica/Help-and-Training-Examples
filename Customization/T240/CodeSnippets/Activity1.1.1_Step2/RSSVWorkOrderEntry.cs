@@ -8,7 +8,6 @@ using PX.Objects.AR;
 using System.Collections.Generic;
 using PX.Objects.SO;
 using PX.Data.WorkflowAPI;
-using static PX.Objects.SO.SOPickingJobProcess.ProcessAction;
 
 namespace PhoneRepairShop
 {
@@ -284,6 +283,7 @@ namespace PhoneRepairShop
             return list;
         }
         /////////// The end of added code
+
         public PXAction<RSSVWorkOrder> Complete;
         [PXButton]
         [PXUIField(DisplayName = "Complete", Enabled = false)]
