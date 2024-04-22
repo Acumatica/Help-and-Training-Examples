@@ -61,11 +61,9 @@ namespace PhoneRepairShop
             "The {0} work order has been successfully assigned.";
         ////////// The end of added code
 
-
         //Work order types 
         public const string Simple = "Simple";
         public const string Standard = "Standard";
         public const string Awaiting = "Awaiting Delivery";
-
     }
 }

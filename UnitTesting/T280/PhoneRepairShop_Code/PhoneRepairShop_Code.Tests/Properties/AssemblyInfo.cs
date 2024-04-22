@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("PhoneRepairShop_Code.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Acumatica")]
 [assembly: AssemblyProduct("PhoneRepairShop_Code.Tests")]
-[assembly: AssemblyCopyright("Copyright ©  2023")]
+[assembly: AssemblyCopyright("Copyright © Acumatica 2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("52f7ec0f-1a91-4807-927e-840df4a55846")]
+[assembly: Guid("c92d9eb5-4240-42c1-a525-1aa990672947")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -27,7 +27,7 @@ namespace PhoneRepairShopWMS
 
                 if (!string.IsNullOrEmpty(value))
                 {
-                    PXCache docCache = Basis.Graph.Caches<TDocument>();
+                    PXCache<TDocument> docCache = Basis.Graph.Caches<TDocument>();
                     // Use an abstract function to get the entity.
                     var document = GetNoteOwnerEntity(); 
 

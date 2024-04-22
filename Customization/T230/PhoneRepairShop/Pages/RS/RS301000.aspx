@@ -64,13 +64,13 @@
                       runat="server" ID="CstPXLayoutRule24" StartGroup="True" />
                     <px:PXNumberEdit runat="server" ID="CstPXNumberEdit20" DataField="BasePrice" />
                   </RowTemplate></px:PXGridLevel></Levels>
-                <ActionBar>
-				    <CustomItems>
-					    <px:PXToolBarButton Text="UpdateItemPrices">
-							<AutoCallBack Command="UpdateItemPrices" Target="ds" />
-						</px:PXToolBarButton>
-					</CustomItems>
-			    </ActionBar>
+            <ActionBar>
+                <CustomItems>
+                    <px:PXToolBarButton Text="UpdateItemPrices">
+                         <AutoCallBack Command="UpdateItemPrices" Target="ds" />
+                    </px:PXToolBarButton>
+                </CustomItems>
+            </ActionBar>
             <AutoSize Enabled="True" ></AutoSize>
             <Mode AllowFormEdit="True" InitNewRow="True" ></Mode></px:PXGrid></Template>
       </px:PXTabItem>
@@ -85,13 +85,13 @@
                   <px:PXGridColumn DataField="DefaultPrice" Width="100" ></px:PXGridColumn>
                   <px:PXGridColumn CommitChanges="True" DataField="Quantity" Width="100" ></px:PXGridColumn>
                   <px:PXGridColumn DataField="ExtPrice" Width="100" ></px:PXGridColumn></Columns></px:PXGridLevel></Levels>
-				<ActionBar>
-					<CustomItems>
-						<px:PXToolBarButton Text="UpdateLaborPrices">
-							<AutoCallBack Command="UpdateLaborPrices" Target="ds" />
-						</px:PXToolBarButton>
-					</CustomItems>
-				</ActionBar>
+            <ActionBar>
+              <CustomItems>
+                <px:PXToolBarButton Text="UpdateLaborPrices">
+                  <AutoCallBack Command="UpdateLaborPrices" Target="ds" />
+                </px:PXToolBarButton>
+              </CustomItems>
+            </ActionBar>
             <AutoSize Enabled="True" ></AutoSize></px:PXGrid>
         </Template>
       </px:PXTabItem>
