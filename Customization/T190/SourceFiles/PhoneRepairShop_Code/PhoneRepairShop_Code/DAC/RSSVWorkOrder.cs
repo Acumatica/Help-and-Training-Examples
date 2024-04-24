@@ -156,7 +156,6 @@ namespace PhoneRepairShop
         #region InvoiceNbr
         [PXDBString(15, IsUnicode = true)]
         [PXUIField(DisplayName = "Invoice Nbr.", Enabled = false)]
-        [PXSelector(typeof(SearchFor<SOInvoice.refNbr>.Where<SOInvoice.docType.IsEqual<ARDocType.invoice>>))]
         public virtual string InvoiceNbr { get; set; }
         public abstract class invoiceNbr : PX.Data.BQL.BqlString.Field<invoiceNbr> { }
         #endregion

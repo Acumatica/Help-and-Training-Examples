@@ -5,6 +5,8 @@ using PX.Data.BQL.Fluent;
 using PX.Data.WorkflowAPI;
 using PX.Objects.IN;
 using PX.Objects.AR;
+using PX.Objects.SO;
+using System.Collections.Generic;
 
 namespace PhoneRepairShop
 {
@@ -36,6 +38,58 @@ namespace PhoneRepairShop
 
         #endregion
 
+        private static void CreateInvoice(RSSVWorkOrder workOrder)
+        {
+            using (var ts = new PXTransactionScope())
+            {
+                // Create an instance of the SOInvoiceEntry graph.
+                var invoiceEntry = PXGraph.CreateInstance<SOInvoiceEntry>();
+                // Initialize the summary of the invoice.
+                var doc = new ARInvoice()
+                {
+                    DocType = ARDocType.Invoice
+                };
+                doc = invoiceEntry.Document.Insert(doc);
+                doc.CustomerID = workOrder.CustomerID;
+                invoiceEntry.Document.Update(doc);
+
+                // Create an instance of the RSSVWorkOrderEntry graph.
+                var workOrderEntry = PXGraph.CreateInstance<RSSVWorkOrderEntry>();
+                workOrderEntry.WorkOrders.Current = workOrder;
+
+                // Add the lines associated with the repair items
+                // (from the Repair Items tab).
+                foreach (RSSVWorkOrderItem line in
+                    workOrderEntry.RepairItems.Select())
+                {
+                    var repairTran = invoiceEntry.Transactions.Insert();
+                    repairTran.InventoryID = line.InventoryID;
+                    repairTran.Qty = 1;
+                    repairTran.CuryUnitPrice = line.BasePrice;
+                    invoiceEntry.Transactions.Update(repairTran);
+                }
+                // Add the lines associated with labor (from the Labor tab).
+                foreach (RSSVWorkOrderLabor line in workOrderEntry.Labor.Select())
+                {
+                    var laborTran = invoiceEntry.Transactions.Insert();
+                    laborTran.InventoryID = line.InventoryID;
+                    laborTran.Qty = line.Quantity;
+                    laborTran.CuryUnitPrice = line.DefaultPrice;
+                    laborTran.CuryExtPrice = line.ExtPrice;
+                    invoiceEntry.Transactions.Update(laborTran);
+                }
+
+                // Save the invoice to the database.
+                invoiceEntry.Actions.PressSave();
+
+                // Assign the generated invoice number and save the changes.
+                workOrder.InvoiceNbr = invoiceEntry.Document.Current.RefNbr;
+                workOrderEntry.WorkOrders.Update(workOrder);
+                workOrderEntry.Actions.PressSave();
+
+                ts.Complete();
+            }
+        }
 
         #region Actions
         public PXAction<RSSVWorkOrder> PutOnHold;
@@ -75,6 +129,29 @@ namespace PhoneRepairShop
         [PXUIField(DisplayName = "Complete", Enabled = false)]
         protected virtual IEnumerable complete(PXAdapter adapter) => adapter.Get();
 
+        public PXAction<RSSVWorkOrder> CreateInvoiceAction;
+        [PXButton]
+        [PXUIField(DisplayName = "Create Invoice", Enabled = true)]
+        protected virtual IEnumerable createInvoiceAction(PXAdapter adapter)
+        {
+            // Populate a local list variable.
+            List<RSSVWorkOrder> list = new List<RSSVWorkOrder>();
+            foreach (RSSVWorkOrder order in adapter.Get<RSSVWorkOrder>())
+            {
+                list.Add(order);
+            }
+
+            // Trigger the Save action to save changes in the database.
+            Actions.PressSave();
+
+            var workOrder = WorkOrders.Current;
+            PXLongOperation.StartOperation(this, delegate () {
+                CreateInvoice(workOrder);
+            });
+
+            // Return the local list variable.
+            return list;
+        }
         #endregion
 
         #region Constructors
@@ -169,7 +246,7 @@ namespace PhoneRepairShop
                         //Display the error for the priority field.
                         WorkOrders.Cache.RaiseExceptionHandling<RSSVWorkOrder.priority>(row,
                             originalRow.Priority,
-                            new PXSetPropertyException(Messages.PriorityTooLow));
+                            new PXSetPropertyException(row, Messages.PriorityTooLow));
 
                         //Assign the proper priority
                         e.NewRow.Priority = WorkOrderPriorityConstants.Medium;
@@ -178,7 +255,51 @@ namespace PhoneRepairShop
             }
         }
 
+        //Validate that Quantity is greater than or equal to 0 and
+        //correct the value to the default if the value is less than the default.
+        protected virtual void _(Events.FieldVerifying<RSSVWorkOrderLabor,
+            RSSVWorkOrderLabor.quantity> e)
+        {
+            if (e.Row == null || e.NewValue == null) return;
 
+            if ((decimal)e.NewValue < 0)
+            {
+                //Throwing an exception to cancel the assignment
+                //of the new value to the field
+                throw new PXSetPropertyException(e.Row,
+                    Messages.QuantityCannotBeNegative);
+            }
+
+            var workOrder = WorkOrders.Current;
+            if (workOrder != null)
+            {
+                //Retrieving the default labor item related to the work order labor
+                RSSVLabor labor = SelectFrom<RSSVLabor>.
+                    Where<RSSVLabor.serviceID.IsEqual<@P.AsInt>.
+                        And<RSSVLabor.deviceID.IsEqual<@P.AsInt>>.
+                        And<RSSVLabor.inventoryID.IsEqual<@P.AsInt>>>
+                    .View.Select(this, workOrder.ServiceID, workOrder.DeviceID,
+                    e.Row.InventoryID);
+                if (labor != null && (decimal)e.NewValue < labor.Quantity)
+                {
+                    //Correcting the LineQty value
+                    e.NewValue = labor.Quantity;
+                    //Raising the ExceptionHandling event for the Quantity field
+                    //to attach the exception object to the field
+                    e.Cache.RaiseExceptionHandling<RSSVWorkOrderLabor.quantity>(
+                        e.Row, e.NewValue, new PXSetPropertyException(e.Row,
+                            Messages.QuantityTooSmall, PXErrorLevel.Warning));
+                }
+            }
+        }
+
+        protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
+        {
+            CreateInvoiceAction.SetVisible(
+                WorkOrders.Current.Status == WorkOrderStatusConstants.Completed);
+            CreateInvoiceAction.SetEnabled(WorkOrders.Current.InvoiceNbr == null &&
+                WorkOrders.Current.Status == WorkOrderStatusConstants.Completed);
+        }
         #endregion
 
 
