@@ -5,6 +5,8 @@ using PX.Data.BQL.Fluent;
 using PX.Data.WorkflowAPI;
 using PX.Objects.IN;
 using PX.Objects.AR;
+using PX.Objects.SO;
+using System.Collections.Generic;
 
 namespace PhoneRepairShop
 {
@@ -35,7 +37,6 @@ namespace PhoneRepairShop
         public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument;
 
         #endregion
-
 
         #region Actions
         public PXAction<RSSVWorkOrder> PutOnHold;
@@ -169,7 +170,7 @@ namespace PhoneRepairShop
                         //Display the error for the priority field.
                         WorkOrders.Cache.RaiseExceptionHandling<RSSVWorkOrder.priority>(row,
                             originalRow.Priority,
-                            new PXSetPropertyException(Messages.PriorityTooLow));
+                            new PXSetPropertyException(row, Messages.PriorityTooLow));
 
                         //Assign the proper priority
                         e.NewRow.Priority = WorkOrderPriorityConstants.Medium;
@@ -178,9 +179,6 @@ namespace PhoneRepairShop
             }
         }
 
-
         #endregion
-
-
     }
 }

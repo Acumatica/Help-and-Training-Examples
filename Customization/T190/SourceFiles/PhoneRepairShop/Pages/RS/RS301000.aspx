@@ -33,7 +33,7 @@
 		<px:PXLayoutRule runat="server" ID="CstPXLayoutRule17" 
                  StartColumn="True" ControlSize="M" LabelsWidth="S" ></px:PXLayoutRule>
 		<px:PXNumberEdit runat="server" ID="CstPXNumberEdit12" DataField="OrderTotal" ></px:PXNumberEdit>
-		<px:PXSelector ID="edInvoiceNbr" runat="server" DataField="InvoiceNbr" Enabled="False" AllowEdit="True" /></Template>
+		<px:PXTextEdit ID="CstPXTextEdit10" runat="server" DataField="InvoiceNbr" /></Template>
 </px:PXFormView>
 </asp:Content>
 <asp:Content ID="cont3" ContentPlaceHolderID="phG" Runat="Server">
@@ -69,7 +69,7 @@
 									<px:PXGridColumn DataField="InventoryID" Width="70" />
 									<px:PXGridColumn DataField="InventoryID_description" Width="280" />
 									<px:PXGridColumn DataField="DefaultPrice" Width="100" />
-									<px:PXGridColumn DataField="Quantity" Width="100" ></px:PXGridColumn>
+									<px:PXGridColumn CommitChanges="True" DataField="Quantity" Width="100" ></px:PXGridColumn>
 									<px:PXGridColumn DataField="ExtPrice" Width="100" /></Columns></px:PXGridLevel></Levels>
 						<AutoSize Enabled="True" ></AutoSize></px:PXGrid></Template>
 			</px:PXTabItem>
