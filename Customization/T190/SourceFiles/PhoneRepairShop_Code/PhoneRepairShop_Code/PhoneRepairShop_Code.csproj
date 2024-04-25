@@ -69,14 +69,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ARPaymentEntry.cs" />
-    <Compile Include="ARPaymentExtension.cs" />
-    <Compile Include="DAC\InventoryItemExtensions.cs" />
     <Compile Include="DAC\RSSVDevice.cs" />
     <Compile Include="Data\InputData.cs" />
     <Compile Include="Helper\Constants.cs" />
     <Compile Include="Helper\Messages.cs" />
-    <Compile Include="InventoryItemMaint.cs" />
     <Compile Include="RSSVRepairPriceMaint.cs" />
     <Compile Include="DAC\RSSVRepairPrice.cs" />
     <Compile Include="DAC\RSSVRepairItem.cs" />
