@@ -1,6 +1,6 @@
 ﻿<SiteMapNode>
     <data-set>
-        <relations format-version="3" relations-version="20190730" main-table="SiteMap">
+        <relations format-version="3" relations-version="20240201" main-table="SiteMap">
             <link from="MUIScreen (NodeID)" to="SiteMap (NodeID)" />
             <link from="MUIWorkspace (WorkspaceID)" to="MUIScreen (WorkspaceID)" type="FromMaster" linkname="workspaceToScreen" split-location="yes" updateable="True" />
             <link from="MUISubcategory (SubcategoryID)" to="MUIScreen (SubcategoryID)" type="FromMaster" updateable="True" />
@@ -25,7 +25,7 @@
         </layout>
         <data>
             <SiteMap>
-                <row Position="21517" Title="Open Payment Summary" Url="~/Pages/RS/RS401000.aspx" ScreenID="RS401000" NodeID="d79409e9-b756-4774-a57c-cc58d1c0ce59" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="E">
+                <row Position="21517" Title="Open Payment Summary" Url="~/Pages/RS/RS401000.aspx" ScreenID="RS401000" NodeID="9dcdb3b2-da3d-448f-9365-ab0a49bfc94d" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="E">
                     <MUIScreen IsPortal="0" WorkspaceID="28b3b75b-c42b-4f42-908e-e23344279d9b" Order="10" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4">
                         <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                     </MUIScreen>
