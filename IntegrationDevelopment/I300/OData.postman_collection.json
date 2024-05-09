@@ -612,7 +612,8 @@
 											"    pm.expect(pm.response.text()).to.not.include(\"AACOMPUT01\");\r",
 											"});"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								},
 								{
@@ -718,7 +719,8 @@
 											"\r",
 											"});"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -726,7 +728,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{EndpointURLv3}}/Modified%20Stock%20Items?$format=json&$filter=ItemStatus eq 'Active' and LastModifiedOn gt datetime'{{currentDate}}'",
+									"raw": "{{EndpointURLv3}}/Modified%20Stock%20Items?$format=json&$filter=ItemStatus eq 'Active' and LastModifiedOn gt {{currentDate}}",
 									"host": [
 										"{{EndpointURLv3}}"
 									],
@@ -740,7 +742,7 @@
 										},
 										{
 											"key": "$filter",
-											"value": "ItemStatus eq 'Active' and LastModifiedOn gt datetime'{{currentDate}}'"
+											"value": "ItemStatus eq 'Active' and LastModifiedOn gt {{currentDate}}"
 										}
 									]
 								}
@@ -1084,12 +1086,12 @@
 		},
 		{
 			"key": "EndpointURLv3",
-			"value": "{{InstanceURL}}/OData/{{Tenant}}",
+			"value": "{{InstanceURL}}/t/{{Tenant}}/api/OData/GI",
 			"type": "string"
 		},
 		{
 			"key": "EndpointURLv4",
-			"value": "{{InstanceURL}}/ODatav4/{{Tenant}}",
+			"value": "{{InstanceURL}}/t/{{Tenant}}/api/OData/DAC",
 			"type": "string"
 		},
 		{
