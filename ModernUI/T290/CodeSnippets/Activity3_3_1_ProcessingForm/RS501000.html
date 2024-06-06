@@ -1,0 +1,13 @@
+<template>
+    <qp-template id="form-Filter" name="17-17-14" class="equal-height"  qp-collapsible>
+        <qp-fieldset id="fsColumnA-Filter" slot="A" view.bind="Filter" class="label-size-xm">
+            <field name="Priority"></field>
+            <field name="TimeWithoutAction"></field>
+        </qp-fieldset>
+        <qp-fieldset id="fsColumnB-Filter" slot="B" view.bind="Filter">
+            <field name="ServiceID"></field>
+        </qp-fieldset>
+    </qp-template>
+    <qp-grid id="grid-WorkOrders" view.bind="WorkOrders"> 
+    </qp-grid>
+</template>

@@ -1,0 +1,31 @@
+<template>
+  <qp-template id="form-Order" name="7-10-7" class="equal-height" qp-collapsible>
+    <qp-fieldset id="fsColumnA-Order" slot="A" view.bind="WorkOrders">
+      <field name="OrderNbr"></field>
+      <field name="Status"></field>
+      <field name="DateCreated"></field>
+      <field name="DateCompleted"></field>
+      <field name="Priority"></field>
+    </qp-fieldset>
+    <qp-fieldset id="fsColumnB-Order" slot="B" view.bind="WorkOrders">
+      <field name="CustomerID" config-allow-edit.bind="true"></field>
+      <field name="ServiceID" config-allow-edit.bind="true"></field>
+      <field name="DeviceID" config-allow-edit.bind="true"></field>
+      <field name="Assignee"></field>
+      <field name="Description" config-type.bind="1" config-rows.bind="2"></field>
+    </qp-fieldset>
+    <qp-fieldset id="fsColumnC-Order" slot="C" view.bind="WorkOrders">
+      <field name="OrderTotal"></field>
+      <field name="InvoiceNbr"></field>
+    </qp-fieldset>
+  </qp-template>
+  <qp-tabbar id="tabbar">
+    <qp-tab id="tab-RepairItems" caption="Repair Items">
+      <qp-grid id="grid-RepairItems" view.bind="RepairItems"></qp-grid>
+    </qp-tab>
+
+    <qp-tab id="tab-Labor" caption="Labor">
+      <qp-grid id="grid-Labor" view.bind="Labor"></qp-grid>
+    </qp-tab>
+  </qp-tabbar>
+</template>

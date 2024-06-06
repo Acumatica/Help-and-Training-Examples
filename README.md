@@ -12,7 +12,7 @@ Integration development
 
 Customization of Acumatica ERP
 
- * [Help](Customization/Help): Examples from the [Acumatica Customization Guide](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=316b14fa-f406-4788-993c-7b043b1c5bd9)
+ * [Help](Customization/Help): Examples from the [Customization Guide](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=316b14fa-f406-4788-993c-7b043b1c5bd9)
  * [T190](Customization/T190): Source files for the [T190 Quick Start in Customization](https://openuni.acumatica.com/courses/development/t190-development-quick-start-in-customization/) training course
  * [T200](Customization/T200): Examples from the [T200 Maintenance Forms](https://openuni.acumatica.com/courses/development/t200-development-maintenance-forms/) training course
  * [T210](Customization/T210): Examples from the [T210 Customized Forms and Master-Detail Relationship](https://openuni.acumatica.com/courses/development/t210-development-customized-forms-and-master-detail-relationship/) training course
@@ -24,6 +24,11 @@ Customization of Acumatica ERP
 Workflow development
 
  * [T270](WorkflowDevelopment/T270): Examples from the [T270 Workflow API](https://openuni.acumatica.com/courses/development/t270-workflow-api/) training course
+
+Modern UI development
+
+ * [Help](ModernUI/Help): Examples from the [UI Development Guide](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2486983c-0cbe-47ce-b73e-f9ea666cdbe9)
+ * [T290](ModernUI/T290): Source files for the [T290 Modern UI] training course
 
 Unit testing
 
