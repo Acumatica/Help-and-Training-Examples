@@ -1,6 +1,6 @@
 import {
-	PXScreen, graphInfo, 
-	createCollection, PXView, PXFieldState,
+	PXScreen, graphInfo, createCollection,
+	PXView, PXFieldState,
 	gridConfig, PXFieldOptions, GridPreset
 } from "client-controls";
 

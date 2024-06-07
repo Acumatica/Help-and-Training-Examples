@@ -1,11 +1,9 @@
 import {
 	PXScreen,
-	PXView,
-	PXFieldState,
-	
 	createSingle,
-	
 	graphInfo,
+	PXView,
+	PXFieldState,	
 } from "client-controls";
 
 @graphInfo({

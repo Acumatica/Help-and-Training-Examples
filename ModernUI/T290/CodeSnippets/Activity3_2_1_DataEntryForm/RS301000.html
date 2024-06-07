@@ -1,5 +1,10 @@
 <template>
-  <qp-template id="form-Order" name="7-10-7" class="equal-height" qp-collapsible>
+  <qp-template
+    id="form-Order"
+    name="7-10-7"
+    class="equal-height"
+    qp-collapsible
+  >
     <qp-fieldset id="fsColumnA-Order" slot="A" view.bind="WorkOrders">
       <field name="OrderNbr"></field>
       <field name="Status"></field>
@@ -12,7 +17,11 @@
       <field name="ServiceID" config-allow-edit.bind="true"></field>
       <field name="DeviceID" config-allow-edit.bind="true"></field>
       <field name="Assignee"></field>
-      <field name="Description" config-type.bind="1" config-rows.bind="2"></field>
+      <field
+        name="Description"
+        config-type.bind="1"
+        config-rows.bind="2"
+      ></field>
     </qp-fieldset>
     <qp-fieldset id="fsColumnC-Order" slot="C" view.bind="WorkOrders">
       <field name="OrderTotal"></field>

@@ -1,12 +1,12 @@
 <template>
-	<qp-template id="form-ServDevices" name="1-1">
-		<qp-fieldset id="fs-ColumnA" view.bind="ServDevices" slot="A" >
-			<field name="DeviceCD" ></field>
-			<field name="Description" ></field>
-		</qp-fieldset>
-		<qp-fieldset id="fs-ColumnB" view.bind="ServDevices" slot="B" >
-			<field name="Active" ></field>
-			<field name="AvgComplexityOfRepair" ></field>
-		</qp-fieldset>
-	</qp-template>
+  <qp-template id="form-ServDevices" name="1-1">
+    <qp-fieldset id="fs-ColumnA" slot="A" view.bind="ServDevices">
+      <field name="DeviceCD"></field>
+      <field name="Description"></field>
+    </qp-fieldset>
+    <qp-fieldset id="fs-ColumnB" slot="B" view.bind="ServDevices">
+      <field name="Active"></field>
+      <field name="AvgComplexityOfRepair"></field>
+    </qp-fieldset>
+  </qp-template>
 </template>

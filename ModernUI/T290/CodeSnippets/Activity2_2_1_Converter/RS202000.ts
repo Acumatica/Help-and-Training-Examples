@@ -1,5 +1,6 @@
-import { createSingle, PXScreen, graphInfo, PXView, PXFieldState }
-	from "client-controls";
+import { 
+	createSingle, PXScreen, graphInfo, PXView, PXFieldState
+} from "client-controls";
 
 @graphInfo({
 	graphType: "PhoneRepairShop.RSSVDeviceMaint",

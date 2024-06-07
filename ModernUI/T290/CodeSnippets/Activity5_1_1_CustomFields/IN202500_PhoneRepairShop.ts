@@ -1,7 +1,7 @@
 import {
 	IN202500,
 	ItemSettings
-} from "../../../../../../screens/IN/IN202500/IN202500";
+} from "/src/screens/IN/IN202500/IN202500";
 import {
 	PXFieldState,
 	PXFieldOptions,
