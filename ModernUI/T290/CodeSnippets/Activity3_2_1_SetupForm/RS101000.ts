@@ -3,7 +3,8 @@ import {
 	createSingle,
 	graphInfo,
 	PXView,
-	PXFieldState,	
+	PXFieldState,
+	controlConfig,
 } from "client-controls";
 
 @graphInfo({
@@ -15,6 +16,7 @@ export class RS101000 extends PXScreen {
 }
 
 export class RSSVSetup extends PXView {
+	@controlConfig({allowEdit: true, })
 	NumberingID: PXFieldState;
 	WalkInCustomerID: PXFieldState;
 	DefaultEmployee: PXFieldState;

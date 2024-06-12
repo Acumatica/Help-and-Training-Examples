@@ -6,43 +6,45 @@ import {
 } from "client-controls";
 
 @graphInfo({
-	graphType : "PhoneRepairShop.RSSVAssignProcess",
-	primaryView : "Filter"
+	graphType: "PhoneRepairShop.RSSVAssignProcess",
+	primaryView: "Filter"
 })
 export class RS501000 extends PXScreen {
-	@viewInfo({containerName : "Filter Parameters"})
+	@viewInfo({containerName: "Filter Parameters"})
 	Filter = createSingle(RSSVWorkOrderToAssignFilter);
-	@viewInfo({containerName : "Work Orders to Assign"})
+	
+	@viewInfo({containerName: "Work Orders to Assign"})
 	WorkOrders = createCollection(RSSVWorkOrder);
 }
 
 export class RSSVWorkOrderToAssignFilter extends PXView {
-	Priority : PXFieldState<PXFieldOptions.CommitChanges>;
-	TimeWithoutAction : PXFieldState<PXFieldOptions.CommitChanges>;
-	ServiceID : PXFieldState<PXFieldOptions.CommitChanges>;
+	Priority: PXFieldState<PXFieldOptions.CommitChanges>;
+	TimeWithoutAction: PXFieldState<PXFieldOptions.CommitChanges>;
+	ServiceID: PXFieldState<PXFieldOptions.CommitChanges>;
 }
 
 @gridConfig({
-	preset : GridPreset.Inquiry,
-	autoAdjustColumns : true
+	preset: GridPreset.Processing,
+	autoAdjustColumns: true
 })
 export class RSSVWorkOrder extends PXView { 
 	@columnConfig({ allowCheckAll: true })
 	Selected: PXFieldState; 
 
 	@columnConfig({ hideViewLink: true })
-	OrderNbr : PXFieldState;
-
-	Description : PXFieldState;
+	OrderNbr: PXFieldState;
+	Description: PXFieldState;
 
 	@columnConfig({ hideViewLink: true })
-	ServiceID : PXFieldState;
+	ServiceID: PXFieldState;
+	
 	@columnConfig({ hideViewLink: true })
-	DeviceID : PXFieldState;
+	DeviceID: PXFieldState;
 
-	Priority : PXFieldState;
+	Priority: PXFieldState;
+	
 	@columnConfig({ hideViewLink: true})
-	AssignTo : PXFieldState<PXFieldOptions.CommitChanges>;
-	NbrOfAssignedOrders : PXFieldState;
-	TimeWithoutAction : PXFieldState;
+	AssignTo: PXFieldState<PXFieldOptions.CommitChanges>;
+	NbrOfAssignedOrders: PXFieldState;
+	TimeWithoutAction: PXFieldState;
 }
