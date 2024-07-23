@@ -126,18 +126,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{EndpointURLGI}}/Customer%20Contacts?$format=json",
+									"raw": "{{EndpointURLGI}}/Customer%20Contacts",
 									"host": [
 										"{{EndpointURLGI}}"
 									],
 									"path": [
 										"Customer%20Contacts"
-									],
-									"query": [
-										{
-											"key": "$format",
-											"value": "json"
-										}
 									]
 								}
 							},
@@ -217,7 +211,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{EndpointURLGI}}/ItemAvailabilityData_WithParameters?InventoryID=AALEGO500&$format=json",
+									"raw": "{{EndpointURLGI}}/ItemAvailabilityData_WithParameters?InventoryID=AALEGO500",
 									"host": [
 										"{{EndpointURLGI}}"
 									],
@@ -228,10 +222,6 @@
 										{
 											"key": "InventoryID",
 											"value": "AALEGO500"
-										},
-										{
-											"key": "$format",
-											"value": "json"
 										}
 									]
 								}
@@ -430,7 +420,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{EndpointURLGI}}/Modified%20Stock%20Items?$format=json&$filter=ItemStatus eq 'Active' and LastModifiedOn gt {{currentDate}}",
+									"raw": "{{EndpointURLGI}}/Modified%20Stock%20Items?$filter=ItemStatus eq 'Active' and LastModifiedOn gt {{currentDate}}",
 									"host": [
 										"{{EndpointURLGI}}"
 									],
@@ -438,10 +428,6 @@
 										"Modified%20Stock%20Items"
 									],
 									"query": [
-										{
-											"key": "$format",
-											"value": "json"
-										},
 										{
 											"key": "$filter",
 											"value": "ItemStatus eq 'Active' and LastModifiedOn gt {{currentDate}}"
