@@ -29,8 +29,8 @@ export class RSSVWorkOrder extends PXView {
 	DateCompleted: PXFieldState;
 	Status: PXFieldState;
 	
-	@controlConfig({type: 1, rows: 2})
-	Description : PXFieldState;
+	@controlConfig({rows: 2})
+	Description : PXFieldState<PXFieldOptions.Multiline>;
 	
 	@controlConfig({allowEdit: true, })
 	ServiceID : PXFieldState<PXFieldOptions.CommitChanges>;

@@ -13,7 +13,7 @@ import {
 
 export interface IN202500_PhoneRepairShop extends IN202500 { }
 export class IN202500_PhoneRepairShop {
-	CompatibleDevices = createCollection(CompatibleDevices);
+    CompatibleDevices = createCollection(RSSVStockItemDevice);
 }
 
 export interface ItemSettings_PhoneRepairShop extends ItemSettings { }
@@ -25,7 +25,7 @@ export class ItemSettings_PhoneRepairShop {
 @gridConfig({
 	preset: GridPreset.Details
 })
-export class CompatibleDevices extends PXView {
+export class RSSVStockItemDevice extends PXView {
 	DeviceID: PXFieldState<PXFieldOptions.CommitChanges>;
 	DeviceID_description: PXFieldState;
 }
