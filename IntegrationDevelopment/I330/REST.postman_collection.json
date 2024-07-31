@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "938c4ce5-ebb1-4575-b9b7-70c430623304",
+		"_postman_id": "7d306dca-c01e-4e42-87ca-c7c74ecfa19d",
 		"name": "MyStoreIntegration_DataManipulation",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
@@ -2387,7 +2387,7 @@
 		},
 		{
 			"key": "DefaultEndpointURL",
-			"value": "{{InstanceURL}}/entity/Default/23.200.001",
+			"value": "{{InstanceURL}}/entity/Default/24.200.001",
 			"type": "string"
 		},
 		{

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "376c106e-6fde-4cb2-aa54-e9c1046c1f71",
+		"_postman_id": "867c7893-c9ca-420b-a8f9-f7b96eeb2969",
 		"name": "MyStoreIntegration_DataRetrieval",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
@@ -35,9 +35,8 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/x-www-form-urlencoded"
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -95,9 +94,9 @@
 								"header": [
 									{
 										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
 										"name": "Content-Type",
-										"type": "text",
-										"value": "application/x-www-form-urlencoded"
+										"type": "text"
 									}
 								],
 								"body": {
@@ -243,13 +242,13 @@
 						"header": [
 							{
 								"key": "Accept",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							},
 							{
 								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -276,13 +275,13 @@
 								"header": [
 									{
 										"key": "Accept",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									},
 									{
 										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -444,13 +443,13 @@
 						"header": [
 							{
 								"key": "Accept",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							},
 							{
 								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -485,13 +484,13 @@
 								"header": [
 									{
 										"key": "Accept",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									},
 									{
 										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -586,13 +585,13 @@
 						"header": [
 							{
 								"key": "Accept",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							},
 							{
 								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -632,13 +631,13 @@
 								"header": [
 									{
 										"key": "Accept",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									},
 									{
 										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -738,13 +737,13 @@
 						"header": [
 							{
 								"key": "Accept",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							},
 							{
 								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -783,13 +782,13 @@
 								"header": [
 									{
 										"key": "Accept",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									},
 									{
 										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -887,13 +886,13 @@
 						"header": [
 							{
 								"key": "Accept",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							},
 							{
 								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -928,13 +927,13 @@
 								"header": [
 									{
 										"key": "Accept",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									},
 									{
 										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -1035,13 +1034,13 @@
 						"header": [
 							{
 								"key": "Accept",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							},
 							{
 								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -1072,13 +1071,13 @@
 								"header": [
 									{
 										"key": "Accept",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									},
 									{
 										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -1169,13 +1168,13 @@
 						"header": [
 							{
 								"key": "Accept",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							},
 							{
 								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -1208,13 +1207,13 @@
 								"header": [
 									{
 										"key": "Accept",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									},
 									{
 										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -1334,13 +1333,13 @@
 						"header": [
 							{
 								"key": "Accept",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							},
 							{
 								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -1372,13 +1371,13 @@
 								"header": [
 									{
 										"key": "Accept",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									},
 									{
 										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -1469,13 +1468,13 @@
 						"header": [
 							{
 								"key": "Accept",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							},
 							{
 								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -1493,13 +1492,13 @@
 								"header": [
 									{
 										"key": "Accept",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									},
 									{
 										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
+										"value": "application/json",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -1644,7 +1643,7 @@
 		},
 		{
 			"key": "DefaultEndpointURL",
-			"value": "{{InstanceURL}}/entity/Default/23.200.001",
+			"value": "{{InstanceURL}}/entity/Default/24.200.001",
 			"type": "string"
 		},
 		{
