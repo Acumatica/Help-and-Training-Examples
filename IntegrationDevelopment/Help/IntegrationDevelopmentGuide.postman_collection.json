@@ -2349,7 +2349,8 @@
 									"var branch = pm.collectionVariables.get('BranchU100');\r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -2368,7 +2369,8 @@
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url)"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -2388,14 +2390,18 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"InventoryID\" : { \"value\" : \"BASESERV\" },\r\n  \"ItemClass\" : { \"value\" : \"COMPUTERS\" },\r\n  \"Description\" : {\r\n    \"value\": \"new description in English\",\r\n    \"Translations\": {\r\n      \"fr\": \"nouvelle description en français\"\r\n    }\r\n  }\r\n}"
+							"raw": "{\r\n  \"InventoryID\" : { \"value\" : \"LAPTOP15\" },\r\n  \"Description\" : {\r\n    \"value\": \"new description in English\",\r\n    \"Translations\": {\r\n      \"fr\": \"nouvelle description en français\"\r\n    }\r\n  }\r\n}"
 						},
 						"url": {
-							"raw": "{{EndpointURL}}StockItem?$expand=Translations",
+							"raw": "{{EndpointURL}}StockItem?$select=InventoryID,Description,Translations&$expand=Translations",
 							"host": [
 								"{{EndpointURL}}StockItem"
 							],
 							"query": [
+								{
+									"key": "$select",
+									"value": "InventoryID,Description,Translations"
+								},
 								{
 									"key": "$expand",
 									"value": "Translations"
@@ -4025,7 +4031,8 @@
 									"var branch = pm.collectionVariables.get('BranchSalesDemo'); \r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -4043,9 +4050,10 @@
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"postman.setNextRequest('Retrieve the Bills of Material');"
+									"pm.execution.setNextRequest('Retrieve the Bills of Material');"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -4098,7 +4106,8 @@
 									"var branch = pm.collectionVariables.get('BranchSalesDemo'); \r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -4116,9 +4125,10 @@
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"postman.setNextRequest(\"Retrieve the Details of Bill of Material's Operations\");"
+									"pm.execution.setNextRequest(\"Retrieve the Details of Bill of Material's Operations\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -4167,7 +4177,8 @@
 									"var branch = pm.collectionVariables.get('BranchSalesDemo'); \r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -4185,9 +4196,10 @@
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"postman.setNextRequest('');"
+									"pm.execution.setNextRequest('');"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -4560,7 +4572,8 @@
 									"var branch = pm.collectionVariables.get('BranchSalesDemo'); \r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -4574,9 +4587,10 @@
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"postman.setNextRequest(\"\");"
+									"pm.execution.setNextRequest(\"\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -4627,7 +4641,8 @@
 									"var branch = pm.collectionVariables.get('BranchSalesDemo'); \r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -4641,9 +4656,10 @@
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"postman.setNextRequest(\"\");"
+									"pm.execution.setNextRequest(\"\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -17358,7 +17374,7 @@
 		},
 		{
 			"key": "ManufacturingEndpointURL",
-			"value": "{{ManufacturingInstanceURL}}entity/Manufactoring/24.200.001/",
+			"value": "{{ManufacturingInstanceURL}}entity/MANUFACTURING/24.200.001/",
 			"type": "string"
 		},
 		{
