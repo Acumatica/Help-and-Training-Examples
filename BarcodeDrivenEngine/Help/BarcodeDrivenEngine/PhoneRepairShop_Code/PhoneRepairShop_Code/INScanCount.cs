@@ -21,7 +21,7 @@ namespace PhoneRepairShop
         // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
         public new class QtySupport : WMSBase.QtySupport { }
 
-        protected override bool UseQtyCorrectection =>
+        protected override bool UseQtyCorrection =>
             Setup.Current.UseDefaultQtyInCount != true;
 
         protected override IEnumerable<ScanMode<INScanCount>> CreateScanModes()
@@ -395,7 +395,7 @@ namespace PhoneRepairShop
         {
             lotSerialState
                 .Intercept.IsStateActive.ByConjoin(
-                    basis => basis.IsEnterableLotSerial(isForIssue: false));
+                    basis => basis.LotSerialTrack.IsEnterable);
         }
     }
 }
