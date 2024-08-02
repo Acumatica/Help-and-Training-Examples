@@ -103,8 +103,8 @@ namespace PX.SmsProvider.Plivo
         {
             List<KeyValuePair<string, string>> list = CreateMessageParameters;
             list.Add(new KeyValuePair<string, string>("src", m_FromPhoneNbr));
-            list.Add(new KeyValuePair<string, string>("dst", request.RecepientPhoneNbr));
-            list.Add(new KeyValuePair<string, string>("text", request.RecepientSMSMessage));
+            list.Add(new KeyValuePair<string, string>("dst", request.RecipientPhoneNbr));
+            list.Add(new KeyValuePair<string, string>("text", request.RecipientSMSMessage));
             return list;
         }
 
