@@ -1,1 +1,0 @@
-"C:\AcumaticaERP\AcumaticaDB_Commerce\App_Data\Projects\WooCommerceTest\WooCommerceTest.sln"

@@ -1,4 +1,5 @@
-﻿using PX.Commerce.Core;
+﻿using PX.Commerce.BigCommerce;
+using PX.Commerce.Core;
 
 namespace WooCommerceTest
 {

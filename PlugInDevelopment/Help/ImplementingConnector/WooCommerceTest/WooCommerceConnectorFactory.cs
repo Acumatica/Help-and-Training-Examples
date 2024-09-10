@@ -3,7 +3,8 @@ using System;
 
 namespace WooCommerceTest
 {
-    public class WooCommerceConnectorFactory : BaseConnectorFactory<WooCommerceConnector>, IConnectorFactory
+    public class WooCommerceConnectorFactory : 
+        BaseConnectorFactory<WooCommerceConnector>, IConnectorFactory
     {
         public override string Description => WooCommerceConnector.NAME;
         public override bool Enabled => true;

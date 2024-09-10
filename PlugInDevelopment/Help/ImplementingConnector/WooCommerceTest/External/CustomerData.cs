@@ -9,7 +9,8 @@ namespace WooCommerceTest
     public class CustomerData : BCAPIEntity, IWooEntity
     {
         [JsonProperty("id")]
-        [CommerceDescription(WCCaptions.ID, FieldFilterStatus.Skipped, FieldMappingStatus.Import)]
+        [CommerceDescription(WCCaptions.ID, FieldFilterStatus.Skipped, 
+            FieldMappingStatus.Import)]
         public int? Id { get; set; }
 
         [JsonProperty("date_created")]
@@ -21,7 +22,8 @@ namespace WooCommerceTest
         {
             get
             {
-                return DateCreatedUT != null ? (DateTime)DateCreatedUT.ToDate() : default;
+                return DateCreatedUT != null ? 
+                    (DateTime)DateCreatedUT.ToDate() : default;
             }
         }
 
@@ -34,27 +36,32 @@ namespace WooCommerceTest
         {
             get
             {
-                return DateModified != null ? (DateTime)DateModified.ToDate() : default;
+                return DateModified != null ? 
+                    (DateTime)DateModified.ToDate() : default;
             }
         }
 
         [JsonProperty("email")]
-        [CommerceDescription(WCCaptions.Email, FieldFilterStatus.Skipped, FieldMappingStatus.Import)]
+        [CommerceDescription(WCCaptions.Email, FieldFilterStatus.Skipped, 
+            FieldMappingStatus.Import)]
         [ValidateRequired]
         public string Email { get; set; }
 
         [JsonProperty("first_name")]
-        [CommerceDescription(WCCaptions.FirstName, FieldFilterStatus.Skipped, FieldMappingStatus.Import)]
+        [CommerceDescription(WCCaptions.FirstName, FieldFilterStatus.Skipped, 
+            FieldMappingStatus.Import)]
         [ValidateRequired]
         public string FirstName { get; set; }
 
         [JsonProperty("last_name")]
-        [CommerceDescription(WCCaptions.LastName, FieldFilterStatus.Skipped, FieldMappingStatus.Import)]
+        [CommerceDescription(WCCaptions.LastName, FieldFilterStatus.Skipped, 
+            FieldMappingStatus.Import)]
         [ValidateRequired()]
         public string LastName { get; set; }
 
         [JsonProperty("username")]
-        [CommerceDescription(WCCaptions.UserName, FieldFilterStatus.Skipped, FieldMappingStatus.Import)]
+        [CommerceDescription(WCCaptions.UserName, FieldFilterStatus.Skipped, 
+            FieldMappingStatus.Import)]
         public string Username { get; set; }
 
         [JsonProperty("billing")]
