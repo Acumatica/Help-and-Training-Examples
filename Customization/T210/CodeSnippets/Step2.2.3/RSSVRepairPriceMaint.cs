@@ -12,14 +12,14 @@ namespace PhoneRepairShop
         PXGraph<RSSVRepairPriceMaint, RSSVRepairPrice>
     {
         #region Data Views
-        public SelectFrom<RSSVRepairPrice>.View RepairPrices;
+        public SelectFrom<RSSVRepairPrice>.View RepairPrices = null!;
 
         public SelectFrom<RSSVRepairItem>.
             Where<RSSVRepairItem.serviceID.
                 IsEqual<RSSVRepairPrice.serviceID.FromCurrent>.
             And<RSSVRepairItem.deviceID.
                 IsEqual<RSSVRepairPrice.deviceID.FromCurrent>>>.View
-            RepairItems;
+            RepairItems = null!;
         #endregion
 
         #region Event Handlers
@@ -33,12 +33,12 @@ namespace PhoneRepairShop
             if (row.InventoryID != null && row.RepairItemType == null)
             {
                 //Use the PXSelector attribute to select the stock item.
-                InventoryItem item = PXSelectorAttribute.
+                var item = PXSelectorAttribute.
                     Select<RSSVRepairItem.inventoryID>(e.Cache, row)
                     as InventoryItem;
                 //Copy the repair item type from the stock item to the row.
-                InventoryItemExt itemExt = item.GetExtension<InventoryItemExt>();
-                e.Cache.SetValueExt<RSSVRepairItem.repairItemType>(
+                var itemExt = item?.GetExtension<InventoryItemExt>();
+                if (itemExt != null) e.Cache.SetValueExt<RSSVRepairItem.repairItemType>(
                     row, itemExt.UsrRepairItemType);
             }
             //Trigger the FieldDefaulting event handler for basePrice.

@@ -7,10 +7,10 @@ namespace PhoneRepairShop
   public class RSSVRepairServiceMaint : PXGraph<RSSVRepairServiceMaint>
   {
 ////////// The added code
-    public PXSave<RSSVRepairService> Save;
-    public PXCancel<RSSVRepairService> Cancel;
+    public PXSave<RSSVRepairService> Save = null!;
+    public PXCancel<RSSVRepairService> Cancel = null!;
 
-    public SelectFrom<RSSVRepairService>.View RepairService;
+    public SelectFrom<RSSVRepairService>.View RepairService = null!;
 ////////// The end of added code
    
 	public PXFilter<MasterTable> MasterView;

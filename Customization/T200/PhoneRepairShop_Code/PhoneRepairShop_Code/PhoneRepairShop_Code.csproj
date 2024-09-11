@@ -13,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <WarningLevel>3</WarningLevel>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>enable</Nullable>
     <FileVersion>24.100.0139</FileVersion>
     <InformationalVersion>24.100.0139</InformationalVersion>
     <Copyright>Copyright © 2005-2024 Acumatica, Inc. All rights reserved.</Copyright>

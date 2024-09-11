@@ -13,21 +13,21 @@ namespace PhoneRepairShop
         PXGraph<RSSVRepairPriceMaint, RSSVRepairPrice>
     {
         #region Data Views
-        public SelectFrom<RSSVRepairPrice>.View RepairPrices;
+        public SelectFrom<RSSVRepairPrice>.View RepairPrices = null!;
 
         public SelectFrom<RSSVRepairItem>.
             Where<RSSVRepairItem.serviceID.
                 IsEqual<RSSVRepairPrice.serviceID.FromCurrent>.
             And<RSSVRepairItem.deviceID.
                 IsEqual<RSSVRepairPrice.deviceID.FromCurrent>>>.View
-            RepairItems;
+            RepairItems = null!;
 
         public SelectFrom<RSSVLabor>.
             Where<RSSVLabor.deviceID.
                 IsEqual<RSSVRepairPrice.deviceID.FromCurrent>.
             And<RSSVLabor.serviceID.
                 IsEqual<RSSVRepairPrice.serviceID.FromCurrent>>>.View
-            Labor;
+            Labor = null!;
 
         public SelectFrom<RSSVWarranty>.
             Where<RSSVWarranty.deviceID.
@@ -35,12 +35,12 @@ namespace PhoneRepairShop
             And<RSSVWarranty.serviceID.
                 IsEqual<RSSVRepairPrice.serviceID.FromCurrent>>>.
             OrderBy<RSSVWarranty.defaultWarranty.Desc>.View
-            Warranty;
+            Warranty = null!;
         ////////// The added code
         //The view for the default warranty
         public SelectFrom<ContractTemplate>.
             Where<ContractTemplate.contractCD.IsEqual<defaultWarranty>>.
-            View DefaultWarranty;
+            View DefaultWarranty = null!;
         ////////// The end of added code
         #endregion
 
@@ -55,12 +55,12 @@ namespace PhoneRepairShop
             if (row.InventoryID != null && row.RepairItemType == null)
             {
                 //Use the PXSelector attribute to select the stock item.
-                InventoryItem item = PXSelectorAttribute.
+                var item = PXSelectorAttribute.
                     Select<RSSVRepairItem.inventoryID>(e.Cache, row)
                     as InventoryItem;
                 //Copy the repair item type from the stock item to the row.
-                InventoryItemExt itemExt = item.GetExtension<InventoryItemExt>();
-                e.Cache.SetValueExt<RSSVRepairItem.repairItemType>(
+                var itemExt = item?.GetExtension<InventoryItemExt>();
+                if (itemExt != null) e.Cache.SetValueExt<RSSVRepairItem.repairItemType>(
                     row, itemExt.UsrRepairItemType);
             }
             //Trigger the FieldDefaulting event handler for basePrice.
@@ -75,15 +75,15 @@ namespace PhoneRepairShop
             if (row.InventoryID != null)
             {
                 //Use the PXSelector attribute to select the stock item.
-                InventoryItem item = PXSelectorAttribute.
+                var item = PXSelectorAttribute.
                     Select<RSSVRepairItem.inventoryID>(e.Cache, row)
                     as InventoryItem;
                 //Retrieve the base price for the stock item.
-                InventoryItemCurySettings curySettings =
+                var curySettings =
                     InventoryItemCurySettings.PK.Find(
-                    this, item.InventoryID, Accessinfo.BaseCuryID ?? "USD");
+                    this, item?.InventoryID, Accessinfo.BaseCuryID ?? "USD");
                 //Copy the base price from the stock item to the row.
-                e.NewValue = curySettings.BasePrice;
+                if (curySettings != null) e.NewValue = curySettings.BasePrice;
             }
         }
 

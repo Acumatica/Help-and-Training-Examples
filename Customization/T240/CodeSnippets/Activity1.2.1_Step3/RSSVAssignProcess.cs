@@ -7,8 +7,8 @@ namespace PhoneRepairShop
     public class RSSVAssignProcess : PXGraph<RSSVAssignProcess>
     {
         ////////// The added code
-        public PXCancel<RSSVWorkOrderToAssignFilter> Cancel;
-        public PXFilter<RSSVWorkOrderToAssignFilter> Filter;
+        public PXCancel<RSSVWorkOrderToAssignFilter> Cancel = null!;
+        public PXFilter<RSSVWorkOrderToAssignFilter> Filter = null!;
         public SelectFrom<RSSVWorkOrder>.
             Where<RSSVWorkOrder.status.IsEqual<
                 RSSVWorkOrderWorkflow.States.readyForAssignment>.
@@ -26,7 +26,7 @@ namespace PhoneRepairShop
            OrderBy<RSSVWorkOrder.timeWithoutAction.Desc,
                RSSVWorkOrder.priority.Desc>.
            ProcessingView.
-           FilteredBy<RSSVWorkOrderToAssignFilter> WorkOrders;
+           FilteredBy<RSSVWorkOrderToAssignFilter> WorkOrders = null!;
         ////////// The end of added code
 
         public RSSVAssignProcess()
@@ -75,7 +75,7 @@ namespace PhoneRepairShop
                 Messages.Medium,
                 Messages.Low
             })]
-            public virtual string Priority { get; set; }
+            public virtual string? Priority { get; set; }
             public abstract class priority :
             PX.Data.BQL.BqlString.Field<priority>
             { }

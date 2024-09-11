@@ -13,7 +13,7 @@ namespace PhoneRepairShop_Code.Tests
         {
             var graph = PXGraph.CreateInstance<RSSVRepairServiceMaint>();
 
-            RSSVRepairService repairService =
+            var repairService =
                 graph.Caches[typeof(RSSVRepairService)].
                 Insert(new RSSVRepairService
                 {
@@ -23,21 +23,24 @@ namespace PhoneRepairShop_Code.Tests
                     PreliminaryCheck = false
                 }) as RSSVRepairService;
 
-            repairService.WalkInService = false;
-            graph.Caches[typeof(RSSVRepairService)].Update(repairService);
-            Assert.True(repairService.PreliminaryCheck);
+            if (repairService != null) 
+            { 
+                repairService.WalkInService = false;
+                graph.Caches[typeof(RSSVRepairService)].Update(repairService);
+                Assert.True(repairService.PreliminaryCheck);
 
-            repairService.WalkInService = true;
-            graph.Caches[typeof(RSSVRepairService)].Update(repairService);
-            Assert.False(repairService.PreliminaryCheck);
+                repairService.WalkInService = true;
+                graph.Caches[typeof(RSSVRepairService)].Update(repairService);
+                Assert.False(repairService.PreliminaryCheck);
 
-            repairService.PreliminaryCheck = false;
-            graph.Caches[typeof(RSSVRepairService)].Update(repairService);
-            Assert.True(repairService.WalkInService);
+                repairService.PreliminaryCheck = false;
+                graph.Caches[typeof(RSSVRepairService)].Update(repairService);
+                Assert.True(repairService.WalkInService);
 
-            repairService.PreliminaryCheck = true;
-            graph.Caches[typeof(RSSVRepairService)].Update(repairService);
-            Assert.False(repairService.WalkInService);
+                repairService.PreliminaryCheck = true;
+                graph.Caches[typeof(RSSVRepairService)].Update(repairService);
+                Assert.False(repairService.WalkInService);
+            }
         }
         //////////The end of added code
     }

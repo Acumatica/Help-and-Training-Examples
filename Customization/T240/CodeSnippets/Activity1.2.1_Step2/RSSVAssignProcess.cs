@@ -6,14 +6,14 @@ namespace PhoneRepairShop
 {
     public class RSSVAssignProcess : PXGraph<RSSVAssignProcess>
     {
-        public PXCancel<RSSVWorkOrder> Cancel;
+        public PXCancel<RSSVWorkOrder> Cancel = null!;
         public SelectFrom<RSSVWorkOrder>.
             // Inside the Where condition, use a fluent BQL statement 
             // that selects only the repair work orders with 
             // the Ready for Assignment status. 
             Where<RSSVWorkOrder.status.
                 IsEqual<RSSVWorkOrderWorkflow.States.readyForAssignment>>.
-            ProcessingView WorkOrders;
+            ProcessingView WorkOrders = null!;
 
         public RSSVAssignProcess()
         {
@@ -46,7 +46,7 @@ namespace PhoneRepairShop
                 Messages.Medium,
                 Messages.Low
             })]
-            public virtual string Priority { get; set; }
+            public virtual string? Priority { get; set; }
             public abstract class priority :
             PX.Data.BQL.BqlString.Field<priority>
             { }
