@@ -12,6 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <WarningLevel>3</WarningLevel>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>enable</Nullable>
     <FileVersion>22.200.0093</FileVersion>
     <InformationalVersion>22.200.0093</InformationalVersion>
   </PropertyGroup>

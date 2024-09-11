@@ -8,7 +8,7 @@ namespace PhoneRepairShop
         PXGraph<RSSVRepairPriceMaint, RSSVRepairPrice>
     {
         #region Data Views
-        public SelectFrom<RSSVRepairPrice>.View RepairPrices;
+        public SelectFrom<RSSVRepairPrice>.View RepairPrices = null!;
         #endregion
     }
 }

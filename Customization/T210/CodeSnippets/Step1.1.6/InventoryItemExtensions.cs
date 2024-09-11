@@ -54,7 +54,7 @@ namespace PhoneRepairShop
             })]
         ////////// The modified code
         [PXUIField(DisplayName = "Repair Item Type", Enabled = false)]
-        public string UsrRepairItemType { get; set; }
+        public string? UsrRepairItemType { get; set; }
         public abstract class usrRepairItemType :
           PX.Data.BQL.BqlString.Field<usrRepairItemType>
         { }

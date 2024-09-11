@@ -69,7 +69,7 @@ namespace PhoneRepairShop
 
         #region CreatedByScreenID
         [PXDBCreatedByScreenID()]
-        public virtual string CreatedByScreenID { get; set; }
+        public virtual string? CreatedByScreenID { get; set; }
         public abstract class createdByScreenID :
             PX.Data.BQL.BqlString.Field<createdByScreenID>
         { }
@@ -93,7 +93,7 @@ namespace PhoneRepairShop
 
         #region LastModifiedByScreenID
         [PXDBLastModifiedByScreenID()]
-        public virtual string LastModifiedByScreenID { get; set; }
+        public virtual string? LastModifiedByScreenID { get; set; }
         public abstract class lastModifiedByScreenID :
             PX.Data.BQL.BqlString.Field<lastModifiedByScreenID>
         { }
@@ -101,7 +101,7 @@ namespace PhoneRepairShop
 
         #region Tstamp
         [PXDBTimestamp()]
-        public virtual byte[] Tstamp { get; set; }
+        public virtual byte[]? Tstamp { get; set; }
         public abstract class tstamp :
             PX.Data.BQL.BqlByteArray.Field<tstamp>
         { }

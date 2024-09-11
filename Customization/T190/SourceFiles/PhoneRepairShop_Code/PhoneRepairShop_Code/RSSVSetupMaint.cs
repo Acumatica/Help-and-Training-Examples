@@ -7,10 +7,10 @@ namespace PhoneRepairShop
     public class RSSVSetupMaint : PXGraph<RSSVSetupMaint>
     {
 
-        public PXSave<RSSVSetup> Save;
-        public PXCancel<RSSVSetup> Cancel;
+        public PXSave<RSSVSetup> Save = null!;
+        public PXCancel<RSSVSetup> Cancel = null!;
 
-        public SelectFrom<RSSVSetup>.View Setup;
+        public SelectFrom<RSSVSetup>.View Setup = null!;
 
 
     }

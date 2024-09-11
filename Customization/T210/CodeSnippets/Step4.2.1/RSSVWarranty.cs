@@ -65,7 +65,7 @@ namespace PhoneRepairShop
         [Contract.durationType.List]
         [PXFormula(typeof(
             ContractTemplate.durationType.FromSelectorOf<RSSVWarranty.contractID>))]
-        public virtual string ContractDurationType { get; set; }
+        public virtual string? ContractDurationType { get; set; }
         public abstract class contractDurationType :
             PX.Data.BQL.BqlString.Field<contractDurationType>
         { }
@@ -77,7 +77,7 @@ namespace PhoneRepairShop
         [Contract.type.List]
         [PXFormula(typeof(
             ContractTemplate.type.FromSelectorOf<RSSVWarranty.contractID>))]
-        public virtual string ContractType { get; set; }
+        public virtual string? ContractType { get; set; }
         public abstract class contractType :
             PX.Data.BQL.BqlString.Field<contractType>
         { }
@@ -91,7 +91,7 @@ namespace PhoneRepairShop
 
         #region CreatedByScreenID
         [PXDBCreatedByScreenID()]
-        public virtual string CreatedByScreenID { get; set; }
+        public virtual string? CreatedByScreenID { get; set; }
         public abstract class createdByScreenID : PX.Data.BQL.BqlString.Field<createdByScreenID> { }
         #endregion
 
@@ -109,7 +109,7 @@ namespace PhoneRepairShop
 
         #region LastModifiedByScreenID
         [PXDBLastModifiedByScreenID()]
-        public virtual string LastModifiedByScreenID { get; set; }
+        public virtual string? LastModifiedByScreenID { get; set; }
         public abstract class lastModifiedByScreenID : PX.Data.BQL.BqlString.Field<lastModifiedByScreenID> { }
         #endregion
 
@@ -121,7 +121,7 @@ namespace PhoneRepairShop
 
         #region Tstamp
         [PXDBTimestamp()]
-        public virtual byte[] Tstamp { get; set; }
+        public virtual byte[]? Tstamp { get; set; }
         public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
         #endregion
 

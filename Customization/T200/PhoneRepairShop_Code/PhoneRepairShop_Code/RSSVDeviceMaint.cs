@@ -5,6 +5,6 @@ namespace PhoneRepairShop
 {
     public class RSSVDeviceMaint : PXGraph<RSSVDeviceMaint, RSSVDevice>
     {
-        public SelectFrom<RSSVDevice>.View ServDevices;
+        public SelectFrom<RSSVDevice>.View ServDevices = null!;
     }
 }

@@ -18,7 +18,7 @@ namespace PhoneRepairShop
         [AutoNumber(typeof(RSSVSetup.numberingID),
             typeof(RSSVWorkOrder.dateCreated))]
         [PXSelector(typeof(Search<RSSVWorkOrder.orderNbr>))]
-        public virtual string OrderNbr { get; set; }
+        public virtual string? OrderNbr { get; set; }
         public abstract class orderNbr : PX.Data.BQL.BqlString.Field<orderNbr> { }
         #endregion
 
@@ -68,7 +68,7 @@ namespace PhoneRepairShop
                 Messages.Completed,
                 Messages.Paid
             })]
-        public virtual string Status { get; set; }
+        public virtual string? Status { get; set; }
         public abstract class status : PX.Data.BQL.BqlString.Field<status> { }
         #endregion
 
@@ -83,7 +83,7 @@ namespace PhoneRepairShop
         [PXDBString(60, IsUnicode = true)]
         [PXUIField(DisplayName = "Description",
             Visibility = PXUIVisibility.SelectorVisible)]
-        public virtual string Description { get; set; }
+        public virtual string? Description { get; set; }
         public abstract class description : PX.Data.BQL.BqlString.Field<description> { }
         #endregion
 
@@ -154,14 +154,14 @@ namespace PhoneRepairShop
                 Messages.Medium,
                 Messages.Low
             })]
-        public virtual string Priority { get; set; }
+        public virtual string? Priority { get; set; }
         public abstract class priority : PX.Data.BQL.BqlString.Field<priority> { }
         #endregion
 
         #region InvoiceNbr
         [PXDBString(15, IsUnicode = true)]
         [PXUIField(DisplayName = "Invoice Nbr.", Enabled = false)]
-        public virtual string InvoiceNbr { get; set; }
+        public virtual string? InvoiceNbr { get; set; }
         public abstract class invoiceNbr : PX.Data.BQL.BqlString.Field<invoiceNbr> { }
         #endregion
 
@@ -173,7 +173,7 @@ namespace PhoneRepairShop
 
         #region CreatedByScreenID
         [PXDBCreatedByScreenID()]
-        public virtual string CreatedByScreenID { get; set; }
+        public virtual string? CreatedByScreenID { get; set; }
         public abstract class createdByScreenID : PX.Data.BQL.BqlString.Field<createdByScreenID> { }
         #endregion
 
@@ -191,7 +191,7 @@ namespace PhoneRepairShop
 
         #region LastModifiedByScreenID
         [PXDBLastModifiedByScreenID()]
-        public virtual string LastModifiedByScreenID { get; set; }
+        public virtual string? LastModifiedByScreenID { get; set; }
         public abstract class lastModifiedByScreenID : PX.Data.BQL.BqlString.Field<lastModifiedByScreenID> { }
         #endregion
 
@@ -203,7 +203,7 @@ namespace PhoneRepairShop
 
         #region Tstamp
         [PXDBTimestamp()]
-        public virtual byte[] Tstamp { get; set; }
+        public virtual byte[]? Tstamp { get; set; }
         public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
         #endregion
 

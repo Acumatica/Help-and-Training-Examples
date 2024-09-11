@@ -8,7 +8,7 @@ namespace PhoneRepairShop
     // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
     public class ARReleaseProcess_Extension : PXGraphExtension<ARReleaseProcess>
     {
-		public SelectFrom<RSSVWorkOrder>.View UpdWorkOrder;
+		public SelectFrom<RSSVWorkOrder>.View UpdWorkOrder = null!;
 		
 		[PXOverride]
 		public void PerformPersist(PXGraph.IPersistPerformer persister,

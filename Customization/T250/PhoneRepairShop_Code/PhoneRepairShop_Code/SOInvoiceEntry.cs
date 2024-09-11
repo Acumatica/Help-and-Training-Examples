@@ -7,7 +7,7 @@ namespace PhoneRepairShop
 {
     public class SOInvoiceEntry_Extension : PXGraphExtension<SOInvoiceEntry>
     {
-        public PXAction<ARInvoice> ViewOrder;
+        public PXAction<ARInvoice> ViewOrder = null!;
         [PXButton, PXUIField(DisplayName = "View Repair Work Order")]
         protected virtual IEnumerable viewOrder(PXAdapter adapter)
         {

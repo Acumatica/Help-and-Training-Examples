@@ -10,27 +10,27 @@ namespace PhoneRepairShop
     public class RSSVRepairPriceMaint : PXGraph<RSSVRepairPriceMaint, RSSVRepairPrice>
     {
         #region Views
-        public SelectFrom<RSSVRepairPrice>.View RepairPrices;
+        public SelectFrom<RSSVRepairPrice>.View RepairPrices = null!;
 
         public SelectFrom<RSSVRepairItem>.
             Where<RSSVRepairItem.serviceID.IsEqual<RSSVRepairPrice.serviceID.FromCurrent>.
                 And<RSSVRepairItem.deviceID.IsEqual<RSSVRepairPrice.deviceID.FromCurrent>>>.View
-                    RepairItems;
+                    RepairItems = null!;
 
         public SelectFrom<RSSVLabor>.
             Where<RSSVLabor.deviceID.IsEqual<RSSVRepairPrice.deviceID.FromCurrent>.
                 And<RSSVLabor.serviceID.IsEqual<RSSVRepairPrice.serviceID.FromCurrent>>>.View
-                    Labor;
+                    Labor = null!;
 
         public SelectFrom<RSSVWarranty>.
             Where<RSSVWarranty.deviceID.IsEqual<RSSVRepairPrice.deviceID.FromCurrent>.
                 And<RSSVWarranty.serviceID.IsEqual<RSSVRepairPrice.serviceID.FromCurrent>>>.
-                OrderBy<RSSVWarranty.defaultWarranty.Desc>.View Warranty;
+                OrderBy<RSSVWarranty.defaultWarranty.Desc>.View Warranty = null!;
 
         //The view for the default warranty
         public SelectFrom<ContractTemplate>.
             Where<ContractTemplate.contractCD.IsEqual<defaultWarranty>>.
-            View DefaultWarranty;
+            View DefaultWarranty = null!;
         #endregion
 
 
