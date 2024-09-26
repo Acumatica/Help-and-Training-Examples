@@ -18,9 +18,7 @@
         </layout>
         <data>
             <SiteMap>
-                <row Position="5" Title="Serviced Devices" Url="~/GenericInquiry/GenericInquiry.aspx?id=f86e43fd-80ec-4fa2-affb-9671b37adc74" ScreenID="RS2020PL" NodeID="baebb11d-483a-4b77-8052-56e1595828ca" ParentID="43c55fae-b3fd-42a9-b29b-7331167d143a">
-                    <RolesInGraph Rolename="*" ApplicationName="/" Accessrights="0" />
-                </row>
+                <row Position="5" Title="Serviced Devices" Url="~/GenericInquiry/GenericInquiry.aspx?id=f86e43fd-80ec-4fa2-affb-9671b37adc74" ScreenID="RS2020PL" NodeID="baebb11d-483a-4b77-8052-56e1595828ca" ParentID="43c55fae-b3fd-42a9-b29b-7331167d143a" SelectedUI="E" />
             </SiteMap>
         </data>
     </data-set>
