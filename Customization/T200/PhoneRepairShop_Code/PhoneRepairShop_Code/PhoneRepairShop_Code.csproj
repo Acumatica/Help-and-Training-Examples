@@ -15,8 +15,8 @@
     <WarningLevel>3</WarningLevel>
     <LangVersion>9.0</LangVersion>
     <Nullable>enable</Nullable>
-    <FileVersion>24.100.0139</FileVersion>
-    <InformationalVersion>24.100.0139</InformationalVersion>
+    <FileVersion>24.200.0118</FileVersion>
+    <InformationalVersion>24.200.0118</InformationalVersion>
     <Copyright>Copyright © 2005-2024 Acumatica, Inc. All rights reserved.</Copyright>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
