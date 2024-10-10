@@ -7,10 +7,10 @@
 	},
 	"item": [
 		{
-			"name": "Part 1: Client Application Configuration",
+			"name": "Part 1: Getting Started with the REST API",
 			"item": [
 				{
-					"name": "Lesson 1.1: Signing In to Acumatica ERP",
+					"name": "Activity 1.2.1: To Sign In to Acumatica ERP",
 					"event": [
 						{
 							"listen": "test",
@@ -25,7 +25,7 @@
 									"pm.test(\".ASP.NET_SessionId recieved\", function () {\r",
 									"    pm.expect(pm.cookies.indexOf('.ASP.NET_SessionId')).to.be.not.null;\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 2.1: Retrieving the List of Customers with Contacts\");"
+									"pm.execution.setNextRequest(\"Lesson 2.1: Retrieving the List of Customers with Contacts\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -65,7 +65,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 1.1: Signing Out from Acumatica ERP",
+					"name": "Activity 1.2.2: To Sign Out from Acumatica ERP",
 					"event": [
 						{
 							"listen": "test",
@@ -80,9 +80,10 @@
 									"pm.test(\".ASP.NET_SessionId not recieved\", function () {\r",
 									"    pm.expect(pm.cookies.indexOf('.ASP.NET_SessionId')).to.be.eql(-1);\r",
 									"});\r",
-									"postman.setNextRequest(null);"
+									"pm.execution.setNextRequest(null);"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -92,12 +93,14 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -121,10 +124,10 @@
 			]
 		},
 		{
-			"name": "Part 2: Initial Data Retrieval",
+			"name": "Part 2: Data Retrieval",
 			"item": [
 				{
-					"name": "Lesson 2.1: Retrieving the List of Customers with Contacts",
+					"name": "Activity 2.1.1: To Retrieve the List of Customers with Contacts",
 					"event": [
 						{
 							"listen": "test",
@@ -137,9 +140,10 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse).to.be.not.empty;\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 2.2: Retrieving the Quantities of Stock Items\");"
+									"pm.execution.setNextRequest(\"Lesson 2.2: Retrieving the Quantities of Stock Items\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -154,7 +158,8 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
@@ -180,7 +185,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 2.2: Retrieving the Quantities of Stock Items",
+					"name": "Activity 2.2.1: To Retrieve the Quantities of Stock Items",
 					"event": [
 						{
 							"listen": "test",
@@ -193,7 +198,7 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.ItemAvailabilityDataInquiryDetails).to.be.not.empty;\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 3.1: Retrieving the List of Modified Stock Items\");"
+									"pm.execution.setNextRequest(\"Lesson 3.1: Retrieving the List of Modified Stock Items\");"
 								],
 								"type": "text/javascript"
 							}
@@ -237,14 +242,9 @@
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "Part 3: Retrieval of the Delta of Records",
-			"item": [
+				},
 				{
-					"name": "Lesson 3.1: Retrieving the List of Modified Stock Items",
+					"name": "Activity 2.3.1: To Retrieve the List of Modified Stock Items",
 					"event": [
 						{
 							"listen": "test",
@@ -259,7 +259,7 @@
 									"pm.test(\"Response does not contain AACOMPUT01\", function () {\r",
 									"    pm.expect(pm.response.text()).to.not.include(\"AACOMPUT01\");\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 1.1: Signing Out from Acumatica ERP\");"
+									"pm.execution.setNextRequest(\"Lesson 1.1: Signing Out from Acumatica ERP\");"
 								],
 								"type": "text/javascript"
 							}

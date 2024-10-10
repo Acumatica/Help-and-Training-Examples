@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "20e302e5-33e0-4f1c-b7b1-13d83e1700df",
+		"_postman_id": "545cc13f-aa62-40ac-8ebe-adb14122f027",
 		"name": "REST API Examples (Integration Development Guide)",
 		"description": "This collection contains examples from the [REST API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n- Deploy a new Acumatica ERP instance with three tenants that are based on the U100, SalesDemo, and T100 datasets. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n    \n- Specify the base URL of the site in the _BaseURL_ variable of the collection.\n    \n- Specify the instance URL in the _InstanceURL_ variable of the collection.\n    \n- Make sure the URL of the Default/24.200.001 endpoint is in the _EndpointURL_ variable.\n    \n- Make sure the URL of the MANUFACTURING/24.200.001 endpoint is in the _ManufacturingEndpointURL_ variable.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the U100 data in the _TenantU100_, _BranchU100_, _UsernameU100_, and _PasswordU100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantT100_, _BranchT100_, _UsernameT100_, and _PasswordT100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantSalesDemo_, _BranchSalesDemo_, _UsernameSalesDemo_, and _PasswordSalesDemo_ variables.\n    \n\nOther variables are used by particular requests and are specified during execution of other requests. You do not need to feel their values manually.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -672,16 +672,17 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"//Sign in to the tenant with U100 data\r",
+									"//Sign in to the tenant with T100 data\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"var username = pm.collectionVariables.get('UsernameU100');\r",
-									"var password = pm.collectionVariables.get('PasswordU100');\r",
-									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"var branch = pm.collectionVariables.get('BranchU100');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100');\r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -692,20 +693,21 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"pm.test(\"InventoryID is APJAM08\", function (){\r",
+									"pm.test(\"InventoryID is SIMCARD\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.InventoryID.value).to.eql('APJAM08');\r",
+									"    pm.expect(jsonResponse.InventoryID.value).to.eql('SIMCARD');\r",
 									"});\r",
 									"pm.test(\"Response includes one detail line\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.Results).to.have.lengthOf(2);\r",
+									"    pm.expect(jsonResponse.Results).to.have.lengthOf(1);\r",
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
 									"pm.execution.setNextRequest(\"Retrieve the List of Records in Batches\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -725,7 +727,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"InventoryID\" : {\"value\" : \"APJAM08\" } ,\r\n  \"WarehouseID\" : {\"value\" : \"RETAIL\" }\r\n}"
+							"raw": "{\r\n  \"InventoryID\" : {\"value\" : \"SIMCARD\" } ,\r\n  \"WarehouseID\" : {\"value\" : \"YOGI\" }\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}InventorySummaryInquiry?$expand=Results",
@@ -5133,23 +5135,25 @@
 									"pm.acuFunc.singOutFunction(pm, url);\r",
 									"pm.execution.setNextRequest(\"Update a Customer\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"//Sign in to the tenant with U100 data\r",
+									"//Sign in to the tenant with T100 data\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"var username = pm.collectionVariables.get('UsernameU100');\r",
-									"var password = pm.collectionVariables.get('PasswordU100');\r",
-									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -5168,7 +5172,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{EndpointURL}}Customer?$expand=MainContact,MainContact/Address",
+							"raw": "{{EndpointURL}}Customer?$expand=MainContact,MainContact/Address&$select=CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode",
 							"host": [
 								"{{EndpointURL}}Customer"
 							],
@@ -5176,6 +5180,10 @@
 								{
 									"key": "$expand",
 									"value": "MainContact,MainContact/Address"
+								},
+								{
+									"key": "$select",
+									"value": "CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode"
 								}
 							]
 						},
@@ -6444,32 +6452,34 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"pm.test(\"More than one detail is returned\", function (){\r",
+									"pm.test(\"One detail is returned\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.Results).length.to.be.greaterThan(1);\r",
+									"    pm.expect(jsonResponse.Results).to.have.lengthOf(1);\r",
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
 									"pm.execution.setNextRequest(\"Create an Invoice with Tax Parameters Overridden\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"//Sign in to the tenant with U100 data\r",
+									"//Sign in to the tenant with T100 data\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"var username = pm.collectionVariables.get('UsernameU100');\r",
-									"var password = pm.collectionVariables.get('PasswordU100');\r",
-									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -6489,7 +6499,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"InventoryID\": { \"value\": \"APJAM08\" }\r\n}"
+							"raw": "{\r\n   \"InventoryID\": { \"value\": \"SIMCARD\" }\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}InventorySummaryInquiry?$expand=Results",
