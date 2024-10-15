@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "867c7893-c9ca-420b-a8f9-f7b96eeb2969",
+		"_postman_id": "1316b23f-4351-4c63-94f1-f3c3c6a7e494",
 		"name": "MyStoreIntegration_DataRetrieval",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
@@ -171,7 +171,7 @@
 			"name": "Part 2: Performance Optimization",
 			"item": [
 				{
-					"name": "Lesson 2.1: Retrieving the List of Sales Orders with Document and Shipment Details",
+					"name": "Lesson 2.1: Retrieving a List of Sales Orders with Details and Related Shipments",
 					"event": [
 						{
 							"listen": "test",
@@ -258,7 +258,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 2.2: Retrieving the List of Sales Orders in Batches (First Five Records)",
+					"name": "Lesson 2.2: Retrieving a List of Sales Orders in Batches (First Five Records)",
 					"event": [
 						{
 							"listen": "test",
@@ -332,7 +332,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 2.2: Retrieving the List of Sales Orders in Batches (Next Five Records)",
+					"name": "Lesson 2.2: Retrieving a List of Sales Orders in Batches (Next Five Records)",
 					"event": [
 						{
 							"listen": "test",
