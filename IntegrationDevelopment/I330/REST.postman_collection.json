@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7d306dca-c01e-4e42-87ca-c7c74ecfa19d",
+		"_postman_id": "16f11f15-01e0-4038-87bd-d7450ff25244",
 		"name": "MyStoreIntegration_DataManipulation",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
@@ -21,9 +21,10 @@
 									"});\r",
 									"var responseData = pm.response.json();\r",
 									"pm.collectionVariables.set(\"accessToken\",responseData.access_token);\r",
-									"postman.setNextRequest(\"Lesson 1.1: Creating a Shipment\");"
+									"postman.setNextRequest(\"Activity 2.1.1: To Update a Customer Record\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -171,7 +172,7 @@
 			"name": "Part 1: Creation of Records",
 			"item": [
 				{
-					"name": "Lesson 1.1: Creating a Shipment",
+					"name": "Activity 1.1.1: To Create a Shipment for Multiple Sales Orders",
 					"event": [
 						{
 							"listen": "test",
@@ -188,7 +189,7 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Status.value).to.eql('On Hold');\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 1.2: Creating a Stock Item with Attributes\");"
+									"pm.execution.setNextRequest(\"Activity 1.2.1: To Create a Stock Item with Attributes\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -246,7 +247,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 1.2: Creating a Stock Item with Attributes",
+					"name": "Activity 1.2.1: To Create a Stock Item with Attributes",
 					"event": [
 						{
 							"listen": "test",
@@ -259,9 +260,10 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Attributes).to.have.lengthOf(2);\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 2.1: Updating a Customer Account\");"
+									"pm.execution.setNextRequest(\"Activity 2.1.1: To Update a Customer Record\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -270,7 +272,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -320,7 +323,7 @@
 			"name": "Part 2: Update of Records",
 			"item": [
 				{
-					"name": "Lesson 2.1: Updating a Customer Account",
+					"name": "Activity 2.1.1: To Update a Customer Record",
 					"event": [
 						{
 							"listen": "test",
@@ -333,9 +336,10 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.BillingContact.Attention.value).to.eq(\"Mr. Jack Green\");\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 2.2: Retrieving the Sales Order with Details\");"
+									"pm.execution.setNextRequest(\"Activity 2.2.1: To Retrieve the Sales Order\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -344,7 +348,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -393,7 +398,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 2.2: Retrieving the Sales Order with Details",
+					"name": "Activity 2.2.1: To Retrieve the Sales Order",
 					"event": [
 						{
 							"listen": "test",
@@ -413,9 +418,10 @@
 									"    }\r",
 									"});\r",
 									"\r",
-									"postman.setNextRequest(\"Lesson 2.2: Updating Detail Lines\");"
+									"pm.execution.setNextRequest(\"Activity 2.2.2: To Update the Detail Lines of the Sales Order\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -424,7 +430,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -433,11 +440,6 @@
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
 							}
@@ -469,7 +471,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 2.2: Updating Detail Lines",
+					"name": "Activity 2.2.2: To Update the Detail Lines of the Sales Order",
 					"event": [
 						{
 							"listen": "test",
@@ -493,7 +495,7 @@
 									"            pm.expect(item.OrderQty.value).to.eq(5.0);};\r",
 									"    }\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 3.1: Releasing from Hold of an Invoice\");"
+									"pm.execution.setNextRequest(\"Activity 3.1.1: To Remove a Sales Invoice from Hold\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -556,7 +558,7 @@
 			"name": "Part 3: Execution of Actions",
 			"item": [
 				{
-					"name": "Lesson 3.1: Releasing from Hold of an Invoice",
+					"name": "Activity 3.1.1: To Remove a Sales Invoice from Hold",
 					"event": [
 						{
 							"listen": "test",
@@ -569,9 +571,10 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Status.value).to.equal(\"Balanced\");\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 3.1: Invoking Release of an Invoice\");"
+									"pm.execution.setNextRequest(\"Activity 3.1.2: To Invoke Release of the Invoice\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -580,7 +583,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -615,7 +619,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 3.1: Invoking Release of an Invoice",
+					"name": "Activity 3.1.2: To Invoke Release of the Invoice",
 					"event": [
 						{
 							"listen": "test",
@@ -625,9 +629,10 @@
 									"    pm.response.to.have.status(202);\r",
 									"});\r",
 									"pm.collectionVariables.set(\"SalesInvoiceStatusUrl\", pm.response.headers.get(\"Location\"));\r",
-									"postman.setNextRequest(\"Lesson 3.1: Retrieving the Status of the Release Operation\");"
+									"pm.execution.setNextRequest(\"Activity 3.1.3: To Retrieve the Status of the Release Operation\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -636,7 +641,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -672,7 +678,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 3.1: Retrieving the Status of the Release Operation",
+					"name": "Activity 3.1.3: To Retrieve the Status of the Release Operation",
 					"event": [
 						{
 							"listen": "test",
@@ -681,14 +687,15 @@
 									"if(pm.response.code != 204)\r",
 									"{\r",
 									"    setTimeout(function(){},10000);\r",
-									"    postman.setNextRequest(\"Lesson 3.1: Retrieving the Status of the Release Operation\");\r",
+									"    pm.execution.setNextRequest(\"Activity 3.1.3: To Retrieve the Status of the Release Operation\");\r",
 									"}\r",
 									"else\r",
 									"{\r",
-									"    postman.setNextRequest(\"Lesson 3.1: Retrieving the Released Invoice\");\r",
+									"    pm.execution.setNextRequest(\"Activity 3.1.4: To Check the Status of the Sales Invoice\");\r",
 									"}"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -697,7 +704,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -706,11 +714,6 @@
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
 							}
@@ -725,7 +728,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 3.1: Retrieving the Released Invoice",
+					"name": "Activity 3.1.4: To Check the Status of the Sales Invoice",
 					"event": [
 						{
 							"listen": "test",
@@ -738,9 +741,10 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Status.value).to.equal(\"Open\");\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 5.1: Adding a Note to a Stock Item\");"
+									"pm.execution.setNextRequest(\"Activity 5.1.1: To Add a Note to a Stock Item\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -749,7 +753,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -758,11 +763,6 @@
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
 							}
@@ -793,7 +793,7 @@
 			"name": "Part 4: Processing of Payments by Credit Cards",
 			"item": [
 				{
-					"name": "Lesson 4.1: Registering a Customer Credit Card",
+					"name": "Activity 4.1.1: To Register a Customer Credit Card",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -862,7 +862,7 @@
 			"name": "Part 5: Attachment of Files and Notes",
 			"item": [
 				{
-					"name": "Lesson 5.1: Adding a Note to a Stock Item",
+					"name": "Activity 5.1.1: To Add a Note to a Stock Item",
 					"event": [
 						{
 							"listen": "test",
@@ -875,9 +875,10 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.note.value).to.equal(\"My note\");\r",
 									"});\r",
-									"postman.setNextRequest(\"Signing out from Acumatica ERP\");"
+									"pm.execution.setNextRequest(\"Activity 5.2.1: To Obtain the URL for the Attaching of a File\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -886,7 +887,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -927,7 +929,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 5.2: Getting the Put Files URL",
+					"name": "Activity 5.2.1: To Obtain the URL for the Attaching of a File",
 					"event": [
 						{
 							"listen": "test",
@@ -936,11 +938,13 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
+									"pm.execution.setNextRequest(\"Signing out from Acumatica ERP\");\r",
 									"const jsonResponse = pm.response.json();\r",
 									"const fileRef = jsonResponse._links['files:put'];\r",
 									"pm.collectionVariables.set('StockItemFileUrl', fileRef.replace('{filename}','T2MCRO.jpg'));"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -949,13 +953,11 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -963,19 +965,8 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "file",
-							"file": {
-								"src": ""
-							}
-						},
 						"url": {
 							"raw": "{{DefaultEndpointURL}}/StockItem/AALEGO500?$select=InventoryID",
 							"host": [
@@ -996,7 +987,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 5.2: Attaching the File",
+					"name": "Activity 5.2.2: To Attach a File to the Stock Item",
 					"event": [
 						{
 							"listen": "test",
@@ -1038,7 +1029,7 @@
 						"body": {
 							"mode": "file",
 							"file": {
-								"src": "/C:/Work/Help-and-Training-Examples/IntegrationDevelopment/I330/SourceFiles/T2MCRO.jpg"
+								"src": "SourceFiles/T2MCRO.jpg"
 							}
 						},
 						"url": {

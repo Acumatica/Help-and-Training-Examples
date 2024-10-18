@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "545cc13f-aa62-40ac-8ebe-adb14122f027",
+		"_postman_id": "fcdb24a4-4c07-4256-8ffa-abf56ec93a69",
 		"name": "REST API Examples (Integration Development Guide)",
 		"description": "This collection contains examples from the [REST API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n- Deploy a new Acumatica ERP instance with three tenants that are based on the U100, SalesDemo, and T100 datasets. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n    \n- Specify the base URL of the site in the _BaseURL_ variable of the collection.\n    \n- Specify the instance URL in the _InstanceURL_ variable of the collection.\n    \n- Make sure the URL of the Default/24.200.001 endpoint is in the _EndpointURL_ variable.\n    \n- Make sure the URL of the MANUFACTURING/24.200.001 endpoint is in the _ManufacturingEndpointURL_ variable.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the U100 data in the _TenantU100_, _BranchU100_, _UsernameU100_, and _PasswordU100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantT100_, _BranchT100_, _UsernameT100_, and _PasswordT100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantSalesDemo_, _BranchSalesDemo_, _UsernameSalesDemo_, and _PasswordSalesDemo_ variables.\n    \n\nOther variables are used by particular requests and are specified during execution of other requests. You do not need to feel their values manually.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -11401,7 +11401,7 @@
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"pm.execution.setNextRequest('Retrieve the Sales Order with Details');"
+									"pm.execution.setNextRequest('Retrieve a Sales Order by the Values of Specific Fields');"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -11443,7 +11443,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve the Sales Order with Details",
+					"name": "Retrieve a Sales Order by the Values of Specific Fields",
 					"event": [
 						{
 							"listen": "test",
@@ -11837,7 +11837,8 @@
 									"var branch = pm.collectionVariables.get('BranchU100'); \r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -11863,9 +11864,10 @@
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"pm.execution.setNextRequest(\"Read the Tracking Number from a Shipment\");"
+									"pm.execution.setNextRequest(\"Create a Shipment for Sales Orders\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -12548,6 +12550,91 @@
 		{
 			"name": "Shipment",
 			"item": [
+				{
+					"name": "Create a Shipment for Sales Orders",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//U100 sign-in data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100');\r",
+									"//Sign in and do prerequesites\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The shipment is created for three items\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Details).to.have.lengthOf(3);\r",
+									"});\r",
+									"pm.test(\"The shipment is on hold\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Status.value).to.eql('On Hold');\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"pm.execution.setNextRequest(\"Read the Tracking Number from a Shipment\");\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"Type\":{\"value\":\"Shipment\"},\r\n\t\"CustomerID\":{\"value\":\"C000000003\"},\r\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\r\n    \"ShipmentDate\":{\"value\":\"2024-11-01\"},\r\n\t\"Details\":[\r\n\t\t{\r\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\r\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\r\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\r\n\t\t}\r\n\t]\r\n}"
+						},
+						"url": {
+							"raw": "{{EndpointURL}}Shipment?$select=Type,ShipmentNbr,Status,Details/InventoryID&$expand=Details",
+							"host": [
+								"{{EndpointURL}}Shipment"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "Type,ShipmentNbr,Status,Details/InventoryID"
+								},
+								{
+									"key": "$expand",
+									"value": "Details"
+								}
+							]
+						},
+						"description": "This example shows the creation of a shipment with allocations and package specifications, which is described in [Create a Shipment for Two Sales Orders with Allocations and Package Specifications](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ab83de33-505c-476e-b8b8-99f2a98e142c)."
+					},
+					"response": []
+				},
 				{
 					"name": "Create a Shipment for Two Sales Orders with Allocations and Package Contents",
 					"event": [
@@ -13589,9 +13676,10 @@
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"pm.execution.setNextRequest(\"Add a Note to a Stock Item\");"
+									"pm.execution.setNextRequest(\"Create a Stock Item with Attributes\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -13606,7 +13694,8 @@
 									"var branch = pm.collectionVariables.get('BranchT100'); \r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -13634,6 +13723,86 @@
 					"response": []
 				},
 				{
+					"name": "Create a Stock Item with Attributes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The stock item has two attributes\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Attributes).to.have.lengthOf(2);\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"pm.execution.setNextRequest(\"Add a Note to a Stock Item\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"InventoryID\":{\"value\":\"BASESERV1\"},\n\t\"Description\":{\"value\":\"Baseline level of performance\"},\n\t\"ItemClass\":{\"value\":\"STOCKITEM\"},\n\t\"Attributes\":[\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"Operation System\"},\n\t\t\t\"Value\":{\"value\":\"Windows\"}\n\t\t},\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"SOFTVER\"},\n\t\t\t\"Value\":{\"value\":\"Server 2012 R2\"}\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "{{EndpointURL}}/StockItem?$select=InventoryID,Attributes/AttributeDescription,Attributes/Value&$expand=Attributes",
+							"host": [
+								"{{EndpointURL}}"
+							],
+							"path": [
+								"StockItem"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "InventoryID,Attributes/AttributeDescription,Attributes/Value"
+								},
+								{
+									"key": "$expand",
+									"value": "Attributes"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Add a Note to a Stock Item",
 					"event": [
 						{
@@ -13650,9 +13819,10 @@
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"pm.execution.setNextRequest(\"Update a Tax Category\");"
+									"pm.execution.setNextRequest(\"Obtain the URL for the Attaching of a File\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -13667,7 +13837,8 @@
 									"var branch = pm.collectionVariables.get('BranchT100'); \r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -13702,6 +13873,145 @@
 									"key": "$select",
 									"value": "InventoryID"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtain the URL for the Attaching of a File",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"const jsonResponse = pm.response.json();\r",
+									"const fileRef = jsonResponse._links['files:put'];\r",
+									"pm.collectionVariables.set('StockItemFileUrl', fileRef.replace('{filename}','T2MCRO.jpg'));\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"pm.execution.setNextRequest(\"Update a Tax Category\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Data for sign-in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"//Sign in and modify stock items\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{EndpointURL}}/StockItem/AALEGO500?$select=InventoryID",
+							"host": [
+								"{{EndpointURL}}"
+							],
+							"path": [
+								"StockItem",
+								"AALEGO500"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "InventoryID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Attach a File to a Stock Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"pm.execution.setNextRequest(\"\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/octet-stream",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": "/C:/Work/Help-and-Training-Examples/IntegrationDevelopment/I330/SourceFiles/T2MCRO.jpg"
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}{{StockItemFileUrl}}",
+							"host": [
+								"{{BaseURL}}{{StockItemFileUrl}}"
 							]
 						}
 					},
@@ -17686,6 +17996,10 @@
 		},
 		{
 			"key": "paymentNbr",
+			"value": ""
+		},
+		{
+			"key": "StockItemFileUrl",
 			"value": ""
 		}
 	]

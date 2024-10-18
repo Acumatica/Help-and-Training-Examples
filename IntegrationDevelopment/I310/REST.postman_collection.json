@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bcfa2679-0042-4bea-a18d-71de4e2082e8",
+		"_postman_id": "57ce8cbf-5bf7-4e8f-8a90-d78eb71c48d0",
 		"name": "MyBIIntegrationREST",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
@@ -25,7 +25,7 @@
 									"pm.test(\".ASP.NET_SessionId recieved\", function () {\r",
 									"    pm.expect(pm.cookies.indexOf('.ASP.NET_SessionId')).to.be.not.null;\r",
 									"});\r",
-									"pm.execution.setNextRequest(\"Lesson 2.1: Retrieving the List of Customers with Contacts\");"
+									"pm.execution.setNextRequest(\"Activity 2.1.1: To Retrieve the List of Customers with Contacts\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -140,7 +140,7 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse).to.be.not.empty;\r",
 									"});\r",
-									"pm.execution.setNextRequest(\"Lesson 2.2: Retrieving the Quantities of Stock Items\");"
+									"pm.execution.setNextRequest(\"Activity 2.2.1: To Retrieve the Quantities of Stock Items\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -198,9 +198,10 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.ItemAvailabilityDataInquiryDetails).to.be.not.empty;\r",
 									"});\r",
-									"pm.execution.setNextRequest(\"Lesson 3.1: Retrieving the List of Modified Stock Items\");"
+									"pm.execution.setNextRequest(\"Activity 2.3.1: To Retrieve the List of Modified Stock Items\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -259,9 +260,10 @@
 									"pm.test(\"Response does not contain AACOMPUT01\", function () {\r",
 									"    pm.expect(pm.response.text()).to.not.include(\"AACOMPUT01\");\r",
 									"});\r",
-									"pm.execution.setNextRequest(\"Lesson 1.1: Signing Out from Acumatica ERP\");"
+									"pm.execution.setNextRequest(\"Activity 1.2.2: To Sign Out from Acumatica ERP\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -322,7 +324,8 @@
 									"\r",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],

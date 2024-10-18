@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1316b23f-4351-4c63-94f1-f3c3c6a7e494",
+		"_postman_id": "fb0183f4-77b2-4a15-90d4-299bd05e3beb",
 		"name": "MyStoreIntegration_DataRetrieval",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
@@ -21,9 +21,10 @@
 									"});\r",
 									"var responseData = pm.response.json();\r",
 									"pm.collectionVariables.set(\"accessToken\",responseData.access_token);\r",
-									"postman.setNextRequest(\"Lesson 2.1: Retrieving the List of Sales Orders with Document and Shipment Details\");"
+									"pm.execution.setNextRequest(\"Lesson 2.1: Retrieving a List of Sales Orders with Details and Related Shipments\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -98,9 +99,10 @@
 									"pm.test(\"Status code is 204\", function () {\r",
 									"    pm.response.to.have.status(204);\r",
 									"});\r",
-									"postman.setNextRequest(null);"
+									"pm.execution.setNextRequest(null);"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -109,7 +111,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -202,9 +205,10 @@
 									"pm.test(\"Response does not contain CurrencyID\", function () {\r",
 									"    pm.expect(pm.response.text()).to.not.include(\"CurrencyID\");\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 2.2: Retrieving the List of Sales Orders in Batches (First Five Records)\");"
+									"pm.execution.setNextRequest(\"Lesson 2.2: Retrieving a List of Sales Orders in Batches (First Five Records)\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -213,7 +217,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -271,9 +276,10 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse).to.have.lengthOf(5);\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 2.2: Retrieving the List of Sales Orders in Batches (Next Five Records)\");"
+									"pm.execution.setNextRequest(\"Lesson 2.2: Retrieving a List of Sales Orders in Batches (Next Five Records)\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -282,7 +288,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -345,9 +352,10 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse).to.have.lengthOf(4);\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 2.3: Retrieving the List of Payments (Failed Request)\");"
+									"pm.execution.setNextRequest(\"Lesson 2.3: Retrieving the List of Payments (Failed Request)\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -356,7 +364,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -417,9 +426,10 @@
 									"pm.test(\"Body contains the exception message\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"Optimization cannot be performed\");\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 2.3: Retrieving the List of Key Fields of Payments\");"
+									"pm.execution.setNextRequest(\"Lesson 2.3: Retrieving the List of Key Fields of Payments\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -428,7 +438,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -492,9 +503,10 @@
 									"    pm.expect(jsonData[0].ReferenceNbr.value).to.be.not.null;\r",
 									"    pm.expect(jsonData[0].Type.value).to.be.not.null;\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 2.3: Retrieving Payments by Key Fields\");"
+									"pm.execution.setNextRequest(\"Lesson 2.3: Retrieving Payments by Key Fields\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -503,7 +515,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -557,9 +570,10 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.ApplicationHistory).to.have.lengthOf(1);\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 3.1: Retrieving the Stock Item\");"
+									"pm.execution.setNextRequest(\"Lesson 3.1: Retrieving the Stock Item\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -568,7 +582,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
