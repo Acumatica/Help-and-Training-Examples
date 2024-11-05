@@ -135,8 +135,8 @@
       <row DesignID="cf8d1e76-50ae-4c67-b97c-a20db27cc4bb" Name="SO-OpenByCustomer" FilterColCount="2" PageSize="0" ExportTop="0" NewRecordCreationEnabled="0" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0">
         <GIFilter LineNbr="4" IsActive="1" Name="OrderStatus" FieldName="PX.Data.Maintenance.GI.CheckboxCombobox+checkbox" DataType="string" DisplayName="Open Only" IsExpression="1" ColSpan="1" Required="0" />
         <GIFilter LineNbr="3" IsActive="1" Name="Customer" FieldName="Customer.acctCD" DataType="string" DisplayName="Customer" IsExpression="0" ColSpan="1" Required="0" />
-        <GIFilter LineNbr="2" IsActive="1" Name="DateTo" FieldName="SOOrder.orderDate" DataType="string" DisplayName="Date To" IsExpression="0" DefaultValue="8/15/2015" ColSpan="1" Required="1" />
-        <GIFilter LineNbr="1" IsActive="1" Name="DateFrom" FieldName="SOOrder.orderDate" DataType="string" DisplayName="Date From" IsExpression="1" DefaultValue="8/9/2015" ColSpan="1" Required="1" />
+        <GIFilter LineNbr="2" IsActive="1" Name="DateTo" FieldName="SOOrder.orderDate" DataType="string" DisplayName="Date To" IsExpression="0" DefaultValue="1/01/2024" ColSpan="1" Required="1" />
+        <GIFilter LineNbr="1" IsActive="1" Name="DateFrom" FieldName="SOOrder.orderDate" DataType="string" DisplayName="Date From" IsExpression="1" DefaultValue="8/31/2024" ColSpan="1" Required="1" />
         <GISort LineNbr="2" IsActive="1" DataFieldName="Customer.acctName" SortOrder="A" />
         <GISort LineNbr="1" IsActive="1" DataFieldName="SOOrder.orderDate" SortOrder="A" />
         <GITable Alias="SOOrder" Name="PX.Objects.SO.SOOrder">
