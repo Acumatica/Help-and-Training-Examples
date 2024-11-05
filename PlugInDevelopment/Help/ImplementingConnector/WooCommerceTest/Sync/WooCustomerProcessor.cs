@@ -302,9 +302,10 @@ namespace WooCommerceTest
             customerData.Id = customerObj.ExternID.ToInt();
 
             //Contact	
-            // Use primary contact firstname and last name 
-            // as Customer's firstname and last name 
-            // if primarycontact is present else use Customername
+            // Use the primary contact's first name and last name 
+            // as the customer's first name and last name 
+            // if the primary contact exists. 
+            // Otherwise, use the customer name.
             customerData.FirstName = primaryContact?.FirstName?.Value ?? 
                 primaryContact?.LastName?.Value ?? 
                 customerImpl.CustomerName?.Value.FieldsSplit(
