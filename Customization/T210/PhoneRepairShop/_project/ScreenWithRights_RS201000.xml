@@ -1,6 +1,6 @@
 ﻿<ScreenWithRights AccessRightsMergeRule="ApplyAndKeep">
     <data-set>
-        <relations format-version="3" relations-version="20190730" main-table="SiteMap">
+        <relations format-version="3" relations-version="20240201" main-table="SiteMap">
             <link from="RolesInCache (ScreenID)" to="SiteMap (ScreenID)" />
             <link from="RolesInGraph (ScreenID)" to="SiteMap (ScreenID)" />
             <link from="RolesInMember (ScreenID)" to="SiteMap (ScreenID)" />
@@ -18,7 +18,7 @@
         </layout>
         <data>
             <SiteMap>
-                <row Position="5958" Title="Repair Services" Url="~/Pages/RS/RS201000.aspx" ScreenID="RS201000" NodeID="4a43578c-33ac-4fcd-8666-c7cebe7d3bf6" ParentID="00000000-0000-0000-0000-000000000000">
+                <row Position="5958" Title="Repair Services" Url="~/Pages/RS/RS201000.aspx" ScreenID="RS201000" NodeID="4a43578c-33ac-4fcd-8666-c7cebe7d3bf6" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="E">
                     <RolesInGraph Rolename="Customizer" ApplicationName="/" Accessrights="4" />
                     <RolesInGraph Rolename="Administrator" ApplicationName="/" Accessrights="4" />
                     <RolesInGraph Rolename="*" ApplicationName="/" Accessrights="0" />

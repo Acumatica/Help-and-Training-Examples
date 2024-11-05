@@ -72,15 +72,15 @@ namespace PhoneRepairShop
             if (row.InventoryID != null)
             {
                 //Use the PXSelector attribute to select the stock item.
-                var item = PXSelectorAttribute.
+                InventoryItem item = PXSelectorAttribute.
                     Select<RSSVRepairItem.inventoryID>(e.Cache, row)
                     as InventoryItem;
                 //Retrieve the base price for the stock item.
-                var curySettings =
+                InventoryItemCurySettings curySettings =
                     InventoryItemCurySettings.PK.Find(
-                    this, item?.InventoryID, Accessinfo.BaseCuryID ?? "USD");
+                    this, item.InventoryID, Accessinfo.BaseCuryID ?? "USD");
                 //Copy the base price from the stock item to the row.
-                if (curySettings != null) e.NewValue = curySettings.BasePrice;
+                e.NewValue = curySettings.BasePrice;
             }
         }
 
