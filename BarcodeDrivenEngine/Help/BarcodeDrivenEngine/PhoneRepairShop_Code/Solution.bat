@@ -1,0 +1,1 @@
+"C:\AcumaticaERP\SmartFix_T290_Beta\App_Data\Projects\PhoneRepairShop\PhoneRepairShop_code.sln"

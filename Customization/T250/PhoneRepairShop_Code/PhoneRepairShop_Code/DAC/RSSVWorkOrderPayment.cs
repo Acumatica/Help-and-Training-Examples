@@ -25,7 +25,7 @@ namespace PhoneRepairShop
         [PXDBString(15, IsUnicode = true, IsKey = true, InputMask = "",
           BqlField = typeof(ARInvoice.refNbr))]
         [PXUIField(DisplayName = "Invoice Nbr.", Enabled = false)]
-        public virtual String InvoiceNbr { get; set; }
+        public virtual string? InvoiceNbr { get; set; }
         public abstract class invoiceNbr :
             PX.Data.BQL.BqlString.Field<invoiceNbr>
         { }
@@ -43,7 +43,7 @@ namespace PhoneRepairShop
         #region AdjgRefNbr
         [PXDBString(BqlField = typeof(ARAdjust.adjgRefNbr))]
         [PXUIField(DisplayName = "Latest Payment", Enabled = false)]
-        public virtual String AdjgRefNbr { get; set; }
+        public virtual string? AdjgRefNbr { get; set; }
         public abstract class adjgRefNbr :
             PX.Data.BQL.BqlString.Field<adjgRefNbr>
         { }

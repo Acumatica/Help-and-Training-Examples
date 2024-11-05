@@ -12,7 +12,7 @@ namespace PhoneRepairShop
         public SelectFrom<RSSVStockItemDevice>.
             Where<RSSVStockItemDevice.inventoryID.
                 IsEqual<InventoryItem.inventoryID.FromCurrent>>.View
-            CompatibleDevices;
+            CompatibleDevices = null!;
         #endregion
 
         #region Event Handlers

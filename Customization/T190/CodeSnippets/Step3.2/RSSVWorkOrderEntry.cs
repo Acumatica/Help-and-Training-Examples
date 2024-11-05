@@ -13,40 +13,40 @@ namespace PhoneRepairShop
         #region Data Views
 
         //The primary view for the Summary area of the form
-        public SelectFrom<RSSVWorkOrder>.View WorkOrders;
+        public SelectFrom<RSSVWorkOrder>.View WorkOrders = null!;
 
         //The view for the Repair Items tab
         public SelectFrom<RSSVWorkOrderItem>.
             Where<RSSVWorkOrderItem.orderNbr.IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
-            RepairItems;
+            RepairItems = null!;
 
         //The view for the Labor tab
         public SelectFrom<RSSVWorkOrderLabor>.
             Where<RSSVWorkOrderLabor.orderNbr.IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
-            Labor;
+            Labor = null!;
 
         //The view for the auto-numbering of records
-        public PXSetup<RSSVSetup> AutoNumSetup;
+        public PXSetup<RSSVSetup> AutoNumSetup = null!;
 
         #endregion
 
         #region Workflow Event Handlers
 
-        public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument;
+        public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument = null!;
 
         #endregion
 
 
         #region Actions
-        public PXAction<RSSVWorkOrder> PutOnHold;
+        public PXAction<RSSVWorkOrder> PutOnHold = null!;
         [PXButton(CommitChanges = true), PXUIField(DisplayName = "Hold", MapEnableRights = PXCacheRights.Select, MapViewRights = PXCacheRights.Select)]
         protected virtual IEnumerable putOnHold(PXAdapter adapter) => adapter.Get();
 
-        public PXAction<RSSVWorkOrder> ReleaseFromHold;
+        public PXAction<RSSVWorkOrder> ReleaseFromHold = null!;
         [PXButton(CommitChanges = true), PXUIField(DisplayName = "Remove Hold", MapEnableRights = PXCacheRights.Select, MapViewRights = PXCacheRights.Select)]
         protected virtual IEnumerable releaseFromHold(PXAdapter adapter) => adapter.Get();
 
-        public PXAction<RSSVWorkOrder> Assign;
+        public PXAction<RSSVWorkOrder> Assign = null!;
         [PXButton(CommitChanges = true)]
         [PXUIField(DisplayName = "Assign", Enabled = false)]
         protected virtual void assign()
@@ -69,7 +69,7 @@ namespace PhoneRepairShop
             Actions.PressSave();
         }
 
-        public PXAction<RSSVWorkOrder> Complete;
+        public PXAction<RSSVWorkOrder> Complete = null!;
         [PXButton(CommitChanges = true)]
         [PXUIField(DisplayName = "Complete", Enabled = false)]
         protected virtual IEnumerable complete(PXAdapter adapter) => adapter.Get();
@@ -138,12 +138,12 @@ namespace PhoneRepairShop
             RSSVWorkOrderItem row = e.Row;
             if (row.InventoryID == null) return;
             //Use the PXSelector attribute to select the stock item.
-            InventoryItem item = PXSelectorAttribute.Select<RSSVWorkOrderItem.inventoryID>(e.Cache, row) as InventoryItem;
+            var item = PXSelectorAttribute.Select<RSSVWorkOrderItem.inventoryID>(e.Cache, row) as InventoryItem;
             //Retrieve the base price for the stock item.
-            InventoryItemCurySettings curySettings = InventoryItemCurySettings.PK.Find(
-                this, item.InventoryID, Accessinfo.BaseCuryID ?? "USD");
+            var curySettings = InventoryItemCurySettings.PK.Find(
+                this, item?.InventoryID, Accessinfo.BaseCuryID ?? "USD");
             //Copy the base price from the stock item to the row.
-            e.NewValue = curySettings.BasePrice;
+            if (curySettings != null) e.NewValue = curySettings.BasePrice;
         }
 
         //Display an error if a required repair item is missing in a work order

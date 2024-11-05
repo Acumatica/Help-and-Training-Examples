@@ -21,9 +21,9 @@ namespace PhoneRepairShop
             row.WalkInService = !(row.PreliminaryCheck == true);
         }
 
-        public PXSave<RSSVRepairService> Save;
-    public PXCancel<RSSVRepairService> Cancel;
+        public PXSave<RSSVRepairService> Save = null!;
+        public PXCancel<RSSVRepairService> Cancel = null!;
 
-    public SelectFrom<RSSVRepairService>.View RepairService;
+        public SelectFrom<RSSVRepairService>.View RepairService = null!;
   }
 }

@@ -123,7 +123,7 @@ namespace PhoneRepairShop_Code.Tests
 
             // 2nd battery is not required -> 1st battery is also not required
             Assert.False(repairItemBattery1.Required);
-            // 2nd batt is used by default -> 1st batt is not used by default
+            // 2nd battery is used by default -> 1st battery is not used by default
             Assert.False(repairItemBattery1.IsDefault);
             // The back cover's Required and Default fields are not affected
             Assert.True(repairItemBackCover1.Required);

@@ -22,7 +22,7 @@ namespace PhoneRepairShop
                 And<RSSVWorkOrderToPayFilter.serviceID.FromCurrent.IsNull.
                     Or<RSSVWorkOrderToPay.serviceID.IsEqual<
                         RSSVWorkOrderToPayFilter.serviceID.FromCurrent>>>>.
-            View.ReadOnly DetailsView;
+            View.ReadOnly DetailsView = null!;
 
         protected virtual IEnumerable detailsView()
         {
@@ -88,12 +88,12 @@ namespace PhoneRepairShop
             }
         }
 
-        public PXFilter<RSSVWorkOrderToPayFilter> Filter;
+        public PXFilter<RSSVWorkOrderToPayFilter> Filter = null!;
 
-        public PXCancel<RSSVWorkOrderToPayFilter> Cancel;
+        public PXCancel<RSSVWorkOrderToPayFilter> Cancel = null!;
 
         ////////// The added code
-        public PXAction<RSSVWorkOrderToPay> ViewOrder;
+        public PXAction<RSSVWorkOrderToPay> ViewOrder = null!;
         [PXButton(DisplayOnMainToolbar = false)]
         [PXUIField]
         protected virtual void viewOrder()

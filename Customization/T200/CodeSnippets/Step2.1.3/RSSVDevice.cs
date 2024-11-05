@@ -27,14 +27,14 @@ namespace PhoneRepairShop
 							typeof(RSSVDevice.deviceCD),
 							typeof(RSSVDevice.active),
 							typeof(RSSVDevice.avgComplexityOfRepair))]
-		public virtual string DeviceCD { get; set; }
+		public virtual string? DeviceCD { get; set; }
 		public abstract class deviceCD : PX.Data.BQL.BqlString.Field<deviceCD> { }
 		#endregion
 
 		#region Description
 		[PXDBString(256, IsUnicode = true, InputMask = "")]
 		[PXUIField(DisplayName = "Description")]
-		public virtual string Description { get; set; }
+		public virtual string? Description { get; set; }
 		public abstract class description :
 			PX.Data.BQL.BqlString.Field<description>
 		{ }
@@ -63,7 +63,7 @@ namespace PhoneRepairShop
 				  {
 					Messages.Low, Messages.Medium, Messages.High
 				  })]
-		public virtual string AvgComplexityOfRepair { get; set; }
+		public virtual string? AvgComplexityOfRepair { get; set; }
 		public abstract class avgComplexityOfRepair :
 			PX.Data.BQL.BqlString.Field<avgComplexityOfRepair>
 		{ }
@@ -83,7 +83,7 @@ namespace PhoneRepairShop
 
 		#region CreatedByScreenID
 		[PXDBCreatedByScreenID()]
-		public virtual string CreatedByScreenID { get; set; }
+		public virtual string? CreatedByScreenID { get; set; }
 		public abstract class createdByScreenID : PX.Data.BQL.BqlString.Field<createdByScreenID> { }
 		#endregion
 
@@ -101,13 +101,13 @@ namespace PhoneRepairShop
 
 		#region LastModifiedByScreenID
 		[PXDBLastModifiedByScreenID()]
-		public virtual string LastModifiedByScreenID { get; set; }
+		public virtual string? LastModifiedByScreenID { get; set; }
 		public abstract class lastModifiedByScreenID : PX.Data.BQL.BqlString.Field<lastModifiedByScreenID> { }
 		#endregion
 
 		#region Tstamp
 		[PXDBTimestamp()]
-		public virtual byte[] Tstamp { get; set; }
+		public virtual byte[]? Tstamp { get; set; }
 		public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
 		#endregion
 

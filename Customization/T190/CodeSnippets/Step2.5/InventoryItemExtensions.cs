@@ -56,7 +56,7 @@ namespace PX.Objects.IN
         //////////The modified code
         [PXUIField(DisplayName = "Repair Item Type", Enabled = false)]
         //////////The end of modified code
-        public string UsrRepairItemType { get; set; }
+        public string? UsrRepairItemType { get; set; }
         public abstract class usrRepairItemType :
           PX.Data.BQL.BqlString.Field<usrRepairItemType>
         { }

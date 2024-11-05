@@ -8,7 +8,7 @@ namespace PhoneRepairShop
         PXGraph<RSSVRepairPriceMaint, RSSVRepairPrice>
     {
         #region Data Views
-        public SelectFrom<RSSVRepairPrice>.View RepairPrices;
+        public SelectFrom<RSSVRepairPrice>.View RepairPrices = null!;
 
         ////////// The added code
         public SelectFrom<RSSVRepairItem>.
@@ -16,7 +16,7 @@ namespace PhoneRepairShop
                 IsEqual<RSSVRepairPrice.serviceID.FromCurrent>.
             And<RSSVRepairItem.deviceID.
                 IsEqual<RSSVRepairPrice.deviceID.FromCurrent>>>.View
-            RepairItems;
+            RepairItems = null!;
         ////////// The end of added code
         #endregion
     }

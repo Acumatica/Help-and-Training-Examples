@@ -11,7 +11,7 @@ namespace PhoneRepairShop
     public class RSSVPaymentPlanInq : PXGraph<RSSVPaymentPlanInq>
     {
         public PXFilter<MasterTable> MasterView;
-        public PXFilter<DetailsTable> DetailsView;
+        public PXFilter<DetailsTable> DetailsView = null!;
 
         [Serializable]
         public class MasterTable : PXBqlTable, IBqlTable

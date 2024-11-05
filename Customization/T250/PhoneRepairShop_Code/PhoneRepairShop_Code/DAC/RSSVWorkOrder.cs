@@ -20,7 +20,7 @@ namespace PhoneRepairShop
         [PXUIField(DisplayName = "Order Nbr.", Visibility = PXUIVisibility.SelectorVisible)]
         [AutoNumber(typeof(RSSVSetup.numberingID), typeof(RSSVWorkOrder.dateCreated))]
         [PXSelector(typeof(Search<RSSVWorkOrder.orderNbr>))]
-        public virtual string OrderNbr { get; set; }
+        public virtual string? OrderNbr { get; set; }
         public abstract class orderNbr : PX.Data.BQL.BqlString.Field<orderNbr> { }
         #endregion
 
@@ -69,7 +69,7 @@ namespace PhoneRepairShop
                 Messages.Completed,
                 Messages.Paid
             })]
-        public virtual string Status { get; set; }
+        public virtual string? Status { get; set; }
         public abstract class status : PX.Data.BQL.BqlString.Field<status> { }
         #endregion
 
@@ -83,7 +83,7 @@ namespace PhoneRepairShop
         #region Description
         [PXDBString(60, IsUnicode = true)]
         [PXUIField(DisplayName = "Description", Visibility = PXUIVisibility.SelectorVisible)]
-        public virtual string Description { get; set; }
+        public virtual string? Description { get; set; }
         public abstract class description : PX.Data.BQL.BqlString.Field<description> { }
         #endregion
 
@@ -151,7 +151,7 @@ namespace PhoneRepairShop
                 Messages.Medium,
                 Messages.Low
             })]
-        public virtual string Priority { get; set; }
+        public virtual string? Priority { get; set; }
         public abstract class priority : PX.Data.BQL.BqlString.Field<priority> { }
         #endregion
 
@@ -162,7 +162,7 @@ namespace PhoneRepairShop
         [PXSelector(typeof(SearchFor<SOInvoice.refNbr>.
             Where<SOInvoice.docType.IsEqual<ARDocType.invoice>>))]
         ////////// The end of added code
-        public virtual string InvoiceNbr { get; set; }
+        public virtual string? InvoiceNbr { get; set; }
         public abstract class invoiceNbr : PX.Data.BQL.BqlString.Field<invoiceNbr> { }
         #endregion
 
@@ -184,7 +184,7 @@ namespace PhoneRepairShop
 
         #region CreatedByScreenID
         [PXDBCreatedByScreenID()]
-        public virtual string CreatedByScreenID { get; set; }
+        public virtual string? CreatedByScreenID { get; set; }
         public abstract class createdByScreenID :
             PX.Data.BQL.BqlString.Field<createdByScreenID>
         { }
@@ -208,7 +208,7 @@ namespace PhoneRepairShop
 
         #region LastModifiedByScreenID
         [PXDBLastModifiedByScreenID()]
-        public virtual string LastModifiedByScreenID { get; set; }
+        public virtual string? LastModifiedByScreenID { get; set; }
         public abstract class lastModifiedByScreenID :
             PX.Data.BQL.BqlString.Field<lastModifiedByScreenID>
         { }
@@ -216,7 +216,7 @@ namespace PhoneRepairShop
 
         #region Tstamp
         [PXDBTimestamp()]
-        public virtual byte[] Tstamp { get; set; }
+        public virtual byte[]? Tstamp { get; set; }
         public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
         #endregion
 
@@ -228,7 +228,7 @@ namespace PhoneRepairShop
 
         public class MyEvents : PXEntityEvent<ARRegister>.Container<MyEvents>
         {
-            public PXEntityEvent<ARRegister> InvoiceGotPrepaid;
+            public PXEntityEvent<ARRegister> InvoiceGotPrepaid = null!;
         }
 
         // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
@@ -252,7 +252,7 @@ namespace PhoneRepairShop
                   Messages.Standard,
                   Messages.Awaiting
               })]
-            public string UsrOrderType { get; set; }
+            public string? UsrOrderType { get; set; }
             public abstract class usrOrderType : PX.Data.BQL.BqlString.Field<usrOrderType> { }
             #endregion
         }
@@ -304,7 +304,7 @@ namespace PhoneRepairShop
               Messages.SalesOrder,
               Messages.WorkOrder
           })]
-        public virtual String OrderType { get; set; }
+        public virtual string? OrderType { get; set; }
         public abstract class orderType :
             PX.Data.BQL.BqlDecimal.Field<orderType>
         { }

@@ -25,7 +25,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PhoneRepairShop2023r092", "
 		SlnRelativePath = "..\..\..\..\PhoneRepairShop2023r092\"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomSmsProvider", "CustomSmsProvider\CustomSmsProvider.csproj", "{9BC6D61A-5D4B-4D57-BC6B-5E3F9D04377E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomSmsProvider", "CustomSmsProvider\CustomSmsProvider_Code.csproj", "{9BC6D61A-5D4B-4D57-BC6B-5E3F9D04377E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

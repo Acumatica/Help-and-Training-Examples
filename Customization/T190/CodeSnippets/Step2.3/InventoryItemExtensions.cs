@@ -54,7 +54,7 @@ namespace PX.Objects.IN
                 PhoneRepairShop.Messages.Motherboard
             })]
         [PXUIField(DisplayName = "Repair Item Type")]
-        public string UsrRepairItemType { get; set; }
+        public string? UsrRepairItemType { get; set; }
         public abstract class usrRepairItemType :
           PX.Data.BQL.BqlString.Field<usrRepairItemType>
         { }

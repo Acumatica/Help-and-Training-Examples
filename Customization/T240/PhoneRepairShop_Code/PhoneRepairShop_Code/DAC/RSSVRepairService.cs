@@ -16,7 +16,7 @@ namespace PhoneRepairShop
         [PXDBString(15, IsKey = true, IsUnicode = true, InputMask = ">aaaaaaaaaaaaaaa")]
         [PXDefault]
         [PXUIField(DisplayName = "Service ID")]
-        public virtual string ServiceCD { get; set; }
+        public virtual string? ServiceCD { get; set; }
         public abstract class serviceCD : PX.Data.BQL.BqlString.Field<serviceCD> { }
         #endregion
 
@@ -24,7 +24,7 @@ namespace PhoneRepairShop
         [PXDBString(50, IsUnicode = true, InputMask = "")]
         [PXDefault]
         [PXUIField(DisplayName = "Description")]
-        public virtual string Description { get; set; }
+        public virtual string? Description { get; set; }
         public abstract class description : PX.Data.BQL.BqlString.Field<description> { }
         #endregion
 
@@ -74,7 +74,7 @@ namespace PhoneRepairShop
 
         #region CreatedByScreenID
         [PXDBCreatedByScreenID()]
-        public virtual string CreatedByScreenID { get; set; }
+        public virtual string? CreatedByScreenID { get; set; }
         public abstract class createdByScreenID : PX.Data.BQL.BqlString.Field<createdByScreenID> { }
         #endregion
 
@@ -92,13 +92,13 @@ namespace PhoneRepairShop
 
         #region LastModifiedByScreenID
         [PXDBLastModifiedByScreenID()]
-        public virtual string LastModifiedByScreenID { get; set; }
+        public virtual string? LastModifiedByScreenID { get; set; }
         public abstract class lastModifiedByScreenID : PX.Data.BQL.BqlString.Field<lastModifiedByScreenID> { }
         #endregion
 
         #region Tstamp
         [PXDBTimestamp()]
-        public virtual byte[] Tstamp { get; set; }
+        public virtual byte[]? Tstamp { get; set; }
         public abstract class tstamp : PX.Data.BQL.BqlByteArray.Field<tstamp> { }
         #endregion
 

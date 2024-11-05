@@ -13,19 +13,19 @@ namespace PhoneRepairShop
         #region Views
 
         //The primary view
-        public SelectFrom<RSSVWorkOrder>.View WorkOrders;
+        public SelectFrom<RSSVWorkOrder>.View WorkOrders = null!;
 
         //The view for the Repair Items tab
         public SelectFrom<RSSVWorkOrderItem>.
             Where<RSSVWorkOrderItem.orderNbr.
                 IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
-            RepairItems;
+            RepairItems = null!;
 
         //The view for the Labor tab
         public SelectFrom<RSSVWorkOrderLabor>.
             Where<RSSVWorkOrderLabor.orderNbr.
                 IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
-            Labor;
+            Labor = null!;
 
         #endregion
 
@@ -84,11 +84,11 @@ namespace PhoneRepairShop
             if (row.InventoryID != null && row.RepairItemType == null)
             {
                 //Use the PXSelector attribute to select the stock item.
-                InventoryItem item = PXSelectorAttribute.Select<
+                var item = PXSelectorAttribute.Select<
                     RSSVWorkOrderItem.inventoryID>(e.Cache, row) as InventoryItem;
                 //Copy the repair item type from the stock item to the row.
-                InventoryItemExt itemExt = item.GetExtension<InventoryItemExt>();
-                row.RepairItemType = itemExt.UsrRepairItemType;
+                var itemExt = item?.GetExtension<InventoryItemExt>();
+                if (itemExt != null) row.RepairItemType = itemExt.UsrRepairItemType;
             }
             e.Cache.SetDefaultExt<RSSVWorkOrderItem.basePrice>(e.Row);
         }
@@ -98,12 +98,12 @@ namespace PhoneRepairShop
             RSSVWorkOrderItem row = e.Row;
             if (row.InventoryID == null) return;
             //Use the PXSelector attribute to select the stock item.
-            InventoryItem item = PXSelectorAttribute.Select<RSSVWorkOrderItem.inventoryID>(e.Cache, row) as InventoryItem;
+            var item = PXSelectorAttribute.Select<RSSVWorkOrderItem.inventoryID>(e.Cache, row) as InventoryItem;
             //Retrieve the base price for the stock item.
-            InventoryItemCurySettings curySettings = InventoryItemCurySettings.PK.Find(
-                this, item.InventoryID, Accessinfo.BaseCuryID ?? "USD");
+            var curySettings = InventoryItemCurySettings.PK.Find(
+                this, item?.InventoryID, Accessinfo.BaseCuryID ?? "USD");
             //Copy the base price from the stock item to the row.
-            e.NewValue = curySettings.BasePrice;
+            if (curySettings != null) e.NewValue = curySettings.BasePrice;
         }
         ////////// The end of added code
         #endregion

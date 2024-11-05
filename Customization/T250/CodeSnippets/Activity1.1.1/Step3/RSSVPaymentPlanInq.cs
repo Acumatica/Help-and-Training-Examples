@@ -15,7 +15,7 @@ namespace PhoneRepairShop
                 IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
             Where<RSSVWorkOrderToPay.status.
                 IsNotEqual<RSSVWorkOrderWorkflow.States.paid>>.
-            View.ReadOnly DetailsView;
+            View.ReadOnly DetailsView = null!;
         ////////// The end of added code
 
         protected virtual void _(Events.FieldSelecting<RSSVWorkOrderToPay,
