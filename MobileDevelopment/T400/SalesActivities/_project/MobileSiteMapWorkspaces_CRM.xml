@@ -48,12 +48,10 @@
             <MobileSiteMapWorkspaces>
                 <row MobileWorkspaceID="c505a293-bb5b-45b0-9495-384a8bc84674" Name="CRM" DisplayName="CRM" Icon="people" IsActive="1" Owner="" SortOrder="20" NoteID="69d11eed-d2c1-4dca-8699-9288783a2326">
                     <MobileSiteMapWorkspaceItems ItemID="SalesQuotes" ItemType="HubFolder" IsActive="1" SortOrder="40" Owner="" NoteID="4e3f1828-dc61-4d4f-851e-156b69fc6abc" />
-                    <MobileSiteMapWorkspaceItems ItemID="SalespersonSales" ItemType="HubFolder" IsActive="1" SortOrder="90" Owner="" NoteID="efbf2131-d5cc-ed11-839c-f077c39590e2" />
                     <MobileSiteMapWorkspaceItems ItemID="SalesOrders" ItemType="HubFolder" IsActive="1" SortOrder="50" Owner="" NoteID="47d45c6c-a905-4952-8e0e-06892e9c87c8" />
                     <MobileSiteMapWorkspaceItems ItemID="Opportunities" ItemType="HubFolder" IsActive="1" SortOrder="30" Owner="" NoteID="81bbeedb-9d25-4c60-ac79-21afbe5bab8f" />
                     <MobileSiteMapWorkspaceItems ItemID="Leads" ItemType="HubFolder" IsActive="1" SortOrder="20" Owner="" NoteID="944139c4-d336-4a1f-84f7-9656accddfac" />
-                    <MobileSiteMapWorkspaceItems ItemID="GI000023" ItemType="SimpleScreen" IsActive="1" SortOrder="70" Owner="" NoteID="4dbc07bc-b0cc-ed11-839c-f077c39590e2" />
-                    <MobileSiteMapWorkspaceItems ItemID="DB000012" ItemType="Dashboard" IsActive="1" SortOrder="80" Owner="" NoteID="547daa6a-becc-ed11-839c-f077c39590e2" />
+                    <MobileSiteMapWorkspaceItems ItemID="GI000023" ItemType="SimpleScreen" IsActive="1" SortOrder="70" Owner="" NoteID="ae6a6edc-569a-ef11-8c78-10f60ad9cbae" />
                     <MobileSiteMapWorkspaceItems ItemID="Contacts" ItemType="HubFolder" IsActive="1" SortOrder="10" Owner="" NoteID="94c5f69e-f79d-4211-a1b6-b52c90c61268" />
                     <MobileSiteMapWorkspaceItems ItemID="Cases" ItemType="HubFolder" IsActive="1" SortOrder="60" Owner="" NoteID="c006f50e-bf3f-4c3e-8ce1-c10d6660a912" />
                     <MobileSiteMapWorkspaceItems ItemID="BusinessAccounts" ItemType="HubFolder" IsActive="1" SortOrder="0" Owner="" NoteID="4616de7c-ce42-4deb-abe3-80f4059ae920" />

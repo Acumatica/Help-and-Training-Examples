@@ -46,9 +46,7 @@
         </layout>
         <data>
             <MobileSiteMapWorkspaces>
-                <row MobileWorkspaceID="95970390-28f8-436e-959d-011ac3f61e33" Name="INVENTORY" DisplayName="Inventory" Icon="local_shipping" IsActive="1" Owner="" SortOrder="181" NoteID="2e10e78c-c2cc-ed11-839c-f077c39590e2">
-                    <MobileSiteMapWorkspaceItems ItemID="InvoicedItems" ItemType="HubFolder" IsActive="1" SortOrder="10" Owner="" NoteID="1445f01a-c4cc-ed11-839c-f077c39590e2" />
-                </row>
+                <row MobileWorkspaceID="a0f516e6-0cef-4498-99af-a0a3f7ff59c5" Name="INVENTORY" DisplayName="Inventory" Icon="local_shipping" IsActive="1" Owner="" SortOrder="181" NoteID="ff65cd99-679a-ef11-8c78-10f60ad9cbae" />
             </MobileSiteMapWorkspaces>
         </data>
     </data-set>

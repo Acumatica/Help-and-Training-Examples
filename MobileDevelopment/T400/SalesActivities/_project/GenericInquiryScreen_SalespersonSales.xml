@@ -1,6 +1,6 @@
 ﻿<GenericInquiryScreen>
     <data-set>
-        <relations format-version="3" relations-version="20220627" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
+        <relations format-version="3" relations-version="20240308" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
             <link from="GIFilter (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIGroupBy (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIMassAction (DesignID)" to="GIDesign (DesignID)" />
@@ -18,7 +18,9 @@
             <link from="GITable (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIWhere (DesignID)" to="GIDesign (DesignID)" />
             <link from="SiteMap (Url)" to="GIDesign (DesignID)" type="WeakByUrl" linkname="toDesignById" baseurl="~/GenericInquiry/GenericInquiry.aspx" paramnames="id" />
+            <link from="SiteMap (Url)" to="GIDesign (DesignID)" type="WeakByUrl" linkname="toDesignByIdNew" baseurl="~/Scripts/Screens/GenericInquiry.html" paramnames="id" />
             <link from="SiteMap (Url)" to="GIDesign (Name)" type="WeakByUrl" linkname="toDesignByName" baseurl="~/GenericInquiry/GenericInquiry.aspx" />
+            <link from="SiteMap (Url)" to="GIDesign (Name)" type="WeakByUrl" linkname="toDesignByNameNew" baseurl="~/Scripts/Screens/GenericInquiry.html" />
             <link from="ListEntryPoint (ListScreenID)" to="SiteMap (ScreenID)" />
             <link from="SiteMap (ScreenID)" to="GIDesign (PrimaryScreenIDNew)" linkname="to1Screen" />
             <link from="FilterHeader (ScreenID)" to="SiteMap (ScreenID)" />
@@ -97,7 +99,37 @@
                     </table>
                     <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
                 </table>
+                <table name="SiteMap" uplink="(DesignID) = (Url)" linkname="toDesignByIdNew">
+                    <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
+                    <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+                        <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                        <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+                            <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
+                        </table>
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                        <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
+                    </table>
+                    <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                        <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                    </table>
+                    <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+                </table>
                 <table name="SiteMap" uplink="(Name) = (Url)" linkname="toDesignByName">
+                    <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
+                    <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+                        <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                        <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+                            <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
+                        </table>
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                        <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
+                    </table>
+                    <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                        <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                    </table>
+                    <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+                </table>
+                <table name="SiteMap" uplink="(Name) = (Url)" linkname="toDesignByNameNew">
                     <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
                     <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
                         <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
@@ -137,7 +169,7 @@
         </layout>
         <data>
             <GIDesign>
-                <row DesignID="9f0ffe76-40e3-4c74-9b20-93c87fc7a596" Name="SalespersonSales" SelectTop="0" FilterColCount="2" PageSize="0" NewRecordCreationEnabled="0" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="1" ShowDeletedRecords="0" ShowArchivedRecords="0">
+                <row DesignID="9f0ffe76-40e3-4c74-9b20-93c87fc7a596" Name="SalespersonSales" SelectTop="0" FilterColCount="2" PageSize="0" NewRecordCreationEnabled="0" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="1" ShowDeletedRecords="0" ShowArchivedRecords="0" MLDetectionEnabled="0" SkipEmptyGroups="0">
                     <GIFilter LineNbr="5" IsActive="1" Name="SalespersonID" FieldName="ARTran.salesPersonID" DataType="string" DisplayName="Salesperson ID" IsExpression="1" ColSpan="1" Required="0" Size="S">
                         <GIFilterKvExt FieldName="DisplayNameEN" ValueText="Salesperson ID" />
                     </GIFilter>
@@ -145,14 +177,14 @@
                     <GIFilter LineNbr="3" IsActive="1" Name="StartDate" FieldName="ARTran.date" DataType="string" DisplayName="Start Date" IsExpression="1" DefaultValue="@MonthStart-11" ColSpan="1" Required="0" />
                     <GIGroupBy LineNbr="1" IsActive="0" DataFieldName="SalesPerson.salesPersonCD" />
                     <GISort LineNbr="1" IsActive="1" DataFieldName="SalesPerson.salesPersonCD" SortOrder="A" />
-                    <GITable Alias="SalesPerson" Name="PX.Objects.AR.SalesPerson">
+                    <GITable Alias="SalesPerson" Name="PX.Objects.AR.SalesPerson" Type="0">
                         <GIRelation LineNbr="1" ChildTable="ARTran" IsActive="1" JoinType="I">
                             <GIOn LineNbr="1" ParentField="salesPersonID" Condition="E" ChildField="salesPersonID" Operation="A" />
                         </GIRelation>
                         <GIResult LineNbr="2" SortOrder="2" IsActive="1" Field="descr" Width="200" IsVisible="1" DefaultNav="1" AggregateFunction="MAX" QuickFilter="0" FastFilter="1" RowID="cc76bd8a-578f-e711-944a-12d4d93f21e4" />
                         <GIResult LineNbr="1" SortOrder="1" IsActive="1" Field="salesPersonCD" Width="100" IsVisible="1" DefaultNav="1" AggregateFunction="MAX" QuickFilter="0" FastFilter="1" RowID="cb76bd8a-578f-e711-944a-12d4d93f21e4" />
                     </GITable>
-                    <GITable Alias="ARTran" Name="PX.Objects.AR.ARTran">
+                    <GITable Alias="ARTran" Name="PX.Objects.AR.ARTran" Type="0">
                         <GIResult LineNbr="4" SortOrder="4" IsActive="1" Field="tranAmt" Caption="Invoiced Sales" Width="100" IsVisible="1" DefaultNav="1" AggregateFunction="SUM" QuickFilter="0" FastFilter="1" RowID="c076bd8a-578f-e711-944a-12d4d93f21e4">
                             <GIResultKvExt FieldName="CaptionEN" ValueText="Invoiced Sales" />
                         </GIResult>
@@ -167,9 +199,7 @@
                     <GIWhere LineNbr="2" IsActive="1" DataFieldName="ARTran.tranDate" Condition="GE" IsExpression="0" Value1="[StartDate]" CloseBrackets=")" Operation="A" />
                     <GIWhere LineNbr="1" IsActive="1" OpenBrackets="(" DataFieldName="[StartDate]" Condition="NU" IsExpression="0" Operation="O" />
                     <SiteMap linkname="toDesignById">
-                        <row Position="13" Title="Salesperson Sales" Url="~/GenericInquiry/GenericInquiry.aspx?ID=9f0ffe76-40e3-4c74-9b20-93c87fc7a596" ScreenID="GI000003" NodeID="9f0ffe76-40e3-4c74-9b20-93c87fc7a596" ParentID="85e0f6b3-8ae8-43aa-ad7b-ea4d4d5f381e">
-                            <MUIScreen IsPortal="0" WorkspaceID="00000000-0000-0000-0000-000000000000" Order="0" SubcategoryID="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa" />
-                        </row>
+                        <row Position="13" Title="Salesperson Sales" Url="~/GenericInquiry/GenericInquiry.aspx?ID=9f0ffe76-40e3-4c74-9b20-93c87fc7a596" ScreenID="GI000003" NodeID="9f0ffe76-40e3-4c74-9b20-93c87fc7a596" ParentID="85e0f6b3-8ae8-43aa-ad7b-ea4d4d5f381e" SelectedUI="E" />
                     </SiteMap>
                 </row>
             </GIDesign>

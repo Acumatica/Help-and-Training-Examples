@@ -1,8 +1,16 @@
-add screen GI000008 {
+add screen GI400001 {
+  type = FilterListScreen
+  add container "Filter_" {
+    add field "DateFrom"
+    add field "DateTo"
+    add field "Customer"
+    add field "OpenOnly"  
+  }
   add container "Result" {
     add field "CustomerID"
-    add field "InvoiceDate"
-    add field "ReferenceNbrARInvoiceRefNbr"
-    add field "InventoryID"
+    add field "OrderNbr"
+    add field "Quantity"
+    add field "SalesOrderTotal"
+    add field "Status"
   }
 }

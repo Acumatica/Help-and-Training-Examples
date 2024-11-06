@@ -1,12 +1,12 @@
 update screen SO301000 {
   update container "OrderSummary" {
     update layout "OrderHeader" {
-      add layout "OrderHeaderVATRow" {
-        displayName = "OrderHeaderVATRow"
+      add layout "OrderHeaderDates" {
+        displayName = "OrderHeaderDateRow"
         layout = "Inline"
-        add field "TotalsVATTotals#VATExempt"
-        add field "TotalsVATTotals#VATTaxable"
+        add field "Date"
+        add field "RequestedOn"
       }
-    } 
+    }
   }
 }
