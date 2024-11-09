@@ -41,7 +41,7 @@
   </px:PXFormView>
 </asp:Content>
 <asp:Content ID="cont3" ContentPlaceHolderID="phG" Runat="Server">
-  <px:PXTab ID="tab" runat="server" Width="100%" Height="150px" DataSourceID="ds" AllowAutoHide="false" DataMember="RepairItems">
+  <px:PXTab ID="tab" runat="server" Width="100%" Height="150px" DataSourceID="ds" AllowAutoHide="false">
     <Items>
       <px:PXTabItem Text="Repair Items">
         <Template>
