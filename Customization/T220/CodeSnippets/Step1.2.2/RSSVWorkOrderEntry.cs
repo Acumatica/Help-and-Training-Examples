@@ -1,4 +1,3 @@
-using System;
 using PX.Data;
 using PX.Data.BQL.Fluent;
 ////////// The added code
