@@ -74,7 +74,7 @@ namespace PhoneRepairShop
 	 }
 		////////// The added code
         #region Actions
-        public PXAction<RSSVRepairPrice> ValidateItemPrices;
+        public PXAction<RSSVRepairPrice> ValidateItemPrices = null!;
         [PXButton(DisplayOnMainToolbar = false, CommitChanges = true)]
         [PXUIField(DisplayName = "Validate Prices", Enabled = true)]
         protected virtual IEnumerable validateItemPrices(PXAdapter adapter)
