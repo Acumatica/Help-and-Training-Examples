@@ -44,7 +44,7 @@ namespace PhoneRepairShop
             View DefaultWarranty = null!;
         #endregion
 		
-		#region Actions
+	#region Actions
         public PXAction<RSSVRepairPrice> ValidateItemPrices = null!;
         [PXButton(DisplayOnMainToolbar = false, CommitChanges = true)]
         [PXUIField(DisplayName = "Validate Prices", Enabled = true)]
@@ -69,7 +69,7 @@ namespace PhoneRepairShop
         }
         #endregion
 		
-		private static void ValidatePrices(RSSVRepairPrice repairPriceItem)
+	private static void ValidatePrices(RSSVRepairPrice repairPriceItem)
         {
             /* Create an instance of the RSSVRepairPriceMaint graph and set 
                the Current property of its RepairPrices view.*/
