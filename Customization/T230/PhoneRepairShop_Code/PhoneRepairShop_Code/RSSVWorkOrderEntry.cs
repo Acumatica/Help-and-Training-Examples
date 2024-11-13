@@ -1,4 +1,3 @@
-using System;
 using PX.Data;
 using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
@@ -99,9 +98,26 @@ namespace PhoneRepairShop
             }
             Actions.PressSave();
         }
+
         #endregion
 
         #region Events
+
+        // Manage visibility and availability of the actions.
+        protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
+        {
+            RSSVWorkOrder row = e.Row;
+            if (row == null) return;
+            AssignToMe.SetEnabled((row.Status ==
+            WorkOrderStatusConstants.ReadyForAssignment ||
+            row.Status == WorkOrderStatusConstants.OnHold) &&
+            WorkOrders.Cache.GetStatus(row) != PXEntryStatus.Inserted);
+            AssignToMe.SetVisible(row.Assignee != PXAccess.GetContactID());
+
+            UpdateItemPrices.SetEnabled(WorkOrders.Current.InvoiceNbr == null);
+            UpdateLaborPrices.SetEnabled(WorkOrders.Current.InvoiceNbr == null);
+        }
+
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
         {
@@ -247,21 +263,6 @@ namespace PhoneRepairShop
             }
         }
 
-        // Manage visibility and availability of the actions.
-        protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
-        {
-            RSSVWorkOrder row = e.Row;
-            if (row == null) return;
-
-            AssignToMe.SetEnabled((row.Status ==
-                WorkOrderStatusConstants.ReadyForAssignment ||
-                row.Status == WorkOrderStatusConstants.OnHold) &&
-                WorkOrders.Cache.GetStatus(row) != PXEntryStatus.Inserted);
-
-            AssignToMe.SetVisible(row.Assignee != PXAccess.GetContactID());
-
-            UpdateItemPrices.SetEnabled(WorkOrders.Current.InvoiceNbr == null);
-        }
         #endregion
     }
 }
