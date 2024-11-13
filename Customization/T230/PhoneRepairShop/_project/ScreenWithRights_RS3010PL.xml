@@ -19,7 +19,7 @@
         <data>
             <SiteMap>
                 <row Position="1114" Title="Repair Work Orders" Url="~/GenericInquiry/GenericInquiry.aspx?id=eae45e7b-e3c5-480c-9af9-6f4c80223e41" ScreenID="RS3010PL" NodeID="fb3cea48-eb71-4dea-838d-914fffcba205" ParentID="12167736-ae7e-46ab-8a8c-dd4b86217519">
-		 <RolesInGraph Rolename="*" ApplicationName="/" Accessrights="0" />
+		    <RolesInGraph Rolename="*" ApplicationName="/" Accessrights="0" />
                 </row>
             </SiteMap>
         </data>
