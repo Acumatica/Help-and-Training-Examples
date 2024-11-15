@@ -46,8 +46,8 @@
         </layout>
         <data>
             <MobileSiteMapWorkspaces>
-                <row MobileWorkspaceID="f66d5a79-5bad-44f2-a750-12186b702b92" Name="PAYABLES" DisplayName="PAYABLES" Icon="" IsActive="1" Owner="" SortOrder="181" NoteID="62794b2e-e393-ee11-8c50-10f60ad9cbae">
-                    <MobileSiteMapWorkspaceItems ItemID="AP303000" ItemType="SimpleScreen" IsActive="1" SortOrder="10" Owner="" NoteID="4564743a-e393-ee11-8c50-10f60ad9cbae" />
+                <row MobileWorkspaceID="0df7ce2e-38f8-4951-ae3b-d7994f3184a5" Name="PAYABLES" DisplayName="Payables" Icon="" IsActive="1" Owner="" SortOrder="181" NoteID="9b233c6e-74a0-ef11-8c79-387c76a3208f">
+                    <MobileSiteMapWorkspaceItems ItemID="AP303000" ItemType="SimpleScreen" IsActive="1" SortOrder="10" Owner="" NoteID="e2114774-74a0-ef11-8c79-387c76a3208f" />
                 </row>
             </MobileSiteMapWorkspaces>
         </data>
