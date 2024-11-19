@@ -22,7 +22,9 @@ namespace PhoneRepairShop
         public const string RSSVWorkOrderItem = "Repair Item Included in Repair Work Order";
         public const string RSSVWorkOrderLabor = "Work Order Labor";
         public const string RSSVSetup = "Repair Work Order Preferences";
+        ////////// The added code
         public const string RSSVWorkOrderToPay = "Repair Work Order to Pay";
+        ////////// The end of added code
 
         //Complexity of repair and work order priorities
         public const string High = "High";

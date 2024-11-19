@@ -81,7 +81,6 @@
             <AutoSize Enabled="True" ></AutoSize></px:PXGrid>
         </Template>
       </px:PXTabItem>
-      <%-- The added code --%>
 		<px:PXTabItem Text="Payment Info">
 			<Template>
 				<px:PXFormView runat="server" ID="CstFormView28" DataMember="Payments" >
@@ -89,9 +88,11 @@
 						<px:PXTextEdit runat="server" ID="CstPXTextEdit32" DataField="InvoiceNbr" />
 						<px:PXDateTimeEdit runat="server" ID="CstPXDateTimeEdit31" DataField="DueDate" />
 						<px:PXTextEdit runat="server" ID="CstPXTextEdit29" DataField="AdjgRefNbr" />
-						<px:PXNumberEdit runat="server" ID="CstPXNumberEdit30" DataField="CuryAdjdAmt" /></Template></px:PXFormView></Template> 
-					</px:PXTabItem>
-      <%-- The end of added code --%>
+						<px:PXNumberEdit runat="server" ID="CstPXNumberEdit30" DataField="CuryAdjdAmt" />
+					</Template>
+				</px:PXFormView>
+			</Template> 
+		</px:PXTabItem>
     </Items>
     <AutoSize Container="Window" Enabled="True" MinHeight="150" />
   </px:PXTab>
