@@ -10,16 +10,12 @@ namespace PhoneRepairShop
     {
         public SelectFrom<RSSVWorkOrder>.View UpdWorkOrder = null!;
 
-        [PXOverride]
-        public virtual void Persist(Action baseMethod)
+	    [PXOverride]
+        public void PerformPersist(PXGraph.IPersistPerformer persister,
+                    Action<PXGraph.IPersistPerformer> base_PerformPersist)
         {
-            using (PXTransactionScope ts = new PXTransactionScope())
-            {
-                baseMethod();
-                UpdWorkOrder.Cache.Persist(PXDBOperation.Update);
-                ts.Complete(Base);
-            }
-            UpdWorkOrder.Cache.Persisted(false);
+            base_PerformPersist(persister);
+            persister.Update<RSSVWorkOrder>();
         }
 
         public delegate void UpdateBalancesDelegate(ARAdjust adj,

@@ -50,11 +50,10 @@ namespace PhoneRepairShop
         public const string Awaiting = "AW";
     }
 
-    ////////// The added code
     public static class OrderTypeConstants
     {
         public const string SalesOrder = "SO";
         public const string WorkOrder = "WO";
     }
-    ////////// The end of added code
+
 }

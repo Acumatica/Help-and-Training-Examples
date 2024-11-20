@@ -4,10 +4,9 @@ using PX.Objects.AR;
 using PX.TM;
 using PX.Objects.CS;
 using PX.Data.WorkflowAPI;
-////////// The added code
 using PX.Objects.SO;
 using PX.Data.BQL.Fluent;
-////////// The end of added code
+
 
 namespace PhoneRepairShop
 {
@@ -158,10 +157,8 @@ namespace PhoneRepairShop
         #region InvoiceNbr
         [PXDBString(15, IsUnicode = true)]
         [PXUIField(DisplayName = "Invoice Nbr.", Enabled = false)]
-        ////////// The added code
         [PXSelector(typeof(SearchFor<SOInvoice.refNbr>.
             Where<SOInvoice.docType.IsEqual<ARDocType.invoice>>))]
-        ////////// The end of added code
         public virtual string? InvoiceNbr { get; set; }
         public abstract class invoiceNbr : PX.Data.BQL.BqlString.Field<invoiceNbr> { }
         #endregion

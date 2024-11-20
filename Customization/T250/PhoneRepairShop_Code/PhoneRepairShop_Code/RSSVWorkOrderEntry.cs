@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using PX.Data;
 using PX.Data.BQL.Fluent;
@@ -32,13 +31,11 @@ namespace PhoneRepairShop
 
         //The view for the auto-numbering of records
         public PXSetup<RSSVSetup> AutoNumSetup = null!;
-
-        ////////// The added code
+       
         public SelectFrom<RSSVWorkOrderPayment>.
             Where<RSSVWorkOrderPayment.invoiceNbr.IsEqual<
                 RSSVWorkOrder.invoiceNbr.FromCurrent>>.
             View Payments = null!;
-        ////////// The end of added code
 
         #endregion
 
@@ -185,7 +182,7 @@ namespace PhoneRepairShop
                         //Display the error for the Priority field
                         WorkOrders.Cache.RaiseExceptionHandling<RSSVWorkOrder.priority>(row,
                             originalRow.Priority,
-                            new PXSetPropertyException(e.Row, Messages.PriorityTooLow));
+                            new PXSetPropertyException(row, Messages.PriorityTooLow));
 
                         //Assign the proper priority
                         e.NewRow.Priority = WorkOrderPriorityConstants.Medium;
