@@ -24,7 +24,7 @@ namespace PhoneRepairShop
             Where<RSSVLabor.deviceID.
                 IsEqual<RSSVRepairPrice.deviceID.FromCurrent>.
             And<RSSVLabor.serviceID.
-                IsEqual<RSSVRepairPrice.serviceID.FromCurrent>>>.View 
+                IsEqual<RSSVRepairPrice.serviceID.FromCurrent>>>.View
             Labor = null!;
 
         public SelectFrom<RSSVWarranty>.

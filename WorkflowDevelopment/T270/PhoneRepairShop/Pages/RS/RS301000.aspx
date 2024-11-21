@@ -17,7 +17,7 @@
     <Template>
       <px:PXLayoutRule LabelsWidth="S" ControlSize="SM" ID="PXLayoutRule1"
         runat="server" StartRow="True" ></px:PXLayoutRule>
-	<px:PXDropDown runat="server" ID="CstPXDropDown26" DataField="UsrOrderType" />
+	<px:PXDropDown runat="server" ID="CstPXDropDown26" DataField="UsrOrderType" CommitChanges="True" />
       <px:PXSelector runat="server" ID="CstPXSelector11" DataField="OrderNbr" ></px:PXSelector>
       <px:PXDropDown runat="server" ID="CstPXDropDown15" DataField="Status" ></px:PXDropDown>
       <px:PXDateTimeEdit runat="server" ID="CstPXDateTimeEdit7"

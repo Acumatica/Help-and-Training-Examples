@@ -1,17 +1,17 @@
-using System;
 using System.Collections;
+using System.Collections.Generic;
 using PX.Data;
+using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
 using PX.Objects.IN;
-using PX.Data.BQL;
-using PX.Objects.AR;
-using System.Collections.Generic;
 using PX.Objects.SO;
+using PX.Objects.AR;
 using PX.Data.WorkflowAPI;
 
 namespace PhoneRepairShop
 {
-    public class RSSVWorkOrderEntry : PXGraph<RSSVWorkOrderEntry, RSSVWorkOrder>
+    public class RSSVWorkOrderEntry : PXGraph<RSSVWorkOrderEntry,
+        RSSVWorkOrder>
     {
         #region Views
 
@@ -21,32 +21,27 @@ namespace PhoneRepairShop
         //The view for the Repair Items tab
         public SelectFrom<RSSVWorkOrderItem>.
             Where<RSSVWorkOrderItem.orderNbr.
-            IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
+                IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
             RepairItems = null!;
 
         //The view for the Labor tab
         public SelectFrom<RSSVWorkOrderLabor>.
             Where<RSSVWorkOrderLabor.orderNbr.
-            IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
+                IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
             Labor = null!;
 
         //The view for the auto-numbering of records
         public PXSetup<RSSVSetup> AutoNumSetup = null!;
-
         #endregion
 
-        #region Constructors
-
-        //The graph constructor
+        #region Graph constructor
         public RSSVWorkOrderEntry()
         {
             RSSVSetup setup = AutoNumSetup.Current;
         }
-
         #endregion
 
         #region Event Handlers 
-
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
         {
@@ -93,13 +88,15 @@ namespace PhoneRepairShop
         }
 
         //Update price and repair item type when inventory ID of repair item is updated.
-        protected void _(Events.FieldUpdated<RSSVWorkOrderItem, RSSVWorkOrderItem.inventoryID> e)
+        protected void _(Events.FieldUpdated<RSSVWorkOrderItem,
+            RSSVWorkOrderItem.inventoryID> e)
         {
             RSSVWorkOrderItem row = e.Row;
             if (row.InventoryID != null && row.RepairItemType == null)
             {
                 //Use the PXSelector attribute to select the stock item.
-                var item = PXSelectorAttribute.Select<RSSVWorkOrderItem.inventoryID>(e.Cache, row) as InventoryItem;
+                var item = PXSelectorAttribute.Select<
+                    RSSVWorkOrderItem.inventoryID>(e.Cache, row) as InventoryItem;
                 //Copy the repair item type from the stock item to the row.
                 var itemExt = item?.GetExtension<InventoryItemExt>();
                 if (itemExt != null) row.RepairItemType = itemExt.UsrRepairItemType;
@@ -120,18 +117,19 @@ namespace PhoneRepairShop
             if (curySettings != null) e.NewValue = curySettings.BasePrice;
         }
 
-
         //Validate that Quantity is greater than or equal to 0 and
         //correct the value to the default if the value is less than the default.
         protected virtual void _(Events.FieldVerifying<RSSVWorkOrderLabor,
-          RSSVWorkOrderLabor.quantity> e)
+            RSSVWorkOrderLabor.quantity> e)
         {
             if (e.Row == null || e.NewValue == null) return;
 
             if ((decimal)e.NewValue < 0)
             {
-                //Throwing an exception to cancel the assignment of the new value to the field
-                throw new PXSetPropertyException(e.Row, Messages.QuantityCannotBeNegative);
+                //Throwing an exception to cancel the assignment
+                //of the new value to the field
+                throw new PXSetPropertyException(e.Row,
+                    Messages.QuantityCannotBeNegative);
             }
 
             var workOrder = WorkOrders.Current;
@@ -142,15 +140,17 @@ namespace PhoneRepairShop
                     Where<RSSVLabor.serviceID.IsEqual<@P.AsInt>.
                         And<RSSVLabor.deviceID.IsEqual<@P.AsInt>>.
                         And<RSSVLabor.inventoryID.IsEqual<@P.AsInt>>>
-                    .View.Select(this, workOrder.ServiceID, workOrder.DeviceID, e.Row.InventoryID);
+                    .View.Select(this, workOrder.ServiceID, workOrder.DeviceID,
+                    e.Row.InventoryID);
                 if (labor != null && (decimal)e.NewValue < labor.Quantity)
                 {
                     //Correcting the LineQty value
                     e.NewValue = labor.Quantity;
                     //Raising the ExceptionHandling event for the Quantity field
                     //to attach the exception object to the field
-                    e.Cache.RaiseExceptionHandling<RSSVWorkOrderLabor.quantity>(e.Row, e.NewValue,
-                        new PXSetPropertyException(e.Row, Messages.QuantityTooSmall, PXErrorLevel.Warning));
+                    e.Cache.RaiseExceptionHandling<RSSVWorkOrderLabor.quantity>(
+                        e.Row, e.NewValue, new PXSetPropertyException(e.Row,
+                            Messages.QuantityTooSmall, PXErrorLevel.Warning));
                 }
             }
         }
@@ -176,8 +176,8 @@ namespace PhoneRepairShop
                     if (service != null && service.PreliminaryCheck == true)
                     {
                         //Display the error for the Priority field
-                        WorkOrders.Cache.RaiseExceptionHandling<RSSVWorkOrder.priority>(row,
-                            originalRow.Priority,
+                        WorkOrders.Cache.RaiseExceptionHandling<
+                            RSSVWorkOrder.priority>(row, originalRow.Priority,
                             new PXSetPropertyException(row, Messages.PriorityTooLow));
 
                         //Assign the proper priority
@@ -194,24 +194,26 @@ namespace PhoneRepairShop
           MapEnableRights = PXCacheRights.Select,
           MapViewRights = PXCacheRights.Select)]
         protected virtual IEnumerable releaseFromHold(PXAdapter adapter)
-           => adapter.Get();
+            => adapter.Get();
 
         public PXAction<RSSVWorkOrder> PutOnHold = null!;
         [PXButton, PXUIField(DisplayName = "Hold",
           MapEnableRights = PXCacheRights.Select,
           MapViewRights = PXCacheRights.Select)]
-        protected virtual IEnumerable putOnHold(PXAdapter adapter) => adapter.Get();
+        protected virtual IEnumerable putOnHold(PXAdapter adapter)
+            => adapter.Get();
 
         public PXAction<RSSVWorkOrder> Assign = null!;
         [PXButton]
         [PXUIField(DisplayName = "Assign", Enabled = false)]
-        protected virtual IEnumerable assign(PXAdapter adapter) => adapter.Get();
+        protected virtual IEnumerable assign(PXAdapter adapter)
+            => adapter.Get();
 
         public PXAction<RSSVWorkOrder> Complete = null!;
         [PXButton]
         [PXUIField(DisplayName = "Complete", Enabled = false)]
-        protected virtual IEnumerable complete(PXAdapter adapter) => adapter.Get();
-
+        protected virtual IEnumerable complete(PXAdapter adapter)
+            => adapter.Get();
 
         private static void CreateInvoice(RSSVWorkOrder workOrder)
         {
@@ -229,12 +231,14 @@ namespace PhoneRepairShop
                 invoiceEntry.Document.Update(doc);
 
                 // Create an instance of the RSSVWorkOrderEntry graph.
-                var workOrderEntry = PXGraph.CreateInstance<RSSVWorkOrderEntry>();
+                var workOrderEntry =
+                    PXGraph.CreateInstance<RSSVWorkOrderEntry>();
                 workOrderEntry.WorkOrders.Current = workOrder;
 
                 // Add the lines associated with the repair items
                 // (from the Repair Items tab).
-                foreach (RSSVWorkOrderItem line in workOrderEntry.RepairItems.Select())
+                foreach (RSSVWorkOrderItem line in
+                    workOrderEntry.RepairItems.Select())
                 {
                     var repairTran = invoiceEntry.Transactions.Insert();
                     repairTran.InventoryID = line.InventoryID;
@@ -243,7 +247,8 @@ namespace PhoneRepairShop
                     invoiceEntry.Transactions.Update(repairTran);
                 }
                 // Add the lines associated with labor (from the Labor tab).
-                foreach (RSSVWorkOrderLabor line in workOrderEntry.Labor.Select())
+                foreach (RSSVWorkOrderLabor line in
+                    workOrderEntry.Labor.Select())
                 {
                     var laborTran = invoiceEntry.Transactions.Insert();
                     laborTran.InventoryID = line.InventoryID;
@@ -291,9 +296,11 @@ namespace PhoneRepairShop
         #endregion
 
         #region Workflow Event Handlers 
-        public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument = null!;
+        public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument
+            = null!;
 
-        public PXWorkflowEventHandler<RSSVWorkOrder, ARRegister> OnInvoiceGotPrepaid = null!;
+        public PXWorkflowEventHandler<RSSVWorkOrder, ARRegister> OnInvoiceGotPrepaid
+            = null!;
         #endregion
     }
 }
