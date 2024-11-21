@@ -43,6 +43,11 @@ namespace PhoneRepairShop
         public const string Completed = "Completed";
         public const string Paid = "Paid";
 
+        //Work order types 
+        public const string Simple = "Simple";
+        public const string Standard = "Standard";
+        public const string Awaiting = "Awaiting Delivery";
+
         //Messages
         public const string StockItemIncorrectRepairItemType =
             "This stock item has a repair item type that differs from {0}.";
@@ -56,12 +61,5 @@ namespace PhoneRepairShop
         public const string PriorityTooLow =
             @"The priority must be at least Medium for 
             the repair service that requires preliminary check.";
-
-        
-        //Work order types 
-        public const string Simple = "Simple";
-        public const string Standard = "Standard";
-        public const string Awaiting = "Awaiting Delivery";
-
     }
 }

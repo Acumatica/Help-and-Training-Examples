@@ -10,22 +10,33 @@ using PX.Objects.CS;
 
 namespace PhoneRepairShop
 {
-    public class SOInvoiceOrder_Workflow : PXGraphExtension<SOInvoiceEntry_Workflow,
-        SOInvoiceEntry>
+    public class SOInvoiceRepairOrder_Workflow : 
+        PXGraphExtension<SOInvoiceEntry_Workflow, SOInvoiceEntry>
     {
         public const string ApproveDiscount = "Approve Discount";
+
+        public static class ActionCategories
+        {
+            public const string RepairCategoryID = "Repair Work Orders Category";
+
+            [PXLocalizable]
+            public static class DisplayNames
+            {
+                public const string RepairOrders = "Repair Work Orders";
+            }
+        }
 
         #region Conditions
         public class Conditions : Condition.Pack
         {
-            public Condition DiscountEmpty => GetOrCreate(b =>
-              b.FromBql<ARInvoice.curyDiscTot.IsEqual<decimal0>>());
+            public Condition DiscountEmpty => GetOrCreate(condition =>
+              condition.FromBql<ARInvoice.curyDiscTot.IsEqual<decimal0>>());
         }
         #endregion
 
         public sealed override void Configure(PXScreenConfiguration config)
         {
-            Configure(config.GetScreenConfigurationContext<SOInvoiceEntry, 
+            Configure(config.GetScreenConfigurationContext<SOInvoiceEntry,
                                                            ARInvoice>());
         }
 
@@ -37,13 +48,14 @@ namespace PhoneRepairShop
                 category => category.DisplayName(
                 ActionCategories.DisplayNames.RepairOrders));
 
+            #region Action Definitions
             var viewOrder = context.ActionDefinitions
-              .CreateExisting<SOInvoiceEntry_Extension>(g => g.ViewOrder,
-                a => a.WithCategory(repairCategory));
-
+              .CreateExisting<SOInvoiceEntry_Extension>(graph => graph.ViewOrder,
+                action => action.WithCategory(repairCategory));
             var approveDiscount = context.ActionDefinitions
-                .CreateNew(ApproveDiscount, a => a
-                    .DisplayName("Approve Discount"));
+              .CreateNew(ApproveDiscount, action => action
+                .DisplayName("Approve Discount"));
+            #endregion
 
             var conditions = context.Conditions.GetPack<Conditions>();
 
@@ -58,36 +70,42 @@ namespace PhoneRepairShop
                                 return flowState.WithActions(actions =>
                                     actions.Add(viewOrder));
                             });
-                            flowStates.UpdateSequence<ARDocStatus.HoldToBalance>(seq =>
+                            flowStates.UpdateSequence<ARDocStatus.HoldToBalance>(
+                                seq =>
                             {
                                 return seq.WithStates(states =>
                                 {
-                                    states.Add<ARDocStatus_Postponed.postponed>(flowState =>
+                                    states.Add<ARDocStatus_Postponed.postponed>(
+                                        flowState =>
                                     {
                                         return flowState
-                                            .PlaceAfter<ARDocStatus.creditHold>()
-                                            .IsSkippedWhen(conditions.DiscountEmpty)
-                                            .WithActions(actions =>
-                                            {
-                                                actions.Add(approveDiscount, a => a
-                                                  .IsDuplicatedInToolbar()
-                                                  .WithConnotation(ActionConnotation.Success));
-                                            });
+                                        .PlaceAfter<ARDocStatus.creditHold>()
+                                        .IsSkippedWhen(conditions.DiscountEmpty)
+                                        .WithActions(actions =>
+                                        {
+                                            actions.Add(approveDiscount,
+                                                action => action
+                                                .IsDuplicatedInToolbar()
+                                                .WithConnotation(
+                                                    ActionConnotation.Success));
+                                        });
                                     });
                                 });
                             });
                         })
                         .WithTransitions(transitions =>
                         {
-                            transitions.AddGroupFrom<ARDocStatus_Postponed.postponed>(ts =>
+                            transitions.AddGroupFrom<ARDocStatus_Postponed.postponed>(
+                                transitionGroup =>
                             {
-                                ts.Add(t => t
+                                transitionGroup.Add(transition => transition
                                     .ToNext()
                                     .IsTriggeredOn(approveDiscount)
-                                    .WithFieldAssignments(fass =>
-                                        fass.Add<ARInvoice.discDate>(f => f.SetFromToday())));
+                                    .WithFieldAssignments(fields =>
+                                        fields.Add<ARInvoice.discDate>(
+                                            field => field.SetFromToday())));
                             });
-                        });                     
+                        });
                 })
                 .WithCategories(categories =>
                 {
@@ -105,17 +123,6 @@ namespace PhoneRepairShop
                           .Postponed, "Postponed"));
                 })
             );
-        }
-    }
-
-    public static class ActionCategories
-    {
-        public const string RepairCategoryID = "Repair Orders Category";
-
-        [PXLocalizable]
-        public static class DisplayNames
-        {
-            public const string RepairOrders = "Repair Orders";
         }
     }
 
