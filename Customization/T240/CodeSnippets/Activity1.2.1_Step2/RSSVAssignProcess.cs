@@ -12,7 +12,7 @@ namespace PhoneRepairShop
             // that selects only the repair work orders with 
             // the Ready for Assignment status. 
             Where<RSSVWorkOrder.status.
-                IsEqual<RSSVWorkOrderWorkflow.States.readyForAssignment>>.
+                IsEqual<RSSVWorkOrderEntry_Workflow.States.readyForAssignment>>.
             ProcessingView WorkOrders = null!;
 
         public RSSVAssignProcess()

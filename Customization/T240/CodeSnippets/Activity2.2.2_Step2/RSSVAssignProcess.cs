@@ -12,7 +12,7 @@ namespace PhoneRepairShop
         public PXFilter<RSSVWorkOrderToAssignFilter> Filter = null!;
         public SelectFrom<RSSVWorkOrder>.
             Where<RSSVWorkOrder.status.IsEqual<
-                RSSVWorkOrderWorkflow.States.readyForAssignment>.
+                RSSVWorkOrderEntry_Workflow.States.readyForAssignment>.
                 And<RSSVWorkOrder.timeWithoutAction.IsGreaterEqual<
                     RSSVWorkOrderToAssignFilter.timeWithoutAction.
                         FromCurrent>.

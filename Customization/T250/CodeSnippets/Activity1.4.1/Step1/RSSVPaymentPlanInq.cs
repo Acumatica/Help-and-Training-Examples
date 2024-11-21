@@ -16,7 +16,7 @@ namespace PhoneRepairShop
             InnerJoin<ARInvoice>.On<
                 ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
             Where<
-                RSSVWorkOrderToPay.status.IsNotEqual<RSSVWorkOrderWorkflow.States.paid>.
+                RSSVWorkOrderToPay.status.IsNotEqual<RSSVWorkOrderEntry_Workflow.States.paid>.
                 And<RSSVWorkOrderToPayFilter.customerID.FromCurrent.IsNull.
                     Or<RSSVWorkOrderToPay.customerID.IsEqual<
                         RSSVWorkOrderToPayFilter.customerID.FromCurrent>>>.
@@ -31,7 +31,7 @@ namespace PhoneRepairShop
                 SelectFrom<RSSVWorkOrderToPay>.InnerJoin<ARInvoice>.
                    On<ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
                 Where<RSSVWorkOrderToPay.status.IsNotEqual<
-                     RSSVWorkOrderWorkflow.States.paid>.
+                     RSSVWorkOrderEntry_Workflow.States.paid>.
                    And<RSSVWorkOrderToPayFilter.customerID.FromCurrent.IsNull.
                    Or<RSSVWorkOrderToPay.customerID.IsEqual<
                        RSSVWorkOrderToPayFilter.customerID.FromCurrent>>>.

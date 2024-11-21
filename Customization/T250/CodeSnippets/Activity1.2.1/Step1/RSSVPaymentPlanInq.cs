@@ -13,7 +13,7 @@ namespace PhoneRepairShop
             SelectFrom<RSSVWorkOrderToPay>.
             InnerJoin<ARInvoice>.On<
                 ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
-            Where<RSSVWorkOrderToPay.status.IsNotEqual<RSSVWorkOrderWorkflow.States.paid>>.
+            Where<RSSVWorkOrderToPay.status.IsNotEqual<RSSVWorkOrderEntry_Workflow.States.paid>>.
             View.ReadOnly DetailsView = null!;
 
         protected virtual void _(Events.RowSelecting<RSSVWorkOrderToPay> e)

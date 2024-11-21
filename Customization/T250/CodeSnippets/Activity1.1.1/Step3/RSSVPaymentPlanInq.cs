@@ -10,11 +10,11 @@ namespace PhoneRepairShop
     {
         ////////// The added code
         [PXFilterable]
-        public 
-            SelectFrom<RSSVWorkOrderToPay>.
-            InnerJoin<ARInvoice>.On<
-                ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
-            Where<RSSVWorkOrderToPay.status.IsNotEqual<RSSVWorkOrderWorkflow.States.paid>>.
+        public SelectFrom<RSSVWorkOrderToPay>.
+            InnerJoin<ARInvoice>.On<ARInvoice.refNbr.
+                IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
+            Where<RSSVWorkOrderToPay.status.
+                IsNotEqual<RSSVWorkOrderEntry_Workflow.States.paid>>.
             View.ReadOnly DetailsView = null!;
         ////////// The end of added code
 

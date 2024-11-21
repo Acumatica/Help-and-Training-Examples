@@ -10,7 +10,7 @@ using static PX.Data.WorkflowAPI.BoundedTo<PhoneRepairShop.RSSVWorkOrderEntry,
 namespace PhoneRepairShop
 {
     // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
-    public class RSSVWorkOrderWorkflow :
+    public class RSSVWorkOrderEntry_Workflow :
       PX.Data.PXGraphExtension<RSSVWorkOrderEntry>
     {
         #region Constants
@@ -298,7 +298,7 @@ namespace PhoneRepairShop
 
         // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
         public class RSSVWorkOrderWorkflow_Extension :
-        PXGraphExtension<RSSVWorkOrderWorkflow, RSSVWorkOrderEntry>
+        PXGraphExtension<RSSVWorkOrderEntry_Workflow, RSSVWorkOrderEntry>
         {
             #region Constants 
             public static class OrderTypes
@@ -339,7 +339,7 @@ namespace PhoneRepairShop
                           .Add<OrderTypes.simple>(flow => flow
                           .WithFlowStates(states =>
                           {
-                              states.Add<RSSVWorkOrderWorkflow.States.onHold>(flowState =>
+                              states.Add<RSSVWorkOrderEntry_Workflow.States.onHold>(flowState =>
                               {
                                   return flowState
                                     .IsInitial()
@@ -350,7 +350,7 @@ namespace PhoneRepairShop
                                         .WithConnotation(ActionConnotation.Success));
                                     });
                               });
-                              states.Add<RSSVWorkOrderWorkflow.States.completed>(flowState =>
+                              states.Add<RSSVWorkOrderEntry_Workflow.States.completed>(flowState =>
                               {
                                   return flowState
                                       .WithFieldStates(fieldstates =>
@@ -373,7 +373,7 @@ namespace PhoneRepairShop
                                           handlers.Add(g => g.OnCloseDocument);
                                       });
                               });
-                              states.Add<RSSVWorkOrderWorkflow.States.paid>(flowState =>
+                              states.Add<RSSVWorkOrderEntry_Workflow.States.paid>(flowState =>
                               {
                                   return flowState
                                       .WithFieldStates(fieldstates =>
@@ -389,14 +389,14 @@ namespace PhoneRepairShop
                           })
                           .WithTransitions(transitions =>
                           {
-                              transitions.AddGroupFrom<RSSVWorkOrderWorkflow.States.onHold>(ts =>
+                              transitions.AddGroupFrom<RSSVWorkOrderEntry_Workflow.States.onHold>(ts =>
                               {
-                                  ts.Add(t => t.To<RSSVWorkOrderWorkflow.States.completed>().IsTriggeredOn(g =>
+                                  ts.Add(t => t.To<RSSVWorkOrderEntry_Workflow.States.completed>().IsTriggeredOn(g =>
                                         g.Complete));
                               });
-                              transitions.AddGroupFrom<RSSVWorkOrderWorkflow.States.completed>(ts =>
+                              transitions.AddGroupFrom<RSSVWorkOrderEntry_Workflow.States.completed>(ts =>
                               {
-                                  ts.Add(t => t.To<RSSVWorkOrderWorkflow.States.paid>().IsTriggeredOn(g =>
+                                  ts.Add(t => t.To<RSSVWorkOrderEntry_Workflow.States.paid>().IsTriggeredOn(g =>
                                              g.OnCloseDocument));
                               });
                           })
