@@ -1,10 +1,11 @@
 ﻿using PX.Data;
-using PX.Objects.AR;
-using System.Collections;
 using PX.Objects.SO;
+using System.Collections;
+using PX.Objects.AR;
 
 namespace PhoneRepairShop
 {
+    // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
     public class SOInvoiceEntry_Extension : PXGraphExtension<SOInvoiceEntry>
     {
         public PXAction<ARInvoice> ViewOrder = null!;
