@@ -91,7 +91,7 @@
     <Compile Include="DAC\RSSVRepairService.cs" />
     <Compile Include="RSSVDeviceMaint.cs" />
     <Compile Include="RSSVRepairServiceMaint.cs" />
-    <Compile Include="Workflow\RSSVWorkOrderWorkflow.cs" />
+    <Compile Include="Workflow\RSSVWorkOrderEntry_Workflow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,6 +6,7 @@ using PX.Data.WorkflowAPI;
 using PX.Objects.IN;
 using PX.Objects.AR;
 using PX.Objects.SO;
+using System.Collections.Generic;
 
 namespace PhoneRepairShop
 {
@@ -31,15 +32,13 @@ namespace PhoneRepairShop
 
         #endregion
 
-        #region Event Handlers
+        #region Workflow Event Handlers
 
         public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument = null!;
 
         #endregion
 
-
         #region Actions
-
         public PXAction<RSSVWorkOrder> PutOnHold = null!;
         [PXButton(CommitChanges = true), PXUIField(DisplayName = "Hold", MapEnableRights = PXCacheRights.Select, MapViewRights = PXCacheRights.Select)]
         protected virtual IEnumerable putOnHold(PXAdapter adapter) => adapter.Get();
@@ -93,7 +92,8 @@ namespace PhoneRepairShop
                 invoiceEntry.Document.Update(doc);
 
                 // Create an instance of the RSSVWorkOrderEntry graph.
-                var workOrderEntry = PXGraph.CreateInstance<RSSVWorkOrderEntry>();
+                var workOrderEntry =
+                    PXGraph.CreateInstance<RSSVWorkOrderEntry>();
                 workOrderEntry.WorkOrders.Current = workOrder;
 
                 // Add the lines associated with the repair items
@@ -108,7 +108,8 @@ namespace PhoneRepairShop
                     invoiceEntry.Transactions.Update(repairTran);
                 }
                 // Add the lines associated with labor (from the Labor tab).
-                foreach (RSSVWorkOrderLabor line in workOrderEntry.Labor.Select())
+                foreach (RSSVWorkOrderLabor line in
+                    workOrderEntry.Labor.Select())
                 {
                     var laborTran = invoiceEntry.Transactions.Insert();
                     laborTran.InventoryID = line.InventoryID;
@@ -129,6 +130,31 @@ namespace PhoneRepairShop
                 ts.Complete();
             }
         }
+
+        public PXAction<RSSVWorkOrder> CreateInvoiceAction = null!;
+        [PXButton]
+        [PXUIField(DisplayName = "Create Invoice", Enabled = true)]
+        protected virtual IEnumerable createInvoiceAction(PXAdapter adapter)
+        {
+            // Populate a local list variable.
+            List<RSSVWorkOrder> list = new List<RSSVWorkOrder>();
+            foreach (RSSVWorkOrder order in adapter.Get<RSSVWorkOrder>())
+            {
+                list.Add(order);
+            }
+
+            // Trigger the Save action to save changes in the database.
+            Actions.PressSave();
+
+            var workOrder = WorkOrders.Current;
+            PXLongOperation.StartOperation(this, delegate () {
+                CreateInvoice(workOrder);
+            });
+
+            // Return the local list variable.
+            return list;
+        }
+
         //////////The end of added code
         #endregion
 
@@ -142,7 +168,7 @@ namespace PhoneRepairShop
 
         #endregion
 
-        #region Events 
+        #region Event Handlers
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
         {
@@ -187,6 +213,7 @@ namespace PhoneRepairShop
                 Labor.Update(orderItem);
             }
         }
+
 
         protected void _(Events.FieldDefaulting<RSSVWorkOrderItem, RSSVWorkOrderItem.basePrice> e)
         {
@@ -269,8 +296,7 @@ namespace PhoneRepairShop
                 }
             }
         }
+
         #endregion
-
-
     }
 }
