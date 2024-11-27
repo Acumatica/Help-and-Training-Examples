@@ -16,7 +16,7 @@ using PX.Objects.Common;
 
 namespace PhoneRepairShop.Workflows
 {
-    public class RSSVWorkOrderWorkflow : PX.Data.PXGraphExtension<RSSVWorkOrderEntry>
+    public class RSSVWorkOrderEntry_Workflow : PX.Data.PXGraphExtension<RSSVWorkOrderEntry>
     {
         // workflow works without checking active
         public static bool IsActive() => false;

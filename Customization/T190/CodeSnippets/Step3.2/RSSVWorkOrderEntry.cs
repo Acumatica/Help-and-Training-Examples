@@ -5,6 +5,8 @@ using PX.Data.BQL.Fluent;
 using PX.Data.WorkflowAPI;
 using PX.Objects.IN;
 using PX.Objects.AR;
+using PX.Objects.SO;
+using System.Collections.Generic;
 
 namespace PhoneRepairShop
 {
@@ -36,7 +38,6 @@ namespace PhoneRepairShop
 
         #endregion
 
-
         #region Actions
         public PXAction<RSSVWorkOrder> PutOnHold = null!;
         [PXButton(CommitChanges = true), PXUIField(DisplayName = "Hold", MapEnableRights = PXCacheRights.Select, MapViewRights = PXCacheRights.Select)]
@@ -45,6 +46,7 @@ namespace PhoneRepairShop
         public PXAction<RSSVWorkOrder> ReleaseFromHold = null!;
         [PXButton(CommitChanges = true), PXUIField(DisplayName = "Remove Hold", MapEnableRights = PXCacheRights.Select, MapViewRights = PXCacheRights.Select)]
         protected virtual IEnumerable releaseFromHold(PXAdapter adapter) => adapter.Get();
+
 
         public PXAction<RSSVWorkOrder> Assign = null!;
         [PXButton(CommitChanges = true)]
@@ -86,8 +88,7 @@ namespace PhoneRepairShop
 
         #endregion
 
-        #region Events 
-
+        #region Event Handlers
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
         {
@@ -132,6 +133,7 @@ namespace PhoneRepairShop
                 Labor.Update(orderItem);
             }
         }
+
 
         protected void _(Events.FieldDefaulting<RSSVWorkOrderItem, RSSVWorkOrderItem.basePrice> e)
         {
@@ -216,7 +218,5 @@ namespace PhoneRepairShop
         }
         //////////The end of added code
         #endregion
-
-
     }
 }
