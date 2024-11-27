@@ -10,7 +10,7 @@ namespace PhoneRepairShop
     [PXLocalizable()]
     public static class Messages
     {
-		//DAC names
+        //DAC names
         public const string RSSVDevice = "Serviced Device";
         public const string RSSVRepairService = "Repair Service";
         public const string RSSVRepairPrice = "Repair Price";
