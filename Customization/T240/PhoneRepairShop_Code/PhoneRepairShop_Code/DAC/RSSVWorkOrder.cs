@@ -193,7 +193,7 @@ namespace PhoneRepairShop
         public abstract class assignTo : PX.Data.BQL.BqlInt.Field<assignTo> { }
         #endregion
 
-        ////////// The added code
+
         #region NbrOfAssignedOrders
         [PXInt]
         [PXUIField(DisplayName = "Number of Assigned Work Orders")]
@@ -202,7 +202,7 @@ namespace PhoneRepairShop
             PX.Data.BQL.BqlInt.Field<nbrOfAssignedOrders>
         { }
         #endregion
-        ////////// The end of added code
+
 
         #region CreatedDateTime
         [PXDBCreatedDateTime()]
@@ -264,7 +264,7 @@ namespace PhoneRepairShop
         public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
 
-        public class MyEvents : PXEntityEvent<ARRegister>.Container<MyEvents>
+        public class WorkflowEvents : PXEntityEvent<ARRegister>.Container<WorkflowEvents>
         {
             public PXEntityEvent<ARRegister> InvoiceGotPrepaid = null!;
         }

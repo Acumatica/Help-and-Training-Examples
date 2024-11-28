@@ -47,13 +47,7 @@ namespace PhoneRepairShop
             g => g.Assign);
         }
 
-        public override bool IsDirty
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool IsDirty => false;
         ////////// The end of added code
 
         [PXHidden]

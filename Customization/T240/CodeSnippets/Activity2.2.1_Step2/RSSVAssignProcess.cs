@@ -68,13 +68,7 @@ namespace PhoneRepairShop
         { }
         ////////// The end of added code
 
-        public override bool IsDirty
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool IsDirty => false;
 
         [PXHidden]
         public class RSSVWorkOrderToAssignFilter : PXBqlTable, IBqlTable
