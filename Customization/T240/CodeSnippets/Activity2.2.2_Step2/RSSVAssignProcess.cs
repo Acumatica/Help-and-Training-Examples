@@ -67,33 +67,31 @@ namespace PhoneRepairShop
             Events.CacheAttached<RSSVWorkOrder.assignTo> e)
         { }
         ////////// The added code
-        protected virtual void _(Events.FieldSelecting<RSSVWorkOrder,
-                         RSSVWorkOrder.nbrOfAssignedOrders> e)
+        protected virtual void _(Events.RowSelecting<RSSVWorkOrder> e)
         {
-            if (e.Row == null) return;
-            RSSVEmployeeWorkOrderQty employeeNbrOfOrders =
-                SelectFrom<RSSVEmployeeWorkOrderQty>.
-                Where<RSSVEmployeeWorkOrderQty.userID.IsEqual<@P.AsInt>>.
-                    View.Select(this, e.Row.AssignTo);
-            if (employeeNbrOfOrders != null)
+            using (new PXConnectionScope())
             {
-                e.ReturnValue = employeeNbrOfOrders.NbrOfAssignedOrders.
-                    GetValueOrDefault();
-            }
-            else
-            {
-                e.ReturnValue = 0;
+                if (e.Row == null) return;
+                    RSSVEmployeeWorkOrderQty employeeNbrOfOrders =
+                        SelectFrom<RSSVEmployeeWorkOrderQty>.
+                        Where<RSSVEmployeeWorkOrderQty.userID.IsEqual<@P.AsInt>>.
+                        View.Select(this, e.Row.AssignTo);
+
+                if (employeeNbrOfOrders != null)
+                {
+                    e.Row.NbrOfAssignedOrders = employeeNbrOfOrders.NbrOfAssignedOrders.
+                        GetValueOrDefault();
+                }
+                else
+                {
+                    e.Row.NbrOfAssignedOrders = 0;
+                }
+
             }
         }
         ////////// The end of added code
 
-        public override bool IsDirty
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool IsDirty => false;
 
         [PXHidden]
         public class RSSVWorkOrderToAssignFilter : PXBqlTable, IBqlTable

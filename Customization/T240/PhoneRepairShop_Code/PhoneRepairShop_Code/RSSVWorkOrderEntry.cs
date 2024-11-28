@@ -38,9 +38,8 @@ namespace PhoneRepairShop
         public SelectFrom<RSSVEmployeeWorkOrderQty>.View Quantity = null!;
         #endregion
 
-        #region Constructors
+        #region Graph constructor
 
-        //The graph constructor
         public RSSVWorkOrderEntry()
         {
             RSSVSetup setup = AutoNumSetup.Current;
@@ -208,11 +207,11 @@ namespace PhoneRepairShop
         public static void AssignOrders(List<RSSVWorkOrder> list,
             bool isMassProcess = false)
         {
-            ////////// The added code
+
             // The result set to run the report on.
             PXReportResultset assignedOrders =
                 new PXReportResultset(typeof(RSSVWorkOrder));
-            ////////// The end of added code
+
             var workOrderEntry = PXGraph.CreateInstance<RSSVWorkOrderEntry>();
             // Modify the code so that it works with the list of repair work
             // orders obtained from the input parameter of the method.
@@ -255,14 +254,14 @@ namespace PhoneRepairShop
                         string.Format(Messages.WorkOrderAssigned,
                         workOrder.OrderNbr));
                     }
-                    ////////// The added code
+
                     // Add to the result set the order 
                     // that has been successfully assigned.
                     if (workOrder.Status == WorkOrderStatusConstants.Assigned)
                     {
                         assignedOrders.Add(workOrder);
                     }
-                    ////////// The end of added code
+
                 }
                 catch (Exception e)
                 {
@@ -271,13 +270,13 @@ namespace PhoneRepairShop
                     PXProcessing<RSSVWorkOrder>.SetError(i, e);
                 }
             }
-            ////////// The added code
+
             if (assignedOrders.GetRowCount() > 0 && isMassProcess)
             {
                 throw new PXReportRequiredException(assignedOrders, "RS601000",
                                                     Messages.ReportRS601000Title);
             }
-            ////////// The end of added code
+
         }
 
         public PXAction<RSSVWorkOrder> Assign = null!;

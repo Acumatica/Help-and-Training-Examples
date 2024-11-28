@@ -25,7 +25,7 @@
         </layout>
         <data>
             <SiteMap>
-                <row Position="21518" Title="Assigned Work Orders" Url="~/frames/reportlauncher.aspx?id=RS601000.rpx" ScreenID="RS601000" NodeID="8f266edb-b94b-4471-81e4-0f17b6ba8a07" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="E" />
+                <row Title="Assigned Work Orders" Url="~/frames/reportlauncher.aspx?id=RS601000.rpx" ScreenID="RS601000" NodeID="8f266edb-b94b-4471-81e4-0f17b6ba8a07" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="E" />
             </SiteMap>
         </data>
     </data-set>
