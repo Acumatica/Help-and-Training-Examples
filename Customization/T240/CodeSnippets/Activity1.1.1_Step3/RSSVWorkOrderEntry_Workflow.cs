@@ -1,17 +1,16 @@
 ﻿using PX.Data;
 using PX.Data.BQL.Fluent;
-using PX.Data.WorkflowAPI;
 using PX.Objects.AR;
+using PX.Data.WorkflowAPI;
 using PX.Objects.Common;
-using static PhoneRepairShop.RSSVWorkOrder;
 using static PX.Data.WorkflowAPI.BoundedTo<PhoneRepairShop.RSSVWorkOrderEntry,
   PhoneRepairShop.RSSVWorkOrder>;
+using static PhoneRepairShop.RSSVWorkOrder;
 
 namespace PhoneRepairShop
 {
     // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
-    public class RSSVWorkOrderEntry_Workflow :
-      PX.Data.PXGraphExtension<RSSVWorkOrderEntry>
+    public class RSSVWorkOrderEntry_Workflow : PXGraphExtension<RSSVWorkOrderEntry>
     {
         #region Constants
         public static class States
@@ -59,351 +58,408 @@ namespace PhoneRepairShop
         }
         #endregion
 
+        #region Conditions
         public class Conditions : Condition.Pack
         {
-            public Condition RequiresPrepayment => GetOrCreate(b => b.FromBql<
-              Where<Selector<RSSVWorkOrder.serviceID, RSSVRepairService.prepayment>,
-              Equal<True>>>());
+            public Condition RequiresPrepayment => GetOrCreate(condition =>
+                condition.FromBql<Where<RSSVRepairService.prepayment
+                    .FromSelectorOf<RSSVWorkOrder.serviceID>.IsEqual<True>>>());
 
-            public Condition DoesNotRequirePrepayment => GetOrCreate(b => b.FromBql<
-              Where<Selector<RSSVWorkOrder.serviceID, RSSVRepairService.prepayment>,
-              Equal<False>>>());
-
-            public Condition DisableCreateInvoice => GetOrCreate(b => b.FromBql<
-              Where<RSSVWorkOrder.invoiceNbr.IsNotNull>>());
+            public Condition HasInvoice => GetOrCreate(condition => 
+                condition.FromBql<Where<RSSVWorkOrder.invoiceNbr.IsNotNull>>());
         }
+        #endregion
 
-        public sealed override void Configure (PXScreenConfiguration config)
+        protected static void Configure(WorkflowContext<RSSVWorkOrderEntry,
+                                                RSSVWorkOrder> context)
         {
-            Configure(config.GetScreenConfigurationContext<RSSVWorkOrderEntry,
-                RSSVWorkOrder>());
-        }
-
-        protected static void Configure(WorkflowContext<RSSVWorkOrderEntry, RSSVWorkOrder> context)
-        {
+            // Define the Assign dialog box
             var formAssign = context.Forms.Create("FormAssign", form =>
                 form.Prompt("Assign").WithFields(fields =>
                 {
                     fields.Add("Assignee", field => field
-                        .WithSchemaOf<RSSVWorkOrder.assignee>()
-                        .IsRequired()
-                        .Prompt("Assignee"));
+                       .WithSchemaOf<RSSVWorkOrder.assignee>()
+                       .IsRequired()
+                       .Prompt("Assignee"));
                 }));
 
-            var conditions = context.Conditions.GetPack<Conditions>();
-
             #region Categories
-            var commonCategories = CommonActionCategories.Get(context);
+                var commonCategories = CommonActionCategories.Get(context);
             var processingCategory = commonCategories.Processing;
             #endregion
 
-            context.AddScreenConfigurationFor(screen =>
-                screen
+            // Create an instance of the Conditions class
+            var conditions = context.Conditions.GetPack<Conditions>();
+
+            context.AddScreenConfigurationFor(screen => screen
                 .StateIdentifierIs<RSSVWorkOrder.status>()
                 .AddDefaultFlow(flow => flow
-                    .WithFlowStates(fss =>
+                    .WithFlowStates(flowStates =>
                     {
-                        fss.Add<States.onHold>(flowState =>
-                        {
-                            return flowState
-                            .IsInitial()
-                            .WithActions(actions =>
-                            {
-                                actions.Add(g => g.ReleaseFromHold, a => a
-                                .IsDuplicatedInToolbar()
-                                .WithConnotation(ActionConnotation.Success));
-                            });
-                        });
-                        fss.Add<States.readyForAssignment>(flowState =>
-                        {
-                            return flowState
-                              .WithFieldStates(states =>
-                              {
-                                  states.AddField<RSSVWorkOrder.customerID>(state
-                                    => state.IsDisabled());
-                                  states.AddField<RSSVWorkOrder.serviceID>(state
-                                    => state.IsDisabled());
-                                  states.AddField<RSSVWorkOrder.deviceID>(state
-                                    => state.IsDisabled());
-                              })
-                              .WithActions(actions =>
-                              {
-                                  actions.Add(g => g.PutOnHold, a => a.IsDuplicatedInToolbar());
-                                  actions.Add(g => g.Assign, a => a
-                                      .IsDuplicatedInToolbar()
-                                      .WithConnotation(ActionConnotation.Success));
-                              });
-                        });
-                        fss.Add<States.pendingPayment>(flowState =>
-                        {
-                            return flowState
-                              .WithFieldStates(states =>
-                              {
-                                  states.AddField<RSSVWorkOrder.customerID>(state
-                                    => state.IsDisabled());
-                                  states.AddField<RSSVWorkOrder.serviceID>(state
-                                    => state.IsDisabled());
-                                  states.AddField<RSSVWorkOrder.deviceID>(state
-                                    => state.IsDisabled());
-                              })
-                              .WithActions(actions =>
-                              {
-                                  actions.Add(g => g.PutOnHold,
-                                    a => a.IsDuplicatedInToolbar());
-                                  actions.Add(g => g.CreateInvoiceAction, a => a
-                                    .IsDuplicatedInToolbar()
-                                    .WithConnotation(ActionConnotation.Success));
-                              })
-                              // Add the OnInvoiceGotPrepaid event handler
-                              .WithEventHandlers(handlers =>
-                              {
-                                  handlers.Add(g => g.OnInvoiceGotPrepaid);
-                              });
-                        });
-                        fss.Add<States.assigned>(flowState =>
-                        {
-                            return flowState
-                                .WithFieldStates(states =>
-                                {
-                                    states.AddField<RSSVWorkOrder.customerID>(state
-                                      => state.IsDisabled());
-                                    states.AddField<RSSVWorkOrder.serviceID>(state
-                                      => state.IsDisabled());
-                                    states.AddField<RSSVWorkOrder.deviceID>(state
-                                      => state.IsDisabled());
-                                })
-                                .WithActions(actions =>
-                                {
-                                    actions.Add(g => g.Complete, a => a
-                                      .IsDuplicatedInToolbar()
-                                      .WithConnotation(ActionConnotation.Success));
-                                });
-                        });
-                        fss.Add<States.completed>(flowState =>
-                        {
-                            return flowState
-                                .WithFieldStates(states =>
-                                {
-                                    states.AddField<RSSVWorkOrder.customerID>(state =>
-                                        state.IsDisabled());
-                                    states.AddField<RSSVWorkOrder.serviceID>(state =>
-                                        state.IsDisabled());
-                                    states.AddField<RSSVWorkOrder.deviceID>(state =>
-                                        state.IsDisabled());
-                                })
-                                .WithActions(actions =>
-                                {
-                                    actions.Add(g => g.CreateInvoiceAction, a => a
-                                    .IsDuplicatedInToolbar()
-                                    .WithConnotation(ActionConnotation.Success));
-                                })
-                                .WithEventHandlers(handlers =>
-                                {
-                                    handlers.Add(g => g.OnCloseDocument);
-                                });
-                        });
-                        fss.Add<States.paid>(flowState =>
-                        {
-                            return flowState
-                                .WithFieldStates(states =>
-                                {
-                                    states.AddField<RSSVWorkOrder.customerID>(state =>
-                                        state.IsDisabled());
-                                    states.AddField<RSSVWorkOrder.serviceID>(state =>
-                                        state.IsDisabled());
-                                    states.AddField<RSSVWorkOrder.deviceID>(state =>
-                                        state.IsDisabled());
-                                });
-                        });
+                        flowStates.Add<States.onHold>(flowState =>
+                            GetOnHoldBehavior(flowState));
+                        flowStates.Add<States.readyForAssignment>(flowState =>
+                            GetReadyForAssignmentBehavior(flowState));
+                        flowStates.Add<States.pendingPayment>(flowState =>
+                            GetPendingPaymentBehavior(flowState));
+                        flowStates.Add<States.assigned>(flowState =>
+                            GetAssignedBehavior(flowState));
+                        flowStates.Add<States.completed>(flowState =>
+                            GetCompletedBehavior(flowState));
+                        flowStates.Add<States.paid>(flowState =>
+                            GetPaidBehavior(flowState));
                     })
                     .WithTransitions(transitions =>
                     {
-                        transitions.AddGroupFrom<States.onHold>(ts =>
+                        transitions.AddGroupFrom<States.onHold>(transitionGroup =>
                         {
-                            ts.Add(t => t.To<States.readyForAssignment>()
-                                .IsTriggeredOn(g => g.ReleaseFromHold)
-                                .When(conditions.DoesNotRequirePrepayment));
-                            ts.Add(t => t.To<States.pendingPayment>()
-                                .IsTriggeredOn(g => g.ReleaseFromHold)
+                            transitionGroup.Add(transition => 
+                                transition.To<States.readyForAssignment>()
+                                .IsTriggeredOn(graph => graph.ReleaseFromHold)
+                                .When(!conditions.RequiresPrepayment));
+                            transitionGroup.Add(transition => 
+                                transition.To<States.pendingPayment>()
+                                .IsTriggeredOn(graph => graph.ReleaseFromHold)
                                 .When(conditions.RequiresPrepayment));
                         });
-                        transitions.AddGroupFrom<States.readyForAssignment>(ts =>
+                        transitions.AddGroupFrom<States.readyForAssignment>(
+                            transitionGroup =>
                         {
-                            ts.Add(t => t.To<States.onHold>().IsTriggeredOn(g => g.PutOnHold));
-                            ts.Add(t => t.To<States.assigned>().IsTriggeredOn(g => g.Assign));
+                            transitionGroup.Add(transition =>
+                                transition.To<States.onHold>()
+                                .IsTriggeredOn(graph => graph.PutOnHold));
+                            transitionGroup.Add(transition =>
+                                transition.To<States.assigned>()
+                                .IsTriggeredOn(graph => graph.Assign));
                         });
-                        transitions.AddGroupFrom<States.pendingPayment>(ts =>
+                        transitions.AddGroupFrom<States.pendingPayment>(
+                            transitionGroup =>
                         {
-                            ts.Add(t => t.To<States.onHold>().IsTriggeredOn(g => g.PutOnHold));
-                            ts.Add(t => t.To<States.readyForAssignment>()
-                              .IsTriggeredOn(g => g.OnInvoiceGotPrepaid));
+                            transitionGroup.Add(transition =>
+                                transition.To<States.onHold>()
+                                .IsTriggeredOn(graph => graph.PutOnHold));
+                            transitionGroup.Add(transition =>
+                                transition.To<States.readyForAssignment>()
+                                .IsTriggeredOn(graph => graph.OnInvoiceGotPrepaid));
                         });
-                        transitions.AddGroupFrom<States.assigned>(ts =>
+                        transitions.AddGroupFrom<States.assigned>(
+                            transitionGroup =>
                         {
-                            ts.Add(t => t.To<States.completed>().IsTriggeredOn(g =>
-                                g.Complete));
+                            transitionGroup.Add(transition =>
+                                transition.To<States.completed>()
+                                .IsTriggeredOn(graph => graph.Complete));
                         });
-                        transitions.AddGroupFrom<States.completed>(ts =>
+                        transitions.AddGroupFrom<States.completed>(
+                            transitionGroup =>
                         {
-                            ts.Add(t => t.To<States.paid>().IsTriggeredOn(g => g.OnCloseDocument));
+                            transitionGroup.Add(transition => 
+                                transition.To<States.paid>()
+                              .IsTriggeredOn(graph => graph.OnCloseDocument));
                         });
-                    })
-                )
+                    }))
+                .WithHandlers(handlers =>
+                {
+                    handlers.Add(handler => handler
+                        .WithTargetOf<ARInvoice>()
+                        .OfEntityEvent<ARInvoice.Events>(
+                            workflowEvent => workflowEvent.CloseDocument)
+                            .Is(graph => graph.OnCloseDocument)
+                            .UsesPrimaryEntityGetter<
+                                SelectFrom<RSSVWorkOrder>.
+                                Where<RSSVWorkOrder.invoiceNbr
+                                  .IsEqual<ARRegister.refNbr.FromCurrent>>>());
+                    handlers.Add(handler => handler
+                        .WithTargetOf<ARRegister>()
+                        .OfEntityEvent<RSSVWorkOrder.WorkflowEvents>(
+                            workflowEvent => workflowEvent.InvoiceGotPrepaid)
+                            .Is(graph => graph.OnInvoiceGotPrepaid)
+                            .UsesPrimaryEntityGetter<
+                                SelectFrom<RSSVWorkOrder>.
+                                Where<RSSVWorkOrder.invoiceNbr
+                                .IsEqual<ARRegister.refNbr.FromCurrent>>>());
+                })
                 .WithCategories(categories =>
                 {
                     categories.Add(processingCategory);
                 })
                 .WithActions(actions =>
                 {
-                    actions.Add(g => g.ReleaseFromHold, c => c
-                      .WithCategory(processingCategory));
-                    actions.Add(g => g.PutOnHold, c => c
-                      .WithCategory(processingCategory));
-                    /////////// The added code
-                    actions.Add(g => g.Assign, c => c
+                    actions.Add(graph => graph.ReleaseFromHold,
+                        action => action.WithCategory(processingCategory));
+                    actions.Add(graph => graph.PutOnHold, action => action
+                        .WithCategory(processingCategory));
+					/////////// The added code
+                    actions.Add(graph => graph.Assign, action => action
                       .WithCategory(processingCategory)
                       .MassProcessingScreen<RSSVAssignProcess>()
                       .InBatchMode());
-                    /////////// The end of added code
-                    actions.Add(g => g.Complete, c => c
-                      .WithCategory(processingCategory, Placement.Last)
-                      .WithFieldAssignments(fas => fas
-                        .Add<RSSVWorkOrder.dateCompleted>(f =>
-                        f.SetFromToday())));
-                    actions.Add(g => g.CreateInvoiceAction, c => c
-                      .WithCategory(processingCategory)
-                      .IsDisabledWhen(conditions.DisableCreateInvoice));
+					  /////////// The end of added code
+                    actions.Add(graph => graph.Complete, action => action
+                        .WithCategory(processingCategory, Placement.Last)
+                        .WithFieldAssignments(fields => fields
+                            .Add<RSSVWorkOrder.dateCompleted>(field =>
+                                field.SetFromToday())));
+                    actions.Add(graph => graph.CreateInvoiceAction,
+                        action => action.WithCategory(processingCategory)
+                        .IsDisabledWhen(conditions.HasInvoice));
                 })
                 .WithForms(forms => forms.Add(formAssign))
-                .WithHandlers(handlers =>
-                {
-                    handlers.Add(handler => handler
-                        .WithTargetOf<ARInvoice>()
-                        .OfEntityEvent<ARInvoice.Events>(e => e.CloseDocument)
-                        .Is(g => g.OnCloseDocument)
-                        .UsesPrimaryEntityGetter<
-                        SelectFrom<RSSVWorkOrder>.
-                        Where<RSSVWorkOrder.invoiceNbr.IsEqual<ARRegister.refNbr.FromCurrent>>>());
-                    handlers.Add(handler => handler
-                      .WithTargetOf<ARRegister>()
-                      .OfEntityEvent<RSSVWorkOrder.MyEvents>(e => e.InvoiceGotPrepaid)
-                      .Is(g => g.OnInvoiceGotPrepaid)
-                      .UsesPrimaryEntityGetter<
-                        SelectFrom<RSSVWorkOrder>.
-                        Where<RSSVWorkOrder.invoiceNbr
-                        .IsEqual<ARRegister.refNbr.FromCurrent>>>());
-                })
             );
         }
 
-        // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
-        public class RSSVWorkOrderWorkflow_Extension :
-        PXGraphExtension<RSSVWorkOrderEntry_Workflow, RSSVWorkOrderEntry>
+        public sealed override void Configure(PXScreenConfiguration config)
         {
-            #region Constants 
-            public static class OrderTypes
+            Configure(config.GetScreenConfigurationContext<RSSVWorkOrderEntry,
+                RSSVWorkOrder>());
+        }
+
+        #region Workflow States
+        private static BaseFlowStep.IConfigured GetOnHoldBehavior(
+            FlowState.INeedAnyFlowStateConfig flowState)
+        {
+            return flowState
+            .IsInitial()
+            .WithActions(actions =>
             {
-                public const string Simple = WorkOrderTypeConstants.Simple;
-                public const string Standard = WorkOrderTypeConstants.Standard;
-                public const string Awaiting = WorkOrderTypeConstants.Awaiting;
+                actions.Add(graph => graph.ReleaseFromHold,
+                    action => action.IsDuplicatedInToolbar()
+                        .WithConnotation(
+                            ActionConnotation.Success));
+            });
+        }
 
-                public class simple : PX.Data.BQL.BqlString.Constant<simple>
-                {
-                    public simple() : base(Simple) { }
-                }
-
-                public class standard : PX.Data.BQL.BqlString.Constant<standard>
-                {
-                    public standard() : base(Standard) { }
-                }
-
-                public class awaiting : PX.Data.BQL.BqlString.Constant<awaiting>
-                {
-                    public awaiting() : base(Awaiting) { }
-                }
-            }
-            #endregion
-
-            public sealed override void Configure(PXScreenConfiguration config)
+        private static BaseFlowStep.IConfigured GetReadyForAssignmentBehavior(
+            FlowState.INeedAnyFlowStateConfig flowState)
+        {
+            return flowState
+            .WithFieldStates(states =>
             {
-                Configure(config.GetScreenConfigurationContext<RSSVWorkOrderEntry,
-                                                               RSSVWorkOrder>());
+                states.AddField<RSSVWorkOrder.customerID>(state
+                    => state.IsDisabled());
+                states.AddField<RSSVWorkOrder.serviceID>(state
+                    => state.IsDisabled());
+                states.AddField<RSSVWorkOrder.deviceID>(state
+                    => state.IsDisabled());
+            })
+            .WithActions(actions =>
+            {
+                actions.Add(graph => graph.PutOnHold,
+                    action => action.IsDuplicatedInToolbar());
+                actions.Add(graph => graph.Assign,
+                    action => action.IsDuplicatedInToolbar()
+                    .WithConnotation(ActionConnotation.Success));
+            });
+        }
+
+        private static BaseFlowStep.IConfigured GetPendingPaymentBehavior(
+            FlowState.INeedAnyFlowStateConfig flowState)
+        {
+            return flowState
+            .WithFieldStates(states =>
+            {
+                states.AddField<RSSVWorkOrder.customerID>(state
+                    => state.IsDisabled());
+                states.AddField<RSSVWorkOrder.serviceID>(state
+                    => state.IsDisabled());
+                states.AddField<RSSVWorkOrder.deviceID>(state
+                    => state.IsDisabled());
+            })
+            .WithActions(actions =>
+            {
+                actions.Add(graph => graph.PutOnHold, 
+                    action => action.IsDuplicatedInToolbar());
+            })
+            .WithActions(actions =>
+            {
+                actions.Add(graph => graph.CreateInvoiceAction,
+                    action => action.IsDuplicatedInToolbar()
+                    .WithConnotation(ActionConnotation.Success));
+            })
+            .WithEventHandlers(handlers =>
+            {
+                handlers.Add(graph => graph.OnInvoiceGotPrepaid);
+            });
+        }
+
+        private static BaseFlowStep.IConfigured GetAssignedBehavior(
+            FlowState.INeedAnyFlowStateConfig flowState)
+        {
+            return flowState
+            .WithFieldStates(states =>
+            {
+                states.AddField<RSSVWorkOrder.customerID>(state
+                    => state.IsDisabled());
+                states.AddField<RSSVWorkOrder.serviceID>(state
+                    => state.IsDisabled());
+                states.AddField<RSSVWorkOrder.deviceID>(state
+                    => state.IsDisabled());
+            })
+            .WithActions(actions =>
+            {
+                actions.Add(graph => graph.Complete, action => action
+                  .IsDuplicatedInToolbar()
+                  .WithConnotation(ActionConnotation.Success));
+            });
+        }
+
+        private static BaseFlowStep.IConfigured GetCompletedBehavior(
+            FlowState.INeedAnyFlowStateConfig flowState)
+        {
+            return flowState
+            .WithFieldStates(states =>
+            {
+                states.AddField<RSSVWorkOrder.customerID>(state
+                    => state.IsDisabled());
+                states.AddField<RSSVWorkOrder.serviceID>(state
+                    => state.IsDisabled());
+                states.AddField<RSSVWorkOrder.deviceID>(state
+                    => state.IsDisabled());
+            })
+            .WithActions(actions =>
+            {
+                actions.Add(graph => graph.CreateInvoiceAction,
+                    action => action.IsDuplicatedInToolbar()
+                    .WithConnotation(ActionConnotation.Success));
+            })
+            .WithEventHandlers(handlers =>
+            {
+                handlers.Add(graph => graph.OnCloseDocument);
+            });
+        }
+
+        private static BaseFlowStep.IConfigured GetPaidBehavior(
+            FlowState.INeedAnyFlowStateConfig flowState)
+        {
+            return flowState
+            .WithFieldStates(states =>
+            {
+                states.AddField<RSSVWorkOrder.customerID>(state
+                    => state.IsDisabled());
+                states.AddField<RSSVWorkOrder.serviceID>(state
+                    => state.IsDisabled());
+                states.AddField<RSSVWorkOrder.deviceID>(state
+                    => state.IsDisabled());
+            });
+        }
+        #endregion
+    }
+
+    // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
+    public class RSSVWorkOrderEntry_Workflow_Extension :
+        PXGraphExtension<RSSVWorkOrderEntry_Workflow, RSSVWorkOrderEntry>
+    {
+        #region Constants 
+        public static class OrderTypes
+        {
+            public const string Simple = WorkOrderTypeConstants.Simple;
+            public const string Standard = WorkOrderTypeConstants.Standard;
+            public const string Awaiting = WorkOrderTypeConstants.Awaiting;
+
+            public class simple : PX.Data.BQL.BqlString.Constant<simple>
+            {
+                public simple() : base(Simple) { }
             }
 
-            protected static void Configure(WorkflowContext<RSSVWorkOrderEntry,
-                                                             RSSVWorkOrder> context)
+            public class standard : PX.Data.BQL.BqlString.Constant<standard>
             {
-                context.UpdateScreenConfigurationFor(screen => screen
-                        .FlowTypeIdentifierIs<RSSVWorkOrder_Extension.usrOrderType>()
-                        .WithFlows(flows => flows
-                          .Add<OrderTypes.simple>(flow => flow
-                          .WithFlowStates(states =>
-                          {
-                              states.Add<RSSVWorkOrderEntry_Workflow.States.onHold>(flowState =>
-                              {
-                                  return flowState
-                                    .IsInitial()
-                                    .WithActions(actions =>
-                                    {
-                                        actions.Add(g => g.Complete, a => a
-                                        .IsDuplicatedInToolbar()
-                                        .WithConnotation(ActionConnotation.Success));
-                                    });
-                              });
-                              states.Add<RSSVWorkOrderEntry_Workflow.States.completed>(flowState =>
-                              {
-                                  return flowState
-                                      .WithFieldStates(fieldstates =>
-                                      {
-                                          fieldstates.AddField<RSSVWorkOrder.customerID>(state =>
-                                              state.IsDisabled());
-                                          fieldstates.AddField<RSSVWorkOrder.serviceID>(state =>
-                                              state.IsDisabled());
-                                          fieldstates.AddField<RSSVWorkOrder.deviceID>(state =>
-                                              state.IsDisabled());
-                                      })
-                                      .WithActions(actions =>
-                                      {
-                                          actions.Add(g => g.CreateInvoiceAction, a => a
-                                          .IsDuplicatedInToolbar()
-                                          .WithConnotation(ActionConnotation.Success));
-                                      })
-                                      .WithEventHandlers(handlers =>
-                                      {
-                                          handlers.Add(g => g.OnCloseDocument);
-                                      });
-                              });
-                              states.Add<RSSVWorkOrderEntry_Workflow.States.paid>(flowState =>
-                              {
-                                  return flowState
-                                      .WithFieldStates(fieldstates =>
-                                      {
-                                          fieldstates.AddField<RSSVWorkOrder.customerID>(state =>
-                                              state.IsDisabled());
-                                          fieldstates.AddField<RSSVWorkOrder.serviceID>(state =>
-                                              state.IsDisabled());
-                                          fieldstates.AddField<RSSVWorkOrder.deviceID>(state =>
-                                              state.IsDisabled());
-                                      });
-                              });
-                          })
-                          .WithTransitions(transitions =>
-                          {
-                              transitions.AddGroupFrom<RSSVWorkOrderEntry_Workflow.States.onHold>(ts =>
-                              {
-                                  ts.Add(t => t.To<RSSVWorkOrderEntry_Workflow.States.completed>().IsTriggeredOn(g =>
-                                        g.Complete));
-                              });
-                              transitions.AddGroupFrom<RSSVWorkOrderEntry_Workflow.States.completed>(ts =>
-                              {
-                                  ts.Add(t => t.To<RSSVWorkOrderEntry_Workflow.States.paid>().IsTriggeredOn(g =>
-                                             g.OnCloseDocument));
-                              });
-                          })
-                        ))
-                       );
-                        
+                public standard() : base(Standard) { }
             }
+
+            public class awaiting : PX.Data.BQL.BqlString.Constant<awaiting>
+            {
+                public awaiting() : base(Awaiting) { }
+            }
+        }
+        #endregion
+
+        public sealed override void Configure(PXScreenConfiguration config)
+        {
+            Configure(config.GetScreenConfigurationContext<RSSVWorkOrderEntry,
+                                                           RSSVWorkOrder>());
+        }
+
+        protected static void Configure(WorkflowContext<RSSVWorkOrderEntry,
+                                                         RSSVWorkOrder> context)
+        {
+            context.UpdateScreenConfigurationFor(screen => screen
+                .FlowTypeIdentifierIs<RSSVWorkOrder_Extension.usrOrderType>()
+                .WithFlows(flows => flows
+                    .Add<OrderTypes.simple>(flow =>
+                        getSimpleBehavior(flow)))
+            );
+        }
+
+        private static Workflow.IConfigured getSimpleBehavior(
+            Workflow.INeedStatesFlow flowState)
+        {
+            return flowState
+            .WithFlowStates(states =>
+            {
+                states.Add<RSSVWorkOrderEntry_Workflow.States.onHold>(flowState =>
+                {
+                    return flowState
+                      .IsInitial()
+                      .WithActions(actions =>
+                      {
+                          actions.Add(g => g.Complete, a => a
+                          .IsDuplicatedInToolbar()
+                          .WithConnotation(ActionConnotation.Success));
+                      });
+                });
+                states.Add<RSSVWorkOrderEntry_Workflow.States.completed>(flowState =>
+                {
+                    return flowState
+                        .WithFieldStates(fieldstates =>
+                        {
+                            fieldstates.AddField<RSSVWorkOrder.customerID>(state =>
+                                state.IsDisabled());
+                            fieldstates.AddField<RSSVWorkOrder.serviceID>(state =>
+                                state.IsDisabled());
+                            fieldstates.AddField<RSSVWorkOrder.deviceID>(state =>
+                                state.IsDisabled());
+                        })
+                        .WithActions(actions =>
+                        {
+                            actions.Add(g => g.CreateInvoiceAction, a => a
+                            .IsDuplicatedInToolbar()
+                            .WithConnotation(ActionConnotation.Success));
+                        })
+                        .WithEventHandlers(handlers =>
+                        {
+                            handlers.Add(g => g.OnCloseDocument);
+                        });
+                });
+                states.Add<RSSVWorkOrderEntry_Workflow.States.paid>(flowState =>
+                {
+                    return flowState
+                        .WithFieldStates(fieldstates =>
+                        {
+                            fieldstates.AddField<RSSVWorkOrder.customerID>(state =>
+                                state.IsDisabled());
+                            fieldstates.AddField<RSSVWorkOrder.serviceID>(state =>
+                                state.IsDisabled());
+                            fieldstates.AddField<RSSVWorkOrder.deviceID>(state =>
+                                state.IsDisabled());
+                        });
+                });
+            })
+            .WithTransitions(transitions =>
+            {
+                transitions.AddGroupFrom<RSSVWorkOrderEntry_Workflow.States.onHold>(
+                    transitionGroup =>
+                {
+                    transitionGroup.Add(transition => transition
+                        .To<RSSVWorkOrderEntry_Workflow.States.completed>()
+                        .IsTriggeredOn(graph => graph.Complete));
+                });
+                transitions.AddGroupFrom<RSSVWorkOrderEntry_Workflow.States.completed>(
+                    transitionGroup =>
+                {
+                    transitionGroup.Add(transition => transition
+                        .To<RSSVWorkOrderEntry_Workflow.States.paid>()
+                        .IsTriggeredOn(graph => graph.OnCloseDocument));
+                });
+            });
         }
     }
 }
