@@ -264,7 +264,7 @@ namespace PhoneRepairShop
         public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
         #endregion
 
-        public class MyEvents : PXEntityEvent<ARRegister>.Container<MyEvents>
+        public class WorkflowEvents : PXEntityEvent<ARRegister>.Container<WorkflowEvents>
         {
             public PXEntityEvent<ARRegister> InvoiceGotPrepaid;
         }
