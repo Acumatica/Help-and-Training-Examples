@@ -1,5 +1,5 @@
 import { 
-	createSingle, PXScreen, graphInfo, PXView, PXFieldState
+	createSingle, PXScreen, graphInfo, viewInfo, PXView, PXFieldState
 } from "client-controls";
 
 @graphInfo({
@@ -7,6 +7,7 @@ import {
 	primaryView: "ServDevices",
 })
 export class RS202000 extends PXScreen {
+	@viewInfo({containerName: "Service Devices"})
 	ServDevices = createSingle(RSSVDevice);
 }
 

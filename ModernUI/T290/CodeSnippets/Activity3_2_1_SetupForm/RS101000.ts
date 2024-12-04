@@ -18,8 +18,10 @@ export class RS101000 extends PXScreen {
 export class RSSVSetup extends PXView {
 	@controlConfig({allowEdit: true, })
 	NumberingID: PXFieldState;
+
 	@controlConfig({allowEdit: true, })
 	WalkInCustomerID: PXFieldState;
+
 	DefaultEmployee: PXFieldState;
 	PrepaymentPercent: PXFieldState;
 }
