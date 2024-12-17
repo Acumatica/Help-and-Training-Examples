@@ -27,8 +27,7 @@ Workflow development
 
 Modern UI development
 
- * [Help](ModernUI/Help): Examples from the [UI Development Guide](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=2486983c-0cbe-47ce-b73e-f9ea666cdbe9)
- * [T290](ModernUI/T290): Source files for the [T290 Modern UI] training course
+ * [T290](ModernUI/T290): Source files for the [T290 Modern UI](https://openuni.acumatica.com/courses/development/t290-modern-ui/) training course
 
 Unit testing
 
