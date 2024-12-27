@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fcdb24a4-4c07-4256-8ffa-abf56ec93a69",
+		"_postman_id": "89eade11-a7cd-44ce-840a-cf3b5145d239",
 		"name": "REST API Examples (Integration Development Guide)",
 		"description": "This collection contains examples from the [REST API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n- Deploy a new Acumatica ERP instance with three tenants that are based on the U100, SalesDemo, and T100 datasets. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n    \n- Specify the base URL of the site in the _BaseURL_ variable of the collection.\n    \n- Specify the instance URL in the _InstanceURL_ variable of the collection.\n    \n- Make sure the URL of the Default/24.200.001 endpoint is in the _EndpointURL_ variable.\n    \n- Make sure the URL of the MANUFACTURING/24.200.001 endpoint is in the _ManufacturingEndpointURL_ variable.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the U100 data in the _TenantU100_, _BranchU100_, _UsernameU100_, and _PasswordU100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantT100_, _BranchT100_, _UsernameT100_, and _PasswordT100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantSalesDemo_, _BranchSalesDemo_, _UsernameSalesDemo_, and _PasswordSalesDemo_ variables.\n    \n\nOther variables are used by particular requests and are specified during execution of other requests. You do not need to feel their values manually.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -255,6 +255,94 @@
 								{
 									"key": "$expand",
 									"value": "MainContact"
+								}
+							]
+						},
+						"description": "This example shows the update of a record, which is described in [Update a Record](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=af48c02a-afbc-4fdb-b1e5-635ac7ebbaf1)."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Particular Fields of a Record",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"var branch = pm.collectionVariables.get('BranchU100');\r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Sales order number is 000029\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.OrderNbr.value).to.eql('000029');\r",
+									"});\r",
+									"pm.test(\"Discount amount for the first line is 5\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Details[0].DiscountAmount.value).to.eql(5);\r",
+									"});\r",
+									"pm.test(\"Order quantity for the first line is 2\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Details[0].DiscountAmount.value).to.eql(2);\r",
+									"});\r",
+									"//Sign out and set the next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"pm.execution.setNextRequest(\"Retrieve a Record by Key Fields\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"OrderNbr\": { \"value\": \"000029\" },\r\n    \"Details\": [\r\n        {\r\n             \"id\": \"a1d07920-a402-e911-b818-00155d408001\",\r\n              \"OrderQty\": { \"value\": 2 },\r\n              \"DiscountAmount\": { \"value\": 5 }  \r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{EndpointURL}}SalesOrder?$expand=Details&$select=Details/DiscountAmount,Details/OrderQty,OrderNbr,OrderType",
+							"host": [
+								"{{EndpointURL}}SalesOrder"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Details"
+								},
+								{
+									"key": "$select",
+									"value": "Details/DiscountAmount,Details/OrderQty,OrderNbr,OrderType"
 								}
 							]
 						},
@@ -10878,6 +10966,90 @@
 					"response": []
 				},
 				{
+					"name": "Retrieve a Sales Order by the Values of Specific Fields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The sales order has three detail lines\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.have.lengthOf(1);\r",
+									"    pm.expect(jsonResponse[0].Details).to.have.lengthOf(3);\r",
+									"    jsonResponse[0].Details.forEach(myFunction);\r",
+									"    function myFunction(item){\r",
+									"        if (item.InventoryID.value === \"CONGRILL\") {pm.collectionVariables.set(\"CONGRILL_detail_ID\",item.id);};\r",
+									"        if (item.InventoryID.value === \"AALEGO500\") {pm.collectionVariables.set(\"AALEGO500_detail_ID\",item.id);}\r",
+									"    }\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"pm.execution.setNextRequest(\"Update the Detail Lines of a Sales Order\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{EndpointURL}}/SalesOrder?$expand=Details&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
+							"host": [
+								"{{EndpointURL}}"
+							],
+							"path": [
+								"SalesOrder"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Details"
+								},
+								{
+									"key": "$filter",
+									"value": "OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'"
+								},
+								{
+									"key": "$select",
+									"value": "OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Create a Sales Order with the Unit of Measure Specified",
 					"event": [
 						{
@@ -11319,510 +11491,6 @@
 					"response": []
 				},
 				{
-					"name": "Apply Discounts to a Sales Order",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"entity\" :\r\n    {\r\n        \"OrderType\" : {\"value\" : \"SO\"},\r\n        \"OrderNbr\" : {\"value\" : \"000070\"}\r\n    },\r\n    \"parameters\":\r\n    {\r\n    }\r\n}"
-						},
-						"url": {
-							"raw": "{{EndpointURL}}SalesOrder/AutoRecalculateDiscounts",
-							"host": [
-								"{{EndpointURL}}SalesOrder"
-							],
-							"path": [
-								"AutoRecalculateDiscounts"
-							]
-						},
-						"description": "This example shows the application of discounts to a sales order, which is described in [Apply Discounts to a Sales Order](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=c6ad394e-9e1f-4dc4-ad50-bc4ab988fc1f)."
-					},
-					"response": []
-				},
-				{
-					"name": "Create a Return for Credit Without Validation of the Card Refund Against the Original Transaction",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"//Sign in to the tenant with SalesDemo data\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"var username = pm.collectionVariables.get('UsernameSalesDemo');\r",
-									"var password = pm.collectionVariables.get('PasswordSalesDemo');\r",
-									"var tenant = pm.collectionVariables.get('TenantSalesDemo');\r",
-									"var branch = pm.collectionVariables.get('BranchSalesDemo'); \r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"//Test the result\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"One payment line is included\", function (){\r",
-									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.Payments).to.have.lengthOf(1);\r",
-									"});\r",
-									"pm.test(\"Payment method is ACUPAYCC\", function (){\r",
-									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.PaymentMethod.value).to.eql('ACUPAYCC');\r",
-									"});\r",
-									"pm.test(\"Order total is 2500\", function (){\r",
-									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.OrderTotal.value).to.eql(2500);\r",
-									"});\r",
-									"pm.test(\"Status is Pending Processing\", function (){\r",
-									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.Payments[0].Status.value).to.be.eql('Pending Processing');\r",
-									"});\r",
-									"pm.test(\"PaymentRef is not empty\", function (){\r",
-									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.Payments[0].PaymentRef.value).to.be.not.empty;\r",
-									"});\r",
-									"//Sign out\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"pm.execution.setNextRequest('Retrieve a Sales Order by the Values of Specific Fields');"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"CurrencyID\": {\r\n        \"value\": \"USD\"\r\n    },\r\n    \"CustomerID\": {\r\n        \"value\": \"WIDGETCC\"\r\n    },\r\n    \"Date\": {\r\n        \"value\": \"2023-08-19T00:00:00+03:00\"\r\n    },\r\n    \"Hold\": {\r\n                \"value\": false\r\n            },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"PRODWHOLE\"\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"AACOMPUT01\"\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 5.000000\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 500.000000\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"EA\"\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"WHOLESALE\"\r\n            }\r\n         }\r\n    ],\r\n    \"OrderType\": {\r\n        \"value\": \"RC\"\r\n    },\r\n    \"PaymentMethod\": {\r\n        \"value\": \"ACUPAYCC\"\r\n    },\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\r\n                \"value\": \"2023-08-19T00:00:00+03:00\"\r\n            },\r\n            \"AppliedToOrder\": {\r\n                \"value\": 40.0000\r\n            },\r\n            \"CardAccountNbr\": {\r\n                \"value\": \"VISA:****-****-****-1111\"\r\n            },\r\n            \"CashAccount\": {\r\n                \"value\": \"10250\"\r\n            },\r\n            \"Currency\": {\r\n                \"value\": \"USD\"\r\n            },\r\n            \"DocType\": {\r\n                \"value\": \"Refund\"\r\n            },\r\n            \"Hold\": {\r\n                \"value\": false\r\n            },\r\n            \"OrigTransactionNbr\": {\r\n                \"value\": \"60165234282\"\r\n            },\r\n            \"PaymentAmount\": {\r\n                \"value\": 40.0000\r\n            },\r\n            \"PaymentMethod\": {\r\n                \"value\": \"ACUPAYCC\"\r\n            },\r\n            \"PaymentRef\": {\r\n                \"value\": \"601704533664\"\r\n            },\r\n            \"ProcessingCenterID\": {\r\n                \"value\": \"ACUPAYMENT\"\r\n            },\r\n            \"Refund\": {\r\n                \"value\": true\r\n            },\r\n            \"ValidateCCRefundOrigTransaction\": {\r\n                \"value\": false\r\n            }\r\n        }\r\n    ]\r\n}"
-						},
-						"url": {
-							"raw": "{{EndpointURL}}SalesOrder?$expand=Details,Payments",
-							"host": [
-								"{{EndpointURL}}SalesOrder"
-							],
-							"query": [
-								{
-									"key": "$expand",
-									"value": "Details,Payments"
-								}
-							]
-						},
-						"description": "This example shows how to create a return for credit with and without validation of the card refund against the original transaction, which is described in [Create a Return for Credit Without Validation of the Card Refund Against the Original Transaction](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=11c419cf-78ae-41cd-abad-897c00a96a43)."
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve a Sales Order by the Values of Specific Fields",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"The sales order has three detail lines\", function (){\r",
-									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse).to.have.lengthOf(1);\r",
-									"    pm.expect(jsonResponse[0].Details).to.have.lengthOf(3);\r",
-									"    jsonResponse[0].Details.forEach(myFunction);\r",
-									"    function myFunction(item){\r",
-									"        if (item.InventoryID.value === \"CONGRILL\") {pm.collectionVariables.set(\"CONGRILL_detail_ID\",item.id);};\r",
-									"        if (item.InventoryID.value === \"AALEGO500\") {pm.collectionVariables.set(\"AALEGO500_detail_ID\",item.id);}\r",
-									"    }\r",
-									"});\r",
-									"//Sign out and set next request\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"pm.execution.setNextRequest(\"Update the Detail Lines of a Sales Order\");"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"//Sign in to the tenant with T100 data\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"var username = pm.collectionVariables.get('UsernameT100');\r",
-									"var password = pm.collectionVariables.get('PasswordT100');\r",
-									"var tenant = pm.collectionVariables.get('TenantT100');\r",
-									"var branch = pm.collectionVariables.get('BranchT100'); \r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{EndpointURL}}/SalesOrder?$expand=Details&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
-							"host": [
-								"{{EndpointURL}}"
-							],
-							"path": [
-								"SalesOrder"
-							],
-							"query": [
-								{
-									"key": "$expand",
-									"value": "Details"
-								},
-								{
-									"key": "$filter",
-									"value": "OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'"
-								},
-								{
-									"key": "$select",
-									"value": "OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update the Detail Lines of a Sales Order",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"The sales order has two detail lines\", function (){\r",
-									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.Details).to.have.lengthOf(2);\r",
-									"});\r",
-									"pm.test(\"The sales order does not include CONGRILL\", function (){\r",
-									"    pm.expect(pm.response.text()).to.not.include(\"CONGRILL\");\r",
-									"});\r",
-									"pm.test(\"The sales order includes 5 AALEGO500 items\", function (){\r",
-									"    const jsonResponse = pm.response.json();\r",
-									"    jsonResponse.Details.forEach(myFunction);\r",
-									"    function myFunction(item){\r",
-									"        if (item.InventoryID.value === 'AALEGO500') {\r",
-									"            pm.expect(item.OrderQty.value).to.eq(5.0);};\r",
-									"    }\r",
-									"});\r",
-									"//Sign out and set next request\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"pm.execution.setNextRequest(\"Create a Shipment from a Sales Order\");"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"//Sign in to the tenant with T100 data\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"var username = pm.collectionVariables.get('UsernameT100');\r",
-									"var password = pm.collectionVariables.get('PasswordT100');\r",
-									"var tenant = pm.collectionVariables.get('TenantT100');\r",
-									"var branch = pm.collectionVariables.get('BranchT100'); \r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"OrderType\":{\"value\":\"SO\"},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"{{CONGRILL_detail_ID}}\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"{{AALEGO500_detail_ID}}\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
-						},
-						"url": {
-							"raw": "{{EndpointURL}}/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID&$expand=Details",
-							"host": [
-								"{{EndpointURL}}"
-							],
-							"path": [
-								"SalesOrder"
-							],
-							"query": [
-								{
-									"key": "$select",
-									"value": "OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID"
-								},
-								{
-									"key": "$expand",
-									"value": "Details"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create a Shipment from a Sales Order",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"//Sign in to the tenant with U100 data\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"var username = pm.collectionVariables.get('UsernameU100');\r",
-									"var password = pm.collectionVariables.get('PasswordU100');\r",
-									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"var branch = pm.collectionVariables.get('BranchU100'); \r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"//Test the result\r",
-									"pm.test(\"Status code is 202\", function () {\r",
-									"    pm.response.to.have.status(202);\r",
-									"});\r",
-									"//Check the status of the operation\r",
-									"if (pm.response.code === 202) {\r",
-									"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
-									"    var requestStatus = {\r",
-									"        url: url,\r",
-									"        method: 'GET',\r",
-									"        header: {\r",
-									"            'Content-Type': 'application/json'\r",
-									"        }\r",
-									"    };\r",
-									"    myFunction();\r",
-									"    function myFunction(){\r",
-									"        pm.sendRequest(requestStatus,  (error, response) => {\r",
-									"            if (error) {\r",
-									"                console.log(error);\r",
-									"            }\r",
-									"\r",
-									"            if(response.code != 204)\r",
-									"            {\r",
-									"                setTimeout(function(){},100000);\r",
-									"                myFunction();\r",
-									"            }\r",
-									"            else\r",
-									"            {\r",
-									"                var url = pm.collectionVariables.get('EndpointURL') + 'SalesOrder/42bb9a17-a402-e911-b818-00155d408001?$expand=Shipments';\r",
-									"                var requestSalesOrder = {\r",
-									"                    url: url,\r",
-									"                    method: 'GET',\r",
-									"                    header: {\r",
-									"                        'Content-Type': 'application/json'\r",
-									"                    }\r",
-									"                };\r",
-									"                pm.sendRequest(requestSalesOrder,  (error, response) => {\r",
-									"                    if (error) {\r",
-									"                        console.log(error);\r",
-									"                    }\r",
-									"\r",
-									"                    pm.test('Response for the sales order should be OK to process', () => {\r",
-									"                        pm.expect(error).to.equal(null);\r",
-									"                        pm.expect(response).to.have.property('code', 200);\r",
-									"                        pm.expect(response).to.have.property('status', 'OK');\r",
-									"                    });\r",
-									"                    pm.test(\"Sales order status is Shipping\", function (){\r",
-									"                        const jsonResponse = response.json();\r",
-									"                        pm.expect(jsonResponse.Status.value).to.be.eql('Shipping');\r",
-									"                        });\r",
-									"                    pm.test(\"One shipment is included\", function (){\r",
-									"                        const jsonResponse = response.json();\r",
-									"                        pm.expect(jsonResponse.Shipments).to.has.lengthOf(1);\r",
-									"                    });\r",
-									"                    //Sign out\r",
-									"                    var url = pm.collectionVariables.get('InstanceURL');\r",
-									"                    pm.acuFunc.singOutFunction(pm, url);\r",
-									"                });\r",
-									"            }\r",
-									"        });\r",
-									"    } \r",
-									"}\r",
-									"//Set the next request\r",
-									"pm.execution.setNextRequest(\"Create a Return Order for Invoices\");"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"entity\":{\r\n      \"id\":\"42bb9a17-a402-e911-b818-00155d408001\"\r\n  },\r\n  \"parameters\": {\r\n        \"ShipmentDate\": { \"value\": \"2025-08-20T00:00:00+03:00\" },\r\n        \"WarehouseID\": { \"value\": \"RETAIL\" }\r\n  }\r\n}"
-						},
-						"url": {
-							"raw": "{{EndpointURL}}SalesOrder/SalesOrderCreateShipment",
-							"host": [
-								"{{EndpointURL}}SalesOrder"
-							],
-							"path": [
-								"SalesOrderCreateShipment"
-							]
-						},
-						"description": "This example shows the creation of a shipment from a sales order, which is described in [Create a Shipment from a Sales Order](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=9a0b1037-c931-4eff-a974-15403d3227a7)."
-					},
-					"response": []
-				},
-				{
-					"name": "Create a Return Order for Invoices",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"//Sign in to the tenant with U100 data\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"var username = pm.collectionVariables.get('UsernameU100');\r",
-									"var password = pm.collectionVariables.get('PasswordU100');\r",
-									"var tenant = pm.collectionVariables.get('TenantU100');\r",
-									"var branch = pm.collectionVariables.get('BranchU100'); \r",
-									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"//Test the result\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Two detail lines are included\", function (){\r",
-									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.Details).to.has.lengthOf(2);\r",
-									"});\r",
-									"pm.test(\"Order type is RC\", function (){\r",
-									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.OrderType.value).to.eql('RC');\r",
-									"});\r",
-									"pm.test(\"Order total is 317.04\", function (){\r",
-									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.OrderTotal.value).to.eql(317.04);\r",
-									"});\r",
-									"//Sign out\r",
-									"var url = pm.collectionVariables.get('InstanceURL');\r",
-									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"//Set the next request\r",
-									"pm.execution.setNextRequest(\"Create a Sales Order with Tax Parameters Overridden\");\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"CustomerID\": { \"value\": \"GOODFOOD\" },\r\n    \"Description\": { \"value\": \"Return Order for Invoices\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": \"Invoice\" },\r\n            \"InvoiceNbr\": { \"value\": \"000062\" },\r\n            \"InventoryID\": { \"value\": \"INSTALL\" }\r\n        },\r\n        {\r\n            \"InvoiceType\": { \"value\": \"Invoice\" },\r\n            \"InvoiceNbr\": { \"value\": \"000030\" },\r\n            \"InventoryID\": { \"value\": \"ORANGES\" },\r\n            \"OrderQty\": { \"value\": \"50\" }\r\n        }\r\n    ],\r\n    \"LocationID\": { \"value\": \"MAIN\" },\r\n    \"OrderType\": { \"value\": \"RC\" }\r\n}"
-						},
-						"url": {
-							"raw": "{{EndpointURL}}SalesOrder?$expand=Details",
-							"host": [
-								"{{EndpointURL}}SalesOrder"
-							],
-							"query": [
-								{
-									"key": "$expand",
-									"value": "Details"
-								}
-							]
-						},
-						"description": "This example shows how to create a return order for invoices. This process is described in [Create a Return Order for Invoices](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ec34c7cf-6990-4bf2-9479-1c7a84ffc717)."
-					},
-					"response": []
-				},
-				{
 					"name": "Create a Sales Order with Tax Parameters Overridden",
 					"event": [
 						{
@@ -11864,7 +11532,7 @@
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"pm.execution.setNextRequest(\"Create a Shipment for Sales Orders\");"
+									"pm.execution.setNextRequest(\"Create a Return for Credit for Items with Lot or Serial Numbers\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -11983,6 +11651,273 @@
 							]
 						},
 						"description": "This example shows how to create a sales order with allocations. This process is described in [Create a Sales Order with Allocations](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=256b7d10-b33e-8ad8-3d03-cd0009e91527)."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Return for Credit for Multiple Invoices",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Two detail lines are included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Details).to.has.lengthOf(2);\r",
+									"});\r",
+									"pm.test(\"Order type is RC\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.OrderType.value).to.eql('RC');\r",
+									"});\r",
+									"pm.test(\"Order total is 317.04\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.OrderTotal.value).to.eql(317.04);\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"//Set the next request\r",
+									"pm.execution.setNextRequest(\"Create a Sales Order with Tax Parameters Overridden\");\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CustomerID\": { \"value\": \"GOODFOOD\" },\r\n    \"Description\": { \"value\": \"Return for Credit for Two Invoices\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": \"Invoice\" },\r\n            \"InvoiceNbr\": { \"value\": \"000062\" },\r\n            \"InventoryID\": { \"value\": \"INSTALL\" }\r\n        },\r\n        {\r\n            \"InvoiceType\": { \"value\": \"Invoice\" },\r\n            \"InvoiceNbr\": { \"value\": \"000030\" },\r\n            \"InventoryID\": { \"value\": \"ORANGES\" },\r\n            \"OrderQty\": { \"value\": \"50\" }\r\n        }\r\n    ],\r\n    \"LocationID\": { \"value\": \"MAIN\" },\r\n    \"OrderType\": { \"value\": \"RC\" }\r\n}"
+						},
+						"url": {
+							"raw": "{{EndpointURL}}SalesOrder?$expand=Details",
+							"host": [
+								"{{EndpointURL}}SalesOrder"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Details"
+								}
+							]
+						},
+						"description": "This example shows how to create a return order for invoices. This process is described in [Create a Return Order for Invoices](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ec34c7cf-6990-4bf2-9479-1c7a84ffc717)."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Return for Credit for Items with Lot or Serial Numbers",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameSalesDemo');\r",
+									"var password = pm.collectionVariables.get('PasswordSalesDemo');\r",
+									"var tenant = pm.collectionVariables.get('TenantSalesDemo');\r",
+									"var branch = pm.collectionVariables.get('BranchSalesDemo'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Two detail lines are included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Details).to.has.lengthOf(2);\r",
+									"});\r",
+									"pm.test(\"Order type is RC\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.OrderType.value).to.eql('RC');\r",
+									"});\r",
+									"pm.test(\"Order total is 188932.8\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.OrderTotal.value).to.eql(188932.8);\r",
+									"});\r",
+									"pm.collectionVariables.set('RCOrderNbr', pm.response.json().OrderNbr.value);\r",
+									"pm.collectionVariables.set('RCDetailLineNbr', pm.response.json().Details[1].LineNbr.value);\r",
+									"pm.collectionVariables.set('RCDetailAllocationLineNbr', \r",
+									"    pm.response.json().Details[1].Allocations[1].LineNbr.value);\r",
+									"pm.collectionVariables.set('RCDetailAllocationSplitLineNbr', \r",
+									"    pm.response.json().Details[1].Allocations[1].SplitLineNbr.value);\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"//Set the next request\r",
+									"pm.execution.setNextRequest(\"Update Allocations in a Return for Credit\");\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CustomerID\": { \"value\": \"MICROCHIP\" },\r\n    \"Description\": { \"value\": \"Return for Credit for Items with Lot or Serial Numbers\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": \"Invoice\" },\r\n            \"InvoiceNbr\": { \"value\": \"AR013584\" },\r\n            \"InvoiceLineNbr\": { \"value\": \"2\" },\r\n            \"OrderQty\": { \"value\": \"20\" },\r\n            \"UOM\": { \"value\": \"EA\" }\r\n        },\r\n        {\r\n            \"InvoiceType\": { \"value\": \"Invoice\" },\r\n            \"InvoiceNbr\": {  \"value\": \"AR013584\" },\r\n            \"InvoiceLineNbr\": { \"value\": \"3\" },\r\n            \"OrderQty\": { \"value\": \"6900\" },\r\n            \"UOM\": { \"value\": \"EA\" }\r\n        }\r\n    ],\r\n    \"LocationID\": { \"value\": \"MAIN\" },\r\n    \"OrderType\": {  \"value\": \"RC\" }\r\n}"
+						},
+						"url": {
+							"raw": "{{EndpointURL}}SalesOrder?$expand=Details,Details/Allocations",
+							"host": [
+								"{{EndpointURL}}SalesOrder"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Details,Details/Allocations"
+								}
+							]
+						},
+						"description": "This example shows how to create a return order for invoices. This process is described in [Create a Return Order for Invoices](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ec34c7cf-6990-4bf2-9479-1c7a84ffc717)."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Return for Credit Without Validation of the Card Refund Against the Original Transaction",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with SalesDemo data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameSalesDemo');\r",
+									"var password = pm.collectionVariables.get('PasswordSalesDemo');\r",
+									"var tenant = pm.collectionVariables.get('TenantSalesDemo');\r",
+									"var branch = pm.collectionVariables.get('BranchSalesDemo'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"One payment line is included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments).to.have.lengthOf(1);\r",
+									"});\r",
+									"pm.test(\"Payment method is ACUPAYCC\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.PaymentMethod.value).to.eql('ACUPAYCC');\r",
+									"});\r",
+									"pm.test(\"Order total is 2500\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.OrderTotal.value).to.eql(2500);\r",
+									"});\r",
+									"pm.test(\"Status is Pending Processing\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments[0].Status.value).to.be.eql('Pending Processing');\r",
+									"});\r",
+									"pm.test(\"PaymentRef is not empty\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Payments[0].PaymentRef.value).to.be.not.empty;\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"pm.execution.setNextRequest('Retrieve a Sales Order by the Values of Specific Fields');"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CurrencyID\": {\r\n        \"value\": \"USD\"\r\n    },\r\n    \"CustomerID\": {\r\n        \"value\": \"WIDGETCC\"\r\n    },\r\n    \"Date\": {\r\n        \"value\": \"2023-08-19T00:00:00+03:00\"\r\n    },\r\n    \"Hold\": {\r\n                \"value\": false\r\n            },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"PRODWHOLE\"\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"AACOMPUT01\"\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 5.000000\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 500.000000\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"EA\"\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"WHOLESALE\"\r\n            }\r\n         }\r\n    ],\r\n    \"OrderType\": {\r\n        \"value\": \"RC\"\r\n    },\r\n    \"PaymentMethod\": {\r\n        \"value\": \"ACUPAYCC\"\r\n    },\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\r\n                \"value\": \"2023-08-19T00:00:00+03:00\"\r\n            },\r\n            \"AppliedToOrder\": {\r\n                \"value\": 40.0000\r\n            },\r\n            \"CardAccountNbr\": {\r\n                \"value\": \"VISA:****-****-****-1111\"\r\n            },\r\n            \"CashAccount\": {\r\n                \"value\": \"10250\"\r\n            },\r\n            \"Currency\": {\r\n                \"value\": \"USD\"\r\n            },\r\n            \"DocType\": {\r\n                \"value\": \"Refund\"\r\n            },\r\n            \"Hold\": {\r\n                \"value\": false\r\n            },\r\n            \"OrigTransactionNbr\": {\r\n                \"value\": \"60165234282\"\r\n            },\r\n            \"PaymentAmount\": {\r\n                \"value\": 40.0000\r\n            },\r\n            \"PaymentMethod\": {\r\n                \"value\": \"ACUPAYCC\"\r\n            },\r\n            \"PaymentRef\": {\r\n                \"value\": \"601704533664\"\r\n            },\r\n            \"ProcessingCenterID\": {\r\n                \"value\": \"ACUPAYMENT\"\r\n            },\r\n            \"Refund\": {\r\n                \"value\": true\r\n            },\r\n            \"ValidateCCRefundOrigTransaction\": {\r\n                \"value\": false\r\n            }\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{EndpointURL}}SalesOrder?$expand=Details,Payments",
+							"host": [
+								"{{EndpointURL}}SalesOrder"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Details,Payments"
+								}
+							]
+						},
+						"description": "This example shows how to create a return for credit with and without validation of the card refund against the original transaction, which is described in [Create a Return for Credit Without Validation of the Card Refund Against the Original Transaction](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=11c419cf-78ae-41cd-abad-897c00a96a43)."
 					},
 					"response": []
 				},
@@ -12339,6 +12274,337 @@
 							]
 						},
 						"description": "This example shows how to create a sales order of the RM type. This process is described in [Create a Sales Order of the RM Type](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=83c0e442-ce9e-4e57-8a52-b8b22f56fcbe)."
+					},
+					"response": []
+				},
+				{
+					"name": "Update the Detail Lines of a Sales Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"The sales order has two detail lines\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Details).to.have.lengthOf(2);\r",
+									"});\r",
+									"pm.test(\"The sales order does not include CONGRILL\", function (){\r",
+									"    pm.expect(pm.response.text()).to.not.include(\"CONGRILL\");\r",
+									"});\r",
+									"pm.test(\"The sales order includes 5 AALEGO500 items\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    jsonResponse.Details.forEach(myFunction);\r",
+									"    function myFunction(item){\r",
+									"        if (item.InventoryID.value === 'AALEGO500') {\r",
+									"            pm.expect(item.OrderQty.value).to.eq(5.0);};\r",
+									"    }\r",
+									"});\r",
+									"//Sign out and set next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"pm.execution.setNextRequest(\"Create a Shipment from a Sales Order\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with T100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameT100');\r",
+									"var password = pm.collectionVariables.get('PasswordT100');\r",
+									"var tenant = pm.collectionVariables.get('TenantT100');\r",
+									"var branch = pm.collectionVariables.get('BranchT100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"OrderType\":{\"value\":\"SO\"},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"{{CONGRILL_detail_ID}}\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"{{AALEGO500_detail_ID}}\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "{{EndpointURL}}/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID&$expand=Details",
+							"host": [
+								"{{EndpointURL}}"
+							],
+							"path": [
+								"SalesOrder"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID"
+								},
+								{
+									"key": "$expand",
+									"value": "Details"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Allocations in a Return for Credit",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameSalesDemo');\r",
+									"var password = pm.collectionVariables.get('PasswordSalesDemo');\r",
+									"var tenant = pm.collectionVariables.get('TenantSalesDemo');\r",
+									"var branch = pm.collectionVariables.get('BranchSalesDemo'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Two detail lines are included\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Details).to.has.lengthOf(2);\r",
+									"});\r",
+									"pm.test(\"Lot serial number 1 is LREX15097\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Details[1].Allocations[0].LotSerialNbr.value).to.eql('LREX15097');\r",
+									"});\r",
+									"pm.test(\"Lot serial number 2 is LREX15098\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Details[1].Allocations[1].LotSerialNbr.value).to.eql('LREX15098');\r",
+									"});\r",
+									"//Sign out\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"//Set the next request\r",
+									"pm.execution.setNextRequest(\"Create a Shipment for Sales Orders\");\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"OrderNbr\": { \"value\": \"{{RCOrderNbr}}\" },\r\n    \"OrderType\": { \"value\": \"RC\" },\r\n    \"Details\": [\r\n        {\r\n            \"InventoryID\": { \"value\": \"FOODTEA06\" },\r\n            \"InvoiceNbr\": { \"value\": \"AR013584\" },\r\n            \"LineNbr\": { \"value\": {{RCDetailLineNbr}} },\r\n            \"Allocations\": [\r\n                {\r\n                    \"LineNbr\": { \"value\": {{RCDetailAllocationLineNbr}} },\r\n                    \"LotSerialNbr\": { \"value\": \"LREX15098\" },\r\n                    \"OrderNbr\": { \"value\": \"{{RCOrderNbr}}\" },\r\n                    \"OrderType\": { \"value\": \"RC\" },\r\n                    \"SplitLineNbr\": { \"value\": {{RCDetailAllocationSplitLineNbr}} }\r\n                }\r\n            ],\r\n            \"WarehouseID\": { \"value\": \"WHOLESALE\" }\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{EndpointURL}}SalesOrder?$expand=Details,Details/Allocations",
+							"host": [
+								"{{EndpointURL}}SalesOrder"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Details,Details/Allocations"
+								}
+							]
+						},
+						"description": "This example shows how to create a return order for invoices. This process is described in [Create a Return Order for Invoices](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ec34c7cf-6990-4bf2-9479-1c7a84ffc717)."
+					},
+					"response": []
+				},
+				{
+					"name": "Apply Discounts to a Sales Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"entity\" :\r\n    {\r\n        \"OrderType\" : {\"value\" : \"SO\"},\r\n        \"OrderNbr\" : {\"value\" : \"000070\"}\r\n    },\r\n    \"parameters\":\r\n    {\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{EndpointURL}}SalesOrder/AutoRecalculateDiscounts",
+							"host": [
+								"{{EndpointURL}}SalesOrder"
+							],
+							"path": [
+								"AutoRecalculateDiscounts"
+							]
+						},
+						"description": "This example shows the application of discounts to a sales order, which is described in [Apply Discounts to a Sales Order](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=c6ad394e-9e1f-4dc4-ad50-bc4ab988fc1f)."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Shipment from a Sales Order",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with U100 data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameU100');\r",
+									"var password = pm.collectionVariables.get('PasswordU100');\r",
+									"var tenant = pm.collectionVariables.get('TenantU100');\r",
+									"var branch = pm.collectionVariables.get('BranchU100'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 202\", function () {\r",
+									"    pm.response.to.have.status(202);\r",
+									"});\r",
+									"//Check the status of the operation\r",
+									"if (pm.response.code === 202) {\r",
+									"    var url = pm.collectionVariables.get('BaseURL') + pm.response.headers.get(\"Location\");\r",
+									"    var requestStatus = {\r",
+									"        url: url,\r",
+									"        method: 'GET',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        }\r",
+									"    };\r",
+									"    myFunction();\r",
+									"    function myFunction(){\r",
+									"        pm.sendRequest(requestStatus,  (error, response) => {\r",
+									"            if (error) {\r",
+									"                console.log(error);\r",
+									"            }\r",
+									"\r",
+									"            if(response.code != 204)\r",
+									"            {\r",
+									"                setTimeout(function(){},100000);\r",
+									"                myFunction();\r",
+									"            }\r",
+									"            else\r",
+									"            {\r",
+									"                var url = pm.collectionVariables.get('EndpointURL') + 'SalesOrder/42bb9a17-a402-e911-b818-00155d408001?$expand=Shipments';\r",
+									"                var requestSalesOrder = {\r",
+									"                    url: url,\r",
+									"                    method: 'GET',\r",
+									"                    header: {\r",
+									"                        'Content-Type': 'application/json'\r",
+									"                    }\r",
+									"                };\r",
+									"                pm.sendRequest(requestSalesOrder,  (error, response) => {\r",
+									"                    if (error) {\r",
+									"                        console.log(error);\r",
+									"                    }\r",
+									"\r",
+									"                    pm.test('Response for the sales order should be OK to process', () => {\r",
+									"                        pm.expect(error).to.equal(null);\r",
+									"                        pm.expect(response).to.have.property('code', 200);\r",
+									"                        pm.expect(response).to.have.property('status', 'OK');\r",
+									"                    });\r",
+									"                    pm.test(\"Sales order status is Shipping\", function (){\r",
+									"                        const jsonResponse = response.json();\r",
+									"                        pm.expect(jsonResponse.Status.value).to.be.eql('Shipping');\r",
+									"                        });\r",
+									"                    pm.test(\"One shipment is included\", function (){\r",
+									"                        const jsonResponse = response.json();\r",
+									"                        pm.expect(jsonResponse.Shipments).to.has.lengthOf(1);\r",
+									"                    });\r",
+									"                    //Sign out\r",
+									"                    var url = pm.collectionVariables.get('InstanceURL');\r",
+									"                    pm.acuFunc.singOutFunction(pm, url);\r",
+									"                });\r",
+									"            }\r",
+									"        });\r",
+									"    } \r",
+									"}\r",
+									"//Set the next request\r",
+									"pm.execution.setNextRequest(\"Create a Return for Credit for Multiple Invoices\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"entity\":{\r\n      \"id\":\"42bb9a17-a402-e911-b818-00155d408001\"\r\n  },\r\n  \"parameters\": {\r\n        \"ShipmentDate\": { \"value\": \"2025-08-20T00:00:00+03:00\" },\r\n        \"WarehouseID\": { \"value\": \"RETAIL\" }\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "{{EndpointURL}}SalesOrder/SalesOrderCreateShipment",
+							"host": [
+								"{{EndpointURL}}SalesOrder"
+							],
+							"path": [
+								"SalesOrderCreateShipment"
+							]
+						},
+						"description": "This example shows the creation of a shipment from a sales order, which is described in [Create a Shipment from a Sales Order](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=9a0b1037-c931-4eff-a974-15403d3227a7)."
 					},
 					"response": []
 				},
@@ -18000,6 +18266,22 @@
 		},
 		{
 			"key": "StockItemFileUrl",
+			"value": ""
+		},
+		{
+			"key": "RCOrderNbr",
+			"value": ""
+		},
+		{
+			"key": "RCDetailAllocationLineNbr",
+			"value": ""
+		},
+		{
+			"key": "RCDetailAllocationSplitLineNbr",
+			"value": ""
+		},
+		{
+			"key": "RCDetailLineNbr",
 			"value": ""
 		}
 	]
