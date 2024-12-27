@@ -192,7 +192,8 @@
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)\r",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -214,9 +215,10 @@
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"pm.execution.setNextRequest(\"Retrieve a Record by Key Fields\");"
+									"pm.execution.setNextRequest(\"Update Particular Fields of a Record\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -300,7 +302,7 @@
 									"});\r",
 									"pm.test(\"Order quantity for the first line is 2\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.Details[0].DiscountAmount.value).to.eql(2);\r",
+									"    pm.expect(jsonResponse.Details[0].OrderQty.value).to.eql(2);\r",
 									"});\r",
 									"//Sign out and set the next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
