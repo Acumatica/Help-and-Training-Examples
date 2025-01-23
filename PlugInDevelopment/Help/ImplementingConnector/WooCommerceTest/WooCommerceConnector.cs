@@ -3,21 +3,19 @@ using System;
 using PX.Commerce.BigCommerce.API.REST;
 using PX.Commerce.Core.REST;
 using PX.Commerce.Core;
-using CommonServiceLocator;
 using PX.Data.BQL;
+using PX.Async;
 using System.Collections.Generic;
 using PX.Common;
 using System.Linq;
 using PX.Data;
 using System.Threading.Tasks;
 using System.Threading;
-using PX.Concurrency;
 using RestSharp;
 
 namespace WooCommerceTest
 {
-    public class WooCommerceConnector : BCConnectorBase<WooCommerceConnector>, 
-        IConnector
+    public class WooCommerceConnector : BCConnectorBase<WooCommerceConnector>
     {
         public const string TYPE = "WOO";
         public const string NAME = "WooCommerce";
@@ -30,10 +28,7 @@ namespace WooCommerceTest
         public override string ConnectorType { get => TYPE; }
         public override string ConnectorName { get => NAME; }
 
-        ILongOperationManager IConnector.LongOperationManager => 
-            throw new NotImplementedException();
-
-        public void NavigateExtern(ISyncStatus status, 
+        public override void NavigateExtern(ISyncStatus status, 
             ISyncDetail detail = null)
         {
             if (status?.ExternID == null) return;
@@ -56,12 +51,10 @@ namespace WooCommerceTest
                 PXBaseRedirectException.WindowMode.New, string.Empty);
         }
 
-        public virtual async Task<ConnectorOperationResult> Process(
+        public override async Task<ConnectorOperationResult> Process(
             ConnectorOperation operation, int?[] syncIDs = null,
             CancellationToken cancellationToken = default)
         {
-            LogInfo(operation.LogScope(), BCMessages.LogConnectorStarted, NAME);
-
             EntityInfo info = GetEntities().FirstOrDefault(e => 
                 e.EntityType == operation.EntityType);
             using (IProcessor graph = (IProcessor)CreateInstance(
@@ -72,7 +65,7 @@ namespace WooCommerceTest
             }
         }
 
-        public DateTime GetSyncTime(ConnectorOperation operation)
+        public override async Task<DateTime> GetSyncTime(ConnectorOperation operation)
         {
             BCBindingWooCommerce binding = BCBindingWooCommerce.PK.Find(this, 
                 operation.Binding);
@@ -81,11 +74,10 @@ namespace WooCommerceTest
             dtLocal = PX.Common.PXTimeZoneInfo.ConvertTimeFromUtc(dtUtc, 
                 PX.Common.LocaleInfo.GetTimeZone());
 
-
             return dtLocal;
         }
 
-        public virtual async Task ProcessHook(
+        public override async Task ProcessHook(
             IEnumerable<BCExternQueueMessage> messages, 
                 CancellationToken cancellationToken = default)
         {
@@ -131,17 +123,6 @@ namespace WooCommerceTest
                 BCEntitiesAttribute.Address) return fieldsList;
 
             return fieldsList;
-        }
-
-        Task<IEnumerable<TInfo>> IConnector.GetDefaultShippingMethods<TInfo>(
-            int? bindingID)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<DateTime> IConnector.GetSyncTime(ConnectorOperation operation)
-        {
-            throw new NotImplementedException();
         }
 
         public override Task StartWebHook(string baseUrl, BCWebHook hook, 
