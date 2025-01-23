@@ -1,5 +1,23 @@
 # Castle Core Changelog
 
+## 5.1.1 (2022-12-30)
+
+Bugfixes:
+- Proxies using records derived from a base generic record broken using .NET 6 compiler (@CesarD, #632)
+- Failure proxying type that has a non-inheritable custom attribute type applied where `null` argument is given for array parameter  (@stakx, #637)
+- Nested custom attribute types do not get replicated (@stakx, #638)
+
+## 5.1.0 (2022-08-02)
+
+Enhancements:
+- Support for covariant method returns (@stakx, #619)
+- Performance improvement with proxy type generation for class proxies (without target). Abstract class methods now reuse a predefined invocation type (like methods of interface proxies without target; see explanation below at version 5.0.0 enhancements) (@stakx, #626)
+
+Bugfixes:
+- DynamicProxy emits invalid metadata for redeclared event (@stakx, #590)
+- Proxies using records with a base class broken using .NET 6 compiler (@ajcvickers, #601)
+- `MissingMethodException` when proxying interfaces containing sealed methods (@stakx, #621)
+
 ## 5.0.0 (2022-05-11)
 
 Enhancements:

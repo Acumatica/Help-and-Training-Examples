@@ -9,6 +9,7 @@ namespace PhoneRepairShop
         #region Event Handlers
         protected void _(Events.RowSelected<InventoryItem> e)
         {
+            if (e.Row == null) return;
             InventoryItem item = e.Row;
             InventoryItemExt itemExt = PXCache<InventoryItem>.
                 GetExtension<InventoryItemExt>(item);

@@ -246,8 +246,8 @@ namespace PhoneRepairShop
         //Make the default warranty unavailable for editing.
         protected virtual void _(Events.RowSelected<RSSVWarranty> e)
         {
+            if (e.Row == null) return;
             RSSVWarranty line = e.Row;
-            if (line == null) return;
             PXUIFieldAttribute.SetEnabled<RSSVWarranty.contractID>(e.Cache,
                 line, line.DefaultWarranty != true);
         }
