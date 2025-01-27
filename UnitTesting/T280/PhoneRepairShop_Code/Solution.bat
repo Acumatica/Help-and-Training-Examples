@@ -1,1 +1,1 @@
-"C:\Trainings\UpdateTCourses\App_Data\Projects\PhoneRepairShop_Code\PhoneRepairShop_Code.sln"
+"C:\TCourseInstances\SmartFix_T280\App_Data\Projects\PhoneRepairShop_Code\PhoneRepairShop_Code.sln"

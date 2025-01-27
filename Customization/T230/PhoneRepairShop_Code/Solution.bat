@@ -1,1 +1,1 @@
-"C:\AcumaticaERP\PhoneRepairShop\App_Data\Projects\PhoneRepairShop\PhoneRepairShop_code.sln"
+"C:\TCourseInstances\SmartFix_T230\App_Data\Projects\PhoneRepairShop\PhoneRepairShop_code.sln"
