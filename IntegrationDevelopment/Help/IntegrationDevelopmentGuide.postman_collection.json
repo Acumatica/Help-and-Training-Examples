@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1382b7d6-bbf8-49a6-856f-cbb478a68539",
+		"_postman_id": "032abf8e-45dc-4954-a0ed-29121b883f50",
 		"name": "REST API Examples (Integration Development Guide)",
 		"description": "This collection contains examples from the [REST API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n- Deploy a new Acumatica ERP instance with three tenants that are based on the U100, SalesDemo, and T100 datasets. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n    \n- Specify the base URL of the site in the _BaseURL_ variable of the collection.\n    \n- Specify the instance URL in the _InstanceURL_ variable of the collection.\n    \n- Make sure the URL of the Default/24.200.001 endpoint is in the _EndpointURL_ variable.\n    \n- Make sure the URL of the MANUFACTURING/24.200.001 endpoint is in the _ManufacturingEndpointURL_ variable.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the U100 data in the _TenantU100_, _BranchU100_, _UsernameU100_, and _PasswordU100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantT100_, _BranchT100_, _UsernameT100_, and _PasswordT100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantSalesDemo_, _BranchSalesDemo_, _UsernameSalesDemo_, and _PasswordSalesDemo_ variables.\n    \n\nOther variables are used by particular requests and are specified during execution of other requests. You do not need to feel their values manually.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -8457,6 +8457,180 @@
 				}
 			],
 			"description": "This folder contains requests that use the [PayrollWCCCode](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=1766e674-3a84-4167-ad23-e931d7f65967) entity."
+		},
+		{
+			"name": "ProductionOrderDatesProcess",
+			"item": [
+				{
+					"name": "Update Dates in Production Orders",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with SalesDemo data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameSalesDemo');\r",
+									"var password = pm.collectionVariables.get('PasswordSalesDemo');\r",
+									"var tenant = pm.collectionVariables.get('TenantSalesDemo');\r",
+									"var branch = pm.collectionVariables.get('BranchSalesDemo'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Start date is 2024-01-08\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Orders[0].StartDate.value).to.eql('2024-01-08T00:00:00+00:00');\r",
+									"});\r",
+									"pm.test(\"End date is 2026-01-30\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.Orders[0].EndDate.value).to.eql('2026-01-30T00:00:00+00:00');\r",
+									"});\r",
+									"//Sign out and set the next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"pm.execution.setNextRequest('');"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Orders\": [\r\n        {\r\n            \"EndDate\": {\r\n                \"value\": \"2026-01-30T00:00:00+00:00\"\r\n            },\r\n            \"OrderType\": {\r\n                \"value\": \"RO\"\r\n            },\r\n            \"ProductionNbr\": {\r\n                \"value\": \"AM000037\"\r\n            },\r\n            \"StartDate\": {\r\n                \"value\": \"2024-01-08T00:00:00+00:00\"\r\n            },\r\n            \"Operations\": [\r\n                {\r\n                    \"id\": \"798e7128-ac8a-ec11-817b-9b18f6aae9b8\",\r\n                    \"OperationNbr\": {\r\n                        \"value\": \"0010\"\r\n                    },\r\n                    \"WorkCenter\": {\r\n                        \"value\": \"WC70\"\r\n                    },\r\n                    \"EndDate\": {\r\n                        \"value\": \"2026-01-30T00:00:00+00:00\"\r\n                    },\r\n                    \"StartDate\": {\r\n                        \"value\": \"2024-01-08T00:00:00+00:00\"\r\n                    }\r\n                },\r\n                {\r\n                    \"id\": \"838e7128-ac8a-ec11-817b-9b18f6aae9b8\",\r\n                    \"OperationNbr\": {\r\n                        \"value\": \"0030\"\r\n                    },\r\n                    \"WorkCenter\": {\r\n                        \"value\": \"WC10\"\r\n                    },\r\n                    \"EndDate\": {\r\n                        \"value\": \"2026-01-30T00:00:00+00:00\"\r\n                    },\r\n                    \"StartDate\": {\r\n                        \"value\": \"2024-01-08T00:00:00+00:00\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{ManufacturingEndpointURL}}ProductionOrderDatesProcess?$expand=Orders,Orders/Operations",
+							"host": [
+								"{{ManufacturingEndpointURL}}ProductionOrderDatesProcess"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Orders,Orders/Operations"
+								}
+							]
+						},
+						"description": "This example shows how to update dates in multiple production orders. This process is described in [Update Dates in Production Orders](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=80787b47-28fa-4ce7-b5d5-84a3f843eed7)."
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains requests that use the [ProductionOrderDatesProcess](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=50627e8e-aa1c-4bb5-9ed5-85ed48bf1025) entity."
+		},
+		{
+			"name": "ProductionOrderDetail",
+			"item": [
+				{
+					"name": "Update Dates in a Production Order",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Sign in to the tenant with SalesDemo data\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"var username = pm.collectionVariables.get('UsernameSalesDemo');\r",
+									"var password = pm.collectionVariables.get('PasswordSalesDemo');\r",
+									"var tenant = pm.collectionVariables.get('TenantSalesDemo');\r",
+									"var branch = pm.collectionVariables.get('BranchSalesDemo'); \r",
+									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Test the result\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"SchedulingMethod is User Dates\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.SchedulingMethod.value).to.eql('User Dates');\r",
+									"});\r",
+									"pm.test(\"Start date is 2025-01-08\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.StartDate.value).to.eql('2025-01-08T00:00:00+00:00');\r",
+									"});\r",
+									"pm.test(\"End date is 2025-01-30\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.EndDate.value).to.eql('2025-01-30T00:00:00+00:00');\r",
+									"});\r",
+									"//Sign out and set the next request\r",
+									"var url = pm.collectionVariables.get('InstanceURL');\r",
+									"pm.acuFunc.singOutFunction(pm, url);\r",
+									"pm.execution.setNextRequest('Update Dates in Production Orders');"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"EndDate\": {\r\n        \"value\": \"2025-01-30T00:00:00+00:00\"\r\n    },\r\n    \"OrderType\": {\r\n        \"value\": \"RO\"\r\n    },\r\n    \"ProductionNbr\": {\r\n        \"value\": \"AM000037\"\r\n    },\r\n    \"SchedulingMethod\": {\r\n        \"value\": \"User Dates\"\r\n    },\r\n    \"StartDate\": {\r\n        \"value\": \"2025-01-08T00:00:00+00:00\"\r\n    },\r\n    \"Operations\": [\r\n        {\r\n            \"id\": \"798e7128-ac8a-ec11-817b-9b18f6aae9b8\",\r\n            \"OperationNbr\": {\r\n                \"value\": \"0010\"\r\n            },\r\n            \"WorkCenter\": {\r\n                \"value\": \"WC70\"\r\n            },\r\n            \"EndDate\": {\r\n                \"value\": \"2025-01-30T00:00:00+00:00\"\r\n            },\r\n            \"StartDate\": {\r\n                \"value\": \"2025-01-08T00:00:00+00:00\"\r\n            }\r\n        },\r\n        {\r\n            \"id\": \"838e7128-ac8a-ec11-817b-9b18f6aae9b8\",\r\n            \"OperationNbr\": {\r\n                \"value\": \"0030\"\r\n            },\r\n            \"WorkCenter\": {\r\n                \"value\": \"WC10\"\r\n            },\r\n            \"EndDate\": {\r\n                \"value\": \"2025-01-30T00:00:00+00:00\"\r\n            },\r\n            \"StartDate\": {\r\n                \"value\": \"2025-01-08T00:00:00+00:00\"\r\n            }\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{ManufacturingEndpointURL}}ProductionOrderDetail?$expand=Operations",
+							"host": [
+								"{{ManufacturingEndpointURL}}ProductionOrderDetail"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Operations"
+								}
+							]
+						},
+						"description": "This example shows how to update dates in a production order and its operations. This process is described in [Update Dates in a Production Order](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=e037f35f-eae8-4e9d-9e2a-7df314d96fcc)."
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains requests that use the [ProductionOrderDetail](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=59c10b4c-44e0-4ba6-a53c-6875be9200db) entity."
 		},
 		{
 			"name": "ProFormaInvoice",
@@ -18115,7 +18289,7 @@
 		},
 		{
 			"key": "ManufacturingEndpointURL",
-			"value": "{{ManufacturingInstanceURL}}entity/MANUFACTURING/24.200.001/",
+			"value": "{{ManufacturingInstanceURL}}entity/MANUFACTURING/25.100.001/",
 			"type": "string"
 		},
 		{
