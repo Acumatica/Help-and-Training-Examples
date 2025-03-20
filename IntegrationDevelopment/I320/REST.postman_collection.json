@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fb0183f4-77b2-4a15-90d4-299bd05e3beb",
+		"_postman_id": "56a84dcf-2880-4a24-8f1e-ab571b3dda25",
 		"name": "MyStoreIntegration_DataRetrieval",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
@@ -10,7 +10,7 @@
 			"name": "Part 1: Authorization of the Application to Work with the Web Service",
 			"item": [
 				{
-					"name": "Lesson 1.2: Requesting a Token Manually",
+					"name": "Activity 1.2.1: To Configure a REST Application to Use OAuth 2.0",
 					"event": [
 						{
 							"listen": "test",
@@ -21,7 +21,7 @@
 									"});\r",
 									"var responseData = pm.response.json();\r",
 									"pm.collectionVariables.set(\"accessToken\",responseData.access_token);\r",
-									"pm.execution.setNextRequest(\"Lesson 2.1: Retrieving a List of Sales Orders with Details and Related Shipments\");"
+									"pm.execution.setNextRequest(\"Activity 2.1.1: To Retrieve a List of Sales Orders with Details and Related Shipments\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -90,7 +90,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 1.3: Signing Out from Acumatica ERP",
+					"name": "Activity 1.3.1: To Sign Out from Acumatica ERP",
 					"event": [
 						{
 							"listen": "test",
@@ -174,7 +174,7 @@
 			"name": "Part 2: Performance Optimization",
 			"item": [
 				{
-					"name": "Lesson 2.1: Retrieving a List of Sales Orders with Details and Related Shipments",
+					"name": "Activity 2.1.1: To Retrieve a List of Sales Orders with Details and Related Shipments",
 					"event": [
 						{
 							"listen": "test",
@@ -205,7 +205,7 @@
 									"pm.test(\"Response does not contain CurrencyID\", function () {\r",
 									"    pm.expect(pm.response.text()).to.not.include(\"CurrencyID\");\r",
 									"});\r",
-									"pm.execution.setNextRequest(\"Lesson 2.2: Retrieving a List of Sales Orders in Batches (First Five Records)\");"
+									"pm.execution.setNextRequest(\"Activity 2.2.1: To Retrieve a List of Sales Orders in Batches (First Request)\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -263,7 +263,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 2.2: Retrieving a List of Sales Orders in Batches (First Five Records)",
+					"name": "Activity 2.2.1: To Retrieve a List of Sales Orders in Batches (First Request)",
 					"event": [
 						{
 							"listen": "test",
@@ -276,7 +276,7 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse).to.have.lengthOf(5);\r",
 									"});\r",
-									"pm.execution.setNextRequest(\"Lesson 2.2: Retrieving a List of Sales Orders in Batches (Next Five Records)\");"
+									"pm.execution.setNextRequest(\"Activity 2.2.1: To Retrieve a List of Sales Orders in Batches (Second Request)\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -339,7 +339,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 2.2: Retrieving a List of Sales Orders in Batches (Next Five Records)",
+					"name": "Activity 2.2.1: To Retrieve a List of Sales Orders in Batches (Second Request)",
 					"event": [
 						{
 							"listen": "test",
@@ -352,7 +352,7 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse).to.have.lengthOf(4);\r",
 									"});\r",
-									"pm.execution.setNextRequest(\"Lesson 2.3: Retrieving the List of Payments (Failed Request)\");"
+									"pm.execution.setNextRequest(\"Activity 2.3.1: Failed Request\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -414,7 +414,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 2.3: Retrieving the List of Payments (Failed Request)",
+					"name": "Activity 2.3.1: Failed Request",
 					"event": [
 						{
 							"listen": "test",
@@ -426,7 +426,7 @@
 									"pm.test(\"Body contains the exception message\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"Optimization cannot be performed\");\r",
 									"});\r",
-									"pm.execution.setNextRequest(\"Lesson 2.3: Retrieving the List of Key Fields of Payments\");"
+									"pm.execution.setNextRequest(\"Activity 2.3.1: Request That Retrieves the Key Fields\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -484,7 +484,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 2.3: Retrieving the List of Key Fields of Payments",
+					"name": "Activity 2.3.1: Request That Retrieves the Key Fields",
 					"event": [
 						{
 							"listen": "test",
@@ -503,7 +503,7 @@
 									"    pm.expect(jsonData[0].ReferenceNbr.value).to.be.not.null;\r",
 									"    pm.expect(jsonData[0].Type.value).to.be.not.null;\r",
 									"});\r",
-									"pm.execution.setNextRequest(\"Lesson 2.3: Retrieving Payments by Key Fields\");"
+									"pm.execution.setNextRequest(\"Activity 2.3.1: Request That Retrieves a Single Payment\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -557,7 +557,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 2.3: Retrieving Payments by Key Fields",
+					"name": "Activity 2.3.1: Request That Retrieves a Single Payment",
 					"event": [
 						{
 							"listen": "test",
@@ -570,7 +570,7 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.ApplicationHistory).to.have.lengthOf(1);\r",
 									"});\r",
-									"pm.execution.setNextRequest(\"Lesson 3.1: Retrieving the Stock Item\");"
+									"pm.execution.setNextRequest(\"Activity 3.1.1: To Retrieve the List of Attachments of a Stock Item\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -651,7 +651,7 @@
 			"name": "Part 3: Retrieval of Attachments",
 			"item": [
 				{
-					"name": "Lesson 3.1: Retrieving the Stock Item",
+					"name": "Activity 3.1.1: To Retrieve the List of Attachments of a Stock Item",
 					"event": [
 						{
 							"listen": "test",
@@ -666,9 +666,10 @@
 									"});\r",
 									"const jsonData = pm.response.json();\r",
 									"pm.collectionVariables.set(\"fileRef\", jsonData.files[0].href);\r",
-									"postman.setNextRequest(\"Lesson 3.1: Retrieving the File\");"
+									"postman.setNextRequest(\"Activity 3.1.2: To Retrieve the File Attached to a Stock Item\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -677,7 +678,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -719,7 +721,7 @@
 					"response": []
 				},
 				{
-					"name": "Lesson 3.1: Retrieving the File",
+					"name": "Activity 3.1.2: To Retrieve the File Attached to a Stock Item",
 					"event": [
 						{
 							"listen": "test",
@@ -731,9 +733,10 @@
 									"pm.test(\"The stock item contains a JPG file\", function (){\r",
 									"    pm.expect(pm.response.text()).to.include(\"Exif\");\r",
 									"});\r",
-									"postman.setNextRequest(\"Lesson 1.3: Signing Out from Acumatica ERP\");"
+									"postman.setNextRequest(\"Activity 1.3.1: To Sign Out from Acumatica ERP\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -742,7 +745,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
