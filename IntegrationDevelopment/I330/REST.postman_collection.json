@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "16f11f15-01e0-4038-87bd-d7450ff25244",
+		"_postman_id": "3857aecb-008d-486b-9487-96a9dfc4cbc7",
 		"name": "MyStoreIntegration_DataManipulation",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
@@ -21,7 +21,7 @@
 									"});\r",
 									"var responseData = pm.response.json();\r",
 									"pm.collectionVariables.set(\"accessToken\",responseData.access_token);\r",
-									"postman.setNextRequest(\"Activity 2.1.1: To Update a Customer Record\");"
+									"postman.setNextRequest(\"Activity 1.1.1: To Create a Shipment for Multiple Sales Orders\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -741,7 +741,7 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.Status.value).to.equal(\"Open\");\r",
 									"});\r",
-									"pm.execution.setNextRequest(\"Activity 5.1.1: To Add a Note to a Stock Item\");"
+									"pm.execution.setNextRequest(\"Activity 4.1.1: To Add a Note to a Stock Item\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -790,79 +790,10 @@
 			]
 		},
 		{
-			"name": "Part 4: Processing of Payments by Credit Cards",
+			"name": "Part 4: Attachment of Files and Notes",
 			"item": [
 				{
-					"name": "Activity 4.1.1: To Register a Customer Credit Card",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\t\"PaymentMethod\":{\"value\":\"VISA\"},\r\n\t\"CustomerID\":{\"value\":\"C000000003\"},\r\n\t\"CustomerProfileID\":{\"value\":\"37100472\"},\r\n\t\"CashAccount\":{\"value\":\"102050MYST\"},\r\n\t\"Details\":[\r\n\t\t{\r\n\t\t\t\"Name\":{\"value\":\"Payment Profile ID\"},\r\n\t\t\t\"Value\":{\"value\":\"911169122\"}\r\n\t\t}\r\n\t]\r\n}"
-						},
-						"url": {
-							"raw": "{{DefaultEndpointURL}}/CustomerPaymentMethod?$select=CardAccountNbr,Details/Name&$expand=Details",
-							"host": [
-								"{{DefaultEndpointURL}}"
-							],
-							"path": [
-								"CustomerPaymentMethod"
-							],
-							"query": [
-								{
-									"key": "$select",
-									"value": "CardAccountNbr,Details/Name"
-								},
-								{
-									"key": "$expand",
-									"value": "Details"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Part 5: Attachment of Files and Notes",
-			"item": [
-				{
-					"name": "Activity 5.1.1: To Add a Note to a Stock Item",
+					"name": "Activity 4.1.1: To Add a Note to a Stock Item",
 					"event": [
 						{
 							"listen": "test",
@@ -875,7 +806,7 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.note.value).to.equal(\"My note\");\r",
 									"});\r",
-									"pm.execution.setNextRequest(\"Activity 5.2.1: To Obtain the URL for the Attaching of a File\");"
+									"pm.execution.setNextRequest(\"Activity 4.2.1: To Obtain the URL for the Attaching of a File\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -929,7 +860,7 @@
 					"response": []
 				},
 				{
-					"name": "Activity 5.2.1: To Obtain the URL for the Attaching of a File",
+					"name": "Activity 4.2.1: To Obtain the URL for the Attaching of a File",
 					"event": [
 						{
 							"listen": "test",
@@ -987,7 +918,7 @@
 					"response": []
 				},
 				{
-					"name": "Activity 5.2.2: To Attach a File to the Stock Item",
+					"name": "Activity 4.2.2: To Attach a File to the Stock Item",
 					"event": [
 						{
 							"listen": "test",
