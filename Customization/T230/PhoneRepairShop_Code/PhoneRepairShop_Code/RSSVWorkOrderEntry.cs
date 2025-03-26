@@ -2,6 +2,7 @@ using PX.Data;
 using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
 using PX.Objects.IN;
+using System.Linq;
 
 namespace PhoneRepairShop
 {
@@ -66,8 +67,12 @@ namespace PhoneRepairShop
             foreach (RSSVWorkOrderItem item in repairItems)
             {
                 RSSVRepairItem origItem = SelectFrom<RSSVRepairItem>.
-                        Where<RSSVRepairItem.inventoryID.IsEqual<@P.AsInt>>.View.
-                        Select(this, item.InventoryID);
+                    Where<RSSVRepairItem.serviceID.IsEqual<@P.AsInt>.
+                    And<RSSVRepairItem.deviceID.IsEqual<@P.AsInt>>.
+                    And<RSSVRepairItem.inventoryID.IsEqual<@P.AsInt>>>.
+                    View.Select(this,
+                        order.ServiceID, order.DeviceID, item.InventoryID).
+                    FirstOrDefault();
                 if (origItem != null)
                 {
                     item.BasePrice = origItem.BasePrice;
@@ -88,8 +93,12 @@ namespace PhoneRepairShop
             foreach (RSSVWorkOrderLabor labor in laborItems)
             {
                 RSSVLabor origItem = SelectFrom<RSSVLabor>.
-                    Where<RSSVLabor.inventoryID.IsEqual<@P.AsInt>>.View.
-                    Select(this, labor.InventoryID);
+                    Where<RSSVLabor.serviceID.IsEqual<@P.AsInt>.
+                    And<RSSVLabor.deviceID.IsEqual<@P.AsInt>>.
+                    And<RSSVLabor.inventoryID.IsEqual<@P.AsInt>>>.
+                    View.Select(this,
+                        order.ServiceID, order.DeviceID, labor.InventoryID).
+                    FirstOrDefault();
                 if (origItem != null)
                 {
                     labor.DefaultPrice = origItem.DefaultPrice;
@@ -106,12 +115,12 @@ namespace PhoneRepairShop
         // Manage visibility and availability of the actions.
         protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
         {
+            if (e.Row == null) return;
             RSSVWorkOrder row = e.Row;
-            if (row == null) return;
             AssignToMe.SetEnabled((row.Status ==
-            WorkOrderStatusConstants.ReadyForAssignment ||
-            row.Status == WorkOrderStatusConstants.OnHold) &&
-            WorkOrders.Cache.GetStatus(row) != PXEntryStatus.Inserted);
+                WorkOrderStatusConstants.ReadyForAssignment ||
+                row.Status == WorkOrderStatusConstants.OnHold) &&
+                WorkOrders.Cache.GetStatus(row) != PXEntryStatus.Inserted);
             AssignToMe.SetVisible(row.Assignee != PXAccess.GetContactID());
 
             UpdateItemPrices.SetEnabled(WorkOrders.Current.InvoiceNbr == null);

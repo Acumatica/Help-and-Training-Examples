@@ -115,7 +115,8 @@ namespace PhoneRepairShop
         [PXDefault(false)]
         [PXUIField(DisplayName = "Price Validated", Enabled = false)]
         public virtual bool? IsPriceValidated { get; set; }
-        public abstract class isPriceValidated : PX.Data.BQL.BqlBool.Field<isPriceValidated> { }
+        public abstract class isPriceValidated :
+		          PX.Data.BQL.BqlBool.Field<isPriceValidated> { }
         #endregion
         ////////// The end of added code
         #region CreatedDateTime

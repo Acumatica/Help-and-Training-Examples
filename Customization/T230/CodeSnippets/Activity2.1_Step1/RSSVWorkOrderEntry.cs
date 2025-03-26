@@ -68,8 +68,12 @@ namespace PhoneRepairShop
             foreach (RSSVWorkOrderItem item in repairItems)
             {
                 RSSVRepairItem origItem = SelectFrom<RSSVRepairItem>.
-                        Where<RSSVRepairItem.inventoryID.IsEqual<@P.AsInt>>.View.
-                        Select(this, item.InventoryID);
+                    Where<RSSVRepairItem.serviceID.IsEqual<@P.AsInt>.
+                    And<RSSVRepairItem.deviceID.IsEqual<@P.AsInt>>.
+                    And<RSSVRepairItem.inventoryID.IsEqual<@P.AsInt>>>.
+                    View.Select(this, 
+                        order.ServiceID, order.DeviceID, item.InventoryID).
+                    FirstOrDefault();
                 if (origItem != null)
                 {
                     item.BasePrice = origItem.BasePrice;
@@ -87,9 +91,9 @@ namespace PhoneRepairShop
         // Manage visibility and availability of the actions.
         protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
         {
+            if (e.Row == null) return;
             RSSVWorkOrder row = e.Row;
-            if (row == null) return;
-            AssignToMe.SetEnabled((row.Status == 
+            AssignToMe.SetEnabled((row.Status ==
                 WorkOrderStatusConstants.ReadyForAssignment ||
                 row.Status == WorkOrderStatusConstants.OnHold) &&
                 WorkOrders.Cache.GetStatus(row) != PXEntryStatus.Inserted);

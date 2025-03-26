@@ -90,7 +90,8 @@ namespace PhoneRepairShop
             Actions.PressSave();
 
             var repairPriceItem = RepairPrices.Current;
-            //Execute ValidatePrices method asynchronously using PXLongOperation.StartOperation
+            // Execute the ValidatePrices method asynchronously by
+            // using PXLongOperation.StartOperation
             PXLongOperation.StartOperation(this, () => ValidatePrices(repairPriceItem));
 
             // Return the local list variable.

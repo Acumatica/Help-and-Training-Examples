@@ -63,9 +63,9 @@ namespace PhoneRepairShop
         // Manage visibility and availability of the actions.
         protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
         {
+            if (e.Row == null) return;
             RSSVWorkOrder row = e.Row;
-            if (row == null) return;
-            AssignToMe.SetEnabled((row.Status == 
+            AssignToMe.SetEnabled((row.Status ==
                 WorkOrderStatusConstants.ReadyForAssignment ||
                 row.Status == WorkOrderStatusConstants.OnHold) &&
                 WorkOrders.Cache.GetStatus(row) != PXEntryStatus.Inserted);
