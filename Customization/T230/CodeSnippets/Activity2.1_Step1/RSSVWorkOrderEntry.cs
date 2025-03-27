@@ -2,6 +2,9 @@ using PX.Data;
 using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
 using PX.Objects.IN;
+////////// The added code
+using System.Linq;
+////////// The end of added code
 
 namespace PhoneRepairShop
 {
