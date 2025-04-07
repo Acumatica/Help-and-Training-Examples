@@ -6,6 +6,10 @@ update sitemap {
   add item "DB000012" {
     displayName = "Sales Operations"
   }
+  
+  add item "GI400001" {
+    displayName = "Open SO by Customer"
+  }
     
   add folder "InvoicedItems" {
     type = HubFolder
