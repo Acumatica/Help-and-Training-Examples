@@ -7716,7 +7716,7 @@
 									"pm.test(\"Payment amount is correct\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
 									"    var amount = pm.collectionVariables.get(\"paymentAmount\");\r",
-									"    pm.expect(jsonResponse.PaymentAmount.value).to.eql(amount);\r",
+									"    pm.expect(jsonResponse.PaymentAmount.value).to.eql(Number(amount));\r",
 									"    pm.collectionVariables.set(\"paymentRefNbr\", jsonResponse.ReferenceNbr.value);\r",
 									"    pm.collectionVariables.set(\"appliedToDocuments\", jsonResponse.PaymentAmount.value);\r",
 									"});\r",
