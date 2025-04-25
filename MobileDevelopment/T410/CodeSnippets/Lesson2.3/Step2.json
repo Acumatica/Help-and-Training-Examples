@@ -34,7 +34,6 @@ update screen SO301000 {
       add field "ProcessOrderInvoicing#ReleaseInvoice"
       add recordAction "QPOK" {
         icon = "system://Check"
-        syncLongOperation = True
       }
     }    
   }
