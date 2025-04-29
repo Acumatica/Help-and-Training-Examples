@@ -21,7 +21,6 @@ add screen SO303000 {
       behavior = Create
     }
     add recordAction "Release" {
-      syncLongOperation = true
       behavior = Record
     }
   }
