@@ -586,7 +586,8 @@
 									"//Sign in and modify stock items\r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password, callback)"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -633,7 +634,8 @@
 									"});\r",
 									"pm.execution.setNextRequest(\"Retrieve Records Filtered by Custom Fields\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -659,7 +661,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{EndpointURL}}StockItem?$expand=WarehouseDetails&$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2019-08-18T23%3A59%3A59.999%2B04%3A00'",
+							"raw": "{{EndpointURL}}StockItem?$expand=WarehouseDetails&$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2024-08-18T23%3A59%3A59.999%2B04%3A00'",
 							"host": [
 								"{{EndpointURL}}StockItem"
 							],
@@ -670,7 +672,7 @@
 								},
 								{
 									"key": "$filter",
-									"value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2019-08-18T23%3A59%3A59.999%2B04%3A00'"
+									"value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2024-08-18T23%3A59%3A59.999%2B04%3A00'"
 								}
 							]
 						},
@@ -10706,7 +10708,7 @@
 					"response": []
 				},
 				{
-					"name": "Create a Direct Sales Invoice Along with a Return",
+					"name": "Create a Direct Sales Invoice That Includes a Return",
 					"event": [
 						{
 							"listen": "test",
@@ -12962,6 +12964,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
+									"//Set current date\r",
+									"var moment = require('moment');\r",
+									"pm.environment.set('currentDate', moment().format((\"YYYY-MM-DD\")));\r",
+									"\r",
 									"//Sign in to the tenant with U100 data\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
@@ -13062,7 +13068,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"entity\":{\r\n    \"OrderNbr\": {\"value\": \"{{RMorderNbr}}\"},\r\n    \"OrderType\":  {\"value\": \"RM\"}\r\n  },\r\n  \"parameters\": {\r\n    \"ShipmentDate\":  {\"value\": \"2025-04-11T00:00:00+03:00\"},\r\n    \"WarehouseID\":  {\"value\": \"RETAIL\"}\r\n  }\r\n}"
+							"raw": "{\r\n  \"entity\":{\r\n    \"OrderNbr\": {\"value\": \"{{RMorderNbr}}\"},\r\n    \"OrderType\":  {\"value\": \"RM\"}\r\n  },\r\n  \"parameters\": {\r\n    \"ShipmentDate\":  {\"value\": \"{{currentDate}}\"},\r\n    \"WarehouseID\":  {\"value\": \"RETAIL\"}\r\n  }\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}SalesOrder/SalesOrderCreateReceipt",
@@ -13084,6 +13090,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
+									"//Set current date\r",
+									"var moment = require('moment');\r",
+									"pm.environment.set('currentDate', moment().format((\"YYYY-MM-DD\")));\r",
+									"\r",
 									"//Sign in to the tenant with U100 data\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"var username = pm.collectionVariables.get('UsernameU100');\r",
@@ -13184,7 +13194,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"entity\":{\r\n    \"OrderNbr\": {\"value\": \"{{RMorderNbr}}\"},\r\n    \"OrderType\":  {\"value\": \"RM\"}\r\n  },\r\n  \"parameters\": {\r\n    \"ShipmentDate\":  {\"value\": \"2025-04-11T00:00:00+03:00\"},\r\n    \"WarehouseID\":  {\"value\": \"RETAIL\"}\r\n  }\r\n}"
+							"raw": "{\r\n  \"entity\":{\r\n    \"OrderNbr\": {\"value\": \"{{RMorderNbr}}\"},\r\n    \"OrderType\":  {\"value\": \"RM\"}\r\n  },\r\n  \"parameters\": {\r\n    \"ShipmentDate\":  {\"value\": \"{{currentDate}}\"},\r\n    \"WarehouseID\":  {\"value\": \"RETAIL\"}\r\n  }\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}SalesOrder/SalesOrderCreateShipment",
