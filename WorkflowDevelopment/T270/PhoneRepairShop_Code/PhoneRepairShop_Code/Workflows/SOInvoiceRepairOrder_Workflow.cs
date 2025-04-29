@@ -10,11 +10,11 @@ using PX.Objects.CS;
 
 namespace PhoneRepairShop
 {
-    public class SOInvoiceRepairOrder_Workflow : 
-        PXGraphExtension<SOInvoiceEntry_Workflow, SOInvoiceEntry>
+    public class SOInvoiceRepairOrder_Workflow :
+            PXGraphExtension<SOInvoiceEntry_Workflow, SOInvoiceEntry>
     {
-        public const string ApproveDiscount = "Approve Discount";
 
+        public const string ApproveDiscount = "Approve Discount";
         public static class ActionCategories
         {
             public const string RepairCategoryID = "Repair Work Orders Category";
@@ -48,14 +48,13 @@ namespace PhoneRepairShop
                 category => category.DisplayName(
                 ActionCategories.DisplayNames.RepairOrders));
 
-            #region Action Definitions
             var viewOrder = context.ActionDefinitions
               .CreateExisting<SOInvoiceEntry_Extension>(graph => graph.ViewOrder,
                 action => action.WithCategory(repairCategory));
+
             var approveDiscount = context.ActionDefinitions
-              .CreateNew(ApproveDiscount, action => action
+                .CreateNew(ApproveDiscount, action => action
                 .DisplayName("Approve Discount"));
-            #endregion
 
             var conditions = context.Conditions.GetPack<Conditions>();
 
@@ -72,40 +71,43 @@ namespace PhoneRepairShop
                             });
                             flowStates.UpdateSequence<ARDocStatus.HoldToBalance>(
                                 seq =>
-                            {
-                                return seq.WithStates(states =>
                                 {
-                                    states.Add<ARDocStatus_Postponed.postponed>(
-                                        flowState =>
+                                    return seq.WithStates(states =>
                                     {
-                                        return flowState
-                                        .PlaceAfter<ARDocStatus.creditHold>()
-                                        .IsSkippedWhen(conditions.DiscountEmpty)
-                                        .WithActions(actions =>
-                                        {
-                                            actions.Add(approveDiscount,
-                                                action => action
-                                                .IsDuplicatedInToolbar()
-                                                .WithConnotation(
-                                                    ActionConnotation.Success));
-                                        });
+                                        states.Add<ARDocStatus_Postponed.postponed>(
+                                            flowState =>
+                                            {
+                                                return flowState
+                                                    .PlaceAfter<ARDocStatus.creditHold>()
+                                                    .IsSkippedWhen(conditions.DiscountEmpty)
+                                                    .WithActions(actions =>
+                                                    {
+                                                        actions.Add(approveDiscount,
+                                                            action => action
+                                                            .IsDuplicatedInToolbar()
+                                                            .WithConnotation(
+                                                                ActionConnotation.Success));
+                                                    });
+                                            });
                                     });
                                 });
-                            });
+
+
                         })
                         .WithTransitions(transitions =>
                         {
                             transitions.AddGroupFrom<ARDocStatus_Postponed.postponed>(
                                 transitionGroup =>
-                            {
-                                transitionGroup.Add(transition => transition
-                                    .ToNext()
-                                    .IsTriggeredOn(approveDiscount)
-                                    .WithFieldAssignments(fields =>
-                                        fields.Add<ARInvoice.discDate>(
-                                            field => field.SetFromToday())));
-                            });
+                                {
+                                    transitionGroup.Add(transition => transition
+                                        .ToNext()
+                                        .IsTriggeredOn(approveDiscount)
+                                        .WithFieldAssignments(fields =>
+                                            fields.Add<ARInvoice.discDate>(
+                                                field => field.SetFromToday())));
+                                });
                         });
+
                 })
                 .WithCategories(categories =>
                 {

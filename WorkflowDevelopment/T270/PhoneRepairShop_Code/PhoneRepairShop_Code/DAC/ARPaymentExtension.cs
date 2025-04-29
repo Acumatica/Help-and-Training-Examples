@@ -8,9 +8,10 @@ namespace PhoneRepairShop
     // extension should be constantly active
     public sealed class ARPaymentExt : PXCacheExtension<ARPayment>
     {
-        #region PrepaymentPercent
+        #region UsrPrepaymentPercent
         [PXDBDecimal()]
-        [PXDefault(TypeCode.Decimal, "0.0", PersistingCheck = PXPersistingCheck.Nothing)]
+        [PXDefault(TypeCode.Decimal, "0.0",
+            PersistingCheck = PXPersistingCheck.Nothing)]
         [PXUIField(DisplayName = "Prepayment Percent")]
         public Decimal? UsrPrepaymentPercent { get; set; }
         public abstract class usrPrepaymentPercent :
