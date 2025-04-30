@@ -10,8 +10,7 @@ using PX.Data.WorkflowAPI;
 
 namespace PhoneRepairShop
 {
-    public class RSSVWorkOrderEntry : PXGraph<RSSVWorkOrderEntry,
-        RSSVWorkOrder>
+    public class RSSVWorkOrderEntry : PXGraph<RSSVWorkOrderEntry, RSSVWorkOrder>
     {
         #region Views
 
@@ -41,7 +40,7 @@ namespace PhoneRepairShop
         }
         #endregion
 
-        #region Event Handlers 
+        #region Events Handlers
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
         {
@@ -194,26 +193,23 @@ namespace PhoneRepairShop
           MapEnableRights = PXCacheRights.Select,
           MapViewRights = PXCacheRights.Select)]
         protected virtual IEnumerable releaseFromHold(PXAdapter adapter)
-            => adapter.Get();
+           => adapter.Get();
 
         public PXAction<RSSVWorkOrder> PutOnHold = null!;
         [PXButton, PXUIField(DisplayName = "Hold",
           MapEnableRights = PXCacheRights.Select,
           MapViewRights = PXCacheRights.Select)]
-        protected virtual IEnumerable putOnHold(PXAdapter adapter)
-            => adapter.Get();
+        protected virtual IEnumerable putOnHold(PXAdapter adapter) => adapter.Get();
 
         public PXAction<RSSVWorkOrder> Assign = null!;
         [PXButton]
         [PXUIField(DisplayName = "Assign", Enabled = false)]
-        protected virtual IEnumerable assign(PXAdapter adapter)
-            => adapter.Get();
+        protected virtual IEnumerable assign(PXAdapter adapter) => adapter.Get();
 
         public PXAction<RSSVWorkOrder> Complete = null!;
         [PXButton]
         [PXUIField(DisplayName = "Complete", Enabled = false)]
-        protected virtual IEnumerable complete(PXAdapter adapter)
-            => adapter.Get();
+        protected virtual IEnumerable complete(PXAdapter adapter) => adapter.Get();
 
         private static void CreateInvoice(RSSVWorkOrder workOrder)
         {
@@ -298,7 +294,7 @@ namespace PhoneRepairShop
         #region Workflow Event Handlers 
         public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument
             = null!;
-
+        
         public PXWorkflowEventHandler<RSSVWorkOrder, ARRegister> OnInvoiceGotPrepaid
             = null!;
         #endregion

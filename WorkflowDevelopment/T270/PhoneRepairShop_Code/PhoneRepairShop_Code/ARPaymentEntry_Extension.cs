@@ -1,4 +1,4 @@
-using PX.Data;
+﻿using PX.Data;
 using PX.Data.BQL.Fluent;
 using PX.Objects.AR;
 
@@ -11,7 +11,6 @@ namespace PhoneRepairShop
         public virtual void _(Events.FieldDefaulting<ARPayment,
                       ARPaymentExt.usrPrepaymentPercent> e)
         {
-            ARPayment payment = (ARPayment)e.Row;
             RSSVSetup setupRecord = SelectFrom<RSSVSetup>.View.Select(Base);
             if (setupRecord != null)
             {
