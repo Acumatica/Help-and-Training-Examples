@@ -1,0 +1,26 @@
+﻿<Sql TableName="RSSVDevice" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="RSSVDevice">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="DeviceID" type="Int" identity="true" />
+  <col name="DeviceCD" type="NVarChar(15)" />
+  <col name="Description" type="NVarChar(256)" nullable="true" />
+  <col name="Active" type="Bit" />
+  <col name="AvgComplexityOfRepair" type="Char(1)" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="CreatedDateTime" type="DateTime" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="LastModifiedDateTime" type="DateTime" />
+  <col name="tstamp" type="Timestamp" />
+  <col name="NoteID" type="UniqueIdentifier" nullable="true" />
+  <index name="RSSVDevice_DeviceCD_Uindex" unique="true">
+    <col name="CompanyID" />
+    <col name="DeviceCD" />
+  </index>
+  <index name="RSSVDevice_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="DeviceID" />
+  </index>
+</table>]]></CDATA>
+</Sql>

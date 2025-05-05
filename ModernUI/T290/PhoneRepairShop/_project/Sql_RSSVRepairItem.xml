@@ -1,0 +1,27 @@
+﻿<Sql TableName="RSSVRepairItem" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="RSSVRepairItem">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="ServiceID" type="Int" />
+  <col name="DeviceID" type="Int" />
+  <col name="LineNbr" type="Int" />
+  <col name="RepairItemType" type="Char(2)" nullable="true" />
+  <col name="InventoryID" type="Int" />
+  <col name="Required" type="Bit" />
+  <col name="IsDefault" type="Bit" />
+  <col name="BasePrice" type="Decimal(19,6)" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="CreatedDateTime" type="DateTime" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="LastModifiedDateTime" type="DateTime" />
+  <col name="tstamp" type="Timestamp" />
+  <col name="NoteID" type="UniqueIdentifier" nullable="true" />
+  <index name="RSSVRepairItem_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="ServiceID" />
+    <col name="DeviceID" />
+    <col name="LineNbr" />
+  </index>
+</table>]]></CDATA>
+</Sql>

@@ -2,22 +2,32 @@ import {
 	PXScreen, createCollection, graphInfo,
 	viewInfo, createSingle,
 	PXView, PXFieldOptions, PXFieldState, controlConfig,
-	gridConfig, GridPreset
+	gridConfig, GridPreset,
+    fieldConfig,
+    PXActionState,
+	handleEvent, CustomEventType, RowCssHandlerArgs
 } from "client-controls";
 
 @graphInfo({
-	graphType: "PhoneRepairShop.RSSVWorkOrderEntry",
-	primaryView: "WorkOrders"
+    graphType: "PhoneRepairShop.RSSVWorkOrderEntry",
+    primaryView: "WorkOrders"
 })
 export class RS301000 extends PXScreen {
-	@viewInfo({ containerName: "Work Order" })
-	WorkOrders = createSingle(RSSVWorkOrder);
-	
-	@viewInfo({ containerName: "Repair Items" })
-	RepairItems = createCollection(RSSVWorkOrderItem);
-	
-	@viewInfo({ containerName: "Labor" })
-	Labor = createCollection(RSSVWorkOrderLabor);
+  OpenInvoice: PXActionState;
+
+  WorkOrders = createSingle(RSSVWorkOrder);
+  RepairItems = createCollection(RSSVWorkOrderItem);
+  Labor = createCollection(RSSVWorkOrderLabor);
+
+  @handleEvent(CustomEventType.GetRowCss, { view: "RepairItems" })
+	getTransactionsRowCss(args: RowCssHandlerArgs) {
+		if (args?.selector?.rowIndex === 1) {
+			console.log("Row CSS changed", args);
+			return "bold-row";
+		}
+		return undefined;
+	}
+
 }
 
 export class RSSVWorkOrder extends PXView {
@@ -39,6 +49,9 @@ export class RSSVWorkOrder extends PXView {
 	DeviceID: PXFieldState<PXFieldOptions.CommitChanges>;
 	OrderTotal: PXFieldState;
 	Assignee: PXFieldState;
+    @fieldConfig({
+        pinned: true
+    })
 	Priority: PXFieldState<PXFieldOptions.CommitChanges>;
 	InvoiceNbr: PXFieldState;
 }
