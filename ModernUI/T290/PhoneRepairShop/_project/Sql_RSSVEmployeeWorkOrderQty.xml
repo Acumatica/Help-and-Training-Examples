@@ -1,0 +1,12 @@
+﻿<Sql TableName="RSSVEmployeeWorkOrderQty" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="RSSVEmployeeWorkOrderQty">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="UserID" type="Int" />
+  <col name="NbrOfAssignedOrders" type="Int" />
+  <col name="LastModifiedDateTime" type="DateTime" />
+  <index name="RSSVEmployeeWorkOrderQty_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="UserID" />
+  </index>
+</table>]]></CDATA>
+</Sql>

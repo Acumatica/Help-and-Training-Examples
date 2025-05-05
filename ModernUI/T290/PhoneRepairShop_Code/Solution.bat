@@ -1,0 +1,1 @@
+"C:\TCourseInstances\SmartFix_T290_update\App_Data\Projects\PhoneRepairShop\PhoneRepairShop_code.sln"

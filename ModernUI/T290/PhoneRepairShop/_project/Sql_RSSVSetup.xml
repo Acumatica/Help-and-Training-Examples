@@ -1,0 +1,20 @@
+﻿<Sql TableName="RSSVSetup" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="RSSVSetup">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="NumberingID" type="NVarChar(10)" />
+  <col name="WalkInCustomerID" type="Int" />
+  <col name="DefaultEmployee" type="Int" />
+  <col name="PrepaymentPercent" type="Decimal(9,6)" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="CreatedDateTime" type="DateTime" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="LastModifiedDateTime" type="DateTime" />
+  <col name="tstamp" type="Timestamp" />
+  <col name="NoteID" type="UniqueIdentifier" nullable="true" />
+  <index name="RSSVSetup_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+  </index>
+</table>]]></CDATA>
+</Sql>

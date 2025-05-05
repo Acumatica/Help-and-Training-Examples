@@ -1,0 +1,23 @@
+﻿<Sql TableName="RSSVWarranty" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="RSSVWarranty">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="ServiceID" type="Int" />
+  <col name="DeviceID" type="Int" />
+  <col name="ContractID" type="Int" />
+  <col name="DefaultWarranty" type="Bit" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="CreatedDateTime" type="DateTime" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="LastModifiedDateTime" type="DateTime" />
+  <col name="tstamp" type="Timestamp" />
+  <col name="NoteID" type="UniqueIdentifier" nullable="true" />
+  <index name="RSSVWarranty_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="ServiceID" />
+    <col name="DeviceID" />
+    <col name="ContractID" />
+  </index>
+</table>]]></CDATA>
+</Sql>

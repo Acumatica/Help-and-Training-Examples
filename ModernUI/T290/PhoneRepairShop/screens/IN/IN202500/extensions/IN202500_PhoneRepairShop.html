@@ -1,0 +1,18 @@
+<template>
+    <field
+      after="#fsItemDefaults-General [name='ItemType']"
+      name="UsrRepairItem"
+    ></field>
+    <field
+      after="#fsItemDefaults-General [name='UsrRepairItem']"
+      name="UsrRepairItemType"
+    ></field>
+    <qp-tab
+      after="#tab-PriceCost"
+      id="tab-CompatibleDevices"
+      caption="Compatible Devices"
+    >
+      <qp-grid id="grid-CompatibleDevices" view.bind="CompatibleDevices">
+      </qp-grid>
+    </qp-tab>
+  </template>

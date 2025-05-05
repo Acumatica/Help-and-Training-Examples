@@ -1,0 +1,33 @@
+﻿<ScreenWithRights AccessRightsMergeRule="ApplyAndKeep">
+    <data-set>
+        <relations format-version="3" relations-version="20190730" main-table="SiteMap">
+            <link from="RolesInCache (ScreenID)" to="SiteMap (ScreenID)" />
+            <link from="RolesInGraph (ScreenID)" to="SiteMap (ScreenID)" />
+            <link from="RolesInMember (ScreenID)" to="SiteMap (ScreenID)" />
+            <link from="Roles (Rolename, ApplicationName)" to="RolesInCache (Rolename, ApplicationName)" type="FromMaster" updateable="False" />
+            <link from="Roles (Rolename, ApplicationName)" to="RolesInGraph (Rolename, ApplicationName)" type="FromMaster" updateable="False" />
+            <link from="Roles (Rolename, ApplicationName)" to="RolesInMember (Rolename, ApplicationName)" type="FromMaster" updateable="False" />
+        </relations>
+        <layout>
+            <table name="SiteMap">
+                <table name="RolesInCache" uplink="(ScreenID) = (ScreenID)" />
+                <table name="RolesInGraph" uplink="(ScreenID) = (ScreenID)" />
+                <table name="RolesInMember" uplink="(ScreenID) = (ScreenID)" />
+            </table>
+            <table name="Roles" />
+        </layout>
+        <data>
+            <SiteMap>
+                <row Position="5959" Title="Services and Prices" Url="~/Pages/RS/RS203000.aspx" ScreenID="RS203000" NodeID="a1ee94a7-8ec0-4eff-a9a3-1f992c7a2b9b" ParentID="00000000-0000-0000-0000-000000000000">
+                    <RolesInGraph Rolename="Customizer" ApplicationName="/" Accessrights="4" />
+                    <RolesInGraph Rolename="Administrator" ApplicationName="/" Accessrights="4" />
+                    <RolesInGraph Rolename="*" ApplicationName="/" Accessrights="0" />
+                </row>
+            </SiteMap>
+            <Roles>
+                <row Rolename="Customizer" ApplicationName="/" Descr="Customizer" Guest="0" />
+                <row Rolename="Administrator" ApplicationName="/" Descr="System Administrator" Guest="0" />
+            </Roles>
+        </data>
+    </data-set>
+</ScreenWithRights>
