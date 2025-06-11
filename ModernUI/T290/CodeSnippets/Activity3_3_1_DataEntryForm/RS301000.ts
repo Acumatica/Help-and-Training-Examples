@@ -50,7 +50,7 @@ export class RSSVWorkOrderItem extends PXView {
 	RepairItemType: PXFieldState;
 	InventoryID: PXFieldState<PXFieldOptions.CommitChanges>;
 	InventoryID_description: PXFieldState;
-	Price: PXFieldState;
+	BasePrice: PXFieldState;
 }
 
 @gridConfig({

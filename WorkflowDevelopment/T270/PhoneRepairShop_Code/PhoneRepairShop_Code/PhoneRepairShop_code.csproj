@@ -62,8 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ARPaymentEntry_Extension.cs" />
-    <Compile Include="ARReleaseProcess_Extension.cs" />
     <Compile Include="DAC\ARPaymentExtension.cs" />
+    <Compile Include="ARReleaseProcess_Extension.cs" />
     <Compile Include="DAC\RSSVDevice.cs" />
     <Compile Include="DAC\RSSVWorkOrder.cs" />
     <Compile Include="Data\InputData.cs" />
@@ -87,8 +87,8 @@
     <Compile Include="DAC\RSSVSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SOInvoiceEntry_Extension.cs" />
-    <Compile Include="Workflows\RSSVWorkOrderEntry_Workflow.cs" />
     <Compile Include="Workflows\SOInvoiceRepairOrder_Workflow.cs" />
+    <Compile Include="Workflows\RSSVWorkOrderEntry_Workflow.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces">

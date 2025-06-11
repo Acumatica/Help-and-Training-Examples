@@ -1,0 +1,3 @@
+﻿<Table TableName="RSSVWorkOrder">
+    <Column TableName="RSSVWorkOrder" ColumnName="UsrOrderType" ColumnType="string" AllowNull="True" MaxLength="2" DecimalPrecision="0" DecimalLength="0" IsNewColumn="True" IsUnicode="True" />
+</Table>

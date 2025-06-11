@@ -1,0 +1,23 @@
+﻿<SharedFilter>
+    <data-set>
+        <relations format-version="3" relations-version="20210719" main-table="FilterHeader" file-name="(ScreenID)-(FilterName)">
+            <link from="FilterRow (FilterID)" to="FilterHeader (FilterID)" />
+            <link from="FilterHeader (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="FilterHeader (NoteID)" to="FilterHeaderKvExt (RecordID)" type="RowKvExt" />
+        </relations>
+        <layout>
+            <table name="FilterHeader">
+                <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                <table name="Note" uplink="(NoteID) = (NoteID)" />
+                <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
+            </table>
+        </layout>
+        <data>
+            <FilterHeader>
+                <row FilterID="0000cfb0-0000-0000-0000-000000000000" UserName="admin" ScreenID="RS3010PL" ViewName="Results" FilterName="To Assign" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="53168">
+                    <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="WorkOrder_status" Condition="0" ValueSt="RA" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="1" />
+                </row>
+            </FilterHeader>
+        </data>
+    </data-set>
+</SharedFilter>
