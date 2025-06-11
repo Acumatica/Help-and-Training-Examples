@@ -1,6 +1,6 @@
 ﻿<SiteMapNode>
     <data-set>
-        <relations format-version="3" relations-version="20190730" main-table="SiteMap">
+        <relations format-version="4" relations-version="20240201" main-table="SiteMap">
             <link from="MUIScreen (NodeID)" to="SiteMap (NodeID)" />
             <link from="MUIWorkspace (WorkspaceID)" to="MUIScreen (WorkspaceID)" type="FromMaster" linkname="workspaceToScreen" split-location="yes" updateable="True" />
             <link from="MUISubcategory (SubcategoryID)" to="MUIScreen (SubcategoryID)" type="FromMaster" updateable="True" />
@@ -25,14 +25,14 @@
         </layout>
         <data>
             <SiteMap>
-                <row Title="Serviced Devices" Url="~/Pages/RS/RS202000.aspx" ScreenID="RS202000" NodeID="456a8e7d-4dde-49a9-8cd7-3bcabeab8b28" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="E">
-                    <MUIScreen IsPortal="0" WorkspaceID="50c02d7b-09e8-4b51-8ccd-0703de679116" Order="20" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
+                <row Position="21517" Title="Repair Services" Url="~/Scripts/Screens/RS201000.html" ScreenID="RS201000" NodeID="f7f14702-14fa-4469-ac43-5ac5d844d7ff" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="T">
+                    <MUIScreen IsPortal="0" WorkspaceID="070ff59d-135c-4f75-93dc-9f7cb0b169a3" Order="10" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
                         <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                     </MUIScreen>
                 </row>
             </SiteMap>
             <MUIWorkspace>
-                <row IsPortal="0" WorkspaceID="50c02d7b-09e8-4b51-8ccd-0703de679116" Order="38" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0">
+                <row IsPortal="0" WorkspaceID="070ff59d-135c-4f75-93dc-9f7cb0b169a3" Order="38" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
             </MUIWorkspace>

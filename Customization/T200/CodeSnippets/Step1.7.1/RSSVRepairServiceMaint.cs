@@ -1,34 +1,23 @@
 using System;
 using PX.Data;
-////////// The added code
 using PX.Data.BQL.Fluent;
-////////// The end of added code
 
 namespace PhoneRepairShop
 {
   public class RSSVRepairServiceMaint : PXGraph<RSSVRepairServiceMaint>
   {
 ////////// The added code
+    protected void _(Events.FieldUpdated<RSSVRepairService, 
+      RSSVRepairService.walkInService> e)
+    { 
+      var row = e.Row;
+      row.PreliminaryCheck = !(row.WalkInService == true);
+    }
+////////// The end of added code
+
     public PXSave<RSSVRepairService> Save = null!;
     public PXCancel<RSSVRepairService> Cancel = null!;
 
     public SelectFrom<RSSVRepairService>.View RepairService = null!;
-////////// The end of added code
-   
-	public PXFilter<MasterTable> MasterView;
-    public PXFilter<DetailsTable> DetailsView;
-
-    [Serializable]
-    public class MasterTable : PXBqlTable, IBqlTable
-    {
-
-    }
-
-    [Serializable]
-    public class DetailsTable : PXBqlTable, IBqlTable
-    {
-
-    }
-
   }
 }
