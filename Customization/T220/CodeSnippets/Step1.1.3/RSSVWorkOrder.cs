@@ -35,14 +35,16 @@ namespace PhoneRepairShop
         [PXDefault(typeof(AccessInfo.businessDate))]
         [PXUIField(DisplayName = "Date Created")]
         public virtual DateTime? DateCreated { get; set; }
-        public abstract class dateCreated : PX.Data.BQL.BqlDateTime.Field<dateCreated> { }
+        public abstract class dateCreated :
+		          PX.Data.BQL.BqlDateTime.Field<dateCreated> { }
         #endregion
 
         #region DateCompleted
         [PXDBDate()]
         [PXUIField(DisplayName = "Date Completed", Enabled = false)]
         public virtual DateTime? DateCompleted { get; set; }
-        public abstract class dateCompleted : PX.Data.BQL.BqlDateTime.Field<dateCompleted> { }
+        public abstract class dateCompleted :
+		          PX.Data.BQL.BqlDateTime.Field<dateCompleted> { }
         #endregion
 
         #region Status
