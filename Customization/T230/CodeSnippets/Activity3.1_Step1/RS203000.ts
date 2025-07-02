@@ -36,6 +36,9 @@ export class RSSVRepairPrice extends PXView  {
 	preset: GridPreset.Details
 })
 export class RSSVRepairItem extends PXView  {
+    ////////// The added code
+    ValidateItemPrices: PXActionState;
+    ////////// The end of added code
 
 	RepairItemType : PXFieldState<PXFieldOptions.CommitChanges>;
 	Required : PXFieldState<PXFieldOptions.CommitChanges>;
@@ -46,10 +49,7 @@ export class RSSVRepairItem extends PXView  {
 	////////// The added code
 	IsPriceValidated: PXFieldState;
 	////////// The end of added code
-	IsDefault : PXFieldState<PXFieldOptions.CommitChanges>;
-	////////// The added code
-	ValidateItemPrices: PXActionState;
-	////////// The end of added code
+	IsDefault : PXFieldState<PXFieldOptions.CommitChanges>;	
 }
 
 @gridConfig({
