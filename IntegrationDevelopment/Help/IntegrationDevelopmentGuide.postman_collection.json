@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9b4a625b-e6dd-49a5-96a1-c93458b073ed",
+		"_postman_id": "2d8206e2-2e1e-48be-b2a6-3420c68eeebd",
 		"name": "REST API Examples (Integration Development Guide)",
 		"description": "This collection contains examples from the [REST API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n- Deploy a new Acumatica ERP instance with three tenants that are based on the U100, SalesDemo, and T100 datasets. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n    \n- Specify the base URL of the site in the _BaseURL_ variable of the collection.\n    \n- Specify the instance URL in the _InstanceURL_ variable of the collection.\n    \n- Make sure the URL of the Default/24.200.001 endpoint is in the _EndpointURL_ variable.\n    \n- Make sure the URL of the MANUFACTURING/24.200.001 endpoint is in the _ManufacturingEndpointURL_ variable.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the U100 data in the _TenantU100_, _BranchU100_, _UsernameU100_, and _PasswordU100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantT100_, _BranchT100_, _UsernameT100_, and _PasswordT100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantSalesDemo_, _BranchSalesDemo_, _UsernameSalesDemo_, and _PasswordSalesDemo_ variables.\n    \n\nOther variables are used by particular requests and are specified during execution of other requests. You do not need to feel their values manually.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -2029,7 +2029,7 @@
 									"//Sign out and set next request \r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"pm.execution.setNextRequest(\"Retrieve the Schema of Custom Fields\");"
+									"pm.execution.setNextRequest(\"Retrieve the Schema of Custom Fields and Workflow Actions\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -2074,7 +2074,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve the Schema of Custom Fields",
+					"name": "Retrieve the Schema of Custom Fields and Workflow Actions",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2088,7 +2088,8 @@
 									"var branch = pm.collectionVariables.get('BranchU100');\r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -2101,7 +2102,11 @@
 									"});\r",
 									"pm.test(\"The retrieved list includes custom fields\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.ReplenishmentParameters[0].custom).to.be.not.empty;\r",
+									"    pm.expect(jsonResponse.TaxDetails[0].custom).to.be.not.empty;\r",
+									"});\r",
+									"pm.test(\"The retrieved list includes workflow actions\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse._workflowActions.length).to.be.gt(0);\r",
 									"});\r",
 									"\r",
 									"//Sign out and set next request\r",
@@ -2109,7 +2114,8 @@
 									"pm.acuFunc.singOutFunction(pm, url);\r",
 									"pm.execution.setNextRequest(\"Change the Business Date or Current Branch\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -2128,9 +2134,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{EndpointURL}}StockItem/$adHocSchema",
+							"raw": "{{EndpointURL}}Opportunity/$adHocSchema",
 							"host": [
-								"{{EndpointURL}}StockItem"
+								"{{EndpointURL}}Opportunity"
 							],
 							"path": [
 								"$adHocSchema"
