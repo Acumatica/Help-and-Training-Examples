@@ -15259,7 +15259,8 @@
 									"var branch = pm.collectionVariables.get('BranchU100'); \r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -15278,12 +15279,17 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.TimeSpent.value).to.be.eql('01:30');\r",
 									"});\r",
+									"pm.test(\"TimeZone is (GMT+10:00) Canberra, Melbourne, Sydney\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.TimeZone.value).to.be.eql('(GMT+10:00) Canberra, Melbourne, Sydney');\r",
+									"});\r",
 									"//Sign out\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
 									"pm.execution.setNextRequest(\"Search for Time Entries by Date\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -15303,7 +15309,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"Summary\" : {\"value\" : \"Time entry summary\"},\r\n  \"Date\" : {\"value\" : \"2022-08-17T05:50:43.233\" },\r\n  \"Employee\" : {\"value\" : \"EP00000026\" },\r\n  \"ProjectID\" : {\"value\" : \"TOMYUM1\" },\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\" },\r\n  \"CostCode\" : {\"value\" : \"00-000\" },\r\n  \"EarningType\" : {\"value\" : \"RG\" },\r\n  \"TimeSpent\" : {\"value\" : \"01:30\" },\r\n  \"BillableTime\" : {\"value\" : \"00:30\" }\r\n}"
+							"raw": "{\r\n  \"Summary\" : {\"value\" : \"Time entry summary\"},\r\n  \"Date\" : {\"value\" : \"2024-10-24T10:05:00.000\" },\r\n  \"Employee\" : {\"value\" : \"EP00000026\" },\r\n  \"ProjectID\" : {\"value\" : \"TOMYUM1\" },\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\" },\r\n  \"CostCode\" : {\"value\" : \"00-000\" },\r\n  \"EarningType\" : {\"value\" : \"RG\" },\r\n  \"TimeSpent\" : {\"value\" : \"01:30\" },\r\n  \"BillableTime\" : {\"value\" : \"00:30\" },\r\n  \"TimeZone\" : {\"value\" : \"(GMT+10:00) Canberra, Melbourne, Sydney\"}\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}TimeEntry",
