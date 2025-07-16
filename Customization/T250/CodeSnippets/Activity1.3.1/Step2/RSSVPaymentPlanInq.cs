@@ -18,7 +18,8 @@ namespace PhoneRepairShop
             InnerJoin<ARInvoice>.On<
                 ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
             Where<
-                RSSVWorkOrderToPay.status.IsNotEqual<RSSVWorkOrderEntry_Workflow.States.paid>.
+                RSSVWorkOrderToPay.status.IsNotEqual<
+                    RSSVWorkOrderEntry_Workflow.States.paid>.
                 And<RSSVWorkOrderToPayFilter.customerID.FromCurrent.IsNull.
                     Or<RSSVWorkOrderToPay.customerID.IsEqual<
                         RSSVWorkOrderToPayFilter.customerID.FromCurrent>>>.
@@ -27,50 +28,59 @@ namespace PhoneRepairShop
                         RSSVWorkOrderToPayFilter.serviceID.FromCurrent>>>>.
             View.ReadOnly DetailsView = null!;
 
-	////////// The added code
-	protected virtual IEnumerable detailsView()
-	{
-		var workOrdersQuery =
-			SelectFrom<RSSVWorkOrderToPay>.
-			InnerJoin<ARInvoice>.On<
-			    ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
-			Where<
-			    RSSVWorkOrderToPay.status.IsNotEqual<RSSVWorkOrderEntry_Workflow.States.paid>.
-			    And<RSSVWorkOrderToPayFilter.customerID.FromCurrent.IsNull.
-                      Or<RSSVWorkOrderToPay.customerID.IsEqual<
-                           RSSVWorkOrderToPayFilter.customerID.FromCurrent>>>.
-			    And<RSSVWorkOrderToPayFilter.serviceID.FromCurrent.IsNull.
-                      Or<RSSVWorkOrderToPay.serviceID.IsEqual<
-                           RSSVWorkOrderToPayFilter.serviceID.FromCurrent>>>>.
-			View.ReadOnly.Select(this);
+        ////////// The added code
+        protected virtual IEnumerable detailsView()
+        {
+            PXDelegateResult delegResult = new PXDelegateResult
+            {
+                IsResultFiltered = true,
+                IsResultTruncated = true,
+                IsResultSorted = true
+            };
 
-		foreach (PXResult<RSSVWorkOrderToPay, ARInvoice> order in workOrdersQuery)
-		{
-			yield return order;
-		}
+            var workOrderSelect = new
+                SelectFrom<RSSVWorkOrderToPay>.
+                InnerJoin<ARInvoice>.On<
+                    ARInvoice.refNbr.IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
+                Where<
+                    RSSVWorkOrderToPay.status.IsNotEqual<
+                        RSSVWorkOrderEntry_Workflow.States.paid>.
+                    And<RSSVWorkOrderToPayFilter.customerID.FromCurrent.IsNull.
+                          Or<RSSVWorkOrderToPay.customerID.IsEqual<
+                               RSSVWorkOrderToPayFilter.customerID.FromCurrent>>>.
+                    And<RSSVWorkOrderToPayFilter.serviceID.FromCurrent.IsNull.
+                          Or<RSSVWorkOrderToPay.serviceID.IsEqual<
+                               RSSVWorkOrderToPayFilter.serviceID.FromCurrent>>>>.
+                View.ReadOnly(this);
 
-		var sorders =
-			SelectFrom<SOOrderShipment>.
-			InnerJoin<ARInvoice>.On<
-                ARInvoice.refNbr.IsEqual<SOOrderShipment.invoiceNbr>>.
-			Where<
-                RSSVWorkOrderToPayFilter.customerID.FromCurrent.IsNull.
-                Or<SOOrderShipment.customerID.IsEqual<
-                     RSSVWorkOrderToPayFilter.customerID.FromCurrent>>>.
-			View.ReadOnly.Select(this);
+            var workOrders = workOrderSelect.SelectWithViewContext();
+            delegResult.AddRange(workOrders);
 
-		foreach (PXResult<SOOrderShipment, ARInvoice> order in sorders)
-		{
-			SOOrderShipment soshipment = order;
-			ARInvoice invoice = order;
-			RSSVWorkOrderToPay workOrder = ToRSSVWorkOrderToPay(soshipment);
-			workOrder.OrderType = OrderTypeConstants.SalesOrder;
-			var result = new PXResult<RSSVWorkOrderToPay, ARInvoice>(
-				workOrder, invoice);
-			yield return result;
-		}
-	}
-	////////// The end of added code
+            var sorderSelect = new
+                SelectFrom<SOOrderShipment>.
+                InnerJoin<ARInvoice>.On<
+                    ARInvoice.refNbr.IsEqual<SOOrderShipment.invoiceNbr>>.
+                Where<
+                    RSSVWorkOrderToPayFilter.customerID.FromCurrent.IsNull.
+                    Or<SOOrderShipment.customerID.IsEqual<
+                         RSSVWorkOrderToPayFilter.customerID.FromCurrent>>>.
+                View.ReadOnly(this);
+
+            var sorders = sorderSelect.SelectWithViewContext();
+            foreach (PXResult<SOOrderShipment, ARInvoice> order in sorders)
+            {
+                SOOrderShipment soshipment = order;
+                ARInvoice invoice = order;
+                RSSVWorkOrderToPay workOrder = ToRSSVWorkOrderToPay(soshipment);
+                workOrder.OrderType = OrderTypeConstants.SalesOrder;
+                var result = new PXResult<RSSVWorkOrderToPay, ARInvoice>(
+                    workOrder, invoice);
+                delegResult.Add(result);
+            }
+
+            return delegResult;
+        }
+        ////////// The end of added code
 
         public PXFilter<RSSVWorkOrderToPayFilter> Filter = null!;
 
@@ -78,7 +88,7 @@ namespace PhoneRepairShop
 
         public override bool IsDirty => false;
 
-       protected virtual void _(Events.RowSelecting<RSSVWorkOrderToPay> e)
+        protected virtual void _(Events.RowSelecting<RSSVWorkOrderToPay> e)
         {
             using (new PXConnectionScope())
             {

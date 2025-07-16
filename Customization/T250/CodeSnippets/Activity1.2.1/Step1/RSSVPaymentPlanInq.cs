@@ -39,7 +39,15 @@ namespace PhoneRepairShop
     ////////// The added code
     [PXHidden]
     public class RSSVWorkOrderToPayFilter : PXBqlTable, IBqlTable
-    {
+    {   
+        #region CustomerID
+        [CustomerActive(DisplayName = "Customer ID")]
+        public virtual int? CustomerID { get; set; }
+        public abstract class customerID :
+            PX.Data.BQL.BqlInt.Field<customerID>
+        { }
+        #endregion
+        
         #region ServiceID
         [PXInt()]
         [PXUIField(DisplayName = "Service")]
@@ -52,14 +60,6 @@ namespace PhoneRepairShop
         public virtual int? ServiceID { get; set; }
         public abstract class serviceID :
             PX.Data.BQL.BqlInt.Field<serviceID>
-        { }
-        #endregion
-
-        #region CustomerID
-        [CustomerActive(DisplayName = "Customer ID")]
-        public virtual int? CustomerID { get; set; }
-        public abstract class customerID :
-            PX.Data.BQL.BqlInt.Field<customerID>
         { }
         #endregion
     }

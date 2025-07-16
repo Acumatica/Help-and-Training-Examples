@@ -1,0 +1,12 @@
+<template>
+    <qp-template name="17-17-14" id="formFilter">
+        <!-- The modified code -->
+        <qp-fieldset slot="A" id="columnFirst" view.bind="Filter">
+            <field name="CustomerID"></field>
+            <field name="ServiceID"></field>
+            <field name="GroupByStatus"></field>
+        </qp-fieldset>
+        <!-- The end of modified code -->
+    </qp-template>
+    <qp-grid id="gridDetailsView" view.bind="DetailsView"></qp-grid>
+</template>
