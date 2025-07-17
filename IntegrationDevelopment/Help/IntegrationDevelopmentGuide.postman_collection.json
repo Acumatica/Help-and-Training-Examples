@@ -1809,7 +1809,8 @@
 									"//Sign in and retrieve the list of files\r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password, callback);"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -1825,9 +1826,10 @@
 									"//Sign out and set next request\r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"pm.execution.setNextRequest(\"Retrieve the Schema of Custom Fields\");"
+									"pm.execution.setNextRequest(\"Retrieve the Schema of Custom Fields and Workflow Actions\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -2029,7 +2031,7 @@
 									"//Sign out and set next request \r",
 									"var url = pm.collectionVariables.get('InstanceURL');\r",
 									"pm.acuFunc.singOutFunction(pm, url);\r",
-									"pm.execution.setNextRequest(\"Retrieve the Schema of Custom Fields and Workflow Actions\");"
+									"pm.execution.setNextRequest(\"\");"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -2719,9 +2721,13 @@
 									"    const jsonResponse = pm.response.json();\r",
 									"    pm.expect(jsonResponse.BranchID.value).to.eql('RETAIL');\r",
 									"});\r",
-									"pm.test(\"Post period is 012022\", function (){\r",
+									"pm.test(\"Post period is 012025\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.PostPeriod.value).to.eql('012024');\r",
+									"    pm.expect(jsonResponse.PostPeriod.value).to.eql('012025');\r",
+									"});\r",
+									"pm.test(\"Transaction date  is 2025-01-01\", function (){\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse.TransactionDate.value).to.eql('2025-01-01T00:00:00+00:00');\r",
 									"});\r",
 									"\r",
 									"//Sign out and set next request\r",
@@ -2749,7 +2755,7 @@
 							},
 							{
 								"key": "PX-CbApiBusinessDate",
-								"value": "2024/01/01",
+								"value": "2025/01/01",
 								"type": "text"
 							},
 							{
@@ -2760,7 +2766,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Description\": {\"value\": \"Test transaction description\"},\r\n    \"PostPeriod\": {\"value\": \"01-2024\"}\r\n}"
+							"raw": "{\r\n    \"Description\": {\"value\": \"Test transaction description\"},\r\n    \"PostPeriod\": {\"value\": \"01-2025\"}\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}JournalTransaction",
@@ -3176,7 +3182,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"FromPeriod\": { \"value\": \"032022\" },\r\n    \"ToPeriod\": { \"value\": \"042022\" }\r\n}"
+							"raw": "{\r\n    \"FromPeriod\": { \"value\": \"032023\" },\r\n    \"ToPeriod\": { \"value\": \"042023\" }\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}AccountDetailsForPeriodInquiry?$expand=Results",
@@ -4089,13 +4095,13 @@
 							},
 							{
 								"key": "PX-CbApiBusinessDate",
-								"value": "2025/04/01",
+								"value": "2026/04/01",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"entity\": {\r\n        \"Type\": {\r\n            \"value\": \"Bill\"\r\n        },\r\n        \"ReferenceNbr\": {\r\n            \"value\": \"000072\"\r\n        }\r\n    },\r\n    \"parameters\": {\r\n        \"Date\": {\r\n            \"value\": \"2025-03-01T11:00:00.000Z\"\r\n        },\r\n        \"PostPeriod\": {\r\n            \"value\": \"032025\"\r\n        },\r\n        \"AmtToRelease\": {\r\n            \"value\": 500\r\n        }\r\n    }\r\n}"
+							"raw": "{\r\n    \"entity\": {\r\n        \"Type\": {\r\n            \"value\": \"Bill\"\r\n        },\r\n        \"ReferenceNbr\": {\r\n            \"value\": \"000072\"\r\n        }\r\n    },\r\n    \"parameters\": {\r\n        \"Date\": {\r\n            \"value\": \"2026-03-01T11:00:00.000Z\"\r\n        },\r\n        \"PostPeriod\": {\r\n            \"value\": \"032026\"\r\n        },\r\n        \"AmtToRelease\": {\r\n            \"value\": 500\r\n        }\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}Bill/ReleaseRetainage",
@@ -6318,7 +6324,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Date\": {\r\n        \"value\": \"2024-12-02T00:00:00+03:00\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Descr\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"HEADOFFICE\"\r\n            },\r\n            \"ExtCost\": {\r\n                \"value\": 0\r\n            },\r\n            \"ExtPrice\": {\r\n                \"value\": 4.15\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"APJAM08\"\r\n            },\r\n            \"LineNumber\": {\r\n                \"value\": 1\r\n            },\r\n            \"Location\": {\r\n                \"value\": \"MAIN\"\r\n            },\r\n            \"Project\": {\r\n                \"value\": \"X\"\r\n            },\r\n            \"Qty\": {\r\n                \"value\": 1\r\n            },\r\n            \"TranType\": {\r\n                \"value\": \"Issue\"\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 0\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"PIECE\"\r\n            },\r\n            \"Warehouse\": {\r\n                \"value\": \"RETAIL\"\r\n            }\r\n        }\r\n    ],\r\n    \"PostPeriod\": {\r\n        \"value\": \"122024\"\r\n    }\r\n}"
+							"raw": "{\r\n    \"Date\": {\r\n        \"value\": \"2025-12-02T00:00:00+03:00\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Descr\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"HEADOFFICE\"\r\n            },\r\n            \"ExtCost\": {\r\n                \"value\": 0\r\n            },\r\n            \"ExtPrice\": {\r\n                \"value\": 4.15\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"APJAM08\"\r\n            },\r\n            \"LineNumber\": {\r\n                \"value\": 1\r\n            },\r\n            \"Location\": {\r\n                \"value\": \"MAIN\"\r\n            },\r\n            \"Project\": {\r\n                \"value\": \"X\"\r\n            },\r\n            \"Qty\": {\r\n                \"value\": 1\r\n            },\r\n            \"TranType\": {\r\n                \"value\": \"Issue\"\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 0\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"PIECE\"\r\n            },\r\n            \"Warehouse\": {\r\n                \"value\": \"RETAIL\"\r\n            }\r\n        }\r\n    ],\r\n    \"PostPeriod\": {\r\n        \"value\": \"122025\"\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}InventoryIssue?$expand=Details",
@@ -7220,7 +7226,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"Module\" : {\"value\" : \"GL\"},\r\n  \"TransactionDate\" : {\"value\" : \"2024-02-15T00:00:00\"},\r\n  \"Description\" : {\"value\" : \"Transaction description\"},\r\n  \"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \"Details\" : [\r\n  \t{\r\n  \t\t\"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \t\t\"Account\" : {\"value\" : \"10200\"},\r\n  \t\t\"CostCode\" : {\"value\" : \"00000\"},\r\n  \t\t\"IsNonPM\" : {\"value\" : true}\r\n  \t}\r\n  ]\r\n}"
+							"raw": "{\r\n  \"Module\" : {\"value\" : \"GL\"},\r\n  \"TransactionDate\" : {\"value\" : \"2025-02-15T00:00:00\"},\r\n  \"Description\" : {\"value\" : \"Transaction description\"},\r\n  \"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \"Details\" : [\r\n  \t{\r\n  \t\t\"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \t\t\"Account\" : {\"value\" : \"10200\"},\r\n  \t\t\"CostCode\" : {\"value\" : \"00000\"},\r\n  \t\t\"IsNonPM\" : {\"value\" : true}\r\n  \t}\r\n  ]\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}JournalTransaction?$expand=Details",
@@ -9012,7 +9018,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"BillingAndAllocationSettings\" : \r\n    {\r\n        \"NextBillingDate\" : {\"value\" : \"2024-06-15\"}\r\n    }\r\n}"
+							"raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"BillingAndAllocationSettings\" : \r\n    {\r\n        \"NextBillingDate\" : {\"value\" : \"2025-06-15\"}\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}Project?$expand=BillingAndAllocationSettings",
@@ -15336,7 +15342,8 @@
 									"var branch = pm.collectionVariables.get('BranchU100'); \r",
 									"pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -15360,7 +15367,8 @@
 									"pm.acuFunc.singOutFunction(pm, url);\r",
 									"pm.execution.setNextRequest(\"Retrieve the List of Vendors\");"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -15386,14 +15394,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{EndpointURL}}TimeEntry?$filter=cf.DateTime(f='Items.Date') ge datetimeoffset'2022-08-17' and cf.DateTime(f='Items.Date') le datetimeoffset'2022-08-18T23%3A59%3A59.999%2B04%3A00'&$select=Date,ProjectID,TimeSpent,BillableTime",
+							"raw": "{{EndpointURL}}TimeEntry?$filter=cf.DateTime(f='Items.Date') ge datetimeoffset'2024-10-23' and cf.DateTime(f='Items.Date') le datetimeoffset'2024-10-25T23%3A59%3A59.999%2B04%3A00'&$select=Date,ProjectID,TimeSpent,BillableTime",
 							"host": [
 								"{{EndpointURL}}TimeEntry"
 							],
 							"query": [
 								{
 									"key": "$filter",
-									"value": "cf.DateTime(f='Items.Date') ge datetimeoffset'2022-08-17' and cf.DateTime(f='Items.Date') le datetimeoffset'2022-08-18T23%3A59%3A59.999%2B04%3A00'"
+									"value": "cf.DateTime(f='Items.Date') ge datetimeoffset'2024-10-23' and cf.DateTime(f='Items.Date') le datetimeoffset'2024-10-25T23%3A59%3A59.999%2B04%3A00'"
 								},
 								{
 									"key": "$select",
