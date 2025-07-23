@@ -18,15 +18,13 @@
 		</layout>
 		<data>
 			<SiteMap>
-				<row Position="5960" Title="Repair Work Orders" Url="~/Scripts/Screens/RS301000.html" ScreenID="RS301000" NodeID="ca5e0b9a-732f-481e-9c08-73de7c444c1f" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="T">
+				<row Title="Repair Work Orders" Url="~/Scripts/Screens/RS301000.html" ScreenID="RS301000" NodeID="ebf7832f-0129-4e56-a457-1518804d3661" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="T">
 					<RolesInGraph Rolename="*" ApplicationName="/" Accessrights="0" />
-					<RolesInGraph Rolename="Administrator" ApplicationName="/" Accessrights="4" />
 					<RolesInGraph Rolename="Customizer" ApplicationName="/" Accessrights="4" />
 				</row>
 			</SiteMap>
 			<Roles AllRoles="1">
 				<row Rolename="AcumaticaSupport" ApplicationName="/" Descr="Role for Acumatica Support. Access similar to Administrator except for User Management, Security Settings and Access Management." Guest="0" />
-				<row Rolename="Administrator" ApplicationName="/" Descr="System Administrator" Guest="0" />
 				<row Rolename="Anonymous" ApplicationName="/" Descr="Anonymous" Guest="1" />
 				<row Rolename="AP Admin" ApplicationName="/" Descr="Access to AP functions and settings" Guest="0" />
 				<row Rolename="AP Clerk" ApplicationName="/" Descr="Access to AP functions" Guest="0" />
@@ -50,7 +48,6 @@
 				<row Rolename="CR Viewer" ApplicationName="/" Descr="Read-only access to marketing, sales and support forms" Guest="0" />
 				<row Rolename="CS Admin" ApplicationName="/" Descr="Access to system functions and configuration items" Guest="0" />
 				<row Rolename="Customer Data Manager" ApplicationName="/" Descr="Full access to data entry forms related to customers" Guest="0" />
-				<row Rolename="Customizer" ApplicationName="/" Descr="Customizer" Guest="0" />
 				<row Rolename="DashboardDesigner" ApplicationName="/" Descr="Dashboard Designer" Guest="0" />
 				<row Rolename="Data Privacy Controller" ApplicationName="/" Descr="Data Privacy Controller" Guest="0" />
 				<row Rolename="DR Admin" ApplicationName="/" Descr="Access to DR functions and settings" Guest="0" />
@@ -109,6 +106,8 @@
 				<row Rolename="Vendor Data Manager" ApplicationName="/" Descr="Full access to data entry forms related to vendors" Guest="0" />
 				<row Rolename="Wiki Admin" ApplicationName="/" Descr="Wiki Administrator to set other users access rights to Wiki" Guest="0" />
 				<row Rolename="Wiki Author" ApplicationName="/" Descr="Role provides access rights for creating Wiki articles" Guest="0" />
+				<row Rolename="Administrator" ApplicationName="/" Descr="System Administrator" Guest="0" />
+				<row Rolename="Customizer" ApplicationName="/" Descr="Customizer" Guest="0" />
 			</Roles>
 		</data>
 	</data-set>
