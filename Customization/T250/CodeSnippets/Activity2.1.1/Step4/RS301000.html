@@ -1,0 +1,53 @@
+<template>
+	<qp-template
+		id="form-Order"
+		name="7-10-7"
+		class="equal-height"
+		qp-collapsible
+	>
+		<qp-fieldset id="fsColumnA-Order" slot="A" view.bind="WorkOrders">
+			<field name="OrderNbr"></field>
+			<field name="Status"></field>
+			<field name="DateCreated"></field>
+			<field name="DateCompleted"></field>
+			<field name="Priority"></field>
+		</qp-fieldset>
+		<qp-fieldset id="fsColumnB-Order" slot="B" view.bind="WorkOrders">
+			<field name="CustomerID"></field>
+			<field name="ServiceID"></field>
+			<field name="DeviceID"></field>
+			<field name="Assignee"></field>
+			<field name="Description"></field>
+		</qp-fieldset>
+		<qp-fieldset id="fsColumnC-Order" slot="C" view.bind="WorkOrders"
+			class="highlights-section">
+			<field name="OrderTotal"></field>
+			<field name="InvoiceNbr"></field>
+		</qp-fieldset>
+	</qp-template>
+	<qp-tabbar id="tabbar">
+		<qp-tab id="tab-RepairItems" caption="Repair Items">
+			<qp-grid id="grid-RepairItems" view.bind="RepairItems"></qp-grid>
+		</qp-tab>
+
+		<qp-tab id="tab-Labor" caption="Labor">
+			<qp-grid id="grid-Labor" view.bind="Labor"></qp-grid>
+		</qp-tab>
+
+        <!-- The added code -->
+		<qp-tab id="tab-PaymentInfo" caption="Payment Info">
+			<qp-template
+				id="form-PaymentInfo"
+				name="7-10-7"
+			>
+				<qp-fieldset id="fsColumnA-PaymentInfo" slot="A" view.bind="Payments">
+					<field name="InvoiceNbr"></field>
+					<field name="DueDate"></field>
+					<field name="AdjgRefNbr"></field>
+					<field name="CuryAdjdAmt"></field>
+				</qp-fieldset>
+			</qp-template>
+        </qp-tab>
+		<!-- The end of added code -->
+	</qp-tabbar>
+</template>
