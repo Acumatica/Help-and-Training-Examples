@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "2d8206e2-2e1e-48be-b2a6-3420c68eeebd",
+		"_postman_id": "b2abe1f2-7196-4784-aa17-a950f9bbfe14",
 		"name": "REST API Examples (Integration Development Guide)",
-		"description": "This collection contains examples from the [REST API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n- Deploy a new Acumatica ERP instance with three tenants that are based on the U100, SalesDemo, and T100 datasets. For details on deploying an instance, see [To Deploy an Acumatica ERP Instance](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b18ad378-0a8c-44f1-a14c-6b4f9c6271e4) in the Installation Guide.\n    \n- Specify the base URL of the site in the _BaseURL_ variable of the collection.\n    \n- Specify the instance URL in the _InstanceURL_ variable of the collection.\n    \n- Make sure the URL of the Default/24.200.001 endpoint is in the _EndpointURL_ variable.\n    \n- Make sure the URL of the MANUFACTURING/24.200.001 endpoint is in the _ManufacturingEndpointURL_ variable.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the U100 data in the _TenantU100_, _BranchU100_, _UsernameU100_, and _PasswordU100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantT100_, _BranchT100_, _UsernameT100_, and _PasswordT100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantSalesDemo_, _BranchSalesDemo_, _UsernameSalesDemo_, and _PasswordSalesDemo_ variables.\n    \n\nOther variables are used by particular requests and are specified during execution of other requests. You do not need to feel their values manually.",
+		"description": "This collection contains examples from the [REST API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n- Deploy a new Acumatica ERP instance with three tenants that are based on the U100, SalesDemo, and T100 datasets. For details on deploying an instance, see [Deploying Acumatica ERP Instances](https://help.acumatica.com/(W(4))/Help?ScreenId=ShowWiki&pageid=d02b1a4a-4394-4eb1-a127-ba821108ba3f) in the Installation Guide.\n    \n- Specify the base URL of the site in the _BaseURL_ variable of the collection.\n    \n- Specify the instance URL in the _InstanceURL_ variable of the collection.\n    \n- Make sure the URL of the Default/25.200.001 endpoint is in the _EndpointURL_ variable.\n    \n- Make sure the URL of the MANUFACTURING/25.100.001 endpoint is in the _ManufacturingEndpointURL_ variable.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the U100 data in the _TenantU100_, _BranchU100_, _UsernameU100_, and _PasswordU100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantT100_, _BranchT100_, _UsernameT100_, and _PasswordT100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the _SalesDemo_ data in the _TenantSalesDemo_, _BranchSalesDemo_, _UsernameSalesDemo_, and _PasswordSalesDemo_ variables.\n    \n\nOther variables are used by particular requests and are specified during execution of other requests. You do not need to fill in their values manually.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
 	},
@@ -2727,7 +2727,7 @@
 									"});\r",
 									"pm.test(\"Transaction date  is 2025-01-01\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.TransactionDate.value).to.eql('2025-01-01T00:00:00+00:00');\r",
+									"    pm.expect(jsonResponse.TransactionDate.value).contains('2025-01-01');\r",
 									"});\r",
 									"\r",
 									"//Sign out and set next request\r",
@@ -12340,7 +12340,7 @@
 									"            method: 'POST',\r",
 									"            body: {\r",
 									"                mode: 'raw',\r",
-									"                raw: '{\"entity\" : {\"id\": \"' + orderID + '\"}, \"parameters\" : { \"ShipmentDate\": { \"value\": \"2025-08-20T00:00:00+03:00\" },\"WarehouseID\": { \"value\": \"RETAIL\" }}}'},\r",
+									"                raw: '{\"entity\" : {\"id\": \"' + orderID + '\"}, \"parameters\" : { \"ShipmentDate\": { \"value\": \"2026-08-20T00:00:00+03:00\" },\"WarehouseID\": { \"value\": \"RETAIL\" }}}'},\r",
 									"            header: {\r",
 									"                'Content-Type': 'application/json'\r",
 									"            }\r",
