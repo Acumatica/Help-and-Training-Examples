@@ -12954,7 +12954,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"entity\":{\r\n      \"id\":\"42bb9a17-a402-e911-b818-00155d408001\"\r\n  },\r\n  \"parameters\": {\r\n        \"ShipmentDate\": { \"value\": \"2025-08-20T00:00:00+03:00\" },\r\n        \"WarehouseID\": { \"value\": \"RETAIL\" }\r\n  }\r\n}"
+							"raw": "{\r\n  \"entity\":{\r\n      \"id\":\"42bb9a17-a402-e911-b818-00155d408001\"\r\n  },\r\n  \"parameters\": {\r\n        \"ShipmentDate\": { \"value\": \"2026-08-20T00:00:00+03:00\" },\r\n        \"WarehouseID\": { \"value\": \"RETAIL\" }\r\n  }\r\n}"
 						},
 						"url": {
 							"raw": "{{EndpointURL}}SalesOrder/SalesOrderCreateShipment",
