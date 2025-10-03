@@ -45,34 +45,43 @@
     <Reference Include="PX.Api.ContractBased, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Bin\PX.Api.ContractBased.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PX.Commerce.BigCommerce">
       <HintPath>..\..\..\..\Bin\PX.Commerce.BigCommerce.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PX.Commerce.Core">
       <HintPath>..\..\..\..\Bin\PX.Commerce.Core.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PX.Commerce.Objects">
       <HintPath>..\..\..\..\Bin\PX.Commerce.Objects.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PX.Common">
       <HintPath>..\..\..\..\Bin\PX.Common.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PX.Common.Std">
       <HintPath>..\..\..\..\Bin\PX.Common.Std.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PX.CS.Contracts">
       <HintPath>..\..\..\..\Bin\PX.CS.Contracts.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PX.Data">
       <HintPath>..\..\..\..\Bin\PX.Data.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="PX.Data.BQL.Fluent, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="PX.Data.BQL.Fluent">
       <HintPath>..\..\..\..\Bin\PX.Data.BQL.Fluent.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PX.Objects">
-      <HintPath>..\..\..\..\Bin\PX.Objects.DLL</HintPath>
+      <HintPath>..\..\..\..\Bin\PX.Objects.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="RestSharp, Version=106.12.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
