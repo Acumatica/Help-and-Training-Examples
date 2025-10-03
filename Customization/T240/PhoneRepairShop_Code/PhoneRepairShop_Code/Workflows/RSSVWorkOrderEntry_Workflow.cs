@@ -79,6 +79,7 @@ namespace PhoneRepairShop
                 {
                     fields.Add("Assignee", field => field
                        .WithSchemaOf<RSSVWorkOrder.assignee>()
+                       .DefaultValueFromSchemaField()
                        .IsRequired()
                        .Prompt("Assignee"));
                 }));
@@ -189,9 +190,14 @@ namespace PhoneRepairShop
                     actions.Add(graph => graph.PutOnHold, action => action
                         .WithCategory(processingCategory));
                     actions.Add(graph => graph.Assign, action => action
-                      .WithCategory(processingCategory)
-                      .MassProcessingScreen<RSSVAssignProcess>()
-                      .InBatchMode());
+                        .WithCategory(processingCategory)
+                        .WithForm(formAssign)
+                        .WithFieldAssignments(fields => {
+                            fields.Add<RSSVWorkOrder.assignee>(field =>
+                                field.SetFromFormField(formAssign, "Assignee"));
+                        })
+                        .MassProcessingScreen<RSSVAssignProcess>()
+                        .InBatchMode());
                     actions.Add(graph => graph.Complete, action => action
                         .WithCategory(processingCategory, Placement.Last)
                         .WithFieldAssignments(fields => fields

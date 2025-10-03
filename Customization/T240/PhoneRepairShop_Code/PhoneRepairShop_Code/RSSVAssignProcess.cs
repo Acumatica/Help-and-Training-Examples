@@ -1,17 +1,16 @@
-using System;
 using PX.Data;
 using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
 using PX.TM;
+using System;
+using System.Collections.Generic;
 
 namespace PhoneRepairShop
 {
-  public class RSSVAssignProcess : PXGraph<RSSVAssignProcess>
-  {
-
+	public class RSSVAssignProcess : PXGraph<RSSVAssignProcess>
+	{
         public PXCancel<RSSVWorkOrderToAssignFilter> Cancel = null!;
         public PXFilter<RSSVWorkOrderToAssignFilter> Filter = null!;
-
         public SelectFrom<RSSVWorkOrder>.
             Where<RSSVWorkOrder.status.IsEqual<
                 RSSVWorkOrderEntry_Workflow.States.readyForAssignment>.
@@ -35,16 +34,26 @@ namespace PhoneRepairShop
         {
             WorkOrders.SetProcessCaption("Assign");
             WorkOrders.SetProcessAllCaption("Assign All");
+            WorkOrders.SetProcessDelegate(list =>
+                AssignOrders(list, true));
             PXUIFieldAttribute.SetEnabled<RSSVWorkOrder.assignTo>(
                 WorkOrders.Cache, null, true);
         }
 
-        protected virtual void _(Events.RowSelected<
-                RSSVWorkOrderToAssignFilter> e)
-        {
-            WorkOrders.SetProcessWorkflowAction<RSSVWorkOrderEntry>(
-            g => g.Assign);
-        }
+        public PXFilter<MasterTable> MasterView;
+		public PXFilter<DetailsTable> DetailsView;
+
+		[Serializable]
+		public class MasterTable : PXBqlTable, IBqlTable
+		{
+
+		}
+
+		[Serializable]
+		public class DetailsTable : PXBqlTable, IBqlTable
+		{
+
+		}
 
         [PXMergeAttributes(Method = MergeMethod.Append)]
         [Owner(IsDBField = false, DisplayName = "Default Assignee")]
@@ -56,7 +65,7 @@ namespace PhoneRepairShop
             OrderBy<RSSVEmployeeWorkOrderQty.nbrOfAssignedOrders.Asc,
                 RSSVEmployeeWorkOrderQty.lastModifiedDateTime.Asc>.
             SearchFor<OwnerAttribute.Owner.contactID>))]
-        protected virtual void _(
+                protected virtual void _(
             Events.CacheAttached<RSSVWorkOrder.defaultAssignee> e)
         { }
 
@@ -66,7 +75,7 @@ namespace PhoneRepairShop
             RSSVWorkOrder.assignee.IsNotNull>.
             Else<RSSVWorkOrder.defaultAssignee>))]
         protected virtual void _(
-        Events.CacheAttached<RSSVWorkOrder.assignTo> e)
+            Events.CacheAttached<RSSVWorkOrder.assignTo> e)
         { }
 
         protected virtual void _(Events.RowSelecting<RSSVWorkOrder> e)
@@ -74,10 +83,10 @@ namespace PhoneRepairShop
             using (new PXConnectionScope())
             {
                 if (e.Row == null) return;
-                RSSVEmployeeWorkOrderQty employeeNbrOfOrders =
-                    SelectFrom<RSSVEmployeeWorkOrderQty>.
-                    Where<RSSVEmployeeWorkOrderQty.userID.IsEqual<@P.AsInt>>.
-                    View.Select(this, e.Row.AssignTo);
+                    RSSVEmployeeWorkOrderQty employeeNbrOfOrders =
+                        SelectFrom<RSSVEmployeeWorkOrderQty>.
+                        Where<RSSVEmployeeWorkOrderQty.userID.IsEqual<@P.AsInt>>.
+                        View.Select(this, e.Row.AssignTo);
 
                 if (employeeNbrOfOrders != null)
                 {
@@ -94,6 +103,51 @@ namespace PhoneRepairShop
 
         public override bool IsDirty => false;
 
+
+
+        public static void AssignOrders(List<RSSVWorkOrder> list,
+            bool isMassProcess = false)
+        {
+            // The result set to run the report on.
+            PXReportResultset assignedOrders =
+                new PXReportResultset(typeof(RSSVWorkOrder));
+            // Create an instance of the graph to process the records.
+            var workOrderEntry = PXGraph.CreateInstance<RSSVWorkOrderEntry>();
+
+            // Define the processing method. You will use the error handling
+            // and progress tracking functionality of the PXProcessing class.
+            PXProcessing<RSSVWorkOrder>.ProcessRecords(list, isMassProcess,
+                workOrder =>
+                {
+                    workOrder.Assignee = workOrder.AssignTo;
+                    workOrderEntry.Clear();
+                    workOrderEntry.WorkOrders.Current = workOrder;
+                    // If the assignee is not specified,
+                    // specify the default employee.
+                    if (workOrder.Assignee == null)
+                    {
+                        // Retrieve the record with the default setting
+                        RSSVSetup setupRecord =
+                            workOrderEntry.AutoNumSetup.Current;
+                        workOrder.Assignee = setupRecord.DefaultEmployee;
+                    }
+                    // Assign the work order in the cache.
+                    workOrderEntry.Assign.Press();
+
+                    // Add to the result set the order
+                    // that has been successfully assigned.
+                    if (workOrder.Status == WorkOrderStatusConstants.Assigned)
+                    {
+                        assignedOrders.Add(workOrder);
+                    }
+                });
+
+            if (assignedOrders.GetRowCount() > 0 && isMassProcess)
+            {
+                throw new PXReportRequiredException(assignedOrders, "RS601000",
+                                                    Messages.ReportRS601000Title);
+            }
+        }
         [PXHidden]
         public class RSSVWorkOrderToAssignFilter : PXBqlTable, IBqlTable
         {
@@ -143,7 +197,5 @@ namespace PhoneRepairShop
             { }
             #endregion
         }
-
     }
-
 }

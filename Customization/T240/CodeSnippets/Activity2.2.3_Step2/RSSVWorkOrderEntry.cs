@@ -207,98 +207,28 @@ namespace PhoneRepairShop
           MapViewRights = PXCacheRights.Select)]
         protected virtual IEnumerable putOnHold(PXAdapter adapter) => adapter.Get();
 
-        public static void AssignOrders(List<RSSVWorkOrder> list,
-            bool isMassProcess = false)
-        {
-            var workOrderEntry = PXGraph.CreateInstance<RSSVWorkOrderEntry>();
-            // Modify the code so that it works with the list of repair work
-            // orders obtained from the input parameter of the method.
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i] == null)
-                    continue;
-                RSSVWorkOrder workOrder = list[i];
-                // To handle errors that might occur during the processing,
-                // enclose the processing code in the try statement.
-                try
-                {
-                    ////////// The added code
-                    workOrder.Assignee = workOrder.AssignTo;
-                    ////////// The end of added code
-                    workOrderEntry.Clear();
-                    workOrderEntry.WorkOrders.Current = workOrder;
-                    // If the assignee is not specified,
-                    // specify the default employee.
-                    if (workOrder.Assignee == null)
-                    {
-                        // Retrieve the record with the default setting
-                        RSSVSetup setupRecord =
-                        workOrderEntry.AutoNumSetup.Current;
-                        workOrder.Assignee = setupRecord.DefaultEmployee;
-                    }
-                    // Update the work order in the cache.
-                    workOrderEntry.WorkOrders.Update(workOrder);
-                    ////////// The added code
-                    //Modify the number of assigned orders for the employee.
-                    RSSVEmployeeWorkOrderQty employeeNbrOfOrders =
-                        new RSSVEmployeeWorkOrderQty();
-                    employeeNbrOfOrders.UserID = workOrder.Assignee;
-                    employeeNbrOfOrders.NbrOfAssignedOrders = 1;
-                    workOrderEntry.Quantity.Insert(employeeNbrOfOrders);
-                    ////////// The end of added code
-                    // Trigger the Save action to save the changes
-                    // to the database.
-                    workOrderEntry.Actions.PressSave();
-                    // Display the message to indicate successful processing.
-                    if (isMassProcess)
-                    {
-                        PXProcessing<RSSVWorkOrder>.SetInfo(i,
-                        string.Format(Messages.WorkOrderAssigned,
-                        workOrder.OrderNbr));
-                    }
-                }
-                catch (Exception e)
-                {
-                    // Return the processing result for each repair work order
-                    // to the UI.
-                    PXProcessing<RSSVWorkOrder>.SetError(i, e);
-                }
-            }
-        }
-
+        ////////// The modified code
         public PXAction<RSSVWorkOrder> Assign = null!;
-        // Use the PXProcessButton attribute instead of the PXButton attribute 
-        // to indicate that the action will be used on the processing form.
-        [PXProcessButton]
+        [PXButton]
         [PXUIField(DisplayName = "Assign", Enabled = false)]
-        // Use the signature of the action handler that 
-        // returns IEnumerable. 
         protected virtual IEnumerable assign(PXAdapter adapter)
         {
-            bool isMassProcess = adapter.MassProcess;
-            // Populate a local list variable.
-            List<RSSVWorkOrder> list = new List<RSSVWorkOrder>();
-            foreach (RSSVWorkOrder order in adapter.Get<RSSVWorkOrder>())
-            {
-                list.Add(order);
-            }
-            // Trigger the Save action to save changes in the database.
-            // Call Save.Press() instead of Actions.PressSave() because 
-            // the action is used in a workflow and 
-            // starts a long-running operation.
-            Save.Press();
-
-            // Start execution of the processing method in a separate thread.
-            PXLongOperation.StartOperation(this, delegate ()
-            {
-                AssignOrders(list, isMassProcess);
-            });
-
-            // Return the local list variable.
-            return list;
+            // Get the current order from the cache
+            RSSVWorkOrder row = WorkOrders.Current;
+            //Modify the number of assigned orders for the employee
+            RSSVEmployeeWorkOrderQty employeeNbrOfOrders =
+                new RSSVEmployeeWorkOrderQty();
+            employeeNbrOfOrders.UserID = row.Assignee;
+            employeeNbrOfOrders.NbrOfAssignedOrders = 1;
+            Quantity.Insert(employeeNbrOfOrders);
+            // Trigger the Save action to save changes in the database
+            Actions.PressSave();
+            return adapter.Get();
         }
+        ////////// The end of modified code
 
-        ////////// The added code
+
+        ////////// The modified code
         public PXAction<RSSVWorkOrder> Complete = null!;
         [PXButton]
         [PXUIField(DisplayName = "Complete", Enabled = false)]
@@ -316,7 +246,7 @@ namespace PhoneRepairShop
             Actions.PressSave();
             return adapter.Get();
         }
-        ////////// The end of added code
+        ////////// The end of modified code
 
 
         private static void CreateInvoice(RSSVWorkOrder workOrder)

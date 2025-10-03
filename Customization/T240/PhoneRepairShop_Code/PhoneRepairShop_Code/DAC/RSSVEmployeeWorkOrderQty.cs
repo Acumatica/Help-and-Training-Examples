@@ -3,10 +3,12 @@ using PX.Data;
 
 namespace PhoneRepairShop
 {
+    ////////// The modified code
     [PXHidden]
     [RSSVEmployeeWorkOrderQtyAccumulator]
     public class RSSVEmployeeWorkOrderQty : PXBqlTable, IBqlTable
     {
+    ////////// The end of modified code
         #region UserID
         [PXDBInt(IsKey = true)]
         public virtual int? UserID { get; set; }
@@ -27,9 +29,9 @@ namespace PhoneRepairShop
         { }
         #endregion
     }
-
+    ////////// The added code
     public class RSSVEmployeeWorkOrderQtyAccumulator :
-    PXAccumulatorAttribute
+        PXAccumulatorAttribute
     {
         //Specify the single-record mode of update in the constructor.
         public RSSVEmployeeWorkOrderQtyAccumulator()
@@ -59,4 +61,5 @@ namespace PhoneRepairShop
             return true;
         }
     }
+    ////////// The end of added code
 }

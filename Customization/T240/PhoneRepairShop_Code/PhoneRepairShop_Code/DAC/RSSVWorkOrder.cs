@@ -133,6 +133,7 @@ namespace PhoneRepairShop
 
         #region Assignee
         [Owner(DisplayName = "Assignee")]
+        [PXDefault(typeof(RSSVSetup.defaultEmployee))]
         public virtual int? Assignee { get; set; }
         public abstract class assignee : PX.Data.BQL.BqlInt.Field<assignee> { }
         #endregion
@@ -193,7 +194,7 @@ namespace PhoneRepairShop
         public abstract class assignTo : PX.Data.BQL.BqlInt.Field<assignTo> { }
         #endregion
 
-
+        ////////// The added code
         #region NbrOfAssignedOrders
         [PXInt]
         [PXUIField(DisplayName = "Number of Assigned Work Orders")]
@@ -202,7 +203,7 @@ namespace PhoneRepairShop
             PX.Data.BQL.BqlInt.Field<nbrOfAssignedOrders>
         { }
         #endregion
-
+        ////////// The end of added code
 
         #region CreatedDateTime
         [PXDBCreatedDateTime()]

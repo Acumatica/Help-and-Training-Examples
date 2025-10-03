@@ -1,6 +1,8 @@
 using System;
 using PX.Data;
 using PX.Data.BQL.Fluent;
+using System;
+using System.Collections.Generic;
 using PX.TM;
 
 namespace PhoneRepairShop
@@ -32,16 +34,25 @@ namespace PhoneRepairShop
         {
             WorkOrders.SetProcessCaption("Assign");
             WorkOrders.SetProcessAllCaption("Assign All");
+            WorkOrders.SetProcessDelegate(list =>
+                AssignOrders(list, true));
             PXUIFieldAttribute.SetEnabled<RSSVWorkOrder.assignee>(
                 WorkOrders.Cache, null, true);
         }
+        public PXFilter<MasterTable> MasterView;
+		public PXFilter<DetailsTable> DetailsView;
 
-        protected virtual void _(Events.RowSelected<
-            RSSVWorkOrderToAssignFilter> e)
-        {
-            WorkOrders.SetProcessWorkflowAction<RSSVWorkOrderEntry>(
-            g => g.Assign);
-        }
+		[Serializable]
+		public class MasterTable : PXBqlTable, IBqlTable
+		{
+
+		}
+
+		[Serializable]
+		public class DetailsTable : PXBqlTable, IBqlTable
+		{
+
+		}
 
         ////////// The added code
         [PXMergeAttributes(Method = MergeMethod.Append)]
@@ -70,6 +81,31 @@ namespace PhoneRepairShop
 
         public override bool IsDirty => false;
 
+        public static void AssignOrders(List<RSSVWorkOrder> list,
+            bool isMassProcess = false)
+        {
+            var workOrderEntry = PXGraph.CreateInstance<RSSVWorkOrderEntry>();
+        
+            // Define the processing method. You will use the error handling
+            // and progress tracking functionality of the PXProcessing class.
+            PXProcessing<RSSVWorkOrder>.ProcessRecords(list, isMassProcess,
+                workOrder =>
+                {
+                    workOrderEntry.Clear();
+                    workOrderEntry.WorkOrders.Current = workOrder;
+                    // If the assignee is not specified,
+                    // specify the default employee.
+                    if (workOrder.Assignee == null)
+                    {
+                        // Retrieve the record with the default setting
+                        RSSVSetup setupRecord =
+                            workOrderEntry.AutoNumSetup.Current;
+                        workOrder.Assignee = setupRecord.DefaultEmployee;
+                    }
+                    // Assign the work order in the cache.
+                    workOrderEntry.Assign.Press();
+                });
+        }
         [PXHidden]
         public class RSSVWorkOrderToAssignFilter : PXBqlTable, IBqlTable
         {

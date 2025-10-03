@@ -189,10 +189,15 @@ namespace PhoneRepairShop
                     actions.Add(graph => graph.PutOnHold, action => action
                         .WithCategory(processingCategory));
 					/////////// The added code
-                    actions.Add(graph => graph.Assign, action => action
-                      .WithCategory(processingCategory)
-                      .MassProcessingScreen<RSSVAssignProcess>()
-                      .InBatchMode());
+					actions.Add(graph => graph.Assign, action => action
+					    .WithCategory(processingCategory)
+					    .WithForm(formAssign)
+					    .WithFieldAssignments(fields => {
+					        fields.Add<RSSVWorkOrder.assignee>(field =>
+					            field.SetFromFormField(formAssign, "Assignee"));
+					    })
+					    .MassProcessingScreen<RSSVAssignProcess>()
+					    .InBatchMode());
 					  /////////// The end of added code
                     actions.Add(graph => graph.Complete, action => action
                         .WithCategory(processingCategory, Placement.Last)

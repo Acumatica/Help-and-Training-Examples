@@ -49,5 +49,4 @@ namespace PhoneRepairShop
         public const string Standard = "ST";
         public const string Awaiting = "AW";
     }
-
 }
