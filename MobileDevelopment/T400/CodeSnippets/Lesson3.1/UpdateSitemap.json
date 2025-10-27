@@ -1,0 +1,9 @@
+update sitemap {
+  add item "GI000023" {
+    displayName = "Sales Activities"
+  }
+    
+  add item "DB000012" {
+    displayName = "Sales Operations"
+  }
+}
