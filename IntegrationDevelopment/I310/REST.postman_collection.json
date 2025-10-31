@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "57ce8cbf-5bf7-4e8f-8a90-d78eb71c48d0",
+		"_postman_id": "23fe923f-d788-4751-8c18-94bf964e9e0c",
 		"name": "MyBIIntegrationREST",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
@@ -377,6 +377,7 @@
 			"listen": "prerequest",
 			"script": {
 				"type": "text/javascript",
+				"requests": {},
 				"exec": [
 					""
 				]
@@ -386,6 +387,7 @@
 			"listen": "test",
 			"script": {
 				"type": "text/javascript",
+				"requests": {},
 				"exec": [
 					""
 				]
@@ -395,38 +397,31 @@
 	"variable": [
 		{
 			"key": "BaseURL",
-			"value": "http://localhost",
-			"type": "string"
+			"value": "http://localhost"
 		},
 		{
 			"key": "InstanceURL",
-			"value": "{{BaseURL}}/MyStoreInstance",
-			"type": "string"
+			"value": "{{BaseURL}}/MyStoreInstance"
 		},
 		{
 			"key": "DefaultEndpointURL",
-			"value": "{{InstanceURL}}/entity/Default/24.200.001",
-			"type": "string"
+			"value": "{{InstanceURL}}/entity/Default/25.200.001"
 		},
 		{
 			"key": "Username",
-			"value": "admin",
-			"type": "string"
+			"value": "admin"
 		},
 		{
 			"key": "Password",
-			"value": "123",
-			"type": "string"
+			"value": "123"
 		},
 		{
 			"key": "Tenant",
-			"value": "MyCompany",
-			"type": "string"
+			"value": "MyCompany"
 		},
 		{
 			"key": "Branch",
-			"value": "MYSTORE",
-			"type": "string"
+			"value": "MYSTORE"
 		}
 	]
 }
