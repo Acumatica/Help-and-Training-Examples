@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "56a84dcf-2880-4a24-8f1e-ab571b3dda25",
+		"_postman_id": "c9566125-ef02-473c-aad6-1d63266276da",
 		"name": "MyStoreIntegration_DataRetrieval",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
@@ -846,6 +846,7 @@
 			"listen": "prerequest",
 			"script": {
 				"type": "text/javascript",
+				"requests": {},
 				"exec": [
 					""
 				]
@@ -855,6 +856,7 @@
 			"listen": "test",
 			"script": {
 				"type": "text/javascript",
+				"requests": {},
 				"exec": [
 					""
 				]
@@ -864,18 +866,15 @@
 	"variable": [
 		{
 			"key": "BaseURL",
-			"value": "https://localhost",
-			"type": "string"
+			"value": "https://localhost"
 		},
 		{
 			"key": "InstanceURL",
-			"value": "{{BaseURL}}/MyStoreInstance",
-			"type": "string"
+			"value": "{{BaseURL}}/MyStoreInstance"
 		},
 		{
 			"key": "DefaultEndpointURL",
-			"value": "{{InstanceURL}}/entity/Default/24.200.001",
-			"type": "string"
+			"value": "{{InstanceURL}}/entity/Default/25.200.001"
 		},
 		{
 			"key": "ClientID",
@@ -891,18 +890,15 @@
 		},
 		{
 			"key": "Password",
-			"value": "123",
-			"type": "string"
+			"value": "123"
 		},
 		{
 			"key": "fileRef",
-			"value": "",
-			"type": "string"
+			"value": ""
 		},
 		{
 			"key": "accessToken",
-			"value": "",
-			"type": "string"
+			"value": ""
 		}
 	]
 }
