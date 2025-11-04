@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report Name="report1">
+  <SchemaUrl>http://localhost/PhoneRepairShop3</SchemaUrl>
+  <Tables>
+    <ReportTable Name="RSSVWorkOrder">
+      <Fields>
+        <ReportField Name="Assignee_description"></ReportField>
+        <ReportField Name="CreatedByID"></ReportField>
+        <ReportField Name="CreatedByID_Creator_displayName"></ReportField>
+        <ReportField Name="CreatedByID_Creator_Username"></ReportField>
+        <ReportField Name="CreatedByID_description"></ReportField>
+        <ReportField Name="CreatedByScreenID"></ReportField>
+        <ReportField Name="CreatedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="CreatedDateTime_Day"></ReportField>
+        <ReportField Name="CreatedDateTime_Hour"></ReportField>
+        <ReportField Name="CreatedDateTime_Month"></ReportField>
+        <ReportField Name="CreatedDateTime_Quarter"></ReportField>
+        <ReportField Name="CustomerID"></ReportField>
+        <ReportField Name="CustomerID_BAccountR_acctName"></ReportField>
+        <ReportField Name="CustomerID_Customer_acctName"></ReportField>
+        <ReportField Name="CustomerID_description"></ReportField>
+        <ReportField Name="CustomerID_Segment1"></ReportField>
+        <ReportField Name="DateCompleted">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="DateCompleted_Date">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="DateCompleted_Day"></ReportField>
+        <ReportField Name="DateCompleted_Hour"></ReportField>
+        <ReportField Name="DateCompleted_Month"></ReportField>
+        <ReportField Name="DateCompleted_Quarter"></ReportField>
+        <ReportField Name="DateCompleted_Time">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="DateCreated">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="DateCreated_Date">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="DateCreated_Day"></ReportField>
+        <ReportField Name="DateCreated_Hour"></ReportField>
+        <ReportField Name="DateCreated_Month"></ReportField>
+        <ReportField Name="DateCreated_Quarter"></ReportField>
+        <ReportField Name="DateCreated_Time">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="Description"></ReportField>
+        <ReportField Name="DeviceID">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="DeviceID_description"></ReportField>
+        <ReportField Name="DeviceID_RSSVDevice_description"></ReportField>
+        <ReportField Name="Hold">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="InvoiceNbr"></ReportField>
+        <ReportField Name="LastModifiedByID"></ReportField>
+        <ReportField Name="LastModifiedByID_description"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_displayName"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_Username"></ReportField>
+        <ReportField Name="LastModifiedByScreenID"></ReportField>
+        <ReportField Name="LastModifiedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="LastModifiedDateTime_Day"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Hour"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Month"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Quarter"></ReportField>
+        <ReportField Name="NoteActivity"></ReportField>
+        <ReportField Name="NoteFiles"></ReportField>
+        <ReportField Name="Noteid">
+          <DataType>Object</DataType>
+        </ReportField>
+        <ReportField Name="NoteImages"></ReportField>
+        <ReportField Name="NoteText"></ReportField>
+        <ReportField Name="OrderNbr"></ReportField>
+        <ReportField Name="OrderTotal">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="Priority"></ReportField>
+        <ReportField Name="RepairItemLineCntr">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="ServiceID">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="ServiceID_description"></ReportField>
+        <ReportField Name="ServiceID_RSSVRepairService_description"></ReportField>
+        <ReportField Name="Status"></ReportField>
+        <ReportField Name="Tstamp"></ReportField>
+      </Fields>
+      <FullName>PhoneRepairShop.RSSVWorkOrder</FullName>
+    </ReportTable>
+  </Tables>
+  <Width>17.98381cm</Width>
+  <Sections>
+    <PageHeader Name="pageHeaderSection1">
+      <Height>1.48148cm</Height>
+      <Items>
+        <TextBox Name="textBox1">
+          <Location>0px, 32px</Location>
+          <Size>124px, 24px</Size>
+          <Style>
+            <Font>
+              <Style>Bold</Style>
+            </Font>
+          </Style>
+          <StyleName>Heading 1</StyleName>
+          <Value>Order Nbr.</Value>
+        </TextBox>
+        <TextBox Name="textBox12">
+          <Location>4px, 0px</Location>
+          <Size>244px, 24px</Size>
+          <Style>
+            <Font>
+              <Style>Bold</Style>
+            </Font>
+          </Style>
+          <StyleName>Report Name</StyleName>
+          <Value>Assigned Work Orders</Value>
+        </TextBox>
+        <TextBox Name="textBox2">
+          <Location>128px, 32px</Location>
+          <Size>152px, 22px</Size>
+          <Style>
+            <Font>
+              <Style>Bold</Style>
+            </Font>
+          </Style>
+          <StyleName>Heading 1</StyleName>
+          <Value>Service</Value>
+        </TextBox>
+        <TextBox Name="textBox3">
+          <Location>288px, 32px</Location>
+          <Size>152px, 22px</Size>
+          <Style>
+            <Font>
+              <Style>Bold</Style>
+            </Font>
+          </Style>
+          <StyleName>Heading 1</StyleName>
+          <Value>Device</Value>
+        </TextBox>
+        <TextBox Name="textBox5">
+          <Location>448px, 32px</Location>
+          <Size>160px, 22px</Size>
+          <Style>
+            <Font>
+              <Style>Bold</Style>
+            </Font>
+          </Style>
+          <StyleName>Heading 1</StyleName>
+          <Value>Assignee</Value>
+        </TextBox>
+        <TextBox Name="textBox6">
+          <Location>616px, 32px</Location>
+          <Size>56px, 22px</Size>
+          <Style>
+            <Font>
+              <Style>Bold</Style>
+            </Font>
+          </Style>
+          <StyleName>Heading 1</StyleName>
+          <Value>Priority</Value>
+        </TextBox>
+      </Items>
+    </PageHeader>
+    <Detail Name="detailSection1">
+      <Height>0.63492cm</Height>
+      <Items>
+        <TextBox Name="textBox41">
+          <Location>616px, 0px</Location>
+          <Size>56px, 24px</Size>
+          <StyleName>Heading 1</StyleName>
+          <Value>=[RSSVWorkOrder.Priority]</Value>
+        </TextBox>
+        <TextBox Name="textBox49">
+          <Location>0px, 0px</Location>
+          <NavigateMethod>Server</NavigateMethod>
+          <Size>128px, 24px</Size>
+          <StyleName>Heading 1</StyleName>
+          <Value>=[RSSVWorkOrder.OrderNbr]</Value>
+        </TextBox>
+        <TextBox Name="textBox50">
+          <Location>128px, 0px</Location>
+          <Size>152px, 24px</Size>
+          <StyleName>Heading 1</StyleName>
+          <Value>=[RSSVWorkOrder.ServiceID_description]</Value>
+        </TextBox>
+        <TextBox Name="textBox51">
+          <Location>288px, 0px</Location>
+          <Size>152px, 24px</Size>
+          <StyleName>Heading 1</StyleName>
+          <Value>=[RSSVWorkOrder.DeviceID_description]</Value>
+        </TextBox>
+        <TextBox Name="textBox52">
+          <Location>448px, 0px</Location>
+          <Size>160px, 24px</Size>
+          <StyleName>Heading 1</StyleName>
+          <Value>=[RSSVWorkOrder.Assignee_description]</Value>
+        </TextBox>
+      </Items>
+    </Detail>
+    <PageFooter Name="pageFooterSection1">
+      <PrintAtBottom>False</PrintAtBottom>
+      <Items>
+        <TextBox Name="textBox22">
+          <Location>424px, 8px</Location>
+          <Size>108px, 24px</Size>
+          <Style>
+            <Font>
+              <Style>Bold</Style>
+            </Font>
+          </Style>
+          <StyleName>Heading 1</StyleName>
+          <Value>Total Number</Value>
+        </TextBox>
+        <TextBox Name="textBox4">
+          <Format>=Report.GetFormat('RowCustomer.CreditLimit')</Format>
+          <Location>536px, 8px</Location>
+          <Size>128px, 24px</Size>
+          <Style>
+            <TextAlign>Right</TextAlign>
+          </Style>
+          <StyleName>Heading 1</StyleName>
+          <Value>=Count([RSSVWorkOrder.OrderNbr])</Value>
+        </TextBox>
+      </Items>
+    </PageFooter>
+  </Sections>
+</Report>
