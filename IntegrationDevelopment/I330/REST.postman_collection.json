@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3857aecb-008d-486b-9487-96a9dfc4cbc7",
+		"_postman_id": "a541f1eb-c4b8-454b-9389-dc50e39485b7",
 		"name": "MyStoreIntegration_DataManipulation",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1878971"
@@ -263,7 +263,8 @@
 									"pm.execution.setNextRequest(\"Activity 2.1.1: To Update a Customer Record\");"
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						},
 						{
@@ -273,7 +274,8 @@
 									""
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -293,7 +295,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"InventoryID\":{\"value\":\"BASESERV1\"},\n\t\"Description\":{\"value\":\"Baseline level of performance\"},\n\t\"ItemClass\":{\"value\":\"STOCKITEM\"},\n\t\"Attributes\":[\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"Operation System\"},\n\t\t\t\"Value\":{\"value\":\"Windows\"}\n\t\t},\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"SOFTVER\"},\n\t\t\t\"Value\":{\"value\":\"Server 2012 R2\"}\n\t\t}\n\t]\n}"
+							"raw": "{\n\t\"InventoryID\":{\"value\":\"BASESERV1\"},\n\t\"Description\":{\"value\":\"Baseline level of performance\"},\n\t\"ItemClass\":{\"value\":\"STOCKITEM\"},\n\t\"Attributes\":[\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"Operation System\"},\n\t\t\t\"Value\":{\"value\":\"Windows\"}\n\t\t},\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"SOFTVER\"},\n\t\t\t\"Value\":{\"value\":\"Server 2025\"}\n\t\t}\n\t]\n}"
 						},
 						"url": {
 							"raw": "{{DefaultEndpointURL}}/StockItem?$select=InventoryID,Attributes/AttributeDescription,Attributes/Value&$expand=Attributes",
@@ -929,7 +931,8 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						},
 						{
@@ -939,7 +942,8 @@
 									""
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -1045,6 +1049,7 @@
 			"listen": "prerequest",
 			"script": {
 				"type": "text/javascript",
+				"requests": {},
 				"exec": [
 					""
 				]
@@ -1054,6 +1059,7 @@
 			"listen": "test",
 			"script": {
 				"type": "text/javascript",
+				"requests": {},
 				"exec": [
 					""
 				]
@@ -1063,18 +1069,15 @@
 	"variable": [
 		{
 			"key": "BaseURL",
-			"value": "https://localhost",
-			"type": "string"
+			"value": "https://localhost"
 		},
 		{
 			"key": "InstanceURL",
-			"value": "{{BaseURL}}/MyStoreInstance",
-			"type": "string"
+			"value": "{{BaseURL}}/MyStoreInstance"
 		},
 		{
 			"key": "DefaultEndpointURL",
-			"value": "{{InstanceURL}}/entity/Default/24.200.001",
-			"type": "string"
+			"value": "{{InstanceURL}}/entity/Default/25.200.001"
 		},
 		{
 			"key": "Username",
@@ -1082,8 +1085,7 @@
 		},
 		{
 			"key": "Password",
-			"value": "123",
-			"type": "string"
+			"value": "123"
 		},
 		{
 			"key": "ClientID",
@@ -1095,13 +1097,11 @@
 		},
 		{
 			"key": "SalesInvoiceStatusUrl",
-			"value": "",
-			"type": "string"
+			"value": ""
 		},
 		{
 			"key": "accessToken",
-			"value": "",
-			"type": "string"
+			"value": ""
 		},
 		{
 			"key": "CONGRILL_detail_ID",
