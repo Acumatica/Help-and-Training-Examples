@@ -1,0 +1,18 @@
+<template>
+     
+<qp-template id="RepairPrices" name="1-1-1"> 
+	<qp-fieldset id="fsColumnA-RepairPrices" view.bind="RepairPrices" slot="A" >
+		<field name="ServiceID" ></field>
+	    <field name="DeviceID" ></field>
+	</qp-fieldset>
+	<qp-fieldset id="fsColumnB-RepairPrices" view.bind="RepairPrices" slot="B" >
+		<field name="Price" ></field>
+	</qp-fieldset>
+</qp-template> 
+<qp-tabbar id="tabsPrices">
+	<qp-tab id="tabRepairItems" caption="Repair Items"> 
+         <qp-grid id="gridRepairItems" view.bind="RepairItems"></qp-grid>
+    </qp-tab>
+</qp-tabbar>
+	
+</template>
