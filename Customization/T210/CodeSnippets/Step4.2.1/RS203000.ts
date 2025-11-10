@@ -6,7 +6,9 @@ import { createCollection, createSingle, graphInfo, PXView, PXScreen, PXFieldSta
 	primaryView: "RepairPrices",
 })
 export class RS203000 extends PXScreen {
+	@viewInfo({containerName: "Repair Prices"})
 	RepairPrices = createSingle(RSSVRepairPrice);
+	@viewInfo({containerName: "Repair Items"})
 	RepairItems = createCollection(RSSVRepairItem);
 	@viewInfo({containerName: "Labor"})
 	Labor = createCollection(RSSVLabor);
