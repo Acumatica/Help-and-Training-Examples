@@ -1,5 +1,5 @@
 
-import { createCollection, createSingle, graphInfo, PXView, PXScreen, PXFieldState, gridConfig, PXFieldOptions, PXActionState, GridPreset } from "client-controls";
+import { createCollection, createSingle, graphInfo, PXView, PXScreen, PXFieldState, gridConfig, PXFieldOptions, PXActionState, GridPreset viewInfo } from "client-controls";
 
 @graphInfo({
 	graphType: "PhoneRepairShop.RSSVRepairPriceMaint",
