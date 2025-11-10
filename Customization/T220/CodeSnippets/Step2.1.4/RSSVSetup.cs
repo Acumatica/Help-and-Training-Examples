@@ -19,9 +19,10 @@ namespace PhoneRepairShop
         [PXSelector(typeof(Numbering.numberingID),
             DescriptionField = typeof(Numbering.descr))]
         [PXDefault("WORKORDER")]
-        ////////// The end of modified code
         public virtual string? NumberingID { get; set; }
-        public abstract class numberingID : PX.Data.BQL.BqlString.Field<numberingID> { }
+        public abstract class numberingID : 
+            PX.Data.BQL.BqlString.Field<numberingID> { }
+        ////////// The end of modified code
         #endregion
 
         #region WalkInCustomerID

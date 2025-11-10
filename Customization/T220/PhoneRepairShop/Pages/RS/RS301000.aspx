@@ -1,9 +1,9 @@
-<%@ Page Language="C#" MasterPageFile="~/MasterPages/FormTab.master" AutoEventWireup="true" ValidateRequest="false" CodeFile="RS203000.aspx.cs" Inherits="Page_RS203000" Title="Untitled Page" %>
+<%@ Page Language="C#" MasterPageFile="~/MasterPages/FormTab.master" AutoEventWireup="true" ValidateRequest="false" CodeFile="RS301000.aspx.cs" Inherits="Page_RS301000" Title="Untitled Page" %>
 <%@ MasterType VirtualPath="~/MasterPages/FormTab.master" %>
 
 <asp:Content ID="cont1" ContentPlaceHolderID="phDS" Runat="Server">
 	<px:PXDataSource ID="ds" runat="server" Visible="True" Width="100%"
-        TypeName="PhoneRepairShop.RSSVTest"
+        TypeName="PhoneRepairShop.RSSVWorkOrderEntry"
         PrimaryView="MasterView"
         >
 		<CallbackCommands>

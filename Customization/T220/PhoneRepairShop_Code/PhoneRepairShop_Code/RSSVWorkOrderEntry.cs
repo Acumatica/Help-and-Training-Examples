@@ -1,7 +1,8 @@
 using PX.Data;
-using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
 using PX.Objects.IN;
+using System;
+using PX.Data.BQL;
 
 namespace PhoneRepairShop
 {
@@ -36,12 +37,29 @@ namespace PhoneRepairShop
         }
         #endregion
 
+
+        public PXFilter<MasterTable> MasterView;
+		public PXFilter<DetailsTable> DetailsView;
+
+		[Serializable]
+		public class MasterTable : PXBqlTable, IBqlTable
+		{
+
+		}
+
+		[Serializable]
+		public class DetailsTable : PXBqlTable, IBqlTable
+		{
+
+		}
+
         #region Events
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
         {
             if (WorkOrders.Cache.GetStatus(e.Row) != PXEntryStatus.Inserted ||
-                e.Cache.ObjectsEqual<RSSVWorkOrder.serviceID, RSSVWorkOrder.deviceID>(e.Row, e.OldRow))
+                e.Cache.ObjectsEqual<RSSVWorkOrder.serviceID,
+                    RSSVWorkOrder.deviceID>(e.Row, e.OldRow))
                 return;
 
             if (e.Row.ServiceID == null || e.Row.DeviceID == null ||
@@ -51,8 +69,10 @@ namespace PhoneRepairShop
 
             //Retrieve the default repair items
             var repairItems = SelectFrom<RSSVRepairItem>.
-                Where<RSSVRepairItem.serviceID.IsEqual<RSSVWorkOrder.serviceID.FromCurrent>.
-                    And<RSSVRepairItem.deviceID.IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>>
+                Where<RSSVRepairItem.serviceID.
+                    IsEqual<RSSVWorkOrder.serviceID.FromCurrent>.
+                And<RSSVRepairItem.deviceID.
+                    IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>>
                 .View.Select(this);
             //Insert default repair items
             foreach (RSSVRepairItem item in repairItems)
@@ -66,8 +86,10 @@ namespace PhoneRepairShop
 
             //Retrieve the default labor items
             var laborItems = SelectFrom<RSSVLabor>.
-                Where<RSSVLabor.serviceID.IsEqual<RSSVWorkOrder.serviceID.FromCurrent>.
-                    And<RSSVLabor.deviceID.IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>>
+                Where<RSSVLabor.serviceID.
+                    IsEqual<RSSVWorkOrder.serviceID.FromCurrent>.
+                And<RSSVLabor.deviceID.
+                    IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>>
                 .View.Select(this);
             //Insert the default labor items
             foreach (RSSVLabor item in laborItems)
