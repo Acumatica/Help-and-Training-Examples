@@ -6,10 +6,10 @@ update screen SO301000 {
     }
   }
   add dialog QuickProcessD {
-    add dialogAction "QPOK" {
+    add dialogAction "Process" {
       CloseDialog = True
       DialogResult = OK
-      DisplayName = "OK"
+      DisplayName = "Process"
     }
     openAs = Form
     add container "ProcessOrder" {
@@ -32,7 +32,7 @@ update screen SO301000 {
       add field "ProcessOrderInvoicing#PrintInvoice"
       add field "ProcessOrderInvoicing#EmailInvoice"
       add field "ProcessOrderInvoicing#ReleaseInvoice"
-      add recordAction "QPOK" {
+      add recordAction "Process" {
         icon = "system://Check"
       }
     }    
