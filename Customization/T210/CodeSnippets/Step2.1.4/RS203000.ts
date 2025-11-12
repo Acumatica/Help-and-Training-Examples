@@ -9,7 +9,7 @@ export class RS203000 extends PXScreen {
 	@viewInfo({containerName: "Repair Prices"})
 	RepairPrices = createSingle(RSSVRepairPrice);
 	@viewInfo({containerName: "Repair Items"})
-	RepairItems = createCollection(RSSVRepairItem);
+    RepairItems = createCollection(RSSVRepairItem);
 }
 
 export class RSSVRepairPrice extends PXView {
@@ -19,15 +19,14 @@ export class RSSVRepairPrice extends PXView {
 }
 
 @gridConfig({
-	preset: GridPreset.Details,
-	syncPosition: true,
-	initNewRow: true
+  preset: GridPreset.Details,
+  initNewRow: true
 })
 export class RSSVRepairItem extends PXView {
-    RepairItemType : PXFieldState<PXFieldOptions.CommitChanges>;
-	Required : PXFieldState;
-	InventoryID: PXFieldState;
-	InventoryID_description : PXFieldState;
-	BasePrice : PXFieldState;
-	IsDefault : PXFieldState;
+    RepairItemType : PXFieldState;
+    Required : PXFieldState;
+    InventoryID: PXFieldState<PXFieldOptions.CommitChanges>;
+    InventoryID_description : PXFieldState;
+    BasePrice : PXFieldState;
+    IsDefault : PXFieldState;
 }
