@@ -13,8 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <WarningLevel>3</WarningLevel>
-    <FileVersion>25.100.0054</FileVersion>
-    <InformationalVersion>25.100.0054</InformationalVersion>
+    <FileVersion>25.200.0248</FileVersion>
+    <InformationalVersion>25.200.0248</InformationalVersion>
     <Copyright>Copyright © 2005-2025 Acumatica, Inc. All rights reserved.</Copyright>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -50,7 +50,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="PX.Objects">
-      <HintPath>..\..\..\..\Bin\PX.Objects.dll</HintPath>
+      <HintPath>..\..\..\..\Bin\PX.Objects.DLL</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -62,7 +62,7 @@
   <ItemGroup>
     <Compile Include="ProjectEntry_CustomizedWorkflow.cs" />
     <Compile Include="SOInvoiceEntry.cs" />
-<Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces">
