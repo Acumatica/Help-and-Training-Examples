@@ -43,16 +43,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RSSVDeviceMaint.cs" />
-    <Compile Include="DAC\RSSVDevice.cs" />
-	<Compile Include="Data\InputData.cs" />
-    <Compile Include="Helper\Constants.cs" />
-    <Compile Include="Helper\Messages.cs" />
-    <Compile Include="RSSVRepairServiceMaint.cs" />
-    <Compile Include="DAC\RSSVRepairService.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces">
       <Version>9.0.2</Version>
     </PackageReference>

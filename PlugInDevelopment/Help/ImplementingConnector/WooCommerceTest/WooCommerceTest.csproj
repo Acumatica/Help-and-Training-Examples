@@ -76,25 +76,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BCBindingWooCommerce.cs" />
-    <Compile Include="External\CustomerAddressData.cs" />
-    <Compile Include="External\CustomerData.cs" />
-    <Compile Include="External\CustomerDataProvider.cs" />
-    <Compile Include="External\IWooEntity.cs" />
-    <Compile Include="External\WooRestClientBase.cs" />
-    <Compile Include="Helper\Constants.cs" />
-    <Compile Include="Helper\Messages.cs" />
-    <Compile Include="Internal\Case.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sync\MappedCustomer.cs" />
-    <Compile Include="Sync\WooLocationEntityBucket.cs" />
-    <Compile Include="Sync\WooCustomerEntityBucket.cs" />
-    <Compile Include="Sync\WooCustomerProcessor.cs" />
-    <Compile Include="WooCommerceConnector.cs" />
-    <Compile Include="WooCommerceConnectorFactory.cs" />
-    <Compile Include="WooCommerceStoreMaint.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces">
       <Version>9.0.2</Version>
     </PackageReference>

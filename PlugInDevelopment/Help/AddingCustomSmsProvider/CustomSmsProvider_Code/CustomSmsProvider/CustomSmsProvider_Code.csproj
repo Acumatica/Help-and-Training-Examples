@@ -43,14 +43,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helper\Messages.cs" />
-    <Compile Include="Service\PlivoResponse.cs" />
-    <Compile Include="Service\PlivoService.cs" />
-    <Compile Include="PlivoSmsProvider.cs" />
-    <Compile Include="PlivoSmsProviderFactory.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces">
       <Version>9.0.2</Version>
     </PackageReference>

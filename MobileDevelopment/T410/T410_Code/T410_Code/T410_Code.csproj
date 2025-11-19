@@ -35,11 +35,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProjectEntry_CustomizedWorkflow.cs" />
-    <Compile Include="SOInvoiceEntry.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces">
       <Version>9.0.2</Version>
     </PackageReference>
