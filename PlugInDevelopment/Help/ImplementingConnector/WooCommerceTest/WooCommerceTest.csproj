@@ -6,6 +6,7 @@
     <RootNamespace>WooCommerceTest</RootNamespace>
     <AssemblyName>WooCommerceTest</AssemblyName>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>bin\$(Configuration)</OutputPath>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <FileVersion>25.201.0166</FileVersion>
     <InformationalVersion>25.201.0166</InformationalVersion>
