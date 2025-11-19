@@ -5,6 +5,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>T410_Code</RootNamespace>
     <AssemblyName>T410_Code</AssemblyName>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <FileVersion>25.201.0166</FileVersion>
     <InformationalVersion>25.201.0166</InformationalVersion>
