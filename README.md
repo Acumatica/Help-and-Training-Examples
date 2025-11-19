@@ -15,7 +15,7 @@ Customization of Acumatica ERP
  * [Help](Customization/Help): Examples from the [Customization Guide](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=316b14fa-f406-4788-993c-7b043b1c5bd9)
  * [T190](Customization/T190): Source files for the [T190 Quick Start in Customization](https://openuni.acumatica.com/courses/development/t190-development-quick-start-in-customization/) training course
  * [T200](Customization/T200): Examples from the [T200 Maintenance Forms](https://openuni.acumatica.com/courses/development/t200-development-maintenance-forms/) training course
- * [T210](Customization/T210): Examples from the [T210 Customized Forms and Master-Detail Relationship](https://openuni.acumatica.com/courses/development/t210-development-customized-forms-and-master-detail-relationship/) training course
+ * [T210](Customization/T210): Examples from the [T210 Customized Forms and Master-Detail Relationships](https://openuni.acumatica.com/courses/development/t210-development-customized-forms-and-master-detail-relationship/) training course
  * [T220](Customization/T220): Examples from the [T220 Data Entry and Setup Forms](https://openuni.acumatica.com/courses/development/t220-development-data-entry-and-setup-forms/) training course
  * [T230](Customization/T230): Examples from the [T230 Actions](https://openuni.acumatica.com/courses/development/t230-development-actions/) training course
  * [T240](Customization/T240): Examples from the [T240 Processing Forms](https://openuni.acumatica.com/courses/development/t240-development-processing-forms/) training course
@@ -27,7 +27,7 @@ Workflow development
 
 Modern UI development
 
- * [T290](ModernUI/T290): Source files for the [T290 Modern UI](https://openuni.acumatica.com/courses/development/t290-modern-ui/) training course
+ * [T290](ModernUI/T290): Source files for the [T290 Modern UI for Developers](https://openuni.acumatica.com/courses/development/t290-modern-ui/) training course
 
 Unit testing
 
