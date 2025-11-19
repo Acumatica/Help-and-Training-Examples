@@ -49,11 +49,11 @@
     <Reference Include="PX.Objects">
       <HintPath>..\..\..\..\Bin\PX.Objects.dll</HintPath>
     </Reference>
-    <Reference Include="PX.Tests.Unit">
-      <HintPath>..\..\..\..\..\..\Program Files\Acumatica ERP\UnitTesting\PX.Tests.Unit.dll</HintPath>
-    </Reference>
     <Reference Include="PX.Web.Customization">
       <HintPath>..\..\..\..\Bin\PX.Web.Customization.dll</HintPath>
+    </Reference>
+    <Reference Include="PX.Tests.Unit">
+      <HintPath>..\..\..\..\Bin\PX.Tests.Unit.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
