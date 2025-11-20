@@ -1,9 +1,9 @@
-using System;
 using PX.Data;
 using PX.Data.WorkflowAPI;
 using PX.Objects.AR;
 using PX.Objects.CS;
 using PX.TM;
+using System;
 
 namespace PhoneRepairShop
 {
@@ -215,11 +215,12 @@ namespace PhoneRepairShop
         #endregion
 
         public class WorkflowEvents :
-            PXEntityEvent<ARRegister>.Container<WorkflowEvents>
+           PXEntityEvent<ARRegister>.Container<WorkflowEvents>
         {
             public PXEntityEvent<ARRegister> InvoiceGotPrepaid = null!;
         }
 
+        //// Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
         public sealed class RSSVWorkOrder_Extension :
             PXCacheExtension<RSSVWorkOrder>
         {
