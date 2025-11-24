@@ -46,19 +46,19 @@ export class RSSVWorkOrder extends PXView {
 	InvoiceNbr: PXFieldState;
 }
 
+////////// The modified code
 @gridConfig({
 	preset: GridPreset.Details
 })
 export class RSSVWorkOrderItem extends PXView {
-    ////////// The added code
     UpdateItemPrices: PXActionState;
-    ////////// The end of added code
 
-	RepairItemType: PXFieldState;
-	InventoryID: PXFieldState<PXFieldOptions.CommitChanges>;
-	InventoryID_description: PXFieldState;
-	BasePrice: PXFieldState;
+    RepairItemType: PXFieldState;
+    InventoryID: PXFieldState<PXFieldOptions.CommitChanges>;
+    InventoryID_description: PXFieldState;
+    BasePrice: PXFieldState;
 }
+////////// The end of modified code
 
 @gridConfig({
 	preset: GridPreset.Details
