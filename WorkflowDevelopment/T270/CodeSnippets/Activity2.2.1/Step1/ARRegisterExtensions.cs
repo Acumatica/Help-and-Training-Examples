@@ -4,13 +4,13 @@ using System;
 
 namespace PhoneRepairShop
 {
-    // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod 
-    // extension should be constantly active
-    public sealed class ARPaymentExt : PXCacheExtension<ARPayment>
-    {
+    // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension
+    // should be constantly active
+    public sealed class ARRegisterExt : PXCacheExtension<ARRegister>
+	{
         #region UsrPrepaymentPercent
         [PXDBDecimal()]
-        [PXDefault(TypeCode.Decimal, "0.0", 
+        [PXDefault(TypeCode.Decimal, "0.0",
             PersistingCheck = PXPersistingCheck.Nothing)]
         [PXUIField(DisplayName = "Prepayment Percent")]
         public Decimal? UsrPrepaymentPercent { get; set; }

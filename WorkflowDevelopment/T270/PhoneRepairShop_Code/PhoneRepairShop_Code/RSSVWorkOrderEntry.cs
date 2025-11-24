@@ -1,12 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using PX.Data;
 using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
+using PX.Data.WorkflowAPI;
+using PX.Objects.AR;
 using PX.Objects.IN;
 using PX.Objects.SO;
-using PX.Objects.AR;
-using PX.Data.WorkflowAPI;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
 
 namespace PhoneRepairShop
 {
@@ -40,7 +42,23 @@ namespace PhoneRepairShop
         }
         #endregion
 
-        #region Events Handlers
+
+        public PXFilter<MasterTable> MasterView;
+		public PXFilter<DetailsTable> DetailsView;
+
+		[Serializable]
+		public class MasterTable : PXBqlTable, IBqlTable
+		{
+
+		}
+
+		[Serializable]
+		public class DetailsTable : PXBqlTable, IBqlTable
+		{
+
+		}
+
+        #region Events
         //Copy repair items and labor items from the Services and Prices form.
         protected virtual void _(Events.RowUpdated<RSSVWorkOrder> e)
         {
@@ -56,7 +74,7 @@ namespace PhoneRepairShop
             //Retrieve the default repair items
             var repairItems = SelectFrom<RSSVRepairItem>.
                 Where<RSSVRepairItem.serviceID.IsEqual<RSSVWorkOrder.serviceID.FromCurrent>.
-                    And<RSSVRepairItem.deviceID.IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>>
+                And<RSSVRepairItem.deviceID.IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>>
                 .View.Select(this);
             //Insert default repair items
             foreach (RSSVRepairItem item in repairItems)
@@ -71,7 +89,7 @@ namespace PhoneRepairShop
             //Retrieve the default labor items
             var laborItems = SelectFrom<RSSVLabor>.
                 Where<RSSVLabor.serviceID.IsEqual<RSSVWorkOrder.serviceID.FromCurrent>.
-                    And<RSSVLabor.deviceID.IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>>
+                And<RSSVLabor.deviceID.IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>>
                 .View.Select(this);
             //Insert the default labor items
             foreach (RSSVLabor item in laborItems)
@@ -294,9 +312,9 @@ namespace PhoneRepairShop
         #region Workflow Event Handlers 
         public PXWorkflowEventHandler<RSSVWorkOrder, ARInvoice> OnCloseDocument
             = null!;
-        
         public PXWorkflowEventHandler<RSSVWorkOrder, ARRegister> OnInvoiceGotPrepaid
             = null!;
         #endregion
+
     }
 }

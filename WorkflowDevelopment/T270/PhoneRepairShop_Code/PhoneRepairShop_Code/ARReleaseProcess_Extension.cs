@@ -53,14 +53,14 @@ namespace PhoneRepairShop
                 {
                     var paidPercent = (ardoc.CuryOrigDocAmt - ardoc.CuryDocBal) * 100
                         / ardoc.CuryOrigDocAmt;
-                    var paymentExt = PXCache<ARPayment>.
-                        GetExtension<ARPaymentExt>(payment);
+                    var paymentExt = PXCache<ARRegister>.
+                        GetExtension<ARRegisterExt>(payment);
                     if (paidPercent >= paymentExt.UsrPrepaymentPercent)
                     {
                         RSSVWorkOrder.WorkflowEvents
                           .Select(e => e.InvoiceGotPrepaid)
                           .FireOn(Base, ardoc);
-                        // No need to call the Persist method.
+                         // No need to call the Persist method.
                     }
                 }
             }
