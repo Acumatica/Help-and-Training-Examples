@@ -11,7 +11,8 @@ namespace PhoneRepairShop
 	{
         public PXCancel<RSSVWorkOrderToAssignFilter> Cancel = null!;
         public PXFilter<RSSVWorkOrderToAssignFilter> Filter = null!;
-        public SelectFrom<RSSVWorkOrder>.
+        public 
+            SelectFrom<RSSVWorkOrder>.
             Where<RSSVWorkOrder.status.IsEqual<
                 RSSVWorkOrderEntry_Workflow.States.readyForAssignment>.
                 And<RSSVWorkOrder.timeWithoutAction.IsGreaterEqual<
@@ -131,14 +132,6 @@ namespace PhoneRepairShop
                     }
                     // Assign the work order in the cache.
                     workOrderEntry.Assign.Press();
-                    ////////// The added code
-                    //Modify the number of assigned orders for the employee.
-                    RSSVEmployeeWorkOrderQty employeeNbrOfOrders =
-                        new RSSVEmployeeWorkOrderQty();
-                    employeeNbrOfOrders.UserID = workOrder.Assignee;
-                    employeeNbrOfOrders.NbrOfAssignedOrders = 1;
-                    workOrderEntry.Quantity.Insert(employeeNbrOfOrders);
-                    ////////// The end of added code
                 });
         }
         [PXHidden]

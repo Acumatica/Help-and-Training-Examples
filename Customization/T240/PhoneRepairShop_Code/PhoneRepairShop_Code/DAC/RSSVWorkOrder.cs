@@ -133,7 +133,6 @@ namespace PhoneRepairShop
 
         #region Assignee
         [Owner(DisplayName = "Assignee")]
-        [PXDefault(typeof(RSSVSetup.defaultEmployee))]
         public virtual int? Assignee { get; set; }
         public abstract class assignee : PX.Data.BQL.BqlInt.Field<assignee> { }
         #endregion
@@ -194,7 +193,6 @@ namespace PhoneRepairShop
         public abstract class assignTo : PX.Data.BQL.BqlInt.Field<assignTo> { }
         #endregion
 
-        ////////// The added code
         #region NbrOfAssignedOrders
         [PXInt]
         [PXUIField(DisplayName = "Number of Assigned Work Orders")]
@@ -203,7 +201,6 @@ namespace PhoneRepairShop
             PX.Data.BQL.BqlInt.Field<nbrOfAssignedOrders>
         { }
         #endregion
-        ////////// The end of added code
 
         #region CreatedDateTime
         [PXDBCreatedDateTime()]
@@ -270,7 +267,7 @@ namespace PhoneRepairShop
             public PXEntityEvent<ARRegister> InvoiceGotPrepaid = null!;
         }
 
-        // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
+        //// Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
         public sealed class RSSVWorkOrder_Extension : PXCacheExtension<RSSVWorkOrder>
         {
             #region Status

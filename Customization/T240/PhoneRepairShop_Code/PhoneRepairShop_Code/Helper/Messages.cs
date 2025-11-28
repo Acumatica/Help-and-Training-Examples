@@ -43,6 +43,11 @@ namespace PhoneRepairShop
         public const string Completed = "Completed";
         public const string Paid = "Paid";
 
+        //Work order types 
+        public const string Simple = "Simple";
+        public const string Standard = "Standard";
+        public const string Awaiting = "Awaiting Delivery";
+
         //Messages
         public const string StockItemIncorrectRepairItemType =
             "This stock item has a repair item type that differs from {0}.";
@@ -56,19 +61,11 @@ namespace PhoneRepairShop
         public const string PriorityTooLow =
             @"The priority must be at least Medium for 
             the repair service that requires preliminary check.";
-        public const string WorkOrderAssigned =
-            "The {0} work order has been successfully assigned.";
         public const string ExceedingMaximumNumberOfAssignedWorkOrders =
             @"Updating the number of assigned work orders for the employee 
             will lead to exceeding of the maximum number of assigned work orders, 
             which is 10.";
-        ////////// The added code
-        public const string ReportRS601000Title = "Assigned Work Orders";
-        ////////// The end of added code
 
-        //Work order types 
-        public const string Simple = "Simple";
-        public const string Standard = "Standard";
-        public const string Awaiting = "Awaiting Delivery";
+        public const string ReportRS601000Title = "Assigned Work Orders";
     }
 }

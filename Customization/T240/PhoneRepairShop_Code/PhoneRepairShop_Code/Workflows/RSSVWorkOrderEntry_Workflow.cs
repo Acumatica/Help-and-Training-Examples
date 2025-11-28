@@ -85,7 +85,7 @@ namespace PhoneRepairShop
                 }));
 
             #region Categories
-                var commonCategories = CommonActionCategories.Get(context);
+            var commonCategories = CommonActionCategories.Get(context);
             var processingCategory = commonCategories.Processing;
             #endregion
 

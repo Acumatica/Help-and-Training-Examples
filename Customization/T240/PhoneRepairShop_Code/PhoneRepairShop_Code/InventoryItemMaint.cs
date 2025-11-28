@@ -9,10 +9,11 @@ namespace PhoneRepairShop
     public class InventoryItemMaint_Extension : PXGraphExtension<PX.Objects.IN.InventoryItemMaint>
     {
         #region Data Views
-        public SelectFrom<RSSVStockItemDevice>.
+        public 
+            SelectFrom<RSSVStockItemDevice>.
             Where<RSSVStockItemDevice.inventoryID.
-                IsEqual<InventoryItem.inventoryID.FromCurrent>>.View
-            CompatibleDevices = null!;
+                IsEqual<InventoryItem.inventoryID.FromCurrent>>
+            .View CompatibleDevices = null!;
         #endregion
 
         #region Event Handlers

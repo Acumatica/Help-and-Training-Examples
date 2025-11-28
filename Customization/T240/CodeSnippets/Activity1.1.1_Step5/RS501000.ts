@@ -1,7 +1,7 @@
 import {
 	PXScreen, createCollection, graphInfo,
 	viewInfo,
-	PXView, PXFieldOptions, PXFieldState,
+	PXView, PXFieldOptions, PXFieldState, 
 	gridConfig, columnConfig, GridPreset
 } from "client-controls";
 

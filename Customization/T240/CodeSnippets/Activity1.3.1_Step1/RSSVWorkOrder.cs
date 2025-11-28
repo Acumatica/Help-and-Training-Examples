@@ -133,7 +133,6 @@ namespace PhoneRepairShop
 
         #region Assignee
         [Owner(DisplayName = "Assignee")]
-        [PXDefault(typeof(RSSVSetup.defaultEmployee))]
         public virtual int? Assignee { get; set; }
         public abstract class assignee : PX.Data.BQL.BqlInt.Field<assignee> { }
         #endregion
