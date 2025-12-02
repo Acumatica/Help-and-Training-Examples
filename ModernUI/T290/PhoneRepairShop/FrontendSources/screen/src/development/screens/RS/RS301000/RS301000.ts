@@ -4,7 +4,8 @@ import {
 	PXView, PXFieldOptions, PXFieldState, controlConfig,
 	gridConfig, GridPreset,
     fieldConfig,
-    PXActionState
+    PXActionState,
+	handleEvent, CustomEventType, RowCssHandlerArgs
 } from "client-controls";
 
 @graphInfo({
@@ -17,6 +18,15 @@ export class RS301000 extends PXScreen {
   WorkOrders = createSingle(RSSVWorkOrder);
   RepairItems = createCollection(RSSVWorkOrderItem);
   Labor = createCollection(RSSVWorkOrderLabor);
+
+  @handleEvent(CustomEventType.GetRowCss, { view: "RepairItems" })
+	getTransactionsRowCss(args: RowCssHandlerArgs) {
+		if (args?.selector?.rowIndex === 1) {
+			console.log("Row CSS changed", args);
+			return "bold-row";
+		}
+		return undefined;
+	}
 
 }
 
@@ -50,7 +60,6 @@ export class RSSVWorkOrder extends PXView {
 	preset: GridPreset.Details
 })
 export class RSSVWorkOrderItem extends PXView {
-    PressMe : PXActionState;
 	RepairItemType: PXFieldState;
 	InventoryID: PXFieldState<PXFieldOptions.CommitChanges>;
 	InventoryID_description: PXFieldState;
