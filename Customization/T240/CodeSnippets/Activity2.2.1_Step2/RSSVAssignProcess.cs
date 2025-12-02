@@ -11,7 +11,8 @@ namespace PhoneRepairShop
     {
         public PXCancel<RSSVWorkOrderToAssignFilter> Cancel = null!;
         public PXFilter<RSSVWorkOrderToAssignFilter> Filter = null!;
-        public SelectFrom<RSSVWorkOrder>.
+        public 
+            SelectFrom<RSSVWorkOrder>.
             Where<RSSVWorkOrder.status.IsEqual<
                 RSSVWorkOrderEntry_Workflow.States.readyForAssignment>.
                 And<RSSVWorkOrder.timeWithoutAction.IsGreaterEqual<

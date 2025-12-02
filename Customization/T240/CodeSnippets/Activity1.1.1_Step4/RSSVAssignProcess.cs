@@ -11,7 +11,8 @@ namespace PhoneRepairShop
         ////////// The added code
         public PXCancel<RSSVWorkOrder> Cancel = null!;
         ////////// The end of added code
-        public SelectFrom<RSSVWorkOrder>.
+        public 
+            SelectFrom<RSSVWorkOrder>.
             // Inside the Where condition, use a fluent BQL statement 
             // that selects only the repair work orders with 
             // the Ready for Assignment status. 

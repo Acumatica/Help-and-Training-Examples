@@ -9,7 +9,8 @@ namespace PhoneRepairShop
     public class RSSVAssignProcess : PXGraph<RSSVAssignProcess>
     {
         public PXCancel<RSSVWorkOrder> Cancel = null!;
-        public SelectFrom<RSSVWorkOrder>.
+        public 
+            SelectFrom<RSSVWorkOrder>.
             // Inside the Where condition, use a fluent BQL statement 
             // that selects only the repair work orders with 
             // the Ready for Assignment status. 

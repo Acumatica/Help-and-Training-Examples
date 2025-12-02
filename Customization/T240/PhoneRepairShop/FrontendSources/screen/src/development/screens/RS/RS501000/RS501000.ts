@@ -1,20 +1,20 @@
-import {
-	PXScreen, createCollection, graphInfo,
-	viewInfo, createSingle,
-	PXView, PXFieldOptions, PXFieldState,
-	gridConfig, columnConfig, GridPreset
+import { 
+	PXScreen, createCollection, graphInfo, 
+	viewInfo, createSingle, 
+	PXView, PXFieldOptions, PXFieldState, 
+	gridConfig, columnConfig, GridPreset 
 } from "client-controls";
 
 @graphInfo({
 	graphType: "PhoneRepairShop.RSSVAssignProcess",
-	primaryView: "Filter"
+	primaryView: "Filter",
 })
 export class RS501000 extends PXScreen {
-	@viewInfo({containerName: "Filter Parameters"})
-	Filter = createSingle(RSSVWorkOrderToAssignFilter);
-	
 	@viewInfo({containerName: "Work Orders to Assign"})
 	WorkOrders = createCollection(RSSVWorkOrder);
+	
+	@viewInfo({containerName: "Filter Parameters"})
+	Filter = createSingle(RSSVWorkOrderToAssignFilter);
 }
 
 export class RSSVWorkOrderToAssignFilter extends PXView {
@@ -42,10 +42,13 @@ export class RSSVWorkOrder extends PXView {
 	DeviceID: PXFieldState;
 
 	Priority: PXFieldState;
-
+	
     @columnConfig({ hideViewLink: true})
     AssignTo: PXFieldState<PXFieldOptions.CommitChanges>;
 
     NbrOfAssignedOrders: PXFieldState;
+
 	TimeWithoutAction: PXFieldState;
+
+	
 }
