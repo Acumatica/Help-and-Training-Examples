@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using PX.Data;
 using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
@@ -6,8 +6,8 @@ using PX.TM;
 
 namespace PhoneRepairShop
 {
-  public class RSSVAssignProcess : PXGraph<RSSVAssignProcess>
-  {
+    public class RSSVAssignProcess : PXGraph<RSSVAssignProcess>
+    {
 
         public PXCancel<RSSVWorkOrderToAssignFilter> Cancel = null!;
         public PXFilter<RSSVWorkOrderToAssignFilter> Filter = null!;
