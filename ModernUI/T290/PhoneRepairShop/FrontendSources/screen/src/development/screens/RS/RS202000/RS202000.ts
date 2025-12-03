@@ -1,7 +1,5 @@
 import { 
-	createSingle, PXScreen, graphInfo, viewInfo, PXView, PXFieldState,
-	fieldConfig,
-	controlConfig
+	createSingle, PXScreen, graphInfo, viewInfo, PXView, PXFieldState
 } from "client-controls";
 
 @graphInfo({
