@@ -224,7 +224,7 @@ namespace PhoneRepairShop
             public PXEntityEvent<ARRegister> InvoiceGotPrepaid = null!;
         }
 
-        // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
+        //// Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
         public sealed class RSSVWorkOrder_Extension :
             PXCacheExtension<RSSVWorkOrder>
         {
@@ -282,15 +282,7 @@ namespace PhoneRepairShop
             PX.Data.BQL.BqlDecimal.Field<percentPaid>
         { }
         #endregion
-
-        public new abstract class serviceID :
-            PX.Data.BQL.BqlInt.Field<serviceID>
-        { }
-
-        public new abstract class customerID :
-            PX.Data.BQL.BqlInt.Field<customerID>
-        { }
-
+		
         #region OrderType
         [PXString(IsKey = true)]
         [PXUIField(DisplayName = "Order Type")]
@@ -311,5 +303,13 @@ namespace PhoneRepairShop
             PX.Data.BQL.BqlDecimal.Field<orderType>
         { }
         #endregion
+
+        public new abstract class serviceID :
+            PX.Data.BQL.BqlInt.Field<serviceID>
+        { }
+
+        public new abstract class customerID :
+            PX.Data.BQL.BqlInt.Field<customerID>
+        { }
     }
 }

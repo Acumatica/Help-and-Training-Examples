@@ -11,19 +11,15 @@ namespace PhoneRepairShop
         public SelectFrom<RSSVWorkOrder>.View WorkOrdersForUpdate = null!;
 
         [PXOverride]
-        public void PerformPersist(PXGraph.IPersistPerformer persister,
-                    Action<PXGraph.IPersistPerformer> base_PerformPersist)
+        public void PerformPersist(PXGraph.IPersistPerformer persister, Action<PXGraph.IPersistPerformer> base_PerformPersist)
         {
             base_PerformPersist(persister);
             persister.Update<RSSVWorkOrder>();
         }
 
-        public delegate void UpdateBalancesDelegate(ARAdjust adj,
-            ARRegister adjddoc, ARTran adjdtran);
+        public delegate void UpdateBalancesDelegate(ARAdjust adj, ARRegister adjddoc, ARTran adjdtran);
         [PXOverride]
-        public virtual void UpdateBalances(ARAdjust adj,
-            ARRegister adjddoc, ARTran adjdtran,
-            UpdateBalancesDelegate baseMethod)
+        public virtual void UpdateBalances(ARAdjust adj, ARRegister adjddoc, ARTran adjdtran, UpdateBalancesDelegate baseMethod)
         {
             baseMethod(adj, adjddoc, adjdtran);
 
@@ -34,15 +30,17 @@ namespace PhoneRepairShop
                 ardoc = cached;
             }
 
-            RSSVWorkOrder order = SelectFrom<RSSVWorkOrder>.
+            RSSVWorkOrder order = 
+                SelectFrom<RSSVWorkOrder>.
                 Where<RSSVWorkOrder.invoiceNbr.
-                IsEqual<ARRegister.refNbr.FromCurrent>>
+                    IsEqual<ARRegister.refNbr.FromCurrent>>
                 .View.SelectSingleBound(Base, new[] { ardoc });
 
             if (order != null &&
                 order.Status == WorkOrderStatusConstants.PendingPayment)
             {
-                var payment = SelectFrom<ARPayment>.
+                var payment = 
+                    SelectFrom<ARPayment>.
                     Where<ARPayment.docType.
                         IsEqual<ARAdjust.adjgDocType.FromCurrent>.
                         And<ARPayment.refNbr.
@@ -53,14 +51,14 @@ namespace PhoneRepairShop
                 {
                     var paidPercent = (ardoc.CuryOrigDocAmt - ardoc.CuryDocBal) * 100
                         / ardoc.CuryOrigDocAmt;
-                    var paymentExt = PXCache<ARPayment>.
-                        GetExtension<ARPaymentExt>(payment);
+                    var paymentExt = PXCache<ARRegister>.
+                        GetExtension<ARRegisterExt>(payment);
                     if (paidPercent >= paymentExt.UsrPrepaymentPercent)
                     {
                         RSSVWorkOrder.WorkflowEvents
                           .Select(e => e.InvoiceGotPrepaid)
                           .FireOn(Base, ardoc);
-                        // No need to call the Persist method.
+                         // No need to call the Persist method.
                     }
                 }
             }

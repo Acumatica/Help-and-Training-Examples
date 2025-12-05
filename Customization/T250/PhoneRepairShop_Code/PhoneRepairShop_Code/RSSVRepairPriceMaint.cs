@@ -13,30 +13,34 @@ namespace PhoneRepairShop
         #region Data Views
         public SelectFrom<RSSVRepairPrice>.View RepairPrices = null!;
 
-        public SelectFrom<RSSVRepairItem>.
+        public 
+            SelectFrom<RSSVRepairItem>.
             Where<RSSVRepairItem.serviceID.
                 IsEqual<RSSVRepairPrice.serviceID.FromCurrent>.
             And<RSSVRepairItem.deviceID.
-                IsEqual<RSSVRepairPrice.deviceID.FromCurrent>>>.View
-            RepairItems = null!;
+                IsEqual<RSSVRepairPrice.deviceID.FromCurrent>>>
+            .View RepairItems = null!;
 
-        public SelectFrom<RSSVLabor>.
+        public 
+            SelectFrom<RSSVLabor>.
             Where<RSSVLabor.deviceID.
                 IsEqual<RSSVRepairPrice.deviceID.FromCurrent>.
             And<RSSVLabor.serviceID.
-                IsEqual<RSSVRepairPrice.serviceID.FromCurrent>>>.View 
-            Labor = null!;
+                IsEqual<RSSVRepairPrice.serviceID.FromCurrent>>>
+            .View Labor = null!;
 
-        public SelectFrom<RSSVWarranty>.
+        public 
+            SelectFrom<RSSVWarranty>.
             Where<RSSVWarranty.deviceID.
                 IsEqual<RSSVRepairPrice.deviceID.FromCurrent>.
             And<RSSVWarranty.serviceID.
                 IsEqual<RSSVRepairPrice.serviceID.FromCurrent>>>.
-            OrderBy<RSSVWarranty.defaultWarranty.Desc>.View
-            Warranty = null!;
+            OrderBy<RSSVWarranty.defaultWarranty.Desc>
+            .View Warranty = null!;
 
         //The view for the default warranty
-        public SelectFrom<ContractTemplate>.
+        public 
+            SelectFrom<ContractTemplate>.
             Where<ContractTemplate.contractCD.IsEqual<defaultWarranty>>.
             View DefaultWarranty = null!;
         #endregion
@@ -44,8 +48,7 @@ namespace PhoneRepairShop
         #region Event Handlers
         //Update the price and repair item type when the inventory ID of
         //the repair item is updated.
-        protected void _(Events.FieldUpdated<RSSVRepairItem,
-            RSSVRepairItem.inventoryID> e)
+        protected void _(Events.FieldUpdated<RSSVRepairItem, RSSVRepairItem.inventoryID> e)
         {
             RSSVRepairItem row = e.Row;
 
@@ -65,8 +68,7 @@ namespace PhoneRepairShop
         }
 
         //Set the value of the Price column.
-        protected void _(Events.FieldDefaulting<RSSVRepairItem,
-            RSSVRepairItem.basePrice> e)
+        protected void _(Events.FieldDefaulting<RSSVRepairItem, RSSVRepairItem.basePrice> e)
         {
             RSSVRepairItem row = e.Row;
             if (row.InventoryID != null)

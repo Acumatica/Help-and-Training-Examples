@@ -34,12 +34,10 @@
 			<qp-grid id="grid-Labor" view.bind="Labor"></qp-grid>
 		</qp-tab>
 
-        <!-- The added code -->
 		<qp-tab id="tab-PaymentInfo" caption="Payment Info">
 			<qp-template
 				id="form-PaymentInfo"
-				name="7-10-7"
-			>
+				name="7-10-7">
 				<qp-fieldset id="fsColumnA-PaymentInfo" slot="A" view.bind="Payments">
 					<field name="InvoiceNbr"></field>
 					<field name="DueDate"></field>
@@ -47,7 +45,6 @@
 					<field name="CuryAdjdAmt"></field>
 				</qp-fieldset>
 			</qp-template>
-        </qp-tab>
-		<!-- The end of added code -->
+		</qp-tab>
 	</qp-tabbar>
 </template>
