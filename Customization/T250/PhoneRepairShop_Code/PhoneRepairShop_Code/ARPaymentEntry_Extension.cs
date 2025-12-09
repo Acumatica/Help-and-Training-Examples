@@ -9,7 +9,7 @@ namespace PhoneRepairShop
     public class ARPaymentEntry_Extension : PXGraphExtension<ARPaymentEntry>
     {
         public virtual void _(Events.FieldDefaulting<ARPayment,
-                      ARPaymentExt.usrPrepaymentPercent> e)
+                      ARRegisterExt.usrPrepaymentPercent> e)
         {
             ARPayment payment = (ARPayment)e.Row;
             RSSVSetup setupRecord = SelectFrom<RSSVSetup>.View.Select(Base);

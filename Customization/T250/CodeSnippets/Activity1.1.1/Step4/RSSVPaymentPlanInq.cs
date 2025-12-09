@@ -10,8 +10,9 @@ namespace PhoneRepairShop
     {
         ////////// The added code
         [PXFilterable]
-        public SelectFrom<RSSVWorkOrderToPay>.
-            InnerJoin<ARInvoice>.On<ARInvoice.refNbr.
+        public 
+            SelectFrom<RSSVWorkOrderToPay>.
+              InnerJoin<ARInvoice>.On<ARInvoice.refNbr.
                 IsEqual<RSSVWorkOrderToPay.invoiceNbr>>.
             Where<RSSVWorkOrderToPay.status.
                 IsNotEqual<RSSVWorkOrderEntry_Workflow.States.paid>>.
@@ -25,6 +26,7 @@ namespace PhoneRepairShop
                 if (e.Row == null) return;
                 if (e.Row.OrderTotal == 0) return;
                 RSSVWorkOrderToPay order = e.Row;
+				// Acuminator disable once PX1042 DatabaseQueriesInRowSelecting [Justification]
                 var invoices = 
                     SelectFrom<ARInvoice>.
                     Where<ARInvoice.refNbr.IsEqual<@P.AsString>>.

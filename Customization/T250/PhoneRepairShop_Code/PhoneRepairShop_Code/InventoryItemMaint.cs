@@ -9,10 +9,11 @@ namespace PhoneRepairShop
     public class InventoryItemMaint_Extension : PXGraphExtension<PX.Objects.IN.InventoryItemMaint>
     {
         #region Data Views
-        public SelectFrom<RSSVStockItemDevice>.
+        public 
+            SelectFrom<RSSVStockItemDevice>.
             Where<RSSVStockItemDevice.inventoryID.
-                IsEqual<InventoryItem.inventoryID.FromCurrent>>.View
-            CompatibleDevices = null!;
+                IsEqual<InventoryItem.inventoryID.FromCurrent>>
+            .View CompatibleDevices = null!;
         #endregion
 
         #region Event Handlers
@@ -21,8 +22,7 @@ namespace PhoneRepairShop
         {
             if (e.Row == null) return;
             InventoryItem item = e.Row;
-            InventoryItemExt itemExt = PXCache<InventoryItem>.
-                GetExtension<InventoryItemExt>(item);
+            InventoryItemExt itemExt = PXCache<InventoryItem>.GetExtension<InventoryItemExt>(item);
             bool enableFields = itemExt != null &&
                 itemExt.UsrRepairItem == true;
             //Make the Repair Item Type box available
