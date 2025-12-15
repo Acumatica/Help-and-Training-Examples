@@ -18,14 +18,16 @@ namespace PhoneRepairShop
         public SelectFrom<RSSVWorkOrder>.View WorkOrders = null!;
 
         //The view for the Repair Items tab
-        public SelectFrom<RSSVWorkOrderItem>.
-            Where<RSSVWorkOrderItem.orderNbr.IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
-            RepairItems = null!;
+        public 
+            SelectFrom<RSSVWorkOrderItem>.
+            Where<RSSVWorkOrderItem.orderNbr.IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>
+            .View RepairItems = null!;
 
         //The view for the Labor tab
-        public SelectFrom<RSSVWorkOrderLabor>.
-            Where<RSSVWorkOrderLabor.orderNbr.IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>.View
-            Labor = null!;
+        public 
+            SelectFrom<RSSVWorkOrderLabor>.
+            Where<RSSVWorkOrderLabor.orderNbr.IsEqual<RSSVWorkOrder.orderNbr.FromCurrent>>
+            .View Labor = null!;
 
         //The view for the auto-numbering of records
         public PXSetup<RSSVSetup> AutoNumSetup = null!;
@@ -102,7 +104,8 @@ namespace PhoneRepairShop
                 return;
 
             //Retrieve the default repair items
-            var repairItems = SelectFrom<RSSVRepairItem>.
+            var repairItems = 
+                SelectFrom<RSSVRepairItem>.
                 Where<RSSVRepairItem.serviceID.IsEqual<RSSVWorkOrder.serviceID.FromCurrent>.
                     And<RSSVRepairItem.deviceID.IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>>
                 .View.Select(this);
@@ -117,7 +120,8 @@ namespace PhoneRepairShop
             }
 
             //Retrieve the default labor items
-            var laborItems = SelectFrom<RSSVLabor>.
+            var laborItems = 
+                SelectFrom<RSSVLabor>.
                 Where<RSSVLabor.serviceID.IsEqual<RSSVWorkOrder.serviceID.FromCurrent>.
                     And<RSSVLabor.deviceID.IsEqual<RSSVWorkOrder.deviceID.FromCurrent>>>
                 .View.Select(this);
@@ -162,8 +166,10 @@ namespace PhoneRepairShop
                 if (row.Priority == WorkOrderPriorityConstants.Low)
                 {
                     //Obtain the service record
-                    RSSVRepairService service = SelectFrom<RSSVRepairService>.
-                        Where<RSSVRepairService.serviceID.IsEqual<@P.AsInt>>.View.Select(this, row.ServiceID);
+                    RSSVRepairService service = 
+                        SelectFrom<RSSVRepairService>.
+                        Where<RSSVRepairService.serviceID.IsEqual<@P.AsInt>>
+                        .View.Select(this, row.ServiceID);
 
                     if (service != null && service.PreliminaryCheck == true)
                     {
