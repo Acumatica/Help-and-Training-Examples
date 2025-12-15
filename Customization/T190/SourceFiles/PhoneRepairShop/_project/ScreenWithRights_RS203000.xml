@@ -18,7 +18,7 @@
 		</layout>
 		<data>
 			<SiteMap>
-				<row Position="21520" Title="Services and Prices" Url="~/Pages/RS/RS203000.aspx" ScreenID="RS203000" NodeID="a889a31c-f526-47fb-80c9-e79ffbe5d5ff" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="D">
+				<row Position="21520" Title="Services and Prices" Url="~/Scripts/Screens/RS203000.html" ScreenID="RS203000" NodeID="a889a31c-f526-47fb-80c9-e79ffbe5d5ff" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="D">
 					<RolesInGraph Rolename="Customizer" ApplicationName="/" Accessrights="4" />
 				</row>
 			</SiteMap>
