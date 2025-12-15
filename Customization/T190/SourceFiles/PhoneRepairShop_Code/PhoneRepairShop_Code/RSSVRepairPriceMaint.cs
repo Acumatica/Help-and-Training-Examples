@@ -12,25 +12,30 @@ namespace PhoneRepairShop
         #region Views
         public SelectFrom<RSSVRepairPrice>.View RepairPrices = null!;
 
-        public SelectFrom<RSSVRepairItem>.
+        public 
+            SelectFrom<RSSVRepairItem>.
             Where<RSSVRepairItem.serviceID.IsEqual<RSSVRepairPrice.serviceID.FromCurrent>.
-                And<RSSVRepairItem.deviceID.IsEqual<RSSVRepairPrice.deviceID.FromCurrent>>>.View
-                    RepairItems = null!;
+                And<RSSVRepairItem.deviceID.IsEqual<RSSVRepairPrice.deviceID.FromCurrent>>>
+            .View RepairItems = null!;
 
-        public SelectFrom<RSSVLabor>.
+        public 
+            SelectFrom<RSSVLabor>.
             Where<RSSVLabor.deviceID.IsEqual<RSSVRepairPrice.deviceID.FromCurrent>.
-                And<RSSVLabor.serviceID.IsEqual<RSSVRepairPrice.serviceID.FromCurrent>>>.View
-                    Labor = null!;
+                And<RSSVLabor.serviceID.IsEqual<RSSVRepairPrice.serviceID.FromCurrent>>>
+            .View Labor = null!;
 
-        public SelectFrom<RSSVWarranty>.
+        public 
+            SelectFrom<RSSVWarranty>.
             Where<RSSVWarranty.deviceID.IsEqual<RSSVRepairPrice.deviceID.FromCurrent>.
                 And<RSSVWarranty.serviceID.IsEqual<RSSVRepairPrice.serviceID.FromCurrent>>>.
-                OrderBy<RSSVWarranty.defaultWarranty.Desc>.View Warranty = null!;
+                OrderBy<RSSVWarranty.defaultWarranty.Desc>
+            .View Warranty = null!;
 
         //The view for the default warranty
-        public SelectFrom<ContractTemplate>.
-            Where<ContractTemplate.contractCD.IsEqual<defaultWarranty>>.
-            View DefaultWarranty = null!;
+        public 
+            SelectFrom<ContractTemplate>.
+            Where<ContractTemplate.contractCD.IsEqual<defaultWarranty>>
+            .View DefaultWarranty = null!;
         #endregion
 
 
