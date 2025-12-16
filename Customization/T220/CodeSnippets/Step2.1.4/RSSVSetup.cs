@@ -18,7 +18,7 @@ namespace PhoneRepairShop
         [PXUIField(DisplayName = "Numbering Sequence")]
         [PXSelector(typeof(Numbering.numberingID),
             DescriptionField = typeof(Numbering.descr))]
-        [PXDefault("WORKORDER")]
+        [PXDefault("RSSVWORDER")]
         public virtual string? NumberingID { get; set; }
         public abstract class numberingID : 
             PX.Data.BQL.BqlString.Field<numberingID> { }

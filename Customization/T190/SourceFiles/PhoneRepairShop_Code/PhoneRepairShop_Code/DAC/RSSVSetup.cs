@@ -12,7 +12,7 @@ namespace PhoneRepairShop
     {
         #region NumberingID
         [PXDBString(10, IsUnicode = true)]
-        [PXDefault("WORKORDER")]
+        [PXDefault("RSSVWORDER")]
         [PXUIField(DisplayName = "Numbering Sequence")]
         [PXSelector(typeof(Numbering.numberingID), DescriptionField = typeof(Numbering.descr))]
         public virtual string? NumberingID { get; set; }
