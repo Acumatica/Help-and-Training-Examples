@@ -1,4 +1,3 @@
-
 import {
 	PXScreen, graphInfo, createCollection,
 	PXView, PXFieldState,
@@ -15,6 +14,7 @@ export class RS201000 extends PXScreen {
 	RepairService = createCollection(RSSVRepairService);
 }
 
+// View
 @gridConfig({
 	preset: GridPreset.Primary
 })
