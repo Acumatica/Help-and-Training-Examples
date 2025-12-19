@@ -26,6 +26,20 @@ namespace PhoneRepairShop
 
         #endregion
 
+        public PXFilter<MasterTable> MasterView;
+		public PXFilter<DetailsTable> DetailsView;
+
+		[Serializable]
+		public class MasterTable : PXBqlTable, IBqlTable
+		{
+
+		}
+
+		[Serializable]
+		public class DetailsTable : PXBqlTable, IBqlTable
+		{
+
+		}
         ////////// The added code
         #region Events
         //Copy repair items and labor items from the Services and Prices form.
