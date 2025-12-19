@@ -4,6 +4,7 @@ using PX.Data.BQL;
 ////////// The end of added code
 using PX.Data.BQL.Fluent;
 using PX.Objects.IN;
+using System;
 
 namespace PhoneRepairShop
 {
