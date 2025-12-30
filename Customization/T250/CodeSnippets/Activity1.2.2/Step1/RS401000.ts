@@ -1,7 +1,10 @@
 import {
 	createSingle, PXFieldOptions,
 	createCollection, PXScreen, graphInfo, viewInfo,
-	PXView, PXFieldState, gridConfig, GridPreset
+	PXView, PXFieldState, gridConfig, GridPreset,
+        ////////// The added code
+        PXPageLoadBehavior
+        ////////// The end of added code
 } from "client-controls";
 
 ////////// The modified code
