@@ -10,7 +10,7 @@ import {
 ////////// The modified code
 @graphInfo({
 	graphType: "PhoneRepairShop.RSSVPaymentPlanInq",
-	primaryView: "DetailsView",
+	primaryView: "Filter",
 	pageLoadBehavior: PXPageLoadBehavior.PopulateSavedValues,
 })
 ////////// The end of modified code
