@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 using System.Text;
 
 class Program
@@ -35,7 +36,8 @@ class Program
             }).ConfigureLogging(logging =>
             {
                 logging.SetMinimumLevel(LogLevel.Trace);
-                logging.AddProvider(new CustomConsoleLoggerProvider());
+                // Use the standard logging provider
+                logging.AddConsole();
             }).Build();
 
         try
@@ -46,9 +48,7 @@ class Program
             // Handle the received notifications.
             connection.On<object>("ReceiveNotification", notificationReceived =>
                 Console.WriteLine(notificationReceived.ToString()));
-            while (Console.Read() != '3')
-            {
-            }
+            Console.Read();
         }
         catch (Exception ex)
         {
@@ -59,31 +59,6 @@ class Program
         {
             await connection.StopAsync();
             Console.WriteLine("Connection stopped.");
-        }
-    }
-
-    // A logger to display SignalR logs in the console.
-    public class CustomConsoleLoggerProvider : ILoggerProvider
-    {
-        public ILogger CreateLogger(string categoryName) => 
-            new CustomConsoleLogger();
-        public void Dispose() { }
-    }
-
-    public class CustomConsoleLogger : ILogger
-    {
-        public IDisposable BeginScope<TState>(TState state) => null;
-        public bool IsEnabled(LogLevel logLevel) => true;
-
-        public void Log<TState>(LogLevel logLevel, EventId eventId, 
-            TState state, Exception exception, 
-            Func<TState, Exception, string> formatter)
-        {
-            Console.WriteLine($"[{logLevel}] {formatter(state, exception)}");
-            if (exception != null)
-            {
-                Console.WriteLine(exception);
-            }
         }
     }
 }
