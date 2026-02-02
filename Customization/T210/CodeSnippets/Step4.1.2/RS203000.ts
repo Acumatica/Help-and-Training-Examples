@@ -1,45 +1,40 @@
-import { createCollection, createSingle, PXScreen, graphInfo, 
-	viewInfo, PXView, PXFieldState, gridConfig, PXFieldOptions, 
-	columnConfig, GridPreset,GridFastFilterVisibility } 
-from "client-controls";
+
+import { createCollection, createSingle, graphInfo, PXView, PXScreen, PXFieldState, gridConfig, PXFieldOptions, PXActionState, GridPreset, viewInfo } from "client-controls";
 
 @graphInfo({
-	graphType: "PhoneRepairShop.RSSVRepairPriceMaint", 
-	primaryView: "RepairPrices", })
+	graphType: "PhoneRepairShop.RSSVRepairPriceMaint",
+	primaryView: "RepairPrices",
+})
 export class RS203000 extends PXScreen {
-	@viewInfo({containerName: "Services and Prices"})
+	@viewInfo({containerName: "Repair Prices"})
 	RepairPrices = createSingle(RSSVRepairPrice);
-   	@viewInfo({containerName: "Repair Items"})
+	@viewInfo({containerName: "Repair Items"})
 	RepairItems = createCollection(RSSVRepairItem);
-    @viewInfo({containerName: "Labor"})
+	@viewInfo({containerName: "Labor"})
 	Labor = createCollection(RSSVLabor);
-}// Views
+}
 
-export class RSSVRepairPrice extends PXView  {
-
-	ServiceID : PXFieldState;
-	DeviceID : PXFieldState;
-	Price : PXFieldState;
+export class RSSVRepairPrice extends PXView {
+  ServiceID: PXFieldState;
+  DeviceID: PXFieldState;
+  Price: PXFieldState;
 }
 
 @gridConfig({
-	initNewRow: true,
+	preset: GridPreset.Details,
 	syncPosition: true,
-	showFastFilter: GridFastFilterVisibility.False,
-	preset: GridPreset.Details
+	initNewRow: true
 })
-export class RSSVRepairItem extends PXView  {
-	RepairItemType : PXFieldState<PXFieldOptions.CommitChanges>;
+export class RSSVRepairItem extends PXView {
+    RepairItemType : PXFieldState<PXFieldOptions.CommitChanges>;
 	Required : PXFieldState<PXFieldOptions.CommitChanges>;
-	@columnConfig({hideViewLink: true})
-	InventoryID : PXFieldState<PXFieldOptions.CommitChanges>;
+	InventoryID: PXFieldState<PXFieldOptions.CommitChanges>;
 	InventoryID_description : PXFieldState;
 	BasePrice : PXFieldState<PXFieldOptions.CommitChanges>;
 	IsDefault : PXFieldState<PXFieldOptions.CommitChanges>;
 }
 
 @gridConfig({
-	showFastFilter: GridFastFilterVisibility.False,
 	preset: GridPreset.Details
 })
 export class RSSVLabor extends PXView  {
