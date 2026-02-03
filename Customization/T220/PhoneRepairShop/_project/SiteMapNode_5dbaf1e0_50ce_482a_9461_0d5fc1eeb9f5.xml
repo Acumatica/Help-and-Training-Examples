@@ -25,7 +25,7 @@
         </layout>
         <data>
             <SiteMap>
-                <row Position="21522" Title="Repair Work Order Preferences" Url="~/Scripts/Screens/RS101000.html" ScreenID="RS101000" NodeID="fd9dd0a0-5937-4a8e-a8e3-1a4de4496983" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="T" UrlBackup="~/Scripts/Screens/RS101000.html">
+                <row Position="21522" Title="Repair Work Order Preferences" Url="~/Pages/RS/RS101000.aspx" ScreenID="RS101000" NodeID="5dbaf1e0-50ce-482a-9461-0d5fc1eeb9f5" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="D">
                     <MUIScreen IsPortal="0" WorkspaceID="57c3382a-54f3-4da8-b6e5-ccfb130972b7" Order="10" SubcategoryID="8a93637d-b507-4667-a739-adaf6fb5f7ea">
                         <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                     </MUIScreen>

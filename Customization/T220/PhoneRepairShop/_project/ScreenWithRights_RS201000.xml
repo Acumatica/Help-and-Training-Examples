@@ -48,7 +48,6 @@
                 <row Rolename="CR Viewer" ApplicationName="/" Descr="Read-only access to marketing, sales and support forms" Guest="0" />
                 <row Rolename="CS Admin" ApplicationName="/" Descr="Access to system functions and configuration items" Guest="0" />
                 <row Rolename="Customer Data Manager" ApplicationName="/" Descr="Full access to data entry forms related to customers" Guest="0" />
-                <row Rolename="Customizer" ApplicationName="/" Descr="Customizer" Guest="0" />
                 <row Rolename="DashboardDesigner" ApplicationName="/" Descr="Dashboard Designer" Guest="0" />
                 <row Rolename="Data Privacy Controller" ApplicationName="/" Descr="Data Privacy Controller" Guest="0" />
                 <row Rolename="DR Admin" ApplicationName="/" Descr="Access to DR functions and settings" Guest="0" />
@@ -120,6 +119,7 @@
                 <row Rolename="Vendor Data Manager" ApplicationName="/" Descr="Full access to data entry forms related to vendors" Guest="0" />
                 <row Rolename="Wiki Admin" ApplicationName="/" Descr="Wiki Administrator to set other users access rights to Wiki" Guest="0" />
                 <row Rolename="Wiki Author" ApplicationName="/" Descr="Role provides access rights for creating Wiki articles" Guest="0" />
+                <row Rolename="Customizer" ApplicationName="/" Descr="Customizer" Guest="0" />
             </Roles>
         </data>
     </data-set>

@@ -1,6 +1,6 @@
 ﻿<GenericInquiryScreen>
     <data-set>
-        <relations format-version="4" relations-version="20250701" main-table="GIDesign" stable-sharing="True" file-name="(Name)" unique-key="GIDesign (Name)">
+        <relations format-version="4" relations-version="20250922" main-table="GIDesign" stable-sharing="True" file-name="(Name)" unique-key="GIDesign (Name)">
             <link from="GIFilter (DesignID)" to="GIDesign (DesignID)" unique-key="GIFilter (DesignID, Name, IsActive)" />
             <link from="GIGroupBy (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIMassAction (DesignID)" to="GIDesign (DesignID)" />
@@ -169,7 +169,7 @@
         </layout>
         <data>
             <GIDesign>
-                <row DesignID="f86e43fd-80ec-4fa2-affb-9671b37adc74" Name="Serviced Devices" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS202000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0" ShowArchivedRecords="0" MLDetectionEnabled="0" SkipEmptyGroups="0">
+                <row DesignID="f86e43fd-80ec-4fa2-affb-9671b37adc74" Name="Serviced Devices" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS202000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0" ShowArchivedRecords="0" DisableCountsAndTotals="0" MLDetectionEnabled="0" SkipEmptyGroups="0" ExposeToAiAssistant="0">
                     <GINavigationScreen Link="RS202000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1" NoteID="45110768-dca5-f011-a254-8cf8c5ac2389">
                         <GINavigationParameter LineNbr="1" FieldName="DeviceCD" ParameterName="ServicedDevices.DeviceCD" IsExpression="0" />
                     </GINavigationScreen>
