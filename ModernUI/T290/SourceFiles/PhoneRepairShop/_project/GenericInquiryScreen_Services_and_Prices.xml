@@ -172,7 +172,7 @@
         <data>
             <GIDesign>
                 <row DesignID="134b2979-46f9-452f-ad39-57b3be8e4958" Name="Services and Prices" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS203000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0" ShowArchivedRecords="0" DisableCountsAndTotals="0" MLDetectionEnabled="0" SkipEmptyGroups="0" ExposeToAiAssistant="0">
-                    <GINavigationScreen Link="RS203000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1" NoteID="66e29b84-792f-49f5-a091-5cd9db9c1d6c">
+                    <GINavigationScreen Link="RS203000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1" NoteID="d3ff7364-4270-4cd8-b814-0f599e24ee18">
                         <GINavigationParameter LineNbr="2" FieldName="DeviceID" ParameterName="RepairPrice.DeviceID" IsExpression="0" />
                         <GINavigationParameter LineNbr="1" FieldName="ServiceID" ParameterName="RepairPrice.ServiceID" IsExpression="0" />
                     </GINavigationScreen>
@@ -187,12 +187,11 @@
                             <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="2050" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4">
                                 <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                             </MUIScreen>
-                            <RolesInGraph Rolename="*" ApplicationName="/" Accessrights="0" />
                         </row>
                     </SiteMap>
                     <SiteMap linkname="to1Screen">
-                        <row Position="5959" Title="Services and Prices" Url="~/Pages/RS/RS203000.aspx" NodeID="a1ee94a7-8ec0-4eff-a9a3-1f992c7a2b9b" ParentID="00000000-0000-0000-0000-000000000000">
-                            <MUIScreen IsPortal="0" WorkspaceID="28b3b75b-c42b-4f42-908e-e23344279d9b" Order="20" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
+                        <row Title="Services and Prices" Url="~/Pages/RS/RS203000.aspx" NodeID="0038bd4b-bcab-4c9e-9fbb-078e9799f45b" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="D">
+                            <MUIScreen IsPortal="0" WorkspaceID="5fe2cecf-d8bc-4fde-8826-e6185ce39d18" Order="30" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
                                 <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                             </MUIScreen>
                         </row>
@@ -206,7 +205,7 @@
                 <row IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="32" Title="Data Views" Icon="poll" IsSystem="1" LayoutMode="0">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
-                <row IsPortal="0" WorkspaceID="28b3b75b-c42b-4f42-908e-e23344279d9b" Order="38" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0" LayoutMode="0">
+                <row IsPortal="0" WorkspaceID="5fe2cecf-d8bc-4fde-8826-e6185ce39d18" Order="38" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0" LayoutMode="0">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
             </MUIWorkspace>

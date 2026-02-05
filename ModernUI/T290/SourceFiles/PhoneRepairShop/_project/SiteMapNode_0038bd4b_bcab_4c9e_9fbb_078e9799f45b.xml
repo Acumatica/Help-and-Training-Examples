@@ -1,6 +1,6 @@
 ﻿<SiteMapNode>
     <data-set>
-        <relations format-version="3" relations-version="20240201" main-table="SiteMap">
+        <relations format-version="4" relations-version="20250701" main-table="SiteMap">
             <link from="MUIScreen (NodeID)" to="SiteMap (NodeID)" />
             <link from="MUIWorkspace (WorkspaceID)" to="MUIScreen (WorkspaceID)" type="FromMaster" linkname="workspaceToScreen" split-location="yes" updateable="True" />
             <link from="MUISubcategory (SubcategoryID)" to="MUIScreen (SubcategoryID)" type="FromMaster" updateable="True" />
@@ -25,30 +25,20 @@
         </layout>
         <data>
             <SiteMap>
-                <row Position="1" Title="Stock Items" Url="~/Pages/IN/IN202500.aspx" ScreenID="IN202500" NodeID="f21272b4-6f90-4504-96fd-f825b085710b" ParentID="c45494a4-36f3-479f-b2de-d4fd01816970" SelectedUI="E">
-                    <MUIScreen IsPortal="0" WorkspaceID="28b3b75b-c42b-4f42-908e-e23344279d9b" Order="10" SubcategoryID="6d40b0b6-18f4-4139-adac-8ec8cb2a17ea">
+                <row Title="Services and Prices" Url="~/Pages/RS/RS203000.aspx" ScreenID="RS203000" NodeID="0038bd4b-bcab-4c9e-9fbb-078e9799f45b" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="D">
+                    <MUIScreen IsPortal="0" WorkspaceID="5fe2cecf-d8bc-4fde-8826-e6185ce39d18" Order="30" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
                         <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                     </MUIScreen>
-                    <MUIScreen IsPortal="0" WorkspaceID="6557c1c6-747e-45bb-9072-54f096598d61" Order="5" SubcategoryID="6d40b0b6-18f4-4139-adac-8ec8cb2a17ea">
-                        <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
-                    </MUIScreen>
-                    <MUITile IsPortal="0" TileID="a6b07e24-2d8e-46e4-934b-171acfe3a791" WorkspaceID="6557c1c6-747e-45bb-9072-54f096598d61" Order="40" Title="New Stock Item" Icon="work" Parameters="" />
                 </row>
             </SiteMap>
             <MUIWorkspace>
-                <row IsPortal="0" WorkspaceID="28b3b75b-c42b-4f42-908e-e23344279d9b" Order="38" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0">
-                    <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
-                </row>
-                <row IsPortal="0" WorkspaceID="6557c1c6-747e-45bb-9072-54f096598d61" Order="284" Title="Inventory" Icon="local_shipping" AreaID="62cfd5dc-8eb9-4e92-bbcd-e0a99eb5e5df" ScreenID="WSIN0000" IsSystem="0">
+                <row IsPortal="0" WorkspaceID="5fe2cecf-d8bc-4fde-8826-e6185ce39d18" Order="38" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0" LayoutMode="0">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
             </MUIWorkspace>
             <MUISubcategory>
-                <row IsPortal="0" SubcategoryID="6d40b0b6-18f4-4139-adac-8ec8cb2a17ea" Order="128" Name="Profiles" Icon="" IsSystem="0" />
+                <row IsPortal="0" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385" Order="96" Name="Configuration" Icon="" IsSystem="0" />
             </MUISubcategory>
-            <MUIArea>
-                <row IsPortal="0" AreaID="62cfd5dc-8eb9-4e92-bbcd-e0a99eb5e5df" Order="20" Name="Operations" />
-            </MUIArea>
         </data>
     </data-set>
 </SiteMapNode>

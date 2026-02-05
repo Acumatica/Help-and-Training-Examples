@@ -171,8 +171,8 @@
         </layout>
         <data>
             <GIDesign>
-                <row DesignID="eae45e7b-e3c5-480c-9af9-6f4c80223e41" Name="Repair Work Orders" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS301000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0">
-                    <GINavigationScreen Link="RS301000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1" NoteID="d635dd69-ab47-4a41-bada-e994ecd467e2">
+                <row DesignID="eae45e7b-e3c5-480c-9af9-6f4c80223e41" Name="Repair Work Orders" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS301000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0" ShowArchivedRecords="0" DisableCountsAndTotals="0" MLDetectionEnabled="0" SkipEmptyGroups="0" ExposeToAiAssistant="0">
+                    <GINavigationScreen Link="RS301000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1" NoteID="a16d3b61-4b71-4f17-9599-1f6d61083ee0">
                         <GINavigationParameter LineNbr="4" FieldName="ServiceID" ParameterName="WorkOrder.ServiceID" IsExpression="0" />
                         <GINavigationParameter LineNbr="3" FieldName="DeviceID" ParameterName="WorkOrder.DeviceID" IsExpression="0" />
                         <GINavigationParameter LineNbr="2" FieldName="CustomerID" ParameterName="WorkOrder.CustomerID" IsExpression="0" />
@@ -197,8 +197,8 @@
                         </row>
                     </SiteMap>
                     <SiteMap linkname="to1Screen">
-                        <row Position="5960" Title="Repair Work Orders" Url="~/Pages/RS/RS301000.aspx" NodeID="ca5e0b9a-732f-481e-9c08-73de7c444c1f" ParentID="00000000-0000-0000-0000-000000000000">
-                            <MUIScreen IsPortal="0" WorkspaceID="28b3b75b-c42b-4f42-908e-e23344279d9b" Order="20" SubcategoryID="6d40b0b6-18f4-4139-adac-8ec8cb2a17ea">
+                        <row Title="Repair Work Orders" Url="~/Pages/RS/RS301000.aspx" NodeID="3b010bc5-a7e4-439d-a84b-3d6338f2763d" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="D">
+                            <MUIScreen IsPortal="0" WorkspaceID="5fe2cecf-d8bc-4fde-8826-e6185ce39d18" Order="10" SubcategoryID="6d40b0b6-18f4-4139-adac-8ec8cb2a17ea">
                                 <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                             </MUIScreen>
                         </row>
@@ -212,7 +212,7 @@
                 <row IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="32" Title="Data Views" Icon="poll" IsSystem="1" LayoutMode="0">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
-                <row IsPortal="0" WorkspaceID="28b3b75b-c42b-4f42-908e-e23344279d9b" Order="38" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0" LayoutMode="0">
+                <row IsPortal="0" WorkspaceID="5fe2cecf-d8bc-4fde-8826-e6185ce39d18" Order="38" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0" LayoutMode="0">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
             </MUIWorkspace>

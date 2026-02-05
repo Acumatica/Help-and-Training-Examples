@@ -11,6 +11,7 @@
             <link from="GIOn (DesignID, RelationNbr)" to="GIRelation (DesignID, LineNbr)" />
             <link from="GIRecordDefault (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIRelation (DesignID, ParentTable)" to="GITable (DesignID, Alias)" />
+            <link from="GIMLGroups (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIRelation (DesignID, ChildTable)" to="GITable (DesignID, Alias)" />
             <link from="GIResult (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIResult (ObjectName, DesignID)" to="GITable (Alias, DesignID)" />
@@ -65,6 +66,7 @@
                     <table name="GINavigationCondition" uplink="(DesignID, LineNbr) = (DesignID, NavigationScreenLineNbr)" />
                 </table>
                 <table name="GIRecordDefault" uplink="(DesignID) = (DesignID)" />
+                <table name="GIMLGroups" uplink="(DesignID) = (DesignID)" />
                 <table name="GISort" uplink="(DesignID) = (DesignID)">
                     <table name="Note" uplink="(NoteID) = (NoteID)" />
                 </table>
@@ -170,7 +172,7 @@
         <data>
             <GIDesign>
                 <row DesignID="f86e43fd-80ec-4fa2-affb-9671b37adc74" Name="Serviced Devices" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS202000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0" ShowArchivedRecords="0" DisableCountsAndTotals="0" MLDetectionEnabled="0" SkipEmptyGroups="0" ExposeToAiAssistant="0">
-                    <GINavigationScreen Link="RS202000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1">
+                    <GINavigationScreen Link="RS202000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1" NoteID="acf83a67-bb02-f111-8446-586c254ce85b">
                         <GINavigationParameter LineNbr="1" FieldName="DeviceCD" ParameterName="ServicedDevices.DeviceCD" IsExpression="0" />
                     </GINavigationScreen>
                     <GITable Alias="ServicedDevices" Name="PhoneRepairShop.RSSVDevice" Type="0">
@@ -188,8 +190,8 @@
                         </row>
                     </SiteMap>
                     <SiteMap linkname="to1Screen">
-                        <row Title="Serviced Devices" Url="~/Pages/RS/RS202000.aspx" NodeID="3ca4e38e-dcc6-4bed-91d6-70d20c260065" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="D">
-                            <MUIScreen IsPortal="0" WorkspaceID="28b3b75b-c42b-4f42-908e-e23344279d9b" Order="10" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
+                        <row Title="Serviced Devices" Url="~/Pages/RS/RS202000.aspx" NodeID="a62b7043-fcc3-4cc3-920b-ffc3a949d970" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="D">
+                            <MUIScreen IsPortal="0" WorkspaceID="5fe2cecf-d8bc-4fde-8826-e6185ce39d18" Order="20" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
                                 <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                             </MUIScreen>
                         </row>
@@ -203,7 +205,7 @@
                 <row IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="32" Title="Data Views" Icon="poll" IsSystem="1" LayoutMode="0">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
-                <row IsPortal="0" WorkspaceID="28b3b75b-c42b-4f42-908e-e23344279d9b" Order="38" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0" LayoutMode="0">
+                <row IsPortal="0" WorkspaceID="5fe2cecf-d8bc-4fde-8826-e6185ce39d18" Order="38" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0" LayoutMode="0">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
             </MUIWorkspace>

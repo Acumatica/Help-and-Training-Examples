@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Report Name="report1">
-  <SchemaUrl>http://localhost/PhoneRepairShop</SchemaUrl>
+  <SchemaUrl>http://localhost/PhoneRepairShop3</SchemaUrl>
   <Tables>
     <ReportTable Name="RSSVWorkOrder">
       <Fields>
