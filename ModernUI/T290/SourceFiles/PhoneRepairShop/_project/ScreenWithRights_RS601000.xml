@@ -19,9 +19,13 @@
         <data>
             <SiteMap>
                 <row Title="Assigned Work Orders" Url="~/Frames/ReportLauncher.aspx?ID=RS601000.rpx" ScreenID="RS601000" NodeID="dd41d4e4-dfcb-4e63-a903-a16a8ae44aae" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="D">
+                    <RolesInGraph Rolename="Customizer" ApplicationName="/" Accessrights="4" />
                     <RolesInGraph Rolename="*" ApplicationName="/" Accessrights="0" />
                 </row>
             </SiteMap>
+            <Roles>
+                <row Rolename="Customizer" ApplicationName="/" Descr="Customizer" Guest="0" />
+            </Roles>
         </data>
     </data-set>
 </ScreenWithRights>
