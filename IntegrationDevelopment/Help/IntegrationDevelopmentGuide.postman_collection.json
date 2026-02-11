@@ -11097,7 +11097,7 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
+                "id": "3f056a37-fc5b-4776-ab2f-f2cbae6abe40",
                 "exec": [
                   "//Test the result\r",
                   "pm.test(\"Status code is 200\", function () {\r",
@@ -11110,14 +11110,17 @@
                   "//Sign out and set next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
                   "pm.acuFunc.singOutFunction(pm, url);\r",
-                  "pm.execution.setNextRequest(\"Create a Credit Memo\");"
-                ]
+                  "pm.execution.setNextRequest(\"Create a Sales Invoice from a Sales Order\");"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             },
             {
               "listen": "prerequest",
               "script": {
-                "type": "text/javascript",
+                "id": "4d0d4408-d68f-4b9c-a9da-b572e067dd72",
                 "exec": [
                   "//Sign in to the tenant with T100 data\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -11126,7 +11129,10 @@
                   "var tenant = pm.collectionVariables.get('TenantT100');\r",
                   "var branch = pm.collectionVariables.get('BranchT100'); \r",
                   "pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
-                ]
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
@@ -11161,10 +11167,97 @@
               "query": [
                 {
                   "key": "$select",
-                  "value": "ReferenceNbr,Type,Status"
+                  "value": "ReferenceNbr,Type,Status",
+                  "uuid": "b421fa36-8a04-4ac4-9891-281a4eccd2a3"
                 }
               ]
             }
+          },
+          "response": []
+        },
+        {
+          "name": "Create a Sales Invoice from a Sales Order",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e4c1f5d5-d3ea-416e-8136-51c675f7181b",
+                "exec": [
+                  "//Test the result\r",
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"One detail line is included\", function (){\r",
+                  "    const jsonResponse = pm.response.json();\r",
+                  "    pm.expect(jsonResponse.Details).to.has.lengthOf(1);\r",
+                  "});\r",
+                  "//Sign out\r",
+                  "var url = pm.collectionVariables.get('InstanceURL');\r",
+                  "pm.acuFunc.singOutFunction(pm, url);\r",
+                  "//Set the next request\r",
+                  "pm.execution.setNextRequest(\"Create a Credit Memo\");\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "57573cad-f810-4024-a840-75dcad9dfea8",
+                "exec": [
+                  "//Sign in to the tenant with U100 data\r",
+                  "var url = pm.collectionVariables.get('InstanceURL');\r",
+                  "var username = pm.collectionVariables.get('UsernameU100');\r",
+                  "var password = pm.collectionVariables.get('PasswordU100');\r",
+                  "var tenant = pm.collectionVariables.get('TenantU100');\r",
+                  "var branch = pm.collectionVariables.get('BranchU100'); \r",
+                  "pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "cb4a014e-faef-4eb0-ac45-3b225bfdffe2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"CustomerID\": {\r\n        \"value\": \"RETSALE\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"BranchID\": {\r\n                \"value\": \"RETAIL\"\r\n            },\r\n            \"OrderLineNbr\": {\r\n                \"value\": 1\r\n            },\r\n            \"OrderNbr\": {\r\n                \"value\": \"000029\"\r\n            },\r\n            \"OrderType\": {\r\n                \"value\": \"SO\"\r\n            },\r\n            \"Qty\": {\r\n                \"value\": 5.000000\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"RETAIL\"\r\n            }\r\n        }\r\n    ],\r\n    \"Hold\": {\r\n        \"value\": false\r\n    },\r\n    \"Status\": {\r\n        \"value\": \"Open\"\r\n    },\r\n    \"Type\": {\r\n        \"value\": \"Invoice\"\r\n    }\r\n}"
+            },
+            "url": {
+              "raw": "{{EndpointURL}}SalesInvoice?$expand=Details",
+              "host": [
+                "{{EndpointURL}}SalesInvoice"
+              ],
+              "query": [
+                {
+                  "key": "$expand",
+                  "value": "Details",
+                  "uuid": "47e70939-3840-479e-904f-69036e53ec6b"
+                }
+              ]
+            },
+            "description": "This example shows how to create a sales invoice that will contain sold stock items and ordered service, for which the billing settings will be specified, and to which a payment will be applied. This process is described in [Create a Sales Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=6acfdb37-9770-4400-ad80-c229b467a649)."
           },
           "response": []
         },
@@ -11248,12 +11341,12 @@
           "response": []
         },
         {
-          "name": "Create a Sales Invoice in a Non-Default Currency",
+          "name": "Create a Sales Invoice in a Non-Base Currency",
           "event": [
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
+                "id": "5249f82f-d796-4f18-b811-7f10b6caaa4d",
                 "exec": [
                   "//Test the result\r",
                   "pm.test(\"Status code is 200\", function () {\r",
@@ -11273,13 +11366,16 @@
                   "//Set the next request\r",
                   "pm.execution.setNextRequest(\"\");\r",
                   ""
-                ]
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             },
             {
               "listen": "prerequest",
               "script": {
-                "type": "text/javascript",
+                "id": "30214884-04f5-49d2-a381-cc56803ed73c",
                 "exec": [
                   "//Sign in to the tenant with U100 data\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -11288,7 +11384,10 @@
                   "var tenant = pm.collectionVariables.get('TenantU100');\r",
                   "var branch = pm.collectionVariables.get('BranchU100'); \r",
                   "pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
-                ]
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
@@ -11322,95 +11421,12 @@
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Details"
+                  "value": "Details",
+                  "uuid": "82b6da99-9a0c-42e6-95ea-ad51146ea28d"
                 }
               ]
             },
             "description": "This example shows how to create a sales invoice in a non-default currency. This process is described in [Create a Sales Invoice in a Non-Default Currency](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=d72dde27-f3bb-4a71-bc6c-fb9a277d3acb)."
-          },
-          "response": []
-        },
-        {
-          "name": "Create a Sales Invoice for an Unshipped RMA Order",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Test the result\r",
-                  "pm.test(\"Status code is 200\", function () {\r",
-                  "    pm.response.to.have.status(200);\r",
-                  "});\r",
-                  "pm.test(\"Two detail lines are included\", function (){\r",
-                  "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.Details).to.has.lengthOf(2);\r",
-                  "});\r",
-                  "pm.test(\"Adjusting doc is correct\", function (){\r",
-                  "    const jsonResponse = pm.response.json();\r",
-                  "    var paymentNbr = pm.collectionVariables.get('paymentNbr');\r",
-                  "    pm.expect(jsonResponse.ApplicationsInvoice[0].AdjustingDocReferenceNbr.value).to.be.eql('000088');\r",
-                  "});\r",
-                  "//Sign out\r",
-                  "var url = pm.collectionVariables.get('InstanceURL');\r",
-                  "pm.acuFunc.singOutFunction(pm, url);\r",
-                  "//Set the next request\r",
-                  "pm.execution.setNextRequest(\"\");\r",
-                  ""
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "//Sign in to the tenant with U100 data\r",
-                  "var url = pm.collectionVariables.get('InstanceURL');\r",
-                  "var username = pm.collectionVariables.get('UsernameU100');\r",
-                  "var password = pm.collectionVariables.get('PasswordU100');\r",
-                  "var tenant = pm.collectionVariables.get('TenantU100');\r",
-                  "var branch = pm.collectionVariables.get('BranchU100'); \r",
-                  "pm.acuFunc.singInFunction(pm, url, tenant, branch, username, password)"
-                ]
-              }
-            }
-          ],
-          "id": "8028202d-053f-4f77-b775-7f9806c88d09",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "type": "text"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"CustomerID\": {\"value\": \"FRUITICO\"},\r\n    \"Type\": {\"value\": \"Invoice\"},\r\n    \"Hold\": {\"value\": false},\r\n    \"Details\":\r\n    [\r\n        {\r\n            \"Qty\": {\"value\": -1},\r\n            \"OrderType\": {\"value\": \"RM\"},\r\n            \"OrderNbr\": {\"value\": \"{{RMorderNbr}}\"},\r\n            \"OrderLineNbr\": {\"value\": 1}\r\n        },\r\n        {\r\n            \"Qty\": {\"value\": 1},\r\n            \"OrderType\": {\"value\": \"RM\"},\r\n            \"OrderNbr\": {\"value\": \"{{RMorderNbr}}\"},\r\n            \"OrderLineNbr\": {\"value\": 2}\r\n        }\r\n    ],\r\n    \"ApplicationsInvoice\":\r\n    [\r\n        {\r\n            \"DocType\": {\"value\": \"Payment\"},\r\n            \"AdjustingDocReferenceNbr\": {\"value\": \"{{paymentRefNbr}}\"},\r\n            \"AmountPaid\": {\"value\": 30.50}\r\n        }\r\n    ]\r\n}"
-            },
-            "url": {
-              "raw": "{{EndpointURL}}SalesInvoice?$expand=ApplicationsInvoice,Details",
-              "host": [
-                "{{EndpointURL}}SalesInvoice"
-              ],
-              "query": [
-                {
-                  "key": "$expand",
-                  "value": "ApplicationsInvoice,Details"
-                }
-              ]
-            },
-            "description": "This example shows how to create a sales invoice that will contain sold stock items and ordered service, for which the billing settings will be specified, and to which a payment will be applied. This process is described in [Create a Sales Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=6acfdb37-9770-4400-ad80-c229b467a649)."
           },
           "response": []
         },
@@ -16336,7 +16352,9 @@
     {
       "listen": "prerequest",
       "script": {
+        "id": "d82b8c8b-6100-4798-93ca-aece8c21318c",
         "type": "text/javascript",
+        "requests": {},
         "exec": [
           "let singInFunction = (pm, url, tenant, branch, username, password, callback) => { ",
           "var requestSignIn = {",
@@ -16379,7 +16397,9 @@
     {
       "listen": "test",
       "script": {
+        "id": "f09c9b1e-46e7-4ef1-b4f7-4fb652d27330",
         "type": "text/javascript",
+        "requests": {},
         "exec": [
           "let singOutFunction = (pm, url) => { ",
           "    var requestSignOut = {",
@@ -16411,259 +16431,244 @@
   ],
   "variable": [
     {
-      "id": "3ac8c740-2b48-4704-9136-297589ddade5",
+      "id": "14e17844-c988-4b3a-b169-11ec1397af3a",
       "key": "BaseURL",
-      "value": "https://localhost/",
-      "type": "string"
+      "value": "https://localhost/"
     },
     {
-      "id": "7e783629-1bf2-4f86-b5e5-cc7056194b7c",
+      "id": "33409b5e-69c8-4947-b92d-8a8f1a0af166",
       "key": "InstanceURL",
       "value": "{{BaseURL}}AcumaticaERP/"
     },
     {
-      "id": "8d8b1651-2563-4370-820c-6a83f41d6743",
+      "id": "5e2a90e6-6ae9-4306-a5ed-eba684b22db2",
       "key": "EndpointURL",
       "value": "{{InstanceURL}}entity/Default/25.200.001/"
     },
     {
-      "id": "23a95180-491d-4ba0-becf-2d4eaab36990",
+      "id": "a36b8ebc-f8f4-4240-b0bb-ad397c164784",
       "key": "ManufacturingEndpointURL",
-      "value": "{{ManufacturingInstanceURL}}entity/MANUFACTURING/25.100.001/",
-      "type": "string"
+      "value": "{{ManufacturingInstanceURL}}entity/MANUFACTURING/25.100.001/"
     },
     {
-      "id": "780f3150-6b3f-4750-bba8-4fb6a9046f92",
+      "id": "3323bf73-3783-4062-ae81-f19c55eb386c",
       "key": "TenantU100",
-      "value": "U100",
-      "type": "string"
+      "value": "U100"
     },
     {
-      "id": "effe5878-a4f0-4d3c-b07e-cc6a776010bf",
+      "id": "1ba75d9d-4b1a-4116-a850-a56e13a04df7",
       "key": "BranchU100",
-      "value": "HEADOFFICE",
-      "type": "string"
+      "value": "HEADOFFICE"
     },
     {
-      "id": "9b66a66b-fe80-4f54-b504-5b5e2f057960",
+      "id": "f166b655-8445-458d-9688-5696b65aad20",
       "key": "UsernameU100",
-      "value": "admin",
-      "type": "string"
+      "value": "admin"
     },
     {
-      "id": "756ceedc-0e07-45ea-9247-aeb108663306",
+      "id": "5c13599a-2100-45e7-ac74-90c8c1a7121d",
       "key": "PasswordU100",
-      "value": "123",
-      "type": "string"
+      "value": "123"
     },
     {
-      "id": "e56eab38-0c7d-4a3b-b2d5-e80caed971e1",
+      "id": "fa1ffaa2-741f-4e3f-abad-a759e5b55c40",
       "key": "TenantT100",
-      "value": "T100",
-      "type": "string"
+      "value": "T100"
     },
     {
-      "id": "0daddd1f-1824-4333-959a-91d600998abc",
+      "id": "a325c56d-e415-458d-b86f-71c3ab4d3361",
       "key": "BranchT100",
-      "value": "MYSTORE",
-      "type": "string"
+      "value": "MYSTORE"
     },
     {
-      "id": "0aa4eaab-618b-4bca-b7e5-d71fb09adad7",
+      "id": "76f169ab-1728-4bd5-9654-dbf930ffd28a",
       "key": "UsernameT100",
-      "value": "admin",
-      "type": "string"
+      "value": "admin"
     },
     {
-      "id": "2a8fddfc-2705-4682-9658-d3c264f52a32",
+      "id": "7f95e8dc-aa20-4321-ad33-29678e70bccd",
       "key": "PasswordT100",
-      "value": "123",
-      "type": "string"
+      "value": "123"
     },
     {
-      "id": "664ca1ab-9a70-47a7-bce0-59956683b409",
+      "id": "654307b2-ebd2-4147-986d-faae64a1db35",
       "key": "TenantSalesDemo",
-      "value": "SalesDemo",
-      "type": "string"
+      "value": "SalesDemo"
     },
     {
-      "id": "51ba8a35-14be-4131-93cb-e6f6f318f0b0",
+      "id": "17101932-beea-4ac6-847c-40567bf3c3c6",
       "key": "BranchSalesDemo",
-      "value": "PRODWHOLE",
-      "type": "string"
+      "value": "PRODWHOLE"
     },
     {
-      "id": "ee9f642e-6d92-43d7-a67e-186ee5ad604d",
+      "id": "34c08095-31ed-464d-b0d8-7c1824396445",
       "key": "UsernameSalesDemo",
-      "value": "admin",
-      "type": "string"
+      "value": "admin"
     },
     {
-      "id": "3a7d31c4-8994-4c27-9afc-8840c6bd884d",
+      "id": "cf1860c4-e851-46f0-a2bb-dcf04e319aae",
       "key": "PasswordSalesDemo",
-      "value": "123",
-      "type": "string"
+      "value": "123"
     },
     {
-      "id": "5c6d2964-6699-428a-82a0-0486ccac1d08",
+      "id": "95003c94-2fc1-4b46-819f-aabee44d946c",
       "key": "caseEntityID",
       "value": ""
     },
     {
-      "id": "2e4b974d-4dd6-48a2-9a15-95d0694c4621",
+      "id": "361429bd-c4a3-46c6-ab07-8e4fb2451b5c",
       "key": "customerEntityID",
       "value": ""
     },
     {
-      "id": "bccae521-42cb-4be2-9a0b-baec2a2b82ea",
+      "id": "5eba6d7c-7694-404a-b43a-0455c79a776a",
       "key": "leadEntityID",
       "value": ""
     },
     {
-      "id": "a56420ab-2a68-4bd6-add6-527d92e47ac6",
+      "id": "ee3b4fd0-0398-4181-94da-b83786c0b2af",
       "key": "paymentRefNbr",
       "value": ""
     },
     {
-      "id": "675867a6-0954-4b6c-8bbc-84c5ffebb862",
+      "id": "70c0c67f-260b-40d5-883e-f84260d95683",
       "key": "appliedToDocuments",
       "value": ""
     },
     {
-      "id": "753f2447-bb35-416e-a757-2a02a7f829c7",
+      "id": "a12def31-4ad0-43bb-9a5d-35e818eab483",
       "key": "appliedToOrders",
       "value": ""
     },
     {
-      "id": "bd4863bc-2c43-4967-8100-d991675c4a2a",
+      "id": "c44d2d21-0757-4720-a133-8ca9156ada8f",
       "key": "proFormaReferenceNbr",
       "value": ""
     },
     {
-      "id": "a01771df-6eb3-4733-bc59-92c9499a54f6",
+      "id": "e5e0fce1-fe87-454f-a846-38022b69a97c",
       "key": "purchaseReceiptID",
       "value": ""
     },
     {
-      "id": "9fb8f02a-21bd-4f09-ab4a-2f622727a525",
+      "id": "9e132afd-cadf-44df-88d3-7463e4de9eea",
       "key": "shipmentID",
       "value": ""
     },
     {
-      "id": "0f569f68-a85c-4f6f-94f4-58b68f7bea87",
+      "id": "72e65333-8416-45d1-bdb8-9320b1d4a683",
       "key": "packageID",
       "value": ""
     },
     {
-      "id": "20236e0d-469c-4893-a8d8-10498e1160f4",
+      "id": "95eefb63-3980-44d9-b8d1-3ba67e3d65ae",
       "key": "SalesInvoiceStatusUrl",
       "value": ""
     },
     {
-      "id": "04d84ae2-255c-4845-a4bb-9ab737e66703",
+      "id": "85cdc80d-4194-4686-9ed8-cb8e44b188ea",
       "key": "CONGRILL_detail_ID",
       "value": ""
     },
     {
-      "id": "e0bb9dbc-0d87-4edc-92a7-1fe826d2dd51",
+      "id": "d473a53a-1eb9-42ff-82bb-e81810d08142",
       "key": "AALEGO500_detail_ID",
       "value": ""
     },
     {
-      "id": "75914e83-2ad2-43fa-b060-23640f53136a",
+      "id": "f9f59d66-279d-4f80-a209-99f63d52b017",
       "key": "fileRef",
       "value": ""
     },
     {
-      "id": "5e7963e4-ea37-4639-a0c8-47fb4b12bd88",
+      "id": "72f9bcb9-40bf-44f9-8905-33ab85b461f3",
       "key": "recordFilter",
       "value": ""
     },
     {
-      "id": "7f4fc025-e584-405f-8879-e79205091982",
+      "id": "1fcbea26-6ad8-4792-901b-d2e1addb81a7",
       "key": "filteredRecordID",
       "value": ""
     },
     {
-      "id": "d2aca0de-1afe-4cf4-b477-b0245e79b892",
+      "id": "b2f4f326-9e03-4389-be77-718719a4fa5c",
       "key": "orderNbr1",
       "value": ""
     },
     {
-      "id": "c0e8b941-16f0-48ee-91bb-71a946a67802",
+      "id": "5349fb00-b86d-4227-b5e1-02d1ca71086d",
       "key": "orderNbr2",
       "value": ""
     },
     {
-      "id": "39b1185a-2413-49b9-95dc-d9dec1ed2d86",
+      "id": "62168aac-c389-49e7-b0d5-6d1065ac62ea",
       "key": "orderID",
       "value": ""
     },
     {
-      "id": "c3bbec07-d9b8-412d-9d9e-8a9d161fded7",
+      "id": "db8e4515-08e5-475e-87d6-f79acab67a96",
       "key": "shipmentNbr",
       "value": ""
     },
     {
-      "id": "26d318fc-2a58-4a48-837a-edacd4b7d3b8",
+      "id": "35397443-e466-43e8-b2b4-a3df8be3956d",
       "key": "invoiceEntityID",
       "value": ""
     },
     {
-      "id": "a32e9c74-f79d-41a8-a918-b3f0e4d03967",
+      "id": "0ba3f8e4-9919-4dd5-945a-0a121446d451",
       "key": "paymentNbr",
       "value": ""
     },
     {
-      "id": "40d759e5-f70f-4b61-b074-be63e959f7e6",
+      "id": "6333fe92-a31a-4e82-a330-c8fb9e0508db",
       "key": "StockItemFileUrl",
       "value": ""
     },
     {
-      "id": "8393c963-dacd-4601-a530-693ce5dc6a85",
+      "id": "bd342053-59e6-425f-83b7-63367eeaa963",
       "key": "RCOrderNbr",
       "value": ""
     },
     {
-      "id": "09e80225-54bc-4004-b5c4-b0d226ce8e8a",
+      "id": "e1dc5ad3-a4c1-4929-9d9f-682cf8662c1a",
       "key": "RCDetailAllocationLineNbr",
       "value": ""
     },
     {
-      "id": "98ac61a4-03d3-408c-8822-8ad6c9f022ae",
+      "id": "4bc59037-2719-4718-8700-90b2c577279c",
       "key": "RCDetailAllocationSplitLineNbr",
       "value": ""
     },
     {
-      "id": "cdbc469a-50c9-42b5-b260-3b017a869802",
+      "id": "88a4158f-5ff6-420c-8a70-da5b146cc4c5",
       "key": "RCDetailLineNbr",
       "value": ""
     },
     {
-      "id": "a1eef4d9-6c1f-42c5-981e-d6869d6e7f06",
+      "id": "ef312477-6782-462f-b975-2f060671d917",
       "key": "creditMemoNbr",
       "value": ""
     },
     {
-      "id": "e64b2a07-4d96-4465-9550-25add8e9a1fa",
+      "id": "fce63a74-77e3-403c-b9ed-e77aceeaa3a9",
       "key": "invoiceNbr",
       "value": ""
     },
     {
-      "id": "9a49b014-ef0f-417a-b4af-55be385e82ca",
+      "id": "fcebc5d2-d2b9-41d3-a540-1633cfe6d53f",
       "key": "RMorderNbr",
       "value": ""
     },
     {
-      "id": "231d3ff7-1168-4066-8580-c30d6b4d65ef",
+      "id": "5f061644-c65d-49ed-bf5a-6308c76a1ea2",
       "key": "ShipmentNbr",
       "value": ""
     },
     {
-      "id": "85d2f8e1-d873-494a-b9bb-9a423ead786f",
+      "id": "f4375fb9-db26-4b2c-874c-4049e5bc39fd",
       "key": "paymentAmount",
-      "value": "235.27",
-      "type": "default"
+      "value": "235.27"
     }
   ]
 }
