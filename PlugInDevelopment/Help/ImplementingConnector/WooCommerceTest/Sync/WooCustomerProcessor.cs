@@ -43,8 +43,8 @@ namespace WooCommerceTest
         BCProcessorSingleBase<WooCustomerProcessor, 
             WooCustomerEntityBucket, MappedCustomer>, IProcessor
     {
-        public RestClient client;
-        protected CustomerDataProvider customerDataProvider;
+        public RestClient client = null!;
+        protected CustomerDataProvider customerDataProvider = null!;
 
         //protected List<Country> countries;
         public CommerceHelper helper = 
@@ -126,8 +126,8 @@ namespace WooCommerceTest
             .ValueField();
             contactImpl.FirstName = customerObj.Billing?.FirstName
             .ValueField();
-            contactImpl.LastName = customerObj.Billing.LastName.ValueField();
-            contactImpl.Email = customerObj.Billing.Email.ValueField();
+            contactImpl.LastName = customerObj.Billing?.LastName?.ValueField();
+            contactImpl.Email = customerObj.Billing?.Email?.ValueField();
             contactImpl.Address = MapAddress(customerObj.Billing);
             contactImpl.Active = true.ValueField();
             contactImpl.Phone1 = customerObj.Billing?.Phone.ValueField();

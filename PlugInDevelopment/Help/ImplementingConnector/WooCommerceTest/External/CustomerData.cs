@@ -23,7 +23,7 @@ namespace WooCommerceTest
             get
             {
                 return DateCreatedUT != null ? 
-                    (DateTime)DateCreatedUT.ToDate() : default;
+                    DateCreatedUT.ToDate() : default;
             }
         }
 
@@ -37,7 +37,7 @@ namespace WooCommerceTest
             get
             {
                 return DateModified != null ? 
-                    (DateTime)DateModified.ToDate() : default;
+                    DateModified.ToDate() : default;
             }
         }
 
@@ -45,29 +45,29 @@ namespace WooCommerceTest
         [CommerceDescription(WCCaptions.Email, FieldFilterStatus.Skipped, 
             FieldMappingStatus.Import)]
         [ValidateRequired]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         [JsonProperty("first_name")]
         [CommerceDescription(WCCaptions.FirstName, FieldFilterStatus.Skipped, 
             FieldMappingStatus.Import)]
         [ValidateRequired]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
 
         [JsonProperty("last_name")]
         [CommerceDescription(WCCaptions.LastName, FieldFilterStatus.Skipped, 
             FieldMappingStatus.Import)]
         [ValidateRequired()]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
         [JsonProperty("username")]
         [CommerceDescription(WCCaptions.UserName, FieldFilterStatus.Skipped, 
             FieldMappingStatus.Import)]
-        public string Username { get; set; }
+        public string? Username { get; set; }
 
         [JsonProperty("billing")]
-        public CustomerAddressData Billing { get; set; }
+        public CustomerAddressData? Billing { get; set; }
 
         [JsonProperty("shipping")]
-        public CustomerAddressData Shipping { get; set; }
+        public CustomerAddressData? Shipping { get; set; }
     }
 }

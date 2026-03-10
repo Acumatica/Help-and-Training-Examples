@@ -14,54 +14,52 @@ namespace WooCommerceTest
         [JsonProperty("first_name")]
         [CommerceDescription(WCCaptions.FirstName, FieldFilterStatus.Skipped, FieldMappingStatus.Import)]
         [ValidateRequired()]
-        public virtual string FirstName { get; set; }
+        public virtual string? FirstName { get; set; }
 
         [JsonProperty("last_name")]
         [CommerceDescription(WCCaptions.LastName, FieldFilterStatus.Skipped, FieldMappingStatus.Import)]
-        public virtual string LastName { get; set; }
-
+        public virtual string? LastName { get; set; }
         [JsonProperty("company")]
         [CommerceDescription(WCCaptions.CompanyName, FieldFilterStatus.Skipped, FieldMappingStatus.Import)]
-        public virtual string Company { get; set; }
+        public virtual string? Company { get; set; }
 
         [JsonProperty("address_1")]
         [CommerceDescription(WCCaptions.AddressLine1, FieldFilterStatus.Skipped, FieldMappingStatus.Import)]
         [ValidateRequired(AutoDefault = true)]
-        public string Address1 { get; set; }
+        public string? Address1 { get; set; }
 
         [JsonProperty("address_2")]
         [CommerceDescription(WCCaptions.AddressLine2, FieldFilterStatus.Skipped, FieldMappingStatus.Import)]
-        public string Address2 { get; set; }
-
+        public string? Address2 { get; set; }
         [JsonProperty("city")]
         [CommerceDescription(WCCaptions.City, FieldFilterStatus.Skipped, FieldMappingStatus.Import)]
         [ValidateRequired(AutoDefault = true)]
-        public virtual string City { get; set; }
+        public virtual string? City { get; set; }
 
         [JsonProperty("postcode")]
         [CommerceDescription(WCCaptions.PostalCode, FieldFilterStatus.Skipped, FieldMappingStatus.Import)]
         [ValidateRequired(AutoDefault = true)]
-        public virtual string PostalCode { get; set; }
+        public virtual string? PostalCode { get; set; }
 
         [JsonProperty("country")]
         [CommerceDescription(WCCaptions.Country, FieldFilterStatus.Skipped, FieldMappingStatus.Import)]
         [ValidateRequired()]
-        public virtual string Country { get; set; }
+        public virtual string? Country { get; set; }
 
         [JsonProperty("state")]
         [Description(WCCaptions.State)]
         [ValidateRequired(AutoDefault = true)]
-        public virtual string State { get; set; }
+        public virtual string? State { get; set; }
 
         [JsonProperty("phone")]
         [Description(WCCaptions.Phone)]
         [ValidateRequired(AutoDefault = true)]
-        public virtual string Phone { get; set; }
+        public virtual string? Phone { get; set; }
 
         [JsonProperty("email")]
         [Description(WCCaptions.Email)]
         [ValidateRequired(AutoDefault = true)]
-        public virtual string Email { get; set; }
+        public virtual string? Email { get; set; }
 
         public bool Equals(CustomerAddressData newObject)
         {

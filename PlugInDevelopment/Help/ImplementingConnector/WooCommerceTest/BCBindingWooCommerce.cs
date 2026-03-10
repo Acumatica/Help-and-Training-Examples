@@ -30,7 +30,7 @@ namespace WooCommerceTest
         [PXDBString(50, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "API Path")]
         [PXDefault()]
-        public virtual string StoreBaseUrl { get; set; }
+        public virtual string? StoreBaseUrl { get; set; }
         public abstract class storeBaseUrl : 
             PX.Data.BQL.BqlString.Field<storeBaseUrl> { }
         #endregion
@@ -38,7 +38,7 @@ namespace WooCommerceTest
         [PXRSACryptString(IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Consumer Key")]
         [PXDefault()]
-        public virtual string StoreXAuthClient { get; set; }
+        public virtual string? StoreXAuthClient { get; set; }
         public abstract class storeXAuthClient : 
             PX.Data.BQL.BqlString.Field<storeXAuthClient> { }
         #endregion
@@ -46,7 +46,7 @@ namespace WooCommerceTest
         [PXRSACryptString(IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Consumer Secret")]
         [PXDefault()]
-        public virtual string StoreXAuthToken { get; set; }
+        public virtual string? StoreXAuthToken { get; set; }
         public abstract class storeXAuthToken : 
             PX.Data.BQL.BqlString.Field<storeXAuthToken> { }
         #endregion
@@ -54,7 +54,7 @@ namespace WooCommerceTest
         #region WooCommerceDefaultCurrency
         [PXDBString(12, IsUnicode = true)]
         [PXUIField(DisplayName = "Default Currency", IsReadOnly = true)]
-        public virtual string WooCommerceDefaultCurrency { get; set; }
+        public virtual string? WooCommerceDefaultCurrency { get; set; }
         public abstract class wooCommerceDefaultCurrency : 
             PX.Data.BQL.BqlString.Field<wooCommerceDefaultCurrency> { }
         #endregion
@@ -62,7 +62,7 @@ namespace WooCommerceTest
         #region WooCommerceStoreTimeZone 
         [PXDBString(100, IsUnicode = true)]
         [PXUIField(DisplayName = "Store Time Zone", IsReadOnly = true)]
-        public virtual string WooCommerceStoreTimeZone { get; set; }
+        public virtual string? WooCommerceStoreTimeZone { get; set; }
         public abstract class wooCommerceStoreTimeZone : 
             PX.Data.BQL.BqlString.Field<wooCommerceStoreTimeZone> { }
         #endregion
@@ -71,7 +71,7 @@ namespace WooCommerceTest
         [PXDBString(100, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Store Admin Path")]
         [PXDefault()]
-        public virtual string StoreAdminUrl { get; set; }
+        public virtual string? StoreAdminUrl { get; set; }
         public abstract class storeAdminUrl : 
             PX.Data.BQL.BqlString.Field<storeAdminUrl> { }
         #endregion
