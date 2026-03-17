@@ -2,9 +2,7 @@
 using PX.Commerce.Core;
 using PX.Data;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using PX.Commerce.Core.REST;
 using Polly;
@@ -23,7 +21,7 @@ namespace WooCommerceTest
         protected override ValueTask<bool> IsFailure(Outcome<HttpCallContext> result,
             int attemptNumber, int attempts) =>
             new((result.Exception is not null
-                || (int)result.Result.Response.StatusCode is 429)
+                || (result.Result?.Response is not null && (int)result.Result.Response.StatusCode == 429))
                 && attempts >= attemptNumber);
 
         protected override ValueTask HandleError(HttpCallContext ctx,

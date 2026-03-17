@@ -12,7 +12,7 @@ namespace WooCommerceTest
 
         public SelectFrom<BCBindingWooCommerce>.
             Where<BCBindingWooCommerce.bindingID.
-                IsEqual<BCBinding.bindingID.FromCurrent>>.View CurrentBindingWooCommerce;
+                IsEqual<BCBinding.bindingID.FromCurrent>>.View CurrentBindingWooCommerce = null!;
 
         public WooCommerceStoreMaint()
         {
@@ -20,7 +20,7 @@ namespace WooCommerceTest
         }
 
         #region Actions
-        public PXAction<BCBinding> TestConnection;
+        public PXAction<BCBinding> TestConnection = null!;
         [PXButton]
         [PXUIField(DisplayName = "Test Connection", Enabled = false)]
         protected virtual IEnumerable testConnection(PXAdapter adapter)
@@ -44,15 +44,15 @@ namespace WooCommerceTest
         #endregion
 
         [PXMergeAttributes(Method = MergeMethod.Append)]
-        [PXCustomizeBaseAttribute(typeof(BCConnectorsAttribute), "DefaultConnector", WooCommerceConnector.TYPE)]
+        [PXCustomize.AnyAttribute(typeof(BCConnectorsAttribute),
+            nameof(BCConnectorsAttribute.DefaultConnector), WooCommerceConnector.TYPE)]
         public virtual void _(Events.CacheAttached<BCBinding.connectorType> e) { }
 
         public override void _(Events.RowSelected<BCBinding> e)
         {
             base._(e);
-
+            if (e.Row == null) return;
             BCBinding row = e.Row as BCBinding;
-            if (row == null) return;
 
             //Actions
             TestConnection.SetEnabled(row.BindingID > 0 && row.ConnectorType == WooCommerceConnector.TYPE);
@@ -71,8 +71,8 @@ namespace WooCommerceTest
         {
             base._(e);
 
+            if (e.Row == null) return;
             BCBindingExt row = e.Row as BCBindingExt;
-            if (row == null) return;
             PXDefaultAttribute.SetPersistingCheck<BCBindingExt.refundAmountItemID>(e.Cache, row, PXPersistingCheck.Nothing);
         }
 

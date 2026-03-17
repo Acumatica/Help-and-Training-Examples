@@ -1,0 +1,32 @@
+﻿<SiteMapNode>
+    <data-set>
+        <relations format-version="4" relations-version="20250701" main-table="SiteMap">
+            <link from="MUIScreen (NodeID)" to="SiteMap (NodeID)" />
+            <link from="MUIWorkspace (WorkspaceID)" to="MUIScreen (WorkspaceID)" type="FromMaster" linkname="workspaceToScreen" split-location="yes" updateable="True" />
+            <link from="MUISubcategory (SubcategoryID)" to="MUIScreen (SubcategoryID)" type="FromMaster" updateable="True" />
+            <link from="MUITile (ScreenID)" to="SiteMap (ScreenID)" />
+            <link from="MUIWorkspace (WorkspaceID)" to="MUITile (WorkspaceID)" type="FromMaster" linkname="workspaceToTile" split-location="yes" updateable="True" />
+            <link from="MUIArea (AreaID)" to="MUIWorkspace (AreaID)" type="FromMaster" updateable="True" />
+            <link from="MUIPinnedScreen (NodeID, WorkspaceID)" to="MUIScreen (NodeID, WorkspaceID)" type="WeakIfEmpty" isEmpty="Username" />
+            <link from="MUIFavoriteWorkspace (WorkspaceID)" to="MUIWorkspace (WorkspaceID)" type="WeakIfEmpty" isEmpty="Username" />
+        </relations>
+        <layout>
+            <table name="SiteMap">
+                <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                    <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                </table>
+                <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+            </table>
+            <table name="MUIWorkspace">
+                <table name="MUIFavoriteWorkspace" uplink="(WorkspaceID) = (WorkspaceID)" />
+            </table>
+            <table name="MUISubcategory" />
+            <table name="MUIArea" />
+        </layout>
+        <data>
+            <SiteMap>
+                <row Title="Assigned Work Orders" Url="~/Frames/ReportLauncher.aspx?ID=RS601000.rpx" ScreenID="RS601000" NodeID="dd41d4e4-dfcb-4e63-a903-a16a8ae44aae" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="D" />
+            </SiteMap>
+        </data>
+    </data-set>
+</SiteMapNode>

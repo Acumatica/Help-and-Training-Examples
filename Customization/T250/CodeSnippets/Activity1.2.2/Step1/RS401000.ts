@@ -1,13 +1,16 @@
 import {
 	createSingle, PXFieldOptions,
 	createCollection, PXScreen, graphInfo, viewInfo,
-	PXView, PXFieldState, gridConfig, GridPreset
+	PXView, PXFieldState, gridConfig, GridPreset,
+        ////////// The added code
+        PXPageLoadBehavior
+        ////////// The end of added code
 } from "client-controls";
 
 ////////// The modified code
 @graphInfo({
 	graphType: "PhoneRepairShop.RSSVPaymentPlanInq",
-	primaryView: "DetailsView",
+	primaryView: "Filter",
 	pageLoadBehavior: PXPageLoadBehavior.PopulateSavedValues,
 })
 ////////// The end of modified code

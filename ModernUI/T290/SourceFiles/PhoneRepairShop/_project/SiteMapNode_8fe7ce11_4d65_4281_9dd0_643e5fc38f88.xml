@@ -1,0 +1,48 @@
+﻿<SiteMapNode>
+    <data-set>
+        <relations format-version="4" relations-version="20250701" main-table="SiteMap">
+            <link from="MUIScreen (NodeID)" to="SiteMap (NodeID)" />
+            <link from="MUIWorkspace (WorkspaceID)" to="MUIScreen (WorkspaceID)" type="FromMaster" linkname="workspaceToScreen" split-location="yes" updateable="True" />
+            <link from="MUISubcategory (SubcategoryID)" to="MUIScreen (SubcategoryID)" type="FromMaster" updateable="True" />
+            <link from="MUITile (ScreenID)" to="SiteMap (ScreenID)" />
+            <link from="MUIWorkspace (WorkspaceID)" to="MUITile (WorkspaceID)" type="FromMaster" linkname="workspaceToTile" split-location="yes" updateable="True" />
+            <link from="MUIArea (AreaID)" to="MUIWorkspace (AreaID)" type="FromMaster" updateable="True" />
+            <link from="MUIPinnedScreen (NodeID, WorkspaceID)" to="MUIScreen (NodeID, WorkspaceID)" type="WeakIfEmpty" isEmpty="Username" />
+            <link from="MUIFavoriteWorkspace (WorkspaceID)" to="MUIWorkspace (WorkspaceID)" type="WeakIfEmpty" isEmpty="Username" />
+        </relations>
+        <layout>
+            <table name="SiteMap">
+                <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                    <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                </table>
+                <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+            </table>
+            <table name="MUIWorkspace">
+                <table name="MUIFavoriteWorkspace" uplink="(WorkspaceID) = (WorkspaceID)" />
+            </table>
+            <table name="MUISubcategory" />
+            <table name="MUIArea" />
+        </layout>
+        <data>
+            <SiteMap>
+                <row Position="1113" Title="Services and Prices" Url="~/GenericInquiry/GenericInquiry.aspx?id=134b2979-46f9-452f-ad39-57b3be8e4958" ScreenID="RS2030PL" NodeID="8fe7ce11-4d65-4281-9dd0-643e5fc38f88" ParentID="12167736-ae7e-46ab-8a8c-dd4b86217519" SelectedUI="D">
+                    <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="2050" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4">
+                        <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
+                    </MUIScreen>
+                </row>
+            </SiteMap>
+            <MUIWorkspace>
+                <row IsPortal="1" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="5" Title="Data Views" Icon="poll" IsSystem="1" LayoutMode="0">
+                    <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
+                </row>
+                <row IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="32" Title="Data Views" Icon="poll" IsSystem="1" LayoutMode="0">
+                    <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
+                </row>
+            </MUIWorkspace>
+            <MUISubcategory>
+                <row IsPortal="1" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
+                <row IsPortal="0" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
+            </MUISubcategory>
+        </data>
+    </data-set>
+</SiteMapNode>

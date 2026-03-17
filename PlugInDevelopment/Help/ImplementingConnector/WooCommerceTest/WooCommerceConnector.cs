@@ -1,17 +1,19 @@
 ﻿using Newtonsoft.Json;
-using System;
-using PX.Commerce.BigCommerce.API.REST;
-using PX.Commerce.Core.REST;
-using PX.Commerce.Core;
-using PX.Data.BQL;
 using PX.Async;
-using System.Collections.Generic;
+using PX.Commerce.BigCommerce;
+using PX.Commerce.BigCommerce.API.REST;
+using PX.Commerce.Core;
+using PX.Commerce.Core.REST;
 using PX.Common;
-using System.Linq;
 using PX.Data;
-using System.Threading.Tasks;
-using System.Threading;
+using PX.Data.BQL;
 using RestSharp;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace WooCommerceTest
 {
@@ -29,7 +31,7 @@ namespace WooCommerceTest
         public override string ConnectorName { get => NAME; }
 
         public override void NavigateExtern(ISyncStatus status, 
-            ISyncDetail detail = null)
+            ISyncDetail detail)
         {
             if (status?.ExternID == null) return;
 
@@ -52,7 +54,7 @@ namespace WooCommerceTest
         }
 
         public override async Task<ConnectorOperationResult> Process(
-            ConnectorOperation operation, int?[] syncIDs = null,
+            ConnectorOperation operation, int?[] syncIDs,
             CancellationToken cancellationToken = default)
         {
             EntityInfo info = GetEntities().FirstOrDefault(e => 
@@ -86,18 +88,20 @@ namespace WooCommerceTest
 
         public static RestClient GetRestClient(BCBindingWooCommerce binding)
         {
-            return GetRestClient(binding.StoreBaseUrl, 
-                binding.StoreXAuthClient, binding.StoreXAuthToken);
+            Dictionary<string, string> authHeaders = new()
+            {
+                { BigCommerceConstants.Headers.AuthToken, binding.StoreXAuthToken },
+                { BigCommerceConstants.Headers.AuthClient, binding.StoreXAuthClient }
+            };
+            return CreateClient(binding.StoreBaseUrl, authHeaders);
         }
 
-        public static RestClient GetRestClient(String url, String clientID, 
-            String token)
+        public static RestClient CreateClient(string baseUri, Dictionary<string, string> authHeaders)
         {
             RestOptions options = new RestOptions
             {
-                BaseUri = url,
-                XAuthClient = clientID,
-                XAuthTocken = token
+                BaseUri = baseUri,
+                AuthHeaders = authHeaders
             };
             JsonSerializerSettings serializer = new JsonSerializerSettings
             {

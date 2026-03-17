@@ -2,7 +2,7 @@ import {
 	PXScreen, createCollection, graphInfo,
 	viewInfo, createSingle,
 	PXView, PXFieldOptions, PXFieldState, controlConfig,
-	gridConfig, GridPreset,
+	gridConfig, GridPreset
 } from "client-controls";
 
 @graphInfo({

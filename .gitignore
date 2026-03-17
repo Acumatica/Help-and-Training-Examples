@@ -49,3 +49,5 @@ obj
 /UnitTesting/T280/PhoneRepairShop_Code/PhoneRepairShop_Code.Tests/.vs
 /ModernUI/T290/SourceFiles/PhoneRepairShop_Code/PhoneRepairShop_Code/bin/Debug
 /Customization/T220/PhoneRepairShop_Code/PhoneRepairShop_Code/.vs
+/.postman/config.json
+/postman/globals/workspace.postman_globals.json

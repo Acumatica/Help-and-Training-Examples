@@ -3,6 +3,7 @@ using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
 using PX.Objects.IN;
 using System.Linq;
+using System;
 
 namespace PhoneRepairShop
 {
@@ -28,6 +29,21 @@ namespace PhoneRepairShop
 
         //The view for the auto-numbering of records
         public PXSetup<RSSVSetup> AutoNumSetup = null!;
+
+        public PXFilter<MasterTable> MasterView;
+        public PXFilter<DetailsTable> DetailsView;
+
+        [Serializable]
+        public class MasterTable : PXBqlTable, IBqlTable
+        {
+
+        }
+
+        [Serializable]
+        public class DetailsTable : PXBqlTable, IBqlTable
+        {
+
+        }
         #endregion
 
         #region Graph constructor

@@ -10,7 +10,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <FileVersion>25.201.0166</FileVersion>
     <InformationalVersion>25.201.0166</InformationalVersion>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>12.0</LangVersion>
     <Nullable>enable</Nullable>
     <Copyright>Copyright © 2005-2025 Acumatica, Inc. All rights reserved.</Copyright>
   </PropertyGroup>
@@ -71,10 +71,6 @@
     <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Bin\Serilog.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Bin\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

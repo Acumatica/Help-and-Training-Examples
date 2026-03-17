@@ -1,7 +1,7 @@
 ﻿<GenericInquiryScreen>
     <data-set>
-        <relations format-version="3" relations-version="20220426" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
-            <link from="GIFilter (DesignID)" to="GIDesign (DesignID)" />
+        <relations format-version="4" relations-version="20250922" main-table="GIDesign" stable-sharing="True" file-name="(Name)" unique-key="GIDesign (Name)">
+            <link from="GIFilter (DesignID)" to="GIDesign (DesignID)" unique-key="GIFilter (DesignID, Name, IsActive)" />
             <link from="GIGroupBy (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIMassAction (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIMassUpdateField (DesignID)" to="GIDesign (DesignID)" />
@@ -11,6 +11,7 @@
             <link from="GIOn (DesignID, RelationNbr)" to="GIRelation (DesignID, LineNbr)" />
             <link from="GIRecordDefault (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIRelation (DesignID, ParentTable)" to="GITable (DesignID, Alias)" />
+            <link from="GIMLGroups (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIRelation (DesignID, ChildTable)" to="GITable (DesignID, Alias)" />
             <link from="GIResult (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIResult (ObjectName, DesignID)" to="GITable (Alias, DesignID)" />
@@ -18,7 +19,9 @@
             <link from="GITable (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIWhere (DesignID)" to="GIDesign (DesignID)" />
             <link from="SiteMap (Url)" to="GIDesign (DesignID)" type="WeakByUrl" linkname="toDesignById" baseurl="~/GenericInquiry/GenericInquiry.aspx" paramnames="id" />
+            <link from="SiteMap (Url)" to="GIDesign (DesignID)" type="WeakByUrl" linkname="toDesignByIdNew" baseurl="~/Scripts/Screens/GenericInquiry.html" paramnames="id" />
             <link from="SiteMap (Url)" to="GIDesign (Name)" type="WeakByUrl" linkname="toDesignByName" baseurl="~/GenericInquiry/GenericInquiry.aspx" />
+            <link from="SiteMap (Url)" to="GIDesign (Name)" type="WeakByUrl" linkname="toDesignByNameNew" baseurl="~/Scripts/Screens/GenericInquiry.html" />
             <link from="ListEntryPoint (ListScreenID)" to="SiteMap (ScreenID)" />
             <link from="SiteMap (ScreenID)" to="GIDesign (PrimaryScreenIDNew)" linkname="to1Screen" />
             <link from="FilterHeader (ScreenID)" to="SiteMap (ScreenID)" />
@@ -48,8 +51,8 @@
             <link from="FilterHeader (NoteID)" to="FilterHeaderKvExt (RecordID)" type="RowKvExt" />
         </relations>
         <layout>
-            <table name="GIDesign">
-                <table name="GIFilter" uplink="(DesignID) = (DesignID)">
+            <table name="GIDesign" unique-key="GIDesign (Name)">
+                <table name="GIFilter" uplink="(DesignID) = (DesignID)" unique-key="GIFilter (DesignID, Name, IsActive)">
                     <table name="Note" uplink="(NoteID) = (NoteID)" />
                     <table name="GIFilterKvExt" uplink="(NoteID) = (RecordID)" />
                 </table>
@@ -63,6 +66,7 @@
                     <table name="GINavigationCondition" uplink="(DesignID, LineNbr) = (DesignID, NavigationScreenLineNbr)" />
                 </table>
                 <table name="GIRecordDefault" uplink="(DesignID) = (DesignID)" />
+                <table name="GIMLGroups" uplink="(DesignID) = (DesignID)" />
                 <table name="GISort" uplink="(DesignID) = (DesignID)">
                     <table name="Note" uplink="(NoteID) = (NoteID)" />
                 </table>
@@ -97,7 +101,37 @@
                     </table>
                     <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
                 </table>
+                <table name="SiteMap" uplink="(DesignID) = (Url)" linkname="toDesignByIdNew">
+                    <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
+                    <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+                        <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                        <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+                            <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
+                        </table>
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                        <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
+                    </table>
+                    <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                        <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                    </table>
+                    <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+                </table>
                 <table name="SiteMap" uplink="(Name) = (Url)" linkname="toDesignByName">
+                    <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
+                    <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+                        <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                        <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+                            <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
+                        </table>
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                        <table name="FilterHeaderKvExt" uplink="(NoteID) = (RecordID)" />
+                    </table>
+                    <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
+                        <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
+                    </table>
+                    <table name="MUITile" uplink="(ScreenID) = (ScreenID)" />
+                </table>
+                <table name="SiteMap" uplink="(Name) = (Url)" linkname="toDesignByNameNew">
                     <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
                     <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
                         <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
@@ -137,14 +171,14 @@
         </layout>
         <data>
             <GIDesign>
-                <row DesignID="eae45e7b-e3c5-480c-9af9-6f4c80223e41" Name="Repair Work Orders" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS301000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0">
-                    <GINavigationScreen Link="RS301000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1" NoteID="d635dd69-ab47-4a41-bada-e994ecd467e2">
+                <row DesignID="eae45e7b-e3c5-480c-9af9-6f4c80223e41" Name="Repair Work Orders" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS301000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0" ShowArchivedRecords="0" DisableCountsAndTotals="0" MLDetectionEnabled="0" SkipEmptyGroups="0" ExposeToAiAssistant="0">
+                    <GINavigationScreen Link="RS301000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1" NoteID="a16d3b61-4b71-4f17-9599-1f6d61083ee0">
                         <GINavigationParameter LineNbr="4" FieldName="ServiceID" ParameterName="WorkOrder.ServiceID" IsExpression="0" />
                         <GINavigationParameter LineNbr="3" FieldName="DeviceID" ParameterName="WorkOrder.DeviceID" IsExpression="0" />
                         <GINavigationParameter LineNbr="2" FieldName="CustomerID" ParameterName="WorkOrder.CustomerID" IsExpression="0" />
                         <GINavigationParameter LineNbr="1" FieldName="OrderNbr" ParameterName="WorkOrder.OrderNbr" IsExpression="0" />
                     </GINavigationScreen>
-                    <GITable Alias="WorkOrder" Name="PhoneRepairShop.RSSVWorkOrder">
+                    <GITable Alias="WorkOrder" Name="PhoneRepairShop.RSSVWorkOrder" Type="0">
                         <GIResult LineNbr="5" SortOrder="5" IsActive="1" Field="deviceID" SchemaField="WorkOrder.DeviceID" Width="150" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="de553585-7cb3-4ed9-9c07-827957ddc974" />
                         <GIResult LineNbr="4" SortOrder="4" IsActive="1" Field="serviceID" SchemaField="WorkOrder.ServiceID" Width="150" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="18c2d8f3-d27a-4c9a-aec4-45aae68fbef7" />
                         <GIResult LineNbr="3" SortOrder="3" IsActive="1" Field="status" SchemaField="WorkOrder.Status" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="4b20bb22-bf9d-4c87-a135-fe7f883e9905" />
@@ -152,7 +186,7 @@
                         <GIResult LineNbr="1" SortOrder="1" IsActive="1" Field="orderNbr" SchemaField="WorkOrder.OrderNbr" IsVisible="1" DefaultNav="0" NavigationNbr="1" QuickFilter="0" FastFilter="1" RowID="f36ce93e-37d4-4983-8f69-1e466092f235" />
                     </GITable>
                     <SiteMap linkname="toDesignById">
-                        <row Position="1114" Title="Repair Work Orders" Url="~/GenericInquiry/GenericInquiry.aspx?id=eae45e7b-e3c5-480c-9af9-6f4c80223e41" ScreenID="RS3010PL" NodeID="fb3cea48-eb71-4dea-838d-914fffcba205" ParentID="12167736-ae7e-46ab-8a8c-dd4b86217519">
+                        <row Position="1114" Title="Repair Work Orders" Url="~/GenericInquiry/GenericInquiry.aspx?id=eae45e7b-e3c5-480c-9af9-6f4c80223e41" ScreenID="RS3010PL" NodeID="fb3cea48-eb71-4dea-838d-914fffcba205" ParentID="12167736-ae7e-46ab-8a8c-dd4b86217519" SelectedUI="D">
                             <ListEntryPoint EntryScreenID="RS301000" IsActive="1" />
                             <FilterHeader FilterID="0000cfb0-0000-0000-0000-000000000000" UserName="admin" ViewName="Results" FilterName="To Assign" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0" FilterOrder="53168">
                                 <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="WorkOrder_status" Condition="0" ValueSt="RA" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="1" />
@@ -160,27 +194,25 @@
                             <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="2030" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4">
                                 <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                             </MUIScreen>
-                            <RolesInGraph Rolename="*" ApplicationName="/" Accessrights="0" />
                         </row>
                     </SiteMap>
                     <SiteMap linkname="to1Screen">
-                        <row Position="5960" Title="Repair Work Orders" Url="~/Pages/RS/RS301000.aspx" NodeID="ca5e0b9a-732f-481e-9c08-73de7c444c1f" ParentID="00000000-0000-0000-0000-000000000000">
-                            <MUIScreen IsPortal="0" WorkspaceID="28b3b75b-c42b-4f42-908e-e23344279d9b" Order="20" SubcategoryID="6d40b0b6-18f4-4139-adac-8ec8cb2a17ea">
+                        <row Title="Repair Work Orders" Url="~/Pages/RS/RS301000.aspx" NodeID="3b010bc5-a7e4-439d-a84b-3d6338f2763d" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="D">
+                            <MUIScreen IsPortal="0" WorkspaceID="5fe2cecf-d8bc-4fde-8826-e6185ce39d18" Order="10" SubcategoryID="6d40b0b6-18f4-4139-adac-8ec8cb2a17ea">
                                 <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                             </MUIScreen>
-                            <RolesInGraph Rolename="*" ApplicationName="/" Accessrights="0" />
                         </row>
                     </SiteMap>
                 </row>
             </GIDesign>
             <MUIWorkspace>
-                <row IsPortal="1" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="5" Title="Data Views" Icon="poll" IsSystem="1">
+                <row IsPortal="1" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="5" Title="Data Views" Icon="poll" IsSystem="1" LayoutMode="0">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
-                <row IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="32" Title="Data Views" Icon="poll" IsSystem="1">
+                <row IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="32" Title="Data Views" Icon="poll" IsSystem="1" LayoutMode="0">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
-                <row IsPortal="0" WorkspaceID="28b3b75b-c42b-4f42-908e-e23344279d9b" Order="38" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0">
+                <row IsPortal="0" WorkspaceID="5fe2cecf-d8bc-4fde-8826-e6185ce39d18" Order="38" Title="Phone Repair Shop" Icon="phone_iphone" IsSystem="0" LayoutMode="0">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
             </MUIWorkspace>

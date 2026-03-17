@@ -42,9 +42,24 @@ namespace PhoneRepairShop
         public SelectFrom<ContractTemplate>.
             Where<ContractTemplate.contractCD.IsEqual<defaultWarranty>>.
             View DefaultWarranty = null!;
+
+        public PXFilter<MasterTable> MasterView;
+        public PXFilter<DetailsTable> DetailsView;
+
+        [Serializable]
+        public class MasterTable : PXBqlTable, IBqlTable
+        {
+
+        }
+
+        [Serializable]
+        public class DetailsTable : PXBqlTable, IBqlTable
+        {
+
+        }
         #endregion
-		
-	#region Actions
+
+        #region Actions
         public PXAction<RSSVRepairPrice> ValidateItemPrices = null!;
         [PXButton(DisplayOnMainToolbar = false, CommitChanges = true)]
         [PXUIField(DisplayName = "Validate Prices", Enabled = true)]

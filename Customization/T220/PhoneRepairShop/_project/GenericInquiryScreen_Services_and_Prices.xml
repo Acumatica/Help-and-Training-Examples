@@ -1,6 +1,6 @@
 ﻿<GenericInquiryScreen>
     <data-set>
-        <relations format-version="4" relations-version="20250701" main-table="GIDesign" stable-sharing="True" file-name="(Name)" unique-key="GIDesign (Name)">
+        <relations format-version="4" relations-version="20250922" main-table="GIDesign" stable-sharing="True" file-name="(Name)" unique-key="GIDesign (Name)">
             <link from="GIFilter (DesignID)" to="GIDesign (DesignID)" unique-key="GIFilter (DesignID, Name, IsActive)" />
             <link from="GIGroupBy (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIMassAction (DesignID)" to="GIDesign (DesignID)" />
@@ -11,6 +11,7 @@
             <link from="GIOn (DesignID, RelationNbr)" to="GIRelation (DesignID, LineNbr)" />
             <link from="GIRecordDefault (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIRelation (DesignID, ParentTable)" to="GITable (DesignID, Alias)" />
+            <link from="GIMLGroups (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIRelation (DesignID, ChildTable)" to="GITable (DesignID, Alias)" />
             <link from="GIResult (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIResult (ObjectName, DesignID)" to="GITable (Alias, DesignID)" />
@@ -65,6 +66,7 @@
                     <table name="GINavigationCondition" uplink="(DesignID, LineNbr) = (DesignID, NavigationScreenLineNbr)" />
                 </table>
                 <table name="GIRecordDefault" uplink="(DesignID) = (DesignID)" />
+                <table name="GIMLGroups" uplink="(DesignID) = (DesignID)" />
                 <table name="GISort" uplink="(DesignID) = (DesignID)">
                     <table name="Note" uplink="(NoteID) = (NoteID)" />
                 </table>
@@ -169,8 +171,8 @@
         </layout>
         <data>
             <GIDesign>
-                <row DesignID="134b2979-46f9-452f-ad39-57b3be8e4958" Name="Services and Prices" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS203000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0" ShowArchivedRecords="0" MLDetectionEnabled="0" SkipEmptyGroups="0">
-                    <GINavigationScreen Link="RS203000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1" NoteID="2046d02e-aea3-401b-9291-723f2f8a68f7">
+                <row DesignID="134b2979-46f9-452f-ad39-57b3be8e4958" Name="Services and Prices" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="RS203000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0" ShowArchivedRecords="0" DisableCountsAndTotals="0" MLDetectionEnabled="0" SkipEmptyGroups="0" ExposeToAiAssistant="0">
+                    <GINavigationScreen Link="RS203000" LineNbr="1" SortOrder="1" WindowMode="I" IsActive="1" NoteID="3468b661-66e7-4f20-ba01-3d73dc4f3221">
                         <GINavigationParameter LineNbr="2" FieldName="DeviceID" ParameterName="RepairPrice.DeviceID" IsExpression="0" />
                         <GINavigationParameter LineNbr="1" FieldName="ServiceID" ParameterName="RepairPrice.ServiceID" IsExpression="0" />
                     </GINavigationScreen>
@@ -188,7 +190,7 @@
                         </row>
                     </SiteMap>
                     <SiteMap linkname="to1Screen">
-                        <row Position="21520" Title="Services and Prices" Url="~/Scripts/Screens/RS203000.html" NodeID="a889a31c-f526-47fb-80c9-e79ffbe5d5ff" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="D">
+                        <row Position="21520" Title="Services and Prices" Url="~/Scripts/Screens/RS203000.html" NodeID="09d652c6-ade9-4dba-9955-971d128d15f1" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="D">
                             <MUIScreen IsPortal="0" WorkspaceID="57c3382a-54f3-4da8-b6e5-ccfb130972b7" Order="40" SubcategoryID="1669bef9-e982-485c-a48b-80ce30193385">
                                 <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                             </MUIScreen>

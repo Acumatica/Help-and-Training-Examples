@@ -8,6 +8,6 @@ namespace WooCommerceTest
         public IMappedEntity Primary => Customer;
         public IMappedEntity[] Entities => new IMappedEntity[] { Customer };
 
-        public MappedCustomer Customer;
+        public MappedCustomer Customer = null!;
     }
 }

@@ -12,7 +12,7 @@ namespace WooCommerceTest
         public override IMappedEntity[] PostProcessors =>
           new IMappedEntity[] { Customer };
 
-        public MappedLocation Address;
-        public MappedCustomer Customer;
+        public MappedLocation Address = null!;
+        public MappedCustomer Customer = null!;
     }
 }
