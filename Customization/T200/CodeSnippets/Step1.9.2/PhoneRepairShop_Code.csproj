@@ -5,14 +5,12 @@
     <OutputType>Library</OutputType>
     <RootNamespace>PhoneRepairShop_Code</RootNamespace>
     <AssemblyName>PhoneRepairShop_Code</AssemblyName>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>bin\$(Configuration)</OutputPath>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <FileVersion>25.201.0166</FileVersion>
-    <InformationalVersion>25.201.0166</InformationalVersion>
+    <FileVersion>26.100.0168</FileVersion>
+    <InformationalVersion>26.100.0168</InformationalVersion>
     <LangVersion>9.0</LangVersion>
     <Nullable>enable</Nullable>
-    <Copyright>Copyright © 2005-2025 Acumatica, Inc. All rights reserved.</Copyright>
+    <Copyright>Copyright © 2005-2026 Acumatica, Inc. All rights reserved.</Copyright>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PX.Common">
@@ -31,8 +29,12 @@
       <HintPath>..\..\..\..\Bin\PX.Data.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="PX.Data.BQL.Fluent">
+      <HintPath>..\..\..\..\Bin\PX.Data.BQL.Fluent.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="PX.Objects">
-      <HintPath>..\..\..\..\Bin\PX.Objects.dll</HintPath>
+      <HintPath>..\..\..\..\Bin\PX.Objects.DLL</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
