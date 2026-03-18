@@ -19,10 +19,10 @@ export class RS201000 extends PXScreen {
 	preset: GridPreset.Primary
 })
 export class RSSVRepairService extends PXView  {
-	ServiceCD : PXFieldState;
-	Description : PXFieldState;
-	Active : PXFieldState;
-	WalkInService : PXFieldState<PXFieldOptions.CommitChanges>;
-	Prepayment : PXFieldState;
-	PreliminaryCheck : PXFieldState<PXFieldOptions.CommitChanges>;
+	ServiceCD: PXFieldState;
+	Description: PXFieldState;
+	Active: PXFieldState;
+	WalkInService: PXFieldState<PXFieldOptions.CommitChanges>;
+	Prepayment: PXFieldState;
+	PreliminaryCheck: PXFieldState<PXFieldOptions.CommitChanges>;
 }
