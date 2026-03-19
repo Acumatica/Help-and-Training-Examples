@@ -91,8 +91,11 @@ namespace PhoneRepairShop
 
             var repairPriceItem = RepairPrices.Current;
             // Execute the ValidatePrices method asynchronously by
-            // using PXLongOperation.StartOperation
-            PXLongOperation.StartOperation(this, () => ValidatePrices(repairPriceItem));
+            // using LongOperationManager.StartOperation
+             LongOperationManager.StartOperation(cancellationToken =>
+             {
+                ValidatePrices(repairPriceItem);
+             });
 
             // Return the local list variable.
             return list;
