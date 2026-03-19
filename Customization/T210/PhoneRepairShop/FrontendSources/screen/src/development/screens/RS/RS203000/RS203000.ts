@@ -32,7 +32,7 @@ export class RSSVRepairItem extends PXView {
 	Required : PXFieldState<PXFieldOptions.CommitChanges>;
 	InventoryID: PXFieldState<PXFieldOptions.CommitChanges>;
 	InventoryID_description : PXFieldState;
-	BasePrice : PXFieldState;
+	BasePrice : PXFieldState<PXFieldOptions.CommitChanges>;
 	IsDefault : PXFieldState<PXFieldOptions.CommitChanges>;
 }
 
