@@ -76,15 +76,20 @@ namespace PhoneRepairShop
             Actions.PressSave();
 
             var repairPriceItem = RepairPrices.Current;
-            //Execute ValidatePrices method asynchronously using PXLongOperation.StartOperation
-            PXLongOperation.StartOperation(this, () => ValidatePrices(repairPriceItem));
+            // Execute the ValidatePrices method asynchronously by
+            // using LongOperationManager.StartOperation
+            LongOperationManager.StartOperation(cancellationToken =>
+            {
+                ValidatePrices(repairPriceItem);
+            });
 
             // Return the local list variable.
             return list;
         }
         #endregion
-		
-	private static void ValidatePrices(RSSVRepairPrice repairPriceItem)
+
+
+        private static void ValidatePrices(RSSVRepairPrice repairPriceItem)
         {
             /* Create an instance of the RSSVRepairPriceMaint graph and set 
                the Current property of its RepairPrices view.*/
