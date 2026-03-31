@@ -10,6 +10,7 @@ namespace PhoneRepairShop
     {
         public SelectFrom<RSSVWorkOrder>.View WorkOrdersForUpdate = null!;
 
+        /// Overrides <seealso cref="ARReleaseProcess.PerformPersist(PXGraph.IPersistPerformer)"/>
         [PXOverride]
         public void PerformPersist(PXGraph.IPersistPerformer persister,
                     Action<PXGraph.IPersistPerformer> base_PerformPersist)
@@ -21,12 +22,13 @@ namespace PhoneRepairShop
         ////////// The added code
         public delegate void UpdateBalancesDelegate(ARAdjust adj,
             ARRegister adjddoc, ARTran adjdtran);
+        /// Overrides <seealso cref="ARReleaseProcess.UpdateBalances(ARAdjust, ARRegister, ARTran)"/>
         [PXOverride]
         public virtual void UpdateBalances(ARAdjust adj,
             ARRegister adjddoc, ARTran adjdtran,
-            UpdateBalancesDelegate baseMethod)
+            UpdateBalancesDelegate base_UpdateBalances)
         {
-            baseMethod(adj, adjddoc, adjdtran);
+            base_UpdateBalances(adj, adjddoc, adjdtran);
 
             ARRegister ardoc = adjddoc;
             ARRegister cached = (ARRegister)Base.ARDocument.Cache.Locate(ardoc);

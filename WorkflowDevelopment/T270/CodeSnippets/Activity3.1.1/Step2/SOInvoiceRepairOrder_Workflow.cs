@@ -5,7 +5,7 @@ using PX.Objects.AR;
 
 namespace PhoneRepairShop
 {
-public class SOInvoiceRepairOrder_Workflow : 
+    public class SOInvoiceRepairOrder_Workflow : 
         PXGraphExtension<SOInvoiceEntry_Workflow, SOInvoiceEntry>
     {
         public sealed override void Configure(PXScreenConfiguration config)

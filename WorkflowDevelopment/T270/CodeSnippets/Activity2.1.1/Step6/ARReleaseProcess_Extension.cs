@@ -10,6 +10,7 @@ namespace PhoneRepairShop
     {
         public SelectFrom<RSSVWorkOrder>.View WorkOrdersForUpdate = null!;
 
+        /// Overrides <seealso cref="ARReleaseProcess.PerformPersist(PXGraph.IPersistPerformer)"/>
         [PXOverride]
         public void PerformPersist(PXGraph.IPersistPerformer persister,
                     Action<PXGraph.IPersistPerformer> base_PerformPersist)
