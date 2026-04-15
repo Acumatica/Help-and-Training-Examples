@@ -300,7 +300,7 @@ namespace PhoneRepairShop
           })]
         public virtual string? OrderType { get; set; }
         public abstract class orderType :
-            PX.Data.BQL.BqlDecimal.Field<orderType>
+            PX.Data.BQL.BqlString.Field<orderType>
         { }
         #endregion
 

@@ -78,7 +78,6 @@ namespace PhoneRepairShop
                 if (e.Row == null) return;
                 if (e.Row.OrderTotal == 0) return;
                 RSSVWorkOrderToPay order = e.Row;
-                // Acuminator disable once PX1042 DatabaseQueriesInRowSelecting [Justification]
                 var invoices = 
                     SelectFrom<ARInvoice>.
                     Where<ARInvoice.refNbr.IsEqual<@P.AsString>>.
@@ -101,6 +100,7 @@ namespace PhoneRepairShop
     }
 
     [PXHidden]
+    [PXVirtual]
     public class RSSVWorkOrderToPayFilter : PXBqlTable, IBqlTable
     {
         #region ServiceID
