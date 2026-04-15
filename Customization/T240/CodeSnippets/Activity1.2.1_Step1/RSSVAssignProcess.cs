@@ -21,7 +21,22 @@ namespace PhoneRepairShop
             WorkOrders.SetProcessCaption("Assign");
             WorkOrders.SetProcessAllCaption("Assign All");
         }
- 
+
+        public PXFilter<MasterTable> MasterView;
+        public PXFilter<DetailsTable> DetailsView;
+                
+        [Serializable]
+        public class MasterTable : PXBqlTable, IBqlTable
+        {
+                
+        }
+                
+        [Serializable]
+        public class DetailsTable : PXBqlTable, IBqlTable
+        {
+                
+        }
+
         ////////// The added code
         protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
         {
