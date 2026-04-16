@@ -17,6 +17,22 @@ namespace PhoneRepairShop
             And<RSSVRepairItem.deviceID.
                 IsEqual<RSSVRepairPrice.deviceID.FromCurrent>>>.View
             RepairItems = null!;
+
+        public PXFilter<MasterTable> MasterView;
+        public PXFilter<DetailsTable> DetailsView;
+
+        [Serializable]
+        public class MasterTable : PXBqlTable, IBqlTable
+        {
+
+        }
+
+        [Serializable]
+        public class DetailsTable : PXBqlTable, IBqlTable
+        {
+
+        }
+
         #endregion
 
         ////////// The added code
@@ -36,7 +52,8 @@ namespace PhoneRepairShop
                     as InventoryItem;
                 //Copy the repair item type from the stock item to the row.
                 var itemExt = item?.GetExtension<InventoryItemExt>();
-                if (itemExt != null) e.Cache.SetValueExt<RSSVRepairItem.repairItemType>(
+                if (itemExt != null)
+                   e.Cache.SetValueExt<RSSVRepairItem.repairItemType>(
                     row, itemExt.UsrRepairItemType);
             }
             //Trigger the FieldDefaulting event handler for basePrice.
