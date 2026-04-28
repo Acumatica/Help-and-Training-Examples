@@ -40,6 +40,21 @@ namespace PhoneRepairShop
         //per employee
         public SelectFrom<RSSVEmployeeWorkOrderQty>.View Quantity = null!;
         ////////// The end of added code
+
+        public PXFilter<MasterTable> MasterView;
+        public PXFilter<DetailsTable> DetailsView;
+	
+        [Serializable]
+        public class MasterTable : PXBqlTable, IBqlTable
+        {
+
+        }
+
+        [Serializable]
+        public class DetailsTable : PXBqlTable, IBqlTable
+        {
+
+        }
         #endregion
 
         #region Constructors
