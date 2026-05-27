@@ -4197,7 +4197,7 @@
                   "        });\r",
                   "    } \r",
                   "}\r",
-                  "pm.execution.setNextRequest(\"Retrieve the List of Business Accounts\");"
+                  "pm.execution.setNextRequest(\"Create a Bill of Material\");"
                 ]
               }
             },
@@ -4433,7 +4433,7 @@
                   "//Sign out and set the next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
                   "pm.acuFunc.singOutFunction(pm, url);\r",
-                  "pm.execution.setNextRequest('');"
+                  "pm.execution.setNextRequest('Retrieve the List of Business Accounts');"
                 ]
               }
             },
@@ -4765,7 +4765,7 @@
                   "//Sign out and set the next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
                   "pm.acuFunc.singOutFunction(pm, url);\r",
-                  "pm.execution.setNextRequest(\"Create a Contact with Attributes\");"
+                  "pm.execution.setNextRequest(\"Retrieve a Configuration Entry\");"
                 ]
               }
             },
@@ -4846,7 +4846,7 @@
                   "//Sign out and set the next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
                   "pm.acuFunc.singOutFunction(pm, url);\r",
-                  "pm.execution.setNextRequest(\"\");"
+                  "pm.execution.setNextRequest(\"Update a Configuration Entry\");"
                 ]
               }
             },
@@ -4917,7 +4917,7 @@
                   "//Sign out and set the next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
                   "pm.acuFunc.singOutFunction(pm, url);\r",
-                  "pm.execution.setNextRequest(\"\");"
+                  "pm.execution.setNextRequest(\"Create a Contact with Attributes\");"
                 ]
               }
             },
@@ -8516,7 +8516,7 @@
                   "//Sign out and set the next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
                   "pm.acuFunc.singOutFunction(pm, url);\r",
-                  "pm.execution.setNextRequest(\"Create a Project from a Project Template\");"
+                  "pm.execution.setNextRequest(\"Update Dates in Production Orders\");"
                 ]
               }
             },
@@ -8917,7 +8917,7 @@
                   "//Sign out and set the next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
                   "pm.acuFunc.singOutFunction(pm, url);\r",
-                  "pm.execution.setNextRequest('');"
+                  "pm.execution.setNextRequest('Update Dates in a Production Order');"
                 ]
               }
             },
@@ -9009,7 +9009,7 @@
                   "//Sign out and set the next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
                   "pm.acuFunc.singOutFunction(pm, url);\r",
-                  "pm.execution.setNextRequest('Update Dates in Production Orders');"
+                  "pm.execution.setNextRequest('Create a Project from a Project Template');"
                 ]
               }
             },
@@ -10231,7 +10231,7 @@
                   "//Sign out and set the next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
                   "pm.acuFunc.singOutFunction(pm, url);\r",
-                  "pm.execution.setNextRequest(\"Create a Purchase Return from a Purchase Receipt Record\");"
+                  "pm.execution.setNextRequest(\"Create a Purchase Receipt with Allocations (with Expiration Date)\");"
                 ]
               }
             },
@@ -10318,7 +10318,7 @@
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
                   "pm.acuFunc.singOutFunction(pm, url);\r",
                   "//Set the next request\r",
-                  "pm.execution.setNextRequest(\"\");\r",
+                  "pm.execution.setNextRequest(\"Create a Purchase Return from a Purchase Receipt Record\");\r",
                   ""
                 ]
               }
@@ -11195,7 +11195,7 @@
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
                   "pm.acuFunc.singOutFunction(pm, url);\r",
                   "//Set the next request\r",
-                  "pm.execution.setNextRequest(\"Create a Credit Memo\");\r",
+                  "pm.execution.setNextRequest(\"Create a Direct Sales Invoice That Includes a Return\");\r",
                   ""
                 ],
                 "type": "text/javascript",
@@ -11281,7 +11281,7 @@
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
                   "pm.acuFunc.singOutFunction(pm, url);\r",
                   "//Set the next request\r",
-                  "pm.execution.setNextRequest(\"\");\r",
+                  "pm.execution.setNextRequest(\"Create a Credit Memo\");\r",
                   ""
                 ]
               }
