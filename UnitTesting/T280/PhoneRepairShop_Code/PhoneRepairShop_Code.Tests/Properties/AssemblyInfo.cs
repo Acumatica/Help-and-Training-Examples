@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Acumatica")]
 [assembly: AssemblyProduct("PhoneRepairShop_Code.Tests")]
-[assembly: AssemblyCopyright("Copyright © Acumatica 2024")]
+[assembly: AssemblyCopyright("Copyright © Acumatica 2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
