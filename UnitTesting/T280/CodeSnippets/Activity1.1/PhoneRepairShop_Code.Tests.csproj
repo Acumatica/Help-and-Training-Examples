@@ -8,11 +8,11 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>bin\$(Configuration)</OutputPath>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <FileVersion>25.201.0166</FileVersion>
-    <InformationalVersion>25.201.0166</InformationalVersion>
+    <FileVersion>26.100.0217</FileVersion>
+    <InformationalVersion>26.100.0217</InformationalVersion>
     <LangVersion>9.0</LangVersion>
     <Nullable>enable</Nullable>
-    <Copyright>Copyright © 2005-2025 Acumatica, Inc. All rights reserved.</Copyright>
+    <Copyright>Copyright © 2005-2026 Acumatica, Inc. All rights reserved.</Copyright>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.5" />
