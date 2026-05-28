@@ -10309,10 +10309,10 @@
                   "    const jsonResponse = pm.response.json();\r",
                   "    pm.expect(jsonResponse.Details[0].Allocations).to.has.lengthOf(2);\r",
                   "});\r",
-                  "pm.test(\"Expiration date is 2024-04-25\", function (){\r",
+                  "pm.test(\"Expiration date is 2026-12-25\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
                   "    pm.expect(jsonResponse.Details[0].Allocations[0].LotSerialNbr.value).to.eql('a');\r",
-                  "    pm.expect(jsonResponse.Details[0].Allocations[0].ExpirationDate.value).to.eql('2024-04-25T00:00:00+00:00');\r",
+                  "    pm.expect(jsonResponse.Details[0].Allocations[0].ExpirationDate.value).to.eql('2026-12-25T00:00:00+00:00');\r",
                   "});\r",
                   "//Sign out\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -10359,7 +10359,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Type\": {\"value\": \"Receipt\"},\r\n    \"VendorID\": {\"value\": \"GOODFRUITS\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"Description\": {\"value\": \"Test receipt with Expiration Date in Allocations\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"ORANGES\"},\r\n            \"ReceiptQty\": {\"value\": 2},\r\n            \"Warehouse\": {\"value\": \"WHOLESALE\"},\r\n            \"LotSerialNbr\": {\"value\": \"\"},\r\n            \"ExpirationDate\": {\"value\": \"\"},\r\n            \"Allocations\": [\r\n                {\r\n                    \"Location\": {\"value\": \"MAIN\"},\r\n                    \"Qty\": {\"value\": 1},\r\n                    \"LotSerialNbr\": {\"value\": \"a\"},\r\n                    \"ExpirationDate\": {\"value\": \"2025-04-25\"}\r\n                },\r\n                {\r\n                    \"Location\": {\"value\": \"MAIN\"},\r\n                    \"Qty\": {\"value\": 1},\r\n                    \"LotSerialNbr\": {\"value\": \"b\"},\r\n                    \"ExpirationDate\": {\"value\": \"2025-04-27\"}\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"Type\": {\"value\": \"Receipt\"},\r\n    \"VendorID\": {\"value\": \"GOODFRUITS\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"Description\": {\"value\": \"Test receipt with Expiration Date in Allocations\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"ORANGES\"},\r\n            \"ReceiptQty\": {\"value\": 2},\r\n            \"Warehouse\": {\"value\": \"WHOLESALE\"},\r\n            \"LotSerialNbr\": {\"value\": \"\"},\r\n            \"ExpirationDate\": {\"value\": \"\"},\r\n            \"Allocations\": [\r\n                {\r\n                    \"Location\": {\"value\": \"MAIN\"},\r\n                    \"Qty\": {\"value\": 1},\r\n                    \"LotSerialNbr\": {\"value\": \"a\"},\r\n                    \"ExpirationDate\": {\"value\": \"2026-12-25\"}\r\n                },\r\n                {\r\n                    \"Location\": {\"value\": \"MAIN\"},\r\n                    \"Qty\": {\"value\": 1},\r\n                    \"LotSerialNbr\": {\"value\": \"b\"},\r\n                    \"ExpirationDate\": {\"value\": \"2026-12-27\"}\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}PurchaseReceipt?$expand=Details,Details/Allocations",
@@ -16448,7 +16448,7 @@
     {
       "id": "a36b8ebc-f8f4-4240-b0bb-ad397c164784",
       "key": "ManufacturingEndpointURL",
-      "value": "{{ManufacturingInstanceURL}}entity/MANUFACTURING/25.100.001/"
+      "value": "{{InstanceURL}}entity/MANUFACTURING/25.100.001/"
     },
     {
       "id": "3323bf73-3783-4062-ae81-f19c55eb386c",
