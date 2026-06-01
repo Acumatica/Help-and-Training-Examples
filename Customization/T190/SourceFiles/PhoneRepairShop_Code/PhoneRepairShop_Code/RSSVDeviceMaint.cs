@@ -11,5 +11,20 @@ namespace PhoneRepairShop
     public class RSSVDeviceMaint : PXGraph<RSSVDeviceMaint, RSSVDevice>
     {
         public SelectFrom<RSSVDevice>.View ServDevices = null!;
+
+        public PXFilter<MasterTable> MasterView;
+        public PXFilter<DetailsTable> DetailsView;
+
+        [Serializable]
+        public class MasterTable : PXBqlTable, IBqlTable
+        {
+
+        }
+
+        [Serializable]
+        public class DetailsTable : PXBqlTable, IBqlTable
+        {
+
+        }
     }
 }

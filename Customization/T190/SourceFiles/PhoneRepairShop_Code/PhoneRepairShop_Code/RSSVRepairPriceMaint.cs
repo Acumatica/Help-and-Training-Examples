@@ -36,6 +36,21 @@ namespace PhoneRepairShop
             SelectFrom<ContractTemplate>.
             Where<ContractTemplate.contractCD.IsEqual<defaultWarranty>>
             .View DefaultWarranty = null!;
+
+        public PXFilter<MasterTable> MasterView;
+        public PXFilter<DetailsTable> DetailsView;
+
+        [Serializable]
+        public class MasterTable : PXBqlTable, IBqlTable
+        {
+
+        }
+
+        [Serializable]
+        public class DetailsTable : PXBqlTable, IBqlTable
+        {
+
+        }
         #endregion
 
 

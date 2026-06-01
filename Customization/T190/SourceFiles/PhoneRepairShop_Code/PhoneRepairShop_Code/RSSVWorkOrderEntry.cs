@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using PX.Data;
 using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
@@ -31,6 +32,21 @@ namespace PhoneRepairShop
 
         //The view for the auto-numbering of records
         public PXSetup<RSSVSetup> AutoNumSetup = null!;
+
+        public PXFilter<MasterTable> MasterView;
+        public PXFilter<DetailsTable> DetailsView;
+
+        [Serializable]
+        public class MasterTable : PXBqlTable, IBqlTable
+        {
+
+        }
+
+        [Serializable]
+        public class DetailsTable : PXBqlTable, IBqlTable
+        {
+
+        }
 
         #endregion
 
