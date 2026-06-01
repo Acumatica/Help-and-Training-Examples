@@ -8926,13 +8926,13 @@
                   "    const jsonResponse = pm.response.json();\r",
                   "    pm.expect(jsonResponse.SchedulingMethod.value).to.eql('User Dates');\r",
                   "});\r",
-                  "pm.test(\"Start date is 2025-01-08\", function (){\r",
+                  "pm.test(\"Start date is 2026-12-08\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.StartDate.value).to.eql('2025-01-08T00:00:00+00:00');\r",
+                  "    pm.expect(jsonResponse.StartDate.value).to.eql('2026-12-08T00:00:00+00:00');\r",
                   "});\r",
-                  "pm.test(\"End date is 2025-01-30\", function (){\r",
+                  "pm.test(\"End date is 2026-12-30\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.EndDate.value).to.eql('2025-01-30T00:00:00+00:00');\r",
+                  "    pm.expect(jsonResponse.EndDate.value).to.eql('2026-12-30T00:00:00+00:00');\r",
                   "});\r",
                   "//Sign out and set the next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -8977,7 +8977,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"EndDate\": {\r\n        \"value\": \"2025-01-30T00:00:00+00:00\"\r\n    },\r\n    \"OrderType\": {\r\n        \"value\": \"RO\"\r\n    },\r\n    \"ProductionNbr\": {\r\n        \"value\": \"AM000037\"\r\n    },\r\n    \"SchedulingMethod\": {\r\n        \"value\": \"User Dates\"\r\n    },\r\n    \"StartDate\": {\r\n        \"value\": \"2025-01-08T00:00:00+00:00\"\r\n    },\r\n    \"Operations\": [\r\n        {\r\n            \"id\": \"798e7128-ac8a-ec11-817b-9b18f6aae9b8\",\r\n            \"OperationNbr\": {\r\n                \"value\": \"0010\"\r\n            },\r\n            \"WorkCenter\": {\r\n                \"value\": \"WC70\"\r\n            },\r\n            \"EndDate\": {\r\n                \"value\": \"2025-01-30T00:00:00+00:00\"\r\n            },\r\n            \"StartDate\": {\r\n                \"value\": \"2025-01-08T00:00:00+00:00\"\r\n            }\r\n        },\r\n        {\r\n            \"id\": \"838e7128-ac8a-ec11-817b-9b18f6aae9b8\",\r\n            \"OperationNbr\": {\r\n                \"value\": \"0030\"\r\n            },\r\n            \"WorkCenter\": {\r\n                \"value\": \"WC10\"\r\n            },\r\n            \"EndDate\": {\r\n                \"value\": \"2025-01-30T00:00:00+00:00\"\r\n            },\r\n            \"StartDate\": {\r\n                \"value\": \"2025-01-08T00:00:00+00:00\"\r\n            }\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"EndDate\": {\r\n        \"value\": \"2026-12-30T00:00:00+00:00\"\r\n    },\r\n    \"OrderType\": {\r\n        \"value\": \"RO\"\r\n    },\r\n    \"ProductionNbr\": {\r\n        \"value\": \"AM000037\"\r\n    },\r\n    \"SchedulingMethod\": {\r\n        \"value\": \"User Dates\"\r\n    },\r\n    \"StartDate\": {\r\n        \"value\": \"2026-12-08T00:00:00+00:00\"\r\n    },\r\n    \"Operations\": [\r\n        {\r\n            \"id\": \"798e7128-ac8a-ec11-817b-9b18f6aae9b8\",\r\n            \"OperationNbr\": {\r\n                \"value\": \"0010\"\r\n            },\r\n            \"WorkCenter\": {\r\n                \"value\": \"WC70\"\r\n            },\r\n            \"EndDate\": {\r\n                \"value\": \"2026-12-30T00:00:00+00:00\"\r\n            },\r\n            \"StartDate\": {\r\n                \"value\": \"2026-12-08T00:00:00+00:00\"\r\n            }\r\n        },\r\n        {\r\n            \"id\": \"838e7128-ac8a-ec11-817b-9b18f6aae9b8\",\r\n            \"OperationNbr\": {\r\n                \"value\": \"0030\"\r\n            },\r\n            \"WorkCenter\": {\r\n                \"value\": \"WC10\"\r\n            },\r\n            \"EndDate\": {\r\n                \"value\": \"2026-12-30T00:00:00+00:00\"\r\n            },\r\n            \"StartDate\": {\r\n                \"value\": \"2026-12-08T00:00:00+00:00\"\r\n            }\r\n        }\r\n    ]\r\n}"
             },
             "url": {
               "raw": "{{ManufacturingEndpointURL}}ProductionOrderDetail?$expand=Operations",
