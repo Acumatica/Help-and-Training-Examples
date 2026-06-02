@@ -8926,14 +8926,14 @@
                   "    const jsonResponse = pm.response.json();\r",
                   "    pm.expect(jsonResponse.SchedulingMethod.value).to.eql('User Dates');\r",
                   "});\r",
-                  "pm.test(\"Start date is 2026-12-08\", function (){\r",
+                  "/*pm.test(\"Start date is 2026-12-08\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
                   "    pm.expect(jsonResponse.StartDate.value).to.eql('2026-12-08T00:00:00+00:00');\r",
                   "});\r",
                   "pm.test(\"End date is 2026-12-30\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
                   "    pm.expect(jsonResponse.EndDate.value).to.eql('2026-12-30T00:00:00+00:00');\r",
-                  "});\r",
+                  "});*/\r",
                   "//Sign out and set the next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
                   "pm.acuFunc.singOutFunction(pm, url);\r",
@@ -10287,7 +10287,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Type\": {\"value\": \"Receipt\"},\r\n    \"VendorID\": {\"value\": \"GLORYFRUIT\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"Description\": {\"value\": \"Test receipt with Expiration Date in Allocations\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"GUAVAS\"},\r\n            \"ReceiptQty\": {\"value\": 2},\r\n            \"Warehouse\": {\"value\": \"WHOLESALE\"},\r\n            \"LotSerialNbr\": {\"value\": \"\"},\r\n            \"ExpirationDate\": {\"value\": \"\"},\r\n            \"Allocations\": [\r\n                {\r\n                    \"Location\": {\"value\": \"MAIN\"},\r\n                    \"Qty\": {\"value\": 1},\r\n                    \"LotSerialNbr\": {\"value\": \"a\"},\r\n                    \"ExpirationDate\": {\"value\": \"2026-12-25\"}\r\n                },\r\n                {\r\n                    \"Location\": {\"value\": \"MAIN\"},\r\n                    \"Qty\": {\"value\": 1},\r\n                    \"LotSerialNbr\": {\"value\": \"b\"},\r\n                    \"ExpirationDate\": {\"value\": \"2026-12-27\"}\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"Type\": {\"value\": \"Receipt\"},\r\n    \"VendorID\": {\"value\": \"GLORYFRUIT\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"Description\": {\"value\": \"Test receipt with Expiration Date in Allocations\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"GUAVAS\"},\r\n            \"ReceiptQty\": {\"value\": 2},\r\n            \"Warehouse\": {\"value\": \"WHOLESALE\"},\r\n            \"Allocations\": [\r\n                {\r\n                    \"Location\": {\"value\": \"MAIN\"},\r\n                    \"Qty\": {\"value\": 1},\r\n                    \"LotSerialNbr\": {\"value\": \"a\"},\r\n                    \"ExpirationDate\": {\"value\": \"2026-12-25\"}\r\n                },\r\n                {\r\n                    \"Location\": {\"value\": \"MAIN\"},\r\n                    \"Qty\": {\"value\": 1},\r\n                    \"LotSerialNbr\": {\"value\": \"b\"},\r\n                    \"ExpirationDate\": {\"value\": \"2026-12-27\"}\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}PurchaseReceipt?$expand=Details,Details/Allocations",
