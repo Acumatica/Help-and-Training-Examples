@@ -1,0 +1,3 @@
+I need to update this solution to the latest version of Acumatica and the latest endpoint version.
+Prepare a plan of the needed changes to the solution.
+Use the attached Acumatica 2026 R1 release notes and the list of endpoint changes for reference.

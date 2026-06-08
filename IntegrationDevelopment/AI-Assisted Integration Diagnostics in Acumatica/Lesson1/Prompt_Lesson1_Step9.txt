@@ -1,0 +1,3 @@
+Invoke RemoveProFormaInvoiceFromHold with a minimal ProFormaInvoice 
+containing only the key or ID instead of the expanded object 
+with TimeAndMaterial lines.
