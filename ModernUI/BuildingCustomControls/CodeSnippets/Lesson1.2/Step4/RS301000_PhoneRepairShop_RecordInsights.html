@@ -1,0 +1,11 @@
+<template>
+  <require from="controls/record-insights-panel/record-insights-panel"></require>
+  <record-insights-panel
+    before="#form-Order"
+    title="Repair Work Order Insights"
+    status.bind="WorkOrders.PanelStatus.value"
+    warning-message.bind="WorkOrders.PanelWarningMessage.value"
+    details.bind="WorkOrders.PanelDetails.value"
+    accent.bind="WorkOrders.PanelAccent.value">
+  </record-insights-panel>
+</template>

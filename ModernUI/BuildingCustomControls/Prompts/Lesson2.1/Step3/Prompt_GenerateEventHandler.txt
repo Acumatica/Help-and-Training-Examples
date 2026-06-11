@@ -1,0 +1,45 @@
+We are working on an Acumatica Modern UI customization for the Repair Work Orders
+form (RS301000).
+
+The form has a RepairItems table (grid) that displays repair items for the current repair
+work order.
+
+Create an event handler that highlights repair item rows that require attention.
+
+For this activity, a row should be highlighted when the repair item price is
+greater than 15.
+
+Use the Modern UI event-handler pattern with the handleEvent decorator.
+
+The event handler should use:
+@handleEvent(CustomEventType.GetRowCss, { view: "RepairItems" })
+
+The handler should return the name of a predefined CSS class when a row should be
+highlighted and return undefined when no custom CSS class should be applied.
+
+The event handler should target the RepairItems view.
+
+The row type is RSSVWorkOrderItem.
+
+Use the BasePrice field of the row to determine whether the row should be
+highlighted.
+
+Follow these constraints:
+- Use @handleEvent and CustomEventType.GetRowCss.
+- Use RowCssHandlerArgs for the handler argument.
+- Do not add backend code.
+- Return a CSS class named bold-row when the row should be highlighted.
+- Return undefined when the row should not be highlighted.
+- Include any import statements that may be required.
+- The proposed code must be added in a TS extension file of the RS301000 form. 
+  This requires adding the RS301000 and RSSVWorkOrderItem imports.
+- The handler code should be added in the RS301000_PhoneRepairShop_RepairItemsEvents
+  screen extension class.
+
+Please propose the TypeScript changes needed.
+
+In your response, include:
+1. The required imports
+2. The event handler method
+3. A short explanation of how the handler works
+4. Any assumptions or risks that should be reviewed by a developer
