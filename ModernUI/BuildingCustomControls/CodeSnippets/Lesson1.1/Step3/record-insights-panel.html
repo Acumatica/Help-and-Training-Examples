@@ -1,0 +1,42 @@
+<template>
+    <require from="./record-insights-panel.scss"></require>
+
+    <section class="record-insights-panel ${statusClass}">
+        <header class="panel-header">
+            <div class="panel-header-main">
+                <div class="panel-title-row">
+                    <h3 class="panel-title">${title}</h3>
+                    <span if.bind="status" class="status-badge ${badgeClass}">
+                       ${status}
+                    </span>
+                </div>
+
+                <div class="panel-subtitle">
+                    <span if.bind="screenCaption">${screenCaption}</span>
+                    <span if.bind="lastScreenUpdate">
+                        • Updated ${lastScreenUpdate}
+                    </span>
+                </div>
+            </div>
+
+            <qp-button
+                class="toggle-button"
+                caption.bind="collapsed ? 'Show Details' : 'Hide Details'"
+                click.capture="toggleDetails()">
+            </qp-button>
+        </header>
+
+        <div if.bind="hasWarning" class="warning-box">
+            <span>${warningMessage}</span>
+            <qp-button
+                class="dismiss-button"
+                caption="Dismiss"
+                click.capture="dismissWarning()">
+            </qp-button>
+        </div>
+
+        <div if.bind="!collapsed" class="panel-body">
+            <div if.bind="details" class="details-block">${details}</div>
+        </div>
+    </section>
+</template>
