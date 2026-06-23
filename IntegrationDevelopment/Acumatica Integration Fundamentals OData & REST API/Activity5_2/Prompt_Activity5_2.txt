@@ -1,0 +1,2 @@
+Add a DAC-based OData request for this task in this Postman collection: "C:\Work\Help-and-Training-Examples\IntegrationDevelopment\Acumatica Integration Fundamentals OData & REST API\ODataRESTAPI.postman_collection - Copy.json". 
+Specify in the chat any value I must confirm in my Acumatica ERP instance.

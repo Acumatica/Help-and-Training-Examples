@@ -1,0 +1,1 @@
+GET https://localhost/AcumaticaDB/identity/connect/authorize?response_type=code&client_id=58FCCFBD-0CF3-C047-B720-A631C976A8DD@U100&redirect_uri=http%3A%2F%2Flocalhost:8080%2F&scope=api%20offline_access

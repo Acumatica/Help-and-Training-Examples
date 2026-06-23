@@ -1,0 +1,2 @@
+I need to modernize authentication to use OAuth 2.0. Prepare a plan how to do it.
+Use the attached document with the description of the available OAuth 2.0 flows.

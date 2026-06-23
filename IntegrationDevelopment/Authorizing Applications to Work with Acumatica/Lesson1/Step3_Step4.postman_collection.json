@@ -1,0 +1,77 @@
+{
+  "info": {
+    "_postman_id": "73fc9a19-019f-4a32-b573-da7343b38840",
+    "name": "Authorizing Client Applications to Work with Acumatica ERP",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Step 3: Obtain an Access Token",
+      "id": "c491f95b-132b-4371-84fb-82ec02831b49",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "grant_type=authorization_code&code=6ztDjwNZBwB8zLry3iF91dAYdJehLSuCnjDLRNA5w-I&client_id=AE6837A2-D002-CE91-7538-42FAD4CE84F1@Company&client_secret=7zndQ9WHpSYKnghnmVXo8Q&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F"
+        },
+        "url": {
+          "raw": "{{TokenURL}}",
+          "host": [
+            "{{TokenURL}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Step 4: Retrieve Sales Orders",
+      "id": "a009a3d6-3ebb-4c71-853d-b5d47e043b24",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer cde78a99a2dc6388eb8c7242a90cf9bc",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{EndpointURL}}/SalesOrder/SO/000001",
+          "host": [
+            "{{EndpointURL}}"
+          ],
+          "path": [
+            "SalesOrder",
+            "SO",
+            "000001"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "id": "e349b683-5034-4896-9440-2fbeb589b06d",
+      "key": "BaseURL",
+      "value": "https://localhost/AcumaticaDB"
+    },
+    {
+      "id": "02b841bd-ae25-429e-99f3-8b35c7ce51c2",
+      "key": "TokenURL",
+      "value": "https://localhost/AcumaticaDB/identity/connect/token"
+    },
+    {
+      "id": "4ee6e319-bd2e-4a19-a18a-c70a14a43776",
+      "key": "EndpointURL",
+      "value": "https://localhost/AcumaticaDB/entity/Default/25.200.001"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+The information about Acumatica DAC-based OData and the metadata are in the attachment. 
+Identify the DACs, navigation properties, and fields I need for this task: 
+Export the list of stock items that have the Active status and that were modified within the past day. For each stock item, I need to export the following values:
+ - The inventory ID
+ - The description of the item
+ - The item class assigned to the item in Acumatica ERP
+ - The base unit of measure
+ - The date and time the record was last modified 
+ - The warehouse ID
+ - The quantity of the item available in the warehouse
