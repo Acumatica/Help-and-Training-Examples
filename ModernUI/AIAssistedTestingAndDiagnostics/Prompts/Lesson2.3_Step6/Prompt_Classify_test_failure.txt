@@ -1,0 +1,39 @@
+Review this Test SDK test failure.
+
+Context:
+- The test uses generated Modern UI Test SDK wrappers.
+- The target screen is Repair Work Orders (RS301000).
+- The test is intended to validate the UI behavior for RSSVWorkOrderLabor.Quantity.
+- The related Unit Test Framework test now passes.
+- Expected UI behavior: after entering quantity 0 for a labor line whose 
+  configured/default quantity is 1, validation restores the quantity to 1.
+  If supported by wrappers, the QuantityTooSmall warning should also be visible.
+
+Test goal:
+Verify that the UI workflow reflects the repaired labor quantity validation behavior.
+
+Relevant test code:
+[Reference the test method or paste the method if needed.]
+
+Relevant wrapper members:
+- WorkOrders_fsColumnAOrder.OrderNbr
+- Labor_gridLabor.Row.Quantity
+- Save()
+- Labor_gridLabor.Refresh()
+
+Failure output:
+[Paste the cleaned failure message, log excerpt, or screenshot description.]
+
+Please classify the likely cause:
+1. Wrapper/member mismatch
+2. Test data issue
+3. Timing/wait issue
+4. Validation not triggered by the test
+5. Application behavior issue
+6. Environment/configuration issue
+
+For each likely cause, suggest the next diagnostic step.
+
+Do not modify files.
+Do not assume the application is defective unless the evidence supports it.
+Do not invent wrapper members or unsupported APIs.
