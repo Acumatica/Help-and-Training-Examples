@@ -1,0 +1,31 @@
+Add one focused xUnit regression test to 
+ PhoneRepairShop_Code.Tests/RSSVWorkOrderEntryTests.cs.
+
+Test name:
+LaborQuantity_WhenBelowDefault_AttachesQuantityTooSmallWarningAndRestoresDefaultQuantity
+
+Business rule:
+When RSSVWorkOrderLabor.Quantity is lower than the configured/default labor quantity,
+the system should attach the QuantityTooSmall warning and restore the quantity to 
+the configured/default value.
+
+The test should specifically verify:
+1. Setting the work order labor quantity to 1 triggers Messages.QuantityTooSmall.
+2. The field state has PXErrorLevel.Warning.
+3. The work order labor quantity is restored to the configured/default value of 3.
+
+Use the existing setup pattern already present in RSSVWorkOrderEntryTests.cs:
+- Setup<RSSVWorkOrderEntry>(new RSSVSetup())
+- PXGraph.CreateInstance<RSSVWorkOrderEntry>()
+- PXCache.GetStateExt to inspect PXFieldState
+- PXCache.Locate to retrieve the proper RSSVWorkOrderLabor object after validation
+- Existing message constants from PhoneRepairShop.Messages
+
+Constraints:
+- Do not change production code.
+- Do not require a live database or browser session.
+- Reuse existing setup patterns from the file.
+- Use Arrange, Act, Assert comments.
+- Keep the test readable.
+- Do not hide the tested business rule behind too many helper methods.
+- Show me the diff before running the test.

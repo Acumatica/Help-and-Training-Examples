@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+	<LangVersion>9.0</LangVersion>
+	<Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="CustomizationPackages\**" />
+    <Compile Remove="DataFiles\**" />
+    <Compile Remove="Documentation\**" />
+    <Compile Remove="Extensions\**" />
+    <Compile Remove="Wrappers\CA\**" />
+    <Compile Remove="Wrappers\CS\**" />
+    <Compile Remove="Wrappers\GI\**" />
+    <Compile Remove="Wrappers\SM\**" />
+    <Compile Remove="Wrappers\SO\**" />
+    <EmbeddedResource Remove="CustomizationPackages\**" />
+    <EmbeddedResource Remove="DataFiles\**" />
+    <EmbeddedResource Remove="Documentation\**" />
+    <EmbeddedResource Remove="Extensions\**" />
+    <EmbeddedResource Remove="Wrappers\CA\**" />
+    <EmbeddedResource Remove="Wrappers\CS\**" />
+    <EmbeddedResource Remove="Wrappers\GI\**" />
+    <EmbeddedResource Remove="Wrappers\SM\**" />
+    <EmbeddedResource Remove="Wrappers\SO\**" />
+    <None Remove="CustomizationPackages\**" />
+    <None Remove="DataFiles\**" />
+    <None Remove="Documentation\**" />
+    <None Remove="Extensions\**" />
+    <None Remove="Wrappers\CA\**" />
+    <None Remove="Wrappers\CS\**" />
+    <None Remove="Wrappers\GI\**" />
+    <None Remove="Wrappers\SM\**" />
+    <None Remove="Wrappers\SO\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Helpers\Constants.cs" />
+    <Compile Remove="Tests\BasicExampleTests.cs" />
+    <Compile Remove="Tests\ConfigWebsite.cs" />
+    <Compile Remove="Tests\ExcelExample.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClassGenerator" Version="26.100.175.183" />
+    <PackageReference Include="Core" Version="26.100.175.183" />
+    <PackageReference Include="Execution" Version="26.100.175.183" />
+    <PackageReference Include="Host" Version="26.100.175.183" />
+    <PackageReference Include="PX.QA.Tools" Version="26.100.175.183" />
+    <PackageReference Include="PX.QA.WrappersGenerator" Version="26.100.175.183" />
+  </ItemGroup>
+
+</Project>

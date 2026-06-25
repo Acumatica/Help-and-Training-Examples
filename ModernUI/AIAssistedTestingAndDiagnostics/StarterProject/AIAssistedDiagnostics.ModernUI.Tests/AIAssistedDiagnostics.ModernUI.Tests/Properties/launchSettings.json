@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "AIAssistedDiagnostics.ModernUI.Tests": {
+      "commandName": "Project",
+      "commandLineArgs": ".\\Test.exe /config \"C:\\AcumaticaTestSDK\\TestSDK_2026R1_26_100_0175\\config.xml\"",
+      "nativeDebugging": true
+    }
+  }
+}

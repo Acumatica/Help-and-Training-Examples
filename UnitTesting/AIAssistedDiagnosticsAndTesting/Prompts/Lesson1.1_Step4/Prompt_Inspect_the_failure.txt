@@ -1,0 +1,32 @@
+Inspect the failing TestRepairWorkOrdersForm unit test.
+
+Files to review:
+- PhoneRepairShop_Code.Tests/RSSVWorkOrderEntryTests.cs
+- PhoneRepairShop_Code/RSSVWorkOrderEntry.cs
+- PhoneRepairShop_Code/Helper/Messages.cs
+
+The expected rule is:
+When RSSVWorkOrderLabor.Quantity is lower than the configured labor quantity,
+the system should attach the QuantityTooSmall warning and restore the quantity to the 
+configured value.
+
+Observed failure:
+The test sets woLabor.Quantity to 1. The QuantityTooSmall warning is expected, and woLabor.
+Quantity should be restored to 3.
+The test fails at the quantity assertion.
+
+Failing assertion:
+Assert.Equal(3, woLabor.Quantity)
+
+Actual value:
+1
+
+Do not edit files yet.
+
+Please:
+1. Explain what the failing assertion means.
+2. Identify the most likely root cause.
+3. Point to the method or event handler to inspect first.
+4. Explain why the warning can still appear while the quantity is not restored.
+5. Propose the smallest safe fix.
+6. List assumptions I should verify before editing code.

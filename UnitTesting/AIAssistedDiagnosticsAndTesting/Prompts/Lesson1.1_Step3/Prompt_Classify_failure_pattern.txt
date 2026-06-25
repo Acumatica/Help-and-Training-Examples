@@ -1,0 +1,21 @@
+Classify this Acumatica unit test failure.
+
+Failure output:
+ - Failed assertion: Assert.Equal() 
+ - Expected value: 3
+ - Actual value: 1
+ - Stack Trace: RSSVWorkOrderEntryTests.TestRepairWorkOrdersForm() line 152
+
+Use the open test and implementation files as context.
+
+Please classify the failure as one of the following:
+1. Failed assertion
+2. Runtime exception
+3. Missing dependency/service registration
+4. Setup DAC or test data issue
+5. Implementation defect
+
+Then explain:
+- What evidence supports the classification
+- Which file or method to inspect first
+- What not to change yet
