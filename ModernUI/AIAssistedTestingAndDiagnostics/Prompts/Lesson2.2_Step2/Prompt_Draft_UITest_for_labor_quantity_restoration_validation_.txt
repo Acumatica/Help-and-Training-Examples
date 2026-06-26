@@ -16,7 +16,6 @@ Use the open files as context:
 - The generated RS301000 wrapper class.
 - The RepairWorkOrdersScreen helper class.
 - The TestData helper class.
-- The existing Test SDK test base class or sample test, if available.
 
 Requirements:
 1. Use generated wrapper members where available.
