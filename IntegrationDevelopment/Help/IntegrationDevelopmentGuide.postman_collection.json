@@ -2818,7 +2818,7 @@
                   "//Sign out and set next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
                   "pm.acuFunc.singOutFunction(pm, url);\r",
-                  "pm.execution.setNextRequest(\"Retrieve the Acumatica ERP Version and the List of Endpoints\");"
+                  "pm.execution.setNextRequest(\"Retrieve the Acumatica ERP Version, the List of Enabled Features, and the List of Endpoints\");"
                 ]
               }
             },
@@ -2881,7 +2881,7 @@
           "response": []
         },
         {
-          "name": "Retrieve the Acumatica ERP Version and the List of Endpoints",
+          "name": "Retrieve the Acumatica ERP Version, the List of Enabled Features, and the List of Endpoints",
           "event": [
             {
               "listen": "test",
