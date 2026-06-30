@@ -1084,7 +1084,7 @@
               }
             ],
             "url": {
-              "raw": "{{EndpointURL}}Shipment?$select=ShipmentNbr,ShipmentDate&$filter=ShipmentDate lt datetimeoffset'2025-12-31'",
+              "raw": "{{EndpointURL}}Shipment?$select=ShipmentNbr,ShipmentDate&$filter=ShipmentDate lt datetimeoffset'2026-12-31'",
               "host": [
                 "{{EndpointURL}}Shipment"
               ],
@@ -1095,7 +1095,7 @@
                 },
                 {
                   "key": "$filter",
-                  "value": "ShipmentDate lt datetimeoffset'2025-12-31'"
+                  "value": "ShipmentDate lt datetimeoffset'2026-12-31'"
                 }
               ]
             },
@@ -2857,7 +2857,7 @@
               },
               {
                 "key": "PX-CbApiBusinessDate",
-                "value": "2025/01/01",
+                "value": "2026/01/01",
                 "type": "text"
               },
               {
@@ -2868,7 +2868,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Description\": {\"value\": \"Test transaction description\"},\r\n    \"PostPeriod\": {\"value\": \"01-2025\"}\r\n}"
+              "raw": "{\r\n    \"Description\": {\"value\": \"Test transaction description\"},\r\n    \"PostPeriod\": {\"value\": \"01-2026\"}\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}JournalTransaction",
@@ -2951,7 +2951,7 @@
                 "entity"
               ]
             },
-            "description": "This example obtains the Acumatica ERP version and the list of contract-based endpoints available in this version by using the REST API. This example is described in [Retrieve the Acumatica ERP Version and the List of Endpoints](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=da0fe495-b2e5-4d34-ab5a-5829e408f684)."
+            "description": "This example obtains the Acumatica ERP version and the list of contract-based endpoints available in this version by using the REST API. This example is described in [Retrieve the Acumatica ERP Version, the List of Enabled Features, and the List of Endpoints](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=da0fe495-b2e5-4d34-ab5a-5829e408f684)."
           },
           "response": []
         }
@@ -3282,7 +3282,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"FromPeriod\": { \"value\": \"032023\" },\r\n    \"ToPeriod\": { \"value\": \"042023\" }\r\n}"
+              "raw": "{\r\n    \"FromPeriod\": { \"value\": \"032024\" },\r\n    \"ToPeriod\": { \"value\": \"042024\" }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}AccountDetailsForPeriodInquiry?$expand=Results",
@@ -4236,13 +4236,13 @@
               },
               {
                 "key": "PX-CbApiBusinessDate",
-                "value": "2026/04/01",
+                "value": "2027/04/01",
                 "type": "text"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"entity\": {\r\n        \"Type\": {\r\n            \"value\": \"Bill\"\r\n        },\r\n        \"ReferenceNbr\": {\r\n            \"value\": \"000072\"\r\n        }\r\n    },\r\n    \"parameters\": {\r\n        \"Date\": {\r\n            \"value\": \"2026-03-01T11:00:00.000Z\"\r\n        },\r\n        \"PostPeriod\": {\r\n            \"value\": \"032026\"\r\n        },\r\n        \"AmtToRelease\": {\r\n            \"value\": 500\r\n        }\r\n    }\r\n}"
+              "raw": "{\r\n    \"entity\": {\r\n        \"Type\": {\r\n            \"value\": \"Bill\"\r\n        },\r\n        \"ReferenceNbr\": {\r\n            \"value\": \"000072\"\r\n        }\r\n    },\r\n    \"parameters\": {\r\n        \"Date\": {\r\n            \"value\": \"2027-03-01T11:00:00.000Z\"\r\n        },\r\n        \"PostPeriod\": {\r\n            \"value\": \"032027\"\r\n        },\r\n        \"AmtToRelease\": {\r\n            \"value\": 500\r\n        }\r\n    }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}Bill/ReleaseRetainage",
@@ -6500,7 +6500,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Date\": {\r\n        \"value\": \"2025-12-02T00:00:00+03:00\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Descr\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"HEADOFFICE\"\r\n            },\r\n            \"ExtCost\": {\r\n                \"value\": 0\r\n            },\r\n            \"ExtPrice\": {\r\n                \"value\": 4.15\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"APJAM08\"\r\n            },\r\n            \"LineNumber\": {\r\n                \"value\": 1\r\n            },\r\n            \"Location\": {\r\n                \"value\": \"MAIN\"\r\n            },\r\n            \"Project\": {\r\n                \"value\": \"X\"\r\n            },\r\n            \"Qty\": {\r\n                \"value\": 1\r\n            },\r\n            \"TranType\": {\r\n                \"value\": \"Issue\"\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 0\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"PIECE\"\r\n            },\r\n            \"Warehouse\": {\r\n                \"value\": \"RETAIL\"\r\n            }\r\n        }\r\n    ],\r\n    \"PostPeriod\": {\r\n        \"value\": \"122025\"\r\n    }\r\n}"
+              "raw": "{\r\n    \"Date\": {\r\n        \"value\": \"2026-12-02T00:00:00+03:00\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Descr\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"HEADOFFICE\"\r\n            },\r\n            \"ExtCost\": {\r\n                \"value\": 0\r\n            },\r\n            \"ExtPrice\": {\r\n                \"value\": 4.15\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"APJAM08\"\r\n            },\r\n            \"LineNumber\": {\r\n                \"value\": 1\r\n            },\r\n            \"Location\": {\r\n                \"value\": \"MAIN\"\r\n            },\r\n            \"Project\": {\r\n                \"value\": \"X\"\r\n            },\r\n            \"Qty\": {\r\n                \"value\": 1\r\n            },\r\n            \"TranType\": {\r\n                \"value\": \"Issue\"\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 0\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"PIECE\"\r\n            },\r\n            \"Warehouse\": {\r\n                \"value\": \"RETAIL\"\r\n            }\r\n        }\r\n    ],\r\n    \"PostPeriod\": {\r\n        \"value\": \"122026\"\r\n    }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}InventoryIssue?$expand=Details",
@@ -7437,7 +7437,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"Module\" : {\"value\" : \"GL\"},\r\n  \"TransactionDate\" : {\"value\" : \"2025-02-15T00:00:00\"},\r\n  \"Description\" : {\"value\" : \"Transaction description\"},\r\n  \"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \"Details\" : [\r\n  \t{\r\n  \t\t\"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \t\t\"Account\" : {\"value\" : \"10200\"},\r\n  \t\t\"CostCode\" : {\"value\" : \"00000\"},\r\n  \t\t\"IsNonPM\" : {\"value\" : true}\r\n  \t}\r\n  ]\r\n}"
+              "raw": "{\r\n  \"Module\" : {\"value\" : \"GL\"},\r\n  \"TransactionDate\" : {\"value\" : \"2026-02-15T00:00:00\"},\r\n  \"Description\" : {\"value\" : \"Transaction description\"},\r\n  \"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \"Details\" : [\r\n  \t{\r\n  \t\t\"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \t\t\"Account\" : {\"value\" : \"10200\"},\r\n  \t\t\"CostCode\" : {\"value\" : \"00000\"},\r\n  \t\t\"IsNonPM\" : {\"value\" : true}\r\n  \t}\r\n  ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}JournalTransaction?$expand=Details",
@@ -9311,7 +9311,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"BillingAndAllocationSettings\" : \r\n    {\r\n        \"NextBillingDate\" : {\"value\" : \"2025-06-15\"}\r\n    }\r\n}"
+              "raw": "{\r\n    \"ProjectID\" : {\"value\" : \"TESTPR3\"},\r\n    \"BillingAndAllocationSettings\" : \r\n    {\r\n        \"NextBillingDate\" : {\"value\" : \"2026-06-15\"}\r\n    }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}Project?$expand=BillingAndAllocationSettings",
@@ -12815,7 +12815,7 @@
                   "            method: 'POST',\r",
                   "            body: {\r",
                   "                mode: 'raw',\r",
-                  "                raw: '{\"entity\" : {\"id\": \"' + orderID + '\"}, \"parameters\" : { \"ShipmentDate\": { \"value\": \"2026-08-20T00:00:00+03:00\" },\"WarehouseID\": { \"value\": \"RETAIL\" }}}'},\r",
+                  "                raw: '{\"entity\" : {\"id\": \"' + orderID + '\"}, \"parameters\" : { \"ShipmentDate\": { \"value\": \"2027-08-20T00:00:00+03:00\" },\"WarehouseID\": { \"value\": \"RETAIL\" }}}'},\r",
                   "            header: {\r",
                   "                'Content-Type': 'application/json'\r",
                   "            }\r",
@@ -13410,7 +13410,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"entity\":{\r\n      \"id\":\"42bb9a17-a402-e911-b818-00155d408001\"\r\n  },\r\n  \"parameters\": {\r\n        \"ShipmentDate\": { \"value\": \"2026-08-20T00:00:00+03:00\" },\r\n        \"WarehouseID\": { \"value\": \"RETAIL\" }\r\n  }\r\n}"
+              "raw": "{\r\n  \"entity\":{\r\n      \"id\":\"42bb9a17-a402-e911-b818-00155d408001\"\r\n  },\r\n  \"parameters\": {\r\n        \"ShipmentDate\": { \"value\": \"2027-08-20T00:00:00+03:00\" },\r\n        \"WarehouseID\": { \"value\": \"RETAIL\" }\r\n  }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}SalesOrder/SalesOrderCreateShipment",
