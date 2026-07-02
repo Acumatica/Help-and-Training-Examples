@@ -1,4 +1,4 @@
-Review this Test SDK test failure.
+Review this TestSDK Test failure.
 
 Context:
 - The test uses generated Modern UI Test SDK wrappers.
@@ -15,11 +15,12 @@ Verify that the UI workflow reflects the repaired labor quantity validation beha
 Relevant test code:
 [Reference the test method or paste the method if needed.]
 
-Relevant wrapper members:
-- WorkOrders_fsColumnAOrder.OrderNbr
-- Labor_gridLabor.Row.Quantity
-- Save()
-- Labor_gridLabor.Refresh()
+Relevant wrapper/helper members:
+- `RepairWorkOrdersScreen`
+- `WorkOrders_fsColumnAOrder.OrderNbr`
+- `Labor_gridLabor.Row.Quantity`
+- `Save()`
+- `Labor_gridLabor.Refresh()`
 
 Failure output:
 [Paste the cleaned failure message, log excerpt, or screenshot description.]

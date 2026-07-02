@@ -1,6 +1,8 @@
 Add one focused xUnit regression test to 
  PhoneRepairShop_Code.Tests/RSSVWorkOrderEntryTests.cs.
 
+Before generating code, briefly state the test goal and assumptions. Then generate the test method.
+
 Test name:
 LaborQuantity_WhenBelowDefault_AttachesQuantityTooSmallWarningAndRestoresDefaultQuantity
 
@@ -22,6 +24,7 @@ Use the existing setup pattern already present in RSSVWorkOrderEntryTests.cs:
 - Existing message constants from PhoneRepairShop.Messages
 
 Constraints:
+- Follow Acumatica Unit Test Framework patterns and Acuminator-friendly coding conventions.
 - Do not change production code.
 - Do not require a live database or browser session.
 - Reuse existing setup patterns from the file.
@@ -29,3 +32,5 @@ Constraints:
 - Keep the test readable.
 - Do not hide the tested business rule behind too many helper methods.
 - Show me the diff before running the test.
+
+After generating the code, list what I should verify before running the test.

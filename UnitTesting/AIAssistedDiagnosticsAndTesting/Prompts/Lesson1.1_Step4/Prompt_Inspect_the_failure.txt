@@ -28,5 +28,15 @@ Please:
 2. Identify the most likely root cause.
 3. Point to the method or event handler to inspect first.
 4. Explain why the warning can still appear while the quantity is not restored.
-5. Propose the smallest safe fix.
+5. Propose the smallest safe fix as a plan only.
 6. List assumptions I should verify before editing code.
+7. Identify any Acumatica Framework convention or Acuminator rule that may be relevant.
+8. Explain how the proposed fix should be validated.
+
+Constraints:
+- Do not edit files.
+- Do not change the test expectation.
+- Do not remove Messages.QuantityTooSmall.
+- Do not change PXErrorLevel.Warning.
+- Do not hardcode a value only to make the test pass.
+- Do not rewrite unrelated graph logic.

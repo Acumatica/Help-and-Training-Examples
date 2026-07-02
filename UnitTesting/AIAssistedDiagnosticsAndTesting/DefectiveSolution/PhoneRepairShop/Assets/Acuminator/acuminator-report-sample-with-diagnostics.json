@@ -1,0 +1,52 @@
+{
+  "codeSourceName": "C:\\AcuTestInstances\\SmartFix_T280\\App_Data\\Projects
+                       \\PhoneRepairShop\\PhoneRepairShop_Code\\PhoneRepairShop_Code.csproj",
+  "totalDiagnosticsCount": 4,
+  "projectReports": [
+  {
+    "projectName": "PhoneRepairShop_Code",
+    "totalDiagnosticsCount": 4,
+    "distinctDiagnosticsCount": 2,
+    "reportDetails": {
+      "totalDiagnosticsCount": 4,
+      "distinctDiagnosticsCount": 2,
+      "childrenTitle": "Found Errors",
+      "childrenGroups": [
+        {
+          "groupTitle":   "C:\\AcuTestInstances\\SmartFix_T280\\App_Data\\Projects
+                            \\PhoneRepairShop\\PhoneRepairShop_Code\\RSSVWorkOrderEntry.cs",
+          "totalDiagnosticsCount": 4,
+          "distinctDiagnosticsCount": 2,
+          "childrenGroups": 
+          [
+            {
+              "groupTitle": "PX1077",
+              "totalDiagnosticsCount": 2,
+              "lines": 
+              [
+                "PX1077: Event handlers should be protected virtual:
+                 \u0022.\\RSSVWorkOrderEntry.cs: (107,23)-(107,24)\u0022",
+                "PX1077: Event handlers should be protected virtual:
+                 \u0022.\\RSSVWorkOrderEntry.cs: (123,23)-(123,24)\u0022"
+              ]
+            },
+            {
+              "groupTitle": "PX1094",
+              "totalDiagnosticsCount": 2,
+              "lines": 
+              [
+                "PX1094: A DAC must be decorated with the 
+                 PXHidden or PXCacheName attribute:
+                  \u0022.\\RSSVWorkOrderEntry.cs: (44,15)-(44,26)\u0022",
+                "PX1094: A DAC must be decorated with the 
+                 PXHidden or PXCacheName attribute: 
+                  \u0022.\\RSSVWorkOrderEntry.cs: (50,15)-(50,27)\u0022"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+ ]
+}
