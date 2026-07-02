@@ -1,0 +1,11 @@
+// Open Windows PowerShell on your computer and run the following commands one by one. Adjust the file paths for your environment:
+
+$ACUMINATOR_RUNNER = "C:\Acuminator.Runner.NetFramework\Acuminator.Runner.NetFramework.exe"
+
+$CUSTOMIZATION_PROJECT = "C:\SmartFix_T280\App_Data\Projects\PhoneRepairShop\PhoneRepairShop_Code\PhoneRepairShop_Code.csproj"
+
+$REPORT_PATH = "C:\AIAssistedDiagnostics\artifacts\acuminator\acuminator-report.json"
+
+New-Item -ItemType Directory -Force -Path (Split-Path $REPORT_PATH) | Out-Null
+
+& $ACUMINATOR_RUNNER $CUSTOMIZATION_PROJECT --format json -f $REPORT_PATH -g FD --non-interactive

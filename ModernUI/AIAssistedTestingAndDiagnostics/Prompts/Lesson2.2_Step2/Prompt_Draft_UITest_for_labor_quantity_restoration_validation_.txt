@@ -1,6 +1,11 @@
 Draft a UI test for the Repair Work Orders labor quantity 
 validation scenario.
 
+Before generating code, list:
+1. The helper methods you plan to use.
+2. The generated wrapper members that support those helper methods.
+3. Any assumptions that must be verified.
+
 Target screen:
 RS301000 Repair Work Orders
 
@@ -16,6 +21,7 @@ Use the open files as context:
 - The generated RS301000 wrapper class.
 - The RepairWorkOrdersScreen helper class.
 - The TestData helper class.
+- The existing Test SDK test class.
 
 Requirements:
 1. Use generated wrapper members where available.

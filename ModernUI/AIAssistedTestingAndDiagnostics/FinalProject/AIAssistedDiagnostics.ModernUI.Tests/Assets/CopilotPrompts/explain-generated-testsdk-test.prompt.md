@@ -1,0 +1,19 @@
+# Explain a Generated UI Test
+
+Explain the generated UI Test.
+
+Do not modify files.
+
+Please cover:
+
+1. Which repair work order data the test depends on.
+2. How the test opens the screen.
+3. How it opens work order `000001`.
+4. How it changes the labor quantity from `1` to `0`.
+5. How it triggers validation.
+6. How it verifies that the quantity is restored to `1`.
+7. Whether the test can verify the `QuantityTooSmall` warning.
+8. Which wrapper members or test data values still need SME verification.
+9. Which prepared Test SDK output or log artifact should be used if the live test cannot be run.
+
+If the explanation does not match the code, identify the mismatch.

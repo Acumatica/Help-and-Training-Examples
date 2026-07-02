@@ -19,3 +19,10 @@ Then explain:
 - What evidence supports the classification
 - Which file or method to inspect first
 - What not to change yet
+- Why the other categories are less likely
+- Whether this failure should be investigated as a test issue, setup issue,
+  or implementation issue
+
+Do not propose a code change yet.
+Do not modify files.
+Do not change the test expectation.
