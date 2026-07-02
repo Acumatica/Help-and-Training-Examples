@@ -2806,13 +2806,13 @@
                   "    const jsonResponse = pm.response.json();\r",
                   "    pm.expect(jsonResponse.BranchID.value).to.eql('RETAIL');\r",
                   "});\r",
-                  "pm.test(\"Post period is 012025\", function (){\r",
+                  "pm.test(\"Post period is 012026\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.PostPeriod.value).to.eql('012025');\r",
+                  "    pm.expect(jsonResponse.PostPeriod.value).to.eql('012026');\r",
                   "});\r",
-                  "pm.test(\"Transaction date  is 2025-01-01\", function (){\r",
+                  "pm.test(\"Transaction date  is 2026-01-01\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.TransactionDate.value).contains('2025-01-01');\r",
+                  "    pm.expect(jsonResponse.TransactionDate.value).contains('2026-01-01');\r",
                   "});\r",
                   "\r",
                   "//Sign out and set next request\r",
@@ -13064,7 +13064,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"CustomerID\": { \"value\": \"FRUITICO\" },\r\n    \"OrderType\": { \"value\": \"RM\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": \"Invoice\" },\r\n            \"InvoiceNbr\": { \"value\": \"{{invoiceNbr}}\" },\r\n            \"Operation\": { \"value\": \"Receipt\" },\r\n            \"InvoiceLineNbr\": { \"value\": \"1\" },\r\n            \"OrderQty\": { \"value\": -1 },\r\n            \"AutoCreateIssue\": { \"value\": false }\r\n        },\r\n        {\r\n            \"Branch\": { \"value\": \"HEADOFFICE\" },\r\n            \"Operation\": { \"value\": \"Issue\" },\r\n            \"InventoryID\": { \"value\": \"PEARJAM96\" },\r\n            \"OrderQty\": { \"value\": 1 },\r\n            \"UOM\": { \"value\": \"PIECE\" },\r\n            \"WarehouseID\": { \"value\": \"RETAIL\" },\r\n            \"AutoCreateIssue\": { \"value\": false }\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"CustomerID\": { \"value\": \"FRUITICO\" },\r\n    \"OrderType\": { \"value\": \"RM\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": \"Invoice\" },\r\n            \"InvoiceNbr\": { \"value\": \"{{invoiceNbr}}\" },\r\n            \"Operation\": { \"value\": \"Receipt\" },\r\n            \"InvoiceLineNbr\": { \"value\": \"1\" },\r\n            \"OrderQty\": { \"value\": -1 },\r\n            \"AutoCreateIssue\": { \"value\": false }\r\n        },\r\n        {\r\n            \"Branch\": { \"value\": \"HEADOFFICE\" },\r\n            \"Operation\": { \"value\": \"Issue\" },\r\n            \"InventoryID\": { \"value\": \"PEARJAM96\" },\r\n            \"OrderQty\": { \"value\": 1 },\r\n            \"UOM\": { \"value\": \"PIECE\" },\r\n            \"WarehouseID\": { \"value\": \"RETAIL\" },\r\n            \"AutoCreateIssue\": { \"value\": false }\r\n        }\r\n    ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}SalesOrder?$expand=Details",

@@ -222,7 +222,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n    \"ShipmentDate\":{\"value\":\"2025-11-01\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\n\t\t}\n\t]\n}"
+							"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n    \"ShipmentDate\":{\"value\":\"2026-11-01\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\n\t\t}\n\t]\n}"
 						},
 						"url": {
 							"raw": "{{DefaultEndpointURL}}/Shipment?$select=Type,ShipmentNbr,Status,Details/InventoryID&$expand=Details",
