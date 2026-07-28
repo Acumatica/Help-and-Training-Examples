@@ -14,7 +14,7 @@ namespace IntegrationDiagnostics.Runner
 		public const string DefaultSubaccount = "0000000000000";
 		public const string DefaultCostAccount = "51000";
 		public const string DefaultCostSubaccount = "1000000000000";
-		public const string CostCode = "0000";
+		public const string CostCode = "00000";
 		public const string Customer = "C000000056";
 		public const string BillingRule = "TM";
 		public const string AccountGroup = "LABOR";
