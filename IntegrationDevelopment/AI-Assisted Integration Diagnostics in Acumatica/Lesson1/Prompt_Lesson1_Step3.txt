@@ -1,1 +1,1 @@
-Update packages and namespaces
+Update packages and namespaces. Indicate any compilation issues.
