@@ -1,0 +1,11 @@
+Test SDK run result:
+Exit code: 1
+
+Failure:
+Invalid or missing file/folder mapping. Browser path or site path is not valid.
+
+Likely category:
+Environment/configuration issue
+
+Training point:
+Check config.xml, launchSettings.json, physical site path, Chrome path, and Test SDK version.

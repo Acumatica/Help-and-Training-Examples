@@ -1,0 +1,9 @@
+Test: LaborQuantity_WhenBelowConfigured_RestoresConfiguredQuantity
+Result: Failed
+
+Assertion:
+Expected: 1
+Actual:   0
+
+Observed behavior:
+The test set the labor quantity to 0, but the UI value remained 0 after the action step.

@@ -1,0 +1,12 @@
+Test: LaborQuantity_WhenBelowConfigured_RestoresConfiguredQuantity
+Result: Failed during build
+
+Compiler error:
+CS1061: 'RS301000' does not contain a definition for 'Labor' and no accessible extension method 'Labor' accepting a first argument of type 'RS301000' could be found.
+
+Likely category:
+Wrapper/member mismatch
+
+Training point:
+Copilot invented or guessed a wrapper member. Inspect the generated RS301000 wrapper and replace the guessed member with the actual generated member:
+Labor_gridLabor.Row.Quantity.

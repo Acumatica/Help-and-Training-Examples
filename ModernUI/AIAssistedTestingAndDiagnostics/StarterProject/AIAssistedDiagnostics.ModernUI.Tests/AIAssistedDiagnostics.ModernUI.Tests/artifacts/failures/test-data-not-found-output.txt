@@ -1,0 +1,5 @@
+Test: RepairWorkOrdersScreen_CanOpenPreparedWorkOrder
+Result: Failed
+
+Failure:
+Could not locate repair work order '000001' on RS301000.

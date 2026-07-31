@@ -1,0 +1,5 @@
+Test: LaborQuantity_WhenBelowConfigured_RestoresConfiguredQuantity
+Result: Failed during build
+
+Compiler error:
+CS1061: 'RS301000' does not contain a definition for 'Labor' and no accessible extension method 'Labor' accepting a first argument of type 'RS301000' could be found.
