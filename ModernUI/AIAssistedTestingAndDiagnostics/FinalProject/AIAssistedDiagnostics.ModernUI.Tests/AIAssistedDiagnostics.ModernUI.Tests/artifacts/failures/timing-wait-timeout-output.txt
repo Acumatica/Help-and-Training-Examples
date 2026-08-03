@@ -1,0 +1,11 @@
+Test: LaborQuantity_WhenBelowConfigured_RestoresConfiguredQuantity
+Result: Failed
+
+Failure:
+Timed out after 30 seconds waiting for labor quantity value to become 1.
+
+Likely category:
+Timing/wait issue
+
+Training point:
+The application may have restored the value after an asynchronous UI update, but the test asserted too early. Add or adjust the wait pattern used by the project.

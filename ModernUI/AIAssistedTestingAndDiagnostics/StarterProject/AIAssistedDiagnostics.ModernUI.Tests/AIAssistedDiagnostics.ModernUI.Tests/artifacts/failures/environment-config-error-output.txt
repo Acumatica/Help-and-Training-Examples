@@ -1,0 +1,5 @@
+Test SDK run result:
+Exit code: 1
+
+Failure:
+Invalid or missing file/folder mapping. Browser path or site path is not valid.

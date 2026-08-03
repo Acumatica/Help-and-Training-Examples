@@ -1,0 +1,5 @@
+Test: LaborQuantity_WhenBelowConfigured_RestoresConfiguredQuantity
+Result: Failed
+
+Failure:
+Timed out after 30 seconds waiting for labor quantity value to become 1.

@@ -1,0 +1,11 @@
+Test: RepairWorkOrdersScreen_CanOpenPreparedWorkOrder
+Result: Failed
+
+Failure:
+Could not locate repair work order '000001' on RS301000.
+
+Likely category:
+Test data issue
+
+Training point:
+The test depends on deterministic prepared data. Confirm that work order 000001 exists in the target tenant and that the Test SDK user can open it.
