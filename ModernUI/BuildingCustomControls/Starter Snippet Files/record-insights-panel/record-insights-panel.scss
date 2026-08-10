@@ -1,0 +1,115 @@
+/*
+ * Record Insights Panel styles.
+ *
+ * TODO Step 4:
+ * Add the styles that define the layout, spacing, and visual states of the
+ * custom control.
+ */
+
+/*
+ * TODO Step 4.1:
+ * Style the main panel container.
+ *
+ * This selector defines the panel border, spacing, radius, and background.
+ */
+.record-insights-panel {
+    /* TODO: Add panel container styles. */
+}
+
+/*
+ * TODO Step 4.2:
+ * Add accent classes for the panel's left border.
+ *
+ * These classes are returned by the statusClass getter in the TypeScript file.
+ */
+.record-insights-panel.accent-warning {
+    /* TODO: Add warning accent color. */
+}
+
+.record-insights-panel.accent-success {
+    /* TODO: Add success accent color. */
+}
+
+.record-insights-panel.accent-danger {
+    /* TODO: Add danger accent color. */
+}
+
+.record-insights-panel.accent-neutral {
+    /* TODO: Add neutral accent color. */
+}
+
+/*
+ * TODO Step 4.3:
+ * Add header layout styles.
+ *
+ * These classes organize the title, status badge, screen information, and
+ * Show Details / Hide Details button.
+ */
+.panel-header {
+    /* TODO: Add header layout styles. */
+}
+
+.panel-header-main {
+    /* TODO: Add main header content styles. */
+}
+
+.panel-title-row {
+    /* TODO: Add title row layout styles. */
+}
+
+.panel-title {
+    /* TODO: Add title text styles. */
+}
+
+.panel-subtitle {
+    /* TODO: Add subtitle text styles. */
+}
+
+/*
+ * TODO Step 4.4:
+ * Add status badge styles.
+ *
+ * The base status-badge class defines the badge shape and typography.
+ * The badge-* classes define the visual states returned by the badgeClass
+ * getter in the TypeScript file.
+ */
+.status-badge {
+    /* TODO: Add base badge styles. */
+}
+
+.badge-neutral {
+    /* TODO: Add neutral badge colors. */
+}
+
+.badge-success {
+    /* TODO: Add success badge colors. */
+}
+
+.badge-warning {
+    /* TODO: Add warning badge colors. */
+}
+
+.badge-danger {
+    /* TODO: Add danger badge colors. */
+}
+
+/*
+ * TODO Step 4.5:
+ * Add warning, details, and button layout styles.
+ */
+.warning-box {
+    /* TODO: Add warning box layout and color styles. */
+}
+
+.panel-body {
+    /* TODO: Add body spacing styles. */
+}
+
+.details-block {
+    /* TODO: Add details text layout styles. */
+}
+
+.toggle-button,
+.dismiss-button {
+    /* TODO: Add qp-button layout adjustments. */
+}
