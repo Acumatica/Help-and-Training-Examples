@@ -1,0 +1,44 @@
+<template>
+    <!-- Load the SCSS file that contains the styles for this custom control. -->
+    <require from="./record-insights-panel.scss"></require>
+
+    <!--
+        TODO Step 3.2:
+        Add the main section element for the custom control.
+
+        The section should:
+        - Use the record-insights-panel class.
+        - Include the dynamic statusClass value so the left border can reflect
+          the current accent value.
+    -->
+    
+    <!--
+        TODO Step 3.3:
+        Inside the section, add the header area.
+
+        The header should display:
+        - the title
+        - the status badge
+        - screen information updated from the screen-updated event
+        - a qp-button that calls toggleDetails()
+    -->
+
+    <!--
+        TODO Step 3.4:
+        After the header, add the warning section.
+
+        The warning section should:
+        - Be displayed only when hasWarning is true.
+        - Display the warningMessage value.
+        - Use a qp-button that calls dismissWarning().
+    -->
+
+    <!--
+        TODO Step 3.5:
+        Add the collapsible body section.
+
+        The body should:
+        - Be displayed only when collapsed is false.
+        - Display the details value when details has a value.
+    -->
+</template>
