@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPages/FormView.master"
+<%@ Page Language="C#" MasterPageFile="~/MasterPages/FormView.master"
 AutoEventWireup="true" ValidateRequest="false" CodeFile="RS202000.aspx.cs"
 Inherits="Page_RS202000" Title="Untitled Page" %>
 <%@ MasterType VirtualPath="~/MasterPages/FormView.master" %>
