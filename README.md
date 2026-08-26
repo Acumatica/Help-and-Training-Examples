@@ -5,33 +5,33 @@ This repository contains examples that are included in the Acumatica ERP develop
 Integration development
 
   * [Help](IntegrationDevelopment/Help): Examples from the [Integration Development Guide](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ff22837c-cd3a-410e-b768-88ca6e53b165)
-  * [I300](IntegrationDevelopment/I300): Examples from the [I300 Data Retrieval with OData](https://openuni.acumatica.com/courses/integration/i300-web-services-data-retrieval-with-odata/) training course
-  * [I310](IntegrationDevelopment/I310): Examples from the [I310 Data Retrieval with REST API](https://openuni.acumatica.com/courses/integration/i310-data-retrieval-with-rest-api-basics/) training course
-  * [I320](IntegrationDevelopment/I320): Examples from the [I320 Advanced Data Retrieval with REST API](https://openuni.acumatica.com/courses/integration/i320-advanced-data-retrieval-with-rest-api/) training course
-  * [I330](IntegrationDevelopment/I330): Examples from the [I330 Data Manipulation with REST API](https://openuni.acumatica.com/courses/integration/i330-data-manipulation-with-rest-api/) training course 
+  * [I300](IntegrationDevelopment/I300): Examples from the [I300 Data Retrieval with OData](https://beacon.acumatica.com/v/u/I300-Data-Retrieval-With-OData) training course
+  * [I310](IntegrationDevelopment/I310): Examples from the [I310 Data Retrieval with REST API](https://beacon.acumatica.com/v/u/I310-Data-Retrieval-with-REST-API-Basics) training course
+  * [I320](IntegrationDevelopment/I320): Examples from the [I320 Advanced Data Retrieval with REST API](https://beacon.acumatica.com/v/u/I320-Data-Retrieval-with-REST-API-Advanced) training course
+  * [I330](IntegrationDevelopment/I330): Examples from the [I330 Data Manipulation with REST API](https://beacon.acumatica.com/v/u/I330-Data-Manipulation-with-REST-API) training course 
 
 Customization of Acumatica ERP
 
  * [Help](Customization/Help): Examples from the [Customization Guide](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=316b14fa-f406-4788-993c-7b043b1c5bd9)
- * [T190](Customization/T190): Source files for the [T190 Quick Start in Customization](https://openuni.acumatica.com/courses/development/t190-development-quick-start-in-customization/) training course
- * [T200](Customization/T200): Examples from the [T200 Maintenance Forms](https://openuni.acumatica.com/courses/development/t200-development-maintenance-forms/) training course
- * [T210](Customization/T210): Examples from the [T210 Customized Forms and Master-Detail Relationships](https://openuni.acumatica.com/courses/development/t210-development-customized-forms-and-master-detail-relationship/) training course
- * [T220](Customization/T220): Examples from the [T220 Data Entry and Setup Forms](https://openuni.acumatica.com/courses/development/t220-development-data-entry-and-setup-forms/) training course
- * [T230](Customization/T230): Examples from the [T230 Actions](https://openuni.acumatica.com/courses/development/t230-development-actions/) training course
- * [T240](Customization/T240): Examples from the [T240 Processing Forms](https://openuni.acumatica.com/courses/development/t240-development-processing-forms/) training course
- * [T250](Customization/T250): Examples from the [T250 Inquiry Forms](https://openuni.acumatica.com/courses/development/t250-development-inquiry-forms/) training course 
+ * [T190](Customization/T190): Source files for the [T190 Quick Start in Customization](https://beacon.acumatica.com/v/u/T190-Quick-Start-In-Customization) training course
+ * [T200](Customization/T200): Examples from the [T200 Maintenance Forms](https://beacon.acumatica.com/v/u/T200-Maintenance-Forms) training course
+ * [T210](Customization/T210): Examples from the [T210 Customized Forms and Master-Detail Relationships](https://beacon.acumatica.com/v/u/T210-Master-Detail-And-Customized-Forms) training course
+ * [T220](Customization/T220): Examples from the [T220 Data Entry and Setup Forms](https://beacon.acumatica.com/v/u/T220-Data-Entry-And-Setup-Forms) training course
+ * [T230](Customization/T230): Examples from the [T230 Actions](https://beacon.acumatica.com/v/u/T230-Actions) training course
+ * [T240](Customization/T240): Examples from the [T240 Processing Forms](https://beacon.acumatica.com/v/u/T240-Processing-Forms) training course
+ * [T250](Customization/T250): Examples from the [T250 Inquiry Forms](https://beacon.acumatica.com/v/u/T250-Inquiry-Forms) training course 
 
 Workflow development
 
- * [T270](WorkflowDevelopment/T270): Examples from the [T270 Workflow API](https://openuni.acumatica.com/courses/development/t270-workflow-api/) training course
+ * [T270](WorkflowDevelopment/T270): Examples from the [T270 Workflow API](https://beacon.acumatica.com/v/u/T270-Workflow-API) training course
 
 Modern UI development
 
- * [T290](ModernUI/T290): Source files for the [T290 Modern UI for Developers](https://openuni.acumatica.com/courses/development/t290-modern-ui/) training course
+ * [T290](ModernUI/T290): Source files for the [T290 Modern UI for Developers](https://beacon.acumatica.com/v/u/T290-Modern-UI) training course
 
 Unit testing
 
- * [T280](UnitTesting/T280): Examples from the [T280 Testing Business Logic with the Acumatica Unit Test Framework](https://openuni.acumatica.com/courses/development/t280-development-testing-business-logic/) training course
+ * [T280](UnitTesting/T280): Examples from the [T280 Testing Business Logic with the Acumatica Unit Test Framework](https://beacon.acumatica.com/v/u/T280-Testing-Business-Logic) training course
  
 Plug-in development  
 
@@ -39,8 +39,8 @@ Plug-in development
 
 Mobile development
 
- * [T400](MobileDevelopment/T400): Examples from the [T400 Customization of Mobile Application](https://openuni.acumatica.com/courses/development/t400-customization-of-mobile-application-basic/) training course
- * [T410](MobileDevelopment/T410): Examples from the [T410 Advanced Customization of Mobile Application](https://openuni.acumatica.com/courses/development/t410-customization-of-mobile-application-advanced/) training course
+ * [T400](MobileDevelopment/T400): Examples from the [T400 Customization of Mobile Application](https://beacon.acumatica.com/v/u/T400-Basic-Customization-Of-Mobile-App) training course
+ * [T410](MobileDevelopment/T410): Examples from the [T410 Advanced Customization of Mobile Application](https://beacon.acumatica.com/v/u/T410-Advanced-Customization-Of-Mobile-App) training course
 
 Development with Acumatica's barcode-driven engine
 
