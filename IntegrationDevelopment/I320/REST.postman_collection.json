@@ -237,7 +237,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{DefaultEndpointURL}}/SalesOrder?$select=OrderNbr,OrderType,CustomerID,CustomerOrder,Details/InventoryID,Details/OrderQty,Details/UnitPrice,Date,OrderedQty,OrderTotal,Shipments/InvoiceNbr,Shipments/ShipmentNbr&$filter=CustomerID eq 'C000000003'&$expand=Details,Shipments",
+							"raw": "{{DefaultEndpointURL}}/SalesOrder?$select=OrderNbr,OrderType,CustomerID,CustomerOrder,Date,OrderedQty,OrderTotal&$filter=CustomerID eq 'C000000003'&$expand=Details($select=InventoryID,OrderQty,UnitPrice),Shipments($select=InvoiceNbr,ShipmentNbr)",
 							"host": [
 								"{{DefaultEndpointURL}}"
 							],
@@ -247,7 +247,7 @@
 							"query": [
 								{
 									"key": "$select",
-									"value": "OrderNbr,OrderType,CustomerID,CustomerOrder,Details/InventoryID,Details/OrderQty,Details/UnitPrice,Date,OrderedQty,OrderTotal,Shipments/InvoiceNbr,Shipments/ShipmentNbr"
+									"value": "OrderNbr,OrderType,CustomerID,CustomerOrder,Date,OrderedQty,OrderTotal"
 								},
 								{
 									"key": "$filter",
@@ -255,7 +255,7 @@
 								},
 								{
 									"key": "$expand",
-									"value": "Details,Shipments"
+									"value": "Details($select=InventoryID,OrderQty,UnitPrice),Shipments($select=InvoiceNbr,ShipmentNbr)"
 								}
 							]
 						}
@@ -458,7 +458,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{DefaultEndpointURL}}/Payment?$select=ReferenceNbr,Type,Status,ApplicationDate,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr&$filter=Type eq 'Payment' and CustomerID eq 'C000000003'&$expand=ApplicationHistory",
+							"raw": "{{DefaultEndpointURL}}/Payment?$select=ReferenceNbr,Type,Status,ApplicationDate&$filter=Type eq 'PMT' and CustomerID eq 'C000000003'&$expand=ApplicationHistory($select=DisplayDocType,DisplayRefNbr)",
 							"host": [
 								"{{DefaultEndpointURL}}"
 							],
@@ -468,15 +468,15 @@
 							"query": [
 								{
 									"key": "$select",
-									"value": "ReferenceNbr,Type,Status,ApplicationDate,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr"
+									"value": "ReferenceNbr,Type,Status,ApplicationDate"
 								},
 								{
 									"key": "$filter",
-									"value": "Type eq 'Payment' and CustomerID eq 'C000000003'"
+									"value": "Type eq 'PMT' and CustomerID eq 'C000000003'"
 								},
 								{
 									"key": "$expand",
-									"value": "ApplicationHistory"
+									"value": "ApplicationHistory($select=DisplayDocType,DisplayRefNbr)"
 								}
 							]
 						}
@@ -535,7 +535,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{DefaultEndpointURL}}/Payment?$select=ReferenceNbr,Type&$filter=Type eq 'Payment' and CustomerID eq 'C000000003'",
+							"raw": "{{DefaultEndpointURL}}/Payment?$select=ReferenceNbr,Type&$filter=Type eq 'PMT' and CustomerID eq 'C000000003'",
 							"host": [
 								"{{DefaultEndpointURL}}"
 							],
@@ -549,7 +549,7 @@
 								},
 								{
 									"key": "$filter",
-									"value": "Type eq 'Payment' and CustomerID eq 'C000000003'"
+									"value": "Type eq 'PMT' and CustomerID eq 'C000000003'"
 								}
 							]
 						}
@@ -602,7 +602,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{DefaultEndpointURL}}/Payment/Payment/000001?$select=ReferenceNbr,Type,Status,ApplicationDate,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr&$expand=ApplicationHistory",
+							"raw": "{{DefaultEndpointURL}}/Payment/Payment/000001?$select=ReferenceNbr,Type,Status,ApplicationDate&$expand=ApplicationHistory($select=DisplayDocType,DisplayRefNbr)",
 							"host": [
 								"{{DefaultEndpointURL}}"
 							],
@@ -614,11 +614,11 @@
 							"query": [
 								{
 									"key": "$select",
-									"value": "ReferenceNbr,Type,Status,ApplicationDate,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr"
+									"value": "ReferenceNbr,Type,Status,ApplicationDate"
 								},
 								{
 									"key": "$expand",
-									"value": "ApplicationHistory"
+									"value": "ApplicationHistory($select=DisplayDocType,DisplayRefNbr)"
 								}
 							]
 						}
@@ -874,7 +874,7 @@
 		},
 		{
 			"key": "DefaultEndpointURL",
-			"value": "{{InstanceURL}}/entity/Default/25.200.001"
+			"value": "{{InstanceURL}}/entity/Default/26.200.001"
 		},
 		{
 			"key": "ClientID",

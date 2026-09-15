@@ -163,7 +163,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{DefaultEndpointURL}}/Customer?$expand=MainContact,MainContact/Address&$select=CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode",
+							"raw": "{{DefaultEndpointURL}}/Customer?$expand=MainContact($select=Email,Phone1;$expand=Address($select=AddressLine1,AddressLine2,City,State,PostalCode))&$select=CustomerID,CustomerName,CustomerClass",
 							"host": [
 								"{{DefaultEndpointURL}}"
 							],
@@ -173,11 +173,11 @@
 							"query": [
 								{
 									"key": "$expand",
-									"value": "MainContact,MainContact/Address"
+									"value": "MainContact($select=Email,Phone1;$expand=Address($select=AddressLine1,AddressLine2,City,State,PostalCode))"
 								},
 								{
 									"key": "$select",
-									"value": "CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode"
+									"value": "CustomerID,CustomerName,CustomerClass"
 								}
 							]
 						}
@@ -344,7 +344,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{DefaultEndpointURL}}/StockItem?$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'{{currentDate}}'&$expand=WarehouseDetails&$select=InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM",
+							"raw": "{{DefaultEndpointURL}}/StockItem?$filter=ItemStatus eq 'AC' and LastModifiedDateTime gt datetimeoffset'{{currentDate}}'&$expand=WarehouseDetails($select=WarehouseID,QtyOnHand)&$select=InventoryID,Description,ItemClass,BaseUOM",
 							"host": [
 								"{{DefaultEndpointURL}}"
 							],
@@ -354,15 +354,15 @@
 							"query": [
 								{
 									"key": "$filter",
-									"value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'{{currentDate}}'"
+									"value": "ItemStatus eq 'AC' and LastModifiedDateTime gt datetimeoffset'{{currentDate}}'"
 								},
 								{
 									"key": "$expand",
-									"value": "WarehouseDetails"
+									"value": "WarehouseDetails($select=WarehouseID,QtyOnHand)"
 								},
 								{
 									"key": "$select",
-									"value": "InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM"
+									"value": "InventoryID,Description,ItemClass,BaseUOM"
 								}
 							]
 						}
@@ -405,7 +405,7 @@
 		},
 		{
 			"key": "DefaultEndpointURL",
-			"value": "{{InstanceURL}}/entity/Default/25.200.001"
+			"value": "{{InstanceURL}}/entity/Default/26.200.001"
 		},
 		{
 			"key": "Username",

@@ -187,7 +187,7 @@
 									"});\r",
 									"pm.test(\"The shipment is on hold\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.Status.value).to.eql('On Hold');\r",
+									"    pm.expect(jsonResponse.Status.value.id).to.eql('H');\r",
 									"});\r",
 									"pm.execution.setNextRequest(\"Activity 1.2.1: To Create a Stock Item with Attributes\");"
 								],
@@ -222,10 +222,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"Type\":{\"value\":\"Shipment\"},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n    \"ShipmentDate\":{\"value\":\"2026-11-01\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\n\t\t}\n\t]\n}"
+							"raw": "{\n\t\"Type\":{\"value\":{ \"id\": \"N\" }},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n    \"ShipmentDate\":{\"value\":\"2026-11-01\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\n\t\t}\n\t]\n}"
 						},
 						"url": {
-							"raw": "{{DefaultEndpointURL}}/Shipment?$select=Type,ShipmentNbr,Status,Details/InventoryID&$expand=Details",
+							"raw": "{{DefaultEndpointURL}}/Shipment?$select=Type,ShipmentNbr,Status&$expand=Details($select=InventoryID)",
 							"host": [
 								"{{DefaultEndpointURL}}"
 							],
@@ -235,11 +235,11 @@
 							"query": [
 								{
 									"key": "$select",
-									"value": "Type,ShipmentNbr,Status,Details/InventoryID"
+									"value": "Type,ShipmentNbr,Status"
 								},
 								{
 									"key": "$expand",
-									"value": "Details"
+									"value": "Details($select=InventoryID)"
 								}
 							]
 						}
@@ -298,7 +298,7 @@
 							"raw": "{\n\t\"InventoryID\":{\"value\":\"BASESERV1\"},\n\t\"Description\":{\"value\":\"Baseline level of performance\"},\n\t\"ItemClass\":{\"value\":\"STOCKITEM\"},\n\t\"Attributes\":[\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"Operation System\"},\n\t\t\t\"Value\":{\"value\":\"Windows\"}\n\t\t},\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"SOFTVER\"},\n\t\t\t\"Value\":{\"value\":\"Server 2025\"}\n\t\t}\n\t]\n}"
 						},
 						"url": {
-							"raw": "{{DefaultEndpointURL}}/StockItem?$select=InventoryID,Attributes/AttributeDescription,Attributes/Value&$expand=Attributes",
+							"raw": "{{DefaultEndpointURL}}/StockItem?$select=InventoryID&$expand=Attributes($select=AttributeDescription,Value)",
 							"host": [
 								"{{DefaultEndpointURL}}"
 							],
@@ -308,11 +308,11 @@
 							"query": [
 								{
 									"key": "$select",
-									"value": "InventoryID,Attributes/AttributeDescription,Attributes/Value"
+									"value": "InventoryID"
 								},
 								{
 									"key": "$expand",
-									"value": "Attributes"
+									"value": "Attributes($select=AttributeDescription,Value)"
 								}
 							]
 						}
@@ -374,7 +374,7 @@
 							"raw": "{\r\n\t\"CustomerClass\":{\"value\":\"INTL\"},\r\n\t\"BillingContactOverride\":{\"value\":true},\r\n\t\"BillingContact\":{\r\n\t\t\"Email\":{\"value\":\"green@jevy-comp.con\"},\r\n\t\t\"Attention\":{\"value\":\"Mr. Jack Green\"},\r\n\t\t\"JobTitle\":{\"value\":\"\"}\r\n\t}\r\n}\r\n"
 						},
 						"url": {
-							"raw": "{{DefaultEndpointURL}}/Customer?$filter=MainContact/Email eq 'info@jevy-comp.con'&$expand=MainContact,BillingContact&$select=CustomerID,CustomerClass,BillingContact/Email",
+							"raw": "{{DefaultEndpointURL}}/Customer?$filter=MainContact/Email eq 'info@jevy-comp.con'&$expand=MainContact,BillingContact($select=Email)&$select=CustomerID,CustomerClass",
 							"host": [
 								"{{DefaultEndpointURL}}"
 							],
@@ -388,11 +388,11 @@
 								},
 								{
 									"key": "$expand",
-									"value": "MainContact,BillingContact"
+									"value": "MainContact,BillingContact($select=Email)"
 								},
 								{
 									"key": "$select",
-									"value": "CustomerID,CustomerClass,BillingContact/Email"
+									"value": "CustomerID,CustomerClass"
 								}
 							]
 						}
@@ -447,7 +447,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{DefaultEndpointURL}}/SalesOrder?$expand=Details&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
+							"raw": "{{DefaultEndpointURL}}/SalesOrder?$expand=Details($select=InventoryID,WarehouseID)&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'&$select=OrderNbr,OrderType",
 							"host": [
 								"{{DefaultEndpointURL}}"
 							],
@@ -457,7 +457,7 @@
 							"query": [
 								{
 									"key": "$expand",
-									"value": "Details"
+									"value": "Details($select=InventoryID,WarehouseID)"
 								},
 								{
 									"key": "$filter",
@@ -465,7 +465,7 @@
 								},
 								{
 									"key": "$select",
-									"value": "OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID"
+									"value": "OrderNbr,OrderType"
 								}
 							]
 						}
@@ -533,7 +533,7 @@
 							"raw": "{\n\t\"OrderType\":{\"value\":\"SO\"},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"{{CONGRILL_detail_ID}}\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"{{AALEGO500_detail_ID}}\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
 						},
 						"url": {
-							"raw": "{{DefaultEndpointURL}}/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID&$expand=Details",
+							"raw": "{{DefaultEndpointURL}}/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal&$expand=Details($select=OrderQty,InventoryID)",
 							"host": [
 								"{{DefaultEndpointURL}}"
 							],
@@ -543,11 +543,11 @@
 							"query": [
 								{
 									"key": "$select",
-									"value": "OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID"
+									"value": "OrderType,OrderNbr,OrderedQty,OrderTotal"
 								},
 								{
 									"key": "$expand",
-									"value": "Details"
+									"value": "Details($select=OrderQty,InventoryID)"
 								}
 							]
 						}
@@ -571,7 +571,7 @@
 									"});\r",
 									"pm.test(\"The sales invoice has the Balanced status\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.Status.value).to.equal(\"Balanced\");\r",
+									"    pm.expect(jsonResponse.Status.value.id).to.equal(\"B\");\r",
 									"});\r",
 									"pm.execution.setNextRequest(\"Activity 3.1.2: To Invoke Release of the Invoice\");"
 								],
@@ -606,7 +606,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Type\":{\"value\":\"Invoice\"},\r\n    \"ReferenceNbr\":{\"value\":\"INV000046\"},\r\n    \"Hold\":{\"value\":false}\r\n}"
+							"raw": "{\r\n    \"Type\":{\"value\":{ \"id\": \"INV\" }},\r\n    \"ReferenceNbr\":{\"value\":\"INV000046\"},\r\n    \"Hold\":{\"value\":false}\r\n}"
 						},
 						"url": {
 							"raw": "{{DefaultEndpointURL}}/SalesInvoice",
@@ -664,7 +664,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"entity\":{\r\n\t\t\"Type\":{\"value\":\"Invoice\"},\r\n\t\t\"ReferenceNbr\":{\"value\":\"INV000046\"}\r\n    }\r\n}"
+							"raw": "{\r\n\t\"entity\":{\r\n\t\t\"Type\":{\"value\":{ \"id\": \"INV\" }},\r\n\t\t\"ReferenceNbr\":{\"value\":\"INV000046\"}\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{DefaultEndpointURL}}/SalesInvoice/ReleaseSalesInvoice",
@@ -741,7 +741,7 @@
 									"});\r",
 									"pm.test(\"The sales invoice has the Open status\", function (){\r",
 									"    const jsonResponse = pm.response.json();\r",
-									"    pm.expect(jsonResponse.Status.value).to.equal(\"Open\");\r",
+									"    pm.expect(jsonResponse.Status.value.id).to.equal(\"N\");\r",
 									"});\r",
 									"pm.execution.setNextRequest(\"Activity 4.1.1: To Add a Note to a Stock Item\");"
 								],
@@ -1077,7 +1077,7 @@
 		},
 		{
 			"key": "DefaultEndpointURL",
-			"value": "{{InstanceURL}}/entity/Default/25.200.001"
+			"value": "{{InstanceURL}}/entity/Default/26.200.001"
 		},
 		{
 			"key": "Username",

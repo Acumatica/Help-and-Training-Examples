@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "b2abe1f2-7196-4784-aa17-a950f9bbfe14",
     "name": "REST API Examples (Integration Development Guide)",
-    "description": "This collection contains examples from the [REST API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n- Deploy a new Acumatica ERP instance with three tenants that are based on the U100, SalesDemo, and T100 datasets. For details on deploying an instance, see [Deploying Acumatica ERP Instances](https://help.acumatica.com/(W(4))/Help?ScreenId=ShowWiki&pageid=d02b1a4a-4394-4eb1-a127-ba821108ba3f) in the Installation Guide.\n    \n- Specify the base URL of the site in the _BaseURL_ variable of the collection.\n    \n- Specify the instance URL in the _InstanceURL_ variable of the collection.\n    \n- Make sure the URL of the Default/25.200.001 endpoint is in the _EndpointURL_ variable.\n    \n- Make sure the URL of the MANUFACTURING/25.100.001 endpoint is in the _ManufacturingEndpointURL_ variable.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the U100 data in the _TenantU100_, _BranchU100_, _UsernameU100_, and _PasswordU100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantT100_, _BranchT100_, _UsernameT100_, and _PasswordT100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the _SalesDemo_ data in the _TenantSalesDemo_, _BranchSalesDemo_, _UsernameSalesDemo_, and _PasswordSalesDemo_ variables.\n    \n\nOther variables are used by particular requests and are specified during execution of other requests. You do not need to fill in their values manually.",
+    "description": "This collection contains examples from the [REST API Examples](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=bbb8b84b-07d7-4a69-adf8-33dc5d430b60) chapter of the Integration Development Guide of Acumatica ERP.\n\n**Testing the Requests**\n\nTo test the examples, you configure this collection and the Acumatica ERP instance to be used as follows:\n\n- Deploy a new Acumatica ERP instance with three tenants that are based on the U100, SalesDemo, and T100 datasets. For details on deploying an instance, see [Deploying Acumatica ERP Instances](https://help.acumatica.com/(W(4))/Help?ScreenId=ShowWiki&pageid=d02b1a4a-4394-4eb1-a127-ba821108ba3f) in the Installation Guide.\n    \n- Specify the base URL of the site in the _BaseURL_ variable of the collection.\n    \n- Specify the instance URL in the _InstanceURL_ variable of the collection.\n    \n- Make sure the URL of the Default/26.200.001 endpoint is in the _EndpointURL_ variable.\n    \n- Make sure the URL of the MANUFACTURING/25.100.001 endpoint is in the _ManufacturingEndpointURL_ variable.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the U100 data in the _TenantU100_, _BranchU100_, _UsernameU100_, and _PasswordU100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the T100 data in the _TenantT100_, _BranchT100_, _UsernameT100_, and _PasswordT100_ variables.\n    \n- Specify the tenant name, branch, username, and password to access the tenant with the _SalesDemo_ data in the _TenantSalesDemo_, _BranchSalesDemo_, _UsernameSalesDemo_, and _PasswordSalesDemo_ variables.\n    \n\nOther variables are used by particular requests and are specified during execution of other requests. You do not need to fill in their values manually.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -254,7 +254,7 @@
               "raw": "{\r\n  \"CustomerClass\" : {\"value\" : \"ECCUSTOMER\"}\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}Customer?$filter=MainContact/Email eq 'demo@gmail.com'&$select=CustomerID,CustomerClass,MainContact/Email&$expand=MainContact",
+              "raw": "{{EndpointURL}}Customer?$filter=MainContact/Email eq 'demo@gmail.com'&$select=CustomerID,CustomerClass&$expand=MainContact($select=Email)",
               "host": [
                 "{{EndpointURL}}Customer"
               ],
@@ -265,11 +265,11 @@
                 },
                 {
                   "key": "$select",
-                  "value": "CustomerID,CustomerClass,MainContact/Email"
+                  "value": "CustomerID,CustomerClass"
                 },
                 {
                   "key": "$expand",
-                  "value": "MainContact"
+                  "value": "MainContact($select=Email)"
                 }
               ]
             },
@@ -348,18 +348,18 @@
               "raw": "{\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"OrderNbr\": { \"value\": \"000029\" },\r\n    \"Details\": [\r\n        {\r\n             \"id\": \"a1d07920-a402-e911-b818-00155d408001\",\r\n              \"OrderQty\": { \"value\": 2 },\r\n              \"DiscountAmount\": { \"value\": 5 }  \r\n        }\r\n    ]\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}SalesOrder?$expand=Details&$select=Details/DiscountAmount,Details/OrderQty,OrderNbr,OrderType",
+              "raw": "{{EndpointURL}}SalesOrder?$expand=Details($select=DiscountAmount,OrderQty)&$select=OrderNbr,OrderType",
               "host": [
                 "{{EndpointURL}}SalesOrder"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Details"
+                  "value": "Details($select=DiscountAmount,OrderQty)"
                 },
                 {
                   "key": "$select",
-                  "value": "Details/DiscountAmount,Details/OrderQty,OrderNbr,OrderType"
+                  "value": "OrderNbr,OrderType"
                 }
               ]
             },
@@ -677,7 +677,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{EndpointURL}}StockItem?$expand=WarehouseDetails&$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2024-08-18T23%3A59%3A59.999%2B04%3A00'",
+              "raw": "{{EndpointURL}}StockItem?$expand=WarehouseDetails&$filter=ItemStatus eq 'AC' and LastModifiedDateTime gt datetimeoffset'2024-08-18T23%3A59%3A59.999%2B04%3A00'",
               "host": [
                 "{{EndpointURL}}StockItem"
               ],
@@ -688,7 +688,7 @@
                 },
                 {
                   "key": "$filter",
-                  "value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2024-08-18T23%3A59%3A59.999%2B04%3A00'"
+                  "value": "ItemStatus eq 'AC' and LastModifiedDateTime gt datetimeoffset'2024-08-18T23%3A59%3A59.999%2B04%3A00'"
                 }
               ]
             },
@@ -1001,18 +1001,18 @@
               }
             ],
             "url": {
-              "raw": "{{EndpointURL}}Contact?$expand=Attributes&$select=FirstName,LastName,JobTitle,Attributes/AttributeID,Attributes/Value",
+              "raw": "{{EndpointURL}}Contact?$expand=Attributes($select=AttributeID,Value)&$select=FirstName,LastName,JobTitle",
               "host": [
                 "{{EndpointURL}}Contact"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Attributes"
+                  "value": "Attributes($select=AttributeID,Value)"
                 },
                 {
                   "key": "$select",
-                  "value": "FirstName,LastName,JobTitle,Attributes/AttributeID,Attributes/Value"
+                  "value": "FirstName,LastName,JobTitle"
                 }
               ]
             },
@@ -3756,21 +3756,21 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"Vendor\": {\r\n        \"value\": \"PRINTICO\"\r\n    },\r\n    \"VendorRef\": {\r\n        \"value\": \"123\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Bill for particular lines of a purchase order\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"POOrderType\": {\r\n                \"value\": \"Normal\"\r\n            },\r\n            \"POOrderNbr\": {\r\n                \"value\": \"000001\"\r\n            },\r\n             \"POLine\": {\r\n                \"value\": 1\r\n            },\r\n            \"Qty\":\r\n            {\r\n            \t\"value\": 5\r\n            }\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n\t\"Vendor\": {\r\n        \"value\": \"PRINTICO\"\r\n    },\r\n    \"VendorRef\": {\r\n        \"value\": \"123\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Bill for particular lines of a purchase order\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"POOrderType\": {\r\n                \"value\": { \"id\": \"RO\" }\r\n            },\r\n            \"POOrderNbr\": {\r\n                \"value\": \"000001\"\r\n            },\r\n             \"POLine\": {\r\n                \"value\": 1\r\n            },\r\n            \"Qty\":\r\n            {\r\n            \t\"value\": 5\r\n            }\r\n        }\r\n    ]\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}Bill?$select=ReferenceNbr,Details/POOrderNbr,Details/POOrderNbr,Details/InventoryID,Details/Qty&$expand=Details",
+              "raw": "{{EndpointURL}}Bill?$select=ReferenceNbr&$expand=Details($select=POOrderNbr,InventoryID,Qty)",
               "host": [
                 "{{EndpointURL}}Bill"
               ],
               "query": [
                 {
                   "key": "$select",
-                  "value": "ReferenceNbr,Details/POOrderNbr,Details/POOrderNbr,Details/InventoryID,Details/Qty"
+                  "value": "ReferenceNbr"
                 },
                 {
                   "key": "$expand",
-                  "value": "Details"
+                  "value": "Details($select=POOrderNbr,InventoryID,Qty)"
                 }
               ]
             },
@@ -3850,18 +3850,18 @@
               "raw": "{\r\n\t\"Vendor\": {\r\n        \"value\": \"OFFICEUP\"\r\n    },\r\n    \"VendorRef\": {\r\n        \"value\": \"123\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Bill for particular lines of a purchase receipt\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"POReceiptNbr\": {\r\n                \"value\": \"000001\"\r\n            },\r\n             \"POReceiptLine\": {\r\n                \"value\": 1\r\n            }\r\n        }\r\n    ]\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}Bill?$select=ReferenceNbr,Details/POReceiptNbr,Details/InventoryID,Details/Qty&$expand=Details",
+              "raw": "{{EndpointURL}}Bill?$select=ReferenceNbr&$expand=Details($select=POReceiptNbr,InventoryID,Qty)",
               "host": [
                 "{{EndpointURL}}Bill"
               ],
               "query": [
                 {
                   "key": "$select",
-                  "value": "ReferenceNbr,Details/POReceiptNbr,Details/InventoryID,Details/Qty"
+                  "value": "ReferenceNbr"
                 },
                 {
                   "key": "$expand",
-                  "value": "Details"
+                  "value": "Details($select=POReceiptNbr,InventoryID,Qty)"
                 }
               ]
             },
@@ -4016,7 +4016,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Amount\": {\r\n        \"value\": 1120.0\r\n    },\r\n    \"CashDiscountDate\": {\r\n        \"value\": \"11/18/2021\"\r\n    },\r\n    \"CurrencyID\": {\r\n        \"value\": \"USD\"\r\n    },\r\n    \"Date\": {\r\n        \"value\": \"10/18/2021\"\r\n    },\r\n    \"DueDate\": {\r\n        \"value\": \"11/18/2021\"\r\n    },\r\n    \"Hold\": {\r\n        \"value\": false\r\n    },\r\n    \"LocationID\": {\r\n        \"value\": \"MAIN\"\r\n    },\r\n    \"PostPeriod\": {\r\n        \"value\": \"102021\"\r\n    },\r\n    \"Status\": {\r\n        \"value\": \"Balanced\"\r\n    },\r\n    \"TaxAmount\": {\r\n        \"value\": 120.0\r\n    },\r\n    \"Terms\": {\r\n        \"value\": \"30D\"\r\n    },\r\n    \"Type\": {\r\n        \"value\": \"Bill\"\r\n    },\r\n    \"Vendor\": {\r\n        \"value\": \"AAVENDOR\"\r\n    },\r\n    \"VendorRef\": {\r\n        \"value\": \"test-API22\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"test-API\"\r\n    },\r\n    \"IsTaxValid\": {\r\n        \"value\": true\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"Account\": {\r\n                \"value\": \"50000\"\r\n            },\r\n            \"Branch\": {\r\n                \"value\": \"PRODWHOLE\"\r\n            },\r\n            \"CostCode\": {\r\n                \"value\": null\r\n            },\r\n            \"ExtendedCost\": {\r\n                \"value\": 1000.0\r\n            },\r\n            \"Project\": {\r\n                \"value\": \"X\"\r\n            },\r\n            \"Subaccount\": {\r\n                \"value\": \"000000\"\r\n            },\r\n            \"TaxCategory\": {\r\n                \"value\": \"TEST\"\r\n            }\r\n        }\r\n    ],\r\n    \"TaxDetails\": [\r\n        {\r\n            \"TaxID\": {\r\n                \"value\": \"CAGST\"\r\n            },\r\n            \"TaxableAmount\": {\r\n                \"value\": 1000.0\r\n            },\r\n            \"TaxAmount\": {\r\n                \"value\": 150.0\r\n            },\r\n            \"ExpenseAmount\": {\r\n                \"value\": 0.0\r\n            }\r\n        },\r\n        {\r\n            \"TaxID\": {\r\n                \"value\": \"PST\"\r\n            },\r\n            \"TaxableAmount\": {\r\n                \"value\": 1000.0\r\n            },\r\n            \"TaxAmount\": {\r\n                \"value\": 150.0\r\n            },\r\n            \"custom\": {\r\n                \"Taxes\": {\r\n                    \"CuryExpenseAmt\": {\r\n                        \"type\": \"CustomDecimalField\",\r\n                        \"value\": 70\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    ],\r\n    \"custom\": {\r\n        \"CurrentDocument\": {\r\n            \"TaxZoneID\": {\r\n                \"type\": \"CustomStringField\",\r\n                \"value\": \"CANADABC\"\r\n            }\r\n        }\r\n    }\r\n}"
+              "raw": "{\r\n    \"Amount\": {\r\n        \"value\": 1120.0\r\n    },\r\n    \"CashDiscountDate\": {\r\n        \"value\": \"11/18/2021\"\r\n    },\r\n    \"CurrencyID\": {\r\n        \"value\": \"USD\"\r\n    },\r\n    \"Date\": {\r\n        \"value\": \"2021-10-18\"\r\n    },\r\n    \"DueDate\": {\r\n        \"value\": \"2021-11-18\"\r\n    },\r\n    \"Hold\": {\r\n        \"value\": false\r\n    },\r\n    \"LocationID\": {\r\n        \"value\": \"MAIN\"\r\n    },\r\n    \"PostPeriod\": {\r\n        \"value\": \"102021\"\r\n    },\r\n    \"Status\": {\r\n        \"value\": { \"id\": \"B\" }\r\n    },\r\n    \"TaxAmount\": {\r\n        \"value\": 120.0\r\n    },\r\n    \"Terms\": {\r\n        \"value\": \"30D\"\r\n    },\r\n    \"Type\": {\r\n        \"value\": { \"id\": \"INV\" }\r\n    },\r\n    \"Vendor\": {\r\n        \"value\": \"AAVENDOR\"\r\n    },\r\n    \"VendorRef\": {\r\n        \"value\": \"test-API22\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"test-API\"\r\n    },\r\n    \"IsTaxValid\": {\r\n        \"value\": true\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"Account\": {\r\n                \"value\": \"50000\"\r\n            },\r\n            \"Branch\": {\r\n                \"value\": \"PRODWHOLE\"\r\n            },\r\n            \"CostCode\": {\r\n                \"value\": null\r\n            },\r\n            \"ExtendedCost\": {\r\n                \"value\": 1000.0\r\n            },\r\n            \"Project\": {\r\n                \"value\": \"X\"\r\n            },\r\n            \"Subaccount\": {\r\n                \"value\": \"000000\"\r\n            },\r\n            \"TaxCategory\": {\r\n                \"value\": \"TEST\"\r\n            }\r\n        }\r\n    ],\r\n    \"TaxDetails\": [\r\n        {\r\n            \"TaxID\": {\r\n                \"value\": \"CAGST\"\r\n            },\r\n            \"TaxableAmount\": {\r\n                \"value\": 1000.0\r\n            },\r\n            \"TaxAmount\": {\r\n                \"value\": 150.0\r\n            },\r\n            \"ExpenseAmount\": {\r\n                \"value\": 0.0\r\n            }\r\n        },\r\n        {\r\n            \"TaxID\": {\r\n                \"value\": \"PST\"\r\n            },\r\n            \"TaxableAmount\": {\r\n                \"value\": 1000.0\r\n            },\r\n            \"TaxAmount\": {\r\n                \"value\": 150.0\r\n            },\r\n            \"custom\": {\r\n                \"Taxes\": {\r\n                    \"CuryExpenseAmt\": {\r\n                        \"type\": \"CustomDecimalField\",\r\n                        \"value\": 70\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    ],\r\n    \"custom\": {\r\n        \"CurrentDocument\": {\r\n            \"TaxZoneID\": {\r\n                \"type\": \"CustomStringField\",\r\n                \"value\": \"CANADABC\"\r\n            }\r\n        }\r\n    }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}Bill?$expand=Details,TaxDetails",
@@ -4117,7 +4117,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"entity\": {\r\n        \"Type\": {\"value\": \"Bill\"},\r\n        \"ReferenceNbr\": {\"value\": \"000159\"}\r\n    },\r\n    \"parameters\": {}\r\n}"
+              "raw": "{\r\n    \"entity\": {\r\n        \"Type\": {\"value\": { \"id\": \"INV\" }},\r\n        \"ReferenceNbr\": {\"value\": \"000159\"}\r\n    },\r\n    \"parameters\": {}\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}Bill/Approve",
@@ -4167,7 +4167,7 @@
                   "            }\r",
                   "            else\r",
                   "            {   \r",
-                  "                var url = pm.collectionVariables.get('EndpointURL') + \"Bill/Bill/000072?$expand=RetainageDocuments\";\r",
+                  "                var url = pm.collectionVariables.get('EndpointURL') + \"Bill/INV/000072?$expand=RetainageDocuments\";\r",
                   "                var requestBill = {\r",
                   "                    url: url,\r",
                   "                    method: 'GET',\r",
@@ -4242,7 +4242,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"entity\": {\r\n        \"Type\": {\r\n            \"value\": \"Bill\"\r\n        },\r\n        \"ReferenceNbr\": {\r\n            \"value\": \"000072\"\r\n        }\r\n    },\r\n    \"parameters\": {\r\n        \"Date\": {\r\n            \"value\": \"2027-03-01T11:00:00.000Z\"\r\n        },\r\n        \"PostPeriod\": {\r\n            \"value\": \"032027\"\r\n        },\r\n        \"AmtToRelease\": {\r\n            \"value\": 500\r\n        }\r\n    }\r\n}"
+              "raw": "{\r\n    \"entity\": {\r\n        \"Type\": {\r\n            \"value\": { \"id\": \"INV\" }\r\n        },\r\n        \"ReferenceNbr\": {\r\n            \"value\": \"000072\"\r\n        }\r\n    },\r\n    \"parameters\": {\r\n        \"Date\": {\r\n            \"value\": \"2027-03-01T11:00:00.000Z\"\r\n        },\r\n        \"PostPeriod\": {\r\n            \"value\": \"032027\"\r\n        },\r\n        \"AmtToRelease\": {\r\n            \"value\": 500\r\n        }\r\n    }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}Bill/ReleaseRetainage",
@@ -5400,18 +5400,18 @@
               }
             ],
             "url": {
-              "raw": "{{EndpointURL}}Customer?$expand=MainContact,MainContact/Address&$select=CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode",
+              "raw": "{{EndpointURL}}Customer?$expand=MainContact($select=Email,Phone1;$expand=Address($select=AddressLine1,AddressLine2,City,State,PostalCode))&$select=CustomerID,CustomerName,CustomerClass",
               "host": [
                 "{{EndpointURL}}Customer"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "MainContact,MainContact/Address"
+                  "value": "MainContact($select=Email,Phone1;$expand=Address($select=AddressLine1,AddressLine2,City,State,PostalCode))"
                 },
                 {
                   "key": "$select",
-                  "value": "CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode"
+                  "value": "CustomerID,CustomerName,CustomerClass"
                 }
               ]
             },
@@ -5489,14 +5489,14 @@
               "raw": "{\r\n    \"CustomerClass\": {\"value\": \"INTL\"},\r\n    \"BillingContactOverride\": {\"value\": true},\r\n    \"BillingContact\": {\r\n        \"Email\": {\"value\": \"green@jevy-comp.con\"},\r\n        \"Attention\": {\"value\": \"Mr. Jack Green\"},\r\n        \"JobTitle\": {\"value\": \"\"}\r\n    }\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}Customer?$expand=MainContact,BillingContact&$filter=MainContact/Email eq 'info@jevy-comp.con'&$select=CustomerID,CustomerClass,BillingContact/Email",
+              "raw": "{{EndpointURL}}Customer?$expand=MainContact,BillingContact($select=Email)&$filter=MainContact/Email eq 'info@jevy-comp.con'&$select=CustomerID,CustomerClass",
               "host": [
                 "{{EndpointURL}}Customer"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "MainContact,BillingContact"
+                  "value": "MainContact,BillingContact($select=Email)"
                 },
                 {
                   "key": "$filter",
@@ -5504,7 +5504,7 @@
                 },
                 {
                   "key": "$select",
-                  "value": "CustomerID,CustomerClass,BillingContact/Email"
+                  "value": "CustomerID,CustomerClass"
                 }
               ]
             },
@@ -5969,7 +5969,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Status\": {\"value\": \"Active\"},\r\n    \"FinancialSettings\":\r\n    {\r\n        \"APAccount\": {\"value\": \"20000\"},\r\n        \"APSubaccount\": {\"value\": \"000000\"},\r\n        \"CashAccount\": {\"value\": \"10200WH\"},\r\n        \"ExpenseAccount\": {\"value\": \"63000\"},\r\n        \"ExpenseSubaccount\": {\"value\": \"000000\"},\r\n        \"PaymentMethod\": {\"value\": \"CHECK\"},\r\n        \"PrepaymentAccount\": {\"value\": \"20000\"},\r\n        \"PrepaymentSubaccount\": {\"value\": \"000000\"},\r\n        \"SalesAccount\": {\"value\": \"40000\"},\r\n        \"SalesSubaccount\": {\"value\": \"000000\"},\r\n        \"TaxZone\": {},\r\n        \"Terms\": {\"value\": \"7D\"}\r\n    },\r\n    \"EmployeeSettings\":\r\n    {\r\n        \"BranchID\": {\"value\": \"HEADOFFICE\"},\r\n        \"Calendar\": {\"value\": \"MAIN\"},\r\n        \"CurrencyID\": {\"value\": \"USD\"},\r\n        \"CurrencyRateTypeID\": {\"value\": \"SPOT\"},\r\n        \"DepartmentID\": {\"value\": \"AFTERSALES\"},\r\n        \"EmployeeClass\": {\"value\": \"EMPHOURLY\"}\r\n    },\r\n    \"ContactInfo\":\r\n    {\r\n        \"FirstName\": {\"value\": \"Jane\"},\r\n        \"LastName\": {\"value\": \"Doe\"}\r\n    }\r\n}"
+              "raw": "{\r\n    \"Status\": {\"value\": { \"id\": \"A\" }},\r\n    \"FinancialSettings\":\r\n    {\r\n        \"APAccount\": {\"value\": \"20000\"},\r\n        \"APSubaccount\": {\"value\": \"000000\"},\r\n        \"CashAccount\": {\"value\": \"10200WH\"},\r\n        \"ExpenseAccount\": {\"value\": \"63000\"},\r\n        \"ExpenseSubaccount\": {\"value\": \"000000\"},\r\n        \"PaymentMethod\": {\"value\": \"CHECK\"},\r\n        \"PrepaymentAccount\": {\"value\": \"20000\"},\r\n        \"PrepaymentSubaccount\": {\"value\": \"000000\"},\r\n        \"SalesAccount\": {\"value\": \"40000\"},\r\n        \"SalesSubaccount\": {\"value\": \"000000\"},\r\n        \"TaxZone\": {},\r\n        \"Terms\": {\"value\": \"7D\"}\r\n    },\r\n    \"EmployeeSettings\":\r\n    {\r\n        \"BranchID\": {\"value\": \"HEADOFFICE\"},\r\n        \"Calendar\": {\"value\": \"MAIN\"},\r\n        \"CurrencyID\": {\"value\": \"USD\"},\r\n        \"CurrencyRateTypeID\": {\"value\": \"SPOT\"},\r\n        \"DepartmentID\": {\"value\": \"AFTERSALES\"},\r\n        \"EmployeeClass\": {\"value\": \"EMPHOURLY\"}\r\n    },\r\n    \"ContactInfo\":\r\n    {\r\n        \"FirstName\": {\"value\": \"Jane\"},\r\n        \"LastName\": {\"value\": \"Doe\"}\r\n    }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}Employee",
@@ -6155,14 +6155,14 @@
               "raw": "{\r\n    \"EmployeePayrollClassID\": {\r\n        \"value\": \"TESTCLASS\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Test CLASS\"\r\n    },\r\n    \"PayrollDefaults\": {\r\n        \"EmployeeType\": {\r\n            \"value\": \"Hourly\"\r\n        },\r\n        \"PayGroup\": {\r\n            \"value\": \"WEEKLY\"\r\n        },\r\n        \"DefaultCalendar\": {\r\n            \"value\": \"MAIN\"\r\n        },\r\n        \"WorkingWeeksPerYear\": {\r\n            \"value\": 51\r\n        },\r\n        \"OverrideHoursPerYearforCertProject\": {\r\n            \"value\": true\r\n        },\r\n        \"CertifiedProjectHoursperYear\": {\r\n            \"value\": 2050\r\n        },\r\n        \"ExemptFromOvertimeRules\": {\r\n            \"value\": true\r\n        },\r\n        \"NetPayMinimum\": {\r\n            \"value\": 150\r\n        },\r\n        \"MaximumPercentofNetPayforallGarnishments\": {\r\n            \"value\": 45\r\n        },\r\n        \"DefaultWCCCode\": {\r\n            \"value\": \"5606\"\r\n        },\r\n        \"DefaultUnion\": {\r\n            \"value\": \"NYS\"\r\n        },\r\n        \"ExemptFromCertifiedReporting\": {\r\n            \"value\": false\r\n        },\r\n        \"WorkLocations\": [\r\n            {\r\n                \"LocationID\": {\r\n                    \"value\": \"BELLEVUE\"\r\n                },\r\n                \"DefaultWorkLocation\": {\r\n                    \"value\": true\r\n                }\r\n            }\r\n        ]\r\n    },\r\n    \"PTODefaults\": [\r\n        {\r\n            \"PTOBank\": {\r\n                \"value\": \"PTO\"\r\n            },\r\n            \"EffectiveDate\": {\r\n                \"value\": \"01/01/2016\"\r\n            },\r\n            \"Active\": {\r\n                \"value\": \"true\"\r\n            },\r\n            \"AccrualPercent\": {\r\n                \"value\": \"7\"\r\n            },\r\n            \"AccrualLimit\": {\r\n                \"value\": \"150\"\r\n            },\r\n            \"CarryoverType\": {\r\n                \"value\": \"Partial\"\r\n            },\r\n            \"CarryoverAmount\": {\r\n                \"value\": \"200\"\r\n            },\r\n            \"FrontLoadingAmount\": {\r\n                \"value\": \"24\"\r\n            }\r\n        }\r\n    ]\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}EmployeePayrollClass?$expand=PayrollDefaults/WorkLocations,PTODefaults",
+              "raw": "{{EndpointURL}}EmployeePayrollClass?$expand=PayrollDefaults($expand=WorkLocations),PTODefaults",
               "host": [
                 "{{EndpointURL}}EmployeePayrollClass"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "PayrollDefaults/WorkLocations,PTODefaults"
+                  "value": "PayrollDefaults($expand=WorkLocations),PTODefaults"
                 }
               ]
             },
@@ -6337,14 +6337,14 @@
               "raw": "{\r\n    \"EmployeeID\": {\r\n        \"value\": \"EP00000004\"\r\n    },\r\n    \"WorkLocations\": {\r\n        \"WorkLocationClassDefaults\": {\r\n            \"value\": false\r\n        },\r\n        \"WorkLocationDetails\": [\r\n            {\r\n                \"LocationID\": {\r\n                    \"value\": \"BELLEVUE\"\r\n                },\r\n                \"DefaultWorkLocation\": {\r\n                    \"value\": false\r\n                }\r\n            }\r\n        ]\r\n    }\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}EmployeePayrollSettings?$expand=WorkLocations/WorkLocationDetails",
+              "raw": "{{EndpointURL}}EmployeePayrollSettings?$expand=WorkLocations($expand=WorkLocationDetails)",
               "host": [
                 "{{EndpointURL}}EmployeePayrollSettings"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "WorkLocations/WorkLocationDetails"
+                  "value": "WorkLocations($expand=WorkLocationDetails)"
                 }
               ]
             },
@@ -6500,7 +6500,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Date\": {\r\n        \"value\": \"2026-12-02T00:00:00+03:00\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Descr\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"HEADOFFICE\"\r\n            },\r\n            \"ExtCost\": {\r\n                \"value\": 0\r\n            },\r\n            \"ExtPrice\": {\r\n                \"value\": 4.15\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"APJAM08\"\r\n            },\r\n            \"LineNumber\": {\r\n                \"value\": 1\r\n            },\r\n            \"Location\": {\r\n                \"value\": \"MAIN\"\r\n            },\r\n            \"Project\": {\r\n                \"value\": \"X\"\r\n            },\r\n            \"Qty\": {\r\n                \"value\": 1\r\n            },\r\n            \"TranType\": {\r\n                \"value\": \"Issue\"\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 0\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"PIECE\"\r\n            },\r\n            \"Warehouse\": {\r\n                \"value\": \"RETAIL\"\r\n            }\r\n        }\r\n    ],\r\n    \"PostPeriod\": {\r\n        \"value\": \"122026\"\r\n    }\r\n}"
+              "raw": "{\r\n    \"Date\": {\r\n        \"value\": \"2026-12-02T00:00:00+03:00\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Descr\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"HEADOFFICE\"\r\n            },\r\n            \"ExtCost\": {\r\n                \"value\": 0\r\n            },\r\n            \"ExtPrice\": {\r\n                \"value\": 4.15\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"APJAM08\"\r\n            },\r\n            \"LineNumber\": {\r\n                \"value\": 1\r\n            },\r\n            \"Location\": {\r\n                \"value\": \"MAIN\"\r\n            },\r\n            \"Project\": {\r\n                \"value\": \"X\"\r\n            },\r\n            \"Qty\": {\r\n                \"value\": 1\r\n            },\r\n            \"TranType\": {\r\n                \"value\": { \"id\": \"II\" }\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 0\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"PIECE\"\r\n            },\r\n            \"Warehouse\": {\r\n                \"value\": \"RETAIL\"\r\n            }\r\n        }\r\n    ],\r\n    \"PostPeriod\": {\r\n        \"value\": \"122026\"\r\n    }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}InventoryIssue?$expand=Details",
@@ -6963,7 +6963,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"CreatedDateTime\": {\r\n        \"value\": \"1900-01-01T03:00:00+03:00\"\r\n    },\r\n    \"Customer\": {\r\n        \"value\": \"AACUSTOMER\"\r\n    },\r\n    \"Date\": {\r\n        \"value\": \"2022-01-23T00:00:00+03:00\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Invoice with Taxes\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"Account\": {\r\n                \"value\": \"40000\"\r\n            },\r\n            \"Amount\": {\r\n                \"value\": 1000\r\n            },\r\n            \"Branch\": {\r\n                \"value\": \"PRODWHOLE\"\r\n            },\r\n            \"ExtendedPrice\": {\r\n                \"value\": 1000\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"CONSULTING\"\r\n            },\r\n            \"LineNbr\": {\r\n                \"value\": 1\r\n            },\r\n            \"ProjectTask\": {},\r\n            \"Qty\": {\r\n                \"value\": 10\r\n            },\r\n            \"TransactionDescription\": {\r\n                \"value\": \"Project Consulting\"\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 100\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"HOUR\"\r\n            }\r\n        }\r\n    ],\r\n    \"Hold\": {\r\n        \"value\": false\r\n    },\r\n    \"IsTaxValid\": {\r\n        \"value\": true\r\n    },\r\n    \"LocationID\": {\r\n        \"value\": \"MAIN\"\r\n    },\r\n    \"PostPeriod\": {\r\n        \"value\": \"012022\"\r\n    },\r\n    \"TaxDetails\": [\r\n        {\r\n            \"TaxID\": {\r\n                \"value\": \"CAGST\"\r\n            },\r\n            \"TaxableAmount\": {\r\n                \"value\": 1000.0\r\n            },\r\n            \"TaxAmount\": {\r\n                \"value\": 150.0\r\n            },\r\n            \"ExpenseAmount\": {\r\n                \"value\": 0.0\r\n            }\r\n        },\r\n        {\r\n            \"TaxID\": {\r\n                \"value\": \"PST\"\r\n            },\r\n            \"TaxableAmount\": {\r\n                \"value\": 1000.0\r\n            },\r\n            \"TaxAmount\": {\r\n                \"value\": 150.0\r\n            }\r\n        }\r\n    ],\r\n    \"Type\": {\r\n        \"value\": \"Invoice\"\r\n    },\r\n    \"custom\": {\r\n        \"CurrentDocument\": {\r\n            \"TaxZoneID\": {\r\n                \"type\": \"CustomStringField\",\r\n                \"value\": \"CANADABC\"\r\n            }\r\n        }\r\n    }\r\n}"
+              "raw": "{\r\n    \"CreatedDateTime\": {\r\n        \"value\": \"1900-01-01T03:00:00+03:00\"\r\n    },\r\n    \"Customer\": {\r\n        \"value\": \"AACUSTOMER\"\r\n    },\r\n    \"Date\": {\r\n        \"value\": \"2022-01-23\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Invoice with Taxes\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"Account\": {\r\n                \"value\": \"40000\"\r\n            },\r\n            \"Amount\": {\r\n                \"value\": 1000\r\n            },\r\n            \"Branch\": {\r\n                \"value\": \"PRODWHOLE\"\r\n            },\r\n            \"ExtendedPrice\": {\r\n                \"value\": 1000\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"CONSULTING\"\r\n            },\r\n            \"LineNbr\": {\r\n                \"value\": 1\r\n            },\r\n            \"ProjectTask\": {},\r\n            \"Qty\": {\r\n                \"value\": 10\r\n            },\r\n            \"TransactionDescription\": {\r\n                \"value\": \"Project Consulting\"\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 100\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"HOUR\"\r\n            }\r\n        }\r\n    ],\r\n    \"Hold\": {\r\n        \"value\": false\r\n    },\r\n    \"IsTaxValid\": {\r\n        \"value\": true\r\n    },\r\n    \"LocationID\": {\r\n        \"value\": \"MAIN\"\r\n    },\r\n    \"PostPeriod\": {\r\n        \"value\": \"012022\"\r\n    },\r\n    \"TaxDetails\": [\r\n        {\r\n            \"TaxID\": {\r\n                \"value\": \"CAGST\"\r\n            },\r\n            \"TaxableAmount\": {\r\n                \"value\": 1000.0\r\n            },\r\n            \"TaxAmount\": {\r\n                \"value\": 150.0\r\n            },\r\n            \"ExpenseAmount\": {\r\n                \"value\": 0.0\r\n            }\r\n        },\r\n        {\r\n            \"TaxID\": {\r\n                \"value\": \"PST\"\r\n            },\r\n            \"TaxableAmount\": {\r\n                \"value\": 1000.0\r\n            },\r\n            \"TaxAmount\": {\r\n                \"value\": 150.0\r\n            }\r\n        }\r\n    ],\r\n    \"Type\": {\r\n        \"value\": { \"id\": \"INV\" }\r\n    },\r\n    \"custom\": {\r\n        \"CurrentDocument\": {\r\n            \"TaxZoneID\": {\r\n                \"type\": \"CustomStringField\",\r\n                \"value\": \"CANADABC\"\r\n            }\r\n        }\r\n    }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}Invoice?$expand=Details,TaxDetails",
@@ -7437,7 +7437,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"Module\" : {\"value\" : \"GL\"},\r\n  \"TransactionDate\" : {\"value\" : \"2026-02-15T00:00:00\"},\r\n  \"Description\" : {\"value\" : \"Transaction description\"},\r\n  \"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \"Details\" : [\r\n  \t{\r\n  \t\t\"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \t\t\"Account\" : {\"value\" : \"10200\"},\r\n  \t\t\"CostCode\" : {\"value\" : \"00000\"},\r\n  \t\t\"IsNonPM\" : {\"value\" : true}\r\n  \t}\r\n  ]\r\n}"
+              "raw": "{\r\n  \"Module\" : {\"value\" : \"GL\"},\r\n  \"TransactionDate\" : {\"value\" : \"2026-02-15\"},\r\n  \"Description\" : {\"value\" : \"Transaction description\"},\r\n  \"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \"Details\" : [\r\n  \t{\r\n  \t\t\"BranchID\" : {\"value\" : \"HEADOFFICE\"},\r\n  \t\t\"Account\" : {\"value\" : \"10200\"},\r\n  \t\t\"CostCode\" : {\"value\" : \"00000\"},\r\n  \t\t\"IsNonPM\" : {\"value\" : true}\r\n  \t}\r\n  ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}JournalTransaction?$expand=Details",
@@ -7601,18 +7601,18 @@
               }
             ],
             "url": {
-              "raw": "{{EndpointURL}}Ledger?$expand=Branches,Companies&$select=LedgerID,Branches/BranchID,Branches/BranchName,Branches/CompanyName,Companies/Company,Companies/CompanyName",
+              "raw": "{{EndpointURL}}Ledger?$expand=Branches($select=BranchID,BranchName,CompanyName),Companies($select=Company,CompanyName)&$select=LedgerID",
               "host": [
                 "{{EndpointURL}}Ledger"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Branches,Companies"
+                  "value": "Branches($select=BranchID,BranchName,CompanyName),Companies($select=Company,CompanyName)"
                 },
                 {
                   "key": "$select",
-                  "value": "LedgerID,Branches/BranchID,Branches/BranchName,Branches/CompanyName,Companies/Company,Companies/CompanyName"
+                  "value": "LedgerID"
                 }
               ]
             },
@@ -8013,7 +8013,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"CashAccount\": {\"value\": \"10250ST\"},\r\n    \"CustomerID\": {\"value\": \"FRUITICO\"},\r\n    \"Hold\": {\"value\": false},\r\n    \"PaymentAmount\": {\"value\": {{paymentAmount}}},\r\n    \"Type\": {\"value\": \"Payment\"}\r\n}"
+              "raw": "{\r\n    \"CashAccount\": {\"value\": \"10250ST\"},\r\n    \"CustomerID\": {\"value\": \"FRUITICO\"},\r\n    \"Hold\": {\"value\": false},\r\n    \"PaymentAmount\": {\"value\": {{paymentAmount}}},\r\n    \"Type\": {\"value\": { \"id\": \"PMT\" }}\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}Payment",
@@ -8089,7 +8089,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Branch\": {\r\n        \"value\": \"HEADOFFICE\"\r\n    },\r\n    \"CashAccount\": {\r\n        \"value\": \"10200WH\"\r\n    },\r\n    \"CurrencyID\": {\r\n        \"value\": \"USD\"\r\n    },\r\n    \"CustomerID\": {\r\n        \"value\": \"GOODFOOD\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Creating Payment for different doc types\"\r\n    },\r\n    \"PaymentMethod\": {\r\n        \"value\": \"CHECK\"\r\n    },\r\n    \"Type\": {\r\n        \"value\": \"Payment\"\r\n    },\r\n    \"DocumentsToApply\": [\r\n        {\r\n            \"DocType\": {\r\n                \"value\": \"INV\"\r\n            },\r\n            \"DocLineNbr\": {\r\n                \"value\": \"1\"\r\n            },\r\n            \"ReferenceNbr\": {\r\n                \"value\": \"000002\"\r\n            }\r\n        }\r\n    ],\r\n    \"OrdersToApply\": [\r\n        {\r\n            \"OrderType\": {\r\n                \"value\": \"SO\"\r\n            },\r\n            \"OrderNbr\": {\r\n                \"value\": \"000036\"\r\n            }\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"Branch\": {\r\n        \"value\": \"HEADOFFICE\"\r\n    },\r\n    \"CashAccount\": {\r\n        \"value\": \"10200WH\"\r\n    },\r\n    \"CurrencyID\": {\r\n        \"value\": \"USD\"\r\n    },\r\n    \"CustomerID\": {\r\n        \"value\": \"GOODFOOD\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Creating Payment for different doc types\"\r\n    },\r\n    \"PaymentMethod\": {\r\n        \"value\": \"CHECK\"\r\n    },\r\n    \"Type\": {\r\n        \"value\": { \"id\": \"PMT\" }\r\n    },\r\n    \"DocumentsToApply\": [\r\n        {\r\n            \"DocType\": {\r\n                \"value\": { \"id\": \"INV\" }\r\n            },\r\n            \"DocLineNbr\": {\r\n                \"value\": \"1\"\r\n            },\r\n            \"ReferenceNbr\": {\r\n                \"value\": \"000002\"\r\n            }\r\n        }\r\n    ],\r\n    \"OrdersToApply\": [\r\n        {\r\n            \"OrderType\": {\r\n                \"value\": \"SO\"\r\n            },\r\n            \"OrderNbr\": {\r\n                \"value\": \"000036\"\r\n            }\r\n        }\r\n    ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}Payment?$expand=OrdersToApply,DocumentsToApply",
@@ -8214,7 +8214,7 @@
                   "            }\r",
                   "            else\r",
                   "            {\r",
-                  "                var url = pm.collectionVariables.get('EndpointURL') + 'Payment/Payment/' + pm.collectionVariables.get('paymentRefNbr');\r",
+                  "                var url = pm.collectionVariables.get('EndpointURL') + 'Payment/PMT/' + pm.collectionVariables.get('paymentRefNbr');\r",
                   "                var requestPayment = {\r",
                   "                    url: url,\r",
                   "                    method: 'GET',\r",
@@ -8313,7 +8313,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"entity\": {\r\n        \"Type\": {\r\n            \"value\": \"Payment\"\r\n        },\r\n        \"ReferenceNbr\": {\r\n            \"value\": \"{{paymentRefNbr}}\"\r\n        }\r\n    }\r\n}"
+              "raw": "{\r\n    \"entity\": {\r\n        \"Type\": {\r\n            \"value\": { \"id\": \"PMT\" }\r\n        },\r\n        \"ReferenceNbr\": {\r\n            \"value\": \"{{paymentRefNbr}}\"\r\n        }\r\n    }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}Payment/Release",
@@ -8346,11 +8346,11 @@
                   "});\r",
                   "pm.test(\"Document type is Payment\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.Type.value).to.eql('Payment');\r",
+                  "    pm.expect(jsonResponse.Type.value.id).to.eql('PMT');\r",
                   "});\r",
                   "pm.test(\"Payment is applied to invoice\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.ApplicationHistory[0].DisplayDocType.value).to.eql('Invoice');\r",
+                  "    pm.expect(jsonResponse.ApplicationHistory[0].DisplayDocType.value.id).to.eql('INV');\r",
                   "});\r",
                   "//Sign out and set next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -8394,7 +8394,7 @@
               }
             ],
             "url": {
-              "raw": "{{EndpointURL}}Payment/Payment/000001?$select=ReferenceNbr,Type,Status,ApplicationDate,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr&$expand=ApplicationHistory",
+              "raw": "{{EndpointURL}}Payment/Payment/000001?$select=ReferenceNbr,Type,Status,ApplicationDate&$expand=ApplicationHistory($select=DisplayDocType,DisplayRefNbr)",
               "host": [
                 "{{EndpointURL}}Payment"
               ],
@@ -8405,11 +8405,11 @@
               "query": [
                 {
                   "key": "$select",
-                  "value": "ReferenceNbr,Type,Status,ApplicationDate,ApplicationHistory/DisplayDocType,ApplicationHistory/DisplayRefNbr"
+                  "value": "ReferenceNbr,Type,Status,ApplicationDate"
                 },
                 {
                   "key": "$expand",
-                  "value": "ApplicationHistory"
+                  "value": "ApplicationHistory($select=DisplayDocType,DisplayRefNbr)"
                 }
               ]
             },
@@ -9193,7 +9193,7 @@
                   "});\r",
                   "pm.test(\"Project is active\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.Status.value).to.eql('Active');\r",
+                  "    pm.expect(jsonResponse.Status.value.id).to.eql('A');\r",
                   "});\r",
                   "//Sign out and set the next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -10027,7 +10027,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Branch\": { \"value\": \"HEADOFFICE\" },\r\n    \"Details\": [\r\n        {\r\n            \"BranchID\": { \"value\": \"HEADOFFICE\" },\r\n            \"InventoryID\": { \"value\": \"APPLES\" },\r\n            \"LineType\": { \"value\": \"Goods for IN\" },\r\n            \"OrderQty\": { \"value\": 20 },\r\n            \"OrderType\": { \"value\": \"RO\" },\r\n            \"TaxCategory\": { \"value\": \"TAXABLE\" },\r\n            \"UnitCost\": { \"value\": 2.29 },\r\n            \"UOM\": { \"value\": \"LB\" },\r\n            \"WarehouseID\": { \"value\": \"WHOLESALE\" }\r\n        }\r\n    ],\r\n    \"Hold\": { \"value\": true },\r\n    \"IsTaxValid\":  { \"value\": true },\r\n    \"Location\": { \"value\": \"MAIN\" },\r\n    \"TaxDetails\": [\r\n        {\r\n            \"TaxableAmount\": { \"value\": 45.8 },\r\n            \"TaxAmount\": { \"value\": 0 },\r\n            \"TaxID\": { \"value\": \"NYSTATETAX\" },\r\n            \"TaxRate\": { \"value\": 0 }\r\n        }\r\n    ],\r\n    \"Terms\": { \"value\": \"30D\" },\r\n    \"Type\": { \"value\": \"Normal\" },\r\n    \"VendorID\": { \"value\": \"ALLFRUITS\" },\r\n    \"VendorTaxZone\": { \"value\": \"NYZONE\" }\r\n}"
+              "raw": "{\r\n    \"Branch\": { \"value\": \"HEADOFFICE\" },\r\n    \"Details\": [\r\n        {\r\n            \"BranchID\": { \"value\": \"HEADOFFICE\" },\r\n            \"InventoryID\": { \"value\": \"APPLES\" },\r\n            \"LineType\": { \"value\": { \"id\": \"GI\" } },\r\n            \"OrderQty\": { \"value\": 20 },\r\n            \"OrderType\": { \"value\": \"RO\" },\r\n            \"TaxCategory\": { \"value\": \"TAXABLE\" },\r\n            \"UnitCost\": { \"value\": 2.29 },\r\n            \"UOM\": { \"value\": \"LB\" },\r\n            \"WarehouseID\": { \"value\": \"WHOLESALE\" }\r\n        }\r\n    ],\r\n    \"Hold\": { \"value\": true },\r\n    \"IsTaxValid\":  { \"value\": true },\r\n    \"Location\": { \"value\": \"MAIN\" },\r\n    \"TaxDetails\": [\r\n        {\r\n            \"TaxableAmount\": { \"value\": 45.8 },\r\n            \"TaxAmount\": { \"value\": 0 },\r\n            \"TaxID\": { \"value\": \"NYSTATETAX\" },\r\n            \"TaxRate\": { \"value\": 0 }\r\n        }\r\n    ],\r\n    \"Terms\": { \"value\": \"30D\" },\r\n    \"Type\": { \"value\": { \"id\": \"RO\" } },\r\n    \"VendorID\": { \"value\": \"ALLFRUITS\" },\r\n    \"VendorTaxZone\": { \"value\": \"NYZONE\" }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}PurchaseOrder?$expand=Details,TaxDetails",
@@ -10117,7 +10117,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"VendorID\": { \"value\": \"PRINTICO\" },\r\n    \"Location\": { \"value\": \"MAIN\" },\r\n    \"Details\": [\r\n        {\r\n            \"POOrderNbr\": { \"value\": \"000001\" },\r\n            \"POOrderType\": { \"value\": \"Normal\" }\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"VendorID\": { \"value\": \"PRINTICO\" },\r\n    \"Location\": { \"value\": \"MAIN\" },\r\n    \"Details\": [\r\n        {\r\n            \"POOrderNbr\": { \"value\": \"000001\" },\r\n            \"POOrderType\": { \"value\": { \"id\": \"RO\" } }\r\n        }\r\n    ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}PurchaseReceipt?$expand=Details",
@@ -10199,17 +10199,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Type\": {\"value\": \"Receipt\"},\r\n    \"VendorID\": {\"value\": \"GOODFRUITS\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"Description\": {\"value\": \"Test receipt with allocations\"},\r\n    \"Details\": [\r\n        {\r\n            \"InventoryID\": {\"value\": \"APJAM08\"},\r\n            \"ReceiptQty\": {\"value\": \"2\"},\r\n            \"Allocations\": [\r\n                {\r\n                    \"Location\": {\"value\": \"MAIN\"},\r\n                    \"Qty\": {\"value\": \"1\"}\r\n                },\r\n                {\r\n                    \"Location\": {\"value\": \"SORT\"},\r\n                    \"Qty\": {\"value\": \"1\"}\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"InventoryID\": {\"value\": \"APJAM32\"},\r\n            \"ReceiptQty\": {\"value\": \"2\"},\r\n            \"Allocations\": [\r\n                {\r\n                    \"Location\": {\"value\": \"MAIN\"},\r\n                    \"Qty\": {\"value\": \"1\"}\r\n                },\r\n                {\r\n                    \"Location\": {\"value\": \"SORT\"},\r\n                    \"Qty\": {\"value\": \"1\"}\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"Type\": {\"value\": { \"id\": \"RT\" }},\r\n    \"VendorID\": {\"value\": \"GOODFRUITS\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"Description\": {\"value\": \"Test receipt with allocations\"},\r\n    \"Details\": [\r\n        {\r\n            \"InventoryID\": {\"value\": \"APJAM08\"},\r\n            \"ReceiptQty\": {\"value\": \"2\"},\r\n            \"Allocations\": [\r\n                {\r\n                    \"Location\": {\"value\": \"MAIN\"},\r\n                    \"Qty\": {\"value\": \"1\"}\r\n                },\r\n                {\r\n                    \"Location\": {\"value\": \"SORT\"},\r\n                    \"Qty\": {\"value\": \"1\"}\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"InventoryID\": {\"value\": \"APJAM32\"},\r\n            \"ReceiptQty\": {\"value\": \"2\"},\r\n            \"Allocations\": [\r\n                {\r\n                    \"Location\": {\"value\": \"MAIN\"},\r\n                    \"Qty\": {\"value\": \"1\"}\r\n                },\r\n                {\r\n                    \"Location\": {\"value\": \"SORT\"},\r\n                    \"Qty\": {\"value\": \"1\"}\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}PurchaseReceipt?$expand=Details,Details/Allocations",
+              "raw": "{{EndpointURL}}PurchaseReceipt?$expand=Details($expand=Allocations)",
               "host": [
                 "{{EndpointURL}}PurchaseReceipt"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Details,Details/Allocations"
+                  "value": "Details($expand=Allocations)"
                 }
               ]
             },
@@ -10287,17 +10287,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Type\": {\"value\": \"Receipt\"},\r\n    \"VendorID\": {\"value\": \"GLORYFRUIT\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"Description\": {\"value\": \"Test receipt with Expiration Date in Allocations\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"GUAVAS\"},\r\n            \"ReceiptQty\": {\"value\": 2},\r\n            \"Warehouse\": {\"value\": \"WHOLESALE\"},\r\n            \"Allocations\": [\r\n                {\r\n                    \"Location\": {\"value\": \"MAIN\"},\r\n                    \"Qty\": {\"value\": 1},\r\n                    \"LotSerialNbr\": {\"value\": \"a\"},\r\n                    \"ExpirationDate\": {\"value\": \"2026-12-25\"}\r\n                },\r\n                {\r\n                    \"Location\": {\"value\": \"MAIN\"},\r\n                    \"Qty\": {\"value\": 1},\r\n                    \"LotSerialNbr\": {\"value\": \"b\"},\r\n                    \"ExpirationDate\": {\"value\": \"2026-12-27\"}\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"Type\": {\"value\": { \"id\": \"RT\" }},\r\n    \"VendorID\": {\"value\": \"GLORYFRUIT\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"Description\": {\"value\": \"Test receipt with Expiration Date in Allocations\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"GUAVAS\"},\r\n            \"ReceiptQty\": {\"value\": 2},\r\n            \"Warehouse\": {\"value\": \"WHOLESALE\"},\r\n            \"Allocations\": [\r\n                {\r\n                    \"Location\": {\"value\": \"MAIN\"},\r\n                    \"Qty\": {\"value\": 1},\r\n                    \"LotSerialNbr\": {\"value\": \"a\"},\r\n                    \"ExpirationDate\": {\"value\": \"2026-12-25\"}\r\n                },\r\n                {\r\n                    \"Location\": {\"value\": \"MAIN\"},\r\n                    \"Qty\": {\"value\": 1},\r\n                    \"LotSerialNbr\": {\"value\": \"b\"},\r\n                    \"ExpirationDate\": {\"value\": \"2026-12-27\"}\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}PurchaseReceipt?$expand=Details,Details/Allocations",
+              "raw": "{{EndpointURL}}PurchaseReceipt?$expand=Details($expand=Allocations)",
               "host": [
                 "{{EndpointURL}}PurchaseReceipt"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Details,Details/Allocations"
+                  "value": "Details($expand=Allocations)"
                 }
               ]
             },
@@ -10368,7 +10368,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Type\": {\"value\": \"Return\"},\r\n    \"VendorID\": {\"value\": \"GOODFRUITS\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"Description\": {\"value\": \"Test return (one PR line)\"},\r\n    \"ProcessReturnWithOriginalCost\": {\"value\": \"True\"},\r\n    \"Details\": [\r\n        {\r\n            \"POReceiptNbr\": {\"value\": \"000016\"},\r\n            \"POReceiptLineNbr\": {\"value\": \"1\"}\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"Type\": {\"value\": { \"id\": \"RN\" }},\r\n    \"VendorID\": {\"value\": \"GOODFRUITS\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"Description\": {\"value\": \"Test return (one PR line)\"},\r\n    \"ProcessReturnWithOriginalCost\": {\"value\": \"True\"},\r\n    \"Details\": [\r\n        {\r\n            \"POReceiptNbr\": {\"value\": \"000016\"},\r\n            \"POReceiptLineNbr\": {\"value\": \"1\"}\r\n        }\r\n    ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}PurchaseReceipt?$expand=Details",
@@ -10449,7 +10449,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Type\": {\"value\": \"Return\"},\r\n    \"VendorID\": {\"value\": \"GOODFRUITS\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"Description\": {\"value\": \"Test return (all PR lines)\"},\r\n    \"ProcessReturnWithOriginalCost\": {\"value\": \"True\"},\r\n    \"Details\": [\r\n        {\r\n            \"POReceiptNbr\": {\"value\": \"000013\"}\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"Type\": {\"value\": { \"id\": \"RN\" }},\r\n    \"VendorID\": {\"value\": \"GOODFRUITS\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"Description\": {\"value\": \"Test return (all PR lines)\"},\r\n    \"ProcessReturnWithOriginalCost\": {\"value\": \"True\"},\r\n    \"Details\": [\r\n        {\r\n            \"POReceiptNbr\": {\"value\": \"000013\"}\r\n        }\r\n    ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}PurchaseReceipt?$expand=Details",
@@ -10530,7 +10530,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Type\": {\"value\": \"Return\"},\r\n    \"VendorID\": {\"value\": \"GOODFRUITS\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"Description\": {\"value\": \"Test return\"},\r\n    \"ProcessReturnWithOriginalCost\": {\"value\": \"True\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"APPLES\"},\r\n            \"Warehouse\": {\"value\": \"WHOLESALE\"},\r\n            \"Location\": {\"value\": \"MAIN\"},\r\n            \"ReceiptQty\": {\"value\": \"1\"},\r\n            \"ExtendedCost\": {\"value\": \"3\"}\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"Type\": {\"value\": { \"id\": \"RN\" }},\r\n    \"VendorID\": {\"value\": \"GOODFRUITS\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"Description\": {\"value\": \"Test return\"},\r\n    \"ProcessReturnWithOriginalCost\": {\"value\": \"True\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"APPLES\"},\r\n            \"Warehouse\": {\"value\": \"WHOLESALE\"},\r\n            \"Location\": {\"value\": \"MAIN\"},\r\n            \"ReceiptQty\": {\"value\": \"1\"},\r\n            \"ExtendedCost\": {\"value\": \"3\"}\r\n        }\r\n    ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}PurchaseReceipt?$expand=Details",
@@ -10636,7 +10636,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Type\": {\"value\": \"Receipt\"},\r\n    \"VendorID\": {\"value\": \"GOODFRUITS\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"CurrencyID\": {\"value\": \"EUR\"},\r\n    \"CurrencyRate\": {\"value\": \"1.2\"},\r\n    \"Description\": {\"value\": \"Test receipt in non-base currency and with new cost fields\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"APPLES\"},\r\n            \"Warehouse\": {\"value\": \"WHOLESALE\"},\r\n            \"ReceiptQty\": {\"value\": 1.0},\r\n            \"ExpirationDate\": {\"value\": \"2021-04-25\"},\r\n            \"UnitCost\": {\"value\": \"111\"},\r\n            \"ExtendedCost\": {\"value\": \"333\"}\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"Type\": {\"value\": { \"id\": \"RT\" }},\r\n    \"VendorID\": {\"value\": \"GOODFRUITS\"},\r\n    \"CreateBill\": {\"value\": \"False\"},\r\n    \"CurrencyID\": {\"value\": \"EUR\"},\r\n    \"CurrencyRate\": {\"value\": \"1.2\"},\r\n    \"Description\": {\"value\": \"Test receipt in non-base currency and with new cost fields\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"APPLES\"},\r\n            \"Warehouse\": {\"value\": \"WHOLESALE\"},\r\n            \"ReceiptQty\": {\"value\": 1.0},\r\n            \"ExpirationDate\": {\"value\": \"2021-04-25\"},\r\n            \"UnitCost\": {\"value\": \"111\"},\r\n            \"ExtendedCost\": {\"value\": \"333\"}\r\n        }\r\n    ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}PurchaseReceipt",
@@ -10670,17 +10670,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Type\": {\r\n        \"value\": \"Transfer Receipt\"\r\n    },\r\n    \"Warehouse\": {\r\n        \"value\": \"RETAIL\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"TransferOrderType\": {\r\n                \"value\": \"TR\"\r\n            },\r\n            \"TransferOrderNbr\": {\r\n                \"value\": \"000069\"\r\n            },\r\n            \"TransferOrderLineNbr\": {\r\n                \"value\": 1\r\n            },\r\n            \"TransferShipmentNbr\": {\r\n                \"value\": \"000063\"\r\n            },\r\n            \"ReceiptQty\": {\r\n                \"value\": 1\r\n            },\r\n            \"Allocations\": [\r\n                {\r\n                    \"Location\": {\r\n                        \"value\": \"JS1\"\r\n                    },\r\n                    \"Qty\": {\r\n                        \"value\": 0.5\r\n                    }\r\n                },\r\n                {\r\n                    \"Location\": {\r\n                        \"value\": \"JS2\"\r\n                    },\r\n                    \"Qty\": {\r\n                        \"value\": 0.5\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"Type\": {\r\n        \"value\": { \"id\": \"RX\" }\r\n    },\r\n    \"Warehouse\": {\r\n        \"value\": \"RETAIL\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"TransferOrderType\": {\r\n                \"value\": \"TR\"\r\n            },\r\n            \"TransferOrderNbr\": {\r\n                \"value\": \"000069\"\r\n            },\r\n            \"TransferOrderLineNbr\": {\r\n                \"value\": 1\r\n            },\r\n            \"TransferShipmentNbr\": {\r\n                \"value\": \"000063\"\r\n            },\r\n            \"ReceiptQty\": {\r\n                \"value\": 1\r\n            },\r\n            \"Allocations\": [\r\n                {\r\n                    \"Location\": {\r\n                        \"value\": \"JS1\"\r\n                    },\r\n                    \"Qty\": {\r\n                        \"value\": 0.5\r\n                    }\r\n                },\r\n                {\r\n                    \"Location\": {\r\n                        \"value\": \"JS2\"\r\n                    },\r\n                    \"Qty\": {\r\n                        \"value\": 0.5\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}PurchaseReceipt?$expand=Details,Details/Allocations",
+              "raw": "{{EndpointURL}}PurchaseReceipt?$expand=Details($expand=Allocations)",
               "host": [
                 "{{EndpointURL}}PurchaseReceipt"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Details,Details/Allocations"
+                  "value": "Details($expand=Allocations)"
                 }
               ]
             },
@@ -10831,7 +10831,7 @@
                   "});\r",
                   "pm.test(\"The sales invoice has the Balanced status\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.Status.value).to.equal(\"Balanced\");\r",
+                  "    pm.expect(jsonResponse.Status.value.id).to.equal(\"B\");\r",
                   "});\r",
                   "//Sign out and set next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -10876,7 +10876,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"Type\": {\"value\": \"Invoice\"},\r\n    \"ReferenceNbr\": {\"value\": \"INV000046\"},\r\n    \"Hold\": {\"value\":false}\r\n}"
+              "raw": "{\r\n    \"Type\": {\"value\": { \"id\": \"INV\" }},\r\n    \"ReferenceNbr\": {\"value\": \"INV000046\"},\r\n    \"Hold\": {\"value\":false}\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}SalesInvoice",
@@ -10942,7 +10942,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"entity\":{\r\n\t\t\"Type\":{\"value\":\"Invoice\"},\r\n\t\t\"ReferenceNbr\":{\"value\":\"INV000046\"}\r\n    }\r\n}"
+              "raw": "{\r\n\t\"entity\":{\r\n\t\t\"Type\":{\"value\":{ \"id\": \"INV\" }},\r\n\t\t\"ReferenceNbr\":{\"value\":\"INV000046\"}\r\n    }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}/SalesInvoice/ReleaseSalesInvoice",
@@ -11033,7 +11033,7 @@
                   "});\r",
                   "pm.test(\"The sales invoice has the Open status\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.Status.value).to.equal(\"Open\");\r",
+                  "    pm.expect(jsonResponse.Status.value.id).to.equal(\"N\");\r",
                   "});\r",
                   "//Sign out and set next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -11095,8 +11095,7 @@
               "query": [
                 {
                   "key": "$select",
-                  "value": "ReferenceNbr,Type,Status",
-                  "uuid": "b421fa36-8a04-4ac4-9891-281a4eccd2a3"
+                  "value": "ReferenceNbr,Type,Status"
                 }
               ]
             }
@@ -11170,7 +11169,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"CustomerID\": {\r\n        \"value\": \"CAKEADO\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"BranchID\": {\r\n                \"value\": \"RETAIL\"\r\n            },\r\n            \"OrderLineNbr\": {\r\n                \"value\": 1\r\n            },\r\n            \"OrderNbr\": {\r\n                \"value\": \"000066\"\r\n            },\r\n            \"OrderType\": {\r\n                \"value\": \"SO\"\r\n            },\r\n            \"Qty\": {\r\n                \"value\": 1.000000\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"RETAIL\"\r\n            }\r\n        }\r\n    ],\r\n    \"Hold\": {\r\n        \"value\": false\r\n    },\r\n    \"Status\": {\r\n        \"value\": \"Open\"\r\n    },\r\n    \"Type\": {\r\n        \"value\": \"Invoice\"\r\n    }\r\n}"
+              "raw": "{\r\n    \"CustomerID\": {\r\n        \"value\": \"CAKEADO\"\r\n    },\r\n    \"Details\": [\r\n        {\r\n            \"BranchID\": {\r\n                \"value\": \"RETAIL\"\r\n            },\r\n            \"OrderLineNbr\": {\r\n                \"value\": 1\r\n            },\r\n            \"OrderNbr\": {\r\n                \"value\": \"000066\"\r\n            },\r\n            \"OrderType\": {\r\n                \"value\": \"SO\"\r\n            },\r\n            \"Qty\": {\r\n                \"value\": 1.000000\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"RETAIL\"\r\n            }\r\n        }\r\n    ],\r\n    \"Hold\": {\r\n        \"value\": false\r\n    },\r\n    \"Status\": {\r\n        \"value\": { \"id\": \"N\" }\r\n    },\r\n    \"Type\": {\r\n        \"value\": { \"id\": \"INV\" }\r\n    }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}SalesInvoice?$expand=Details",
@@ -11180,8 +11179,7 @@
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Details",
-                  "uuid": "47e70939-3840-479e-904f-69036e53ec6b"
+                  "value": "Details"
                 }
               ]
             },
@@ -11250,7 +11248,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"CustomerID\": {\"value\": \"FRUITICO\"},\r\n    \"Type\": {\"value\": \"Invoice\"},\r\n    \"Hold\": {\"value\": false},\r\n    \"Details\":\r\n    [\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"CHERJAM32\"},\r\n            \"Qty\": {\"value\": 1},\r\n            \"UOM\": {\"value\": \"PIECE\"},\r\n            \"LotSerialNbr\": {\"value\": \"JM2502010003\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"BANANAS\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"},\r\n            \"Location\": {\"value\": \"F2S2\"},\r\n            \"Qty\": {\"value\": 5},\r\n            \"UOM\": {\"value\": \"LB\"},\r\n            \"UnitPrice\": {\"value\": 1},\r\n            \"LotSerialNbr\": {\"value\": \"FR200384\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"PEN\"},\r\n            \"Location\": {\"value\": \"MAIN\"},\r\n            \"Qty\": {\"value\": -1},\r\n            \"UnitPrice\": {\"value\": 2},\r\n            \"UOM\": {\"value\": \"PIECE\"}\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"CustomerID\": {\"value\": \"FRUITICO\"},\r\n    \"Type\": {\"value\": { \"id\": \"INV\" }},\r\n    \"Hold\": {\"value\": false},\r\n    \"Details\":\r\n    [\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"CHERJAM32\"},\r\n            \"Qty\": {\"value\": 1},\r\n            \"UOM\": {\"value\": \"PIECE\"},\r\n            \"LotSerialNbr\": {\"value\": \"JM2502010003\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"BANANAS\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"},\r\n            \"Location\": {\"value\": \"F2S2\"},\r\n            \"Qty\": {\"value\": 5},\r\n            \"UOM\": {\"value\": \"LB\"},\r\n            \"UnitPrice\": {\"value\": 1},\r\n            \"LotSerialNbr\": {\"value\": \"FR200384\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"PEN\"},\r\n            \"Location\": {\"value\": \"MAIN\"},\r\n            \"Qty\": {\"value\": -1},\r\n            \"UnitPrice\": {\"value\": 2},\r\n            \"UOM\": {\"value\": \"PIECE\"}\r\n        }\r\n    ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}SalesInvoice?$expand=Details",
@@ -11339,7 +11337,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"CustomerID\": {\"value\": \"FRUITICO\"},\r\n    \"Type\": {\"value\": \"Invoice\"},\r\n    \"Currency\": {\"value\": \"EUR\"},\r\n    \"Hold\": {\"value\": false},\r\n    \"Details\":\r\n    [\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"APJAM96\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"},\r\n            \"Qty\": {\"value\": 2},\r\n            \"UOM\": {\"value\": \"JBOX\"},\r\n            \"Location\": {\"value\": \"L3R1S2\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"APJAM08\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"},\r\n            \"Location\": {\"value\": \"L1R1S2\"},\r\n            \"Qty\": {\"value\": -1},\r\n            \"UOM\": {\"value\": \"PIECE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"CLEANING\"},\r\n            \"Qty\": {\"value\": -1},\r\n            \"UOM\": {\"value\": \"HOUR\"}\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"CustomerID\": {\"value\": \"FRUITICO\"},\r\n    \"Type\": {\"value\": { \"id\": \"INV\" }},\r\n    \"Currency\": {\"value\": \"EUR\"},\r\n    \"Hold\": {\"value\": false},\r\n    \"Details\":\r\n    [\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"APJAM96\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"},\r\n            \"Qty\": {\"value\": 2},\r\n            \"UOM\": {\"value\": \"JBOX\"},\r\n            \"Location\": {\"value\": \"L3R1S2\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"APJAM08\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"},\r\n            \"Location\": {\"value\": \"L1R1S2\"},\r\n            \"Qty\": {\"value\": -1},\r\n            \"UOM\": {\"value\": \"PIECE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"HEADOFFICE\"},\r\n            \"InventoryID\": {\"value\": \"CLEANING\"},\r\n            \"Qty\": {\"value\": -1},\r\n            \"UOM\": {\"value\": \"HOUR\"}\r\n        }\r\n    ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}SalesInvoice?$expand=Details",
@@ -11349,8 +11347,7 @@
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Details",
-                  "uuid": "82b6da99-9a0c-42e6-95ea-ad51146ea28d"
+                  "value": "Details"
                 }
               ]
             },
@@ -11420,7 +11417,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"CustomerID\": { \"value\": \"GOODFOOD\" },\r\n    \"Hold\": {\"value\": false},\r\n    \"Details\": [\r\n        {\r\n            \"OrigInvNbr\": { \"value\": \"000005\" },\r\n            \"OrigInvType\": { \"value\": \"Invoice\" }\r\n        },\r\n        {\r\n            \"OrigInvNbr\": { \"value\": \"000008\" },\r\n            \"OrigInvType\": { \"value\": \"Invoice\" },\r\n            \"OrigInvLineNbr\": { \"value\": 1 }\r\n        },\r\n        {\r\n            \"OrigInvNbr\": { \"value\": \"000012\" },\r\n            \"OrigInvType\": { \"value\": \"Invoice\" },\r\n            \"OrigInvLineNbr\": { \"value\": 2 },\r\n            \"Qty\": { \"value\": 50 }\r\n        }\r\n    ],\r\n    \"LocationID\": { \"value\": \"MAIN\" },\r\n    \"Project\": { \"value\": \"X\" },\r\n    \"Type\": { \"value\": \"Credit Memo\" }\r\n}"
+              "raw": "{\r\n    \"CustomerID\": { \"value\": \"GOODFOOD\" },\r\n    \"Hold\": {\"value\": false},\r\n    \"Details\": [\r\n        {\r\n            \"OrigInvNbr\": { \"value\": \"000005\" },\r\n            \"OrigInvType\": { \"value\": { \"id\": \"INV\" } }\r\n        },\r\n        {\r\n            \"OrigInvNbr\": { \"value\": \"000008\" },\r\n            \"OrigInvType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"OrigInvLineNbr\": { \"value\": 1 }\r\n        },\r\n        {\r\n            \"OrigInvNbr\": { \"value\": \"000012\" },\r\n            \"OrigInvType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"OrigInvLineNbr\": { \"value\": 2 },\r\n            \"Qty\": { \"value\": 50 }\r\n        }\r\n    ],\r\n    \"LocationID\": { \"value\": \"MAIN\" },\r\n    \"Project\": { \"value\": \"X\" },\r\n    \"Type\": { \"value\": { \"id\": \"CRM\" } }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}SalesInvoice?$expand=Details",
@@ -11543,7 +11540,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"entity\":{\r\n\t\t\"Type\": {\"value\": \"Credit Memo\"},\r\n\t\t\"ReferenceNbr\":{\"value\":\"{{creditMemoNbr}}\"}\r\n    }\r\n}"
+              "raw": "{\r\n\t\"entity\":{\r\n\t\t\"Type\": {\"value\": { \"id\": \"CRM\" }},\r\n\t\t\"ReferenceNbr\":{\"value\":\"{{creditMemoNbr}}\"}\r\n    }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}/SalesInvoice/ReleaseSalesInvoice",
@@ -11641,14 +11638,14 @@
               }
             ],
             "url": {
-              "raw": "{{EndpointURL}}SalesOrder?$expand=Details,Shipments&$filter=CustomerID eq 'C000000003'&$select=OrderNbr,OrderType,CustomerID,CustomerOrder,Details/InventoryID,Details/OrderQty,Details/UnitPrice,Date,OrderedQty,OrderTotal,Shipments/InvoiceNbr,Shipments/ShipmentNbr",
+              "raw": "{{EndpointURL}}SalesOrder?$expand=Details($select=InventoryID,OrderQty,UnitPrice),Shipments($select=InvoiceNbr,ShipmentNbr)&$filter=CustomerID eq 'C000000003'&$select=OrderNbr,OrderType,CustomerID,CustomerOrder,Date,OrderedQty,OrderTotal",
               "host": [
                 "{{EndpointURL}}SalesOrder"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Details,Shipments"
+                  "value": "Details($select=InventoryID,OrderQty,UnitPrice),Shipments($select=InvoiceNbr,ShipmentNbr)"
                 },
                 {
                   "key": "$filter",
@@ -11656,7 +11653,7 @@
                 },
                 {
                   "key": "$select",
-                  "value": "OrderNbr,OrderType,CustomerID,CustomerOrder,Details/InventoryID,Details/OrderQty,Details/UnitPrice,Date,OrderedQty,OrderTotal,Shipments/InvoiceNbr,Shipments/ShipmentNbr"
+                  "value": "OrderNbr,OrderType,CustomerID,CustomerOrder,Date,OrderedQty,OrderTotal"
                 }
               ]
             },
@@ -11812,7 +11809,7 @@
               }
             ],
             "url": {
-              "raw": "{{EndpointURL}}/SalesOrder?$expand=Details&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'&$select=OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID",
+              "raw": "{{EndpointURL}}/SalesOrder?$expand=Details($select=InventoryID,WarehouseID)&$filter=OrderType eq 'SO' and CustomerOrder eq 'SO248-563-06'&$select=OrderNbr,OrderType",
               "host": [
                 "{{EndpointURL}}"
               ],
@@ -11822,7 +11819,7 @@
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Details"
+                  "value": "Details($select=InventoryID,WarehouseID)"
                 },
                 {
                   "key": "$filter",
@@ -11830,7 +11827,7 @@
                 },
                 {
                   "key": "$select",
-                  "value": "OrderNbr,OrderType,Details/InventoryID,Details/WarehouseID"
+                  "value": "OrderNbr,OrderType"
                 }
               ]
             }
@@ -12272,7 +12269,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2023-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"External CC payment\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2023-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"CreditCardTransactionInfo\": [\r\n                {\r\n                    \"NeedValidation\": {\"value\": true},\r\n                    \"TranDate\": {\"value\": \"2023-08-11T00:00:00+03:00\"},\r\n                    \"TranNbr\": {\"value\": \"40050474170\"},\r\n                    \"TranType\": {\"value\": \"AUT\"}\r\n                }\r\n            ],\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"ACUPAYCC\"}\r\n        }\r\n    ],\r\n    \"PaymentMethod\": {\"value\": \"ACUPAYCC\"},\r\n    \"RequestedOn\": {\"value\": \"2023-05-10T00:00:00\"}\r\n}"
+              "raw": "{\r\n    \"CustomerID\": {\"value\": \"WIDGETCC\"},\r\n    \"Date\": {\"value\": \"2023-05-10T00:00:00\"},\r\n    \"Description\": {\"value\": \"External CC payment\"},\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AACOMPUT01\"},\r\n            \"OrderQty\": {\"value\": 1.00},\r\n            \"UnitPrice\": {\"value\": 500.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        },\r\n        {\r\n            \"Branch\": {\"value\": \"PRODWHOLE\"},\r\n            \"DiscountAmount\": {\"value\": 10.00},\r\n            \"ExtendedPrice\": {\"value\": 500.00},\r\n            \"FreeItem\": {\"value\": false},\r\n            \"InventoryID\": {\"value\": \"AALEGO500\"},\r\n            \"OrderQty\": {\"value\": 50.00},\r\n            \"UnitPrice\": {\"value\": 50.00},\r\n            \"UOM\": {\"value\": \"EA\"},\r\n            \"WarehouseID\": {\"value\": \"WHOLESALE\"}\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": false},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"},\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\"value\": \"2023-08-11T00:00:00+03:00\"},\r\n            \"AppliedToOrder\": {\"value\": 480.00},\r\n            \"CashAccount\": {\"value\": \"10600\"},\r\n            \"CreditCardTransactionInfo\": [\r\n                {\r\n                    \"NeedValidation\": {\"value\": true},\r\n                    \"TranDate\": {\"value\": \"2023-08-11T00:00:00+03:00\"},\r\n                    \"TranNbr\": {\"value\": \"40050474170\"},\r\n                    \"TranType\": {\"value\": { \"id\": \"AUT\" }}\r\n                }\r\n            ],\r\n            \"PaymentAmount\": {\"value\": 980.00},\r\n            \"PaymentMethod\": {\"value\": \"ACUPAYCC\"}\r\n        }\r\n    ],\r\n    \"PaymentMethod\": {\"value\": \"ACUPAYCC\"},\r\n    \"RequestedOn\": {\"value\": \"2023-05-10T00:00:00\"}\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}SalesOrder?$expand=Payments",
@@ -12445,14 +12442,14 @@
               "raw": "{\r\n    \"CustomerID\": {\"value\": \"COFFEESHOP\"},\r\n    \"Description\": {\"value\": \"Sales Order with Allocations\"},\r\n    \"Details\": [\r\n        {\r\n            \"InventoryID\": {\"value\": \"APJAM08\"},\r\n            \"Allocations\": [\r\n                {\r\n                    \"SplitLineNbr\": {\"value\": \"1\"},\r\n                    \"Allocated\": { \"value\": true },\r\n                    \"AllocWarehouseID\": { \"value\": \"WHOLESALE\" },\r\n                    \"InventoryID\": { \"value\": \"APJAM08\" },\r\n                    \"LotSerialNbr\": { \"value\": \"116046\" },\r\n                    \"Qty\": { \"value\": 1 }\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"Hold\": {\"value\": true},\r\n    \"LocationID\": {\"value\": \"MAIN\"},\r\n    \"OrderType\": {\"value\": \"SO\"}\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}SalesOrder?$expand=Details,Details/Allocations",
+              "raw": "{{EndpointURL}}SalesOrder?$expand=Details($expand=Allocations)",
               "host": [
                 "{{EndpointURL}}SalesOrder"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Details,Details/Allocations"
+                  "value": "Details($expand=Allocations)"
                 }
               ]
             },
@@ -12478,7 +12475,7 @@
                   "});\r",
                   "pm.test(\"Order type is RC\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.OrderType.value).to.eql('RC');\r",
+                  "    pm.expect(jsonResponse.OrderType.value.id).to.eql('RC');\r",
                   "});\r",
                   "pm.test(\"Order total is 317.04\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
@@ -12529,7 +12526,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"CustomerID\": { \"value\": \"GOODFOOD\" },\r\n    \"Description\": { \"value\": \"Return for Credit for Two Invoices\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": \"Invoice\" },\r\n            \"InvoiceNbr\": { \"value\": \"000062\" },\r\n            \"InventoryID\": { \"value\": \"INSTALL\" }\r\n        },\r\n        {\r\n            \"InvoiceType\": { \"value\": \"Invoice\" },\r\n            \"InvoiceNbr\": { \"value\": \"000030\" },\r\n            \"InventoryID\": { \"value\": \"ORANGES\" },\r\n            \"OrderQty\": { \"value\": \"50\" }\r\n        }\r\n    ],\r\n    \"LocationID\": { \"value\": \"MAIN\" },\r\n    \"OrderType\": { \"value\": \"RC\" }\r\n}"
+              "raw": "{\r\n    \"CustomerID\": { \"value\": \"GOODFOOD\" },\r\n    \"Description\": { \"value\": \"Return for Credit for Two Invoices\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"InvoiceNbr\": { \"value\": \"000062\" },\r\n            \"InventoryID\": { \"value\": \"INSTALL\" }\r\n        },\r\n        {\r\n            \"InvoiceType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"InvoiceNbr\": { \"value\": \"000030\" },\r\n            \"InventoryID\": { \"value\": \"ORANGES\" },\r\n            \"OrderQty\": { \"value\": \"50\" }\r\n        }\r\n    ],\r\n    \"LocationID\": { \"value\": \"MAIN\" },\r\n    \"OrderType\": { \"value\": \"RC\" }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}SalesOrder?$expand=Details",
@@ -12565,7 +12562,7 @@
                   "});\r",
                   "pm.test(\"Order type is RC\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.OrderType.value).to.eql('RC');\r",
+                  "    pm.expect(jsonResponse.OrderType.value.id).to.eql('RC');\r",
                   "});\r",
                   "pm.test(\"Order total is 188932.8\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
@@ -12622,17 +12619,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"CustomerID\": { \"value\": \"MICROCHIP\" },\r\n    \"Description\": { \"value\": \"Return for Credit for Items with Lot or Serial Numbers\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": \"Invoice\" },\r\n            \"InvoiceNbr\": { \"value\": \"AR013584\" },\r\n            \"InvoiceLineNbr\": { \"value\": \"2\" },\r\n            \"OrderQty\": { \"value\": \"20\" },\r\n            \"UOM\": { \"value\": \"EA\" }\r\n        },\r\n        {\r\n            \"InvoiceType\": { \"value\": \"Invoice\" },\r\n            \"InvoiceNbr\": {  \"value\": \"AR013584\" },\r\n            \"InvoiceLineNbr\": { \"value\": \"3\" },\r\n            \"OrderQty\": { \"value\": \"6900\" },\r\n            \"UOM\": { \"value\": \"EA\" }\r\n        }\r\n    ],\r\n    \"LocationID\": { \"value\": \"MAIN\" },\r\n    \"OrderType\": {  \"value\": \"RC\" }\r\n}"
+              "raw": "{\r\n    \"CustomerID\": { \"value\": \"MICROCHIP\" },\r\n    \"Description\": { \"value\": \"Return for Credit for Items with Lot or Serial Numbers\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"InvoiceNbr\": { \"value\": \"AR013584\" },\r\n            \"InvoiceLineNbr\": { \"value\": \"2\" },\r\n            \"OrderQty\": { \"value\": \"20\" },\r\n            \"UOM\": { \"value\": \"EA\" }\r\n        },\r\n        {\r\n            \"InvoiceType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"InvoiceNbr\": {  \"value\": \"AR013584\" },\r\n            \"InvoiceLineNbr\": { \"value\": \"3\" },\r\n            \"OrderQty\": { \"value\": \"6900\" },\r\n            \"UOM\": { \"value\": \"EA\" }\r\n        }\r\n    ],\r\n    \"LocationID\": { \"value\": \"MAIN\" },\r\n    \"OrderType\": {  \"value\": \"RC\" }\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}SalesOrder?$expand=Details,Details/Allocations",
+              "raw": "{{EndpointURL}}SalesOrder?$expand=Details($expand=Allocations)",
               "host": [
                 "{{EndpointURL}}SalesOrder"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Details,Details/Allocations"
+                  "value": "Details($expand=Allocations)"
                 }
               ]
             },
@@ -12715,7 +12712,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"CurrencyID\": {\r\n        \"value\": \"USD\"\r\n    },\r\n    \"CustomerID\": {\r\n        \"value\": \"WIDGETCC\"\r\n    },\r\n    \"Date\": {\r\n        \"value\": \"2023-08-19T00:00:00+03:00\"\r\n    },\r\n    \"Hold\": {\r\n                \"value\": false\r\n            },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"PRODWHOLE\"\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"AACOMPUT01\"\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 5.000000\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 500.000000\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"EA\"\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"WHOLESALE\"\r\n            }\r\n         }\r\n    ],\r\n    \"OrderType\": {\r\n        \"value\": \"RC\"\r\n    },\r\n    \"PaymentMethod\": {\r\n        \"value\": \"ACUPAYCC\"\r\n    },\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\r\n                \"value\": \"2023-08-19T00:00:00+03:00\"\r\n            },\r\n            \"AppliedToOrder\": {\r\n                \"value\": 40.0000\r\n            },\r\n            \"CardAccountNbr\": {\r\n                \"value\": \"VISA:****-****-****-1111\"\r\n            },\r\n            \"CashAccount\": {\r\n                \"value\": \"10250\"\r\n            },\r\n            \"Currency\": {\r\n                \"value\": \"USD\"\r\n            },\r\n            \"DocType\": {\r\n                \"value\": \"Refund\"\r\n            },\r\n            \"Hold\": {\r\n                \"value\": false\r\n            },\r\n            \"OrigTransactionNbr\": {\r\n                \"value\": \"60165234282\"\r\n            },\r\n            \"PaymentAmount\": {\r\n                \"value\": 40.0000\r\n            },\r\n            \"PaymentMethod\": {\r\n                \"value\": \"ACUPAYCC\"\r\n            },\r\n            \"PaymentRef\": {\r\n                \"value\": \"601704533664\"\r\n            },\r\n            \"ProcessingCenterID\": {\r\n                \"value\": \"ACUPAYMENT\"\r\n            },\r\n            \"Refund\": {\r\n                \"value\": true\r\n            },\r\n            \"ValidateCCRefundOrigTransaction\": {\r\n                \"value\": false\r\n            }\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"CurrencyID\": {\r\n        \"value\": \"USD\"\r\n    },\r\n    \"CustomerID\": {\r\n        \"value\": \"WIDGETCC\"\r\n    },\r\n    \"Date\": {\r\n        \"value\": \"2023-08-19T00:00:00+03:00\"\r\n    },\r\n    \"Hold\": {\r\n                \"value\": false\r\n            },\r\n    \"Details\": [\r\n        {\r\n            \"Branch\": {\r\n                \"value\": \"PRODWHOLE\"\r\n            },\r\n            \"InventoryID\": {\r\n                \"value\": \"AACOMPUT01\"\r\n            },\r\n            \"OrderQty\": {\r\n                \"value\": 5.000000\r\n            },\r\n            \"UnitPrice\": {\r\n                \"value\": 500.000000\r\n            },\r\n            \"UOM\": {\r\n                \"value\": \"EA\"\r\n            },\r\n            \"WarehouseID\": {\r\n                \"value\": \"WHOLESALE\"\r\n            }\r\n         }\r\n    ],\r\n    \"OrderType\": {\r\n        \"value\": \"RC\"\r\n    },\r\n    \"PaymentMethod\": {\r\n        \"value\": \"ACUPAYCC\"\r\n    },\r\n    \"Payments\": [\r\n        {\r\n            \"ApplicationDate\": {\r\n                \"value\": \"2023-08-19T00:00:00+03:00\"\r\n            },\r\n            \"AppliedToOrder\": {\r\n                \"value\": 40.0000\r\n            },\r\n            \"CardAccountNbr\": {\r\n                \"value\": \"VISA:****-****-****-1111\"\r\n            },\r\n            \"CashAccount\": {\r\n                \"value\": \"10250\"\r\n            },\r\n            \"Currency\": {\r\n                \"value\": \"USD\"\r\n            },\r\n            \"DocType\": {\r\n                \"value\": { \"id\": \"REF\" }\r\n            },\r\n            \"Hold\": {\r\n                \"value\": false\r\n            },\r\n            \"OrigTransactionNbr\": {\r\n                \"value\": \"60165234282\"\r\n            },\r\n            \"PaymentAmount\": {\r\n                \"value\": 40.0000\r\n            },\r\n            \"PaymentMethod\": {\r\n                \"value\": \"ACUPAYCC\"\r\n            },\r\n            \"PaymentRef\": {\r\n                \"value\": \"601704533664\"\r\n            },\r\n            \"ProcessingCenterID\": {\r\n                \"value\": \"ACUPAYMENT\"\r\n            },\r\n            \"Refund\": {\r\n                \"value\": true\r\n            },\r\n            \"ValidateCCRefundOrigTransaction\": {\r\n                \"value\": false\r\n            }\r\n        }\r\n    ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}SalesOrder?$expand=Details,Payments",
@@ -12751,7 +12748,7 @@
                   "});\r",
                   "pm.test(\"Order type is RM\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.OrderType.value).to.eql('RM');\r",
+                  "    pm.expect(jsonResponse.OrderType.value.id).to.eql('RM');\r",
                   "});\r",
                   "pm.test(\"Order total is 30.50\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
@@ -13064,7 +13061,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"CustomerID\": { \"value\": \"FRUITICO\" },\r\n    \"OrderType\": { \"value\": \"RM\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": \"Invoice\" },\r\n            \"InvoiceNbr\": { \"value\": \"{{invoiceNbr}}\" },\r\n            \"Operation\": { \"value\": \"Receipt\" },\r\n            \"InvoiceLineNbr\": { \"value\": \"1\" },\r\n            \"OrderQty\": { \"value\": -1 },\r\n            \"AutoCreateIssue\": { \"value\": false }\r\n        },\r\n        {\r\n            \"Branch\": { \"value\": \"HEADOFFICE\" },\r\n            \"Operation\": { \"value\": \"Issue\" },\r\n            \"InventoryID\": { \"value\": \"PEARJAM96\" },\r\n            \"OrderQty\": { \"value\": 1 },\r\n            \"UOM\": { \"value\": \"PIECE\" },\r\n            \"WarehouseID\": { \"value\": \"RETAIL\" },\r\n            \"AutoCreateIssue\": { \"value\": false }\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"CustomerID\": { \"value\": \"FRUITICO\" },\r\n    \"OrderType\": { \"value\": \"RM\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"InvoiceNbr\": { \"value\": \"{{invoiceNbr}}\" },\r\n            \"Operation\": { \"value\": \"Receipt\" },\r\n            \"InvoiceLineNbr\": { \"value\": \"1\" },\r\n            \"OrderQty\": { \"value\": -1 },\r\n            \"AutoCreateIssue\": { \"value\": false }\r\n        },\r\n        {\r\n            \"Branch\": { \"value\": \"HEADOFFICE\" },\r\n            \"Operation\": { \"value\": \"Issue\" },\r\n            \"InventoryID\": { \"value\": \"PEARJAM96\" },\r\n            \"OrderQty\": { \"value\": 1 },\r\n            \"UOM\": { \"value\": \"PIECE\" },\r\n            \"WarehouseID\": { \"value\": \"RETAIL\" },\r\n            \"AutoCreateIssue\": { \"value\": false }\r\n        }\r\n    ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}SalesOrder?$expand=Details",
@@ -13154,7 +13151,7 @@
               "raw": "{\n\t\"OrderType\":{\"value\":\"SO\"},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"{{CONGRILL_detail_ID}}\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"{{AALEGO500_detail_ID}}\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID&$expand=Details",
+              "raw": "{{EndpointURL}}/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal&$expand=Details($select=OrderQty,InventoryID)",
               "host": [
                 "{{EndpointURL}}"
               ],
@@ -13164,11 +13161,11 @@
               "query": [
                 {
                   "key": "$select",
-                  "value": "OrderType,OrderNbr,OrderedQty,OrderTotal,Details/OrderQty,Details/InventoryID"
+                  "value": "OrderType,OrderNbr,OrderedQty,OrderTotal"
                 },
                 {
                   "key": "$expand",
-                  "value": "Details"
+                  "value": "Details($select=OrderQty,InventoryID)"
                 }
               ]
             }
@@ -13247,14 +13244,14 @@
               "raw": "{\r\n    \"OrderNbr\": { \"value\": \"{{RCOrderNbr}}\" },\r\n    \"OrderType\": { \"value\": \"RC\" },\r\n    \"Details\": [\r\n        {\r\n            \"InventoryID\": { \"value\": \"FOODTEA06\" },\r\n            \"InvoiceNbr\": { \"value\": \"AR013584\" },\r\n            \"LineNbr\": { \"value\": {{RCDetailLineNbr}} },\r\n            \"Allocations\": [\r\n                {\r\n                    \"LineNbr\": { \"value\": {{RCDetailAllocationLineNbr}} },\r\n                    \"LotSerialNbr\": { \"value\": \"LREX15098\" },\r\n                    \"OrderNbr\": { \"value\": \"{{RCOrderNbr}}\" },\r\n                    \"OrderType\": { \"value\": \"RC\" },\r\n                    \"SplitLineNbr\": { \"value\": {{RCDetailAllocationSplitLineNbr}} }\r\n                }\r\n            ],\r\n            \"WarehouseID\": { \"value\": \"WHOLESALE\" }\r\n        }\r\n    ]\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}SalesOrder?$expand=Details,Details/Allocations",
+              "raw": "{{EndpointURL}}SalesOrder?$expand=Details($expand=Allocations)",
               "host": [
                 "{{EndpointURL}}SalesOrder"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Details,Details/Allocations"
+                  "value": "Details($expand=Allocations)"
                 }
               ]
             },
@@ -13791,7 +13788,7 @@
                   "});\r",
                   "pm.test(\"The shipment is on hold\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.Status.value).to.eql('On Hold');\r",
+                  "    pm.expect(jsonResponse.Status.value.id).to.eql('H');\r",
                   "});\r",
                   "//Sign out and set next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -13838,21 +13835,21 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"Type\":{\"value\":\"Shipment\"},\r\n\t\"CustomerID\":{\"value\":\"C000000003\"},\r\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\r\n    \"ShipmentDate\":{\"value\":\"2026-11-01\"},\r\n\t\"Details\":[\r\n\t\t{\r\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\r\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\r\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\r\n\t\t}\r\n\t]\r\n}"
+              "raw": "{\r\n\t\"Type\":{\"value\":{ \"id\": \"N\" }},\r\n\t\"CustomerID\":{\"value\":\"C000000003\"},\r\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\r\n    \"ShipmentDate\":{\"value\":\"2026-11-01\"},\r\n\t\"Details\":[\r\n\t\t{\r\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\r\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\r\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\r\n\t\t}\r\n\t]\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}Shipment?$select=Type,ShipmentNbr,Status,Details/InventoryID&$expand=Details",
+              "raw": "{{EndpointURL}}Shipment?$select=Type,ShipmentNbr,Status&$expand=Details($select=InventoryID)",
               "host": [
                 "{{EndpointURL}}Shipment"
               ],
               "query": [
                 {
                   "key": "$select",
-                  "value": "Type,ShipmentNbr,Status,Details/InventoryID"
+                  "value": "Type,ShipmentNbr,Status"
                 },
                 {
                   "key": "$expand",
-                  "value": "Details"
+                  "value": "Details($select=InventoryID)"
                 }
               ]
             },
@@ -13982,14 +13979,14 @@
               "raw": "{\r\n    \"CustomerID\": { \"value\": \"GOODFOOD\" },\r\n    \"Details\": [\r\n        {\r\n            \"OrderNbr\": { \"value\": \"{{orderNbr1}}\" },\r\n            \"OrderType\": { \"value\": \"SO\" },\r\n            \"OrderLineNbr\": { \"value\": 1 },\r\n            \"Allocations\": [\r\n                {\r\n                    \"InventoryID\": { \"value\": \"APJAM08\" },\r\n                    \"LocationID\": { \"value\": \"L2R3S1\" },\r\n                    \"Qty\": { \"value\": 1 },\r\n                    \"UOM\": { \"value\": \"PIECE\" }\r\n                },\r\n                {\r\n                    \"InventoryID\": { \"value\": \"APJAM08\" },\r\n                    \"LocationID\": { \"value\": \"L3R2S1\" },\r\n                    \"Qty\": { \"value\": 1 },\r\n                    \"UOM\": { \"value\": \"PIECE\" }\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"OrderNbr\": { \"value\": \"{{orderNbr2}}\" },\r\n            \"OrderType\": { \"value\": \"SO\" },\r\n            \"OrderLineNbr\": { \"value\": 1 },\r\n            \"Allocations\": [\r\n                {\r\n                    \"InventoryID\": { \"value\": \"APJAM32\" },\r\n                    \"LocationID\": { \"value\": \"L1R3S2\" },\r\n                    \"Qty\": { \"value\": 6 },\r\n                    \"UOM\": { \"value\": \"PIECE\" }\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"LocationID\": { \"value\": \"MAIN\" },\r\n    \"Operation\": { \"value\": \"Issue\" },\r\n    \"Packages\": [\r\n        {\r\n            \"BoxID\": { \"value\": \"LARGE\" },\r\n            \"UOM\": { \"value\": \"KG\" },\r\n            \"Weight\": { \"value\": 15 },\r\n            \"PackageContents\": [\r\n                {\r\n                    \"InventoryID\": { \"value\": \"APJAM08\" },\r\n                    \"LotSerialNbr\": { \"value\": \"\" },\r\n                    \"Quantity\": { \"value\": 1 },\r\n                    \"UOM\": { \"value\": \"PIECE\" },\r\n                    \"OrigOrderType\": { \"value\": \"SO\" },\r\n                    \"OrigOrderNbr\": { \"value\": \"{{orderNbr1}}\" }\r\n                },\r\n                {\r\n                    \"InventoryID\": { \"value\": \"APJAM08\" },\r\n                    \"LotSerialNbr\": { \"value\": \"\" },\r\n                    \"Quantity\": { \"value\": 1 },\r\n                    \"UOM\": { \"value\": \"PIECE\" },\r\n                    \"OrigOrderType\": { \"value\": \"SO\" },\r\n                    \"OrigOrderNbr\": { \"value\": \"{{orderNbr1}}\" }\r\n                },\r\n                {\r\n                    \"InventoryID\": { \"value\": \"APJAM32\" },\r\n                    \"LotSerialNbr\": { \"value\": \"\" },\r\n                    \"Quantity\": { \"value\": 6 },\r\n                    \"UOM\": { \"value\": \"PIECE\" },\r\n                    \"OrigOrderType\": { \"value\": \"SO\" },\r\n                    \"OrigOrderNbr\": { \"value\": \"{{orderNbr2}}\" }\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"WarehouseID\": { \"value\": \"WHOLESALE\" }\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}Shipment?$expand=Details,Details/Allocations,Packages,Packages/PackageContents",
+              "raw": "{{EndpointURL}}Shipment?$expand=Details($expand=Allocations),Packages($expand=PackageContents)",
               "host": [
                 "{{EndpointURL}}Shipment"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Details,Details/Allocations,Packages,Packages/PackageContents"
+                  "value": "Details($expand=Allocations),Packages($expand=PackageContents)"
                 }
               ]
             },
@@ -14063,18 +14060,14 @@
               }
             ],
             "url": {
-              "raw": "{{EndpointURL}}Shipment?$expand=Packages&$select=Packages/TrackingNbr&$filter=ShipmentNbr eq '000001'",
+              "raw": "{{EndpointURL}}Shipment?$expand=Packages($select=TrackingNbr)&$filter=ShipmentNbr eq '000001'",
               "host": [
                 "{{EndpointURL}}Shipment"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Packages"
-                },
-                {
-                  "key": "$select",
-                  "value": "Packages/TrackingNbr"
+                  "value": "Packages($select=TrackingNbr)"
                 },
                 {
                   "key": "$filter",
@@ -14183,18 +14176,14 @@
               "raw": "{\r\n    \"id\": \"{{shipmentID}}\",\r\n    \"Packages\": [\r\n        {\r\n            \"id\": \"{{packageID}}\",\r\n            \"TrackingNbr\": { \"value\": \"398305336619\" }\r\n        }\r\n    ]\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}Shipment?$expand=Packages&$select=Packages/TrackingNbr",
+              "raw": "{{EndpointURL}}Shipment?$expand=Packages($select=TrackingNbr)",
               "host": [
                 "{{EndpointURL}}Shipment"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Packages"
-                },
-                {
-                  "key": "$select",
-                  "value": "Packages/TrackingNbr"
+                  "value": "Packages($select=TrackingNbr)"
                 }
               ]
             },
@@ -14519,7 +14508,7 @@
                   "                    });\r",
                   "                    pm.test(\"Shipment is confirmed\", function (){\r",
                   "                        const jsonResponse = response.json();\r",
-                  "                        pm.expect(jsonResponse.Status.value).to.eql('Confirmed');\r",
+                  "                        pm.expect(jsonResponse.Status.value.id).to.eql('C');\r",
                   "                    });\r",
                   "                    //Sign out\r",
                   "                    var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -14642,7 +14631,7 @@
                   "                    });\r",
                   "                    pm.test(\"Shipment is invoiced\", function (){\r",
                   "                        const jsonResponse = response.json();\r",
-                  "                        pm.expect(jsonResponse.Status.value).to.eql('Invoiced');\r",
+                  "                        pm.expect(jsonResponse.Status.value.id).to.eql('I');\r",
                   "                    });\r",
                   "                    //Sign out\r",
                   "                    var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -14766,14 +14755,14 @@
               "raw": "{\r\n  \"entity\":{\r\n    \"ShipmentNbr\": {\"value\": \"{{shipmentNbr}}\"}\r\n  }\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}Shipment?$expand=Orders&$filter=ShipmentNbr eq '{{shipmentNbr}}'&$select=ShipmentNbr,Orders/InvoiceNbr,Orders/InvoiceType",
+              "raw": "{{EndpointURL}}Shipment?$expand=Orders($select=InvoiceNbr,InvoiceType)&$filter=ShipmentNbr eq '{{shipmentNbr}}'&$select=ShipmentNbr",
               "host": [
                 "{{EndpointURL}}Shipment"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Orders"
+                  "value": "Orders($select=InvoiceNbr,InvoiceType)"
                 },
                 {
                   "key": "$filter",
@@ -14781,7 +14770,7 @@
                 },
                 {
                   "key": "$select",
-                  "value": "ShipmentNbr,Orders/InvoiceNbr,Orders/InvoiceType"
+                  "value": "ShipmentNbr"
                 }
               ]
             },
@@ -14906,7 +14895,7 @@
               }
             ],
             "url": {
-              "raw": "{{EndpointURL}}/StockItem?$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'2022-09-24T00:00:00.000'&$expand=WarehouseDetails&$select=InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM",
+              "raw": "{{EndpointURL}}/StockItem?$filter=ItemStatus eq 'AC' and LastModifiedDateTime gt datetimeoffset'2022-09-24T00:00:00.000'&$expand=WarehouseDetails($select=WarehouseID,QtyOnHand)&$select=InventoryID,Description,ItemClass,BaseUOM",
               "host": [
                 "{{EndpointURL}}"
               ],
@@ -14916,15 +14905,15 @@
               "query": [
                 {
                   "key": "$filter",
-                  "value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'2022-09-24T00:00:00.000'"
+                  "value": "ItemStatus eq 'AC' and LastModifiedDateTime gt datetimeoffset'2022-09-24T00:00:00.000'"
                 },
                 {
                   "key": "$expand",
-                  "value": "WarehouseDetails"
+                  "value": "WarehouseDetails($select=WarehouseID,QtyOnHand)"
                 },
                 {
                   "key": "$select",
-                  "value": "InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM"
+                  "value": "InventoryID,Description,ItemClass,BaseUOM"
                 }
               ]
             }
@@ -15149,7 +15138,7 @@
               }
             ],
             "url": {
-              "raw": "{{EndpointURL}}StockItem?$filter=DefaultWarehouseID eq 'WHOLESALE'&$expand=WarehouseDetails&$select=DefaultPrice,WarehouseDetails/QtyOnHand,WarehouseDetails/WarehouseID",
+              "raw": "{{EndpointURL}}StockItem?$filter=DefaultWarehouseID eq 'WHOLESALE'&$expand=WarehouseDetails($select=QtyOnHand,WarehouseID)&$select=DefaultPrice",
               "host": [
                 "{{EndpointURL}}StockItem"
               ],
@@ -15160,11 +15149,11 @@
                 },
                 {
                   "key": "$expand",
-                  "value": "WarehouseDetails"
+                  "value": "WarehouseDetails($select=QtyOnHand,WarehouseID)"
                 },
                 {
                   "key": "$select",
-                  "value": "DefaultPrice,WarehouseDetails/QtyOnHand,WarehouseDetails/WarehouseID"
+                  "value": "DefaultPrice"
                 }
               ]
             },
@@ -15378,7 +15367,7 @@
               "raw": "{\n\t\"InventoryID\":{\"value\":\"BASESERV1\"},\n\t\"Description\":{\"value\":\"Baseline level of performance\"},\n\t\"ItemClass\":{\"value\":\"STOCKITEM\"},\n\t\"Attributes\":[\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"Operation System\"},\n\t\t\t\"Value\":{\"value\":\"Windows\"}\n\t\t},\n\t\t{\n\t\t\t\"AttributeID\":{\"value\":\"SOFTVER\"},\n\t\t\t\"Value\":{\"value\":\"Server 2012 R2\"}\n\t\t}\n\t]\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}/StockItem?$select=InventoryID,Attributes/AttributeDescription,Attributes/Value&$expand=Attributes",
+              "raw": "{{EndpointURL}}/StockItem?$select=InventoryID&$expand=Attributes($select=AttributeDescription,Value)",
               "host": [
                 "{{EndpointURL}}"
               ],
@@ -15388,11 +15377,11 @@
               "query": [
                 {
                   "key": "$select",
-                  "value": "InventoryID,Attributes/AttributeDescription,Attributes/Value"
+                  "value": "InventoryID"
                 },
                 {
                   "key": "$expand",
-                  "value": "Attributes"
+                  "value": "Attributes($select=AttributeDescription,Value)"
                 }
               ]
             }
@@ -15845,7 +15834,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"Summary\" : {\"value\" : \"Time entry summary\"},\r\n  \"Date\" : {\"value\" : \"2024-10-24T10:05:00.000\" },\r\n  \"Employee\" : {\"value\" : \"EP00000026\" },\r\n  \"ProjectID\" : {\"value\" : \"TOMYUM1\" },\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\" },\r\n  \"CostCode\" : {\"value\" : \"00-000\" },\r\n  \"EarningType\" : {\"value\" : \"RG\" },\r\n  \"TimeSpent\" : {\"value\" : \"01:30\" },\r\n  \"BillableTime\" : {\"value\" : \"00:30\" },\r\n  \"TimeZone\" : {\"value\" : \"(GMT+10:00) Canberra, Melbourne, Sydney\"}\r\n}"
+              "raw": "{\r\n  \"Summary\" : {\"value\" : \"Time entry summary\"},\r\n  \"Date\" : {\"value\" : \"2024-10-24T10:05:00.000\" },\r\n  \"Employee\" : {\"value\" : \"EP00000026\" },\r\n  \"ProjectID\" : {\"value\" : \"TOMYUM1\" },\r\n  \"ProjectTaskID\" : {\"value\" : \"PHASE1\" },\r\n  \"CostCode\" : {\"value\" : \"00-000\" },\r\n  \"EarningType\" : {\"value\" : \"RG\" },\r\n  \"TimeSpent\" : {\"value\" : { \"id\": 90 } },\r\n  \"BillableTime\" : {\"value\" : { \"id\": 30 } },\r\n  \"TimeZone\" : {\"value\" : \"(GMT+10:00) Canberra, Melbourne, Sydney\"}\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}TimeEntry",
@@ -16089,7 +16078,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"AccountRef\": {},\r\n    \"APAccount\": { \"value\": \"20000\" },\r\n    \"APSubaccount\": { \"value\": \"000000\" },\r\n    \"CashAccount\": { \"value\": \"10200WH\" },\r\n    \"CurrencyID\": { \"value\": \"USD\" },\r\n    \"CurrencyRateType\": { \"value\": \"SPOT\" },\r\n    \"EnableCurrencyOverride\": { \"value\": true },\r\n    \"EnableRateOverride\": { \"value\": false },\r\n    \"F1099Box\": {},\r\n    \"F1099Vendor\": { \"value\": false },\r\n    \"FATCA\": {},\r\n    \"FOBPoint\": {},\r\n    \"ForeignEntity\": { \"value\": false },\r\n    \"LandedCostVendor\": { \"value\": false },\r\n    \"LastModifiedDateTime\": { \"value\": \"2020-08-11T10:47:41.17-04:00\" },\r\n    \"LeadTimedays\": {},\r\n    \"LocationName\": { \"value\": \"Primary Location\" },\r\n    \"MaxReceipt\": { \"value\": 100.000000 },\r\n    \"MinReceipt\": { \"value\": 0.000000 },\r\n    \"ParentAccount\": {},\r\n    \"PaymentBy\": { \"value\": \"Due Date\" },\r\n    \"PaymentLeadTimedays\": { \"value\": 0 },\r\n    \"PaymentMethod\": { \"value\": \"CHECK\" },\r\n    \"PaySeparately\": { \"value\": false },\r\n    \"PrintOrders\": { \"value\": false },\r\n    \"ReceiptAction\": { \"value\": \"Accept but Warn\" },\r\n    \"ReceivingBranch\": {},\r\n    \"RemittanceAddressOverride\": { \"value\": false },\r\n    \"RemittanceContactOverride\": { \"value\": false },\r\n    \"SendOrdersbyEmail\": { \"value\": false },\r\n    \"ShippingAddressOverride\": { \"value\": false },\r\n    \"ShippingContactOverride\": { \"value\": false },\r\n    \"ShippingTerms\": {},\r\n    \"ShipVia\": {},\r\n    \"Status\": { \"value\": \"Active\" },\r\n    \"TaxCalculationMode\": { \"value\": \"Tax Settings\" },\r\n    \"TaxRegistrationID\": {},\r\n    \"TaxZone\": {},\r\n    \"Terms\": { \"value\": \"30D\" },\r\n    \"ThresholdReceipt\": { \"value\": 100.000000 },\r\n    \"VendorClass\": { \"value\": \"SUBCON\" },\r\n    \"VendorID\": { \"value\": \"TESTVENDOR\" },\r\n    \"VendorIsLaborUnion\": { \"value\": false },\r\n    \"VendorIsTaxAgency\": { \"value\": false  },\r\n    \"VendorName\": { \"value\": \"TESTVENDOR\" }\r\n}"
+              "raw": "{\r\n    \"AccountRef\": {},\r\n    \"APAccount\": { \"value\": \"20000\" },\r\n    \"APSubaccount\": { \"value\": \"000000\" },\r\n    \"CashAccount\": { \"value\": \"10200WH\" },\r\n    \"CurrencyID\": { \"value\": \"USD\" },\r\n    \"CurrencyRateType\": { \"value\": \"SPOT\" },\r\n    \"EnableCurrencyOverride\": { \"value\": true },\r\n    \"EnableRateOverride\": { \"value\": false },\r\n    \"F1099Box\": {},\r\n    \"F1099Vendor\": { \"value\": false },\r\n    \"FATCA\": {},\r\n    \"FOBPoint\": {},\r\n    \"ForeignEntity\": { \"value\": false },\r\n    \"LandedCostVendor\": { \"value\": false },\r\n    \"LastModifiedDateTime\": { \"value\": \"2020-08-11T10:47:41.17-04:00\" },\r\n    \"LeadTimedays\": {},\r\n    \"LocationName\": { \"value\": \"Primary Location\" },\r\n    \"MaxReceipt\": { \"value\": 100.000000 },\r\n    \"MinReceipt\": { \"value\": 0.000000 },\r\n    \"ParentAccount\": {},\r\n    \"PaymentBy\": { \"value\": \"Due Date\" },\r\n    \"PaymentLeadTimedays\": { \"value\": 0 },\r\n    \"PaymentMethod\": { \"value\": \"CHECK\" },\r\n    \"PaySeparately\": { \"value\": false },\r\n    \"PrintOrders\": { \"value\": false },\r\n    \"ReceiptAction\": { \"value\": \"Accept but Warn\" },\r\n    \"ReceivingBranch\": {},\r\n    \"RemittanceAddressOverride\": { \"value\": false },\r\n    \"RemittanceContactOverride\": { \"value\": false },\r\n    \"SendOrdersbyEmail\": { \"value\": false },\r\n    \"ShippingAddressOverride\": { \"value\": false },\r\n    \"ShippingContactOverride\": { \"value\": false },\r\n    \"ShippingTerms\": {},\r\n    \"ShipVia\": {},\r\n    \"Status\": { \"value\": { \"id\": \"A\" } },\r\n    \"TaxCalculationMode\": { \"value\": \"Tax Settings\" },\r\n    \"TaxRegistrationID\": {},\r\n    \"TaxZone\": {},\r\n    \"Terms\": { \"value\": \"30D\" },\r\n    \"ThresholdReceipt\": { \"value\": 100.000000 },\r\n    \"VendorClass\": { \"value\": \"SUBCON\" },\r\n    \"VendorID\": { \"value\": \"TESTVENDOR\" },\r\n    \"VendorIsLaborUnion\": { \"value\": false },\r\n    \"VendorIsTaxAgency\": { \"value\": false  },\r\n    \"VendorName\": { \"value\": \"TESTVENDOR\" }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}Vendor",
@@ -16371,7 +16360,7 @@
     {
       "id": "5e2a90e6-6ae9-4306-a5ed-eba684b22db2",
       "key": "EndpointURL",
-      "value": "{{InstanceURL}}entity/Default/25.200.001/"
+      "value": "{{InstanceURL}}entity/Default/26.200.001/"
     },
     {
       "id": "a36b8ebc-f8f4-4240-b0bb-ad397c164784",
