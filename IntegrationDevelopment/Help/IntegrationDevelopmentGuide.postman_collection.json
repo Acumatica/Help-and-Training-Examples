@@ -363,7 +363,7 @@
                 }
               ]
             },
-            "description": "This example shows the update of a record, which is described in [Update a Record](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=af48c02a-afbc-4fdb-b1e5-635ac7ebbaf1)."
+            "description": "This example shows the update of a record, which is described in [Update a Record](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=d99911e1-f14e-4e40-89c4-a387738fb9b6)."
           },
           "response": []
         },
@@ -563,7 +563,7 @@
                   "    method: 'PUT',\r",
                   "    body: {\r",
                   "        mode: 'raw',\r",
-                  "        raw: '{\"InventoryID\": {\"value\": \"APJAM08\"},\"ItemStatus\": {\"value\": \"Active\"}}'\r",
+                  "        raw: '{\"InventoryID\": {\"value\": \"APJAM08\"},\"ItemStatus\": {\"value\": {\"id\": \"AC\"}}}'\r",
                   "    },\r",
                   "    header: {\r",
                   "        'Content-Type': 'application/json'\r",
@@ -607,7 +607,7 @@
                   "        method: 'PUT',\r",
                   "        body: {\r",
                   "            mode: 'raw',\r",
-                  "            raw: '{\"InventoryID\": {\"value\": \"APJAM08\"},\"ItemStatus\": {\"value\": \"Inactive\"}}'\r",
+                  "            raw: '{\"InventoryID\": {\"value\": \"APJAM08\"},\"ItemStatus\": {\"value\": {\"id\": \"IN\"}}}'\r",
                   "        },\r",
                   "        header: {\r",
                   "            'Content-Type': 'application/json'\r",
@@ -677,7 +677,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{EndpointURL}}StockItem?$expand=WarehouseDetails&$filter=ItemStatus eq 'AC' and LastModifiedDateTime gt datetimeoffset'2024-08-18T23%3A59%3A59.999%2B04%3A00'",
+              "raw": "{{EndpointURL}}StockItem?$expand=WarehouseDetails&$filter=ItemStatus eq 'AC' and LastModifiedDateTime gt 2024-08-18T23%3A59%3A59.999%2B04%3A00",
               "host": [
                 "{{EndpointURL}}StockItem"
               ],
@@ -688,7 +688,7 @@
                 },
                 {
                   "key": "$filter",
-                  "value": "ItemStatus eq 'AC' and LastModifiedDateTime gt datetimeoffset'2024-08-18T23%3A59%3A59.999%2B04%3A00'"
+                  "value": "ItemStatus eq 'AC' and LastModifiedDateTime gt 2024-08-18T23%3A59%3A59.999%2B04%3A00"
                 }
               ]
             },
@@ -759,18 +759,18 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{EndpointURL}}SalesInvoice?$filter=cf.Decimal(f='Document.CuryBalanceWOTotal') eq 0M and cf.DateTime(f='Document.DiscDate') gt datetimeoffset'2024-02-18T23%3A59%3A59.999%2B04%3A00' ",
+              "raw": "{{EndpointURL}}SalesInvoice?$filter=cf.Decimal('Document.CuryBalanceWOTotal') eq 0 and cf.DateTime('Document.DiscDate') gt 2024-02-18T23%3A59%3A59.999%2B04%3A00",
               "host": [
                 "{{EndpointURL}}SalesInvoice"
               ],
               "query": [
                 {
                   "key": "$filter",
-                  "value": "cf.Decimal(f='Document.CuryBalanceWOTotal') eq 0M and cf.DateTime(f='Document.DiscDate') gt datetimeoffset'2024-02-18T23%3A59%3A59.999%2B04%3A00' "
+                  "value": "cf.Decimal('Document.CuryBalanceWOTotal') eq 0 and cf.DateTime('Document.DiscDate') gt 2024-02-18T23%3A59%3A59.999%2B04%3A00"
                 }
               ]
             },
-            "description": "This example shows the retrieval of records that satisfy the specified conditions, which is described in [Retrieve Records by Conditions](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=775ca16b-cba6-4c1d-89d5-c1df7833bfea)."
+            "description": "This example shows the retrieval of records that satisfy the specified conditions, which is described in [Retrieve Records by Conditions](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=22f1003d-f09a-4907-907a-144944b15a0f)."
           },
           "response": []
         },
@@ -1084,7 +1084,7 @@
               }
             ],
             "url": {
-              "raw": "{{EndpointURL}}Shipment?$select=ShipmentNbr,ShipmentDate&$filter=ShipmentDate lt datetimeoffset'2026-12-31'",
+              "raw": "{{EndpointURL}}Shipment?$select=ShipmentNbr,ShipmentDate&$filter=ShipmentDate lt 2026-12-31T10%3A31%3A28.402%2B03%3A00",
               "host": [
                 "{{EndpointURL}}Shipment"
               ],
@@ -1095,7 +1095,7 @@
                 },
                 {
                   "key": "$filter",
-                  "value": "ShipmentDate lt datetimeoffset'2026-12-31'"
+                  "value": "ShipmentDate lt 2026-12-31T10%3A31%3A28.402%2B03%3A00"
                 }
               ]
             },
@@ -1275,7 +1275,7 @@
                   "  });\r",
                   "  pm.test(\"Sales order status is Back Order\", function (){\r",
                   "    const jsonResponse = response.json();\r",
-                  "    pm.expect(jsonResponse.Status.value).to.be.eql('Back Order');\r",
+                  "    pm.expect(jsonResponse.Status.value.id).to.be.eql('B');\r",
                   "    });\r",
                   "    //Sign out and set the next request\r",
                   "    var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -1460,7 +1460,7 @@
                   "    });\r",
                   "    pm.test(\"Case status is Closed\", function () {\r",
                   "        const jsonResponse = response.json();\r",
-                  "        pm.expect(jsonResponse.Status.value).to.be.eql('Closed');\r",
+                  "        pm.expect(jsonResponse.Status.value.id).to.be.eql('C');\r",
                   "    });\r",
                   "    //Sign out and set the next request\r",
                   "    var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -1768,7 +1768,7 @@
                   "        method: 'PUT',\r",
                   "        body: {\r",
                   "            mode: 'raw',\r",
-                  "            raw: '{\"AssignedToMe\": {\"value\": true},\"Type\": {\"value\": \"All\"}}'},\r",
+                  "            raw: '{\"AssignedToMe\": {\"value\": true},\"Type\": {\"value\": {\"id\": 0}}}'},\r",
                   "        header: {\r",
                   "            'Content-Type': 'application/json'\r",
                   "        }\r",
@@ -2277,7 +2277,7 @@
               }
             ],
             "url": {
-              "raw": "{{EndpointURL}}SalesOrder/SO/000087?$custom=Document.AttributePRODUCT",
+              "raw": "{{EndpointURL}}SalesOrder/SO/000087?$select=*,Document.AttributePRODUCT",
               "host": [
                 "{{EndpointURL}}SalesOrder"
               ],
@@ -2287,8 +2287,8 @@
               ],
               "query": [
                 {
-                  "key": "$custom",
-                  "value": "Document.AttributePRODUCT"
+                  "key": "$select",
+                  "value": "*,Document.AttributePRODUCT"
                 }
               ]
             },
@@ -2357,14 +2357,14 @@
               "raw": "{\r\n    \"CustomerID\": {\r\n        \"value\": \"GOODFOOD\"\r\n    },\r\n    \"Hold\": {\r\n        \"value\": false\r\n    },\r\n    \"LocationID\": {\r\n        \"value\": \"MAIN\"\r\n    },\r\n    \"OrderType\": {\r\n        \"value\": \"SO\"\r\n    },\r\n    \"PaymentMethod\": {\r\n        \"value\": \"CHECK\"\r\n    },\r\n    \"custom\": {\r\n        \"Document\": {\r\n            \"AttributePRODUCT\": {\r\n                \"type\": \"CustomStringField\",\r\n                \"value\": \"Apple jam 8 oz.\"\r\n            }\r\n        }\r\n    }\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}SalesOrder?$custom=Document.AttributePRODUCT",
+              "raw": "{{EndpointURL}}SalesOrder?$select=*,Document.AttributePRODUCT",
               "host": [
                 "{{EndpointURL}}SalesOrder"
               ],
               "query": [
                 {
-                  "key": "$custom",
-                  "value": "Document.AttributePRODUCT"
+                  "key": "$select",
+                  "value": "*,Document.AttributePRODUCT"
                 }
               ]
             },
@@ -2429,18 +2429,14 @@
               }
             ],
             "url": {
-              "raw": "{{EndpointURL}}StockItem?$custom=Item.DescrTranslations&$select=custom.Item",
+              "raw": "{{EndpointURL}}StockItem?$select=Item.DescrTranslations",
               "host": [
                 "{{EndpointURL}}StockItem"
               ],
               "query": [
                 {
-                  "key": "$custom",
-                  "value": "Item.DescrTranslations"
-                },
-                {
                   "key": "$select",
-                  "value": "custom.Item"
+                  "value": "Item.DescrTranslations"
                 }
               ]
             },
@@ -2596,7 +2592,7 @@
                 }
               ]
             },
-            "description": "This example shows the specification of localized values of a multi-language field, which is described in [Specify Localized Values of a Multi-Language Field](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=33e74dc8-aad3-4fb0-b3ac-e8ecaf323578)."
+            "description": "This example shows the specification of localized values of a multi-language field, which is described in [Specify Localized Values of a Multi-Language Field](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=8932e3ff-e69a-4126-afbd-bbe634019713)."
           },
           "response": []
         },
@@ -2661,18 +2657,14 @@
               "raw": "{\r\n  \"InventoryID\" : {\"value\" : \"BASESERV\" },\r\n  \"ItemClass\" : {\"value\" : \"COMPUTERS\" },\r\n  \"Description\" : {\"value\" : \"[{en:Item},{fr:Pièce}]\" }\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}StockItem?$custom=Item.DescrTranslations&$select=custom.Item",
+              "raw": "{{EndpointURL}}StockItem?$select=*,Item.DescrTranslations",
               "host": [
                 "{{EndpointURL}}StockItem"
               ],
               "query": [
                 {
-                  "key": "$custom",
-                  "value": "Item.DescrTranslations"
-                },
-                {
                   "key": "$select",
-                  "value": "custom.Item"
+                  "value": "*,Item.DescrTranslations"
                 }
               ]
             },
@@ -2786,7 +2778,7 @@
                 "CashAccountSummary"
               ]
             },
-            "description": "This example shows the specification of localized values of a multi-language field, which is described in [Specify Localized Values of a Multi-Language Field](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=33e74dc8-aad3-4fb0-b3ac-e8ecaf323578)."
+            "description": "This example shows the specification of localized values of a multi-language field, which is described in [Specify Localized Values of a Multi-Language Field](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=21913555-544a-4552-b313-072794f6bd5c)."
           },
           "response": []
         },
@@ -3922,7 +3914,7 @@
                   "                method: 'PUT',\r",
                   "                body: {\r",
                   "                    mode: 'raw',\r",
-                  "                    raw: '{\"TaxID\": { \"value\": \"PST\"},\"Description\": {\"value\": \"Tax ID for testing\"},\"TaxType\": {\"value\": \"VAT\"},\"IncludeInVATTaxableTotal\": {\"value\": true},\"ExcludeFromTaxonTaxCalculation\": {\"value\": true},\"TaxAgency\": {\"value\": \"CANADABC\"},\"TaxSchedule\": [{\"TaxRate\": {\"value\": 5}, \"ReportingGroup\": {\"value\": \"Input Tax (purchases)\"}},{\"TaxRate\": {\"value\": 5}, \"ReportingGroup\": {\"value\": \"Output Tax (sales)\"}}]}'},\r",
+                  "                    raw: '{\"TaxID\": { \"value\": \"PST\"},\"Description\": {\"value\": \"Tax ID for testing\"},\"TaxType\": {\"value\": {\"id\": \"V\"}},\"IncludeInVATTaxableTotal\": {\"value\": true},\"ExcludeFromTaxonTaxCalculation\": {\"value\": true},\"TaxAgency\": {\"value\": \"CANADABC\"},\"TaxSchedule\": [{\"TaxRate\": {\"value\": 5}, \"ReportingGroup\": {\"value\": {\"id\": \"P\"}}},{\"TaxRate\": {\"value\": 5}, \"ReportingGroup\": {\"value\": {\"id\": \"S\"}}}]}'},\r",
                   "                header: {\r",
                   "                    'Content-Type': 'application/json'\r",
                   "                }\r",
@@ -4069,7 +4061,7 @@
                   "            });\r",
                   "            pm.test(\"Bill status is Balanced\", function (){\r",
                   "                const jsonResponse = response.json();\r",
-                  "                pm.expect(jsonResponse.Status.value).to.be.eql('Balanced');\r",
+                  "                pm.expect(jsonResponse.Status.value.id).to.be.eql('B');\r",
                   "            });\r",
                   "            //Sign out and set the next request\r",
                   "            var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -4326,14 +4318,14 @@
               "raw": "{    \r\n    \"BOMID\": { \r\n        \"value\": \"<NEW>\" \r\n    },\r\n    \"Description\": {\r\n\t    \"value\": \"Test BOM\"\r\n\t},\r\n    \"InventoryID\": {\r\n        \"value\": \"CABINET\"\r\n    },\r\n    \"Operations\": [\r\n        {\r\n            \"OperationNbr\": {\r\n                \"value\": \"0010\"\r\n            },\r\n            \"WorkCenter\": {\r\n                \"value\": \"WC10\"\r\n            },\r\n            \"Material\" :[\r\n                {\r\n                    \"InventoryID\": {\r\n                        \"value\": \"HINGE\"\r\n                    },\r\n                    \"UOM\":{\r\n                        \"value\": \"EA\"\r\n                    }  \r\n                }\r\n            ]\r\n        }\r\n\t\t],\r\n    \"Revision\": {\r\n        \"value\": \"A\"\r\n    }\r\n}"
             },
             "url": {
-              "raw": "{{ManufacturingEndpointURL}}BillOfMaterial?$expand=Operations($expand=Material,Overheads,Steps,Tools)",
+              "raw": "{{ManufacturingEndpointURL}}BillOfMaterial?$expand=Operations($expand=Material)",
               "host": [
                 "{{ManufacturingEndpointURL}}BillOfMaterial"
               ],
               "query": [
                 {
                   "key": "$expand",
-                  "value": "Operations($expand=Material,Overheads,Steps,Tools)"
+                  "value": "Operations($expand=Material)"
                 }
               ]
             },
@@ -4639,7 +4631,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"ClassID\": {\"value\": \"JREPAIR\"},\r\n    \"BusinessAccount\": {\"value\": \"ABAKERY\"},\r\n    \"ContactID\": {\"value\":  \"100211\"},\r\n    \"Subject\": {\"value\":  \"Some Subject\"},\r\n    \"custom\": {\r\n        \"Case\": {\r\n            \"AttributeMODEL\": {\r\n                \"value\": \"JUICER15:Commercial juicer with a prod rate of 1.5 l per min\"\r\n            }\r\n        }\r\n    }\r\n}"
+              "raw": "{\r\n    \"ClassID\": {\"value\": \"JREPAIR\"},\r\n    \"BusinessAccount\": {\"value\": \"ABAKERY\"},\r\n    \"ContactID\": {\"value\":  \"100211\"},\r\n    \"Subject\": {\"value\":  \"Some Subject\"},\r\n    \"custom\": {\r\n        \"Case\": {\r\n            \"AttributeMODEL\": {\r\n                \"type\": \"CustomStringMultiSelectField\",\r\n                \"value\": [\r\n                    { \"id\": \"JUICER15\" }\r\n                ]\r\n            }\r\n        }\r\n    }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}Case?$expand=Attributes",
@@ -4927,7 +4919,7 @@
                   "});\r",
                   "pm.test(\"Contact is active\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.Status.value).to.be.eql('Active');\r",
+                  "    pm.expect(jsonResponse.Status.value.id).to.be.eql('A');\r",
                   "});\r",
                   "pm.test(\"Attribute is added\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
@@ -5014,7 +5006,7 @@
                   "});\r",
                   "pm.test(\"Contact is inactive\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.Status.value).to.be.eql('Inactive');\r",
+                  "    pm.expect(jsonResponse.Status.value.description).to.be.eql('Inactive');\r",
                   "});\r",
                   "//Sign out and set the next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -5324,7 +5316,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"CustomerID\": {\"value\": \"Cust01\"},\r\n    \"CustomerName\": {\"value\": \"Custumer 01\"},\r\n    \"CustomerClass\": {\"value\": \"DEFAULT\"}\r\n}"
+              "raw": "{\r\n    \"CustomerID\": {\"value\": \"Cust01\"},\r\n    \"CustomerName\": {\"value\": \"Customer 01\"},\r\n    \"CustomerClass\": {\"value\": \"DEFAULT\"}\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}Customer",
@@ -5744,7 +5736,7 @@
                 }
               ]
             },
-            "description": "This example shows the update of a customer in Acumatica ERP, which is described in [Update a Customer](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=87dd5c39-0a0b-4086-8aa5-791657073bbd)."
+            "description": "This example shows the update of a customer in Acumatica ERP, which is described in [Update a Customer](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=14159361-e0c2-43bb-a6d0-679bf4c1508e)."
           },
           "response": []
         }
@@ -5923,7 +5915,7 @@
                   "});\r",
                   "pm.test(\"Employee is active\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.Status.value).to.be.eql('Active');\r",
+                  "    pm.expect(jsonResponse.Status.value.id).to.be.eql('A');\r",
                   "});\r",
                   "//Sign out and set the next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -6152,7 +6144,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"EmployeePayrollClassID\": {\r\n        \"value\": \"TESTCLASS\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Test CLASS\"\r\n    },\r\n    \"PayrollDefaults\": {\r\n        \"EmployeeType\": {\r\n            \"value\": \"Hourly\"\r\n        },\r\n        \"PayGroup\": {\r\n            \"value\": \"WEEKLY\"\r\n        },\r\n        \"DefaultCalendar\": {\r\n            \"value\": \"MAIN\"\r\n        },\r\n        \"WorkingWeeksPerYear\": {\r\n            \"value\": 51\r\n        },\r\n        \"OverrideHoursPerYearforCertProject\": {\r\n            \"value\": true\r\n        },\r\n        \"CertifiedProjectHoursperYear\": {\r\n            \"value\": 2050\r\n        },\r\n        \"ExemptFromOvertimeRules\": {\r\n            \"value\": true\r\n        },\r\n        \"NetPayMinimum\": {\r\n            \"value\": 150\r\n        },\r\n        \"MaximumPercentofNetPayforallGarnishments\": {\r\n            \"value\": 45\r\n        },\r\n        \"DefaultWCCCode\": {\r\n            \"value\": \"5606\"\r\n        },\r\n        \"DefaultUnion\": {\r\n            \"value\": \"NYS\"\r\n        },\r\n        \"ExemptFromCertifiedReporting\": {\r\n            \"value\": false\r\n        },\r\n        \"WorkLocations\": [\r\n            {\r\n                \"LocationID\": {\r\n                    \"value\": \"BELLEVUE\"\r\n                },\r\n                \"DefaultWorkLocation\": {\r\n                    \"value\": true\r\n                }\r\n            }\r\n        ]\r\n    },\r\n    \"PTODefaults\": [\r\n        {\r\n            \"PTOBank\": {\r\n                \"value\": \"PTO\"\r\n            },\r\n            \"EffectiveDate\": {\r\n                \"value\": \"01/01/2016\"\r\n            },\r\n            \"Active\": {\r\n                \"value\": \"true\"\r\n            },\r\n            \"AccrualPercent\": {\r\n                \"value\": \"7\"\r\n            },\r\n            \"AccrualLimit\": {\r\n                \"value\": \"150\"\r\n            },\r\n            \"CarryoverType\": {\r\n                \"value\": \"Partial\"\r\n            },\r\n            \"CarryoverAmount\": {\r\n                \"value\": \"200\"\r\n            },\r\n            \"FrontLoadingAmount\": {\r\n                \"value\": \"24\"\r\n            }\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"EmployeePayrollClassID\": {\r\n        \"value\": \"TESTCLASS\"\r\n    },\r\n    \"Description\": {\r\n        \"value\": \"Test CLASS\"\r\n    },\r\n    \"PayrollDefaults\": {\r\n        \"EmployeeType\": {\r\n            \"value\": \"Hourly\"\r\n        },\r\n        \"PayGroup\": {\r\n            \"value\": \"WEEKLY\"\r\n        },\r\n        \"DefaultCalendar\": {\r\n            \"value\": \"MAIN\"\r\n        },\r\n        \"WorkingWeeksPerYear\": {\r\n            \"value\": 51\r\n        },\r\n        \"OverrideHoursPerYearforCertProject\": {\r\n            \"value\": true\r\n        },\r\n        \"CertifiedProjectHoursperYear\": {\r\n            \"value\": 2050\r\n        },\r\n        \"ExemptFromOvertimeRules\": {\r\n            \"value\": true\r\n        },\r\n        \"NetPayMinimum\": {\r\n            \"value\": 150\r\n        },\r\n        \"MaximumPercentofNetPayforallGarnishments\": {\r\n            \"value\": 45\r\n        },\r\n        \"DefaultWCCCode\": {\r\n            \"value\": \"5606\"\r\n        },\r\n        \"DefaultUnion\": {\r\n            \"value\": \"NYS\"\r\n        },\r\n        \"ExemptFromCertifiedReporting\": {\r\n            \"value\": false\r\n        },\r\n        \"WorkLocations\": [\r\n            {\r\n                \"LocationID\": {\r\n                    \"value\": \"BELLEVUE\"\r\n                },\r\n                \"DefaultWorkLocation\": {\r\n                    \"value\": true\r\n                }\r\n            }\r\n        ]\r\n    },\r\n    \"PTODefaults\": [\r\n        {\r\n            \"PTOBank\": {\r\n                \"value\": \"PTO\"\r\n            },\r\n            \"EffectiveDate\": {\r\n                \"value\": \"01/01/2016\"\r\n            },\r\n            \"Active\": {\r\n                \"value\": \"true\"\r\n            },\r\n            \"AccrualPercent\": {\r\n                \"value\": \"7\"\r\n            },\r\n            \"AccrualLimit\": {\r\n                \"value\": \"150\"\r\n            },\r\n            \"CarryoverType\": {\r\n                \"value\": \"P\"\r\n            },\r\n            \"CarryoverAmount\": {\r\n                \"value\": \"200\"\r\n            },\r\n            \"FrontLoadingAmount\": {\r\n                \"value\": \"24\"\r\n            }\r\n        }\r\n    ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}EmployeePayrollClass?$expand=PayrollDefaults($expand=WorkLocations),PTODefaults",
@@ -6573,7 +6565,7 @@
                   "                    });\r",
                   "                    pm.test(\"Inventory issue should be released\", function (){\r",
                   "                        const jsonResponse = response.json();\r",
-                  "                        pm.expect(jsonResponse.Status.value).to.be.eql('Released');\r",
+                  "                        pm.expect(jsonResponse.Status.value.id).to.be.eql('R');\r",
                   "                    });\r",
                   "                    //Sign out and set the next request\r",
                   "                    var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -6869,7 +6861,7 @@
                   "                method: 'PUT',\r",
                   "                body: {\r",
                   "                    mode: 'raw',\r",
-                  "                    raw: '{\"TaxID\": { \"value\": \"PST\"},\"Description\": {\"value\": \"Tax ID for testing\"},\"TaxType\": {\"value\": \"VAT\"},\"IncludeInVATTaxableTotal\": {\"value\": true},\"ExcludeFromTaxonTaxCalculation\": {\"value\": true},\"TaxAgency\": {\"value\": \"CANADABC\"},\"TaxSchedule\": [{\"TaxRate\": {\"value\": 5}, \"ReportingGroup\": {\"value\": \"Input Tax (purchases)\"}},{\"TaxRate\": {\"value\": 5}, \"ReportingGroup\": {\"value\": \"Output Tax (sales)\"}}]}'},\r",
+                  "                    raw: '{\"TaxID\": { \"value\": \"PST\"},\"Description\": {\"value\": \"Tax ID for testing\"},\"TaxType\": {\"value\": {\"id\": \"V\"}},\"IncludeInVATTaxableTotal\": {\"value\": true},\"ExcludeFromTaxonTaxCalculation\": {\"value\": true},\"TaxAgency\": {\"value\": \"CANADABC\"},\"TaxSchedule\": [{\"TaxRate\": {\"value\": 5}, \"ReportingGroup\": {\"value\": {\"id\": \"P\"}}},{\"TaxRate\": {\"value\": 5}, \"ReportingGroup\": {\"value\": {\"id\": \"S\"}}}]}'},\r",
                   "                header: {\r",
                   "                    'Content-Type': 'application/json'\r",
                   "                }\r",
@@ -7104,7 +7096,7 @@
                   "                    });\r",
                   "                    pm.test(\"Status is Closed\", function (){\r",
                   "                        const jsonResponse = response.json();\r",
-                  "                        pm.expect(jsonResponse.Status.value).to.be.eql('Closed');\r",
+                  "                        pm.expect(jsonResponse.Status.value.id).to.be.eql('C');\r",
                   "                    });\r",
                   "                    //Sign out and set the next request\r",
                   "                    var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -7264,17 +7256,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"id\": \"8deb6bf9-2072-eb11-b83e-00155d408001\",\r\n    \"custom\": {\r\n        \"CurrentDocument\": {\r\n            \"TaxZoneID\": {\r\n                 \"value\": \"AVALARA\"\r\n            },\r\n             \"DontPrint\": {\r\n                \"value\": false\r\n            }\r\n        }\r\n    }\r\n}"
+              "raw": "{\r\n    \"id\": \"8deb6bf9-2072-eb11-b83e-00155d408001\",\r\n    \"custom\": {\r\n        \"CurrentDocument\": {\r\n            \"TaxZoneID\": {\r\n                \"type\": \"CustomStringField\",\r\n                \"value\": \"AVALARA\"\r\n            },\r\n            \"DontPrint\": {\r\n                \"type\": \"CustomBooleanField\",\r\n                \"value\": false\r\n            }\r\n        }\r\n    }\r\n}"
             },
             "url": {
-              "raw": "{{EndpointURL}}Invoice?$custom=CurrentDocument.TaxZoneID,CurrentDocument.DontPrint",
+              "raw": "{{EndpointURL}}Invoice?$select=*,CurrentDocument.TaxZoneID,CurrentDocument.DontPrint",
               "host": [
                 "{{EndpointURL}}Invoice"
               ],
               "query": [
                 {
-                  "key": "$custom",
-                  "value": "CurrentDocument.TaxZoneID,CurrentDocument.DontPrint"
+                  "key": "$select",
+                  "value": "*,CurrentDocument.TaxZoneID,CurrentDocument.DontPrint"
                 }
               ]
             },
@@ -7682,7 +7674,7 @@
                   "                    });\r",
                   "                    pm.test(\"Opportunity relations include sales order\", function (){\r",
                   "                        const jsonResponse = response.json();\r",
-                  "                        pm.expect(jsonResponse.Relations[1].Type.value).to.be.eql('Sales Order');\r",
+                  "                        pm.expect(jsonResponse.Relations[1].Type.value.description).to.be.eql('Sales Order');\r",
                   "                    });\r",
                   "                    //Sign out and set the next request\r",
                   "                    var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -7803,7 +7795,7 @@
                   "                    });\r",
                   "                    pm.test(\"Opportunity relations include business account\", function (){\r",
                   "                        const jsonResponse = response.json();\r",
-                  "                        pm.expect(jsonResponse.Relations[0].Type.value).to.be.eql('Business Account');\r",
+                  "                        pm.expect(jsonResponse.Relations[0].Type.value.description).to.be.eql('Business Account');\r",
                   "                    });\r",
                   "                    //Sign out and set the next request\r",
                   "                    var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -7854,7 +7846,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"entity\": { \"OpportunityID\": {\"value\":\"000002\"},\r\n        \"custom\": {\r\n            \"AccountInfo\": {\r\n                \"BAccountID\": {  \"value\": \"11111\" },\r\n                \"AccountName\": { \"value\": \"asdqwe\" }\r\n            },\r\n            \"ContactInfo\": {\r\n                \"LastName\": { \"value\": \"test\" }\r\n            }\r\n        }\r\n    }\r\n}"
+              "raw": "{\r\n    \"entity\": { \"OpportunityID\": {\"value\":\"000002\"},\r\n        \"custom\": {\r\n            \"AccountInfo\": {\r\n                \"BAccountID\": { \"type\": \"CustomStringField\", \"value\": \"11111\" },\r\n                \"AccountName\": { \"type\": \"CustomStringField\", \"value\": \"asdqwe\" }\r\n            },\r\n            \"ContactInfo\": {\r\n                \"LastName\": { \"type\": \"CustomStringField\", \"value\": \"test\" }\r\n            }\r\n        }\r\n    }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}Opportunity/CreateAccountFromOpportunity",
@@ -8021,7 +8013,7 @@
                 "{{EndpointURL}}Payment"
               ]
             },
-            "description": "This example shows the creation of an AR payment for different document types, which is described in [Create an AR Payment](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b25e527e-8187-485e-9c8e-93aa5c2e8931)."
+            "description": "This example shows the creation of an AR payment for different document types, which is described in [Create an AR Payment](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=c19167f3-c627-4399-8a15-9e83a6a5259a)."
           },
           "response": []
         },
@@ -8121,7 +8113,7 @@
                   "});\r",
                   "pm.test(\"Payment is Pending Processing\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.Status.value).to.eql('Pending Processing');\r",
+                  "    pm.expect(jsonResponse.Status.value.description).to.eql('Pending Processing');\r",
                   "});\r",
                   "//Sign out and set the next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -8234,7 +8226,7 @@
                   "                    });\r",
                   "                    pm.test(\"Payment status is Open\", function (){\r",
                   "                        const jsonResponse = response.json();\r",
-                  "                        pm.expect(jsonResponse.Status.value).to.be.eql('Open');\r",
+                  "                        pm.expect(jsonResponse.Status.value.id).to.be.eql('N');\r",
                   "                    });\r",
                   "                    //Sign out and set the next request\r",
                   "                    var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -8269,7 +8261,7 @@
                   "        method: 'PUT',\r",
                   "        body: {\r",
                   "            mode: 'raw',\r",
-                  "            raw: '{\"Type\": {\"value\": \"Payment\"},\"ReferenceNbr\": {\"value\": \"'+ paymentRefNbr +'\"},\"Hold\" : {\"value\" : \"false\"},\"PaymentAmount\": {\"value\": ' + paymentAmount + '}}'\r",
+                  "            raw: '{\"Type\": {\"value\": {\"id\": \"PMT\"}},\"ReferenceNbr\": {\"value\": \"'+ paymentRefNbr +'\"},\"Hold\" : {\"value\" : \"false\"},\"PaymentAmount\": {\"value\": ' + paymentAmount + '}}'\r",
                   "        },\r",
                   "        header: {\r",
                   "            'Content-Type': 'application/json'\r",
@@ -8601,7 +8593,7 @@
                   "});\r",
                   "pm.test(\"Status is Balanced\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.Status.value).to.be.eql('Balanced');\r",
+                  "    pm.expect(jsonResponse.Status.value.id).to.be.eql('B');\r",
                   "});\r",
                   "pm.execution.setNextRequest(\"\");"
                 ]
@@ -9423,7 +9415,7 @@
                 "RunProjectBilling"
               ]
             },
-            "description": "This example shows the invocation of project billing. This process is described in [Invoke Project Billing](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=13f5f5b8-33d1-40d9-83db-3f3dfc5dcba9)."
+            "description": "This example shows the invocation of project billing. This process is described in [Invoke Project Billing](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=b814f256-d720-4926-bb96-25e8808a7f49)."
           },
           "response": []
         },
@@ -9707,7 +9699,7 @@
                   "  });\r",
                   "  pm.test(\"Project task status is Active\", function (){\r",
                   "    const jsonResponse = response.json();\r",
-                  "    pm.expect(jsonResponse[0].Status.value).to.be.eql('Active');\r",
+                  "    pm.expect(jsonResponse[0].Status.value.id).to.be.eql('A');\r",
                   "});\r",
                   "//Sign out and set the next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -9814,7 +9806,7 @@
                   "        method: 'PUT',\r",
                   "        body: {\r",
                   "            mode: 'raw',\r",
-                  "            raw: '{\"EarningTypeCodeID\": { \"value\": \"HL\"},\"EarningTypeCategory\": {\"value\": \"Time Off\"},\"RegularTimeTypeCode\": {\"value\": \"RG\"}}'},\r",
+                  "            raw: '{\"EarningTypeCodeID\": { \"value\": \"HL\"},\"EarningTypeCategory\": {\"value\": {\"id\": \"TOF\"}},\"RegularTimeTypeCode\": {\"value\": \"RG\"}}'},\r",
                   "        header: {\r",
                   "            'Content-Type': 'application/json'\r",
                   "        }\r",
@@ -10744,7 +10736,7 @@
                   "                    });\r",
                   "                    pm.test(\"Purchase receipt status is Released\", function (){\r",
                   "                        const jsonResponse = response.json();\r",
-                  "                        pm.expect(jsonResponse.Status.value).to.be.eql('Released');\r",
+                  "                        pm.expect(jsonResponse.Status.value.id).to.be.eql('R');\r",
                   "                    });\r",
                   "                    //Sign out and set the next request\r",
                   "                    var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -10884,7 +10876,7 @@
                 "{{EndpointURL}}SalesInvoice"
               ]
             },
-            "description": "This example shows how to release a sales invoice from hold. This process is described in [Release a Sales Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=059b3f37-ba97-4c37-8fdd-6e2e5c292b10)."
+            "description": "This example shows how to release a sales invoice from hold. This process is described in [Release a Sales Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=225d83fc-889d-4152-bb0f-a647ff72da26)."
           },
           "response": []
         },
@@ -11183,7 +11175,7 @@
                 }
               ]
             },
-            "description": "This example shows how to create a sales invoice that will contain sold stock items and ordered service, for which the billing settings will be specified, and to which a payment will be applied. This process is described in [Create a Sales Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=6acfdb37-9770-4400-ad80-c229b467a649)."
+            "description": "This example shows how to create a sales invoice that will contain sold stock items and ordered service, for which the billing settings will be specified, and to which a payment will be applied. This process is described in [Create a Sales Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=47d9a02b-f1a7-4a21-9c63-804198e09537)."
           },
           "response": []
         },
@@ -11262,7 +11254,7 @@
                 }
               ]
             },
-            "description": "This example shows how to create a sales invoice that will contain sold stock items and ordered service, for which the billing settings will be specified, and to which a payment will be applied. This process is described in [Create a Sales Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=6acfdb37-9770-4400-ad80-c229b467a649)."
+            "description": "This example shows how to create a sales invoice that will contain sold stock items and ordered service, for which the billing settings will be specified, and to which a payment will be applied. This process is described in [Create a Sales Invoice](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=379712ea-217c-4424-8e77-c1797784b3e0)."
           },
           "response": []
         },
@@ -11490,7 +11482,7 @@
                   "                    });\r",
                   "                    pm.test(\"Credit memo status is Open\", function (){\r",
                   "                        const jsonResponse = response.json();\r",
-                  "                        pm.expect(jsonResponse.Status.value).to.be.eql('Open');\r",
+                  "                        pm.expect(jsonResponse.Status.value.id).to.be.eql('N');\r",
                   "                    });\r",
                   "                    //Sign out and set the next request\r",
                   "                    var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -12633,7 +12625,7 @@
                 }
               ]
             },
-            "description": "This example shows how to create a return order for invoices. This process is described in [Create a Return Order for Invoices](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ec34c7cf-6990-4bf2-9479-1c7a84ffc717)."
+            "description": "This example shows how to create a return order for invoices. This process is described in [Create a Return Order for Invoices](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=06a34176-4540-4ae2-b3bb-d31fd42d1bb8)."
           },
           "response": []
         },
@@ -12785,7 +12777,7 @@
                   "        method: 'PUT',\r",
                   "        body: {\r",
                   "            mode: 'raw',\r",
-                  "            raw: '{\"OrderType\": { \"value\": \"SO\"},\"CustomerID\": {\"value\": \"FRUITICO\"},\"Details\": [{\"InventoryID\": {\"value\": \"SWB-32OZ-GBT\"}, \"OrderQty\": {\"value\": 1}, \"WarehouseID\": {\"value\": \"RETAIL\"}}]}'},\r",
+                  "            raw: '{\"OrderType\": { \"value\": {\"id\": \"SO\"}},\"CustomerID\": {\"value\": \"FRUITICO\"},\"Details\": [{\"InventoryID\": {\"value\": \"SWB-32OZ-GBT\"}, \"OrderQty\": {\"value\": 1}, \"WarehouseID\": {\"value\": \"RETAIL\"}}]}'},\r",
                   "        header: {\r",
                   "            'Content-Type': 'application/json'\r",
                   "        }\r",
@@ -12877,7 +12869,7 @@
                   "                                    method: 'POST',\r",
                   "                                    body: {\r",
                   "                                        mode: 'raw',\r",
-                  "                                        raw: '{\"entity\" : {\"Type\" : {\"value\" : \"Shipment\"}, \"ShipmentNbr\": {\"value\" : \"' + shipmentNbr + '\"}}}'},\r",
+                  "                                        raw: '{\"entity\" : {\"Type\" : {\"value\" : {\"id\": \"N\"}}, \"ShipmentNbr\": {\"value\" : \"' + shipmentNbr + '\"}}}'},\r",
                   "                                    header: {\r",
                   "                                        'Content-Type': 'application/json'\r",
                   "                                    }\r",
@@ -12914,7 +12906,7 @@
                   "                                                        method: 'POST',\r",
                   "                                                        body: {\r",
                   "                                                            mode: 'raw',\r",
-                  "                                                            raw: '{\"entity\" : {\"Type\" : {\"value\" : \"Shipment\"}, \"ShipmentNbr\": {\"value\" : \"' + shipmentNbr + '\"}}}'},\r",
+                  "                                                            raw: '{\"entity\" : {\"Type\" : {\"value\" : {\"id\": \"N\"}}, \"ShipmentNbr\": {\"value\" : \"' + shipmentNbr + '\"}}}'},\r",
                   "                                                        header: {\r",
                   "                                                            'Content-Type': 'application/json'\r",
                   "                                                        }\r",
@@ -12979,7 +12971,7 @@
                   "                                                                                method: 'POST',\r",
                   "                                                                                body: {\r",
                   "                                                                                    mode: 'raw',\r",
-                  "                                                                                    raw: '{\"entity\" : {\"Type\" : {\"value\": \"Invoice\"}, \"ReferenceNbr\": {\"value\" : \"' + invoiceNbr + '\"}}}'},\r",
+                  "                                                                                    raw: '{\"entity\" : {\"Type\" : {\"value\": {\"id\": \"INV\"}}, \"ReferenceNbr\": {\"value\" : \"' + invoiceNbr + '\"}}}'},\r",
                   "                                                                                header: {\r",
                   "                                                                                    'Content-Type': 'application/json'\r",
                   "                                                                                }\r",
@@ -13255,7 +13247,7 @@
                 }
               ]
             },
-            "description": "This example shows how to create a return order for invoices. This process is described in [Create a Return Order for Invoices](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ec34c7cf-6990-4bf2-9479-1c7a84ffc717)."
+            "description": "This example shows how to create a return order for invoices. This process is described in [Create a Return Order for Invoices](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=0933c953-e3c7-427d-a851-b32731cf77a2)."
           },
           "response": []
         },
@@ -13352,7 +13344,7 @@
                   "                    });\r",
                   "                    pm.test(\"Sales order status is Shipping\", function (){\r",
                   "                        const jsonResponse = response.json();\r",
-                  "                        pm.expect(jsonResponse.Status.value).to.be.eql('Shipping');\r",
+                  "                        pm.expect(jsonResponse.Status.value.id).to.be.eql('S');\r",
                   "                        });\r",
                   "                    pm.test(\"One shipment is included\", function (){\r",
                   "                        const jsonResponse = response.json();\r",
@@ -13674,7 +13666,7 @@
                 "SalesOrderCreateShipment"
               ]
             },
-            "description": "This example shows how to create a receipt for a sales order of the RM type. This process is described in [Create a Receipt for a Sales Order of the RM Type](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a0257153-3f15-4563-8cf0-5a269b0008db)."
+            "description": "This example shows how to create a receipt for a sales order of the RM type. This process is described in [Create a Receipt for a Sales Order of the RM Type](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=8134b051-03a0-4f24-868e-4edb1d9cb4d6)."
           },
           "response": []
         }
@@ -13853,7 +13845,7 @@
                 }
               ]
             },
-            "description": "This example shows the creation of a shipment with allocations and package specifications, which is described in [Create a Shipment for Two Sales Orders with Allocations and Package Specifications](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=ab83de33-505c-476e-b8b8-99f2a98e142c)."
+            "description": "This example shows the creation of a shipment with allocations and package specifications, which is described in [Create a Shipment for Two Sales Orders with Allocations and Package Specifications](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=fbde1400-430a-4927-9891-0ea58b18eef1)."
           },
           "response": []
         },
@@ -13904,7 +13896,7 @@
                   "        method: 'PUT',\r",
                   "        body: {\r",
                   "            mode: 'raw',\r",
-                  "            raw: '{\"OrderType\": { \"value\": \"SO\"},\"CustomerID\": {\"value\": \"GOODFOOD\"},\"Details\": [{\"InventoryID\": {\"value\": \"APJAM08\"}, \"OrderQty\": {\"value\": 2}, \"UOM\": {\"value\": \"PIECE\"}, \"WarehouseID\": {\"value\": \"WHOLESALE\"}}]}'},\r",
+                  "            raw: '{\"OrderType\": { \"value\": {\"id\": \"SO\"}},\"CustomerID\": {\"value\": \"GOODFOOD\"},\"Details\": [{\"InventoryID\": {\"value\": \"APJAM08\"}, \"OrderQty\": {\"value\": 2}, \"UOM\": {\"value\": \"PIECE\"}, \"WarehouseID\": {\"value\": \"WHOLESALE\"}}]}'},\r",
                   "        header: {\r",
                   "            'Content-Type': 'application/json'\r",
                   "        }\r",
@@ -13929,7 +13921,7 @@
                   "            method: 'PUT',\r",
                   "            body: {\r",
                   "                mode: 'raw',\r",
-                  "                raw: '{\"OrderType\": { \"value\": \"SO\"},\"CustomerID\": {\"value\": \"GOODFOOD\"},\"Details\": [{\"InventoryID\": {\"value\": \"APJAM32\"}, \"OrderQty\": {\"value\": 1}, \"UOM\": {\"value\": \"BOX\"}, \"WarehouseID\": {\"value\": \"WHOLESALE\"}}]}'},\r",
+                  "                raw: '{\"OrderType\": { \"value\": {\"id\": \"SO\"}},\"CustomerID\": {\"value\": \"GOODFOOD\"},\"Details\": [{\"InventoryID\": {\"value\": \"APJAM32\"}, \"OrderQty\": {\"value\": 1}, \"UOM\": {\"value\": \"BOX\"}, \"WarehouseID\": {\"value\": \"WHOLESALE\"}}]}'},\r",
                   "            header: {\r",
                   "                'Content-Type': 'application/json'\r",
                   "            }\r",
@@ -14126,7 +14118,7 @@
                   "        method: 'PUT',\r",
                   "        body: {\r",
                   "            mode: 'raw',\r",
-                  "            raw: '{\"ShipmentNbr\": { \"value\": \"000058\"},\"Type\": {\"value\": \"Shipment\"},\"Packages\": [{\"BoxID\": {\"value\": \"SMALL\"}}]}'},\r",
+                  "            raw: '{\"ShipmentNbr\": { \"value\": \"000058\"},\"Type\": {\"value\": {\"id\": \"N\"}},\"Packages\": [{\"BoxID\": {\"value\": \"SMALL\"}}]}'},\r",
                   "        header: {\r",
                   "            'Content-Type': 'application/json'\r",
                   "        }\r",
@@ -14238,7 +14230,7 @@
                   "        method: 'PUT',\r",
                   "        body: {\r",
                   "            mode: 'raw',\r",
-                  "            raw: '{\"CarrierID\": { \"value\": \"LOCAL\"},\"CalculationMethod\": {\"value\": \"MANUAL\"}}'},\r",
+                  "            raw: '{\"CarrierID\": { \"value\": \"LOCAL\"},\"CalculationMethod\": {\"value\": {\"id\": \"M\"}}}'},\r",
                   "        header: {\r",
                   "            'Content-Type': 'application/json'\r",
                   "        }\r",
@@ -14261,7 +14253,7 @@
                   "            method: 'PUT',\r",
                   "            body: {\r",
                   "                mode: 'raw',\r",
-                  "                raw: '{\"Type\": { \"value\": \"Shipment\"},\"ShipmentNbr\": {\"value\": \"000058\"},\"ShipVia\": {\"value\": \"LOCAL\"}}'},\r",
+                  "                raw: '{\"Type\": { \"value\": {\"id\": \"N\"}},\"ShipmentNbr\": {\"value\": \"000058\"},\"ShipVia\": {\"value\": \"LOCAL\"}}'},\r",
                   "            header: {\r",
                   "                'Content-Type': 'application/json'\r",
                   "            }\r",
@@ -14361,7 +14353,7 @@
                   "        method: 'PUT',\r",
                   "        body: {\r",
                   "            mode: 'raw',\r",
-                  "            raw: '{\"OrderType\": { \"value\": \"SO\"},\"CustomerID\": {\"value\": \"GOODFOOD\"},\"Details\": [{\"InventoryID\": {\"value\": \"APJAM08\"}, \"OrderQty\": {\"value\": 20}, \"UOM\": {\"value\": \"PIECE\"}, \"WarehouseID\": {\"value\": \"WHOLESALE\"}}]}'},\r",
+                  "            raw: '{\"OrderType\": { \"value\": {\"id\": \"SO\"}},\"CustomerID\": {\"value\": \"GOODFOOD\"},\"Details\": [{\"InventoryID\": {\"value\": \"APJAM08\"}, \"OrderQty\": {\"value\": 20}, \"UOM\": {\"value\": \"PIECE\"}, \"WarehouseID\": {\"value\": \"WHOLESALE\"}}]}'},\r",
                   "        header: {\r",
                   "            'Content-Type': 'application/json'\r",
                   "        }\r",
@@ -14386,7 +14378,7 @@
                   "            method: 'PUT',\r",
                   "            body: {\r",
                   "                mode: 'raw',\r",
-                  "                raw: '{\"OrderType\": { \"value\": \"SO\"},\"CustomerID\": {\"value\": \"GOODFOOD\"},\"Details\": [{\"InventoryID\": {\"value\": \"APJAM32\"}, \"OrderQty\": {\"value\": 3}, \"UOM\": {\"value\": \"BOX\"}, \"WarehouseID\": {\"value\": \"WHOLESALE\"}}]}'},\r",
+                  "                raw: '{\"OrderType\": { \"value\": {\"id\": \"SO\"}},\"CustomerID\": {\"value\": \"GOODFOOD\"},\"Details\": [{\"InventoryID\": {\"value\": \"APJAM32\"}, \"OrderQty\": {\"value\": 3}, \"UOM\": {\"value\": \"BOX\"}, \"WarehouseID\": {\"value\": \"WHOLESALE\"}}]}'},\r",
                   "            header: {\r",
                   "                'Content-Type': 'application/json'\r",
                   "            }\r",
@@ -14570,7 +14562,7 @@
                 "ConfirmShipment"
               ]
             },
-            "description": "This example shows how to create a receipt for a sales order of the RM type. This process is described in [Create a Receipt for a Sales Order of the RM Type](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a0257153-3f15-4563-8cf0-5a269b0008db)."
+            "description": "This example shows how to create a receipt for a sales order of the RM type. This process is described in [Create a Receipt for a Sales Order of the RM Type](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=d6f117c2-5850-4b7b-8009-950ba175da2f)."
           },
           "response": []
         },
@@ -14693,7 +14685,7 @@
                 "PrepareInvoice"
               ]
             },
-            "description": "This example shows how to create a receipt for a sales order of the RM type. This process is described in [Create a Receipt for a Sales Order of the RM Type](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a0257153-3f15-4563-8cf0-5a269b0008db)."
+            "description": "This example shows how to create a receipt for a sales order of the RM type. This process is described in [Create a Receipt for a Sales Order of the RM Type](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=660042c0-fa17-4719-9417-8e9f83c37a93)."
           },
           "response": []
         },
@@ -14774,7 +14766,7 @@
                 }
               ]
             },
-            "description": "This example shows how to create a receipt for a sales order of the RM type. This process is described in [Create a Receipt for a Sales Order of the RM Type](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=a0257153-3f15-4563-8cf0-5a269b0008db)."
+            "description": "This example shows how to create a receipt for a sales order of the RM type. This process is described in [Create a Receipt for a Sales Order of the RM Type](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=50f988ff-e3c5-4f67-81c1-6446167c4176)."
           },
           "response": []
         }
@@ -14828,7 +14820,7 @@
                   "        method: 'PUT',\r",
                   "        body: {\r",
                   "            mode: 'raw',\r",
-                  "            raw: '{\"InventoryID\": {\"value\": \"AACOMPUT01\"},\"ItemStatus\": {\"value\": \"Inactive\"}}'\r",
+                  "            raw: '{\"InventoryID\": {\"value\": \"AACOMPUT01\"},\"ItemStatus\": {\"value\": {\"id\": \"IN\"}}}'\r",
                   "        },\r",
                   "        header: {\r",
                   "            'Content-Type': 'application/json'\r",
@@ -14895,7 +14887,7 @@
               }
             ],
             "url": {
-              "raw": "{{EndpointURL}}/StockItem?$filter=ItemStatus eq 'AC' and LastModifiedDateTime gt datetimeoffset'2022-09-24T00:00:00.000'&$expand=WarehouseDetails($select=WarehouseID,QtyOnHand)&$select=InventoryID,Description,ItemClass,BaseUOM",
+              "raw": "{{EndpointURL}}/StockItem?$filter=ItemStatus eq 'AC' and LastModifiedDateTime gt 2025-11-14T00:00:00.000Z&$expand=WarehouseDetails($select=WarehouseID,QtyOnHand)&$select=InventoryID,Description,ItemClass,BaseUOM",
               "host": [
                 "{{EndpointURL}}"
               ],
@@ -14905,7 +14897,7 @@
               "query": [
                 {
                   "key": "$filter",
-                  "value": "ItemStatus eq 'AC' and LastModifiedDateTime gt datetimeoffset'2022-09-24T00:00:00.000'"
+                  "value": "ItemStatus eq 'AC' and LastModifiedDateTime gt 2025-11-14T00:00:00.000Z"
                 },
                 {
                   "key": "$expand",
@@ -15912,14 +15904,14 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{EndpointURL}}TimeEntry?$filter=cf.DateTime(f='Items.Date') ge datetimeoffset'2024-10-23' and cf.DateTime(f='Items.Date') le datetimeoffset'2024-10-25T23%3A59%3A59.999%2B04%3A00'&$select=Date,ProjectID,TimeSpent,BillableTime",
+              "raw": "{{EndpointURL}}TimeEntry?$filter=cf.DateTime('Items.Date') ge 2024-10-23T00%3A00%3A00.000%2B04%3A00 and cf.DateTime('Items.Date') le 2024-10-25T23%3A59%3A59.999%2B04%3A00&$select=Date,ProjectID,TimeSpent,BillableTime",
               "host": [
                 "{{EndpointURL}}TimeEntry"
               ],
               "query": [
                 {
                   "key": "$filter",
-                  "value": "cf.DateTime(f='Items.Date') ge datetimeoffset'2024-10-23' and cf.DateTime(f='Items.Date') le datetimeoffset'2024-10-25T23%3A59%3A59.999%2B04%3A00'"
+                  "value": "cf.DateTime('Items.Date') ge 2024-10-23T00%3A00%3A00.000%2B04%3A00 and cf.DateTime('Items.Date') le 2024-10-25T23%3A59%3A59.999%2B04%3A00"
                 },
                 {
                   "key": "$select",

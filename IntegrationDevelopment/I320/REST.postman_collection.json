@@ -189,7 +189,7 @@
 									"});\r",
 									"pm.test(\"The first item includes all requested fields\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData[0].OrderType.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].OrderType.value.id).to.be.not.null;\r",
 									"    pm.expect(jsonData[0].OrderNbr.value).to.be.not.null;\r",
 									"    pm.expect(jsonData[0].CustomerID.value).to.be.not.null;\r",
 									"    pm.expect(jsonData[0].CustomerOrder.value).to.be.not.null;\r",
@@ -501,7 +501,7 @@
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData[0].CustomerID.value).to.be.not.null;\r",
 									"    pm.expect(jsonData[0].ReferenceNbr.value).to.be.not.null;\r",
-									"    pm.expect(jsonData[0].Type.value).to.be.not.null;\r",
+									"    pm.expect(jsonData[0].Type.value.id).to.be.not.null;\r",
 									"});\r",
 									"pm.execution.setNextRequest(\"Activity 2.3.1: Request That Retrieves a Single Payment\");"
 								],

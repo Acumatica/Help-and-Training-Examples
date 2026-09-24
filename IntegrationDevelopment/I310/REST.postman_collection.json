@@ -272,15 +272,15 @@
 								"exec": [
 									"//Set current date\r",
 									"var moment = require('moment');\r",
-									"pm.environment.set('currentDate', moment().format((\"YYYY-MM-DD\")));\r",
+									"pm.environment.set('currentDate', moment().format((\"YYYY-MM-DD[T]00:00:00.000\")));\r",
 									"\r",
 									"//Modify stock items\r",
 									"var requestAACOMPUT01 = {\r",
-									"    url: pm.variables.replaceIn('{{InstanceURL}}/entity/Default/23.200.001/StockItem?$select=InventoryID,ItemStatus'),\r",
+									"    url: pm.variables.replaceIn('{{DefaultEndpointURL}}/StockItem?$select=InventoryID,ItemStatus'),\r",
 									"    method: 'PUT',\r",
 									"    body: {\r",
 									"        mode: 'raw',\r",
-									"        raw: '{\"InventoryID\": {\"value\": \"AACOMPUT01\"},\"ItemStatus\": {\"value\": \"Inactive\"}}'\r",
+									"        raw: '{\"InventoryID\": {\"value\": \"AACOMPUT01\"},\"ItemStatus\": {\"value\": {\"id\": \"IN\"}}}'\r",
 									"    },\r",
 									"    header: {\r",
 									"        'Content-Type': 'application/json'\r",
@@ -298,7 +298,7 @@
 									"  });\r",
 									"\r",
 									"var requestAALEGO500 = {\r",
-									"    url: pm.variables.replaceIn('{{InstanceURL}}/entity/Default/23.200.001/StockItem?$select=InventoryID,Description'),\r",
+									"    url: pm.variables.replaceIn('{{DefaultEndpointURL}}/StockItem?$select=InventoryID,Description'),\r",
 									"    method: 'PUT',\r",
 									"    body: {\r",
 									"        mode: 'raw',\r",
@@ -344,7 +344,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{DefaultEndpointURL}}/StockItem?$filter=ItemStatus eq 'AC' and LastModifiedDateTime gt datetimeoffset'{{currentDate}}'&$expand=WarehouseDetails($select=WarehouseID,QtyOnHand)&$select=InventoryID,Description,ItemClass,BaseUOM",
+							"raw": "{{DefaultEndpointURL}}/StockItem?$filter=ItemStatus eq 'AC' and LastModifiedDateTime gt {{currentDate}}&$expand=WarehouseDetails($select=WarehouseID,QtyOnHand)&$select=InventoryID,Description,ItemClass,BaseUOM",
 							"host": [
 								"{{DefaultEndpointURL}}"
 							],
@@ -354,7 +354,7 @@
 							"query": [
 								{
 									"key": "$filter",
-									"value": "ItemStatus eq 'AC' and LastModifiedDateTime gt datetimeoffset'{{currentDate}}'"
+									"value": "ItemStatus eq 'AC' and LastModifiedDateTime gt {{currentDate}}"
 								},
 								{
 									"key": "$expand",

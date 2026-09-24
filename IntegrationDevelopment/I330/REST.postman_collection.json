@@ -222,7 +222,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"Type\":{\"value\":{ \"id\": \"N\" }},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n    \"ShipmentDate\":{\"value\":\"2026-11-01\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":\"SO\"},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\n\t\t}\n\t]\n}"
+							"raw": "{\n\t\"Type\":{\"value\":{ \"id\": \"N\" }},\n\t\"CustomerID\":{\"value\":\"C000000003\"},\n\t\"WarehouseID\":{\"value\":\"MAIN\"},\n    \"ShipmentDate\":{\"value\":\"2026-11-01\"},\n\t\"Details\":[\n\t\t{\n\t\t\t\"OrderType\":{\"value\":{\"id\":\"SO\"}},\n\t\t\t\"OrderNbr\":{\"value\":\"000004\"}\n\t\t},\n\t\t{\n\t\t\t\"OrderType\":{\"value\":{\"id\":\"SO\"}},\n\t\t\t\"OrderNbr\":{\"value\":\"000006\"}\n\t\t}\n\t]\n}"
 						},
 						"url": {
 							"raw": "{{DefaultEndpointURL}}/Shipment?$select=Type,ShipmentNbr,Status&$expand=Details($select=InventoryID)",
@@ -530,7 +530,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"OrderType\":{\"value\":\"SO\"},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"{{CONGRILL_detail_ID}}\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"{{AALEGO500_detail_ID}}\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
+							"raw": "{\n\t\"OrderType\":{\"value\":{\"id\":\"SO\"}},\n\t\"OrderNbr\":{\"value\":\"000003\"},\n\t\"Hold\":{\"value\":false},\n\t\"Details\":[\n\t\t{\n\t\t\t\"id\":\"{{CONGRILL_detail_ID}}\",\n\t\t\t\"delete\":true\n\t\t},\n\t\t{\n\t\t\t\"id\":\"{{AALEGO500_detail_ID}}\",\n\t\t\t\"OrderQty\":{\"value\":5.0}\n\t\t}\n\t]\n}"
 						},
 						"url": {
 							"raw": "{{DefaultEndpointURL}}/SalesOrder?$select=OrderType,OrderNbr,OrderedQty,OrderTotal&$expand=Details($select=OrderQty,InventoryID)",
