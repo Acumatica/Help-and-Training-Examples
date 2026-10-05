@@ -272,7 +272,7 @@
 								"exec": [
 									"//Set current date\r",
 									"var moment = require('moment');\r",
-									"pm.environment.set('currentDate', moment().format((\"YYYY-MM-DD[T]00:00:00.000\")));\r",
+									"pm.environment.set('currentDate', moment().format((\"YYYY-MM-DD[T]00:00:00.000Z\")));\r",
 									"\r",
 									"//Modify stock items\r",
 									"var requestAACOMPUT01 = {\r",

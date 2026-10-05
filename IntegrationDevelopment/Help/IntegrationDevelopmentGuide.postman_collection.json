@@ -8254,14 +8254,14 @@
                   "//Request to remove hold\r",
                   "var callback = (pm, error, response) => {\r",
                   "    var paymentRefNbr = pm.collectionVariables.get('paymentRefNbr');\r",
-                  "    var paymentAmount = pm.collectionVariables.get('appliedToDocuments')+pm.collectionVariables.get('appliedToOrders');\r",
+                  "    var paymentAmount = Number(pm.collectionVariables.get('appliedToDocuments')) + Number(pm.collectionVariables.get('appliedToOrders'));\r",
                   "    var url = pm.collectionVariables.get('EndpointURL') + 'Payment';\r",
                   "    var requestRemoveHold = {\r",
                   "        url: url,\r",
                   "        method: 'PUT',\r",
                   "        body: {\r",
                   "            mode: 'raw',\r",
-                  "            raw: '{\"Type\": {\"value\": {\"id\": \"PMT\"}},\"ReferenceNbr\": {\"value\": \"'+ paymentRefNbr +'\"},\"Hold\" : {\"value\" : \"false\"},\"PaymentAmount\": {\"value\": ' + paymentAmount + '}}'\r",
+                  "            raw: '{\"Type\": {\"value\": {\"id\": \"PMT\"}},\"ReferenceNbr\": {\"value\": \"'+ paymentRefNbr +'\"},\"Hold\" : {\"value\" : false},\"PaymentAmount\": {\"value\": ' + paymentAmount + '}}'\r",
                   "        },\r",
                   "        header: {\r",
                   "            'Content-Type': 'application/json'\r",
@@ -8316,7 +8316,7 @@
                 "Release"
               ]
             },
-            "description": "This example shows how to release an accounts receivable payment in Acumatica ERP. This process is described in [Release an AR Payment](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=709b0321-c44a-4226-a627-3507a93ce1d8).\n\nThis request requires the value of paymentRefNbr, appliedToDocuments, and appliedToOrders collection variables. You can set them manually or by executing the Create an Accouts Receivable Payment for an Invoice and a Sales Order request."
+            "description": "This example shows how to release an accounts receivable payment in Acumatica ERP. This process is described in [Release an AR Payment](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=709b0321-c44a-4226-a627-3507a93ce1d8).\n\nThis request requires the value of paymentRefNbr, appliedToDocuments, and appliedToOrders collection variables. You can set them manually or by executing the Create an Accounts Receivable Payment for an Invoice and a Sales Order request."
           },
           "response": []
         },
@@ -8386,12 +8386,12 @@
               }
             ],
             "url": {
-              "raw": "{{EndpointURL}}Payment/Payment/000001?$select=ReferenceNbr,Type,Status,ApplicationDate&$expand=ApplicationHistory($select=DisplayDocType,DisplayRefNbr)",
+              "raw": "{{EndpointURL}}Payment/PMT/000001?$select=ReferenceNbr,Type,Status,ApplicationDate&$expand=ApplicationHistory($select=DisplayDocType,DisplayRefNbr)",
               "host": [
                 "{{EndpointURL}}Payment"
               ],
               "path": [
-                "Payment",
+                "PMT",
                 "000001"
               ],
               "query": [
@@ -8826,13 +8826,13 @@
                   "pm.test(\"Status code is 200\", function () {\r",
                   "    pm.response.to.have.status(200);\r",
                   "});\r",
-                  "pm.test(\"Start date is 2024-01-08\", function (){\r",
+                  "pm.test(\"Start date is 2025-01-08\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.Orders[0].StartDate.value).to.eql('2025-01-08');\r",
+                  "    pm.expect(jsonResponse.Orders[0].StartDate.value).to.eql('2025-01-08T00:00:00+00:00');\r",
                   "});\r",
-                  "pm.test(\"End date is 2026-01-30\", function (){\r",
+                  "pm.test(\"End date is 2027-01-30\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.Orders[0].EndDate.value).to.eql('2027-01-30');\r",
+                  "    pm.expect(jsonResponse.Orders[0].EndDate.value).to.eql('2027-01-30T00:00:00+00:00');\r",
                   "});\r",
                   "//Sign out and set the next request\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -12777,7 +12777,7 @@
                   "        method: 'PUT',\r",
                   "        body: {\r",
                   "            mode: 'raw',\r",
-                  "            raw: '{\"OrderType\": { \"value\": {\"id\": \"SO\"}},\"CustomerID\": {\"value\": \"FRUITICO\"},\"Details\": [{\"InventoryID\": {\"value\": \"SWB-32OZ-GBT\"}, \"OrderQty\": {\"value\": 1}, \"WarehouseID\": {\"value\": \"RETAIL\"}}]}'},\r",
+                  "            raw: '{\"OrderType\": { \"value\": \"SO\"},\"CustomerID\": {\"value\": \"FRUITICO\"},\"Details\": [{\"InventoryID\": {\"value\": \"SWB-32OZ-GBT\"}, \"OrderQty\": {\"value\": 1}, \"WarehouseID\": {\"value\": \"RETAIL\"}}]}'},\r",
                   "        header: {\r",
                   "            'Content-Type': 'application/json'\r",
                   "        }\r",
@@ -15777,7 +15777,7 @@
                   "});\r",
                   "pm.test(\"TimeSpent is 01:30\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse.TimeSpent.value.id).to.be.eql('90');\r",
+                  "    pm.expect(jsonResponse.TimeSpent.value.id).to.be.eql(90);\r",
                   "});\r",
                   "pm.test(\"TimeZone is (GMT+10:00) Canberra, Melbourne, Sydney\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
@@ -15856,7 +15856,7 @@
                   "});\r",
                   "pm.test(\"TimeSpent is 01:30\", function (){\r",
                   "    const jsonResponse = pm.response.json();\r",
-                  "    pm.expect(jsonResponse[0].TimeSpent.value.id).to.be.eql('90');\r",
+                  "    pm.expect(jsonResponse[0].TimeSpent.value.id).to.be.eql(90);\r",
                   "});\r",
                   "//Sign out\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
