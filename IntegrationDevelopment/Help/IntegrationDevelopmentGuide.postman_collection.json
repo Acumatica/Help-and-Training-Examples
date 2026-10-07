@@ -8254,7 +8254,7 @@
                   "//Request to remove hold\r",
                   "var callback = (pm, error, response) => {\r",
                   "    var paymentRefNbr = pm.collectionVariables.get('paymentRefNbr');\r",
-                  "    var paymentAmount = Number(pm.collectionVariables.get('appliedToDocuments')) + Number(pm.collectionVariables.get('appliedToOrders'));\r",
+                  "    var paymentAmount = pm.collectionVariables.get('appliedToDocuments')+pm.collectionVariables.get('appliedToOrders');\r",
                   "    var url = pm.collectionVariables.get('EndpointURL') + 'Payment';\r",
                   "    var requestRemoveHold = {\r",
                   "        url: url,\r",
