@@ -1,6 +1,6 @@
 # Examples from Acumatica ERP Help and Training Courses
 
-This repository contains examples that are included in the Acumatica ERP developer guides and training courses in Version 2026 R2.
+This repository contains examples that are included in the Acumatica ERP developer guides and training courses in Version 2027 R1.
 
 Integration development
 
