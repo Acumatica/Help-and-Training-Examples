@@ -1,2 +1,0 @@
-I need to keep Retainage assignment in ProjectTemplateScenario.cs.
-Specify Retainage for a project after the project is created from a template.
