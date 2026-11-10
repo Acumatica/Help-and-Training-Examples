@@ -1,0 +1,7 @@
+In <path to the folder with the integration solution>, you have an old integration solution for Acumatica ERP.
+Describe this solution, including information about:
+- General purpose of this solution
+- Its structure
+- For which version of Acumatica ERP it is intended
+- Any dependencies it uses
+- Anything else that may be useful to know

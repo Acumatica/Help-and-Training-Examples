@@ -1,0 +1,4 @@
+In change orders, replace vendor V000000060 with ALLFRUITS.
+In scenario helper, replace customer C000000056 with ABAKERY. 
+Then rebuild and rerun the diagnostics. 
+Report any remaining errors with source file references and fix proposals.

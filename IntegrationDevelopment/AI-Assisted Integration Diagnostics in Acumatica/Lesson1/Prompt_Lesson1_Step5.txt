@@ -1,0 +1,1 @@
+Update filter in CompoundFilterScenario.cs according to the endpoint changes.

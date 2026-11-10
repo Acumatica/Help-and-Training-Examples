@@ -1,0 +1,8 @@
+Run the solution for an Acumatica instance:
+URL: <URL of Acumatica instance>
+Tenant: <tenant name>
+Username: admin
+Password: <password>
+Review the results of run in the
+\bin\Debug\outputs\scenarios folder.
+Suggest fixes for the issues or further steps to investigate.

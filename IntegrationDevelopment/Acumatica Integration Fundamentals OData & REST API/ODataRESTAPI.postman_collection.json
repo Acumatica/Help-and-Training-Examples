@@ -1,0 +1,632 @@
+{
+  "info": {
+    "_postman_id": "06a695b9-789e-42ef-953d-58bfdb4d66f1",
+    "name": "Acumatica Integration Fundamentals: OData & REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Lesson 2: Working with Generic Inquiry-Based OData",
+      "item": [
+        {
+          "name": "Activity 2.1: To Sign In and Retrieve the Metadata",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\".ASPXAUTH recieved\", function () {\r",
+                  "    pm.expect(pm.cookies.indexOf('.ASPXAUTH')).to.be.not.null;\r",
+                  "});\r",
+                  "pm.test(\".ASP.NET_SessionId recieved\", function () {\r",
+                  "    pm.expect(pm.cookies.indexOf('.ASP.NET_SessionId')).to.be.not.null;\r",
+                  "});\r",
+                  "pm.test(\"Response contains Modified Stock Items\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Modified Stock Items\");\r",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{EndpointURLGI}}/$metadata",
+              "host": [
+                "{{EndpointURLGI}}"
+              ],
+              "path": [
+                "$metadata"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Activity 2.2: To Retrieve Data by Using a Custom Generic Inquiry",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Contacts exist\", function (){\r",
+                  "    const jsonResponse = pm.response.json();\r",
+                  "    pm.expect(jsonResponse.value).to.be.not.empty;\r",
+                  "})"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{EndpointURLGI}}/Customer Contacts",
+              "host": [
+                "{{EndpointURLGI}}"
+              ],
+              "path": [
+                "Customer Contacts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Activity 2.3: To Retrieve Data by Using a Generic Inquiry with Parameters",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"One item is returned\", function (){\r",
+                  "    const jsonResponse = pm.response.json();\r",
+                  "    pm.expect(jsonResponse.value).to.have.lengthOf(1);\r",
+                  "});\r",
+                  "pm.test(\"Response contains AALEGO500\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"AALEGO500\");\r",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{EndpointURLGI}}/ItemAvailabilityData_WithParameters(InventoryID='AALEGO500')",
+              "host": [
+                "{{EndpointURLGI}}"
+              ],
+              "path": [
+                "ItemAvailabilityData_WithParameters(InventoryID='AALEGO500')"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Lesson 3: Working with DAC-Based OData",
+      "item": [
+        {
+          "name": "Activity 3.1: To Sign In and Retrieve the Metadata",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\".ASPXAUTH recieved\", function () {\r",
+                  "    pm.expect(pm.cookies.indexOf('.ASPXAUTH')).to.be.not.null;\r",
+                  "});\r",
+                  "pm.test(\".ASP.NET_SessionId recieved\", function () {\r",
+                  "    pm.expect(pm.cookies.indexOf('.ASP.NET_SessionId')).to.be.not.null;\r",
+                  "});\r",
+                  "pm.test(\"Response contains Schema Namespace=\\\"PX.Api\\\"\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Schema Namespace=\\\"PX.Api\\\"\");\r",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{EndpointURLDAC}}/$metadata",
+              "host": [
+                "{{EndpointURLDAC}}"
+              ],
+              "path": [
+                "$metadata"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Activity 3.2: To Retrieve Data by Using the $expand and $select Parameters",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Contacts exist\", function (){\r",
+                  "    const jsonResponse = pm.response.json();\r",
+                  "    pm.expect(jsonResponse.value).to.be.not.empty;\r",
+                  "})"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{EndpointURLDAC}}/PX_Objects_AR_Customer?$select=AcctCD,AcctName,CustomerClassID&$expand=ContactByDefBillContactID($select=Email,Phone1),AddressByDefAddressID($select=AddressLine1,AddressLine2,City,State,PostalCode)",
+              "host": [
+                "{{EndpointURLDAC}}"
+              ],
+              "path": [
+                "PX_Objects_AR_Customer"
+              ],
+              "query": [
+                {
+                  "key": "$select",
+                  "value": "AcctCD,AcctName,CustomerClassID"
+                },
+                {
+                  "key": "$expand",
+                  "value": "ContactByDefBillContactID($select=Email,Phone1),AddressByDefAddressID($select=AddressLine1,AddressLine2,City,State,PostalCode)"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Lesson 4: Working with the Contract-Based REST API",
+      "item": [
+        {
+          "name": "Activity 4.1: To Sign In to Acumatica ERP",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {\r",
+                  "    pm.response.to.have.status(204);\r",
+                  "});\r",
+                  "pm.test(\".ASPXAUTH recieved\", function () {\r",
+                  "    pm.expect(pm.cookies.indexOf('.ASPXAUTH')).to.be.not.null;\r",
+                  "});\r",
+                  "pm.test(\".ASP.NET_SessionId recieved\", function () {\r",
+                  "    pm.expect(pm.cookies.indexOf('.ASP.NET_SessionId')).to.be.not.null;\r",
+                  "});\r",
+                  "pm.execution.setNextRequest(\"Activity 2.1.1: To Retrieve the List of Customers with Contacts\");"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{InstanceURL}}/entity/auth/login",
+              "host": [
+                "{{InstanceURL}}"
+              ],
+              "path": [
+                "entity",
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"{{Username}}\",\r\n  \"password\": \"{{Password}}\",\r\n  \"tenant\": \"{{Tenant}}\",\r\n  \"branch\": \"{{Branch}}\"\r\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Activity 4.2: To Retrieve the List of Customers with Contacts",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"The retrieved list is not empty\", function (){\r",
+                  "    const jsonResponse = pm.response.json();\r",
+                  "    pm.expect(jsonResponse).to.be.not.empty;\r",
+                  "});\r",
+                  "pm.execution.setNextRequest(\"Activity 2.2.1: To Retrieve the Quantities of Stock Items\");"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{DefaultEndpointURL}}/Customer?$expand=MainContact,MainContact/Address&$select=CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode",
+              "host": [
+                "{{DefaultEndpointURL}}"
+              ],
+              "path": [
+                "Customer"
+              ],
+              "query": [
+                {
+                  "key": "$expand",
+                  "value": "MainContact,MainContact/Address"
+                },
+                {
+                  "key": "$select",
+                  "value": "CustomerID,CustomerName,CustomerClass,MainContact/Email,MainContact/Phone1,MainContact/Address/AddressLine1,MainContact/Address/AddressLine2,MainContact/Address/City,MainContact/Address/State,MainContact/Address/PostalCode"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Activity 4.3: To Retrieve Data from an Inquiry Form",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"The retrieved list is not empty\", function (){\r",
+                  "    const jsonResponse = pm.response.json();\r",
+                  "    pm.expect(jsonResponse.ItemAvailabilityDataInquiryDetails).to.be.not.empty;\r",
+                  "});\r",
+                  "pm.execution.setNextRequest(\"Activity 2.3.1: To Retrieve the List of Modified Stock Items\");"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{InstanceURL}}/entity/ItemAvailabilityData/0001/ItemAvailabilityDataInquiry?$expand=ItemAvailabilityDataInquiryDetails",
+              "host": [
+                "{{InstanceURL}}"
+              ],
+              "path": [
+                "entity",
+                "ItemAvailabilityData",
+                "0001",
+                "ItemAvailabilityDataInquiry"
+              ],
+              "query": [
+                {
+                  "key": "$expand",
+                  "value": "ItemAvailabilityDataInquiryDetails"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\r\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Activity 4.4: To Retrieve the List of Modified Stock Items",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Response contains AALEGO500\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"AALEGO500\");\r",
+                  "});\r",
+                  "pm.test(\"Response does not contain AACOMPUT01\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.include(\"AACOMPUT01\");\r",
+                  "});\r",
+                  "pm.execution.setNextRequest(\"Activity 1.2.2: To Sign Out from Acumatica ERP\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "//Set current date\r",
+                  "var moment = require('moment');\r",
+                  "pm.environment.set('currentDate', moment().format((\"YYYY-MM-DD\")));\r",
+                  "\r",
+                  "//Modify stock items\r",
+                  "var requestAACOMPUT01 = {\r",
+                  "    url: pm.variables.replaceIn('{{InstanceURL}}/entity/Default/23.200.001/StockItem?$select=InventoryID,ItemStatus'),\r",
+                  "    method: 'PUT',\r",
+                  "    body: {\r",
+                  "        mode: 'raw',\r",
+                  "        raw: '{\"InventoryID\": {\"value\": \"AACOMPUT01\"},\"ItemStatus\": {\"value\": \"Inactive\"}}'\r",
+                  "    },\r",
+                  "    header: {\r",
+                  "        'Content-Type': 'application/json'\r",
+                  "    }\r",
+                  "};\r",
+                  "pm.sendRequest(requestAACOMPUT01,  (error, response) => {\r",
+                  "  if (error) {\r",
+                  "    console.log(error);\r",
+                  "  }\r",
+                  "\r",
+                  "  pm.test('Response for AACOMPUT01 should be OK to process', () => {\r",
+                  "    pm.expect(error).to.equal(null);\r",
+                  "    pm.expect(response).to.have.property('code', 200);\r",
+                  "    pm.expect(response).to.have.property('status', 'OK');\r",
+                  "  });\r",
+                  "\r",
+                  "var requestAALEGO500 = {\r",
+                  "    url: pm.variables.replaceIn('{{InstanceURL}}/entity/Default/23.200.001/StockItem?$select=InventoryID,Description'),\r",
+                  "    method: 'PUT',\r",
+                  "    body: {\r",
+                  "        mode: 'raw',\r",
+                  "        raw: '{\"InventoryID\": {\"value\": \"AALEGO500\"},\"Description\": {\"value\": \"Lego 500 piece set.\"}}'\r",
+                  "    },\r",
+                  "    header: {\r",
+                  "        'Content-Type': 'application/json'\r",
+                  "    }\r",
+                  "};\r",
+                  "pm.sendRequest(requestAALEGO500, (error, response) => {\r",
+                  "  if (error) {\r",
+                  "    console.log(error);\r",
+                  "  }\r",
+                  "\r",
+                  "  pm.test('Response for AALEGO500 should be OK to process', () => {\r",
+                  "    pm.expect(error).to.equal(null);\r",
+                  "    pm.expect(response).to.have.property('code', 200);\r",
+                  "    pm.expect(response).to.have.property('status', 'OK');\r",
+                  "  });\r",
+                  "});\r",
+                  "\r",
+                  "});\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{DefaultEndpointURL}}/StockItem?$filter=ItemStatus eq 'Active' and LastModified gt datetimeoffset'{{currentDate}}'&$expand=WarehouseDetails&$select=InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM",
+              "host": [
+                "{{DefaultEndpointURL}}"
+              ],
+              "path": [
+                "StockItem"
+              ],
+              "query": [
+                {
+                  "key": "$filter",
+                  "value": "ItemStatus eq 'Active' and LastModified gt datetimeoffset'{{currentDate}}'"
+                },
+                {
+                  "key": "$expand",
+                  "value": "WarehouseDetails"
+                },
+                {
+                  "key": "$select",
+                  "value": "InventoryID,Description,WarehouseDetails/WarehouseID,WarehouseDetails/QtyOnHand,ItemClass,BaseUOM"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Activity 4.5: To Sign Out from Acumatica ERP",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {\r",
+                  "    pm.response.to.have.status(204);\r",
+                  "});\r",
+                  "pm.test(\".ASPXAUTH not recieved\", function () {\r",
+                  "    pm.expect(pm.cookies.indexOf('.ASPXAUTH')).to.be.eql(-1);\r",
+                  "});\r",
+                  "pm.test(\".ASP.NET_SessionId not recieved\", function () {\r",
+                  "    pm.expect(pm.cookies.indexOf('.ASP.NET_SessionId')).to.be.eql(-1);\r",
+                  "});\r",
+                  "pm.execution.setNextRequest(null);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{InstanceURL}}/entity/auth/logout",
+              "host": [
+                "{{InstanceURL}}"
+              ],
+              "path": [
+                "entity",
+                "auth",
+                "logout"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "password",
+        "value": "{{Password}}",
+        "type": "string"
+      },
+      {
+        "key": "username",
+        "value": "{{Username}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "id": "34a2bffa-cd59-459d-8e29-593bc31dbd21",
+      "key": "BaseURL",
+      "value": "http://localhost"
+    },
+    {
+      "id": "23e3b578-5732-475d-aafc-c011f2da251e",
+      "key": "InstanceURL",
+      "value": "{{BaseURL}}/MyStoreInstance"
+    },
+    {
+      "id": "e8bc25f4-f434-4d41-a373-afcadd513c91",
+      "key": "EndpointURLGI",
+      "value": "{{InstanceURL}}/t/{{Tenant}}/api/OData/GI"
+    },
+    {
+      "id": "70240f62-1e87-4735-89c0-d266635efb86",
+      "key": "EndpointURLDAC",
+      "value": "{{InstanceURL}}/t/{{Tenant}}/api/OData/DAC"
+    },
+    {
+      "id": "33fd86cb-c134-415b-a227-248a7ec62119",
+      "key": "Username",
+      "value": "admin"
+    },
+    {
+      "id": "eeeeb35e-8ee4-4d05-8d37-6e37a331ec89",
+      "key": "Password",
+      "value": "123"
+    },
+    {
+      "id": "810f1834-63ce-408d-ba9d-4101f3c0b9ac",
+      "key": "Tenant",
+      "value": "MyStore"
+    },
+    {
+      "id": "e980e685-aaba-49b7-8c62-95b81db04810",
+      "key": "Branch",
+      "value": "MYSTORE"
+    },
+    {
+      "id": "8eff5dcd-21f3-4a75-a3e1-f77a822e2a0f",
+      "key": "DefaultEndpointURL",
+      "value": ""
+    },
+    {
+      "id": "f80183bb-485e-4257-9309-5d97c4eab1bb",
+      "key": "currentDate",
+      "value": ""
+    }
+  ]
+}

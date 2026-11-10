@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net48</TargetFramework>
+		<AssemblyTitle>EndpointExtensibility.ProjectIntegration</AssemblyTitle>
+		<Product>EndpointExtensibility.ProjectIntegration</Product>
+		<OutDir>bin\$(Configuration)\</OutDir>
+		<WarningLevel>3</WarningLevel>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Acumatica.Default_25.200.001" Version="5.7.0" />
+		<PackageReference Include="Acumatica.RESTClient" Version="5.8.0" />
+		<PackageReference Include="Acumatica.RESTClient.ContractBasedApi" Version="5.8.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+		<PackageReference Include="System.Net.Http" Version="4.3.4" />
+	</ItemGroup>
+</Project>
