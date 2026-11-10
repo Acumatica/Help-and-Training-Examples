@@ -21,8 +21,8 @@ namespace PhoneRepairShop
         // Acuminator disable once PX1016 ExtensionDoesNotDeclareIsActiveMethod extension should be constantly active
         public new class QtySupport : WMSBase.QtySupport { }
 
-        protected override bool UseQtyCorrection =>
-            Setup.Current.UseDefaultQtyInCount != true;
+        protected override string QtyEnterModeFor(ScanMode<INScanCount> mode) =>
+            Setup.Current.QtyEnterModeInCount;
 
         protected override IEnumerable<ScanMode<INScanCount>> CreateScanModes()
         {
@@ -115,7 +115,7 @@ namespace PhoneRepairShop
                         "Document has the {0} status, cannot be used for count.";
                     public const string Ready =
                         "The {0} PI count has been loaded and is ready for processing.";
-                    public const string NotSet = "Document number is not selected.";
+                    public const string NotSet = "The document number is not selected.";
                 }
             }
 
@@ -298,8 +298,6 @@ namespace PhoneRepairShop
 
             protected override IEnumerable<ScanCommand<INScanCount>> CreateCommands()
             {
-                yield return new RemoveCommand();
-                yield return new QtySupport.SetQtyCommand();
                 yield return new ConfirmCommand();
             }
 
@@ -355,27 +353,28 @@ namespace PhoneRepairShop
                 return AllWMSRedirects.CreateFor<INScanCount>();
             }
 
-            public new sealed class RedirectFrom<TForeignBasis> :
-        WMSBase.RedirectFrom<TForeignBasis>
-        where TForeignBasis : PXGraphExtension, IBarcodeDrivenStateMachine
-            {
-                public override string Code => "COUNT";
-                public override string DisplayName => Msg.DisplayName;
-                public override bool IsPossible =>
-                    PXAccess.FeatureInstalled<PX.Objects.CS.FeaturesSet.wMSInventory>();
-                [PXLocalizable]
-                public abstract class Msg
-                {
-                    public const string DisplayName = "PI Count";
-                }
-            }
-
             protected override void ResetMode(bool fullReset)
             {
                 Clear<RefNbrState>(when: fullReset && !Basis.IsWithinReset);
                 Clear<LocationState>(when: fullReset);
                 Clear<InventoryItemState>();
                 Clear<LotSerialState>();
+            }
+        }
+
+        public new sealed class RedirectFrom<TForeignBasis> :
+            WMSBase.RedirectFrom<TForeignBasis>
+            where TForeignBasis : PXGraphExtension, IBarcodeDrivenStateMachine
+        {
+            public override string Code => "COUNT";
+            public override string DisplayName => Msg.DisplayName;
+            public override bool IsPossible =>
+                PXAccess.FeatureInstalled<PX.Objects.CS.FeaturesSet.wMSInventory>();
+
+            [PXLocalizable]
+            public abstract class Msg
+            {
+                public const string DisplayName = "PI Count";
             }
         }
 
