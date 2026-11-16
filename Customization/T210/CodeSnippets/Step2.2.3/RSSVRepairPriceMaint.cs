@@ -21,21 +21,6 @@ namespace PhoneRepairShop
                 IsEqual<RSSVRepairPrice.deviceID.FromCurrent>>>.View
             RepairItems = null!;
 
-        public PXFilter<MasterTable> MasterView;
-        public PXFilter<DetailsTable> DetailsView;
-
-        [Serializable]
-        public class MasterTable : PXBqlTable, IBqlTable
-        {
-
-        }
-
-        [Serializable]
-        public class DetailsTable : PXBqlTable, IBqlTable
-        {
-
-        }
-
         #endregion
 
         #region Event Handlers

@@ -19,21 +19,6 @@ namespace PhoneRepairShop
                 IsEqual<RSSVRepairPrice.deviceID.FromCurrent>>>.View
             RepairItems = null!;
   
-        public PXFilter<MasterTable> MasterView;
-        public PXFilter<DetailsTable> DetailsView;
-
-        [Serializable]
-        public class MasterTable : PXBqlTable, IBqlTable
-        {
-
-        }
-
-        [Serializable]
-        public class DetailsTable : PXBqlTable, IBqlTable
-        {
-
-        }
-
         #endregion
 
         #region Event Handlers
@@ -79,7 +64,7 @@ namespace PhoneRepairShop
             }
         }
 
-        ////////// The added code
+
         //Update the IsDefault and Required fields of other records 
         //with the same repair item type when these fields are updated.
         protected void _(Events.RowUpdated<RSSVRepairItem> e)
@@ -114,7 +99,8 @@ namespace PhoneRepairShop
             //Refresh the UI.
             RepairItems.View.RequestRefresh();
         }
-
+		
+        ////////// The added code
         //When Repair Item Type is updated,
         //clear the values of the Inventory ID and Default columns and
         //trigger FieldDefaulting for the Required column.

@@ -3,7 +3,7 @@ import {
   PXView,
   viewInfo,
   gridConfig,
-  fieldInfo,
+  fieldOptions,
   GridPreset,
   createCollection
 } from "client-controls";
