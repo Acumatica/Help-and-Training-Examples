@@ -3,7 +3,7 @@ import {
   PXView,
   viewInfo,
   gridConfig,
-  fieldInfo,
+  fieldOptions,
   GridPreset,
   createCollection,
   PXFieldOptions
@@ -18,7 +18,7 @@ export class IN202500_PhoneRepairShop_generated {
 
 export interface ItemSettings_PhoneRepairShop_generated extends ItemSettings {}
 export class ItemSettings_PhoneRepairShop_generated {
-  @fieldInfo({ commitChanges: true })
+  @fieldOptions({ commitChanges: true })
   UsrRepairItem: PXFieldState;
 
   UsrRepairItemType: PXFieldState;
