@@ -25,20 +25,6 @@ namespace PhoneRepairShop
                 AssignOrders(list, true));
         }
         ////////// The end of modified code
-        public PXFilter<MasterTable> MasterView;
-		public PXFilter<DetailsTable> DetailsView;
-
-		[Serializable]
-		public class MasterTable : PXBqlTable, IBqlTable
-		{
-
-		}
-
-		[Serializable]
-		public class DetailsTable : PXBqlTable, IBqlTable
-		{
-
-		}
 
         public static void AssignOrders(List<RSSVWorkOrder> list,
             bool isMassProcess = false)

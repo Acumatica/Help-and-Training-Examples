@@ -44,21 +44,6 @@ namespace PhoneRepairShop
         }
         ////////// The end of modified code
 
-        public PXFilter<MasterTable> MasterView;
-		public PXFilter<DetailsTable> DetailsView;
-
-		[Serializable]
-		public class MasterTable : PXBqlTable, IBqlTable
-		{
-
-		}
-
-		[Serializable]
-		public class DetailsTable : PXBqlTable, IBqlTable
-		{
-
-		}
-
         [PXMergeAttributes(Method = MergeMethod.Append)]
         [Owner(IsDBField = false, DisplayName = "Default Assignee")]
         [PXDBScalar(typeof(SelectFrom<OwnerAttribute.Owner>.

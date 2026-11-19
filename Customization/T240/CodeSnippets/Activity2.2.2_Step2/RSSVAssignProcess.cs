@@ -1,6 +1,8 @@
 using System;
 using PX.Data;
+////////// The added code
 using PX.Data.BQL;
+////////// The end of added code
 using PX.Data.BQL.Fluent;
 using System;
 using System.Collections.Generic;
@@ -41,20 +43,7 @@ namespace PhoneRepairShop
             PXUIFieldAttribute.SetEnabled<RSSVWorkOrder.assignee>(
                 WorkOrders.Cache, null, true);
         }
-        public PXFilter<MasterTable> MasterView;
-		public PXFilter<DetailsTable> DetailsView;
 
-		[Serializable]
-		public class MasterTable : PXBqlTable, IBqlTable
-		{
-
-		}
-
-		[Serializable]
-		public class DetailsTable : PXBqlTable, IBqlTable
-		{
-
-		}
 
         [PXMergeAttributes(Method = MergeMethod.Append)]
         [Owner(IsDBField = false, DisplayName = "Default Assignee")]
