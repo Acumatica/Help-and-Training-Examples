@@ -40,21 +40,7 @@ namespace PhoneRepairShop
             PXUIFieldAttribute.SetEnabled<RSSVWorkOrder.assignTo>(
                 WorkOrders.Cache, null, true);
         }
-
-        public PXFilter<MasterTable> MasterView;
-		public PXFilter<DetailsTable> DetailsView;
-
-		[Serializable]
-		public class MasterTable : PXBqlTable, IBqlTable
-		{
-
-		}
-
-		[Serializable]
-		public class DetailsTable : PXBqlTable, IBqlTable
-		{
-
-		}
+        
 
         [PXMergeAttributes(Method = MergeMethod.Append)]
         [Owner(IsDBField = false, DisplayName = "Default Assignee")]
