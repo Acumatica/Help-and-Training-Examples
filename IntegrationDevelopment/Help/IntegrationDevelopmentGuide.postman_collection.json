@@ -12518,7 +12518,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"CustomerID\": { \"value\": \"GOODFOOD\" },\r\n    \"Description\": { \"value\": \"Return for Credit for Two Invoices\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"InvoiceNbr\": { \"value\": \"000062\" },\r\n            \"InventoryID\": { \"value\": \"INSTALL\" }\r\n        },\r\n        {\r\n            \"InvoiceType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"InvoiceNbr\": { \"value\": \"000030\" },\r\n            \"InventoryID\": { \"value\": \"ORANGES\" },\r\n            \"OrderQty\": { \"value\": \"50\" }\r\n        }\r\n    ],\r\n    \"LocationID\": { \"value\": \"MAIN\" },\r\n    \"OrderType\": { \"value\": \"RC\" }\r\n}"
+              "raw": "{\r\n    \"CustomerID\": { \"value\": \"GOODFOOD\" },\r\n    \"Description\": { \"value\": \"Return for Credit for Two Invoices\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"InvoiceNbr\": { \"value\": \"000062\" },\r\n            \"InventoryID\": { \"value\": \"INSTALL\" }\r\n        },\r\n        {\r\n            \"InvoiceType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"InvoiceNbr\": { \"value\": \"000030\" },\r\n            \"InventoryID\": { \"value\": \"ORANGES\" },\r\n            \"OrderQty\": { \"value\": 50 }\r\n        }\r\n    ],\r\n    \"LocationID\": { \"value\": \"MAIN\" },\r\n    \"OrderType\": { \"value\": \"RC\" }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}SalesOrder?$expand=Details",
@@ -12611,7 +12611,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"CustomerID\": { \"value\": \"MICROCHIP\" },\r\n    \"Description\": { \"value\": \"Return for Credit for Items with Lot or Serial Numbers\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"InvoiceNbr\": { \"value\": \"AR013584\" },\r\n            \"InvoiceLineNbr\": { \"value\": \"2\" },\r\n            \"OrderQty\": { \"value\": \"20\" },\r\n            \"UOM\": { \"value\": \"EA\" }\r\n        },\r\n        {\r\n            \"InvoiceType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"InvoiceNbr\": {  \"value\": \"AR013584\" },\r\n            \"InvoiceLineNbr\": { \"value\": \"3\" },\r\n            \"OrderQty\": { \"value\": \"6900\" },\r\n            \"UOM\": { \"value\": \"EA\" }\r\n        }\r\n    ],\r\n    \"LocationID\": { \"value\": \"MAIN\" },\r\n    \"OrderType\": {  \"value\": \"RC\" }\r\n}"
+              "raw": "{\r\n    \"CustomerID\": { \"value\": \"MICROCHIP\" },\r\n    \"Description\": { \"value\": \"Return for Credit for Items with Lot or Serial Numbers\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"InvoiceNbr\": { \"value\": \"AR013584\" },\r\n            \"InvoiceLineNbr\": { \"value\": 2 },\r\n            \"OrderQty\": { \"value\": 20 },\r\n            \"UOM\": { \"value\": \"EA\" }\r\n        },\r\n        {\r\n            \"InvoiceType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"InvoiceNbr\": {  \"value\": \"AR013584\" },\r\n            \"InvoiceLineNbr\": { \"value\": 3 },\r\n            \"OrderQty\": { \"value\": 6900 },\r\n            \"UOM\": { \"value\": \"EA\" }\r\n        }\r\n    ],\r\n    \"LocationID\": { \"value\": \"MAIN\" },\r\n    \"OrderType\": {  \"value\": \"RC\" }\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}SalesOrder?$expand=Details($expand=Allocations)",
@@ -13053,7 +13053,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"CustomerID\": { \"value\": \"FRUITICO\" },\r\n    \"OrderType\": { \"value\": \"RM\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"InvoiceNbr\": { \"value\": \"{{invoiceNbr}}\" },\r\n            \"Operation\": { \"value\": \"Receipt\" },\r\n            \"InvoiceLineNbr\": { \"value\": \"1\" },\r\n            \"OrderQty\": { \"value\": -1 },\r\n            \"AutoCreateIssue\": { \"value\": false }\r\n        },\r\n        {\r\n            \"Branch\": { \"value\": \"HEADOFFICE\" },\r\n            \"Operation\": { \"value\": \"Issue\" },\r\n            \"InventoryID\": { \"value\": \"PEARJAM96\" },\r\n            \"OrderQty\": { \"value\": 1 },\r\n            \"UOM\": { \"value\": \"PIECE\" },\r\n            \"WarehouseID\": { \"value\": \"RETAIL\" },\r\n            \"AutoCreateIssue\": { \"value\": false }\r\n        }\r\n    ]\r\n}"
+              "raw": "{\r\n    \"CustomerID\": { \"value\": \"FRUITICO\" },\r\n    \"OrderType\": { \"value\": \"RM\" },\r\n    \"Details\": [\r\n        {\r\n            \"InvoiceType\": { \"value\": { \"id\": \"INV\" } },\r\n            \"InvoiceNbr\": { \"value\": \"{{invoiceNbr}}\" },\r\n            \"Operation\": { \"value\": \"Receipt\" },\r\n            \"InvoiceLineNbr\": { \"value\": 1 },\r\n            \"OrderQty\": { \"value\": -1 },\r\n            \"AutoCreateIssue\": { \"value\": false }\r\n        },\r\n        {\r\n            \"Branch\": { \"value\": \"HEADOFFICE\" },\r\n            \"Operation\": { \"value\": \"Issue\" },\r\n            \"InventoryID\": { \"value\": \"PEARJAM96\" },\r\n            \"OrderQty\": { \"value\": 1 },\r\n            \"UOM\": { \"value\": \"PIECE\" },\r\n            \"WarehouseID\": { \"value\": \"RETAIL\" },\r\n            \"AutoCreateIssue\": { \"value\": false }\r\n        }\r\n    ]\r\n}"
             },
             "url": {
               "raw": "{{EndpointURL}}SalesOrder?$expand=Details",
@@ -13494,7 +13494,7 @@
                 "exec": [
                   "//Set current date\r",
                   "var moment = require('moment');\r",
-                  "pm.environment.set('currentDate', moment().format((\"YYYY-MM-DD\")));\r",
+                  "pm.environment.set('currentDate', moment().format((\"YYYY-MM-DDT07:00:00+03:00\")));\r",
                   "\r",
                   "//Sign in to the tenant with U100 data\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -13622,7 +13622,7 @@
                 "exec": [
                   "//Set current date\r",
                   "var moment = require('moment');\r",
-                  "pm.environment.set('currentDate', moment().format((\"YYYY-MM-DD\")));\r",
+                  "pm.environment.set('currentDate', moment().format((\"YYYY-MM-DDT07:00:00+03:00\")));\r",
                   "\r",
                   "//Sign in to the tenant with U100 data\r",
                   "var url = pm.collectionVariables.get('InstanceURL');\r",
@@ -14500,7 +14500,7 @@
                   "                    });\r",
                   "                    pm.test(\"Shipment is confirmed\", function (){\r",
                   "                        const jsonResponse = response.json();\r",
-                  "                        pm.expect(jsonResponse.Status.value.id).to.eql('C');\r",
+                  "                        pm.expect(jsonResponse.Status.value.id).to.eql('F');\r",
                   "                    });\r",
                   "                    //Sign out\r",
                   "                    var url = pm.collectionVariables.get('InstanceURL');\r",
